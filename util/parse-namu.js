@@ -150,12 +150,12 @@ function parseTalentSection(content) {
 }
 
 function heroToMarkdown(hero) {
-  let markdown = '#' + hero.name + '\n'
-               + '##기술\n';
+  let markdown = '# ' + hero.name + '\n'
+               + '## 기술\n';
 
   markdown += hero.skills.map(skillToMarkdown).join('\n\n');
 
-  markdown += '\n\n##특성';
+  markdown += '\n\n## 특성';
 
   const talentsByLevel = {};
   hero.talents.forEach(talent => {
@@ -167,7 +167,7 @@ function heroToMarkdown(hero) {
   });
 
   for (talentLevel in talentsByLevel) {
-    markdown += '\n###레벨 ' + talentLevel + '\n'
+    markdown += '\n### 레벨 ' + talentLevel + '\n'
               + talentsByLevel[talentLevel].map(talentToMarkdown).join('\n\n') + '\n';
   }
 
@@ -175,7 +175,7 @@ function heroToMarkdown(hero) {
 }
 
 function skillToMarkdown(skill) {
-  let markdown = '###' + skill.name + '\n'
+  let markdown = '### ' + skill.name + '\n'
                + '* 유형: ' + skill.type + '\n';
 
   if (skill.cooldown)
