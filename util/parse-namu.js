@@ -11,6 +11,7 @@ function parseHeroPage(namuMarkup) {
   namuMarkup = replaceSpecialColors(namuMarkup);
   namuMarkup = removeNamuFootnotes(namuMarkup);
   namuMarkup = removeQuestMarkup(namuMarkup);
+  namuMarkup = removeNamuBr(namuMarkup);
 
   //글을 구역별로 나눈다
   const pattern = /^=+\s*(.+?)\s*=+\s*$/mg;
@@ -91,6 +92,14 @@ function removeNamuAnchor(namuMarkup) {
   return namuMarkup.replace(/\[\[(?:.+?\|)?(?:\{\{\{#\w{6} )?(.+?)(?:\}\}\})?\]\]/g, '$1');
 }
 
+/**
+ * 나무위키식 줄바꿈([br])을 개행문자로 대체한다.
+ * @param {string} namuMarkup 나무마크
+ */
+function removeNamuBr(namuMarkup) {
+  return namuMarkup.replace(/\[br\]/gi, '\n');
+}
+
 function parseSkillSection(skillType, skillName, content) {
   const skill = {
     type: skillType,
@@ -160,7 +169,7 @@ function heroToMarkdown(hero) {
               + talentsByLevel[talentLevel].map(talentToMarkdown).join('\n\n') + '\n';
   }
 
-  return markdown;
+  return markdown + '\n';
 }
 
 function skillToMarkdown(skill) {
@@ -190,6 +199,6 @@ const heroFiles = fs.readdirSync('namuwiki-heroes-raw');
 heroFiles.forEach(fileName => {
   const data = fs.readFileSync('namuwiki-heroes-raw/' + fileName);
   const hero = parseHeroPage(data.toString('utf8'));
-  hero.name = fileName.replace(/\(.*\)/, '');
+  hero.name = fileName.replace(/\(.*\)\.txt/, '');
   fs.writeFileSync('output.md', heroToMarkdown(hero), { flag: 'a' });
 });
