@@ -201,6 +201,6 @@ const heroFiles = fs.readdirSync('namuwiki-heroes-raw');
 heroFiles.forEach(fileName => {
   const data = fs.readFileSync('namuwiki-heroes-raw/' + fileName);
   const hero = parseHeroPage(data.toString('utf8'));
-  hero.name = fileName.replace(/\(.*\)\.txt/, '');
+  hero.name = fileName.replace(/\(.*\)/, '').replace('.txt', '');
   fs.writeFileSync('output.md', heroToMarkdown(hero), { flag: 'a' });
 });
