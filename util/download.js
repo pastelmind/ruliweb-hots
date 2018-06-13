@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const articleNames = [
   'D.Va(히어로즈 오브 더 스톰)',
   '가로쉬(히어로즈 오브 더 스톰)',
