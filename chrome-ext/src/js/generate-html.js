@@ -17,6 +17,18 @@ const HtmlGenerator = {
   generateHeroHtml(templateHtml, hero, hotsVersion) {
     templateHtml = this._injectHotsVersion(templateHtml, hotsVersion);
 
+    templateHtml = templateHtml.replace(/\{\{name\}\}/g, hero.name)
+      .replace(/\{\{type\}\}/g, hero.type)
+      .replace(/\{\{icon\}\}/g, hero.iconUrl || this.missingIconUrl);
+    
+    const skillTemplatePattern = /<[^<]*\{\{skill.*?>/;
+    const skillTemplateMatch = skillTemplatePattern.exec(templateHtml);
+    if (skillTemplateMatch) {
+      const skillTemplate = skillTemplateMatch[0].replace(/skill\./g, '');
+      const skillFragment = hero.skills.map(skill => this.generateSkillHtml(skillTemplate, skill, hotsVersion)).join('');
+      templateHtml = templateHtml.replace(skillTemplatePattern, skillFragment);
+    }
+
     return templateHtml;
   },
 
@@ -32,7 +44,6 @@ const HtmlGenerator = {
     return templateHtml.replace(/\{\{name\}\}/g, skill.name)
       .replace(/\{\{type\}\}/g, skill.type)
       .replace(/\{\{icon\}\}/g, skill.iconUrl || this.missingIconUrl)
-      .replace(/\{\{icon_alt\}\}/g, skill.name + ' (' + skill.type + ')')
       .replace(/\{\{description\}\}/g, skill.description);
   },
 
@@ -49,7 +60,6 @@ const HtmlGenerator = {
       .replace(/\{\{type\}\}/g, talent.type)
       .replace(/\{\{level\}\}/g, talent.level)
       .replace(/\{\{icon\}\}/g, talent.iconUrl || this.missingIconUrl)
-      .replace(/\{\{icon_alt\}\}/g, talent.name + ' (' + talent.type + ')')
       .replace(/\{\{description\}\}/g, talent.description);
   },
 
