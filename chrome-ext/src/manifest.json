@@ -15,5 +15,5 @@
       "js": ["js/jquery.js", "js/jquery-ui.js", "js/mustache.js"]
     }
   ],
-  "web_accessible_resources": ["templates/*", "images/*", "css/images/*"]
+  "web_accessible_resources": ["images/*", "css/images/*"]
 }

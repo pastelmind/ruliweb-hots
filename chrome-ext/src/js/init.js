@@ -59,4 +59,30 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
         throw chrome.runtime.lastError;
     });
   }, 'json');
+
+  //Load templates
+  const templateNames = ['dialog', 'insert-hero', 'insert-skill', 'insert-talent'];
+  const templates = {};
+
+  //Create a resolved Deferred object
+  let prom = $.Deferred().resolve();
+
+  //Chain then() calls to sequentially retrieve templates
+  while (templateNames.length) {
+    const templateName = templateNames.pop();
+    prom = prom.then(() => {
+      return $.get(chrome.runtime.getURL(`templates/${templateName}.mustache`), null, 'text')
+        .then(template => {
+          templates[templateName] = template;
+        });
+    });
+  }
+
+  //Finish by loading the templates into local storage
+  prom = prom.then(() => {
+    chrome.storage.local.set({ templates }, () => {
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
+    });
+  });
 }

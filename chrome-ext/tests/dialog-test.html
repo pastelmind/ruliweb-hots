@@ -80,6 +80,7 @@
   <script src="js/init.js"></script>
   <script src="js/hots-dialog.js"></script>
   <script>
+
     //Stub for test
     if (typeof chrome === 'undefined')
       var chrome = {};
@@ -114,7 +115,8 @@
       //Clear the skill and talent sections
       $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
 
-      HotsDialog.launchDialog(heroes);
+      //Pass in dummy object {} for testing
+      HotsDialog.launchDialog({}, heroes);
     }, 'json');
 
   </script>

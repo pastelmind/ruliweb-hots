@@ -36,36 +36,34 @@ function getElementInjectorAtSelectedArea() {
 
 var HotsDialog = {
   /**
-   * 영웅 선택창을 연다.
-   * @param {array} heroes 영웅 데이터
+   * Launch the hero/skill/talent selection dialog
+   * @param {Object} heroes Key-value mappings of the form: hero ID => hero data
+   * @param {Object} templates Key-value mappings of the form: template name => template string
    */
-  launchDialog(heroes) {
+  launchDialog(heroes, templates) {
     //Generate skill description
-    //TODO: retrieve template only if dialog has not been generated yet
-    $.get(chrome.runtime.getURL('templates/dialog.mustache'), (htmlTemplate) => {
-      const $hotsDialog = this.buildDialog(htmlTemplate, heroes);
+    const $hotsDialog = this.buildDialog(templates['dialog'], heroes);
 
-      //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
-      //state is corrupted when this content script finishes execution.
-      //Thus, the dialog must be created from scratch every time.
-      $hotsDialog.dialog({
-        modal: true,
-        resizable: false,
-        title: '입력할 내용을 선택하세요',
-        width: 600,
-        close: function () {
-          //Destroy the dialog upon closing to clean up UI state
-          $(this).dialog('destroy').hide();
-        }
-      }).dialog('open');
-    }, 'text');
+    //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
+    //state is corrupted when this content script finishes execution.
+    //Thus, the dialog must be created from scratch every time.
+    $hotsDialog.dialog({
+      modal: true,
+      resizable: false,
+      title: '입력할 내용을 선택하세요',
+      width: 600,
+      close: function () {
+        //Destroy the dialog upon closing to clean up UI state
+        $(this).dialog('destroy').hide();
+      }
+    }).dialog('open');
   },
 
   /**
    * 영웅 선택창을 만들기 위한 DIV를 생성하여 현재 문서에 추가한다.
    * 이미 DIV가 존재할 경우 가져오기만 하고 생성하지 않는다.
    * @param {string} templateHtml 선택창을 만들기 위한 HTML 템플릿
-   * @param {object} heroes Key-value pairings of the form: hero ID => hero data
+   * @param {object} heroes Key-value mappings of the form: hero ID => hero data
    * @return {jQuery} 생성된 DIV
    */
   buildDialog(templateHtml, heroes) {
@@ -134,17 +132,10 @@ var HotsDialog = {
 if (typeof chrome !== 'undefined' && chrome.storage) {
   const injectHtml = getElementInjectorAtSelectedArea();
 
-  chrome.storage.local.get('heroes', (data) => {
-    const heroes = data['heroes'];
-
+  chrome.storage.local.get(['heroes', 'templates'], (data) => {
     if (chrome.runtime.lastError)
       throw chrome.runtime.lastError;
-
-    HotsDialog.launchDialog(heroes, heroId => {
-      $.get(chrome.runtime.getURL('templates/insert-hero.mustache'), htmlTemplate => {
-        const table = HtmlGenerator.generateHeroHtml(htmlTemplate, heroes[heroId], '34.1');
-        injectHtml(table);
-      }, 'text');
-    });
+      
+    HotsDialog.launchDialog(data.heroes, data.templates);
   });
 }
