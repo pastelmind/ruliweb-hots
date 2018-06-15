@@ -60,7 +60,11 @@
       </fieldset>
     </div>
 
-    <div class="hots_dialog__section hots_dialog__hero-icons"></div>
+    <div class="hots_dialog__section hots_dialog__hero-icons">
+      {{#heroes}}
+      <img class="hots_dialog__hero-icon" src="{{iconUrl}}" data-hero-id="{{id}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
+      {{/heroes}}
+    </div>
     <div class="hots_dialog__section hots_dialog__skills"></div>
     <ul class="hots_dialog__section hots_dialog__talents">
       <li class="hots_dialog__talent-group">
@@ -81,9 +85,19 @@
       //Manually build the dialog
       const $hotsDialog = $('#hots_dialog');
 
-      //Create hero icons
-      $hotsDialog.children('.hots_dialog__hero-icons').empty()
-        .append(heroes.map(hero => HotsDialog._createHeroImg(hero)));
+      //Create hero icons (render template)
+      const $heroIcons = $hotsDialog.children('.hots_dialog__hero-icons');
+      $heroIcons.html(Mustache.render($heroIcons.html(), { heroes }));
+
+      const heroesById = {};
+      heroes.forEach(hero => heroesById[hero.id] = hero);
+
+      //Add click handler for hero icons
+      $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
+        const hero = heroesById[event.target.dataset.heroId];
+        console.log('Hero clicked:', hero.name);
+        HotsDialog._setSelectedHero($hotsDialog, hero);
+      })
 
       //Prepare checkboxes  
       $hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });

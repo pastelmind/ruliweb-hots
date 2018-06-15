@@ -40,7 +40,6 @@ const HotsDialog = {
    * @param {array} heroes 영웅 데이터
    */
   launchDialog(heroes) {
-    console.log('launchDialog()');
     //Generate skill description
     //TODO: retrieve template only if dialog has not been generated yet
     $.get('html/dialog.html', (htmlTemplate) => {
@@ -71,16 +70,21 @@ const HotsDialog = {
    * @return {jQuery} 생성된 DIV
    */
   buildDialog(templateHtml, heroes) {
-    console.log('buildDialog()');
     let $hotsDialog = $('#hots_dialog');
-    if ($hotsDialog.length) return $hotsDialog;  //이전에 창을 생성했을 경우
+    if ($hotsDialog.length) return $hotsDialog;  //Dialog already exists
 
-    console.log('Creating dialog for the first time');
-    $hotsDialog = $(templateHtml).appendTo(document.body);
+    const html = Mustache.render(templateHtml, { heroes });
+    $hotsDialog = $(html).appendTo(document.body);
 
-    //Create hero icons
-    $hotsDialog.children('.hots_dialog__hero-icons').empty()
-      .append(heroes.map(hero => this._createHeroImg(hero)));
+    const heroesById = {};
+    heroes.forEach(hero => heroesById[hero.id] = hero);
+
+    //Add click handler for hero icons
+    $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
+      const hero = heroesById[event.target.dataset.heroId];
+      console.log('Hero clicked:', hero.name);
+      this._setSelectedHero($hotsDialog, hero);
+    })
 
     //Prepare checkboxes  
     $hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });
@@ -93,18 +97,8 @@ const HotsDialog = {
     return $hotsDialog;
   },
 
-  _createHeroImg(hero) {
-    return $(HtmlGenerator.generateHeroHtml(
-      '<img class="hots_dialog__hero-icon" src="{{icon}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">',
-      hero
-    )).on('click', () => {
-      console.log('Hero clicked:', hero.name);
-      this._setSelectedHero($('#hots_dialog'), hero);
-    });
-  },
-
   _createSkillImg(skill) {
-    return $(HtmlGenerator.generateSkillHtml(
+    return $(Mustache.render(
       '<img class="hots_dialog__skill-icon" src="{{icon}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">',
       skill
     )).on('click', () => {
@@ -113,7 +107,7 @@ const HotsDialog = {
   },
 
   _createTalentImg(talent) {
-    return $(HtmlGenerator.generateTalentHtml(
+    return $(Mustache.render(
       '<img class="hots_dialog__talent-icon" src="{{icon}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
       talent
     )).on('click', () => {

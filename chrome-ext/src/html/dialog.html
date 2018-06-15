@@ -45,7 +45,11 @@
     </fieldset>
   </div>
 
-  <div class="hots_dialog__section hots_dialog__hero-icons"></div>
+  <div class="hots_dialog__section hots_dialog__hero-icons">
+    {{#heroes}}
+    <img class="hots_dialog__hero-icon" src="{{iconUrl}}" data-hero-id="{{id}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
+    {{/heroes}}
+  </div>
   <div class="hots_dialog__section hots_dialog__skills"></div>
   <ul class="hots_dialog__section hots_dialog__talents">
     <li class="hots_dialog__talent-group">
