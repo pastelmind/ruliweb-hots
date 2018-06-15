@@ -1,0 +1,97 @@
+/* Override default styles */
+
+fieldset.hots_dialog__hero_filters {
+  border: 0; margin: 0; padding: 0; /* Reset fieldset styles */
+}
+
+.hots_dialog__hero_filters > legend {
+  padding: 0;
+}
+
+.hots_dialog__talents
+{
+  list-style: none; margin: 0; padding: 0; /* Reset list styles */
+}
+
+/* Icons */
+
+.hots_dialog__hero-icon,
+.hots_dialog__skill-icon,
+.hots_dialog__talent-icon
+{
+  width: 32px; height: 32px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+/* All dialog sections */
+
+.hots_dialog__section {
+  margin: 0; padding: 0;
+  margin-top: .5em;
+  overflow: auto;
+}
+
+.hots_dialog__section:first-child {
+  margin-top: 0;
+}
+
+/* Hero filter section */
+
+.hots_dialog__section .hots_dialog__hero_filters {
+  margin-right: 1em;
+  float: left;
+}
+
+.hots_dialog__hero_filters > legend {
+  padding-right: 1em;
+  float: left;
+}
+
+.hero-filter {
+  padding: 1px;
+}
+
+.hero-filter img {
+  display: block;
+  width: 28px; height: 28px;
+  opacity: .5;
+}
+
+.hero-filter.ui-checkboxradio-checked img {
+  opacity: 1;
+}
+
+/* Skills section */
+
+.hots_dialog__skills
+{
+  background-color: #1a0a33;
+}
+
+/* Talents section */
+
+.hots_dialog__talents
+{
+  background-color: #0b0b3b;
+  border: 1px solid #5353df;
+}
+
+.hots_dialog__talent-group
+{
+  border-top: 1px solid #5353df;
+}
+
+.hots_dialog__talent-group:first-child
+{
+  border-top: none;
+}
+
+.hots_dialog__talent-group-description
+{
+  display: inline-block;
+  width: 4em;
+  position: relative;
+  top: -0.4em;
+  padding-left: .5em;
+}
