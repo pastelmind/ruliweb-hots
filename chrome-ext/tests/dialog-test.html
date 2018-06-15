@@ -80,6 +80,13 @@
   <script src="js/init.js"></script>
   <script src="js/hots-dialog.js"></script>
   <script>
+    //Stub for test
+    if (typeof chrome === 'undefined')
+      var chrome = {};
+    if (!chrome.runtime)
+      chrome.runtime = {};
+    if (!chrome.runtime.getURL)
+      chrome.runtime.getURL = str => str || '';
 
     //영웅 데이터를 가져온다
     $.get('../../docs/heroes.json', heroes => {

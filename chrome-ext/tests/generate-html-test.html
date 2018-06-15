@@ -238,21 +238,21 @@
     }
 
     //Generate hero description
-    $.get('html/template-hero.html', (htmlTemplate) => {
+    $.get('templates/insert-hero.mustache', (htmlTemplate) => {
       const html = HtmlGenerator.generateHeroHtml(htmlTemplate, hero, '34.1');
 
       $('<div><h2>영웅</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate skill description
-    $.get('html/template-skill.html', (htmlTemplate) => {
+    $.get('templates/insert-skill.mustache', (htmlTemplate) => {
       const html = HtmlGenerator.generateSkillHtml(htmlTemplate, hero.skills[1], '34.1');
 
       $('<div><h2>기술</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate talent description
-    $.get('html/template-talent.html', (htmlTemplate) => {
+    $.get('templates/insert-talent.mustache', (htmlTemplate) => {
       const html = HtmlGenerator.generateTalentHtml(htmlTemplate, hero.talents["4"][0], '34.1');
 
       $('<div><h2>특성</h2></div>').appendTo('#generated_content').append(html);

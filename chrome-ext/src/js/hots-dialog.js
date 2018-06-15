@@ -42,8 +42,7 @@ var HotsDialog = {
   launchDialog(heroes) {
     //Generate skill description
     //TODO: retrieve template only if dialog has not been generated yet
-    //TODO: rename html/ dir to templates/ dir
-    $.get(chrome.runtime.getURL('html/dialog.html'), (htmlTemplate) => {
+    $.get(chrome.runtime.getURL('templates/dialog.mustache'), (htmlTemplate) => {
       const $hotsDialog = this.buildDialog(htmlTemplate, heroes);
 
       //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
@@ -142,7 +141,7 @@ if (typeof chrome !== 'undefined' && chrome.storage) {
       throw chrome.runtime.lastError;
 
     HotsDialog.launchDialog(heroes, heroId => {
-      $.get(chrome.runtime.getURL('html/template-hero.html'), htmlTemplate => {
+      $.get(chrome.runtime.getURL('templates/insert-hero.mustache'), htmlTemplate => {
         const table = HtmlGenerator.generateHeroHtml(htmlTemplate, heroes[heroId], '34.1');
         injectHtml(table);
       }, 'text');
