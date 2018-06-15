@@ -14,5 +14,6 @@
       "css": ["css/jquery-ui.css", "css/ruliweb-hots.css"],
       "js": ["js/jquery.js", "js/jquery-ui.js", "js/mustache.js"]
     }
-  ]
+  ],
+  "web_accessible_resources": ["html/*", "images/*", "css/images/*"]
 }

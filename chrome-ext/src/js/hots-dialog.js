@@ -24,7 +24,7 @@ function getElementInjectorAtSelectedArea() {
 
   return element => {
     if (range.startContainer.nodeName == 'HTML') { //Weird edge case
-      console.log('<html> tag is selected, using <body> instead...');
+      console.debug('<html> tag is selected, using <body> instead...');
       selectedWindow.document.body.appendChild(element);
     }
     else
@@ -34,7 +34,7 @@ function getElementInjectorAtSelectedArea() {
   };
 }
 
-const HotsDialog = {
+var HotsDialog = {
   /**
    * 영웅 선택창을 연다.
    * @param {array} heroes 영웅 데이터
@@ -42,8 +42,8 @@ const HotsDialog = {
   launchDialog(heroes) {
     //Generate skill description
     //TODO: retrieve template only if dialog has not been generated yet
-    $.get('html/dialog.html', (htmlTemplate) => {
-      console.log('htmlTemplate retrieved');
+    //TODO: rename html/ dir to templates/ dir
+    $.get(chrome.runtime.getURL('html/dialog.html'), (htmlTemplate) => {
       const $hotsDialog = this.buildDialog(htmlTemplate, heroes);
 
       //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
@@ -74,12 +74,13 @@ const HotsDialog = {
     if ($hotsDialog.length) return $hotsDialog;  //Dialog already exists
 
     const html = Mustache.render(templateHtml, {
-      heroArray: Object.values(heroes)
+      heroArray: Object.values(heroes),
+      baseUrl: chrome.runtime.getURL('/')
     });
     $hotsDialog = $(html).appendTo(document.body);
 
     //Add click handler for hero icons
-    $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
+    $hotsDialog.find('img.hots_dialog__hero-icon').on('click', event => {
       const hero = heroes[event.target.dataset.heroId];
       console.log('Hero clicked:', hero.name);
       this._setSelectedHero($hotsDialog, hero);
@@ -90,8 +91,6 @@ const HotsDialog = {
 
     //Clear the skill and talent sections
     $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
-
-    console.log('Dialog generated');
 
     return $hotsDialog;
   },
@@ -142,7 +141,7 @@ if (typeof chrome !== 'undefined' && chrome.storage) {
     if (chrome.runtime.lastError)
       throw chrome.runtime.lastError;
 
-    launchDialog(heroes, heroId => {
+    HotsDialog.launchDialog(heroes, heroId => {
       $.get(chrome.runtime.getURL('html/template-hero.html'), htmlTemplate => {
         const table = HtmlGenerator.generateHeroHtml(htmlTemplate, heroes[heroId], '34.1');
         injectHtml(table);
