@@ -22,25 +22,33 @@ function getElementInjectorAtSelectedArea() {
 
   const range = selectedWindow.getSelection().getRangeAt(0);
 
-  return element => {
+  return htmlFragment => {
+    const rootElement = $(htmlFragment)[0];
     if (range.startContainer.nodeName == 'HTML') { //Weird edge case
       console.debug('<html> tag is selected, using <body> instead...');
-      selectedWindow.document.body.appendChild(element);
+      selectedWindow.document.body.appendChild(rootElement);
     }
     else
-      range.insertNode(element);
+      range.insertNode(rootElement);
 
     selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
   };
 }
 
 var HotsDialog = {
+  _injector: null,
+  _templates: null,
+
   /**
    * Launch the hero/skill/talent selection dialog
    * @param {Object} heroes Key-value mappings of the form: hero ID => hero data
    * @param {Object} templates Key-value mappings of the form: template name => template string
    */
   launchDialog(heroes, templates) {
+    //Snapshot currently selected area
+    this._injector = getElementInjectorAtSelectedArea();
+    this._templates = templates;
+
     //Generate skill description
     const $hotsDialog = this.buildDialog(templates['dialog'], heroes);
 
@@ -98,30 +106,32 @@ var HotsDialog = {
       skill
     )).on('click', () => {
       console.log('Skill clicked:', skill.name);
+      this._injector(Mustache.render(this._templates['insert-skill'], { skill, hots_version: '34.1' } ));
     });
   },
 
   _createTalentImg(talent) {
     return $(Mustache.render(
-      '<img class="hots_dialog__talent-icon" src="{{iconUrl}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
+      '<img class="hots_dialog__talent-icon" src="{{iconUrl}}" data-talent-id="{{alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
       talent
     )).on('click', () => {
       console.log('Talent clicked:', talent.name);
+      this._injector(Mustache.render(this._templates['insert-talent'], { talent, hots_version: '34.1' } ));
     });
   },
 
   _setSelectedHero($dialog, hero) {
     //Generate skills
     $dialog.children('.hots_dialog__skills').empty()
-      .append(hero.skills.map(this._createSkillImg));
+      .append(hero.skills.map(skill => this._createSkillImg(skill)));
 
     //Generate talents
     const $talents = $dialog.children('.hots_dialog__talents').empty();
 
     for (const talentLevel in hero.talents) {
       $(`<li class="hots_dialog__talent-group"><span class="hots_dialog__talent-group-description">${talentLevel}레벨</span></li>`)
-        .append(hero.talents[talentLevel].map(this._createTalentImg))
-        .appendTo($talents)
+        .append(hero.talents[talentLevel].map(talent => this._createTalentImg(talent)))
+        .appendTo($talents);
     }
   }
 };
@@ -130,8 +140,6 @@ var HotsDialog = {
 //실제 실행용 스크립트
 //이 스크립트를 브라우저에서도 실행 가능하게 함
 if (typeof chrome !== 'undefined' && chrome.storage) {
-  const injectHtml = getElementInjectorAtSelectedArea();
-
   chrome.storage.local.get(['heroes', 'templates'], (data) => {
     if (chrome.runtime.lastError)
       throw chrome.runtime.lastError;

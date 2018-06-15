@@ -173,7 +173,6 @@
   <script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/mustache.js"></script>
-  <script src="js/generate-html.js"></script>
   <script>
     //Dummy hero data for testing
     const hero = {
@@ -239,21 +238,21 @@
 
     //Generate hero description
     $.get('templates/insert-hero.mustache', (htmlTemplate) => {
-      const html = HtmlGenerator.generateHeroHtml(htmlTemplate, hero, '34.1');
+      const html = Mustache.render(htmlTemplate, { hero, hots_version: '34.1' });
 
       $('<div><h2>영웅</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate skill description
     $.get('templates/insert-skill.mustache', (htmlTemplate) => {
-      const html = HtmlGenerator.generateSkillHtml(htmlTemplate, hero.skills[1], '34.1');
+      const html = Mustache.render(htmlTemplate, { skill: hero.skills[1], hots_version: '34.1' });
 
       $('<div><h2>기술</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate talent description
     $.get('templates/insert-talent.mustache', (htmlTemplate) => {
-      const html = HtmlGenerator.generateTalentHtml(htmlTemplate, hero.talents["4"][0], '34.1');
+      const html = Mustache.render(htmlTemplate, { talent: hero.talents["4"][0], hots_version: '34.1' });
 
       $('<div><h2>특성</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
