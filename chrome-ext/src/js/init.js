@@ -54,7 +54,7 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
   //Load hero data
   $.get(chrome.runtime.getURL('heroes.json'), heroes => {
     prepareHeroData(heroes);
-    chrome.storage.local.set({ 'heroes': heroes }, () => {
+    chrome.storage.local.set({ heroes }, () => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
     });
