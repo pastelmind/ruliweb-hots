@@ -1,7 +1,7 @@
 <table style="border: 2px solid #726bd6; background-color: #0d0b29; color: #e8fee7;">
   <tr style="background-color: #1e1a4c">
     <td rowspan="2" style="padding: .5em; border: 1px solid #726bd6; width: 64px; vertical-align: top; background-color: #181881;">
-      <img style="width: 100%" src="{{icon}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
+      <img style="width: 100%" src="{{iconUrl}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
     </td>
     <td style="padding: .5em; border: 1px solid #726bd6; text-align: center;">
       <b style="color: #66ccec">{{name}}</b>
@@ -12,7 +12,9 @@
   </tr>
   <tr>
     <td colspan="2" style="padding: .5em; border: 1px solid #726bd6;">
-      <img style="width: 48px; margin: 0 .25em" src="{{skill.icon}}" alt="{{skill.type}} - {{skill.name}}" title="{{skill.type}} - {{skill.name}}">
+      {{#skills}}
+      <img style="width: 48px; margin: 0 .25em" src="{{iconUrl}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
+      {{/skills}}
     </td>
   </tr>
   <tr>

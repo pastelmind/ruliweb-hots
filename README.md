@@ -4,3 +4,4 @@
 # Dependencies
 * [jQuery](https://jquery.com/) 3.3.1
 * [jQuery UI](https://jqueryui.com/) 1.12.1 (Dot Luv theme)
+* [mustache.js](https://github.com/janl/mustache.js) 2.3.0
