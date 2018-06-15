@@ -66,22 +66,21 @@ const HotsDialog = {
    * 영웅 선택창을 만들기 위한 DIV를 생성하여 현재 문서에 추가한다.
    * 이미 DIV가 존재할 경우 가져오기만 하고 생성하지 않는다.
    * @param {string} templateHtml 선택창을 만들기 위한 HTML 템플릿
-   * @param {array} heroes 영웅 데이터
+   * @param {object} heroes Key-value pairings of the form: hero ID => hero data
    * @return {jQuery} 생성된 DIV
    */
   buildDialog(templateHtml, heroes) {
     let $hotsDialog = $('#hots_dialog');
     if ($hotsDialog.length) return $hotsDialog;  //Dialog already exists
 
-    const html = Mustache.render(templateHtml, { heroes });
+    const html = Mustache.render(templateHtml, {
+      heroArray: Object.values(heroes)
+    });
     $hotsDialog = $(html).appendTo(document.body);
-
-    const heroesById = {};
-    heroes.forEach(hero => heroesById[hero.id] = hero);
 
     //Add click handler for hero icons
     $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
-      const hero = heroesById[event.target.dataset.heroId];
+      const hero = heroes[event.target.dataset.heroId];
       console.log('Hero clicked:', hero.name);
       this._setSelectedHero($hotsDialog, hero);
     })
@@ -99,7 +98,7 @@ const HotsDialog = {
 
   _createSkillImg(skill) {
     return $(Mustache.render(
-      '<img class="hots_dialog__skill-icon" src="{{icon}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">',
+      '<img class="hots_dialog__skill-icon" src="{{iconUrl}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">',
       skill
     )).on('click', () => {
       console.log('Skill clicked:', skill.name);
@@ -108,7 +107,7 @@ const HotsDialog = {
 
   _createTalentImg(talent) {
     return $(Mustache.render(
-      '<img class="hots_dialog__talent-icon" src="{{icon}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
+      '<img class="hots_dialog__talent-icon" src="{{iconUrl}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
       talent
     )).on('click', () => {
       console.log('Talent clicked:', talent.name);

@@ -61,9 +61,9 @@
     </div>
 
     <div class="hots_dialog__section hots_dialog__hero-icons">
-      {{#heroes}}
+      {{#heroArray}}
       <img class="hots_dialog__hero-icon" src="{{iconUrl}}" data-hero-id="{{id}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
-      {{/heroes}}
+      {{/heroArray}}
     </div>
     <div class="hots_dialog__section hots_dialog__skills"></div>
     <ul class="hots_dialog__section hots_dialog__talents">
@@ -76,25 +76,27 @@
   <script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/mustache.js"></script>
+  <script src="js/prepare-data.js"></script>
   <script src="js/generate-html.js"></script>
   <script src="js/hots-dialog.js"></script>
   <script>
 
     //영웅 데이터를 가져온다
     $.get('../../docs/heroes.json', heroes => {
+      prepareHeroData(heroes);
+
       //Manually build the dialog
       const $hotsDialog = $('#hots_dialog');
 
       //Create hero icons (render template)
       const $heroIcons = $hotsDialog.children('.hots_dialog__hero-icons');
-      $heroIcons.html(Mustache.render($heroIcons.html(), { heroes }));
-
-      const heroesById = {};
-      heroes.forEach(hero => heroesById[hero.id] = hero);
+      $heroIcons.html(Mustache.render($heroIcons.html(), {
+        heroArray: Object.values(heroes)
+      }));
 
       //Add click handler for hero icons
-      $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
-        const hero = heroesById[event.target.dataset.heroId];
+      $hotsDialog.find('img.hots_dialog__hero-icon').on('click', event => {
+        const hero = heroes[event.target.dataset.heroId];
         console.log('Hero clicked:', hero.name);
         HotsDialog._setSelectedHero($hotsDialog, hero);
       })
