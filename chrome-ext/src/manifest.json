@@ -15,5 +15,10 @@
       "js": ["js/jquery.js", "js/jquery-ui.js", "js/mustache.js"]
     }
   ],
-  "web_accessible_resources": ["images/*", "css/images/*"]
+  "web_accessible_resources": ["images/*", "css/images/*"],
+
+  "icons": {
+    "128": "icons/icon-128.png",
+    "48": "icons/icon-48.png"
+  }
 }
