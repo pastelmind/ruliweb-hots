@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const articleNames = [
   'D.Va(히어로즈 오브 더 스톰)',
   '가로쉬(히어로즈 오브 더 스톰)',
@@ -85,31 +87,53 @@ const articleNames = [
 const wget = require('wget-improved');
 const fs = require('fs');
 
-function downloadArticle(articleIndex = 0) {
-  if (articleIndex >= articleNames.length)
+const tempDir = process.argv[2] || 'temp';
+fs.stat(tempDir, (err, stats) => {
+
+  if (err) {
+    console.error(err);
     return;
+  }
+
+  if (!stats.isDirectory()) {
+    console.error('"' + tempDir + '" is not a directory');
+    return;
+  }
+
+  console.log('Will download articles to', tempDir);
+
+  downloadArticles(articleNames);
+});
+
+
+function downloadArticles(articleNames) {
+  const articleName = articleNames.pop();
+  if (!articleName) return;
+
+  const articleUrl = 'https://namu.wiki/raw/' + encodeURIComponent(articleName);
+  const filePath = tempDir + '/' + articleName.replace('(히어로즈 오브 더 스톰)', '') + '.txt';
 
   const delay = Math.floor(Math.random() * 10000); //To avoid triggering HTTP 429 Too Many Requests
 
-  const articleName = articleNames[articleIndex];
-  const articleUrl = 'https://namu.wiki/raw/' + encodeURIComponent(articleName);
-  const filePath = 'namuwiki-heroes-raw/' + articleName + '.txt';
+  setTimeout(() => {
+    // //Create file in place to prevent some weird errors
+    // fs.createWriteStream(filePath);
 
-  fs.createWriteStream(filePath);
+    const download = wget.download(articleUrl, filePath);
 
-  const download = wget.download(articleUrl, filePath);
+    download.on('error', err => {
+      console.error('Failed to retrieve', articleUrl, err);
+      downloadArticles(articleNames);
+    });
+    download.on('start', (fileSize) => {
+      console.log('Begin downloading', articleUrl, 'to', filePath, '(content-length: ' + fileSize + ')');
+    });
+    download.on('end', (result) => {
+      console.log('Successfully downloaded', articleUrl, result);
+      downloadArticles(articleNames);
+    });
 
-  download.on('error', err => {
-    console.error('Failed to retrieve', articleUrl, err);
-    setTimeout(() => downloadArticle(articleIndex + 1), delay);
-  });
-  download.on('start', (fileSize) => {
-    console.log('Begin downloading', articleUrl, 'to', filePath, '(content-length: ' + fileSize + ')');
-  });
-  download.on('end', (result) => {
-    console.log('Successfully downloaded', articleUrl, result);
-    setTimeout(() => downloadArticle(articleIndex + 1), delay);
-  });
+  }, delay);
+
+  console.log('Set delay to', delay);
 }
-
-downloadArticle();
