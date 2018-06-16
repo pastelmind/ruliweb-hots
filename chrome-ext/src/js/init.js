@@ -74,6 +74,9 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
     chrome.storage.local.set({ heroes }, () => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
+      
+      //Attempt an update immediately
+      updateDataFromApiServer();
     });
   }, 'json');
 
