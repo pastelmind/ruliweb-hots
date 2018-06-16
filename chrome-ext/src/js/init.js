@@ -24,8 +24,10 @@ function prepareHeroData(heroData) {
     });
 
     for (const talentLevel in hero.talents) {
+      const level = parseInt(talentLevel);
       hero.talents[talentLevel].forEach(talent => {
         if (!talent.iconUrl) talent.iconUrl = missingIconUrl;
+        talent.level = level;
       });
     }
   }
