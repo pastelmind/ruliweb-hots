@@ -242,7 +242,7 @@ function parseTalentTable(table) {
  * @return {string} Modified NamuWiki markup
  */
 function removeTableMarkup(namuMarkup) {
-  return namuMarkup.replace(/<([\^v]?(-|\|)\d+|(table|row)?\s*(align|bgcolor|bordercolor|width)=.*?|[(:)])>/gi, '');
+  return namuMarkup.replace(/\s*<([\^v]?(-|\|)\d+|(table|row)?\s*(align|bgcolor|bordercolor|width)=.*?|[(:)])>\s*/gi, '');
 }
 
 /**
