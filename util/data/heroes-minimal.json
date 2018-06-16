@@ -11,6 +11,10 @@
     "name": "가즈로",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png"
   },
+  "gall": {
+    "name": "갈",
+    "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png"
+  },
   "genji": {
     "name": "겐지",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227acf19dc2c.png"
@@ -247,8 +251,9 @@
     "name": "첸",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22375019dc2c.png"
   },
-  "chogall": {
-    "name": "초갈"
+  "cho": {
+    "name": "초",
+    "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png"
   },
   "kaelthas": {
     "name": "캘타스",

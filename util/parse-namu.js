@@ -18,9 +18,17 @@ const namuDir = 'temp/namu-dump/';
 
 fs.readdirSync(namuDir).forEach(fileName => {
   const namuMarkup = fs.readFileSync(namuDir + fileName, 'utf8');
-  const hero = namu2hots.parseHeroPage(namuMarkup);
-  hero.name = fileName.replace(/\(.*\)/, '').replace('.txt', '');
-  namuHeroArray.push(hero);
+
+  //Exception: Cho'Gall is two heroes in one
+  if (fileName.includes('초갈')) {
+    const chogall = namu2hots.parseChoGallPage(namuMarkup);
+    namuHeroArray.push(chogall.cho, chogall.gall);
+  }
+  else {
+    const hero = namu2hots.parseHeroPage(namuMarkup);
+    hero.name = fileName.replace(/\(.*\)/, '').replace('.txt', '');
+    namuHeroArray.push(hero);
+  }
 });
 
 //Read minimal data containing Hero ID and icon URLs

@@ -11,9 +11,9 @@ const { Hero, Skill, Talent } = require('./models.js');
 
 module.exports = {
   /**
-   * Parses a hero's page content to hero data.
+   * Parse a hero's page content to hero data.
    * @param {string} namuMarkup NamuWiki markup
-   * @returns {Object} Hero data
+   * @returns {Hero} Hero data
    */
   parseHeroPage(namuMarkup) {
     const hero = new Hero;
@@ -68,6 +68,23 @@ module.exports = {
     }
 
     return hero;
+  },
+
+  /**
+   * Parse Cho'Gall's page content to and generate two Hero objects.
+   * @param {string} namuMarkup NamuWiki markup
+   * @returns {Object<string, Hero>} Hero objects in `{ "cho": cho, "gall": gall }` format
+   */
+  parseChoGallPage(namuMarkup) {
+    const ogreMarkups = namuMarkup.split(/=+.*갈.*Gall.*=+/i);
+    if (ogreMarkups.length !== 2)
+      console.warn('Unable to split Cho and Gall in two:', ogreMarkups.length);
+    
+    const cho = this.parseHeroPage(ogreMarkups[0]);
+    const gall = this.parseHeroPage(ogreMarkups[1]);
+    cho.name = '초';
+    gall.name = '갈';
+    return { cho, gall };
   }
 };
 
