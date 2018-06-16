@@ -204,7 +204,7 @@ function parseSkill(name, type, rawDescription) {
       else if (!(extraName in skill.extras))
         skill.extras[extraName] = extraInfo.trim();
       else
-        console.warn('Warning: Duplicate extra name is ignored;', extraName, 'in skill description', description);
+        console.warn('Warning: Duplicate extra name is ignored;', extraName, 'in skill description', rawDescription);
 
       return '';
     }).trim();
@@ -256,7 +256,7 @@ function removeColorSpanMarkup(namuMarkup, colors = []) {
   colors = colors.map(str => str.toLowerCase());
 
   const spanStack = [];
-  const spanBoundsPattern = /(\{\{\{|\}\}\})(?:(#\w{6}) )?/g;
+  const spanBoundsPattern = /(\{\{\{|\}\}\})(?:(#\w{6}) \s*)?/g;
   let spanBoundsMatch = null;
   let output = '', sliceBegin = 0;
 
