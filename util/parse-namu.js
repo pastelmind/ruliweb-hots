@@ -4,6 +4,63 @@
 
 const NamuParser = {
   /**
+   * Parses a hero's page content to hero data.
+   * @param {string} namuMarkup NamuWiki markup
+   * @returns {Object} Hero data
+   */
+  parseHeroPage(namuMarkup) {
+    const hero = {
+      skills: [],
+      talents: []
+    };
+
+    namuMarkup = this.removeTableMarkup(namuMarkup);
+    namuMarkup = this.removeColorSpanMarkup(namuMarkup, this.COMMON_TEXT_COLORS);
+    namuMarkup = this.removeNamuFootnotes(namuMarkup);
+    namuMarkup = this.removeAnchors(namuMarkup);
+    namuMarkup = this.removeNamuBr(namuMarkup);
+
+    const sections = this.parseSections(namuMarkup);
+
+    let isUltimateSection = false;
+    let talentLevel; //루프 바깥에 선언해야 궁극기의 레벨을 올바르게 설정할 수 있다.
+
+    for (const title in sections) {
+      const content = sections[title];
+
+      let skillTitleMatch, talentTitleMatch;
+
+      if (skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
+        const tables = this.parseTables(content);
+
+        //Assumption: The second cell of the  first table contains the skill description.
+        const skill = this.parseSkill(skillTitleMatch[1], skillTitleMatch[2], tables[0][1]);
+        if (isUltimateSection) {
+          skill.level = talentLevel;
+          hero.talents.push(skill);
+        }
+        else
+          hero.skills.push(skill);
+      }
+      else if (talentTitleMatch = /(\d)단계: 레벨 (\d+)/.exec(title)) {
+        talentLevel = parseInt(talentTitleMatch[2]);
+
+        const tables = this.parseTables(content);
+        isUltimateSection = !!tables.length;
+
+        if (!isUltimateSection) { //Skip if ultimate section
+          //Assumption: The first table is the talent table.
+          const talents = this.parseTalentTable(talentLevel, tables[0]);
+          talents.forEach(talent => talent.level = talentLevel);
+          hero.talents.push(...talents);
+        }
+      }
+    }
+
+    return hero;
+  },
+
+  /**
    * Parses every table in the given content, and returns an array of tables.
    * Each table is an array of strings, representing the content of each cell.
    * @param {string} namuMarkup NamuWiki content
@@ -89,15 +146,6 @@ const NamuParser = {
   },
 
   /**
-   * Removes table decoration markup from the given string
-   * @param {string} namuMarkup NamuWiki markup
-   * @return {string} Modified NamuWiki markup
-   */
-  trimTableMarkup(namuMarkup) {
-    return namuMarkup.replace(/<([\^v]?(-|\|)\d+|(table|row)?\s*(align|bgcolor|bordercolor|width)=.*?|[(:)])>/gi, '');
-  },
-
-  /**
    * Divides an article into sections, separated by headers (=== header ===).
    * The content before the first header can be retrieved by using '' as the key.
    * @param {string} namuMarkup NamuWiki markup
@@ -119,60 +167,69 @@ const NamuParser = {
     return headerToContent;
   },
 
-  parseHeroPage(namuMarkup) {
-    const hero = {
-      skills: [],
-      talents: []
+  /**
+   * Parse a skill section and produces skill data
+   * @param {string} name Skill name
+   * @param {string} type Skill type
+   * @param {string} rawDescription Unparsed description in the skill table
+   * @returns {object} Skill data
+   */
+  parseSkill(name, type, rawDescription) {
+    const skill = {
+      type,
+      name,
+      cooldown: 0,
+      manaCost: 0,
+      extras: {}
     };
 
-    namuMarkup = replaceSpecialColors(namuMarkup);
-    namuMarkup = removeNamuFootnotes(namuMarkup);
-    namuMarkup = removeQuestMarkup(namuMarkup);
-    namuMarkup = removeNamuBr(namuMarkup);
-
-    //글을 구역별로 나눈다
-    const pattern = /^=+\s*(.+?)\s*=+\s*$/mg;
-
-    let matches = [];
-    let match;
-    while (match = pattern.exec(namuMarkup))
-      matches.push(match);
-
-    let isTalentSection = false;
-    let talentLevel; //루프 바깥에 선언해야 궁극기의 레벨을 올바르게 설정할 수 있다.
-
-    matches.forEach((match, index) => {
-      let title = match[1], content;
-      if (index < matches.length - 1)
-        content = namuMarkup.slice(match.index + match[0].length, matches[index + 1].index);
-      else
-        content = namuMarkup.slice(match.index + match[0].length);
-
-      console.log('Match', match.index, '/ title =', JSON.stringify(title), '/ content-length:', content.length);
-
-      const skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title);
-      const talentTitleMatch = /(\d)단계: 레벨 (\d+)/.exec(title);
-
-      if (skillTitleMatch) {
-        const skill = parseSkillSection(skillTitleMatch[1], skillTitleMatch[2], content);
-        if (isTalentSection) { //궁극기
-          skill.level = talentLevel;
-          hero.talents.push(skill);
-        }
+    skill.description = rawDescription.replace(
+      /\[\[파일:.*?(?:\|.*?)?\]\]\s?'''(.+?)'''\s?([^\[]+)/g,
+      (match, extraName, extraInfo) => {
+        if (extraName.includes('시간') && !skill.cooldown)
+          skill.cooldown = parseFloat(extraInfo);
+        else if (extraName.includes('마나') && !skill.manaCost)
+          skill.manaCost = parseFloat(extraInfo);
+        else if (!(extraName in skill.extras))
+          skill.extras[extraName] = extraInfo.trim();
         else
-          hero.skills.push(skill);
-      }
-      else if (talentTitleMatch) {
-        isTalentSection = true;
-        talentLevel = parseInt(talentTitleMatch[2]);
+          console.warn('Warning: Duplicate extra name is ignored;', extraName, 'in skill description', description);
 
-        const talents = parseTalentSection(content);
-        talents.forEach(talent => talent.level = talentLevel);
-        hero.talents.push(...talents);
-      }
-    });
+        return '';
+      }).trim();
 
-    return hero;
+    return skill;
+  },
+
+  /**
+   * Parse a talent section and produce an array of talent data
+   * @param {string[]} table Pre-parsed talent table
+   * @returns {Object[]} Array of talent data
+   */
+  parseTalentTable(table) {
+    const talents = [];
+
+    //Assumption: The talent table contains 4x the number of talents.
+    //            Each cell represents: talent icon, name, type, and description.
+    for (let i = 0; i < table.length; i += 4) {
+      talents.push(this.parseSkill(
+        this.removeBoldFormatting(table[i + 1]),
+        table[i + 2],
+        table[i + 3]
+      ));
+    }
+
+    return talents;
+  },
+
+
+  /**
+   * Removes table decoration markup from the given string
+   * @param {string} namuMarkup NamuWiki markup
+   * @return {string} Modified NamuWiki markup
+   */
+  removeTableMarkup(namuMarkup) {
+    return namuMarkup.replace(/<([\^v]?(-|\|)\d+|(table|row)?\s*(align|bgcolor|bordercolor|width)=.*?|[(:)])>/gi, '');
   },
 
   /**
@@ -286,53 +343,6 @@ const NamuParser = {
    */
   removeNamuBr(namuMarkup) {
     return namuMarkup.replace(/\[br\]/gi, '\n');
-  },
-
-  parseSkillSection(skillType, skillName, content) {
-    const skill = {
-      type: skillType,
-      name: removeNamuAnchor(skillName),
-      description: '',
-      cooldown: undefined,
-      extras: {}
-    };
-
-    const contentMatch = /\{\{\{#\w{6} ([^]+?)\s*\}\}\}([^]*?)\|\|/m.exec(content);
-    if (contentMatch) {
-      skill.description = contentMatch[1];
-
-      const skillExtra = contentMatch[2];
-      const extraPattern = /'''(.+?)''' (.+?)\s*(?:[{}\[\]])/g;
-
-      let extraMatch;
-      while (extraMatch = extraPattern.exec(skillExtra)) {
-        if (extraMatch[1].includes('시간'))
-          skill.cooldown = parseFloat(extraMatch[2]);
-        else
-          skill.extras[extraMatch[1]] = extraMatch[2];
-      }
-    }
-    else
-      console.error('match failure');
-
-    return skill;
-  },
-
-  parseTalentSection(content) {
-    const headerPattern = /'''\{\{\{#\w{6} (.*?)\}\}\}'''.*?\|\|.*?\{\{\{#\w{6} (.*?)\}\}\}/g;
-    let headerMatches = [], headerMatch;
-    while (headerMatch = headerPattern.exec(content))
-      headerMatches.push(headerMatch);
-
-    return headerMatches.map((headerMatch, index) => {
-      let begin = headerMatch.index + headerMatch[0].length, end;
-      if (index < headerMatches.length - 1)
-        end = headerMatches[index + 1].index;
-      else
-        end = content.length;
-
-      return parseSkillSection(headerMatch[2], headerMatch[1], content.slice(begin, end));
-    });
   }
 };
 
@@ -397,7 +407,7 @@ const fs = require('fs');
 const Tests = {
   testTableParser(namuMarkup) {
     return NamuParser.parseTables(
-      NamuParser.trimTableMarkup(namuMarkup)
+      NamuParser.removeTableMarkup(namuMarkup)
     );
   },
 
@@ -415,6 +425,10 @@ const Tests = {
     );
   },
 
+  testRemoveBold(namuMarkup) {
+    return NamuParser.removeBoldFormatting(namuMarkup);
+  },
+
   testRemoveAnchors(namuMarkup) {
     return NamuParser.removeAnchors(namuMarkup);
   },
@@ -429,10 +443,10 @@ const Tests = {
       NamuParser.COMMON_TEXT_COLORS
     );
 
-    namuMarkup = NamuParser.trimTableMarkup(namuMarkup);
-    namuMarkup = NamuParser.removeImages(namuMarkup, NamuParser.COMMON_IMAGES);
+    namuMarkup = NamuParser.removeTableMarkup(namuMarkup);
+    // namuMarkup = NamuParser.removeImages(namuMarkup, NamuParser.COMMON_IMAGES);
     namuMarkup = NamuParser.removeAnchors(namuMarkup);
-    namuMarkup = NamuParser.removeBoldFormatting(namuMarkup);
+    // namuMarkup = NamuParser.removeBoldFormatting(namuMarkup);
 
     const sections = NamuParser.parseSections(namuMarkup);
 
@@ -440,6 +454,10 @@ const Tests = {
       sections[header] = NamuParser.parseTables(sections[header]);
 
     return sections;
+  },
+
+  testParseHero(namuMarkup) {
+    return NamuParser.parseHeroPage(namuMarkup);
   }
 };
 
@@ -464,7 +482,7 @@ function runTests() {
           resultFile = 'temp/output.txt';
         else {
           resultFile = 'temp/output.json';
-          result =  JSON.stringify(result, null, 2);
+          result = JSON.stringify(result, null, 2);
         }
 
         fs.writeFileSync(resultFile, result);
