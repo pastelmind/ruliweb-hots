@@ -207,14 +207,3 @@ function skillToMarkdown(skill) {
 function talentToMarkdown(talent) {
   return '#' + skillToMarkdown(talent);
 }
-
-
-//For testing on Node.js
-if (require.main === module) {
-  const fs = require('fs');
-
-  const markdown = fs.readFileSync('temp/markdown/heroes.md', 'utf8');
-  const heroes = module.exports.parseHeroMarkdown(markdown);
-  fs.writeFileSync('temp/from-md.json', JSON.stringify(heroes, null, 2));
-  console.log('Complete!');
-}
