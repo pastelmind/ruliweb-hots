@@ -246,37 +246,54 @@ function removeTableMarkup(namuMarkup) {
 }
 
 /**
- * Removes NamuWiki text coloring markup ({{{#xxxxxx text}}}).
+ * Converts NamuWiki text coloring markup ({{{#xxxxxx text}}}) to HTML <span>,
+ * except for the ones provided in the blacklist.
  * @param {string} namuMarkup NamuWiki markup
- * @param {string[]} colors Array of colors to remove, each in the form of '#ffffff' (mixed cases acceptable)
+ * @param {string[]} blacklist Array of colors to remove instead of converting. Use '#ffffff' form (mixed cases acceptable)
  * @return {string} Modified NamuWiki markup
  */
-function removeColorSpanMarkup(namuMarkup, colors = []) {
+function removeColorSpanMarkup(namuMarkup, blacklist = []) {
   //For easy comparison
-  colors = colors.map(str => str.toLowerCase());
+  blacklist = blacklist.map(str => str.toLowerCase());
 
+  const DO_NOTHING = 0, CONVERT_TO_SPAN = 1, REMOVE_LATER = 2;
   const spanStack = [];
   const spanBoundsPattern = /(\{\{\{|\}\}\})(?:(#\w{6}) \s*)?/g;
   let spanBoundsMatch = null;
   let output = '', sliceBegin = 0;
 
   while (spanBoundsMatch = spanBoundsPattern.exec(namuMarkup)) {
-    let needsSlice = false;
+    //Setting this to anything other than null will trigger a slice at the at
+    //the end of the loop
+    let appendAfterSlice = null;
 
     if (spanBoundsMatch[1] === '{{{') {
-      if (spanBoundsMatch[2] && colors.includes(spanBoundsMatch[2].toLowerCase())) {
-        needsSlice = true;
-        spanStack.push(true);   //Remove this span later
+      const color = spanBoundsMatch[2];
+      if (color) {
+        if (blacklist.includes(color.toLowerCase())) {
+          spanStack.push(REMOVE_LATER);
+          appendAfterSlice = '';
+        }
+        else {
+          spanStack.push(CONVERT_TO_SPAN);
+          appendAfterSlice = `<span style="color: ${color}">`;
+        }
       }
       else
-        spanStack.push(false);  //Don't remove this span later
+        spanStack.push(DO_NOTHING);
     }
-    else
-      needsSlice = spanStack.pop();
+    else {
+      const action = spanStack.pop();
+      if (action === CONVERT_TO_SPAN)
+        appendAfterSlice = '</span>';
+      else if (action === REMOVE_LATER)
+        appendAfterSlice = '';  //Trigger slice, but append nothing
+    }
 
-    if (needsSlice) {
-      //Slice everything up to this point, and arrange next slice to begin after this
-      output += spanBoundsMatch.input.slice(sliceBegin, spanBoundsMatch.index);
+    if (appendAfterSlice !== null) {
+      //Slice everything up to this point, append the fragment
+      output += spanBoundsMatch.input.slice(sliceBegin, spanBoundsMatch.index) + appendAfterSlice;
+      //Arrange the next slice to begin after this
       sliceBegin = spanBoundsPattern.lastIndex;
     }
   }
