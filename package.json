@@ -1,10 +1,17 @@
 {
   "name": "ruliweb-hots-chrome-ext",
+  "version": "0.2.0",
   "devDependencies": {
     "wget-improved": "^3.0.1",
     "rewire": "^4.0.1"
   },
   "scripts": {
-    "build": ""
+    "build": "npm run build:prep-dir && npm run build:zip-extension",
+    "build:prep-dir": "@DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
+    "build:zip-extension": "@PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
+    "namu:crawl": "@node util/crawl-namu.js",
+    "namu:parse": "@node util/parse-namu.js",
+    "test": "",
+    "env": "@SET"
   }
 }
