@@ -4,6 +4,9 @@
 
 'use strict';
 
+//Global constants
+const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
+
 /**
  * Parses hero object, fixing missing values so that content scripts can use them
  * @param {object} heroData Key-value pairs of hero ID => hero data
@@ -39,20 +42,23 @@ function prepareHeroData(heroData) {
  * Asynchronously retrieves and updates HotS data from the "API server"
  */
 function updateDataFromApiServer() {
-  console.debug('updateDataFromApiServer() called');
   //TODO: fix this, intentionally misspelled to test debug message
   $.get("https://pastelmind.github.io/ruliweb-hots/heroes.json", heroes => {
+    console.debug('Data download successful');
+
     prepareHeroData(heroes);
     chrome.storage.local.set({ heroes }, () => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
+
+      console.debug('Data load successful');
     });
   }, 'json');
 }
 
 
-//Ensure that this script is running in a Chrome extension context
-if (typeof chrome !== 'undefined' && chrome.contextMenus) {
+//Things that should be called only once when installed
+chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     "id": "ruli-context-menu",
     "title": "히오스 공략툴 열기",
@@ -60,23 +66,15 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
     "documentUrlPatterns": ["about:blank"]
   });
 
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-      chrome.tabs.executeScript({ file: "js/hots-dialog.js" });
-    }
-    else
-      alert('루리웹에서만 실행할 수 있습니다.');
-  });
-
-  //Load hero data
+  //Load pre-packaged hero data
   $.get(chrome.runtime.getURL('data/heroes.json'), heroes => {
     prepareHeroData(heroes);
     chrome.storage.local.set({ heroes }, () => {
-      if (chrome.runtime.lastError)
-        throw chrome.runtime.lastError;
-      
       //Attempt an update immediately
       updateDataFromApiServer();
+
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
     });
   }, 'json');
 
@@ -107,21 +105,39 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
   });
 
   //Clear and setup an alarm to update the ID.
-  const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
   chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
     console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
     chrome.alarms.create(ALARM_UPDATE_DATA, {
       delayInMinutes: 1,
-      periodInMinutes: 5  //TODO: Replace with sane value (6 hrs = 360 minutes) in the live version
+      periodInMinutes: 360  //6 hours = 360 minutes
     });
   });
+});
 
-  //Listen to the alarm
-  chrome.alarms.onAlarm.addListener(alarm => {
-    const alarmDate = new Date();
-    alarmDate.setTime(alarm.scheduledTime)
-    console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
-    if (alarm.name === ALARM_UPDATE_DATA)
-      updateDataFromApiServer();
-  });
-}
+
+//Things that should be done whenever the background page loads
+//See quotes from:
+//  https://bugs.chromium.org/p/chromium/issues/detail?id=316315#c3
+//  https://stackoverflow.com/a/19915752/
+//
+//  Because the listeners themselves only exist in the context of the event
+//  page, you must use addListener each time the event page loads; only doing so
+//  at runtime.onInstalled by itself is insufficient.
+
+//Register an event listener for the right-click menu
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
+    chrome.tabs.executeScript({ file: "js/hots-dialog.js" });
+  }
+  else
+    alert('루리웹에서만 실행할 수 있습니다.');
+});
+
+//Register an event listener for the alarm.
+chrome.alarms.onAlarm.addListener(alarm => {
+  const alarmDate = new Date();
+  alarmDate.setTime(alarm.scheduledTime)
+  console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
+  if (alarm.name === ALARM_UPDATE_DATA)
+    updateDataFromApiServer();
+});
