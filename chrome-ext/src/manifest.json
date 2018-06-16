@@ -3,7 +3,7 @@
   "name": "루리웹 히어로브 오브 더 스톰 공략툴",
   "version": "0.1",
 
-  "permissions": ["contextMenus", "activeTab", "storage"],
+  "permissions": ["contextMenus", "activeTab", "storage", "alarms"],
   "background": {
     "scripts": ["js/jquery.js", "js/init.js"],
     "persistent": false

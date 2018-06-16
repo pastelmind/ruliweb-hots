@@ -15,4 +15,4 @@
     * [mustache.js](https://github.com/janl/mustache.js) 2.3.0
 * 서버 스크립트
     * [Node.js](https://nodejs.org/)
-    * 자세한 것은 <package.json> 참조
+    * 자세한 것은 package.json 참조

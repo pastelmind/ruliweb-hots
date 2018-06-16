@@ -35,6 +35,21 @@ function prepareHeroData(heroData) {
   return heroData;
 }
 
+/**
+ * Asynchronously retrieves and updates HotS data from the "API server"
+ */
+function updateDataFromApiServer() {
+  console.debug('updateDataFromApiServer() called');
+  //TODO: fix this, intentionally misspelled to test debug message
+  $.get("https://pastelmind.github.io/ruliweb-hots/heroes.json", heroes => {
+    prepareHeroData(heroes);
+    chrome.storage.local.set({ heroes }, () => {
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
+    });
+  }, 'json');
+}
+
 
 //Ensure that this script is running in a Chrome extension context
 if (typeof chrome !== 'undefined' && chrome.contextMenus) {
@@ -86,5 +101,24 @@ if (typeof chrome !== 'undefined' && chrome.contextMenus) {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
     });
+  });
+
+  //Clear and setup an alarm to update the ID.
+  const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
+  chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
+    console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
+    chrome.alarms.create(ALARM_UPDATE_DATA, {
+      delayInMinutes: 1,
+      periodInMinutes: 5  //TODO: Replace with sane value (6 hrs = 360 minutes) in the live version
+    });
+  });
+
+  //Listen to the alarm
+  chrome.alarms.onAlarm.addListener(alarm => {
+    const alarmDate = new Date();
+    alarmDate.setTime(alarm.scheduledTime)
+    console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
+    if (alarm.name === ALARM_UPDATE_DATA)
+      updateDataFromApiServer();
   });
 }
