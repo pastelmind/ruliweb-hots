@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Converts downloaded NamuWiki source files to Markdown.
+ * Converts downloaded NamuWiki source files to Markdown and JSON.
  */
 
 'use strict';
@@ -47,9 +47,7 @@ for (const remainingHeroId in heroesMinimal)
   console.warn(`${heroesMinimal[remainingHeroId].name} (${remainingHeroId}) is not found in NamuWiki data --it will be dropped from the dataset.`);
 
 //Generate JSON output
-const heroesCompact = {};
-for (const heroId in heroes)
-  heroesCompact[heroId] = heroes[heroId].compact();
+const heroesCompact = Hero.compact(heroes);
 
 const compactJsonFile = 'temp/heroes-compact.json';
 fs.writeFileSync(compactJsonFile, JSON.stringify(heroesCompact, null, 2));

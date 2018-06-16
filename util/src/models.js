@@ -37,6 +37,18 @@ class Hero {
     });
     return o;
   }
+
+  /**
+   * Produces a compacted version from a collection of Heroes.
+   * @param {Object.<string, Hero>} heroes Assumed to be hero ID => Hero mapping
+   * @return {Object.<string, Object>} Compacted JSON
+   */
+  static compact(heroes) {
+    const heroesCompact = {};
+    for (const heroId in heroes)
+      heroesCompact[heroId] = heroes[heroId].compact();
+    return heroesCompact;
+  }
 }
 
 class Skill {
