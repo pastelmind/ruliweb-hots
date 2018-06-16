@@ -1,17 +1,18 @@
 {
   "name": "ruliweb-hots-chrome-ext",
-  "version": "0.2.0",
+  "version": "0.1.1",
   "devDependencies": {
     "wget-improved": "^3.0.1",
     "rewire": "^4.0.1"
   },
   "scripts": {
     "build": "npm run build:prep-dir && npm run build:zip-extension",
-    "build:prep-dir": "@DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
-    "build:zip-extension": "@PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
-    "namu:crawl": "@node util/crawl-namu.js",
-    "namu:parse": "@node util/parse-namu.js",
+    "build:prep-dir": "DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
+    "build:zip-extension": "PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
+    "namu:crawl": "node util/crawl-namu.js",
+    "namu:parse": "node util/parse-namu.js",
     "test": "",
-    "env": "@SET"
+    "env": "SET",
+    "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json"
   }
 }
