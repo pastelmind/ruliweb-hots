@@ -12,11 +12,8 @@ const namu2hots = rewire('../src/namu2hots.js');
 
 
 const Tests = {
-  tableParser(namuMarkup) {
-    return namu2hots.__get__('parseTables')(
-      namu2hots.__get__('removeTableMarkup')(namuMarkup)
-    );
-  },
+  parseTable: 'parseTables',
+  removeTableMarkup: 'removeTableMarkup',
 
   removeColorSpan(namuMarkup) {
     return namu2hots.__get__('removeColorSpanMarkup')(
@@ -32,17 +29,9 @@ const Tests = {
     );
   },
 
-  removeBold(namuMarkup) {
-    return namu2hots.__get__('removeBoldFormatting')(namuMarkup);
-  },
-
-  removeAnchors(namuMarkup) {
-    return namu2hots.__get__('removeAnchors')(namuMarkup);
-  },
-
-  sections(namuMarkup) {
-    return namu2hots.__get__('parseSections')(namuMarkup);
-  },
+  removeBold: 'removeBoldFormatting',
+  removeAnchors: 'removeAnchors',
+  parseSections: 'parseSections',
 
   composite(namuMarkup) {
     namuMarkup = namu2hots.__get__('removeColorSpanMarkup')(
@@ -64,7 +53,7 @@ const Tests = {
   },
 
   testParseHero(namuMarkup) {
-    return namu2hots.__get__('parseHeroPage')(namuMarkup);
+    return namu2hots.parseHeroPage(namuMarkup);
   }
 };
 
@@ -80,11 +69,11 @@ function findTest(token) {
   if (matches.length === 1)
     return matches[0];
   else if (matches.length === 0) {
-    console.error(testName, 'does not match a valid test name');
+    console.error(token, 'does not match a valid test name');
     return null;
   }
   else {
-    console.error(testName, 'matches multiple tests:', matches.join());
+    console.error(token, 'matches multiple tests:', matches.join());
     return null;
   }
 }
@@ -98,7 +87,11 @@ function executeTests(tests) {
   tests.forEach(testFuncName => {
     console.log(`Running test: ${testFuncName}(), input size is ${dataLength} characters.`)
 
-    data = Tests[testFuncName](data);
+    const testTarget = Tests[testFuncName];
+    if (typeof testTarget === 'function')
+      data = testTarget(data);
+    else
+      data = namu2hots.__get__(testTarget)(data);
 
     dataLength = (typeof data === 'string' ? data.length : JSON.stringify(data).length);
     console.log(`\tTest completed, output is ${typeof data} of ${dataLength} characters.`);
