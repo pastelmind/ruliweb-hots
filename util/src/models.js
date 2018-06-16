@@ -26,11 +26,11 @@ class Hero {
     o.name = this.name;
     if (this.iconUrl)
       o.iconUrl = this.iconUrl;
-    o.id = this.id;
+    // o.id = this.id; // ID string is assumed to be available from the parent object's key.
     o.type = this.type;
     o.role = this.role;
     o.universe = this.universe;
-    o.skills = o.skills.map(skill => skill.compact());
+    o.skills = this.skills.map(skill => skill.compact());
     o.talents = {};
     Object.keys(this.talents).sort().forEach(talentLevel => {
       o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.compact());
