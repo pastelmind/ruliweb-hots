@@ -41,12 +41,12 @@ module.exports = {
           throw JSON.stringify({ title, tables });
 
         //Assumption: The second cell of the  first table contains the skill description.
-        const skill = parseSkill(skillTitleMatch[1], skillTitleMatch[2], tables[0][1]);
+        const skill = parseSkill(skillTitleMatch[2], skillTitleMatch[1], tables[0][1]);
         if (isUltimateSection) {
           skill.level = talentLevel;
           if (!hero.talents[talentLevel])
             hero.talents[talentLevel] = [];
-          hero.talents[talentLevel].push(skill);
+          hero.talents[talentLevel].push(new Talent(skill));
         }
         else
           hero.skills.push(skill);
@@ -55,7 +55,7 @@ module.exports = {
         talentLevel = parseInt(talentTitleMatch[2]);
 
         const tables = parseTables(content);
-        isUltimateSection = !!tables.length;
+        isUltimateSection = !tables.length;
 
         if (!isUltimateSection) { //Skip if ultimate section
           //Assumption: The first table is the talent table.
@@ -186,7 +186,7 @@ function parseSections(namuMarkup) {
  * @param {string} name Skill name
  * @param {string} type Skill type
  * @param {string} rawDescription Unparsed description in the skill table
- * @returns {object} Skill data
+ * @returns {Skill} Skill data
  */
 function parseSkill(name, type, rawDescription) {
   const skill = new Skill({ type, name });
@@ -211,20 +211,23 @@ function parseSkill(name, type, rawDescription) {
 
 /**
  * Parse a talent section and produce an array of talent data
+ * @param {number} talentLevel Level of the talents in the table
  * @param {string[]} table Pre-parsed talent table
- * @returns {Object[]} Array of talent data
+ * @returns {Talent[]} Array of talent data
  */
-function parseTalentTable(table) {
+function parseTalentTable(talentLevel, table) {
   const talents = [];
 
   //Assumption: The talent table contains 4x the number of talents.
   //            Each cell represents: talent icon, name, type, and description.
   for (let i = 0; i + 3 < table.length; i += 4) {
-    talents.push(new Talent(parseSkill(
+    const talentData = parseSkill(
       removeBoldFormatting(table[i + 1]),
       table[i + 2],
       table[i + 3]
-    )));
+    );
+    talentData.level = talentLevel;
+    talents.push(new Talent(talentData));
   }
 
   return talents;

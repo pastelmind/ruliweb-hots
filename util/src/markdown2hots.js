@@ -74,19 +74,19 @@ module.exports = {
    * @param {Hero} hero Hero data
    */
   heroToMarkdown(hero) {
-    let markdown = `# ${hero.name}\n## 기술`;
+    let markdown = `# ${hero.name}\n## 기술\n`;
 
     markdown += hero.skills.map(skillToMarkdown).join('\n\n');
 
-    markdown += '\n\n## 특성';
+    markdown += '\n\n## 특성\n';
 
     for (const talentLevel in hero.talents) {
-      markdown += `\n### 레벨 ${talentLevel}\n`;
+      markdown += `### 레벨 ${talentLevel}\n`;
       markdown += hero.talents[talentLevel].map(talentToMarkdown).join('\n\n');
-      markdown += '\n';
+      markdown += '\n\n';
     }
 
-    return markdown + '\n';
+    return markdown;
   }
 };
 

@@ -25,7 +25,7 @@ const Tests = {
   removeImages(namuMarkup) {
     return namu2hots.__get__('removeImages')(
       namuMarkup,
-      namu2hots.COMMON_IMAGES
+      namu2hots.__get__('COMMON_IMAGES')
     );
   },
 
@@ -36,15 +36,12 @@ const Tests = {
   parseSections: 'parseSections',
 
   composite(namuMarkup) {
-    namuMarkup = namu2hots.__get__('removeColorSpanMarkup')(
-      namuMarkup,
-      namu2hots.__get__('COMMON_TEXT_COLORS')
-    );
-
     namuMarkup = namu2hots.__get__('removeTableMarkup')(namuMarkup);
-    // namuMarkup = namu2hots.__get__('removeImages')(namuMarkup, namu2hots.COMMON_IMAGES);
+    namuMarkup = Tests.removeColorSpan(namuMarkup);
+    namuMarkup = Tests.removeImages(namuMarkup);
+    namuMarkup = namu2hots.__get__('removeNamuFootnotes')(namuMarkup);
     namuMarkup = namu2hots.__get__('removeAnchors')(namuMarkup);
-    // namuMarkup = namu2hots.__get__('removeBoldFormatting')(namuMarkup);
+    namuMarkup = namu2hots.__get__('removeNamuBr')(namuMarkup);
 
     const sections = namu2hots.__get__('parseSections')(namuMarkup);
 
@@ -54,7 +51,7 @@ const Tests = {
     return sections;
   },
 
-  testParseHero(namuMarkup) {
+  parseHeroPage(namuMarkup) {
     return namu2hots.parseHeroPage(namuMarkup);
   }
 };
