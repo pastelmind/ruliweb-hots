@@ -209,7 +209,7 @@ function parseTalentMarkdown(name, level, markdown) {
  * @return {string} Markdown
  */
 function skillToMarkdown(skill) {
-  let markdown = `### ${skill.name} \n * 유형: ${skill.type} \n`;
+  let markdown = `### ${skill.name}\n* 유형: ${skill.type}\n`;
 
   if (skill.iconUrl)
     markdown += `* 아이콘: ${skill.iconUrl} \n`;
@@ -223,7 +223,10 @@ function skillToMarkdown(skill) {
   for (const extra in skill.extras)
     markdown += `* ${extra}: ${skill.extras[extra]} \n`;
 
-  return markdown + '\n' + skill.description;
+  //Add two spaces after lines so that single line breaks are not removed by Markdown parsers
+  markdown +='\n' + skill.description.replace(/^(?!\*|#).*\S(?=\n\S)/mg, '$&  ');
+
+  return markdown;
 }
 
 /**

@@ -189,9 +189,9 @@ function parseSections(namuMarkup) {
  * @returns {Skill} Skill data
  */
 function parseSkill(name, type, rawDescription) {
-  const skill = new Skill({ type, name });
+  const skill = { type, name, extras: {} };
 
-  skill.description = rawDescription.replace(
+  skill.description = removeBoldFormatting(rawDescription.replace(
     /\[\[파일:.*?(?:\|.*?)?\]\]\s?'''(.+?)'''\s?([^\[]+)/g,
     (match, extraName, extraInfo) => {
       if (extraName.includes('시간') && !skill.cooldown)
@@ -204,9 +204,9 @@ function parseSkill(name, type, rawDescription) {
         console.warn('Warning: Duplicate extra name is ignored;', extraName, 'in skill description', rawDescription);
 
       return '';
-    }).trim();
+    }).trim());
 
-  return skill;
+  return new Skill(skill);
 }
 
 /**
