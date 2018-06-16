@@ -87,7 +87,7 @@ const articleNames = [
 const wget = require('wget-improved');
 const fs = require('fs');
 
-const tempDir = process.argv[2] || 'temp';
+const tempDir = process.argv[2] || 'temp/namu-dump/';
 fs.stat(tempDir, (err, stats) => {
 
   if (err) {
