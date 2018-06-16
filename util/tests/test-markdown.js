@@ -11,7 +11,7 @@ const rewire = require('rewire');
 const models = require('../src/models.js');
 const markdown2hots = rewire('../src/markdown2hots.js');
 
-const markdown = fs.readFileSync('temp/heroes.md', 'utf8');
+const markdown = fs.readFileSync('docs/heroes.md', 'utf8');
 const heroes = markdown2hots.parseHeroMarkdown(markdown);
 
 //Write compact JSON output

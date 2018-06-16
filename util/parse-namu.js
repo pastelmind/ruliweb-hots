@@ -54,7 +54,7 @@ fs.writeFileSync(compactJsonFile, JSON.stringify(heroesCompact, null, 2));
 console.log('Compact JSON file written to', compactJsonFile);
 
 //Generate Markdown output
-const markdownFile = 'temp/heroes.md';
+const markdownFile = 'docs/heroes.md';
 fs.writeFileSync(markdownFile, ''); //Erase previous data
 for (const heroId in heroes)
   fs.writeFileSync(markdownFile, markdown2hots.heroToMarkdown(heroes[heroId]), { flag: 'a' });
