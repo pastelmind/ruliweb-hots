@@ -17,6 +17,26 @@ class Hero {
     this.skills = o.skills || [];
     this.talents = o.talents || {};
   }
+
+  /**
+   * Produce a compact, minimal JSON
+   */
+  compact() {
+    const o = {};
+    o.name = this.name;
+    if (this.iconUrl)
+      o.iconUrl = this.iconUrl;
+    o.id = this.id;
+    o.type = this.type;
+    o.role = this.role;
+    o.universe = this.universe;
+    o.skills = o.skills.map(skill => skill.compact());
+    o.talents = {};
+    Object.keys(this.talents).sort().forEach(talentLevel => {
+      o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.compact());
+    });
+    return o;
+  }
 }
 
 class Skill {
@@ -37,8 +57,9 @@ class Skill {
   compact() {
     const o = {};
     o.name = this.name;
-    this.iconUrl = o.iconUrl || '';
     o.type = this.type;
+    if (this.iconUrl)
+      o.iconUrl = this.iconUrl;
     if (this.level)
       o.level = this.level;
     o.description = this.description;
