@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Conversion between HotS data and Markdown
+ * Conversion between HotS data and Markdown.
  */
 
 'use strict';
@@ -9,11 +9,16 @@
 const { Hero, Skill, Talent } = require('./models.js');
 
 module.exports = {
+  /**
+   * Parses hero data in Markdown format
+   * @param {string} markdown Markdown hero data
+   * @returns {Object<string, Hero>} Key-value mappings of Hero ID to hero
+   */
   parseHeroMarkdown(markdown) {
     const heroes = {};
-    let hero = null, skill = null, talent = null, isSkillSection = false, talentLevel = 0;
+    let hero = null, isSkillSection = false, talentLevel = 0;
 
-    parseSections(sections).forEach(section => {
+    parseSections(markdown).forEach(section => {
       switch (section.depth) {
         case 0: //Beginning section, ignore
           break;
@@ -33,7 +38,7 @@ module.exports = {
 
         case 3: //Is a skill or talent level group
           if (isSkillSection) {
-            skill = new Skill(parseSkillTalentContent(section.content));
+            const skill = new Skill(parseSkillTalentContent(section.content));
             skill.name = section.title;
             hero.skills.push(skill);
           }
@@ -47,7 +52,7 @@ module.exports = {
           break;
 
         case 4: //Is a talent
-          talent = new Talent(parseSkillTalentContent(section.content));
+          const talent = new Talent(parseSkillTalentContent(section.content));
           talent.name = section.title;
           talent.level = talentLevel;
           if (!(talentLevel in hero.talents))
@@ -60,6 +65,28 @@ module.exports = {
           console.warn(`Section ${section.title} has too many (${section.depth}) hash signs`);
       }
     });
+
+    return heroes;
+  },
+
+  /**
+   * Converts a single hero's data to Markdown format.
+   * @param {Hero} hero Hero data
+   */
+  heroToMarkdown(hero) {
+    let markdown = `# ${hero.name}\n## 기술`;
+
+    markdown += hero.skills.map(skillToMarkdown).join('\n\n');
+
+    markdown += '\n\n## 특성';
+
+    for (const talentLevel in hero.talents) {
+      markdown += `\n### 레벨 ${talentLevel}\n`;
+      markdown += hero.talents[talentLevel].map(talentToMarkdown).join('\n\n');
+      markdown += '\n';
+    }
+
+    return markdown + '\n';
   }
 };
 
@@ -72,7 +99,7 @@ module.exports = {
  * - content: Content between this header and the next (trimmed).
  * The first section is always title = '', depth = 0.
  * @param {string} markdown Markdown data
- * @return {Object<string, Object>[]} Array of section objects
+ * @return {Object[]} Array of section objects
  */
 function parseSections(markdown) {
   const result = markdown.split(/^(#+)\s*(.*?)\s*$/);
@@ -135,10 +162,10 @@ function parseSkillTalentContent(markdown) {
           data.iconUrl = extraValue; break;
         case '유형':
           data.type = extraValue; break;
-        case '재사용 대기시간':
-          data.cooldown = parseFloat(extraValue); break;
         case '마나':
           data.manaCost = parseInt(extraValue); break;
+        case '재사용 대기시간':
+          data.cooldown = parseFloat(extraValue); break;
         default:
           data.extras[extraName] = extraValue;
       }
@@ -150,12 +177,44 @@ function parseSkillTalentContent(markdown) {
 }
 
 
+//-------- Markdown converters --------//
+
+/**
+ * Returns a Markdown representation of the skill data.
+ * @param {Skill} skill
+ * @return {string} Markdown
+ */
+function skillToMarkdown(skill) {
+  let markdown = `### ${skill.name}\n* 유형: ${skill.type}\n`;
+
+  if (skill.manaCost)
+    markdown += `* 마나: ${skill.manaCost}\n`;
+
+  if (skill.cooldown)
+    markdown += `* 재사용 대기시간: ${skill.cooldown}\n`;
+
+  for (const extra in skill.extras)
+    markdown += `* ${extra}: ${skill.extras[extra]}\n`;
+
+  return markdown + '\n' + skill.description;
+}
+
+/**
+ * Returns a Markdown representation of the talent data.
+ * @param {Talent} talent
+ * @return {string} Markdown
+ */
+function talentToMarkdown(talent) {
+  return '#' + skillToMarkdown(talent);
+}
+
+
 //For testing on Node.js
-if (require && module && require.main === module) {
+if (require.main === module) {
   const fs = require('fs');
 
-  const markdown = fs.readFileSync('docs/heroes.md').toString('utf8');
-  const heroes = parseHeroMarkdown(markdown);
-  fs.writeFileSync('output.json', JSON.stringify(heroes, null, 2));
+  const markdown = fs.readFileSync('temp/markdown/heroes.md', 'utf8');
+  const heroes = module.exports.parseHeroMarkdown(markdown);
+  fs.writeFileSync('temp/from-md.json', JSON.stringify(heroes, null, 2));
   console.log('Complete!');
 }
