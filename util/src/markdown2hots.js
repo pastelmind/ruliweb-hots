@@ -24,9 +24,8 @@ module.exports = {
           break;
 
         case 1: //Is next hero
-          hero = new Hero(parseHeroContent(section.content));
-          hero.name = section.title;
-          heroes.push(hero);
+          hero = parseHeroContent(section.title, section.content);
+          heroes[hero.id] = hero;
           break;
 
         case 2: //Is talent/skill section
@@ -38,9 +37,7 @@ module.exports = {
 
         case 3: //Is a skill or talent level group
           if (isSkillSection) {
-            const skill = new Skill(parseSkillTalentContent(section.content));
-            skill.name = section.title;
-            hero.skills.push(skill);
+            hero.skills.push(parseSkillMarkdown(section.title, section.content));
           }
           else {
             const talentLevelMatch = section.title.match(/^레벨 (\d+)$/);
@@ -52,9 +49,7 @@ module.exports = {
           break;
 
         case 4: //Is a talent
-          const talent = new Talent(parseSkillTalentContent(section.content));
-          talent.name = section.title;
-          talent.level = talentLevel;
+          const talent = parseTalentMarkdown(section.title, talentLevel, section.content);
           if (!(talentLevel in hero.talents))
             hero.talents[talentLevel] = [talent];
           else
@@ -74,14 +69,26 @@ module.exports = {
    * @param {Hero} hero Hero data
    */
   heroToMarkdown(hero) {
-    let markdown = `# ${hero.name}\n## 기술\n`;
+    let markdown = `# ${hero.name}\n`;
 
+    if (hero.id)
+      markdown += `* ID: ${hero.id}\n`;
+    if (hero.iconUrl)
+      markdown += `* 아이콘: ${hero.iconUrl}\n`;
+    if (hero.type)
+      markdown += `* 유형: ${hero.type}\n`;
+    if (hero.universe)
+      markdown += `* 세계관: ${hero.universe}\n`;
+    if (hero.role)
+      markdown += `* 역할: ${hero.role}\n`;
+
+    markdown += '\n## 기술\n';
     markdown += hero.skills.map(skillToMarkdown).join('\n\n');
 
     markdown += '\n\n## 특성\n';
 
     for (const talentLevel in hero.talents) {
-      markdown += `### 레벨 ${talentLevel}\n`;
+      markdown += `### 레벨 ${talentLevel} \n`;
       markdown += hero.talents[talentLevel].map(talentToMarkdown).join('\n\n');
       markdown += '\n\n';
     }
@@ -102,7 +109,7 @@ module.exports = {
  * @return {Object[]} Array of section objects
  */
 function parseSections(markdown) {
-  const result = markdown.split(/^(#+)\s*(.*?)\s*$/);
+  const result = markdown.split(/^(#+)\s*(.*?)\s*$/m);
 
   const sections = [{
     title: '',
@@ -122,21 +129,22 @@ function parseSections(markdown) {
 }
 
 /**
- * Parses the markdown, extracting hero data.
+ * Parses the markdown and generates hero data.
+ * @param {string} name Hero name
  * @param {string} markdown Markdown data
- * @return {Object} Hero data
+ * @return {Hero} Hero object
  */
-function parseHeroContent(markdown) {
-  const data = {};
+function parseHeroContent(name, markdown) {
+  const hero = { name };
 
-  data.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
+  hero.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
     (match, propName, propValue) => {
       switch (propName) {
-        case 'ID': data.id = propValue; break;
-        case '아이콘': data.iconUrl = propValue; break;
-        case '유형': data.type = propValue; break;
-        case '세계관': data.universe = propValue; break;
-        case '역할': data.role = parseInt(propValue); break;
+        case 'ID': hero.id = propValue; break;
+        case '아이콘': hero.iconUrl = propValue; break;
+        case '유형': hero.type = propValue; break;
+        case '역할': hero.role = propValue; break;
+        case '세계관': hero.universe = propValue; break;
         default:
           console.warn('Unknown property:', propName, '/', propValue);
       }
@@ -144,38 +152,54 @@ function parseHeroContent(markdown) {
       return '';
     }).trim();
 
-  return data;
+  if (!hero.id)
+    console.warn('Missing hero ID for', hero.name);
+
+  return new Hero(hero);
 }
 
 /**
- * Parses the markdown, extracting skill/talent data.
+ * Parses the markdown, extracting skill data.
+ * @param {string} name Skill name
  * @param {string} markdown Markdown data
- * @return {Object} Skill/talent data
+ * @return {Skill} Skill object
  */
-function parseSkillTalentContent(markdown) {
-  const data = { extras: {} };
+function parseSkillMarkdown(name, markdown) {
+  const skill = { name, extras: {} };
 
-  data.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
+  skill.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
     (match, extraName, extraValue) => {
       switch (extraName) {
         case '아이콘':
-          data.iconUrl = extraValue; break;
+          skill.iconUrl = extraValue; break;
         case '유형':
-          data.type = extraValue; break;
+          skill.type = extraValue; break;
         case '마나':
-          data.manaCost = parseInt(extraValue); break;
+          skill.manaCost = parseInt(extraValue); break;
         case '재사용 대기시간':
-          data.cooldown = parseFloat(extraValue); break;
+          skill.cooldown = parseFloat(extraValue); break;
         default:
-          data.extras[extraName] = extraValue;
+          skill.extras[extraName] = extraValue;
       }
 
       return '';
     }).trim();
 
-  return data;
+  return new Skill(skill);
 }
 
+/**
+ * Parses the markdown, extracting talent data.
+ * @param {string} name Talent name
+ * @param {number} level Level of the talent
+ * @param {string} markdown Markdown data
+ * @return {Talent} Talent object
+ */
+function parseTalentMarkdown(name, level, markdown) {
+  const talentData = parseSkillMarkdown(name, markdown);
+  talentData.level = level;
+  return new Talent(talentData);
+}
 
 //-------- Markdown converters --------//
 
@@ -185,16 +209,19 @@ function parseSkillTalentContent(markdown) {
  * @return {string} Markdown
  */
 function skillToMarkdown(skill) {
-  let markdown = `### ${skill.name}\n* 유형: ${skill.type}\n`;
+  let markdown = `### ${skill.name} \n * 유형: ${skill.type} \n`;
+
+  if (skill.iconUrl)
+    markdown += `* 아이콘: ${skill.iconUrl} \n`;
 
   if (skill.manaCost)
-    markdown += `* 마나: ${skill.manaCost}\n`;
+    markdown += `* 마나: ${skill.manaCost} \n`;
 
   if (skill.cooldown)
-    markdown += `* 재사용 대기시간: ${skill.cooldown}\n`;
+    markdown += `* 재사용 대기시간: ${skill.cooldown} \n`;
 
   for (const extra in skill.extras)
-    markdown += `* ${extra}: ${skill.extras[extra]}\n`;
+    markdown += `* ${extra}: ${skill.extras[extra]} \n`;
 
   return markdown + '\n' + skill.description;
 }
