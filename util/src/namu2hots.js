@@ -16,11 +16,12 @@ module.exports = {
   parseHeroPage(namuMarkup) {
     const hero = {
       skills: [],
-      talents: []
+      talents: {}
     };
 
     namuMarkup = removeTableMarkup(namuMarkup);
     namuMarkup = removeColorSpanMarkup(namuMarkup, COMMON_TEXT_COLORS);
+    namuMarkup = removeImages(namuMarkup, COMMON_IMAGES);
     namuMarkup = removeNamuFootnotes(namuMarkup);
     namuMarkup = removeAnchors(namuMarkup);
     namuMarkup = removeNamuBr(namuMarkup);
@@ -28,7 +29,7 @@ module.exports = {
     const sections = parseSections(namuMarkup);
 
     let isUltimateSection = false;
-    let talentLevel; //루프 바깥에 선언해야 궁극기의 레벨을 올바르게 설정할 수 있다.
+    let talentLevel; //Must be outside the loop to correctly apply the talent's level.
 
     for (const title in sections) {
       const content = sections[title];
@@ -44,7 +45,9 @@ module.exports = {
         const skill = parseSkill(skillTitleMatch[1], skillTitleMatch[2], tables[0][1]);
         if (isUltimateSection) {
           skill.level = talentLevel;
-          hero.talents.push(skill);
+          if (!hero.talents[talentLevel])
+            hero.talents[talentLevel] = [];
+          hero.talents[talentLevel].push(skill);
         }
         else
           hero.skills.push(skill);
@@ -58,8 +61,9 @@ module.exports = {
         if (!isUltimateSection) { //Skip if ultimate section
           //Assumption: The first table is the talent table.
           const talents = parseTalentTable(talentLevel, tables[0]);
-          talents.forEach(talent => talent.level = talentLevel);
-          hero.talents.push(...talents);
+          if (!hero.talents[talentLevel])
+            hero.talents[talentLevel] = [];
+          hero.talents[talentLevel].push(...talents);
         }
       }
     }
@@ -326,10 +330,11 @@ function removeImages(namuMarkup, imageTokens = []) {
 }
 
 const COMMON_IMAGES = [
-  'Cooldown_Clock.png', //재사용 대기시간
-  'icon-range-32.png',  //효과 사거리
-  'icon-width-32.png',  //효과 너비
-  'icon-radius-32.png', //효과 반경
+  // 'Cooldown_Clock.png', //재사용 대기시간
+  // 'icon-range-32.png',  //효과 사거리
+  // 'icon-width-32.png',  //효과 너비
+  // 'icon-radius-32.png', //효과 반경
+  'Quest_Mark.png'  //퀘스트 및 보상
 ];
 
 /**

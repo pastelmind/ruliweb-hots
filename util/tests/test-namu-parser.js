@@ -30,7 +30,9 @@ const Tests = {
   },
 
   removeBold: 'removeBoldFormatting',
+  removeNamuFootnotes: 'removeNamuFootnotes',
   removeAnchors: 'removeAnchors',
+  removeNamuBr: 'removeNamuBr',
   parseSections: 'parseSections',
 
   composite(namuMarkup) {

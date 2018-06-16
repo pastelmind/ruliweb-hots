@@ -18,20 +18,11 @@ const MarkdownGenerator = {
 
     markdown += '\n\n## 특성';
 
-    const talentsByLevel = {};
-    hero.talents.forEach(talent => {
-      console.log(talent.level + ': ' + talent.name);
-      if (!(talent.level in talentsByLevel))
-        talentsByLevel[talent.level] = [talent];
-      else
-        talentsByLevel[talent.level].push(talent);
-    });
-
-    for (talentLevel in talentsByLevel) {
+    for (const talentLevel in hero.talents) {
       markdown += '\n### 레벨 ' + talentLevel + '\n'
-        + talentsByLevel[talentLevel].map(
-            talent => this.talentToMarkdown(talent)
-          ).join('\n\n') + '\n';
+        + hero.talents[talentLevel].map(
+          talent => this.talentToMarkdown(talent)
+        ).join('\n\n') + '\n';
     }
 
     return markdown + '\n';
@@ -69,6 +60,6 @@ if (require.main === module) {
     const data = fs.readFileSync(inputDir + fileName, 'utf8');
     const hero = namu2hots.parseHeroPage(data);
     hero.name = fileName.replace(/\(.*\)/, '').replace('.txt', '');
-    fs.writeFileSync('heroes.md', MarkdownGenerator.heroToMarkdown(hero), { flag: 'a' });
+    fs.writeFileSync(outputFile, MarkdownGenerator.heroToMarkdown(hero), { flag: 'a' });
   });
 }
