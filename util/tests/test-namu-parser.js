@@ -12,39 +12,39 @@ const namu2hots = rewire('../src/namu2hots.js');
 
 
 const Tests = {
-  testTableParser(namuMarkup) {
+  tableParser(namuMarkup) {
     return namu2hots.__get__('parseTables')(
       namu2hots.__get__('removeTableMarkup')(namuMarkup)
     );
   },
 
-  testColorSpanRemove(namuMarkup) {
+  removeColorSpan(namuMarkup) {
     return namu2hots.__get__('removeColorSpanMarkup')(
       namuMarkup,
-      ['#eefee7', '#ffffff', '#ffd700']
+      namu2hots.__get__('COMMON_TEXT_COLORS')
     );
   },
 
-  testRemoveImages(namuMarkup) {
+  removeImages(namuMarkup) {
     return namu2hots.__get__('removeImages')(
       namuMarkup,
       namu2hots.COMMON_IMAGES
     );
   },
 
-  testRemoveBold(namuMarkup) {
+  removeBold(namuMarkup) {
     return namu2hots.__get__('removeBoldFormatting')(namuMarkup);
   },
 
-  testRemoveAnchors(namuMarkup) {
+  removeAnchors(namuMarkup) {
     return namu2hots.__get__('removeAnchors')(namuMarkup);
   },
 
-  testSections(namuMarkup) {
+  sections(namuMarkup) {
     return namu2hots.__get__('parseSections')(namuMarkup);
   },
 
-  testComposite(namuMarkup) {
+  composite(namuMarkup) {
     namuMarkup = namu2hots.__get__('removeColorSpanMarkup')(
       namuMarkup,
       namu2hots.__get__('COMMON_TEXT_COLORS')
@@ -68,49 +68,84 @@ const Tests = {
   }
 };
 
-function runTests() {
-  const test = process.argv[2];
-  if (test) {
-    const filePath = process.argv[3] || 'temp/namu-dump/D.Va.txt';
-    const namuMarkup = fs.readFileSync(filePath, 'utf8');
 
-    const testName = ('test' + test).toLowerCase();
-    let matchFound = false;
-    for (const testFuncName in Tests) {
-      if (testFuncName.toLowerCase() === testName) {
-        matchFound = true;
+function findTest(token) {
+  token = token.toLowerCase();
+  const matches = [];
 
-        console.log(`Running test: ${testFuncName}()  (input size is ${namuMarkup.length} characters)`)
+  for (const testFuncName in Tests)
+    if (testFuncName.toLowerCase().includes(token))
+      matches.push(testFuncName);
 
-        let result = Tests[testFuncName](namuMarkup);
+  if (matches.length === 1)
+    return matches[0];
+  else if (matches.length === 0) {
+    console.error(testName, 'does not match a valid test name');
+    return null;
+  }
+  else {
+    console.error(testName, 'matches multiple tests:', matches.join());
+    return null;
+  }
+}
 
-        let resultFile;
-        if (typeof result === 'string')
-          resultFile = 'temp/output.txt';
-        else {
-          resultFile = 'temp/output.json';
-          result = JSON.stringify(result, null, 2);
-        }
 
-        fs.writeFileSync(resultFile, result);
+function executeTests(tests) {
+  const filePath = process.argv[3] || 'temp/namu-dump/D.Va.txt';
+  let data = fs.readFileSync(filePath, 'utf8');
+  let dataLength = data.length;
 
-        console.log(`Test finished, results written to ${resultFile} (output size: ${result.length} characters)`);
+  tests.forEach(testFuncName => {
+    console.log(`Running test: ${testFuncName}(), input size is ${dataLength} characters.`)
+
+    data = Tests[testFuncName](data);
+
+    dataLength = (typeof data === 'string' ? data.length : JSON.stringify(data).length);
+    console.log(`\tTest completed, output is ${typeof data} of ${dataLength} characters.`);
+  });
+
+  let resultFile;
+  if (typeof data === 'string')
+    resultFile = 'temp/output.txt';
+  else {
+    resultFile = 'temp/output.json';
+    data = JSON.stringify(data, null, 2);
+  }
+
+  fs.writeFileSync(resultFile, data);
+  console.log(`Test finished, results written to ${resultFile} (output size: ${data.length} characters)`);
+}
+
+
+function runTestScript() {
+  const testArg = process.argv[2];
+
+  if (testArg) {
+    const testTokens = testArg.toLowerCase().split(',');
+    const tests = [];
+
+    for (let i = 0; i < testTokens.length; ++i) {
+      const testFuncName = findTest(testTokens[i]);
+      if (!testFuncName) {
+        tests = []; //Don't perform any tests
         break;
       }
+      else
+        tests.push(testFuncName);
     }
 
-    if (matchFound)
+    if (tests.length) {
+      executeTests(tests);
       return;
-
-    console.log(test + ' does not match any test available\n');
+    }
   }
 
   console.log('Available tests:');
   for (const testFuncName in Tests)
-    console.log('\t' + testFuncName.toLowerCase().replace('test', ''));
+    console.log('\t' + testFuncName);
 }
 
 
 if (require.main === module) {
-  runTests();
+  runTestScript();
 }
