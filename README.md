@@ -7,6 +7,7 @@
     * `tests`: 확장 프로그램 테스트 관련 파일
     * `publishing`: 크롬 웹 스토어에 배포하는 일과 관련된 파일
 * `util`: 확장 프로그램이 사용하는 데이터를 준비하고 가공하는 Node.js 스크립트
+* `docs`: GitHub Pages를 사용하기 위해 만든 디렉토리 (설명서 아님!)
 
 # Dependencies
 * 크롬 확장 프로그램
@@ -15,4 +16,4 @@
     * [mustache.js](https://github.com/janl/mustache.js) 2.3.0
 * 서버 스크립트
     * [Node.js](https://nodejs.org/)
-    * 자세한 것은 package.json 참조
+    * 자세한 것은 [package.json](package.json) 참조
