@@ -7,6 +7,8 @@
 
 'use strict';
 
+const { Hero, Skill, Talent } = require('./models.js');
+
 module.exports = {
   /**
    * Parses a hero's page content to hero data.
@@ -14,10 +16,7 @@ module.exports = {
    * @returns {Object} Hero data
    */
   parseHeroPage(namuMarkup) {
-    const hero = {
-      skills: [],
-      talents: {}
-    };
+    const hero = new Hero;
 
     namuMarkup = removeTableMarkup(namuMarkup);
     namuMarkup = removeColorSpanMarkup(namuMarkup, COMMON_TEXT_COLORS);
@@ -190,13 +189,7 @@ function parseSections(namuMarkup) {
  * @returns {object} Skill data
  */
 function parseSkill(name, type, rawDescription) {
-  const skill = {
-    type,
-    name,
-    cooldown: 0,
-    manaCost: 0,
-    extras: {}
-  };
+  const skill = new Skill({ type, name });
 
   skill.description = rawDescription.replace(
     /\[\[파일:.*?(?:\|.*?)?\]\]\s?'''(.+?)'''\s?([^\[]+)/g,
@@ -227,11 +220,11 @@ function parseTalentTable(table) {
   //Assumption: The talent table contains 4x the number of talents.
   //            Each cell represents: talent icon, name, type, and description.
   for (let i = 0; i + 3 < table.length; i += 4) {
-    talents.push(parseSkill(
+    talents.push(new Talent(parseSkill(
       removeBoldFormatting(table[i + 1]),
       table[i + 2],
       table[i + 3]
-    ));
+    )));
   }
 
   return talents;
