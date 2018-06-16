@@ -88,8 +88,35 @@ const NamuParser = {
     return tables;
   },
 
+  /**
+   * Removes table decoration markup from the given string
+   * @param {string} namuMarkup NamuWiki markup
+   * @return {string} Modified NamuWiki markup
+   */
   trimTableMarkup(namuMarkup) {
     return namuMarkup.replace(/<([\^v]?(-|\|)\d+|(table|row)?\s*(align|bgcolor|bordercolor|width)=.*?|[(:)])>/gi, '');
+  },
+
+  /**
+   * Divides an article into sections, separated by headers (=== header ===).
+   * The content before the first header can be retrieved by using '' as the key.
+   * @param {string} namuMarkup NamuWiki markup
+   * @return {Object.<string, string>} Key-value mappings of section header to content
+   */
+  parseSections(namuMarkup) {
+    //Assumption: Headers begin and end with the same number of equal signs (=).
+
+    const result = namuMarkup.split(/^\s*=+\s*(.+?)\s*=+\s*$/mg);
+    const headerToContent = {};
+
+    //The first section (with no header)
+    headerToContent[''] = result[0];
+
+    //Start at 1, since the first segment is the article name
+    for (let i = 1; i < result.length; i += 2)
+      headerToContent[result[i]] = result[i + 1];
+
+    return headerToContent;
   },
 
   parseHeroPage(namuMarkup) {
@@ -149,22 +176,91 @@ const NamuParser = {
   },
 
   /**
-   * 퀘스트를 나타내는 나무위키 문법을 평문으로 바꾼다.
-   * @param {string} namuMarkup 나무마크
+   * Removes NamuWiki text coloring markup ({{{#xxxxxx text}}}).
+   * @param {string} namuMarkup NamuWiki markup
+   * @param {string[]} colors Array of colors to remove, each in the form of '#ffffff' (mixed cases acceptable)
+   * @return {string} Modified NamuWiki markup
    */
-  removeQuestMarkup(namuMarkup) {
-    return namuMarkup.replace(/\{\{\{#\w+ '''(반복 퀘스트|퀘스트|보상)''':\}\}\}/g, '$1:')
-      .replace(/\[\[파일:Quest_Mark\.png\]\]\s?/g, '');
+  removeColorSpanMarkup(namuMarkup, colors) {
+    //For easy comparison
+    colors = colors.map(str => str.toLowerCase());
+
+    const spanStack = [];
+    const spanBoundsPattern = /(\{\{\{|\}\}\})(?:(#\w{6}) )?/g;
+    let spanBoundsMatch = null;
+    let output = '', sliceBegin = 0;
+
+    while (spanBoundsMatch = spanBoundsPattern.exec(namuMarkup)) {
+      let needsSlice = false;
+
+      if (spanBoundsMatch[1] === '{{{') {
+        if (spanBoundsMatch[2] && colors.includes(spanBoundsMatch[2].toLowerCase())) {
+          needsSlice = true;
+          spanStack.push(true);   //Remove this span later
+        }
+        else
+          spanStack.push(false);  //Don't remove this span later
+      }
+      else
+        needsSlice = spanStack.pop();
+
+      if (needsSlice) {
+        //Slice everything up to this point, and arrange next slice to begin after this
+        output += spanBoundsMatch.input.slice(sliceBegin, spanBoundsMatch.index);
+        sliceBegin = spanBoundsPattern.lastIndex;
+      }
+    }
+
+    //Add remaining text
+    output += namuMarkup.slice(sliceBegin);
+
+    return output;
+  },
+
+  COMMON_TEXT_COLORS: [
+    '#f2fee7',  //기술 본문
+    '#66ccec',  //특성 이름 및 유형
+    '#fd8a27',  //특성 이름 내 링크
+    '#eefee7',  //특성 본문
+    '#d9d9d9',  //재사용 대기시간
+    '#3cb5f1',  //마나 소모량
+    '#cc9999',  //기술 및 특성 사거리 정보
+    '#ffc000',  //퀘스트
+  ],
+
+  /**
+   * Removes bold text formatting ('''text''').
+   * @param {string} namuMarkup NamuWiki markup
+   * @return {string} Modified NamuWiki markup
+   */
+  removeBoldFormatting(namuMarkup) {
+    return namuMarkup.replace(/'''/g, '');
   },
 
   /**
-   * 몇몇 기술 설명의 강조 표시를 HTML로 바꾼다.
-   * @param {string} namuMarkup 나무마크
+   * Removes specific images that contain any of the given tokens (case insensitive).
+   * Also removes a single trailing space chracter, if any.
+   * @param {string} namuMarkup NamuWiki markup
+   * @param {string[]} imageTokens Image name tokens that will be matched with indexOf()
+   * @return {string} Modified NamuWiki markup
    */
-  replaceSpecialColors(namuMarkup) {
-    return namuMarkup.replace(/\{\{\{(#\w+) '''(.*?)'''(:?)\}\}\}(:?)/g, '<b style="color: $1">$2$3$4</b>')
-      .replace(/\{\{\{(#\w+) (속도 증폭|치유 증폭|인간|늑대인간|사신의 징표|연계 점수)(:?)\}\}\}(:?)/g, '<span style="color: $1">$2$3$4</span>');
+  removeImages(namuMarkup, imageTokens = []) {
+    imageTokens = imageTokens.map(str => str.toLowerCase());
+    return namuMarkup.replace(/\[\[파일:([^\]]+?)(?:\|[^\]]+)?\]\] ?/g, (match, imageName) => {
+      for (let i = 0; i < imageTokens.length; ++i)
+        if (imageName.toLowerCase().indexOf(imageTokens[i]) !== -1)
+          return '';
+
+      return match;
+    })
   },
+
+  COMMON_IMAGES: [
+    'Cooldown_Clock.png', //재사용 대기시간
+    'icon-range-32.png',  //효과 사거리
+    'icon-width-32.png',  //효과 너비
+    'icon-radius-32.png', //효과 반경
+  ],
 
   /**
    * 나무위키 주석([* 내용])을 제거한다.
@@ -175,11 +271,13 @@ const NamuParser = {
   },
 
   /**
-   * 나무위키 링크([[링크명|문서]])를 링크명으로 대체한다
-   * @param {string} namuMarkup 나무마크
+   * Flattens NamuWiki anchors ([[target]] or [[target|link text]]) to plain text
+   * Note: Images are unaffeected.
+   * @param {string} namuMarkup NamuWiki markup
+   * @return {string} Modified NamuWiki markup
    */
-  removeNamuAnchor(namuMarkup) {
-    return namuMarkup.replace(/\[\[(?:.+?\|)?(?:\{\{\{#\w{6} )?(.+?)(?:\}\}\})?\]\]/g, '$1');
+  removeAnchors(namuMarkup) {
+    return namuMarkup.replace(/\[\[(?!파일:)(?:[^\]]+\|)?([^\]]+)]\]/g, '$1');
   },
 
   /**
@@ -296,22 +394,99 @@ const fs = require('fs');
 //   hero.name = fileName.replace(/\(.*\)/, '').replace('.txt', '');
 //   fs.writeFileSync('output.md', heroToMarkdown(hero), { flag: 'a' });
 // });
+const Tests = {
+  testTableParser(namuMarkup) {
+    return NamuParser.parseTables(
+      NamuParser.trimTableMarkup(namuMarkup)
+    );
+  },
+
+  testColorSpanRemove(namuMarkup) {
+    return NamuParser.removeColorSpanMarkup(
+      namuMarkup,
+      ['#eefee7', '#ffffff', '#ffd700']
+    );
+  },
+
+  testRemoveImages(namuMarkup) {
+    return NamuParser.removeImages(
+      namuMarkup,
+      NamuParser.COMMON_IMAGES
+    );
+  },
+
+  testRemoveAnchors(namuMarkup) {
+    return NamuParser.removeAnchors(namuMarkup);
+  },
+
+  testSections(namuMarkup) {
+    return NamuParser.parseSections(namuMarkup);
+  },
+
+  testComposite(namuMarkup) {
+    namuMarkup = NamuParser.removeColorSpanMarkup(
+      namuMarkup,
+      NamuParser.COMMON_TEXT_COLORS
+    );
+
+    namuMarkup = NamuParser.trimTableMarkup(namuMarkup);
+    namuMarkup = NamuParser.removeImages(namuMarkup, NamuParser.COMMON_IMAGES);
+    namuMarkup = NamuParser.removeAnchors(namuMarkup);
+    namuMarkup = NamuParser.removeBoldFormatting(namuMarkup);
+
+    const sections = NamuParser.parseSections(namuMarkup);
+
+    for (const header in sections)
+      sections[header] = NamuParser.parseTables(sections[header]);
+
+    return sections;
+  }
+};
+
+function runTests() {
+  const test = process.argv[2];
+  if (test) {
+    const filePath = process.argv[3] || 'temp/namu-dump/D.Va.txt';
+    const namuMarkup = fs.readFileSync(filePath, 'utf8');
+
+    const testName = ('test' + test).toLowerCase();
+    let matchFound = false;
+    for (const testFuncName in Tests) {
+      if (testFuncName.toLowerCase() === testName) {
+        matchFound = true;
+
+        console.log(`Running test: ${testFuncName}()  (input size is ${namuMarkup.length} characters)`)
+
+        let result = Tests[testFuncName](namuMarkup);
+
+        let resultFile;
+        if (typeof result === 'string')
+          resultFile = 'temp/output.txt';
+        else {
+          resultFile = 'temp/output.json';
+          result =  JSON.stringify(result, null, 2);
+        }
+
+        fs.writeFileSync(resultFile, result);
+
+        console.log(`Test finished, results written to ${resultFile} (output size: ${result.length} characters)`);
+        break;
+      }
+    }
+
+    if (matchFound)
+      return;
+
+    console.log(test + ' does not match any test available\n');
+  }
+
+  console.log('Available tests:');
+  for (const testFuncName in Tests)
+    console.log('\t' + testFuncName.toLowerCase().replace('test', ''));
+}
+
 
 if (require.main === module) {
-  const Tests = {
-    testTableParser() {
-      const filePath = process.argv[2] || 'temp/namu-dump/D.Va.txt';
-      const namuMarkup = fs.readFileSync(filePath, 'utf8');
-      const tables = NamuParser.parseTables(namuMarkup).map(table =>
-        table.map(
-          cellText => NamuParser.trimTableMarkup(cellText)
-        )
-      );
-
-      fs.writeFileSync('temp/output.json', JSON.stringify(tables, null, 2));
-    }
-  };
-
-  Tests.testTableParser();
+  runTests();
 }
 
