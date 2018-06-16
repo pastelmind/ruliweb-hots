@@ -1,116 +1,152 @@
-'use strict'
+#!/usr/bin/env node
 
-/** Represents a hero. */
-class Hero {
-  /**
-   * Create a new hero.
-   * @param {(string|number)} id A value that uniquely identifies a hero.
-   * @param {(string)} name Name of the hero.
-   */
-  constructor(id, name = null) {
-    this.id = id;
-    this.name = name;
-    this.skills = [];
-    this.talents = {};
-  }
-}
+/**
+ * Conversion between HotS data and Markdown
+ */
 
-/** Represents a single skill or talent. */
-class Skill {
-  /**
-   * Create a new skill/talent.
-   * @param {(string|number)} heroId ID of the hero that uses this skill/talent.
-   * @param {string} name Name of the skill/talent.
-   */
-  constructor(heroId = null, name = null) {
-    this.heroId = heroId;
-    this.name = name;
-    this.type = null;
-    this.description = '';
-    this.cooldown = 0;
-    this.manaCost = 0;
-    this.level = 0;
-    this.extras = {};
-  }
-}
+'use strict';
 
-function parseHeroMarkdown(markdown) {
-  const heroes = [];
-  let hero = null, skill = null, talentLevel = -1, isSkillSection = true;
+const { Hero, Skill, Talent } = require('./models.js');
 
-  markdown.split('\n').forEach((line, lineNum) => {
-    let titleMatch, listMatch;
-    if (titleMatch = line.match(/^(#+)\s*(.*?)\s*$/)) { //Is a header
-      const hashCount = titleMatch[1].length, titleText = titleMatch[2];
+module.exports = {
+  parseHeroMarkdown(markdown) {
+    const heroes = {};
+    let hero = null, skill = null, talent = null, isSkillSection = false, talentLevel = 0;
 
-      switch (hashCount) {
+    parseSections(sections).forEach(section => {
+      switch (section.depth) {
+        case 0: //Beginning section, ignore
+          break;
+
         case 1: //Is next hero
-          hero = new Hero(heroes.length, titleText);
+          hero = new Hero(parseHeroContent(section.content));
+          hero.name = section.title;
           heroes.push(hero);
           break;
 
         case 2: //Is talent/skill section
-          if (/^(기술|특성)$/.test(titleText))
-            isSkillSection = (titleText === '기술');
+          if (/^(기술|특성)$/.test(section.title))
+            isSkillSection = section.title.includes('기술');
           else
-            console.warn(`Line ${lineNum} is not a skill/talent section:`, line)
+            console.warn(`Unknown depth-${section.depth} section: `, JSON.stringify(section.title));
           break;
 
         case 3: //Is a skill or talent level group
           if (isSkillSection) {
-            skill = new Skill(hero.id, titleText);
+            skill = new Skill(parseSkillTalentContent(section.content));
+            skill.name = section.title;
             hero.skills.push(skill);
           }
           else {
-            const talentLevelMatch = titleText.match(/^레벨 (\d+)$/);
+            const talentLevelMatch = section.title.match(/^레벨 (\d+)$/);
             if (talentLevelMatch)
               talentLevel = parseInt(talentLevelMatch[1]);
             else
-              console.warn(`Line ${lineNum} is neither a skill nor a talent level group:`, line);
+              console.warn(`Unknown depth-${section.depth} section:`, JSON.stringify(section.title));
           }
           break;
 
         case 4: //Is a talent
-          skill = new Skill(hero.id, titleText);
-          skill.level = talentLevel;
+          talent = new Talent(parseSkillTalentContent(section.content));
+          talent.name = section.title;
+          talent.level = talentLevel;
           if (!(talentLevel in hero.talents))
-            hero.talents[talentLevel] = [skill];
+            hero.talents[talentLevel] = [talent];
           else
-            hero.talents[talentLevel].push(skill);
+            hero.talents[talentLevel].push(talent);
           break;
 
         default:
-          console.warn(`Line ${lineNum} has too many hash signs (#):`, line);
+          console.warn(`Section ${section.title} has too many (${section.depth}) hash signs`);
       }
-    }
-    else if (listMatch = line.match(/^\* (.+?)\s*$/)) { //Is a list
-      if (listMatch = line.match(/^\* (.+?): (.+?)\s*$/)) {
-        const extraName = listMatch[1], extraValue = listMatch[2];
-        if (extraName === '유형')
-          skill.type = extraValue;
-        else if (extraName === '재사용 대기시간')
-          skill.cooldown = parseFloat(extraValue);
-        else if (extraName === '마나')
-          skill.manaCost = parseInt(extraValue);
-        else
-          skill.extras[extraName] = extraValue;
-      }
-      else
-        console.warn(`Line ${lineNum} is unrecognized list format:`, line);
-    }
-    else {  //Is a plain line
-      skill.description += line.trim() + '\n';
-    }
-  });
-  
-  //Trim skill/talent descriptions
-  heroes.forEach(hero => {
-    hero.skills.forEach(skill => skill.description = skill.description.trim());
-    for (const talentLevel in hero.talents)
-      hero.talents[talentLevel].forEach(talent => talent.description = talent.description.trim());
-  });
+    });
+  }
+};
 
-  return heroes;
+//-------- Parser functions --------//
+
+/**
+ * Parses the markdown into sections. Each section has the following properties:
+ * - title: Title (header) string
+ * - depth: Number of hash marks (#) in the header string
+ * - content: Content between this header and the next (trimmed).
+ * The first section is always title = '', depth = 0.
+ * @param {string} markdown Markdown data
+ * @return {Object<string, Object>[]} Array of section objects
+ */
+function parseSections(markdown) {
+  const result = markdown.split(/^(#+)\s*(.*?)\s*$/);
+
+  const sections = [{
+    title: '',
+    depth: 0,
+    content: result[0].trim()
+  }];
+
+  for (let i = 1; i < result.length; i += 3) {
+    sections.push({
+      title: result[i + 1],
+      depth: result[i].length,
+      content: result[i + 2].trim()
+    });
+  }
+
+  return sections;
+}
+
+/**
+ * Parses the markdown, extracting hero data.
+ * @param {string} markdown Markdown data
+ * @return {Object} Hero data
+ */
+function parseHeroContent(markdown) {
+  const data = {};
+
+  data.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
+    (match, propName, propValue) => {
+      switch (propName) {
+        case 'ID': data.id = propValue; break;
+        case '아이콘': data.iconUrl = propValue; break;
+        case '유형': data.type = propValue; break;
+        case '세계관': data.universe = propValue; break;
+        case '역할': data.role = parseInt(propValue); break;
+        default:
+          console.warn('Unknown property:', propName, '/', propValue);
+      }
+
+      return '';
+    }).trim();
+
+  return data;
+}
+
+/**
+ * Parses the markdown, extracting skill/talent data.
+ * @param {string} markdown Markdown data
+ * @return {Object} Skill/talent data
+ */
+function parseSkillTalentContent(markdown) {
+  const data = { extras: {} };
+
+  data.description = markdown.replace(/^\* (.+?): (.+?)\s*$/mg,
+    (match, extraName, extraValue) => {
+      switch (extraName) {
+        case '아이콘':
+          data.iconUrl = extraValue; break;
+        case '유형':
+          data.type = extraValue; break;
+        case '재사용 대기시간':
+          data.cooldown = parseFloat(extraValue); break;
+        case '마나':
+          data.manaCost = parseInt(extraValue); break;
+        default:
+          data.extras[extraName] = extraValue;
+      }
+
+      return '';
+    }).trim();
+
+  return data;
 }
 
 
