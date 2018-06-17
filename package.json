@@ -1,18 +1,31 @@
 {
-  "name": "ruliweb-hots-chrome-ext",
+  "name": "ruliweb-hots",
   "version": "0.2.0",
-  "devDependencies": {
-    "wget-improved": "^3.0.1",
-    "rewire": "^4.0.1"
-  },
+  "description": "A Chrome extension that assists in creating and posting Heroes of the Storm guides on Ruliweb.com",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:prep-dir && npm run build:zip-extension",
     "build:prep-dir": "DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
     "build:zip-extension": "PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
     "namu:crawl": "node util/crawl-namu.js",
     "namu:parse": "node util/parse-namu.js",
-    "test": "",
     "env": "SET",
     "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pastelmind/ruliweb-hots.git"
+  },
+  "author": "pastelmind",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pastelmind/ruliweb-hots/issues"
+  },
+  "homepage": "https://github.com/pastelmind/ruliweb-hots#readme",
+  "devDependencies": {
+    "rewire": "^4.0.1"
+  },
+  "dependencies": {
+    "wget-improved": "^3.0.1"
   }
 }
