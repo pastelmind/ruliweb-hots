@@ -10,7 +10,9 @@
     "namu:crawl": "node util/crawl-namu.js",
     "namu:parse": "node util/parse-namu.js",
     "env": "SET",
-    "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json"
+    "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json",
+    "postinstall": "npm run update-dependencies",
+    "update-dependencies": "COPY /B node_modules\\jquery\\dist\\jquery.min.js chrome-ext\\src\\js\\jquery.js && COPY /B node_modules\\mustache\\mustache.min.js chrome-ext\\src\\js\\mustache.js"
   },
   "repository": {
     "type": "git",
