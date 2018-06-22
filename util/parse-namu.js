@@ -39,9 +39,18 @@ const heroes = {};
 
 namuHeroArray.forEach(hero => {
   for (const heroId in heroesMinimal) {
-    if (hero.name === heroesMinimal[heroId].name) {
-      Object.assign(hero, heroesMinimal[heroId]);
+    const minimalHero = heroesMinimal[heroId];
+    if (hero.name === minimalHero.name) {
+      //Copy ID, hero iconUrl, and skill iconUrl
+      //TODO improve logic
       hero.id = heroId;
+      hero.iconUrl = minimalHero.iconUrl;
+      if (minimalHero.skills) {
+        minimalHero.skills.forEach((skill, index) => {
+          hero.skills[index].iconUrl = skill.iconUrl;
+        });
+      }
+
       heroes[heroId] = new Hero(hero);
       delete heroesMinimal[heroId];
       return;

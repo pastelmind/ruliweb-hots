@@ -14,8 +14,10 @@ class Hero {
     this.type = o.type || '';
     this.role = o.role || '';
     this.universe = o.universe || '';
-    this.skills = o.skills || [];
-    this.talents = o.talents || {};
+    this.skills = (o.skills || []).map(skill => new Skill(skill));
+    this.talents = {};
+    for (const talentLevel in o.talents)
+      this.talents[talentLevel] = o.talents[talentLevel].map(talent => new Talent(talent));
   }
 
   /**
@@ -98,9 +100,5 @@ class Talent extends Skill {
 
 
 if (typeof module === 'object') {
-  module.exports = {
-    Hero: Hero,
-    Skill: Skill,
-    Talent: Talent
-  };
+  module.exports = { Hero, Skill, Talent };
 }

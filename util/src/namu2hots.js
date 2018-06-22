@@ -35,7 +35,10 @@ module.exports = {
 
       let skillTitleMatch, talentTitleMatch;
 
-      if (skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
+      if (title === '소개') {
+        Object.assign(hero, parseHeroIntroSection(content));
+      }
+      else if (skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
         const tables = parseTables(content);
         if (!tables[0][1])
           throw JSON.stringify({ title, tables });
@@ -76,14 +79,19 @@ module.exports = {
    * @returns {Object<string, Hero>} Hero objects in `{ "cho": cho, "gall": gall }` format
    */
   parseChoGallPage(namuMarkup) {
-    const ogreMarkups = namuMarkup.split(/=+.*갈.*Gall.*=+/i);
-    if (ogreMarkups.length !== 2)
-      console.warn('Unable to split Cho and Gall in two:', ogreMarkups.length);
-    
-    const cho = this.parseHeroPage(ogreMarkups[0]);
-    const gall = this.parseHeroPage(ogreMarkups[1]);
+    const ogreMarkups = namuMarkup.split(/=+.*(?:초.*Cho|갈.*Gall).*=+/i);
+    if (ogreMarkups.length !== 3)
+      console.warn('Unable to split Cho\'Gall article in 3:', ogreMarkups.length);
+
+    const cho = this.parseHeroPage(ogreMarkups[1]);
+    const gall = this.parseHeroPage(ogreMarkups[2]);
     cho.name = '초';
     gall.name = '갈';
+
+    const choGallData = parseChoGallIntroSection(ogreMarkups[0]);
+    Object.assign(cho, choGallData.cho);
+    Object.assign(gall, choGallData.gall);
+
     return { cho, gall };
   }
 };
@@ -196,6 +204,80 @@ function parseSections(namuMarkup) {
     headerToContent[result[i]] = result[i + 1];
 
   return headerToContent;
+}
+
+/**
+ * Parse a hero's intro section and extract hero data.
+ * @param {string} section NamuWiki markup
+ * @return {Object.<string, string>} Hero data in the form of `{ type, role, universe }`
+ */
+function parseHeroIntroSection(section) {
+  const tables = parseTables(section);
+
+  const typeAndRoleCell = tables[0][7];
+  const universeCell = tables[0][8];
+
+  return {
+    type: parseHeroType(typeAndRoleCell),
+    role: parseHeroRole(typeAndRoleCell),
+    universe: parseHeroUniverse(universeCell)
+  };
+}
+
+/**
+ * Parse Cho'Gall's intro section and extract hero data.
+ * @param {string} section NamuWiki markup
+ * @return {Object.<string, Object>} Hero data in the form of `{ cho, gall }`
+ */
+function parseChoGallIntroSection(section) {
+  const tables = parseTables(section);
+
+  const choTypeAndRoleCell = tables[0][8];
+  const gallTypeAndRoleCell = tables[0][9];
+  const universeCell = tables[0][10];
+
+  const cho = {
+    type: parseHeroType(choTypeAndRoleCell),
+    role: parseHeroRole(choTypeAndRoleCell),
+    universe: parseHeroUniverse(universeCell)
+  };
+  const gall = {
+    type: parseHeroType(gallTypeAndRoleCell),
+    role: parseHeroRole(gallTypeAndRoleCell),
+    universe: cho.universe
+  };
+
+  return { cho, gall };
+}
+
+/**
+ * Parse a hero's attack type (melee/ranged/both).
+ * @param {string} content NamuWiki markup
+ * @return {string} One of '근접', '원거리', '근접 / 원거리', ''
+ */
+function parseHeroType(content) {
+  const match = /근접|원거리|근접 \/ 원거리/.exec(content);
+  return match ? match[0] : '';
+}
+
+/**
+ * Parse a hero's role (warrior/assassin/support/specialist).
+ * @param {string} content NamuWiki markup
+ * @return {string} One of '전사', '암살자', '지원가', '전문가', ''
+ */
+function parseHeroRole(content) {
+  const match = /전사|암살자|지원가|전문가/.exec(content);
+  return match ? match[0] : '';
+}
+
+/**
+ * Parse a hero's universe (warcraft/starcraft/diablo/classic/overwatch).
+ * @param {string} content NamuWiki markup
+ * @return {string} One of '워크래프트', '스타크래프트', '디아블로', '블리자드 고전', '오버워치', ''
+ */
+function parseHeroUniverse(content) {
+  const match = /워크래프트|스타크래프트|디아블로|블리자드 고전|오버워치/.exec(content);
+  return match ? match[0] : '';
 }
 
 /**

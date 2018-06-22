@@ -77,10 +77,10 @@ module.exports = {
       markdown += `* 아이콘: ${hero.iconUrl}\n`;
     if (hero.type)
       markdown += `* 유형: ${hero.type}\n`;
-    if (hero.universe)
-      markdown += `* 세계관: ${hero.universe}\n`;
     if (hero.role)
       markdown += `* 역할: ${hero.role}\n`;
+    if (hero.universe)
+      markdown += `* 세계관: ${hero.universe}\n`;
 
     markdown += '\n## 기술\n';
     markdown += hero.skills.map(skillToMarkdown).join('\n\n');
@@ -224,7 +224,7 @@ function skillToMarkdown(skill) {
     markdown += `* ${extra}: ${skill.extras[extra]} \n`;
 
   //Add two spaces after lines so that single line breaks are not removed by Markdown parsers
-  markdown +='\n' + skill.description.replace(/^(?!\*|#).*\S(?=\n\S)/mg, '$&  ');
+  markdown += '\n' + skill.description.replace(/^(?!\*|#).*\S(?=\n\S)/mg, '$&  ');
 
   return markdown;
 }

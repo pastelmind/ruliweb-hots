@@ -289,7 +289,21 @@
   },
   "tyrael": {
     "name": "티리엘",
-    "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png"
+    "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png",
+    "skills": [
+      {
+        "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc809b3819dc2c.png"
+      },
+      {
+        "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc809fc819dc2c.png"
+      },
+      {
+        "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc80e26a19dc2c.png"
+      },
+      {
+        "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc809bf119dc2c.png"
+      }
+    ]
   },
   "falstad": {
     "name": "폴스타트",

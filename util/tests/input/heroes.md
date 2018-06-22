@@ -1,6 +1,9 @@
 # 말티엘
 * ID: malthael
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 디아블로
 
 ## 기술
 ### 사신의 징표 (Reaper's Mark)
@@ -170,6 +173,9 @@
 # 초
 * ID: cho
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 오우거의 가죽 (Ogre Hide)
@@ -332,6 +338,9 @@
 # 갈
 * ID: gall
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 오우거의 분노 (Ogre Rage)

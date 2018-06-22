@@ -1,6 +1,9 @@
 # D.Va
 * ID: dva
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc223a4f19dc2c.png
+* 유형: 원거리
+* 역할: 전사
+* 세계관: 오버워치
 
 ## 기술
 ### 로봇 모드 (Mech Mode)
@@ -227,6 +230,9 @@
 # 가로쉬
 * ID: garrosh
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc0e1f0419dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 방어력 증가 (Armor Up)
@@ -405,6 +411,9 @@
 # 가즈로
 * ID: gazlowe
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png
+* 유형: 근접
+* 역할: 전문가
+* 세계관: 워크래프트
 
 ## 기술
 ### 고물상 (Salvager)
@@ -597,6 +606,9 @@
 # 겐지
 * ID: genji
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc227acf19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 오버워치
 
 ## 기술
 ### 사이보그의 날렵함 (Cyber Agility)
@@ -768,6 +780,9 @@
 # 굴단
 * ID: guldan
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc227d4919dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 생명력 전환 (Life Tap)
@@ -938,6 +953,9 @@
 # 그레이메인
 * ID: greymane
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc227c8e19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 늑대인간의 저주 (Curse of the Worgen)
@@ -1121,6 +1139,9 @@
 # 길 잃은 바이킹
 * ID: the-lost-vikings
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23302619dc2c.png
+* 유형: 근접
+* 역할: 전문가
+* 세계관: 블리자드 고전
 
 ## 기술
 ### 바이킹 비상 식량 (Viking Hoard)
@@ -1313,6 +1334,9 @@
 # 나지보
 * ID: nazeebo
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23088119dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 디아블로
 
 ## 기술
 ### 부두 의식 (Voodoo Ritual)
@@ -1485,6 +1509,9 @@
 # 노바
 * ID: nova
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc23093d19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 영구 은신 (Permanent Cloak)
@@ -1658,6 +1685,9 @@
 # 누더기
 * ID: stitches
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc0e223819dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 유독 가스 (Vile Gas)
@@ -1843,6 +1873,9 @@
 # 데커드
 * ID: deckard
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22398819dc2c.png
+* 유형: 근접
+* 역할: 지원가
+* 세계관: 디아블로
 
 ## 기술
 ### 케인의 수호자 (Fortitude of the Faithful)
@@ -2006,6 +2039,9 @@
 # 데하카
 * ID: dehaka
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc0e1d8c19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 스타크래프트
 
 ## 기술
 ### 정수 수집 (Essence Collection)
@@ -2168,6 +2204,9 @@
 # 도살자
 * ID: the-butcher
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc232f6f19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 디아블로
 
 ## 기술
 ### 신선한 고기 (Fresh Meat)
@@ -2337,6 +2376,9 @@
 # 디아블로
 * ID: diablo
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc0e1e4519dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 디아블로
 
 ## 기술
 ### 검은 영혼석 (Black Soulstone)
@@ -2502,6 +2544,9 @@
 # 라그나로스
 * ID: ragnaros
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc230abb19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 화산 심장부 (Molten Core)
@@ -2709,6 +2754,9 @@
 # 레가르
 * ID: rehgar
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc230c2b19dc2c.png
+* 유형: 근접
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 늑대 정령 (Ghost Wolf)
@@ -2890,6 +2938,9 @@
 # 레오릭
 * ID: leoric
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc0e1fd219dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 디아블로
 
 ## 기술
 ### 불사, 해골 왕의 분노 (Undying, Wrath Of The Bone King)
@@ -3075,6 +3126,9 @@
 # 레이너
 * ID: raynor
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc230b7619dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 향상된 시력 (Advanced Optics)
@@ -3248,6 +3302,9 @@
 # 렉사르
 * ID: rexxar
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png
+* 유형: 원거리
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 기백 날리기 (Spirit Swoop)
@@ -3413,6 +3470,9 @@
 # 루나라
 * ID: lunara
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22d94b19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 자연의 독소 (Nature's Toxin)
@@ -3584,6 +3644,9 @@
 # 루시우
 * ID: lucio
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 오버워치
 
 ## 기술
 ### 벽 타기 (Wall Ride)
@@ -3762,6 +3825,9 @@
 # 리 리
 * ID: li-li
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22a97519dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 빠른 발 (Fast Feet)
@@ -3927,6 +3993,9 @@
 # 리밍
 * ID: li-ming
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22aa2519dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 디아블로
 
 ## 기술
 ### 극대화 반응 (Critical Mass)
@@ -4097,6 +4166,9 @@
 # 마이에브
 * ID: maiev
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc22da0319dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 감시관의 도약 (Vault of the Wardens)
@@ -4271,6 +4343,9 @@
 # 말티엘
 * ID: malthael
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 디아블로
 
 ## 기술
 ### 사신의 징표 (Reaper's Mark)
@@ -4440,6 +4515,9 @@
 # 말퓨리온
 * ID: malfurion
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22dabd19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 정신 자극 (Innervate)
@@ -4606,6 +4684,9 @@
 # 머키
 * ID: murky
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc230db119dc2c.png
+* 유형: 근접
+* 역할: 전문가
+* 세계관: 워크래프트
 
 ## 기술
 ### 알 놓기 (Spawn Egg)
@@ -4773,6 +4854,9 @@
 # 메디브
 * ID: medivh
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22dc3619dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 워크래프트
 
 ## 기술
 ### 까마귀 변신 (Raven Form)
@@ -4951,6 +5035,9 @@
 # 모랄레스 중위
 * ID: lt-morales
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc22dd9d19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 카두세우스 반응로 (Caduceus Reactor)
@@ -5111,6 +5198,9 @@
 # 무라딘
 * ID: muradin
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc0e209419dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 재기의 바람 (Second Wind)
@@ -5279,6 +5369,8 @@
 # 바리안
 * ID: varian
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23818119dc2c.png
+* 유형: 근접
+* 역할: 전사
 
 ## 기술
 ### 영웅의 일격 (Heroic Strike)
@@ -5471,6 +5563,9 @@
 # 발라
 * ID: valla
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23546119dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 디아블로
 
 ## 기술
 ### 증오 (Hatred)
@@ -5643,6 +5738,9 @@
 # 발리라
 * ID: valeera
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc2353a119dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 소멸 (Vanish)
@@ -5872,6 +5970,9 @@
 # 블레이즈
 * ID: blaze
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc0e1ccf19dc2c.png
+* 유형: 원거리
+* 역할: 전사
+* 세계관: 스타크래프트
 
 ## 기술
 ### 방화광 (Pyromania)
@@ -6062,6 +6163,9 @@
 # 빛나래
 * ID: brightwing
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc2234ce19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 위안의 안개 (Soothing Mist)
@@ -6240,6 +6344,9 @@
 # 사무로
 * ID: samuro
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc2330de19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 파죽지세, 환영 이동술 (Advancing Strikes, Image Transmission)
@@ -6400,6 +6507,9 @@
 # 소냐
 * ID: sonya
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23324d19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 디아블로
 
 ## 기술
 ### 분노 (Fury)
@@ -6566,6 +6676,9 @@
 # 스랄
 * ID: thrall
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc23552519dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 서리늑대의 회복력 (Frostwolf Resilience)
@@ -6744,6 +6857,9 @@
 # 스투코프
 * ID: stukov
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc23332019dc2c.png
+* 유형: 근접
+* 역할: 지원가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 감염체 폭발 (Bio-Kill Switch)
@@ -6931,6 +7047,9 @@
 # 실바나스
 * ID: sylvanas
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc2333df19dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 워크래프트
 
 ## 기술
 ### 검은 화살 (Black Arrows)
@@ -7107,6 +7226,9 @@
 # 아나
 * ID: ana
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 오버워치
 
 ## 기술
 ### 때까치 (Shrike)
@@ -7289,6 +7411,9 @@
 # 아눕아락
 * ID: anubarak
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc21f8f419dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 풍뎅이 숙주 (Scarab Host)
@@ -7461,6 +7586,9 @@
 # 아르타니스
 * ID: artanis
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc21f3ad19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 스타크래프트
 
 ## 기술
 ### 과부하 보호막 (Shield Overload)
@@ -7637,6 +7765,9 @@
 # 아바투르
 * ID: abathur
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc21f60119dc2c.png
+* 유형: 근접
+* 역할: 전문가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 식충 변종 (Locust Strain)
@@ -7856,6 +7987,9 @@
 # 아서스
 * ID: arthas
 * 아이콘: http://i3.ruliweb.com/img/18/06/13/163f62ac4df19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 서리한이 굶주렸다 (Frostmourne Hungers)
@@ -8027,6 +8161,9 @@
 # 아우리엘
 * ID: auriel
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc21f47c19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 디아블로
 
 ## 기술
 ### 희망 불어넣기 (Bestow Hope)
@@ -8200,6 +8337,9 @@
 # 아즈모단
 * ID: azmodan
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc21f54519dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 디아블로
 
 ## 기술
 ### 지옥의 장군 (General of Hell)
@@ -8385,6 +8525,9 @@
 # 알라라크
 * ID: alarak
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc21f6bc19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 가학성 (Sadism)
@@ -8581,6 +8724,9 @@
 # 알렉스트라자
 * ID: alexstrasza
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc21f78419dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 용의 여왕 (Dragonqueen)
@@ -8789,6 +8935,9 @@
 # 요한나
 * ID: johanna
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22a5d219dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 디아블로
 
 ## 기술
 ### 철갑 피부 (Iron Skin)
@@ -8969,6 +9118,9 @@
 # 우서
 * ID: uther
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc2352d919dc2c.png
+* 유형: 근접
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 헌신, 영원한 선봉장 (Devotion, Eternal Vanguard)
@@ -9150,6 +9302,9 @@
 # 이렐
 * ID: yrel
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc237dd219dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 신성한 목적 (Divine Purpose)
@@ -9317,6 +9472,9 @@
 # 일리단
 * ID: illidan
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22aae919dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 배신자의 갈증 (Betrayer's Thirst)
@@ -9473,6 +9631,9 @@
 # 자가라
 * ID: zagara
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc237e8c19dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 점막 종양 (Creep Tumor)
@@ -9653,6 +9814,9 @@
 # 자리야
 * ID: zarya
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc237f4419dc2c.png
+* 유형: 원거리
+* 역할: 전사
+* 세계관: 오버워치
 
 ## 기술
 ### 에너지 (Energy)
@@ -9841,6 +10005,9 @@
 # 정예 타우렌 족장
 * ID: etc
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc2233b019dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 록스타 (Rockstar)
@@ -10012,6 +10179,9 @@
 # 정크랫
 * ID: junkrat
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22a68719dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 오버워치
 
 ## 기술
 ### 완전 난장판, 지뢰 폭발 (Total Mayhem, Detonate Mine)
@@ -10197,6 +10367,9 @@
 # 제라툴
 * ID: zeratul
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc237ffa19dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 영구 은신 (Permanent Cloak)
@@ -10367,6 +10540,9 @@
 # 제이나
 * ID: jaina
 * 아이콘: http://i1.ruliweb.com/img/18/06/13/163f62ac5c319dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 동상 (Frostbite)
@@ -10541,6 +10717,9 @@
 # 줄
 * ID: xul
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc237d0619dc2c.png
+* 유형: 근접
+* 역할: 전문가
+* 세계관: 디아블로
 
 ## 기술
 ### 해골 되살리기 (Raise Skeleton)
@@ -10718,6 +10897,9 @@
 # 줄진
 * ID: zuljin
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc2380c119dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 광전사, 도끼 맛 좀 보여줄까? (Berserker, You Want Axe?)
@@ -10886,6 +11068,9 @@
 # 첸
 * ID: chen
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22375019dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 강화주 (Fortifying Brew)
@@ -11072,6 +11257,9 @@
 # 초
 * ID: cho
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 워크래프트
 
 ## 기술
 ### 오우거의 가죽 (Ogre Hide)
@@ -11234,6 +11422,9 @@
 # 갈
 * ID: gall
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 오우거의 분노 (Ogre Rage)
@@ -11400,6 +11591,9 @@
 # 캘타스
 * ID: kaelthas
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc22a73f19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 신록의 구슬 (Verdant Spheres)
@@ -11568,6 +11762,9 @@
 # 케리건
 * ID: kerrigan
 * 아이콘: http://i3.ruliweb.com/img/18/06/13/163f62ac69419dc2c.png
+* 유형: 근접
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 동화 작용 (Assimilation)
@@ -11743,6 +11940,9 @@
 # 켈투자드
 * ID: kelthuzad
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc22a80d19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 차디찬 어둠의 지배자 (Master of the Cold Dark)
@@ -11922,6 +12122,9 @@
 # 크로미
 * ID: chromie
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc2238c619dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 시간여행자 (Timewalker)
@@ -12093,6 +12296,9 @@
 # 타이커스
 * ID: tychus
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc23509019dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 미니건 (Minigun)
@@ -12275,6 +12481,9 @@
 # 태사다르
 * ID: tassadar
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc232eb319dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 왜곡 광선, 계시 (Distortion Beam, Oracle)
@@ -12447,6 +12656,9 @@
 # 트레이서
 * ID: tracer
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc234fd619dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 오버워치
 
 ## 기술
 ### 재장전 (Reload)
@@ -12603,6 +12815,9 @@
 # 티란데
 * ID: tyrande
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc23521c19dc2c.png
+* 유형: 원거리
+* 역할: 지원가
+* 세계관: 워크래프트
 
 ## 기술
 ### 사냥꾼의 징표 (Hunter's Mark)
@@ -12775,16 +12990,21 @@
 # 티리엘
 * ID: tyrael
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png
+* 유형: 근접
+* 역할: 전사
+* 세계관: 디아블로
 
 ## 기술
 ### 대천사의 분노 (Archangel's Wrath)
 * 유형: 고유 능력
+* 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc809b3819dc2c.png 
 * 피해 반경: 4 
 
 죽으면, 무적 상태가 되고 3.5초 후에 폭발하며 572(+4%)의 피해를 줍니다.
 
 ### 엘드루인의 힘 (El'druin's Might)
 * 유형: Q
+* 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc809fc819dc2c.png 
 * 마나: 45 
 * 재사용 대기시간: 12 
 * 사거리: 9 
@@ -12794,6 +13014,7 @@
 
 ### 정의 (Righteousness)
 * 유형: W
+* 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc80e26a19dc2c.png 
 * 마나: 50 
 * 재사용 대기시간: 10 
 * 효과 반경: 5.5 
@@ -12802,6 +13023,7 @@
 
 ### 강타 (Smite)
 * 유형: E
+* 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc809bf119dc2c.png 
 * 마나: 50 
 * 재사용 대기시간: 6 
 * 사거리: 6.25 
@@ -12934,6 +13156,9 @@
 # 폴스타트
 * ID: falstad
 * 아이콘: http://i1.ruliweb.com/img/18/06/14/163fc227ebe19dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 워크래프트
 
 ## 기술
 ### 순풍 (Tailwind)
@@ -13093,6 +13318,9 @@
 # 프로비우스
 * ID: probius
 * 아이콘: http://i3.ruliweb.com/img/18/06/14/163fc230a0119dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 수정탑 소환 (Warp In Pylon)
@@ -13278,6 +13506,9 @@
 # 피닉스
 * ID: fenix
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 스타크래프트
 
 ## 기술
 ### 보호막 축전기 (Shield Capacitor)
@@ -13437,6 +13668,9 @@
 # 한조
 * ID: hanzo
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc227e0619dc2c.png
+* 유형: 원거리
+* 역할: 암살자
+* 세계관: 오버워치
 
 ## 기술
 ### 선천적인 날렵함 (Natural Agility)
@@ -13614,6 +13848,9 @@
 # 해머 상사
 * ID: sgt-hammer
 * 아이콘: http://i2.ruliweb.com/img/18/06/14/163fc23319819dc2c.png
+* 유형: 원거리
+* 역할: 전문가
+* 세계관: 스타크래프트
 
 ## 기술
 ### 공성 모드 (Siege Mode)
