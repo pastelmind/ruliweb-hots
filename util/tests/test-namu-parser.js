@@ -6,138 +6,41 @@
 
 'use strict';
 
+const assert = require('assert');
 const fs = require('fs');
-const rewire = require('rewire');
-const namu2hots = rewire('../src/namu2hots.js');
+const util = require('util');
+const namu2hots = require('../src/namu2hots');
 
 
-const Tests = {
-  parseTable: 'parseTables',
-  removeTableMarkup: 'removeTableMarkup',
+describe('namu2hots', () => {
+  const ref = {};
 
-  removeColorSpan(namuMarkup) {
-    return namu2hots.__get__('removeColorSpanMarkup')(
-      namuMarkup,
-      namu2hots.__get__('COMMON_TEXT_COLORS')
+  before('Loading test data files', () => {
+    const readFile = util.promisify(fs.readFile);
+
+    return Promise.resolve().then(
+      () => readFile('./util/tests/input/malthael-namu.txt', 'utf8')
+    ).then(
+      namuMarkup => ref.namuHeroArticle = namuMarkup
+    ).then(
+      () => readFile('./util/tests/input/malthael-compact.json', 'utf8')
+    ).then(
+      heroJsonCompactStr => ref.heroJsonCompact = JSON.parse(heroJsonCompactStr)
+    ).then(
+      () => {
+        assert(ref.namuHeroArticle);
+        assert(ref.heroJsonCompact);
+        Object.freeze(ref);
+      }
     );
-  },
-
-  removeImages(namuMarkup) {
-    return namu2hots.__get__('removeImages')(
-      namuMarkup,
-      namu2hots.__get__('COMMON_IMAGES')
-    );
-  },
-
-  removeBold: 'removeBoldFormatting',
-  removeNamuFootnotes: 'removeNamuFootnotes',
-  removeAnchors: 'removeAnchors',
-  removeNamuBr: 'removeNamuBr',
-  parseSections: 'parseSections',
-
-  composite(namuMarkup) {
-    namuMarkup = namu2hots.__get__('removeTableMarkup')(namuMarkup);
-    namuMarkup = Tests.removeColorSpan(namuMarkup);
-    namuMarkup = Tests.removeImages(namuMarkup);
-    namuMarkup = namu2hots.__get__('removeNamuFootnotes')(namuMarkup);
-    namuMarkup = namu2hots.__get__('removeAnchors')(namuMarkup);
-    namuMarkup = namu2hots.__get__('removeNamuBr')(namuMarkup);
-
-    const sections = namu2hots.__get__('parseSections')(namuMarkup);
-
-    for (const header in sections)
-      sections[header] = namu2hots.__get__('parseTables')(sections[header]);
-
-    return sections;
-  },
-
-  parseHeroPage(namuMarkup) {
-    return namu2hots.parseHeroPage(namuMarkup);
-  }
-};
-
-
-function findTest(token) {
-  token = token.toLowerCase();
-  const matches = [];
-
-  for (const testFuncName in Tests)
-    if (testFuncName.toLowerCase().includes(token))
-      matches.push(testFuncName);
-
-  if (matches.length === 1)
-    return matches[0];
-  else if (matches.length === 0) {
-    console.error(token, 'does not match a valid test name');
-    return null;
-  }
-  else {
-    console.error(token, 'matches multiple tests:', matches.join());
-    return null;
-  }
-}
-
-
-function executeTests(tests) {
-  const filePath = process.argv[3] || 'temp/namu-dump/D.Va.txt';
-  let data = fs.readFileSync(filePath, 'utf8');
-  let dataLength = data.length;
-
-  tests.forEach(testFuncName => {
-    console.log(`Running test: ${testFuncName}(), input size is ${dataLength} characters.`)
-
-    const testTarget = Tests[testFuncName];
-    if (typeof testTarget === 'function')
-      data = testTarget(data);
-    else
-      data = namu2hots.__get__(testTarget)(data);
-
-    dataLength = (typeof data === 'string' ? data.length : JSON.stringify(data).length);
-    console.log(`\tTest completed, output is ${typeof data} of ${dataLength} characters.`);
   });
 
-  let resultFile;
-  if (typeof data === 'string')
-    resultFile = 'temp/output.txt';
-  else {
-    resultFile = 'temp/output.json';
-    data = JSON.stringify(data, null, 2);
-  }
+  it('should convert namu markup to hero correctly', () => {
+    const hero = namu2hots.parseHeroPage(ref.namuHeroArticle);
+    hero.name = '말티엘';
+    hero.id = 'malthael';
+    hero.iconUrl = 'http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png';
 
-  fs.writeFileSync(resultFile, data);
-  console.log(`Test finished, results written to ${resultFile} (output size: ${data.length} characters)`);
-}
-
-
-function runTestScript() {
-  const testArg = process.argv[2];
-
-  if (testArg) {
-    const testTokens = testArg.toLowerCase().split(',');
-    const tests = [];
-
-    for (let i = 0; i < testTokens.length; ++i) {
-      const testFuncName = findTest(testTokens[i]);
-      if (!testFuncName) {
-        tests = []; //Don't perform any tests
-        break;
-      }
-      else
-        tests.push(testFuncName);
-    }
-
-    if (tests.length) {
-      executeTests(tests);
-      return;
-    }
-  }
-
-  console.log('Available tests:');
-  for (const testFuncName in Tests)
-    console.log('\t' + testFuncName);
-}
-
-
-if (require.main === module) {
-  runTestScript();
-}
+    assert.deepStrictEqual(hero.compact(), ref.heroJsonCompact);
+  });
+});

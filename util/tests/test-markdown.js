@@ -6,17 +6,38 @@
 
 'use strict';
 
+const assert = require('assert');
 const fs = require('fs');
-const rewire = require('rewire');
-const models = require('../src/models.js');
-const markdown2hots = rewire('../src/markdown2hots.js');
+const util = require('util');
+const markdown2hots = require('../src/markdown2hots');
 
-const markdown = fs.readFileSync('docs/heroes.md', 'utf8');
-const heroes = markdown2hots.parseHeroMarkdown(markdown);
 
-//Write compact JSON output
-const heroesCompact = models.Hero.compact(heroes);
+describe('markdown2hots', () => {
+  const ref = {};
 
-const outputJsonFile = 'temp/from-md.json';
-fs.writeFileSync(outputJsonFile, JSON.stringify(heroesCompact, null, 2));
-console.log('Markdown-to-json results saved to', outputJsonFile);
+  before('Loading test data files', () => {
+    const readFile = util.promisify(fs.readFile);
+
+    return Promise.resolve().then(
+      () => readFile('./util/tests/input/malthael.md', 'utf8')
+    ).then(
+      markdown => ref.heroMarkdown = markdown
+    ).then(
+      () => readFile('./util/tests/input/malthael-compact.json', 'utf8')
+    ).then(
+      heroJsonCompactStr => ref.heroJsonCompact = JSON.parse(heroJsonCompactStr)
+    ).then(
+      () => {
+        assert(ref.heroMarkdown);
+        assert(ref.heroJsonCompact);
+        Object.freeze(ref);
+      }
+    );
+  });
+
+  it('should convert markdown to hero correctly', () => {
+    const heroes = markdown2hots.parseHeroMarkdown(ref.heroMarkdown);
+
+    assert.deepStrictEqual(heroes.malthael.compact(), ref.heroJsonCompact);
+  });
+});
