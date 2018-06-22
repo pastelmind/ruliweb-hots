@@ -8,7 +8,6 @@
 
 const assert = require('assert');
 const fs = require('fs');
-const util = require('util');
 const namu2hots = require('../src/namu2hots');
 
 
@@ -16,27 +15,12 @@ describe('namu2hots', () => {
   const ref = {};
 
   before('Loading test data files', () => {
-    const readFile = util.promisify(fs.readFile);
-
-    return Promise.resolve().then(
-      () => readFile('./util/tests/input/말티엘.txt', 'utf8')
-    ).then(
-      namuMarkup => ref.namuHeroArticle = namuMarkup
-    ).then(
-      () => readFile('./util/tests/input/초갈.txt', 'utf8')
-    ).then(
-      namuMarkup => ref.namuChoGallArticle = namuMarkup
-    ).then(
-      () => readFile('./util/tests/input/heroes-compact.json', 'utf8')
-    ).then(
-      heroJsonCompactStr => ref.heroJsonCompact = JSON.parse(heroJsonCompactStr)
-    ).then(
-      () => {
-        assert(ref.namuHeroArticle);
-        assert(ref.heroJsonCompact);
-        Object.freeze(ref);
-      }
-    );
+    ref.namuHeroArticle = fs.readFileSync('./util/tests/input/말티엘.txt', 'utf8');
+    ref.namuChoGallArticle = fs.readFileSync('./util/tests/input/초갈.txt', 'utf8');
+    ref.heroJsonCompact = JSON.parse(
+      fs.readFileSync('./util/tests/input/heroes-compact.json', 'utf8'));
+      
+    Object.freeze(ref);
   });
 
   it('should convert namu markup to hero correctly', () => {
