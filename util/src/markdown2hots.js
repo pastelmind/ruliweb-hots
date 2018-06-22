@@ -150,7 +150,7 @@ function parseHeroContent(name, markdown) {
       }
 
       return '';
-    }).trim();
+    }).split(/ *\r?\n/g).join('\n').trim();
 
   if (!hero.id)
     console.warn('Missing hero ID for', hero.name);
@@ -183,7 +183,7 @@ function parseSkillMarkdown(name, markdown) {
       }
 
       return '';
-    }).trim();
+    }).split(/ *\r?\n/g).join('\n').trim();
 
   return new Skill(skill);
 }
