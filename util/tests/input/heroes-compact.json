@@ -1,0 +1,617 @@
+{
+  "cho": {
+    "name": "초",
+    "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
+    "type": "",
+    "role": "",
+    "universe": "",
+    "skills": [
+      {
+        "name": "오우거의 가죽 (Ogre Hide)",
+        "type": "고유 능력",
+        "description": "사용하면 방어력이 25 증가하지만 갈의 공격력이 25% 감소합니다.",
+        "cooldown": 5,
+        "extras": {}
+      },
+      {
+        "name": "쇄도의 주먹 (Surging Fist)",
+        "type": "Q",
+        "description": "사용하면 쇄도의 주먹을 사용할 준비를 합니다. 다시 사용하면 전방으로 돌진하며 경로에 있는 모든 적들에게 48(+4%)의 피해를 주고 양옆으로 밀쳐냅니다. 돌진 거리는 충전을 오래 할수록 증가하여 최대 250%까지 증가합니다.",
+        "cooldown": 12,
+        "extras": {
+          "사거리": "4 ~ 10",
+          "너비": "3"
+        }
+      },
+      {
+        "name": "잠식하는 불길 (Consuming Blaze)",
+        "type": "W",
+        "description": "주위 적들을 불태워 5초에 걸쳐 156(+4%)의 피해를 주고 즉시 42(+4%)의 생명력을 회복합니다. 잠식하는 불길로 불타는 적을 일반 공격할 때마다 다시 불태워 지속 피해 효과를 갱신하고 생명력을 추가로 회복합니다.",
+        "cooldown": 12,
+        "extras": {
+          "피해 반경": "5"
+        }
+      },
+      {
+        "name": "룬 폭탄 (Rune Bomb)",
+        "type": "E",
+        "description": "경로 상의 적들에게 95(+4%)의 피해를 주는 폭탄을 굴립니다. 갈이 룬 폭발을 사용하여 폭발시켜 일정 지역 안의 적에게 242(+4%)의 피해를 줄 수 있습니다.",
+        "cooldown": 8,
+        "extras": {
+          "사거리": "12.5",
+          "너비": "1.5"
+        }
+      }
+    ],
+    "talents": {
+      "1": [
+        {
+          "name": "잠식하는 화염 (Consuming Fire)",
+          "type": "능력 강화 (W)",
+          "description": "잠식하는 불길이 적 영웅에게 적중하면 생명력 회복량이 150% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "활활 타올라라 (Fuel for the Flame)",
+          "type": "능력 강화 (W)",
+          "description": "퀘스트: 주위에서 적 돌격병이 하나 죽을 때마다 잠식하는 불길로 회복하는 생명력이 0.3% 증가합니다.\n퀘스트: 주위에서 적 영웅이 죽을 때마다 잠식하는 불길로 회복하는 생명력이 3% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "단련된 가죽 (Calloused Hide)",
+          "type": "능력 강화 (고유 능력)",
+          "description": "오우거의 가죽이 활성화된 동안 받는 치유량이 15% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "4": [
+        {
+          "name": "올려치기 (Uppercut)",
+          "type": "능력 강화 (Q)",
+          "description": "쇄도의 주먹이 적 영웅에게 대상의 최대 생명력의 7%만큼 추가 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "역행의 룬 (Rollback)",
+          "type": "능력 강화 (E)",
+          "description": "룬 폭탄이 되돌아오며 경로 상의 적들에게 피해를 주고, 룬 폭발을 사용해도 룬 폭탄이 사라지지 않습니다.",
+          "extras": {}
+        },
+        {
+          "name": "그을린 살갗 (Seared Flesh)",
+          "type": "지속 효과",
+          "description": "같은 대상에게 일반 공격이 연속해서 적중할 때마다 20%의 추가 피해를 줘 최대 60%의 추가 피해를 줍니다. 이 효과는 5초 동안, 또는 다른 적을 공격할 때까지 유지됩니다.",
+          "extras": {}
+        }
+      ],
+      "7": [
+        {
+          "name": "강렬한 쇄도 (Power Surge)",
+          "type": "능력 강화 (Q)",
+          "description": "쇄도의 주먹이 적중한 적 영웅 하나당 쇄도의 주먹의 재사용 대기시간이 4초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "방화범 (Firestarter)",
+          "type": "능력 강화 (W)",
+          "description": "잠식하는 불길로 불태운 적 영웅을 일반 공격할 때마다 잠식하는 불길의 재사용 대기시간이 1초 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 잠식하는 불길의 재사용 대기시간이 3초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "격노의 재생력 (Enraged Regeneration)",
+          "type": "능력 강화 (고유 능력)",
+          "description": "갈의 오우거의 분노가 활성화된 동안 초의 생명력 재생량이 200% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "10": [
+        {
+          "name": "황혼의 망치 (Hammer of Twilight)",
+          "type": "R",
+          "description": "사용하면 황혼의 망치를 휘둘러 157(+4%)의 피해를 주고, 적을 밀쳐내며 0.75초 동안 기절시킵니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 초의 일반 공격력이 25% 증가합니다.",
+          "cooldown": 15,
+          "extras": {
+            "피해 반경": "4.5",
+            "중심각": "220°"
+          }
+        },
+        {
+          "name": "지각 변동 (Upheaval)",
+          "type": "R",
+          "description": "1초 후, 적들을 자신의 방향으로 끌어당기며 182(+4%)의 피해를 주고 3초 동안 25% 느려지게 합니다.",
+          "cooldown": 60,
+          "extras": {
+            "피해 반경": "14",
+            "중심각": "45°"
+          }
+        }
+      ],
+      "13": [
+        {
+          "name": "광란의 주먹 (Frenzied Fists)",
+          "type": "능력 강화 (Q)",
+          "description": "쇄도의 주먹을 사용한 후 공격 속도가 5초 동안 75% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "룬 역류 (Runic Feedback)",
+          "type": "능력 강화 (E)",
+          "description": "갈의 룬 폭발이 적중한 적 하나당 1초, 적 영웅 하나당 2초만큼 초의 룬 폭탄의 재사용 대기시간이 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "룬 건틀릿 (Runed Gauntlet)",
+          "type": "지속 효과",
+          "description": "일반 공격을 할 때마다 초와 갈의 궁극기의 재사용 대기시간이 0.75초 감소합니다.",
+          "extras": {}
+        }
+      ],
+      "16": [
+        {
+          "name": "쇄도의 질주 (Surging Dash)",
+          "type": "능력 강화 (Q)",
+          "description": "쇄도의 주먹을 준비하는 동안 저지불가 상태가 되고 초당 156(+4%)의 생명력을 회복합니다.",
+          "extras": {}
+        },
+        {
+          "name": "황혼의 장막 (Twilight Veil)",
+          "type": "사용 효과",
+          "description": "사용하면 오우거의 가죽의 추가 방어력이 2초 동안 300% 증가합니다. 오우거의 분노가 활성화된 동안 사용하면 즉시 오우거의 가죽으로 전환됩니다.",
+          "cooldown": 30,
+          "extras": {}
+        },
+        {
+          "name": "용암 방패 (Molten Block)",
+          "type": "사용 효과",
+          "description": "사용하면 3초 동안 정지 및 무적 상태가 되고, 주위 적들에게 초당 96(+4%)의 피해를 줍니다.",
+          "cooldown": 60,
+          "extras": {
+            "피해 반경": "4.5"
+          }
+        }
+      ],
+      "20": [
+        {
+          "name": "크툰의 선물 (C'thun's Gift)",
+          "type": "능력 강화 (R)",
+          "description": "일반 공격이 원거리로 바뀌고 대상을 2초 동안 20% 느려지게 합니다.",
+          "extras": {
+            "공격 사거리": "5"
+          }
+        },
+        {
+          "name": "고대 신의 총애 (Favor of the Old Gods)",
+          "type": "능력 강화 (R)",
+          "description": "지각 변동이 적 영웅들을 1.5초 동안 이동 불가 상태로 만듭니다.",
+          "extras": {}
+        },
+        {
+          "name": "초의 의지 (The Will of Cho)",
+          "type": "능력 강화 (고유 능력)",
+          "description": "영웅 처치 시 오우거의 가죽으로 증가하는 방어력이 영구히 2 증가하여 최대 50 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "황혼의 시간 (Hour of Twilight)",
+          "type": "지속 효과",
+          "description": "초갈의 부활 대기시간이 50% 감소합니다.",
+          "extras": {}
+        }
+      ]
+    }
+  },
+  "gall": {
+    "name": "갈",
+    "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
+    "type": "",
+    "role": "",
+    "universe": "",
+    "skills": [
+      {
+        "name": "오우거의 분노 (Ogre Rage)",
+        "type": "고유 능력",
+        "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
+        "cooldown": 5,
+        "extras": {}
+      },
+      {
+        "name": "암흑불길 (Shadowflame)",
+        "type": "Q",
+        "description": "일직선상의 적들에게 142(+5%)의 피해를 줍니다.",
+        "cooldown": 3,
+        "extras": {
+          "사거리": "10.81",
+          "너비": "1"
+        }
+      },
+      {
+        "name": "공포의 보주 (Dread Orb)",
+        "type": "W",
+        "description": "세 번 튀는 보주를 던져 적들에게 132(+5%)의 피해를 줍니다.",
+        "cooldown": 6,
+        "extras": {
+          "사거리": "3 ~ 6.5 / 6 ~ 13 / 9 ~ 19.5",
+          "피해 반경": "1.6"
+        }
+      },
+      {
+        "name": "룬 폭발 (Runic Blast)",
+        "type": "E",
+        "description": "초의 룬 폭탄을 폭발시켜 주위 적들에게 242(+4%)의 피해를 줍니다.",
+        "extras": {
+          "피해 반경": "2.5"
+        }
+      },
+      {
+        "name": "킬로그의 눈 (Eye of Kilrogg)",
+        "type": "1",
+        "description": "대상 위치에 눈을 소환하여 45초 동안 주위 넓은 지역의 시야를 확보합니다. 눈은 2회의 일반 공격을 받으면 파괴됩니다. 최대 2회 충전됩니다.",
+        "cooldown": 45,
+        "extras": {
+          "사거리": "12",
+          "시야 반경": "10.25"
+        }
+      }
+    ],
+    "talents": {
+      "1": [
+        {
+          "name": "계속 움직여! (Keep Moving!)",
+          "type": "능력 강화 (Z)",
+          "description": "밀치기의 이동 속도 증가 효과의 지속 시간이 1초 증가합니다. 초의 일반 공격이 적 영웅에게 적중하면 활성화된 밀치기 효과의 지속 시간이 1초 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "제멋대갈 (Taskmaster)",
+          "type": "능력 강화 (Z)",
+          "description": "밀치기의 재사용 대기시간이 10초 감소합니다. 초가 영웅 일반 공격에 적중당할 때마다 밀치기의 재사용 대기시간이 1초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "네가 보인다! (We See You!)",
+          "type": "능력 강화 (1)",
+          "description": "킬로그의 눈의 재사용 대기시간이 15초 감소하고 사거리가 33% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "4": [
+        {
+          "name": "백도 (Double Back)",
+          "type": "능력 강화 (W)",
+          "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 세 번째로 튀는 공포의 보주가 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "지속되는 룬 (Runic Persistence)",
+          "type": "능력 강화 (E)",
+          "description": "룬 폭발의 폭발 지역이 불타올라 지역 내 적들에게 3초 동안 187(+4%)의 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "폭탄 받아라 (Bomb's Away)",
+          "type": "능력 강화 (E)",
+          "description": "퀘스트: 룬 폭발로 적 영웅에게 피해를 줄 때마다 룬 폭발의 공격력이 5 증가합니다.\n보상: 룬 폭발이 적 영웅에게 20회 적중하면 초의 룬 폭탄의 사거리가 20% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "7": [
+        {
+          "name": "광란의 경계 (Edge of Madness)",
+          "type": "능력 강화 (Q)",
+          "description": "같은 적 영웅에게 암흑불길이 연속해서 적중할 때마다 8%의 추가 피해를 줘 최대 40%의 추가 피해를 줍니다. 이 효과는 대상을 4초 이상 공격하지 않으면 사라집니다.",
+          "extras": {}
+        },
+        {
+          "name": "이중고 (Double Trouble)",
+          "type": "능력 강화 (Q)",
+          "description": "퀘스트: 초의 잠식하는 불길로 불타는 영웅에게 암흑불길이 적중할 때마다 암흑불길의 재사용 대기시간이 1초 감소합니다.\n보상: 불타는 영웅에게 암흑불길이 20회 적중하면 암흑불길의 재사용 대기시간이 영구히 1초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "날뛰는 오우거 (Dark Descent)",
+          "type": "능력 강화 (고유 능력)",
+          "description": "초가 오우거의 가죽을 활성화한 후, 갈의 일반 기술의 재사용 대기시간이 5초 동안 75% 더 빨리 감소합니다.",
+          "extras": {}
+        }
+      ],
+      "10": [
+        {
+          "name": "연발 어둠의 화살 (Shadow Bolt Volley)",
+          "type": "R",
+          "description": "1초 후, 4초에 걸쳐 20개의 어둠의 화살을 발사해 각각 처음 적중하는 대상에게 90(+4%)의 피해를 줍니다. 화살의 방향은 마우스 커서의 위치에 따라 바뀝니다.",
+          "cooldown": 60,
+          "extras": {
+            "사거리": "16",
+            "너비": "1.5"
+          }
+        },
+        {
+          "name": "뒤틀린 황천 (Twisting Nether)",
+          "type": "R",
+          "description": "1초 후, 정신을 집중하며 주위 적들을 최대 5초 동안 50% 느려지게 만듭니다. 다시 사용하면 371(+5%)의 피해를 줍니다.",
+          "cooldown": 80,
+          "extras": {
+            "피해 반경": "5.5"
+          }
+        }
+      ],
+      "13": [
+        {
+          "name": "혹독한 암흑 (Searing Shadows)",
+          "type": "능력 강화 (Q)",
+          "description": "암흑불길이 대상 적 영웅의 최대 생명력의 2%만큼 추가 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "커져가는 공포 (Rising Dread)",
+          "type": "능력 강화 (W)",
+          "description": "공포의 보주가 튈 때마다 반경이 25% 증가하고 공격력이 25% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "황혼 회오리 (Twilight Nova)",
+          "type": "능력 강화 (W)",
+          "description": "공포의 보주가 처음 튈 때 양옆으로 2개의 보주가 추가로 튑니다.",
+          "extras": {}
+        }
+      ],
+      "16": [
+        {
+          "name": "암흑올가미 (Shadowsnare)",
+          "type": "능력 강화 (Q)",
+          "description": "암흑불길이 적 영웅을 4초 동안 10% 느려지게 만듭니다. 이 효과는 최대 3회 중첩됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "무쇠 보주 (Leaden Orb)",
+          "type": "능력 강화 (W)",
+          "description": "공포의 보주가 적 영웅을 0.5초 동안 기절시킵니다.",
+          "extras": {}
+        },
+        {
+          "name": "굉음 (Deafening Blast)",
+          "type": "능력 강화 (E)",
+          "description": "룬 폭발이 적 영웅을 1.25초 동안 침묵시킵니다.",
+          "extras": {}
+        }
+      ],
+      "20": [
+        {
+          "name": "어둠의 격노 (Shadowfury)",
+          "type": "능력 강화 (R)",
+          "description": "연발 어둠의 화살이 경로에 있는 모든 적에게 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "황천이동 (Shifting Nether)",
+          "type": "능력 강화 (R)",
+          "description": "뒤틀린 황천을 사용하면 초를 대상 위치로 순간이동시킨 후에 정신집중을 시작합니다.",
+          "extras": {
+            "사거리": "6"
+          }
+        },
+        {
+          "name": "갈의 의지 (The Will of Gall)",
+          "type": "지속 효과",
+          "description": "영웅 처치 시 오우거의 분노로 얻는 공격력이 영구히 2% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "정신착란증 (Psychotic Break)",
+          "type": "지속 효과",
+          "description": "죽으면 갈이 오우거의 분노 효과를 얻고 10초 동안 기술을 사용할 수 있습니다.",
+          "extras": {}
+        }
+      ]
+    }
+  },
+  "malthael": {
+    "name": "말티엘",
+    "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png",
+    "type": "",
+    "role": "",
+    "universe": "",
+    "skills": [
+      {
+        "name": "사신의 징표 (Reaper's Mark)",
+        "type": "고유 능력",
+        "description": "일반 공격이 전방의 적들을 휩쓸어 공격하며, 구조물이 아닌 대상에게 일반 공격을 하면 대상에게 4초 동안 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다. 징표가 남겨진 적들은 모습이 드러나고 1초마다 최대 생명력의 1.75%에 해당하는 피해를 받습니다.",
+        "extras": {}
+      },
+      {
+        "name": "영혼 도려내기 (Soul Rip)",
+        "type": "Q",
+        "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 남겨진 주위 적들의 영혼을 도려내 100(+4%)의 피해를 주고 적중한 대상 하나당 26(+4%)의 생명력을 회복합니다. 적 영웅에게 적중하면 대상 영웅의 최대 생명력의 4%만큼의 생명력을 추가로 회복합니다.",
+        "cooldown": 2,
+        "manaCost": 25,
+        "extras": {
+          "피해 반경": "6.5"
+        }
+      },
+      {
+        "name": "망령의 일격 (Wraith Strike)",
+        "type": "W",
+        "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 남겨진 대상에게 즉시 순간이동하여 61(+4%)의 피해를 주고 <span style=\"color: #00DDDD\">사신의 징표</span>를 갱신합니다.",
+        "cooldown": 5,
+        "manaCost": 30,
+        "extras": {
+          "사거리": "6"
+        }
+      },
+      {
+        "name": "죽음의 안개 (Death Shroud)",
+        "type": "E",
+        "description": "0.25초 후, 어둠의 안개를 내보내 적중한 모든 적에게 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다.",
+        "cooldown": 8,
+        "manaCost": 50,
+        "extras": {
+          "사거리": "12",
+          "너비": "3"
+        }
+      }
+    ],
+    "talents": {
+      "1": [
+        {
+          "name": "섬뜩한 죽음 (Death's Reach)",
+          "type": "능력 강화 (W)",
+          "description": "망령의 일격의 사거리가 35% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "창백한 말 (On A Pale Horse)",
+          "type": "지속 효과",
+          "description": "탈것의 이동 속도가 20% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "사신을 두려워하라 (Fear the Reaper)",
+          "type": "사용 효과",
+          "description": "사용하면 4초 동안 이동 속도가 25% 증가하고 유닛을 통과할 수 있습니다.",
+          "cooldown": 25,
+          "extras": {}
+        }
+      ],
+      "4": [
+        {
+          "name": "고독한 죽음 (Die Alone)",
+          "type": "능력 강화 (Q)",
+          "description": "영혼 도려내기가 한 영웅에게만 적중하면 50%의 추가 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "자욱한 안개 (Throwing Shade)",
+          "type": "능력 강화 (E)",
+          "description": "퀘스트: 적 영웅에게 죽음의 안개가 15회 적중해야 합니다.\n보상: 죽음의 안개의 사거리가 33% 증가하고 재사용 대기시간이 4초 감소하며 마나 소모량이 50에서 25로 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "암흑의 수확 (Black Harvest)",
+          "type": "지속 효과",
+          "description": "퀘스트: 적 영웅에게 <span style=\"color: #00DDDD\">사신의 징표</span>를 총 180초 동안 남겨야 합니다.\n보상: <span style=\"color: #00DDDD\">사신의 징표</span>의 지속 시간이 영구히 2초 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "7": [
+        {
+          "name": "얼음장 (Cold Hand)",
+          "type": "능력 강화 (Q)",
+          "description": "영혼 도려내기가 적들을 2.5초 동안 20% 느려지게 합니다.",
+          "extras": {}
+        },
+        {
+          "name": "대학살 (Massacre)",
+          "type": "능력 강화 (W)",
+          "description": "망령의 일격이 대상 주위의 적들에게도 피해를 주고 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다.",
+          "extras": {
+            "피해 반경": "4"
+          }
+        },
+        {
+          "name": "죽음의 손길 (Touch of Death)",
+          "type": "사용 효과",
+          "description": "사용하면 <span style=\"color: #00DDDD\">사신의 징표</span>가 남겨진 영웅들이 받는 치유량이 4초 동안 50% 감소합니다.",
+          "cooldown": 25,
+          "extras": {}
+        }
+      ],
+      "10": [
+        {
+          "name": "영혼 회오리 (Tormented Souls)",
+          "type": "R",
+          "description": "4초 동안 영혼의 격류를 내보내 주위 적들에게 지속적으로 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다.",
+          "cooldown": 80,
+          "manaCost": 100,
+          "extras": {
+            "효과 반경": "5"
+          }
+        },
+        {
+          "name": "최후의 의식 (Last Rites)",
+          "type": "R",
+          "description": "적 영웅에게 사형을 선고하여 2초 후에 대상이 잃은 생명력의 50%에 해당하는 피해를 줍니다.\n\n반복 퀘스트: 최후의 의식 중에, 또는 의식이 끝난 후 1.5초 내에 대상 영웅이 죽을 때마다 최후의 의식의 재사용 대기시간이 5초 감소하여 최대 15초까지 감소합니다.",
+          "cooldown": 65,
+          "manaCost": 100,
+          "extras": {
+            "사거리": "5"
+          }
+        }
+      ],
+      "13": [
+        {
+          "name": "영혼 착취 (Soul Siphon)",
+          "type": "능력 강화 (Q)",
+          "description": "영혼 도려내기가 적 영웅에게 적중할 때 회복하는 치유량이 대상의 최대 생명력의 4.75%로 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "무형의 존재 (Ethereal Existence)",
+          "type": "지속 효과",
+          "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 남겨진 적 영웅 하나당 물리 방어력이 10 증가하여 최대 30 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "저지할 수 없는 죽음 (Inevitable End)",
+          "type": "사용 효과",
+          "description": "사용하면 2초 동안 저지 불가 상태가 되지만 남겨진 <span style=\"color: #00DDDD\">사신의 징표</span>가 모두 제거됩니다.",
+          "cooldown": 20,
+          "extras": {}
+        },
+        {
+          "name": "지혜의 장막 (Shroud of Wisdom)",
+          "type": "사용 효과",
+          "description": "사용하면 2초 후 기술 방어력이 4초 동안 50 증가합니다.",
+          "cooldown": 30,
+          "extras": {}
+        }
+      ],
+      "16": [
+        {
+          "name": "영혼 수집가 (Soul Collector)",
+          "type": "능력 강화 (Q)",
+          "description": "영혼 도려내기의 재사용 대기시간이 0.5초 감소하고 범위가 25% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "필멸 (Mortality)",
+          "type": "능력 강화 (W)",
+          "description": "망령의 일격이 적 영웅에게 적중하면 대상의 최대 생명력의 6%만큼 추가 피해를 줍니다.",
+          "extras": {}
+        },
+        {
+          "name": "죽음을 기억하라 (Memento Mori)",
+          "type": "지속 효과",
+          "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 4초 이상 지속된 대상에게는 <span style=\"color: #00DDDD\">사신의 징표</span>의 피해량이 80% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "20": [
+        {
+          "name": "영혼을 거두는 자 (Reaper of Souls)",
+          "type": "능력 강화 (R)",
+          "description": "영혼 회오리의 지속 시간이 2초 증가합니다. 영혼 회오리가 활성화된 동안 적 영웅을 처치하면 지속 시간이 초기화됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "죽음의 천사 (Angel of Death)",
+          "type": "능력 강화 (R)",
+          "description": "최후의 의식으로 준 피해의 100%만큼 생명력을 회복하고 퀘스트로 감소하는 재사용 대기시간 감소량이 두 배가 됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "최종막 (Final Curtain)",
+          "type": "능력 강화 (E)",
+          "description": "죽음의 안개가 4초 동안 지속되어 대상 지역의 적들에게 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다.",
+          "extras": {}
+        },
+        {
+          "name": "누구도 죽음을 막을 순 없다 (No One Can Stop Death)",
+          "type": "사용 효과",
+          "description": "죽었을 때 사용하면 제단에서 즉시 부활하지만 다음 부활 대기시간이 25% 증가합니다.",
+          "cooldown": 180,
+          "extras": {}
+        }
+      ]
+    }
+  }
+}
