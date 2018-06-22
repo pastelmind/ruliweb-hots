@@ -19,7 +19,7 @@ describe('namu2hots', () => {
     const readFile = util.promisify(fs.readFile);
 
     return Promise.resolve().then(
-      () => readFile('./util/tests/input/malthael-namu.txt', 'utf8')
+      () => readFile('./util/tests/input/말티엘.txt', 'utf8')
     ).then(
       namuMarkup => ref.namuHeroArticle = namuMarkup
     ).then(
