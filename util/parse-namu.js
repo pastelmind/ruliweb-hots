@@ -7,14 +7,14 @@
 'use strict';
 
 const fs = require('fs');
-const { Hero, Skill, Talent } = require('./src/models.js');
-const namu2hots = require('./src/namu2hots.js');
-const markdown2hots = require('./src/markdown2hots.js');
+const { Hero } = require('./src/models');
+const namu2hots = require('./src/namu2hots');
+const markdown2hots = require('./src/markdown2hots');
 
 
 //Read data from NamuWiki pages
 const namuHeroArray = [];
-const namuDir = 'temp/namu-dump/';
+const namuDir = './temp/namu-dump/';
 
 fs.readdirSync(namuDir).forEach(fileName => {
   const namuMarkup = fs.readFileSync(namuDir + fileName, 'utf8');
@@ -32,7 +32,7 @@ fs.readdirSync(namuDir).forEach(fileName => {
 });
 
 //Read minimal data containing Hero ID and icon URLs
-const heroesMinimal = JSON.parse(fs.readFileSync('util/data/heroes-minimal.json'));
+const heroesMinimal = JSON.parse(fs.readFileSync('./util/data/heroes-minimal.json'));
 
 //Merge minimal data and NamuWiki data
 const heroes = {};
@@ -57,14 +57,16 @@ for (const remainingHeroId in heroesMinimal)
 //Generate JSON output
 const heroesCompact = Hero.compact(heroes);
 
-const compactJsonFile = 'temp/heroes-compact.json';
+const compactJsonFile = './temp/heroes-compact.json';
 fs.writeFileSync(compactJsonFile, JSON.stringify(heroesCompact, null, 2));
 console.log('Compact JSON file written to', compactJsonFile);
 
 //Generate Markdown output
-const markdownFile = 'docs/heroes.md';
-fs.writeFileSync(markdownFile, ''); //Erase previous data
-for (const heroId in heroes)
-  fs.writeFileSync(markdownFile, markdown2hots.heroToMarkdown(heroes[heroId]), { flag: 'a' });
+const markdownFile = './docs/heroes.md';
+let markdown = '';
 
+for (const heroId in heroes)
+  markdown += markdown2hots.heroToMarkdown(heroes[heroId]);
+
+fs.writeFileSync(markdownFile, markdown);
 console.log('Markdown file written to', markdownFile);
