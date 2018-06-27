@@ -84,35 +84,53 @@ const articleNames = [
   '해머 상사'
 ];
 
-const wget = require('wget-improved');
 const fs = require('fs');
+const path = require('path');
+const wget = require('wget-improved');
 
-const tempDir = process.argv[2] || 'temp/namu-dump/';
-fs.stat(tempDir, (err, stats) => {
+const tempDir = path.normalize(process.argv[2] || 'temp/namu-dump');
+const rawDir = path.join(tempDir, 'raw');
+const htmlDir = path.join(tempDir, 'html');
 
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  if (!stats.isDirectory()) {
-    console.error('"' + tempDir + '" is not a directory');
-    return;
-  }
+try {
+  prepDir(tempDir);
+  prepDir(rawDir);
+  prepDir(htmlDir);
 
   console.log('Will download articles to', tempDir);
 
-  downloadArticles(articleNames);
-});
+  downloadArticles(articleNames, 'https://namu.wiki/raw/', rawDir, 'txt');
+  downloadArticles(articleNames, 'https://namu.wiki/w/', htmlDir, 'html');
+}
+catch (e) {
+  console.error(e);
+}
 
 
-function downloadArticles(articleNames) {
-  const articleName = articleNames.pop();
+function prepDir(dirPath) {
+  try {
+    fs.mkdirSync(dirPath);
+    console.log('Created dir:', dirPath);
+  }
+  catch (e) {
+    try {
+      const dirStats = fs.statSync(dirPath);
+      if (!dirStats.isDirectory())
+        throw new Error(dirPath + ' exists, but is not a directory.');
+    }
+    catch (f) {
+      throw f;
+    }
+  }
+}
+
+function downloadArticles(articleNames, urlPrefix, targetDir, fileExt, index = 0) {
+  const articleName = articleNames[index];
   if (!articleName) return;
 
-  const articleUrl = 'https://namu.wiki/raw/' + encodeURIComponent(articleName);
-  const filePath = tempDir + '/' + articleName.replace('(히어로즈 오브 더 스톰)', '') + '.txt';
-
+  const articleUrl = urlPrefix + encodeURIComponent(articleName);
+  const filePath = path.join(targetDir, articleName.replace('(히어로즈 오브 더 스톰)', '') + '.' + fileExt);
+  
   const delay = Math.floor(Math.random() * 10000); //To avoid triggering HTTP 429 Too Many Requests
 
   setTimeout(() => {
@@ -123,14 +141,14 @@ function downloadArticles(articleNames) {
 
     download.on('error', err => {
       console.error('Failed to retrieve', articleUrl, err);
-      downloadArticles(articleNames);
+      downloadArticles(articleNames, urlPrefix, targetDir, fileExt, index + 1);
     });
     download.on('start', (fileSize) => {
       console.log('Begin downloading', articleUrl, 'to', filePath, '(content-length: ' + fileSize + ')');
     });
     download.on('end', (result) => {
       console.log('Successfully downloaded', articleUrl, result);
-      downloadArticles(articleNames);
+      downloadArticles(articleNames, urlPrefix, targetDir, fileExt, index + 1);
     });
 
   }, delay);

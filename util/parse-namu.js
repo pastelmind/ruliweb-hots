@@ -7,6 +7,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 const { Hero } = require('./src/models');
 const namu2hots = require('./src/namu2hots');
 const markdown2hots = require('./src/markdown2hots');
@@ -14,10 +15,10 @@ const markdown2hots = require('./src/markdown2hots');
 
 //Read data from NamuWiki pages
 const namuHeroArray = [];
-const namuDir = './temp/namu-dump/';
+const namuDir = path.normalize('temp/namu-dump/raw');
 
 fs.readdirSync(namuDir).forEach(fileName => {
-  const namuMarkup = fs.readFileSync(namuDir + fileName, 'utf8');
+  const namuMarkup = fs.readFileSync(path.join(namuDir, fileName), 'utf8');
 
   //Exception: Cho'Gall is two heroes in one
   if (fileName.includes('초갈')) {
