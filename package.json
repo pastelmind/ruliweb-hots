@@ -28,6 +28,7 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "mustache": "^2.3.0",
     "wget-improved": "^3.0.1"
