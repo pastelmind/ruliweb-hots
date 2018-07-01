@@ -47,8 +47,16 @@ class Hero {
    */
   static compact(heroes) {
     const heroesCompact = {};
-    for (const heroId in heroes)
+
+    //Sort by hero name in ascending order
+    Object.keys(heroes).sort((heroId1, heroId2) => {
+      const heroName1 = heroes[heroId1].name;
+      const heroName2 = heroes[heroId2].name;
+      return heroName1 < heroName2 ? -1 : (heroName1 === heroName2 ? 0 : 1);
+    }).forEach(heroId => {
       heroesCompact[heroId] = heroes[heroId].compact();
+    });
+
     return heroesCompact;
   }
 }
