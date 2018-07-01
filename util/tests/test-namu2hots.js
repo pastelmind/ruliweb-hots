@@ -15,7 +15,7 @@ describe('namu2hots', () => {
   const ref = {};
 
   before('Loading test data files', () => {
-    ref.namuHeroArticle = fs.readFileSync('./util/tests/input/말티엘.txt', 'utf8');
+    ref.namuHeroArticle = fs.readFileSync('./util/tests/input/루시우.txt', 'utf8');
     ref.namuChoGallArticle = fs.readFileSync('./util/tests/input/초갈.txt', 'utf8');
     ref.heroJsonCompact = JSON.parse(
       fs.readFileSync('./util/tests/input/heroes-compact.json', 'utf8'));
@@ -25,10 +25,12 @@ describe('namu2hots', () => {
 
   it('should convert namu markup to hero correctly', () => {
     const hero = namu2hots.parseHeroPage(ref.namuHeroArticle);
-    hero.name = '말티엘';
-    hero.iconUrl = 'http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png';
+    hero.name = '루시우';
+    hero.iconUrl = 'http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png';
 
-    assert.deepStrictEqual(hero.compact(), ref.heroJsonCompact.malthael);
+    assert.deepStrictEqual(hero.compact(), ref.heroJsonCompact.lucio);
+    //Hero ID string is not preserved by Hero.compact(), so it must be tested manually
+    assert.strictEqual(hero.id, 'lucio');
   });
 
   it('should convert Cho\'Gall\'s namu markup to heroes correctly', () => {
@@ -39,6 +41,8 @@ describe('namu2hots', () => {
     chogall.gall.iconUrl = 'http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png';
 
     assert.deepStrictEqual(chogall.cho.compact(), ref.heroJsonCompact.cho);
+    assert.strictEqual(chogall.cho.id, 'cho');
     assert.deepStrictEqual(chogall.gall.compact(), ref.heroJsonCompact.gall);
+    assert.strictEqual(chogall.gall.id, 'gall');
   });
 });

@@ -40,11 +40,10 @@ const heroes = {};
 
 namuHeroArray.forEach(hero => {
   for (const heroId in heroesMinimal) {
-    const minimalHero = heroesMinimal[heroId];
-    if (hero.name === minimalHero.name) {
-      //Copy ID, hero iconUrl, and skill iconUrl
+    if (hero.id === heroId) {
+      const minimalHero = heroesMinimal[heroId];
+      //Copy hero iconUrl and skill iconUrl
       //TODO improve logic
-      hero.id = heroId;
       hero.iconUrl = minimalHero.iconUrl;
       if (minimalHero.skills) {
         minimalHero.skills.forEach((skill, index) => {
@@ -58,11 +57,11 @@ namuHeroArray.forEach(hero => {
     }
   }
 
-  console.warn(hero.name, 'is not in heroes-minimal.json -- it will be dropped from the dataset.');
+  console.warn(hero.name + ` (${hero.id}) is not in heroes-minimal.json -- it is dropped from the dataset.`);
 });
 
 for (const remainingHeroId in heroesMinimal)
-  console.warn(`${heroesMinimal[remainingHeroId].name} (${remainingHeroId}) is not found in NamuWiki data --it will be dropped from the dataset.`);
+  console.warn(heroesMinimal[remainingHeroId].name + ` (${remainingHeroId}) is not found in NamuWiki data --it is dropped from the dataset.`);
 
 //Generate JSON output
 const heroesCompact = Hero.compact(heroes);
