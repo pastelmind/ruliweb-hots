@@ -86,10 +86,6 @@ module.exports = {
 
     const cho = this.parseHeroPage(ogreMarkups[1]);
     const gall = this.parseHeroPage(ogreMarkups[2]);
-    cho.name = '초';
-    cho.id = 'cho';
-    gall.name = '갈';
-    gall.id = 'gall';
 
     const choGallData = parseChoGallIntroSection(ogreMarkups[0]);
     Object.assign(cho, choGallData.cho);
@@ -225,6 +221,7 @@ function parseHeroIntroSection(section) {
   const universeCell = tables[0][8];
 
   return {
+    name: parseHeroKorName(heroNameCell),
     id: parseHeroId(heroNameCell),
     type: parseHeroType(typeAndRoleCell),
     role: parseHeroRole(typeAndRoleCell),
@@ -240,16 +237,23 @@ function parseHeroIntroSection(section) {
 function parseChoGallIntroSection(section) {
   const tables = parseTables(section);
 
+  assert(tables.length > 0, 'Cho\'Gall\'s intro section does not contain a table:', section);
+  assert(tables[0].length > 10, 'First table in Cho\'Gall\'s intro section does not contain enough cells:', section);
+
   const choTypeAndRoleCell = tables[0][8];
   const gallTypeAndRoleCell = tables[0][9];
   const universeCell = tables[0][10];
 
   const cho = {
+    name: '초',
+    id: 'cho',
     type: parseHeroType(choTypeAndRoleCell),
     role: parseHeroRole(choTypeAndRoleCell),
     universe: parseHeroUniverse(universeCell)
   };
   const gall = {
+    name: '갈',
+    id: 'gall',
     type: parseHeroType(gallTypeAndRoleCell),
     role: parseHeroRole(gallTypeAndRoleCell),
     universe: cho.universe
@@ -259,21 +263,33 @@ function parseChoGallIntroSection(section) {
 }
 
 /**
+ * Parse and return the hero's Korean name
+ * @param {string} heroNameCell NamuWiki markup
+ * @return {string} Hero name in Korean
+ */
+function parseHeroKorName(heroNameCell) {
+  const heroKorNameMatch = /'''\s*(.+?)\s*,/.exec(heroNameCell)
+  assert(heroKorNameMatch, 'Cannot parse hero\'s Korean name from:', heroNameCell);
+
+  return heroKorNameMatch[1];
+}
+
+/**
  * Parse the hero's English name and generate an ID string.
  * A hero ID string contains lowercase alphanumeric characters and dashes(-).
  * @param {string} heroNameCell NamuWiki markup
  * @return {string} Hero ID string
  */
 function parseHeroId(heroNameCell) {
-  const heroNameMatch = /\((.+?),/.exec(heroNameCell)
-  assert(heroNameMatch, 'Cannot parse hero\'s English name from:', heroNameCell);
+  const heroEngNameMatch = /\((.+?),/.exec(heroNameCell)
+  assert(heroEngNameMatch, 'Cannot parse hero\'s English name from:', heroNameCell);
 
   //1. Latin-ize string (Lúcio -> Lucio)
   //2. Convert spaces to dashes (Li Li -> Li-Li)
   //3. Remove non-alphanumeric characters, except dashes
-  //4. Convert to lowercase 
+  //4. Convert to lowercase
   //Code for removing diacritics from: https://stackoverflow.com/a/37511463/9943202
-  return heroNameMatch[1].normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  return heroEngNameMatch[1].normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').toLowerCase();
 }
 
