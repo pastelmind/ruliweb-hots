@@ -41,11 +41,11 @@ module.exports = {
       }
       else if (skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
         const tables = parseTables(content);
-        if (!tables[0][1])
-          throw JSON.stringify({ title, tables });
+        assert(tables.length > 0, 'Skill section (%s) does not contain a table:', title, content);
+        assert(tables[0].length > 1, 'First table in skill section (%s) does not contain enough cells:', title, content);
 
         //Assumption: The second cell of the  first table contains the skill description.
-        const skill = parseSkill(skillTitleMatch[2], skillTitleMatch[1], tables[0][1]);
+        const skill = parseSkill(skillTitleMatch[2], tables[0][0], skillTitleMatch[1], tables[0][1]);
         if (isUltimateSection) {
           skill.level = talentLevel;
           if (!hero.talents[talentLevel])
@@ -326,12 +326,17 @@ function parseHeroUniverse(content) {
 /**
  * Parse a skill section and produces skill data
  * @param {string} name Skill name
+ * @param {string} iconCell NamuWiki markup of table cell containing the skill icon
  * @param {string} type Skill type
  * @param {string} rawDescription Unparsed description in the skill table
  * @returns {Skill} Skill data
  */
-function parseSkill(name, type, rawDescription) {
-  const skill = { type, name, extras: {} };
+function parseSkill(name, iconCell, type, rawDescription) {
+  const skill = { name, type, extras: {} };
+
+  const iconNameMatch = /\[\[(파일:.+?)(?:\|.*?)?\]\]/.exec(iconCell);
+  assert(iconNameMatch, 'Cannot parse skill/talent icon of %s from:', name, iconCell);
+  skill.iconUrl = iconNameMatch[1];
 
   skill.description = removeBoldFormatting(rawDescription.replace(
     /\[\[파일:.*?(?:\|.*?)?\]\]\s?'''(.+?)'''\s?([^\[]+)/g,
@@ -364,10 +369,7 @@ function parseTalentTable(talentLevel, table) {
   //            Each cell represents: talent icon, name, type, and description.
   for (let i = 0; i + 3 < table.length; i += 4) {
     const talentData = parseSkill(
-      removeBoldFormatting(table[i + 1]),
-      table[i + 2],
-      table[i + 3]
-    );
+      removeBoldFormatting(table[i + 1]), table[i], table[i + 2], table[i + 3]);
     talentData.level = talentLevel;
     talents.push(new Talent(talentData));
   }

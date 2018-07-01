@@ -9,12 +9,14 @@
       {
         "name": "벽 타기 (Wall Ride)",
         "type": "고유 능력",
+        "iconUrl": "파일:lucio_wallRide.png",
         "description": "통과할 수 없는 지형이나 구조물을 따라 이동할 때 유닛을 통과할 수 있고, 이동 속도가 20% 증가합니다.\n\n이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
         "extras": {}
       },
       {
         "name": "소리 파동 (Soundwave)",
         "type": "Q",
+        "iconUrl": "파일:lucio_soundwave.png",
         "description": "일정 안의 적들에게 109(+4%)의 피해를 주고 밀쳐냅니다.",
         "cooldown": 7,
         "manaCost": 30,
@@ -26,6 +28,7 @@
       {
         "name": "분위기 전환! (Crossfade)",
         "type": "W",
+        "iconUrl": "파일:lucio_crossfadeSpeed.png",
         "description": "현재 <span style=\"color: #3dff7f\">속도 증폭</span> 음악을 틀고 있습니다. 자신과 주위 아군 영웅들의 이동 속도가 15% 증가합니다.\n\n다시 사용하면 <span style=\"color: #fff800\">치유 증폭</span> 음악을 틉니다.",
         "extras": {
           "효과 반경": "7"
@@ -34,6 +37,7 @@
       {
         "name": "볼륨을 높여라! (Amp It Up)",
         "type": "E",
+        "iconUrl": "파일:lucio_ampItUp.png",
         "description": "분위기 전환! 음악을 강화하여 3초 동안 <span style=\"color: #fff800\">치유 증폭</span> 음악의 치유량을 초당 119(+4%)로 증가시키거나, <span style=\"color: #3dff7f\">속도 증폭</span> 음악의 이동 속도 증가 효과를 45%로 증가시킵니다.",
         "cooldown": 15,
         "manaCost": 100,
@@ -45,24 +49,28 @@
         {
           "name": "우리는 함께 움직인다 (We Move Together)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:lucio_crossfadeSpeed.png",
           "description": "<span style=\"color: #3dff7f\">속도 증폭</span> 음악의 기본 이동 속도 증가 효과가 20%로 증가합니다.",
           "extras": {}
         },
         {
           "name": "템포는 빠르게 (Maximum Tempo)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp.png",
           "description": "퀘스트: 분위기 전환!의 <span style=\"color: #3dff7f\">속도 증폭</span> 음악이 활성화된 동안 적 영웅을 5명 처치해야 합니다.\n보상: 분위기 전환!의 <span style=\"color: #3dff7f\">속도 증폭</span> 음악에 볼륨을 높여라!를 사용했을 때의 이동 속도 증가 효과가 영구히 60%로 증가합니다.",
           "extras": {}
         },
         {
           "name": "아첼레란도 (Accelerando)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:lucio_wallRide.png",
           "description": "벽 타기를 유지하는 동안 이동 속도 증가 효과가 4초에 걸쳐 최대 40%까지 점점 증가합니다.",
           "extras": {}
         },
         {
           "name": "부드럽게! (Slip)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:lucio_wallRide2.png",
           "description": "벽 타기의 지속 시간 동안 적 영웅을 통과하거나 주위에 있으면 이동 속도 증가 효과가 1초 동안 70%로 증가합니다.",
           "extras": {
             "효과 반경": "1.4"
@@ -73,18 +81,21 @@
         {
           "name": "가까이 오시겠다? (Subwoofer)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:lucio_soundwave.png",
           "description": "소리 파동의 사거리의 절반 내에 있는 적들은 50% 더 멀리 밀쳐집니다.",
           "extras": {}
         },
         {
           "name": "파동은 벽을 타고 (Off the Wall)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:lucio_soundwave2.png",
           "description": "벽 타기의 지속 시간 동안 소리 파동을 사용하면 재사용 대기시간이 3초 감소합니다.",
           "extras": {}
         },
         {
           "name": "리듬의 흐름 (Chase the Bass)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:lucio_soundwave3.png",
           "description": "퀘스트: 적 영웅에게 소리 파동을 20회 적중시켜야 합니다.\n보상: 소리 파동의 너비가 50% 증가하고 사거리가 20% 증가합니다.",
           "extras": {}
         }
@@ -93,18 +104,21 @@
         {
           "name": "파티 믹스 (Party Mix)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:lucio_crossfadeAll.png",
           "description": "퀘스트: 분위기 전환! 음악을 주위 아군에게 총 8분 동안 들려줘야 합니다. 동시에 여러 아군에게 들려주면 퀘스트가 더 빨리 진행됩니다.\n보상: 분위기 전환!의 사거리가 영구히 20% 증가합니다.",
           "extras": {}
         },
         {
           "name": "음파 증폭기 (Sonic Amplifier)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp.png",
           "description": "볼륨을 높여라!를 사용할 때 주위에 아군 영웅이 2명 이상 있으면 지속 시간 동안 분위기 전환!의 반경이 50% 증가합니다.",
           "extras": {}
         },
         {
           "name": "휴대용 라디오 (Boombox)",
           "type": "사용 효과",
+          "iconUrl": "파일:lucio_boombox.png",
           "description": "루시우가 재생 중인 분위기 전환! 음악을 30초 동안 중계하는 휴대용 라디오를 지면에 놓습니다. 라디오의 음악 또한 볼륨을 높여라!의 영향을 받습니다.\n\n분위기 전환! 음악은 서로 중첩되지 않습니다.",
           "cooldown": 20,
           "extras": {
@@ -116,6 +130,7 @@
         {
           "name": "소리 방벽 (Sound Barrier)",
           "type": "R",
+          "iconUrl": "파일:lucio_soundBarrier.png",
           "description": "1초 후, 자신과 주위 아군 영웅들에게 1348(+4%)의 피해를 흡수하는 보호막을 씌웁니다. 보호막은 6초에 걸쳐 빠르게 사라집니다.",
           "cooldown": 80,
           "manaCost": 100,
@@ -124,6 +139,7 @@
         {
           "name": "역재생 앰프 (Reverse Amp)",
           "type": "R",
+          "iconUrl": "파일:lucio_reverseAmp.png",
           "description": "분위기 전환! 음악으로 적을 4초 동안 공격합니다. <span style=\"color: #fff800\">치유 증폭</span> 음악은 적에게 초당 108(+4%)의 피해를 주고, <span style=\"color: #3dff7f\">속도 증폭</span> 음악은 적을 45% 느려지게 합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 볼륨을 높여라!의 지속 시간이 4초로 증가합니다.",
           "cooldown": 45,
           "manaCost": 55,
@@ -136,24 +152,28 @@
         {
           "name": "비트 믹싱 (Beat Mixing)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:lucio_crossfadeAll.png",
           "description": "분위기 전환! 음악을 바꾼 후에 해당 곡을 1.5초 동안 유지하면 100(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 계속 유지됩니다.\n\n음악을 다시 바꾸면 보호막을 잃습니다.",
           "extras": {}
         },
         {
           "name": "아무도 날 못 막아! (Can't Stop, Won't Stop)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:lucio_wallRide.png",
           "description": "벽 타기의 지속 시간 동안 감속 및 이동 불가 효과에 면역이 됩니다.",
           "extras": {}
         },
         {
           "name": "하드 스타일 (Hard Style)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:lucio_wallRide2.png",
           "description": "벽 타기 효과의 지속 시간 동안 방어력이 25 증가하여 받는 피해가 25% 감소합니다.",
           "extras": {}
         },
         {
           "name": "다시 놀아볼까? (Back in the Mix)",
           "type": "지속 효과",
+          "iconUrl": "파일:lucio_backInTheMix.png",
           "description": "기절, 침묵, 정지 상태에서 벗어날 때마다 255(+4%)의 생명력을 회복합니다. 이 효과는 10초에 한 번씩만 발동합니다.",
           "extras": {}
         }
@@ -162,18 +182,21 @@
         {
           "name": "헤주베네센시아 (Rejuvenescência)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp.png",
           "description": "볼륨을 높여라!가 활성화된 동안 분위기 전환!의 <span style=\"color: #fff800\">치유 증폭</span> 음악이 매 초마다 주위 아군의 최대 생명력의 2.5%를 추가로 회복시킵니다.",
           "extras": {}
         },
         {
           "name": "우리는 할 수 있어! (Bring it Together)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:lucio_ampItUp2.png",
           "description": "볼륨을 높여라!를 사용할 때 주위에 아군 영웅이 2명 이상 있으면 지속 시간 동안 분위기 전환!의 <span style=\"color: #fff800\">치유 증폭</span> 음악의 효과가 45% 증가합니다.",
           "extras": {}
         },
         {
           "name": "주파수를 높여 (Up the Frequency)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp3.png",
           "description": "볼륨을 높여라!의 마나 소모량이 80으로 감소하고 적 영웅에게 일반 공격으로 피해를 줄 때마다 볼륨을 높여라!의 재사용 대기시간이 0.45초 감소합니다.",
           "extras": {}
         }
@@ -182,24 +205,28 @@
         {
           "name": "보사노바 (Bossa Nova)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:lucio_soundBarrier.png",
           "description": "소리 방벽의 재사용 대기시간이 30초로 감소하지만 보호막이 4초에 걸쳐 사라집니다.",
           "extras": {}
         },
         {
           "name": "무한 리믹스 (Nonstop Remix)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:lucio_reverseAmp.png",
           "description": "역재생 앰프를 사용하는 동안 주위에 적 영웅이 2명 이상 있으면 지속 시간이 무한정 갱신됩니다.",
           "extras": {}
         },
         {
           "name": "보너스 트랙 (Bonus Track)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp.png",
           "description": "볼륨을 높여라!가 활성화된 동안 분위기 전환!을 사용하면 볼륨을 높여라!의 지속 시간이 갱신됩니다.\n\n한 번 사용할 때 최대 한 번만 발동합니다.",
           "extras": {}
         },
         {
           "name": "시네스테지아 아우지치바 (Synaesthesia Auditiva)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:lucio_ampItUp2.png",
           "description": "볼륨을 높여라!를 사용하는 순간 아군에게 걸린 모든 기절, 감속, 이동 불가 효과를 제거하고 자신에게 걸린 감속, 이동 불가 효과를 제거합니다.",
           "extras": {}
         }
@@ -216,6 +243,7 @@
       {
         "name": "오우거의 가죽 (Ogre Hide)",
         "type": "고유 능력",
+        "iconUrl": "파일:cho_ogreHide.png",
         "description": "사용하면 방어력이 25 증가하지만 갈의 공격력이 25% 감소합니다.",
         "cooldown": 5,
         "extras": {}
@@ -223,6 +251,7 @@
       {
         "name": "쇄도의 주먹 (Surging Fist)",
         "type": "Q",
+        "iconUrl": "파일:cho_surgingFist.png",
         "description": "사용하면 쇄도의 주먹을 사용할 준비를 합니다. 다시 사용하면 전방으로 돌진하며 경로에 있는 모든 적들에게 48(+4%)의 피해를 주고 양옆으로 밀쳐냅니다. 돌진 거리는 충전을 오래 할수록 증가하여 최대 250%까지 증가합니다.",
         "cooldown": 12,
         "extras": {
@@ -233,6 +262,7 @@
       {
         "name": "잠식하는 불길 (Consuming Blaze)",
         "type": "W",
+        "iconUrl": "파일:cho_consumingBlaze.png",
         "description": "주위 적들을 불태워 5초에 걸쳐 156(+4%)의 피해를 주고 즉시 42(+4%)의 생명력을 회복합니다. 잠식하는 불길로 불타는 적을 일반 공격할 때마다 다시 불태워 지속 피해 효과를 갱신하고 생명력을 추가로 회복합니다.",
         "cooldown": 12,
         "extras": {
@@ -242,6 +272,7 @@
       {
         "name": "룬 폭탄 (Rune Bomb)",
         "type": "E",
+        "iconUrl": "파일:cho_runeBomb.png",
         "description": "경로 상의 적들에게 95(+4%)의 피해를 주는 폭탄을 굴립니다. 갈이 룬 폭발을 사용하여 폭발시켜 일정 지역 안의 적에게 242(+4%)의 피해를 줄 수 있습니다.",
         "cooldown": 8,
         "extras": {
@@ -255,18 +286,21 @@
         {
           "name": "잠식하는 화염 (Consuming Fire)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:cho_consumingBlaze.png",
           "description": "잠식하는 불길이 적 영웅에게 적중하면 생명력 회복량이 150% 증가합니다.",
           "extras": {}
         },
         {
           "name": "활활 타올라라 (Fuel for the Flame)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:cho_consumingBlaze2.png",
           "description": "퀘스트: 주위에서 적 돌격병이 하나 죽을 때마다 잠식하는 불길로 회복하는 생명력이 0.3% 증가합니다.\n퀘스트: 주위에서 적 영웅이 죽을 때마다 잠식하는 불길로 회복하는 생명력이 3% 증가합니다.",
           "extras": {}
         },
         {
           "name": "단련된 가죽 (Calloused Hide)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:cho_ogreHide.png",
           "description": "오우거의 가죽이 활성화된 동안 받는 치유량이 15% 증가합니다.",
           "extras": {}
         }
@@ -275,18 +309,21 @@
         {
           "name": "올려치기 (Uppercut)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:cho_surgingFist.png",
           "description": "쇄도의 주먹이 적 영웅에게 대상의 최대 생명력의 7%만큼 추가 피해를 줍니다.",
           "extras": {}
         },
         {
           "name": "역행의 룬 (Rollback)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:cho_runeBomb2.png",
           "description": "룬 폭탄이 되돌아오며 경로 상의 적들에게 피해를 주고, 룬 폭발을 사용해도 룬 폭탄이 사라지지 않습니다.",
           "extras": {}
         },
         {
           "name": "그을린 살갗 (Seared Flesh)",
           "type": "지속 효과",
+          "iconUrl": "파일:basicAttack_damage.png",
           "description": "같은 대상에게 일반 공격이 연속해서 적중할 때마다 20%의 추가 피해를 줘 최대 60%의 추가 피해를 줍니다. 이 효과는 5초 동안, 또는 다른 적을 공격할 때까지 유지됩니다.",
           "extras": {}
         }
@@ -295,18 +332,21 @@
         {
           "name": "강렬한 쇄도 (Power Surge)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:cho_surgingFist.png",
           "description": "쇄도의 주먹이 적중한 적 영웅 하나당 쇄도의 주먹의 재사용 대기시간이 4초 감소합니다.",
           "extras": {}
         },
         {
           "name": "방화범 (Firestarter)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:cho_consumingBlaze.png",
           "description": "잠식하는 불길로 불태운 적 영웅을 일반 공격할 때마다 잠식하는 불길의 재사용 대기시간이 1초 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 잠식하는 불길의 재사용 대기시간이 3초 감소합니다.",
           "extras": {}
         },
         {
           "name": "격노의 재생력 (Enraged Regeneration)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:cho_ogreHide.png",
           "description": "갈의 오우거의 분노가 활성화된 동안 초의 생명력 재생량이 200% 증가합니다.",
           "extras": {}
         }
@@ -315,6 +355,7 @@
         {
           "name": "황혼의 망치 (Hammer of Twilight)",
           "type": "R",
+          "iconUrl": "파일:cho_hammerOfTwilight.png",
           "description": "사용하면 황혼의 망치를 휘둘러 157(+4%)의 피해를 주고, 적을 밀쳐내며 0.75초 동안 기절시킵니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 초의 일반 공격력이 25% 증가합니다.",
           "cooldown": 15,
           "extras": {
@@ -325,6 +366,7 @@
         {
           "name": "지각 변동 (Upheaval)",
           "type": "R",
+          "iconUrl": "파일:cho_upheaval.png",
           "description": "1초 후, 적들을 자신의 방향으로 끌어당기며 182(+4%)의 피해를 주고 3초 동안 25% 느려지게 합니다.",
           "cooldown": 60,
           "extras": {
@@ -337,18 +379,21 @@
         {
           "name": "광란의 주먹 (Frenzied Fists)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:cho_surgingFist.png",
           "description": "쇄도의 주먹을 사용한 후 공격 속도가 5초 동안 75% 증가합니다.",
           "extras": {}
         },
         {
           "name": "룬 역류 (Runic Feedback)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:cho_runeBomb.png",
           "description": "갈의 룬 폭발이 적중한 적 하나당 1초, 적 영웅 하나당 2초만큼 초의 룬 폭탄의 재사용 대기시간이 감소합니다.",
           "extras": {}
         },
         {
           "name": "룬 건틀릿 (Runed Gauntlet)",
           "type": "지속 효과",
+          "iconUrl": "파일:basicAttack_cooldown.png",
           "description": "일반 공격을 할 때마다 초와 갈의 궁극기의 재사용 대기시간이 0.75초 감소합니다.",
           "extras": {}
         }
@@ -357,12 +402,14 @@
         {
           "name": "쇄도의 질주 (Surging Dash)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:cho_surgingFist.png",
           "description": "쇄도의 주먹을 준비하는 동안 저지불가 상태가 되고 초당 156(+4%)의 생명력을 회복합니다.",
           "extras": {}
         },
         {
           "name": "황혼의 장막 (Twilight Veil)",
           "type": "사용 효과",
+          "iconUrl": "파일:common_hardenedShield.png",
           "description": "사용하면 오우거의 가죽의 추가 방어력이 2초 동안 300% 증가합니다. 오우거의 분노가 활성화된 동안 사용하면 즉시 오우거의 가죽으로 전환됩니다.",
           "cooldown": 30,
           "extras": {}
@@ -370,6 +417,7 @@
         {
           "name": "용암 방패 (Molten Block)",
           "type": "사용 효과",
+          "iconUrl": "파일:cho_moltenBlock.png",
           "description": "사용하면 3초 동안 정지 및 무적 상태가 되고, 주위 적들에게 초당 96(+4%)의 피해를 줍니다.",
           "cooldown": 60,
           "extras": {
@@ -381,6 +429,7 @@
         {
           "name": "크툰의 선물 (C'thun's Gift)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:cho_hammerOfTwilight.png",
           "description": "일반 공격이 원거리로 바뀌고 대상을 2초 동안 20% 느려지게 합니다.",
           "extras": {
             "공격 사거리": "5"
@@ -389,18 +438,21 @@
         {
           "name": "고대 신의 총애 (Favor of the Old Gods)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:cho_upheaval.png",
           "description": "지각 변동이 적 영웅들을 1.5초 동안 이동 불가 상태로 만듭니다.",
           "extras": {}
         },
         {
           "name": "초의 의지 (The Will of Cho)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:cho_ogreHide.png",
           "description": "영웅 처치 시 오우거의 가죽으로 증가하는 방어력이 영구히 2 증가하여 최대 50 증가합니다.",
           "extras": {}
         },
         {
           "name": "황혼의 시간 (Hour of Twilight)",
           "type": "지속 효과",
+          "iconUrl": "파일:cho_hourOfTwilight.png",
           "description": "초갈의 부활 대기시간이 50% 감소합니다.",
           "extras": {}
         }
@@ -417,6 +469,7 @@
       {
         "name": "오우거의 분노 (Ogre Rage)",
         "type": "고유 능력",
+        "iconUrl": "파일:gall_ogreRage.png",
         "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
         "cooldown": 5,
         "extras": {}
@@ -424,6 +477,7 @@
       {
         "name": "암흑불길 (Shadowflame)",
         "type": "Q",
+        "iconUrl": "파일:gall_shadowflame.png",
         "description": "일직선상의 적들에게 142(+5%)의 피해를 줍니다.",
         "cooldown": 3,
         "extras": {
@@ -434,6 +488,7 @@
       {
         "name": "공포의 보주 (Dread Orb)",
         "type": "W",
+        "iconUrl": "파일:gall_dreadOrb.png",
         "description": "세 번 튀는 보주를 던져 적들에게 132(+5%)의 피해를 줍니다.",
         "cooldown": 6,
         "extras": {
@@ -444,6 +499,7 @@
       {
         "name": "룬 폭발 (Runic Blast)",
         "type": "E",
+        "iconUrl": "파일:gall_runicBlast.png",
         "description": "초의 룬 폭탄을 폭발시켜 주위 적들에게 242(+4%)의 피해를 줍니다.",
         "extras": {
           "피해 반경": "2.5"
@@ -452,6 +508,7 @@
       {
         "name": "킬로그의 눈 (Eye of Kilrogg)",
         "type": "1",
+        "iconUrl": "파일:gall_eyeOfKilrogg.png",
         "description": "대상 위치에 눈을 소환하여 45초 동안 주위 넓은 지역의 시야를 확보합니다. 눈은 2회의 일반 공격을 받으면 파괴됩니다. 최대 2회 충전됩니다.",
         "cooldown": 45,
         "extras": {
@@ -465,18 +522,21 @@
         {
           "name": "계속 움직여! (Keep Moving!)",
           "type": "능력 강화 (Z)",
+          "iconUrl": "파일:gall_shove.png",
           "description": "밀치기의 이동 속도 증가 효과의 지속 시간이 1초 증가합니다. 초의 일반 공격이 적 영웅에게 적중하면 활성화된 밀치기 효과의 지속 시간이 1초 증가합니다.",
           "extras": {}
         },
         {
           "name": "제멋대갈 (Taskmaster)",
           "type": "능력 강화 (Z)",
+          "iconUrl": "파일:gall_shove2.png",
           "description": "밀치기의 재사용 대기시간이 10초 감소합니다. 초가 영웅 일반 공격에 적중당할 때마다 밀치기의 재사용 대기시간이 1초 감소합니다.",
           "extras": {}
         },
         {
           "name": "네가 보인다! (We See You!)",
           "type": "능력 강화 (1)",
+          "iconUrl": "파일:gall_eyeOfKilrogg.png",
           "description": "킬로그의 눈의 재사용 대기시간이 15초 감소하고 사거리가 33% 증가합니다.",
           "extras": {}
         }
@@ -485,18 +545,21 @@
         {
           "name": "백도 (Double Back)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:gall_dreadOrb.png",
           "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 세 번째로 튀는 공포의 보주가 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
           "extras": {}
         },
         {
           "name": "지속되는 룬 (Runic Persistence)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:gall_runicBlast.png",
           "description": "룬 폭발의 폭발 지역이 불타올라 지역 내 적들에게 3초 동안 187(+4%)의 피해를 줍니다.",
           "extras": {}
         },
         {
           "name": "폭탄 받아라 (Bomb's Away)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:cho_runeBomb2.png",
           "description": "퀘스트: 룬 폭발로 적 영웅에게 피해를 줄 때마다 룬 폭발의 공격력이 5 증가합니다.\n보상: 룬 폭발이 적 영웅에게 20회 적중하면 초의 룬 폭탄의 사거리가 20% 증가합니다.",
           "extras": {}
         }
@@ -505,18 +568,21 @@
         {
           "name": "광란의 경계 (Edge of Madness)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:gall_shadowflame.png",
           "description": "같은 적 영웅에게 암흑불길이 연속해서 적중할 때마다 8%의 추가 피해를 줘 최대 40%의 추가 피해를 줍니다. 이 효과는 대상을 4초 이상 공격하지 않으면 사라집니다.",
           "extras": {}
         },
         {
           "name": "이중고 (Double Trouble)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:gall_shadowflame2.png",
           "description": "퀘스트: 초의 잠식하는 불길로 불타는 영웅에게 암흑불길이 적중할 때마다 암흑불길의 재사용 대기시간이 1초 감소합니다.\n보상: 불타는 영웅에게 암흑불길이 20회 적중하면 암흑불길의 재사용 대기시간이 영구히 1초 감소합니다.",
           "extras": {}
         },
         {
           "name": "날뛰는 오우거 (Dark Descent)",
           "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:gall_ogreRage.png",
           "description": "초가 오우거의 가죽을 활성화한 후, 갈의 일반 기술의 재사용 대기시간이 5초 동안 75% 더 빨리 감소합니다.",
           "extras": {}
         }
@@ -525,6 +591,7 @@
         {
           "name": "연발 어둠의 화살 (Shadow Bolt Volley)",
           "type": "R",
+          "iconUrl": "파일:gall_shadowBoltVolley.png",
           "description": "1초 후, 4초에 걸쳐 20개의 어둠의 화살을 발사해 각각 처음 적중하는 대상에게 90(+4%)의 피해를 줍니다. 화살의 방향은 마우스 커서의 위치에 따라 바뀝니다.",
           "cooldown": 60,
           "extras": {
@@ -535,6 +602,7 @@
         {
           "name": "뒤틀린 황천 (Twisting Nether)",
           "type": "R",
+          "iconUrl": "파일:gall_twistingNether.png",
           "description": "1초 후, 정신을 집중하며 주위 적들을 최대 5초 동안 50% 느려지게 만듭니다. 다시 사용하면 371(+5%)의 피해를 줍니다.",
           "cooldown": 80,
           "extras": {
@@ -546,18 +614,21 @@
         {
           "name": "혹독한 암흑 (Searing Shadows)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:gall_shadowflame.png",
           "description": "암흑불길이 대상 적 영웅의 최대 생명력의 2%만큼 추가 피해를 줍니다.",
           "extras": {}
         },
         {
           "name": "커져가는 공포 (Rising Dread)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:gall_dreadOrb.png",
           "description": "공포의 보주가 튈 때마다 반경이 25% 증가하고 공격력이 25% 증가합니다.",
           "extras": {}
         },
         {
           "name": "황혼 회오리 (Twilight Nova)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:gall_dreadOrb2.png",
           "description": "공포의 보주가 처음 튈 때 양옆으로 2개의 보주가 추가로 튑니다.",
           "extras": {}
         }
@@ -566,18 +637,21 @@
         {
           "name": "암흑올가미 (Shadowsnare)",
           "type": "능력 강화 (Q)",
+          "iconUrl": "파일:gall_shadowflame.png",
           "description": "암흑불길이 적 영웅을 4초 동안 10% 느려지게 만듭니다. 이 효과는 최대 3회 중첩됩니다.",
           "extras": {}
         },
         {
           "name": "무쇠 보주 (Leaden Orb)",
           "type": "능력 강화 (W)",
+          "iconUrl": "파일:gall_dreadOrb.png",
           "description": "공포의 보주가 적 영웅을 0.5초 동안 기절시킵니다.",
           "extras": {}
         },
         {
           "name": "굉음 (Deafening Blast)",
           "type": "능력 강화 (E)",
+          "iconUrl": "파일:gall_runicBlast.png",
           "description": "룬 폭발이 적 영웅을 1.25초 동안 침묵시킵니다.",
           "extras": {}
         }
@@ -586,12 +660,14 @@
         {
           "name": "어둠의 격노 (Shadowfury)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:gall_shadowBoltVolley.png",
           "description": "연발 어둠의 화살이 경로에 있는 모든 적에게 피해를 줍니다.",
           "extras": {}
         },
         {
           "name": "황천이동 (Shifting Nether)",
           "type": "능력 강화 (R)",
+          "iconUrl": "파일:gall_twistingNether.png",
           "description": "뒤틀린 황천을 사용하면 초를 대상 위치로 순간이동시킨 후에 정신집중을 시작합니다.",
           "extras": {
             "사거리": "6"
@@ -600,12 +676,14 @@
         {
           "name": "갈의 의지 (The Will of Gall)",
           "type": "지속 효과",
+          "iconUrl": "파일:gall_ogreRage.png",
           "description": "영웅 처치 시 오우거의 분노로 얻는 공격력이 영구히 2% 증가합니다.",
           "extras": {}
         },
         {
           "name": "정신착란증 (Psychotic Break)",
           "type": "지속 효과",
+          "iconUrl": "파일:gall_psychoticBreak.png",
           "description": "죽으면 갈이 오우거의 분노 효과를 얻고 10초 동안 기술을 사용할 수 있습니다.",
           "extras": {}
         }
