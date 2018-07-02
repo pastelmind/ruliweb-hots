@@ -261,7 +261,8 @@
         "name": "찌르기 (Stab)",
         "type": "Q",
         "iconUrl": "파일:abathur_stab.png",
-        "description": "대상 지역을 향해 가시를 발사하여 처음 적중하는 적에게 119(+4%)의 피해를 입힙니다.\n\n최대 2회 충전됩니다.\n\n[[파일:Cooldown_Clock.png|width=16]] <span style=\"color: #c4c4c4\"> 충전 대기시간 3초</span>",
+        "rechargeCooldown": 3,
+        "description": "대상 지역을 향해 가시를 발사하여 처음 적중하는 적에게 119(+4%)의 피해를 입힙니다.\n\n최대 2회 충전됩니다.",
         "extras": {
           "사거리": "9",
           "너비": "1.25"
@@ -289,7 +290,8 @@
         "name": "독성 둥지 (Toxic Nest)",
         "type": "W",
         "iconUrl": "파일:abathur_toxicNest.png",
-        "description": "일정 시간 후 활성화되는 지뢰를 생성합니다. 지뢰는 159(+4%)의 피해를 주고 4초 동안 적을 드러냅니다. 90초 동안 지속됩니다. \n\n최대 3회 충전됩니다.\n\n[[파일:Cooldown_Clock.png|width=16]] <span style=\"color: #c4c4c4\">충전 대기시간 10초</span>",
+        "rechargeCooldown": 10,
+        "description": "일정 시간 후 활성화되는 지뢰를 생성합니다. 지뢰는 159(+4%)의 피해를 주고 4초 동안 적을 드러냅니다. 90초 동안 지속됩니다.\n\n최대 3회 충전됩니다.",
         "extras": {
           "사거리": "70"
         }
@@ -801,7 +803,7 @@
         "type": "1",
         "iconUrl": "파일:gall_eyeOfKilrogg.png",
         "description": "대상 위치에 눈을 소환하여 45초 동안 주위 넓은 지역의 시야를 확보합니다. 눈은 2회의 일반 공격을 받으면 파괴됩니다. 최대 2회 충전됩니다.",
-        "cooldown": 45,
+        "rechargeCooldown": 45,
         "extras": {
           "사거리": "12",
           "시야 반경": "10.25"

@@ -341,8 +341,10 @@ function parseSkill(name, iconCell, type, rawDescription) {
   skill.description = removeBoldFormatting(rawDescription.replace(
     /\[\[파일:.*?(?:\|.*?)?\]\]\s?'''(.+?)'''\s?([^\[]+)/g,
     (match, extraName, extraInfo) => {
-      if (extraName.includes('시간') && !skill.cooldown)
+      if (extraName.includes('재사용 대기시간') && !skill.cooldown)
         skill.cooldown = parseFloat(extraInfo);
+      else if (extraName.includes('충전 대기시간') && !skill.rechargeCooldown)
+        skill.rechargeCooldown = parseFloat(extraInfo);
       else if (extraName.includes('마나') && !skill.manaCost)
         skill.manaCost = parseFloat(extraInfo);
       else if (!(extraName in skill.extras))

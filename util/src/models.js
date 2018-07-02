@@ -69,6 +69,7 @@ class Skill {
     this.level = o.level || 0;
     this.description = o.description || '';
     this.cooldown = o.cooldown || 0;
+    this.rechargeCooldown = o.rechargeCooldown || 0;
     this.manaCost = o.manaCost || 0;
     this.extras = o.extras || {};
   }
@@ -87,6 +88,8 @@ class Skill {
     o.description = this.description;
     if (this.cooldown)
       o.cooldown = this.cooldown;
+    if (this.rechargeCooldown)
+      o.rechargeCooldown = this.rechargeCooldown;
     if (this.manaCost)
       o.manaCost = this.manaCost;
     o.extras = this.extras;
