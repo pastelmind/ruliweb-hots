@@ -7,6 +7,7 @@ const path = require('path');
 const crypto = require('crypto');
 const assert = require('assert');
 const axios = require('axios');
+const program = require('commander');
 const entities = new require('html-entities').AllHtmlEntities;
 const namu2hots = require('./src/namu2hots');
 const { Hero } = require('./src/models');
@@ -34,27 +35,46 @@ class ImageNameConverter {
 }
 
 /**
- * Class that downloads the image and computes its hash.
+ * A class that converts the image name to a hosted URL, using the sha1 hash for
+ * comparing images.
  */
-class CachedImageHasher extends ImageNameConverter {
-  constructor() {
+class CachedImageToUrlConverter extends ImageNameConverter {
+  /**
+   * @param {Object.<string, string>} hashToHostedUrl Mapping of sha1 hash => hosted image URL.
+   */
+  constructor(hashToHostedUrl) {
     super();
-    this.hashes = {};
+    this.resolvedNames = {};
+    this.nameToHash = {};
+    this.hashToHostedUrl = hashToHostedUrl;
   }
 
   /**
-   * Downloads the image matching the given name and returns its sha1 hash.
+   * Downloads the image matching the given name, computes its hash, which is
+   * compared with hashes of hosted images. If a match is found, returns the
+   * hosted image URL; otherwise, returns the original name.
    * @param {string} name Image name
-   * @return {Promise<string>} sha1 hash string
+   * @return {Promise<string>} URL of matching hosted image, or the original name.
    */
   async convert(name) {
-    if (!(name in this.hashes)) {
-      assert(name in this.urls, name + ' is not associated with any known image URL');
-      const arrBuffer = await downloadArrayBuffer(this.urls[name]);
-      this.hashes[name] = computeHash(arrBuffer);
+    if (!(name in this.resolvedNames)) {
+      if (!(name in this.nameToHash)) {
+        assert(name in this.urls, name + ' is not associated with any known image URL');
+        const arrBuffer = await downloadArrayBuffer(this.urls[name]);
+        this.nameToHash[name] = computeHash(arrBuffer);
+      }
+
+      const hash = this.nameToHash[name];
+      if (!(hash in this.hashToHostedUrl)) {
+        console.error(name, 'does not match any hosted URL');
+        return name;
+      }
+
+      this.resolvedNames[name] = this.hashToHostedUrl[hash];
+      delete this.hashToHostedUrl[hash];
     }
 
-    return this.hashes[name];
+    return this.resolvedNames[name];
   }
 }
 
@@ -74,6 +94,7 @@ class CachedImageDownloader extends ImageNameConverter {
   /**
    * Downloads and saves the image that matches the given name.
    * @param {string} name Image name
+   * @return {Promise<string>} Image name, unmodified.
    */
   async convert(name) {
     if (name in this.downloaded) return;
@@ -175,30 +196,129 @@ if (articleNames.size !== 79)
   console.warn('articleNames.size === %d, expected %d', articleNames.size, 79);
 
 
-const tempDir = path.normalize(process.argv[2] || 'temp/namu-dump');
+//-------- Script main logic --------//
 
-(async function () {
-  const imageDownloader = new CachedImageDownloader('temp/namu-images/');
+if (require.main === module) {
+  let cmd = null;
+  const CMD_SAVE_IMAGES = 1, CMD_SAVE_JSON = 2;
+
+  const defaultSaveImagesDir = path.normalize('temp/namu-images/');
+
+  program.command('save-images [savedir]')
+    .description(`Download and save images from NamuWiki to [savedir] (default: ${defaultSaveImagesDir})`)
+    .action((saveDir = defaultSaveImagesDir) => {
+      cmd = { type: CMD_SAVE_IMAGES, saveDir };
+    });
+
+  const defaultSaveJsonPath = path.normalize('temp/heroes.json');
+
+  program.command('save-json [savepath]')
+    .description(`Parse and save hero data (JSON) to [jsonfile] (default: ${defaultSaveJsonPath})`)
+    .option('-p, --hero-portraits [jsonfile]', 'Load hero portrait from [jsonfile]', path.normalize('util/data/hero-portraits.json'))
+    .option('-l, --image-url-list <listfile>', 'Replace skill/talent icon names with image URLs in <listfile>')
+    .action((saveJsonPath, options) => {
+      saveJsonPath = saveJsonPath || defaultSaveJsonPath;
+      cmd = {
+        type: CMD_SAVE_JSON,
+        saveJsonPath,
+        imageUrlListFile: options.imageUrlList
+      };
+
+      //Load portraits early to catch errors
+      if (options.heroPortraits)
+        cmd.heroPortraits = JSON.parse(fs.readFileSync(options.heroPortraits));
+    });
+
+  program.parse(process.argv);
+
+  if (!cmd)
+    program.help();
+
+  (async () => {
+    let converter = null;
+
+    if (cmd.type === CMD_SAVE_IMAGES)
+      converter = new CachedImageDownloader(cmd.saveDir);
+    else if (cmd.type === CMD_SAVE_JSON) {
+      if (cmd.imageUrlListFile) {
+        //Parse all image URLs in the listfile
+        const hostedImageUrls = parseImageUrlsFromFile(cmd.imageUrlListFile);
+        const hashToHostedUrl = await generateHashToUrlMapping(hostedImageUrls);
+
+        converter = new CachedImageToUrlConverter(hashToHostedUrl);
+      }
+    }
+    else
+      throw new Error('Unknown command: ' + cmd.type);
+
+    const heroes = await crawlArticles(articleNames, converter);
+
+    //Set portrait URLs
+    if (cmd.heroPortraits)
+      for (const heroId in heroes)
+        if (heroId in cmd.heroPortraits)
+          heroes[heroId].iconUrl = cmd.heroPortraits[heroId];
+
+    //Save hero JSON
+    if (cmd.type === CMD_SAVE_JSON) {
+      const jsonPath = path.normalize(cmd.saveJsonPath);
+      fs.writeFileSync(jsonPath, JSON.stringify(Hero.compact(heroes), null, 2));
+      console.log('Hero data saved to', jsonPath);
+    }
+
+    if (converter instanceof CachedImageToUrlConverter) {
+      console.log('The following URLs from the listfile were not matched with any icon:');
+      for (const hash in converter.hashToHostedUrl)
+        console.log(converter.hashToHostedUrl[hash]);
+    }
+  })();
+}
+
+
+/**
+ * Crawls all articles and generates a collection of hero data.
+ * @param {Iterable<string>} articleNames
+ * @param {ImageNameConverter=} converter
+ * @return {Promise<Object.<string, Hero>} A collection of hero ID => Hero object
+ */
+async function crawlArticles(articleNames, converter) {
+  const heroes = {};
 
   for (const articleName of articleNames) {
     try {
-      const hero = await crawlHeroData(articleName);
-      const namuImageUrls = await crawlImageUrls(articleName);
+      console.log(`Crawling ${articleName}...`);
+      const heroData = await crawlHeroData(articleName);
 
-      imageDownloader.addUrls(namuImageUrls);
+      if (converter) {
+        const namuImageUrls = await crawlImageUrls(articleName);
+        converter.addUrls(namuImageUrls);
+      }
 
-      if (hero instanceof Hero) //Normal hero
-        forEachIconAsync(hero, imageDownloader);
+      if (heroData instanceof Hero) { //Normal hero
+        heroes[heroData.id] = heroData;
+        if (converter)
+          forEachIconAsync(heroData, converter);
+      }
       else {  //Cho'Gall
-        forEachIconAsync(hero.cho, imageDownloader);
-        forEachIconAsync(hero.gall, imageDownloader);
+        for (const heroEntry in heroData) {
+          const hero = heroData[heroEntry];
+          heroes[hero.id] = hero;
+          if (converter)
+            forEachIconAsync(hero, converter);
+        }
       }
     } catch (e) {
       console.error(e);
     }
-  }
-})();
 
+    console.log('done');
+
+    //Avg 3-second delay with 20% variance, to prevent triggering 429 Too Many Requests error
+    await delay(Math.floor(3000 * (.8 + .4 * Math.random())));
+  }
+
+  return heroes;
+}
 
 /**
  * Downloads the raw article and parses hero data.
@@ -206,12 +326,6 @@ const tempDir = path.normalize(process.argv[2] || 'temp/namu-dump');
  * @return {Promise<any>} Hero object for most heroes, `{ cho, gall }` for Cho'Gall
  */
 async function crawlHeroData(articleName) {
-  //Avg 3-second delay with 20% variance
-  const sleepDuration = Math.floor(3000 * (.8 + .4 * Math.random()));
-  process.stdout.write(`Will download ${articleName} after ${sleepDuration} milliseconds...`);
-  await delay(sleepDuration);
-  console.log('commencing');
-
   const rawArticleResponse = await axios.get(
     'https://namu.wiki/raw/' + encodeURIComponent(articleName),
     { responseType: 'text' }
@@ -321,4 +435,39 @@ async function forEachIconAsync(hero, converter) {
       }
     }
   }
+}
+
+/**
+ * Extracts image URLs from the given listfile.
+ * @param {string} listFilePath
+ * @return {string[]} Array of image URLs, or an empty array if none is found.
+ */
+function parseImageUrlsFromFile(listFilePath) {
+  const listFile = fs.readFileSync(listFilePath, 'utf8');
+  return listFile.match(/http.+?\.(?:png|jpg|jpeg|gif|bmp)/gi) || [];
+}
+
+/**
+ * Downloads and calculates the sha1 hash of each image.
+ * @param {string[]} urls
+ * @return {Promise<Object.<string, string>>} A mapping of sha1 hash => image URL.
+ */
+async function generateHashToUrlMapping(urls) {
+  const hashToUrls = {};
+  process.stdout.write('Retrieving hosted images...');
+
+  //Load all images in parallel to speed up download
+  //Assume that the hosting service is robust :)
+  await Promise.all(urls.map(url =>
+    downloadArrayBuffer(url).then(
+      arrBuffer => {
+        hashToUrls[computeHash(arrBuffer)] = url;
+        process.stdout.write('.');
+      },
+      e => console.error(e) //Report and consume error, so that Promise.all() will resolve anyway
+    )
+  ));
+
+  console.log('done');
+  return hashToUrls;
 }
