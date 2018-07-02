@@ -458,9 +458,10 @@ const COMMON_TEXT_COLORS = [
   '#ffffff',  //Talent description (occasionally)
   '#d9d9d9',  //Cooldown
   '#c4c4c4',  //Cooldown (occasionally)
-  '#3cb5f1',  //Mana Cost
-  '#f1e83b',  //Brew / energy / fury cost
-  '#f1e83b',  //Life cost
+  '#3cb5f1',  //Mana cost
+  '#f1e83b',  //Brew / Energy / Fury cost
+  '#ffd700',  //Energy cost (Lt. Morales)
+  '#52e41e',  //Life cost
   '#cc9999',  //Skill and talent range, area-of-effect, and width.
   '#ffc000',  //Quests
 ];
