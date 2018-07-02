@@ -334,7 +334,7 @@ function parseHeroUniverse(content) {
 function parseSkill(name, iconCell, type, rawDescription) {
   const skill = { name, type, extras: {} };
 
-  const iconNameMatch = /\[\[(파일:.+?)(?:\|.*?)?\]\]/.exec(iconCell);
+  const iconNameMatch = /\[\[(파일:.+?)\s*(?:\|.*?)?\]\]/.exec(iconCell);
   assert(iconNameMatch, 'Cannot parse skill/talent icon of %s from:', name, iconCell);
   skill.iconUrl = iconNameMatch[1];
 
