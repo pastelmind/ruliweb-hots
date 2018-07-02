@@ -449,14 +449,18 @@ function removeColorSpanMarkup(namuMarkup, blacklist = []) {
 }
 
 const COMMON_TEXT_COLORS = [
-  '#f2fee7',  //기술 본문
-  '#66ccec',  //특성 이름 및 유형
-  '#fd8a27',  //특성 이름 내 링크
-  '#eefee7',  //특성 본문
-  '#d9d9d9',  //재사용 대기시간
-  '#3cb5f1',  //마나 소모량
-  '#cc9999',  //기술 및 특성 사거리 정보
-  '#ffc000',  //퀘스트
+  '#f2fee7',  //Skill description
+  '#66ccec',  //Talent name and type
+  '#fd8a27',  //Hyperlink in talent name
+  '#eefee7',  //Talent description
+  '#ffffff',  //Talent description (occasionally)
+  '#d9d9d9',  //Cooldown
+  '#c4c4c4',  //Cooldown (occasionally)
+  '#3cb5f1',  //Mana Cost
+  '#f1e83b',  //Brew / energy / fury cost
+  '#f1e83b',  //Life cost
+  '#cc9999',  //Skill and talent range, area-of-effect, and width.
+  '#ffc000',  //Quests
 ];
 
 /**

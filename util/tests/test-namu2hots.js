@@ -15,7 +15,8 @@ describe('namu2hots', () => {
   const ref = {};
 
   before('Loading test data files', () => {
-    ref.namuHeroArticle = fs.readFileSync('./util/tests/input/루시우.txt', 'utf8');
+    ref.namuLucioArticle = fs.readFileSync('./util/tests/input/루시우.txt', 'utf8');
+    ref.namuAbathurArticle = fs.readFileSync('./util/tests/input/아바투르.txt', 'utf8');
     ref.namuChoGallArticle = fs.readFileSync('./util/tests/input/초갈.txt', 'utf8');
     ref.heroJsonCompact = JSON.parse(
       fs.readFileSync('./util/tests/input/heroes-compact.json', 'utf8'));
@@ -24,12 +25,16 @@ describe('namu2hots', () => {
   });
 
   it('should convert namu markup to hero correctly', () => {
-    const hero = namu2hots.parseHeroPage(ref.namuHeroArticle);
-    hero.iconUrl = 'http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png';
+    const lucio = namu2hots.parseHeroPage(ref.namuLucioArticle);
+    const abathur = namu2hots.parseHeroPage(ref.namuAbathurArticle);
+    lucio.iconUrl = 'http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png';
 
-    assert.deepStrictEqual(hero.compact(), ref.heroJsonCompact.lucio);
+    assert.deepStrictEqual(lucio.compact(), ref.heroJsonCompact.lucio);
+    assert.deepStrictEqual(abathur.compact(), ref.heroJsonCompact.abathur);
+
     //Hero ID string is not preserved by Hero.compact(), so it must be tested manually
-    assert.strictEqual(hero.id, 'lucio');
+    assert.strictEqual(lucio.id, 'lucio');
+    assert.strictEqual(abathur.id, 'abathur');
   });
 
   it('should convert Cho\'Gall\'s namu markup to heroes correctly', () => {

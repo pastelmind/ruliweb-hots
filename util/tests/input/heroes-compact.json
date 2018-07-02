@@ -233,6 +233,297 @@
       ]
     }
   },
+  "abathur": {
+    "name": "아바투르",
+    "type": "근접",
+    "role": "전문가",
+    "universe": "스타크래프트",
+    "skills": [
+      {
+        "name": "식충 변종 (Locust Strain)",
+        "type": "고유 능력",
+        "iconUrl": "파일:abathur_locustStrain.png",
+        "cooldown": 15,
+        "description": "15초마다 식충을 생성합니다. 식충은 가장 가까운 공격로에 합류하여 적을 공격합니다. 식충은 25초 동안 지속됩니다.",
+        "extras": {}
+      },
+      {
+        "name": "공생체 (Symbiote)",
+        "type": "Q",
+        "iconUrl": "파일:abathur_symbiote.png",
+        "cooldown": 4,
+        "description": "다른 하나의 아군 유닛이나 전투 구조물을 도와, 보호막을 씌우고 새로운 기술을 사용할 수 있습니다.",
+        "extras": {
+          "사거리": "∞"
+        }
+      },
+      {
+        "name": "찌르기 (Stab)",
+        "type": "Q",
+        "iconUrl": "파일:abathur_stab.png",
+        "description": "대상 지역을 향해 가시를 발사하여 처음 적중하는 적에게 119(+4%)의 피해를 입힙니다.\n\n최대 2회 충전됩니다.\n\n[[파일:Cooldown_Clock.png|width=16]] <span style=\"color: #c4c4c4\"> 충전 대기시간 3초</span>",
+        "extras": {
+          "사거리": "9",
+          "너비": "1.25"
+        }
+      },
+      {
+        "name": "가시 난사 (Spike Burst)",
+        "type": "W",
+        "iconUrl": "파일:abathur_spikeBurst.png",
+        "cooldown": 6,
+        "description": "주위 적들에게 120(+4%)의 피해를 줍니다.",
+        "extras": {
+          "피해 반경": "4"
+        }
+      },
+      {
+        "name": "갑피 (Carapace)",
+        "type": "E",
+        "iconUrl": "파일:abathur_carapace.png",
+        "cooldown": 12,
+        "description": "지원하는 아군을 157(+4%)의 보호막으로 감쌉니다. 8초 동안 지속됩니다.",
+        "extras": {}
+      },
+      {
+        "name": "독성 둥지 (Toxic Nest)",
+        "type": "W",
+        "iconUrl": "파일:abathur_toxicNest.png",
+        "description": "일정 시간 후 활성화되는 지뢰를 생성합니다. 지뢰는 159(+4%)의 피해를 주고 4초 동안 적을 드러냅니다. 90초 동안 지속됩니다. \n\n최대 3회 충전됩니다.\n\n[[파일:Cooldown_Clock.png|width=16]] <span style=\"color: #c4c4c4\">충전 대기시간 10초</span>",
+        "extras": {
+          "사거리": "70"
+        }
+      }
+    ],
+    "talents": {
+      "1": [
+        {
+          "name": "가압 분비선 (Pressurized Glands)",
+          "type": "능력 강화 (Q - W)",
+          "iconUrl": "파일:abathur_spikeBurst.png",
+          "description": "공생체의 가시 난사의 사거리가 25% 증가하고 재사용 대기시간이 1초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "생존 본능 (Survival Instincts)",
+          "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:abathur_locustStrain.png",
+          "description": "식충의 생명력이 50% 증가하고 지속 시간이 40% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "재생성 미생물 (Regenerative Microbes)",
+          "type": "능력 강화 (Q - E)",
+          "iconUrl": "파일:abathur_carapace.png",
+          "description": "공생체의 갑피가 대상의 생명력을 4초에 걸쳐 초당 71(+4%) 회복시킵니다.",
+          "extras": {}
+        },
+        {
+          "name": "맹독 둥지 (Envenomed Nest)",
+          "type": "능력 강화 (W)",
+          "iconUrl": "파일:abathur_toxicNest.png",
+          "description": "독성 둥지가 3초에 걸쳐 75%의 추가 피해를 줍니다.",
+          "extras": {}
+        }
+      ],
+      "4": [
+        {
+          "name": "대량 살포 (Prolific Dispersal)",
+          "type": "능력 강화 (W)",
+          "iconUrl": "파일:abathur_toxicNest.png",
+          "description": "독성 둥지의 재사용 대기시간이 2초 감소하고 충전 횟수가 2회 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "탄도 포자 (Ballistospores)",
+          "type": "능력 강화 (W)",
+          "iconUrl": "파일:abathur_toxicNest2.png",
+          "description": "독성 둥지를 거리 제한 없이 생성할 수 있고 지속 시간이 25% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "질긴 갑피 (Sustained Carapace)",
+          "type": "능력 강화 (Q - E)",
+          "iconUrl": "파일:abathur_carapace.png",
+          "description": "공생체의 갑피의 보호막이 40% 증가하고 공생체가 사라져도 지속됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "아드레날린 과부하 (Adrenal Overload)",
+          "type": "능력 강화 (Q)",
+          "iconUrl": "파일:abathur_symbiote.png",
+          "description": "숙주로 삼은 영웅의 공격 속도가 25% 증가합니다.",
+          "extras": {}
+        }
+      ],
+      "7": [
+        {
+          "name": "바늘가시 (Needle Spines)",
+          "type": "능력 강화 (Q - Q)",
+          "iconUrl": "파일:abathur_stab.png",
+          "description": "공생체의 찌르기의 공격력과 사거리가 20% 증가합니다.",
+          "extras": {}
+        },
+        {
+          "name": "불결한 둥지 (Vile Nest)",
+          "type": "능력 강화 (W)",
+          "iconUrl": "파일:abathur_toxicNest.png",
+          "description": "독성 둥지가 적의 이동 속도를 2.5초 동안 40% 감소시킵니다.",
+          "extras": {}
+        },
+        {
+          "name": "갑피 연결체 (Networked Carapace)",
+          "type": "능력 강화 (Q - E)",
+          "iconUrl": "파일:abathur_carapace.png",
+          "description": "공생체에 갑피를 사용하면 특성이 적용되지 않은 갑피가 주위 모든 아군 영웅, 돌격병, 용병에게 적용됩니다.",
+          "extras": {
+            "효과 반경": "3"
+          }
+        },
+        {
+          "name": "투하: 지게로봇 (Calldown: MULE)",
+          "type": "사용 효과",
+          "iconUrl": "파일:common_calldownMule.png",
+          "cooldown": 60,
+          "description": "사용하면 대상 지점 근처의 구조물을 한 번에 하나씩 40초 동안 수리합니다. 1초마다 100의 생명력을 회복시킵니다.",
+          "extras": {
+            "사거리": "∞",
+            "생명력": "140 (+분당 43)",
+            "이동 속도": "2.5",
+            "탐색 반경": "15"
+          }
+        }
+      ],
+      "10": [
+        {
+          "name": "최종 진화물 (Ultimate Evolution)",
+          "type": "R",
+          "iconUrl": "파일:abathur_ultimateEvolution.png",
+          "cooldown": 70,
+          "description": "대상 아군 영웅을 복제하여 20초 동안 조종합니다. 아바투르는 복제물을 더욱 완벽하게 만들어 기술 위력을 20%, 일반 공격력을 20%, 이동 속도를 10% 증가시킵니다. 복제한 영웅의 궁극기는 사용할 수 없습니다.",
+          "extras": {
+            "사거리": "∞"
+          }
+        },
+        {
+          "name": "흉물 진화 (Evolve Monstrosity)",
+          "type": "R",
+          "iconUrl": "파일:abathur_evolveMonstrosity.png",
+          "cooldown": 90,
+          "description": "아군 돌격병이나 식충을 흉물로 진화시킵니다. 흉물 주위에서 적 돌격병이 죽으면 흉물의 생명력이 5% 증가하고 일반 공격력이 5% 증가합니다. 이 효과는 최대 40회 중첩됩니다. 흉물은 영웅이 아닌 적으로부터 받는 피해가 50% 감소합니다. 흉물에 공생체를 사용하면, 공생체의 기술을 사용하면서 흉물을 조종할 수 있습니다. 흉물을 소환한 후 이 기술을 다시 사용하면 자동으로 흉물에게 공생체를 사용합니다.",
+          "extras": {
+            "사거리": "∞"
+          }
+        }
+      ],
+      "13": [
+        {
+          "name": "강습충 변종 (Assult Strain)",
+          "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:abathur_locustStrain.png",
+          "description": "식충의 일반 공격이 주위에 50% 피해를 주고, 죽을 때 폭발하여 106(+4%)의 피해를 줍니다.",
+          "extras": {
+            "공격 사거리": "0.5",
+            "가르기 반경": "1.25",
+            "중심각": "180°",
+            "자폭 반경": "3"
+          }
+        },
+        {
+          "name": "포격충 변종 (Bombard Strain)",
+          "type": "능력 강화 (고유 능력)",
+          "iconUrl": "파일:abathur_locustStrain2.png",
+          "description": "식충의 일반 공격이 장거리 공성 공격이 되고 70% 추가 피해를 줍니다.",
+          "extras": {
+            "공격 사거리": "3 (근접) / 7 (원거리)",
+            "원거리 공격 피해 반경": "0.4"
+          }
+        },
+        {
+          "name": "탑재 효율 증가 (Spatial Efficiency)",
+          "type": "능력 강화 (Q - Q)",
+          "iconUrl": "파일:abathur_stab.png",
+          "description": "공생체의 찌르기의 충전 횟수가 1회 증가하고 재사용 대기시간이 0.5초 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "세포체 전이 (Soma Transferance)",
+          "type": "능력 강화 (Q - W)",
+          "iconUrl": "파일:abathur_spikeBurst.png",
+          "description": "공생체의 가시 난사가 적중한 적 영웅 하나당 숙주가 67(+4%)의 생명력을 회복합니다.",
+          "extras": {}
+        }
+      ],
+      "16": [
+        {
+          "name": "맹독 가시 (Envenomed Spikes)",
+          "type": "능력 강화 (Q - W)",
+          "iconUrl": "파일:abathur_spikeBurst.png",
+          "description": "공생체의 가시 난사가 적의 이동 속도를 2초 동안 40% 감소시킵니다.",
+          "extras": {}
+        },
+        {
+          "name": "아드레날린 증폭 (Adrenaline Boost)",
+          "type": "능력 강화 (Q - E)",
+          "iconUrl": "파일:abathur_carapace.png",
+          "description": "공생체의 갑피가 대상의 이동 속도를 3.5초 동안 40% 증가시킵니다.",
+          "extras": {}
+        },
+        {
+          "name": "식충 번식 (Locust Brood)",
+          "type": "사용 효과",
+          "iconUrl": "파일:abathur_locustStrain.png",
+          "cooldown": 45,
+          "description": "사용하면 주위 대상 지역에서 3마리의 식충이 생성됩니다.",
+          "extras": {
+            "사거리": "6"
+          }
+        },
+        {
+          "name": "불안정한 변이 (Volatile Mutation)",
+          "type": "능력 강화 (R)",
+          "iconUrl": "파일:abathur_volatileMutation.png",
+          "description": "최종 진화물과 흉물이 3초마다, 그리고 죽는 순간에 주위 적들에게 142(+4%)의 피해를 줍니다.",
+          "extras": {
+            "피해 반경": "3"
+          }
+        }
+      ],
+      "20": [
+        {
+          "name": "진화의 고리 (Evolutionary Link)",
+          "type": "능력 강화 (R)",
+          "iconUrl": "파일:abathur_ultimateEvolution.png",
+          "description": "최종 진화물이 살아 있는 동안 그 복제 대상 영웅이 최대 생명력의 25%에 해당하는 보호막을 얻습니다. 이 효과는 5초마다 갱신됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "진화 완료 (Evolution Complete)",
+          "type": "능력 강화 (R)",
+          "iconUrl": "파일:abathur_evolveMonstrosity.png",
+          "description": "흉물이 시야가 확보된 곳으로 25초마다 굴 파기 기술을 사용할 수 있습니다.",
+          "extras": {}
+        },
+        {
+          "name": "군체 의식 (Hivemind)",
+          "type": "능력 강화 (Q)",
+          "iconUrl": "파일:abathur_symbiote.png",
+          "description": "공생체를 사용하면 주위 아군 영웅 한 명에게 공생체가 추가로 생성됩니다. 추가된 공생체는 첫 번째 공생체의 행동을 그대로 따라하지만 생성하는 보호막과 공격력이 절반으로 감소합니다.",
+          "extras": {}
+        },
+        {
+          "name": "식충 둥지 (Locust Nest)",
+          "type": "사용 효과",
+          "iconUrl": "파일:abathur_locustNest.png",
+          "cooldown": 60,
+          "description": "사용하면 주기적으로 식충을 생성하는 둥지를 만듭니다. 식충 둥지는 동시에 하나만 활성화할 수 있습니다.",
+          "extras": {
+            "사거리": "6"
+          }
+        }
+      ]
+    }
+  },
   "cho": {
     "name": "초",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
