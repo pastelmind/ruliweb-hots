@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "html-entities": "^1.2.1",
     "jquery": "^3.3.1",
     "mustache": "^2.3.0",
     "wget-improved": "^3.0.1"
