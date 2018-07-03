@@ -91,7 +91,7 @@ var HotsDialog = {
       this._setSelectedHero($hotsDialog, hero);
     })
 
-    //Prepare checkboxes  
+    //Prepare checkboxes
     $hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });
 
     //Clear the skill and talent sections
@@ -106,7 +106,7 @@ var HotsDialog = {
       skill
     )).on('click', () => {
       console.log('Skill clicked:', skill.name);
-      this._injector(Mustache.render(this._templates['insert-skill'], { skill, hots_version: '34.1' } ));
+      this._injector(Mustache.render(this._templates['insert-skill'], { skill, hots_version: '34.1' }));
     });
   },
 
@@ -116,7 +116,7 @@ var HotsDialog = {
       talent
     )).on('click', () => {
       console.log('Talent clicked:', talent.name);
-      this._injector(Mustache.render(this._templates['insert-talent'], { talent, hots_version: '34.1' } ));
+      this._injector(Mustache.render(this._templates['insert-talent'], { talent, hots_version: '34.1' }));
     });
   },
 
@@ -136,14 +136,22 @@ var HotsDialog = {
   }
 };
 
+let hotsData = null;
 
-//실제 실행용 스크립트
-//이 스크립트를 브라우저에서도 실행 가능하게 함
-if (typeof chrome !== 'undefined' && chrome.storage) {
-  chrome.storage.local.get(['heroes', 'templates'], (data) => {
-    if (chrome.runtime.lastError)
-      throw chrome.runtime.lastError;
-      
-    HotsDialog.launchDialog(data.heroes, data.templates);
-  });
+/**
+ * Load HotS data on first run and launch the Hots dialog.
+ * This function is called when the right-click menu is selected.
+ */
+function openHotsDialog() {
+  if (!hotsData) {
+    chrome.storage.local.get(['heroes', 'templates'], (data) => {
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
+
+      hotsData = data;  //Cache the data for subsequent calls
+      openHotsDialog();
+    });
+  }
+  else
+    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates);
 }

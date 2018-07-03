@@ -127,7 +127,7 @@ chrome.runtime.onInstalled.addListener(() => {
 //Register an event listener for the right-click menu
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-    chrome.tabs.executeScript({ file: "js/hots-dialog.js" });
+    chrome.tabs.executeScript({ code: "openHotsDialog();" });
   }
   else
     alert('루리웹에서만 실행할 수 있습니다.');

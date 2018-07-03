@@ -28,7 +28,8 @@
       "js": [
         "js/jquery.js",
         "js/jquery-ui.js",
-        "js/mustache.js"
+        "js/mustache.js",
+        "js/hots-dialog.js"
       ]
     }
   ],
