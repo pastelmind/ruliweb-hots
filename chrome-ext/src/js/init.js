@@ -42,7 +42,6 @@ function prepareHeroData(heroData) {
  * Asynchronously retrieves and updates HotS data from the "API server"
  */
 function updateDataFromApiServer() {
-  //TODO: fix this, intentionally misspelled to test debug message
   $.get("https://pastelmind.github.io/ruliweb-hots/heroes.json", heroes => {
     console.debug('Data download successful');
 
