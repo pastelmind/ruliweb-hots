@@ -88,13 +88,6 @@
     if (!chrome.runtime.getURL)
       chrome.runtime.getURL = str => str || '';
 
-    //Override the injector with a logger
-    HotsDialog._injector = htmlFragment => {
-      const div = document.createElement('div');
-      document.body.appendChild(div);
-      div.innerHTML = htmlFragment;
-    };
-
     //Test code
     (async () => {
       const heroes = JSON.parse(await $.get('../../docs/heroes.json', 'json'));
@@ -108,24 +101,12 @@
       templates['dialog'] = $('#hots_dialog')[0].outerHTML;
       $('#hots_dialog').remove();
 
-      HotsDialog._templates = templates;
-
-      //Generate skill description
-      const $hotsDialog = HotsDialog.buildDialog(templates['dialog'], heroes);
-
-      //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
-      //state is corrupted when this content script finishes execution.
-      //Thus, the dialog must be created from scratch every time.
-      $hotsDialog.dialog({
-        modal: true,
-        resizable: false,
-        title: '입력할 내용을 선택하세요',
-        width: 600,
-        close: function () {
-          //Destroy the dialog upon closing to clean up UI state
-          $(this).dialog('destroy').hide();
-        }
-      }).dialog('open');
+      HotsDialog.launchDialog(heroes, templates, htmlFragment => {
+        //Insert the HTML fragment wrapped in a new DIV
+        const div = document.createElement('div');
+        document.body.appendChild(div);
+        div.innerHTML = htmlFragment;
+      });
     })();
 
   </script>

@@ -43,10 +43,11 @@ var HotsDialog = {
    * Launch the hero/skill/talent selection dialog
    * @param {Object} heroes Key-value mappings of the form: hero ID => hero data
    * @param {Object} templates Key-value mappings of the form: template name => template string
+   * @param {function} injector Callback that injects the given HTML fragment into the appropriate position
    */
-  launchDialog(heroes, templates) {
+  launchDialog(heroes, templates, injector) {
     //Snapshot currently selected area
-    this._injector = getElementInjectorAtSelectedArea();
+    this._injector = injector;
     this._templates = templates;
 
     //Generate skill description
@@ -162,5 +163,5 @@ function openHotsDialog() {
     });
   }
   else
-    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates);
+    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates, getElementInjectorAtSelectedArea());
 }
