@@ -49,6 +49,7 @@ var HotsDialog = {
     //Snapshot currently selected area
     this._injector = injector;
     this._templates = templates;
+    this._heroFilters = { universes: new Set, roles: new Set };
 
     //Generate skill description
     const $hotsDialog = this.buildDialog(templates['dialog'], heroes);
@@ -79,18 +80,40 @@ var HotsDialog = {
     let $hotsDialog = $('#hots_dialog');
     if ($hotsDialog.length) return $hotsDialog;  //Dialog already exists
 
+    //Generate dialog
     const html = Mustache.render(templateHtml, {
-      heroArray: Object.values(heroes),
       baseUrl: chrome.runtime.getURL('/')
     });
     $hotsDialog = $(html).appendTo(document.body);
+
+    //Add click handler for hero filters
+    $hotsDialog.find('.hero-filter input[type=checkbox]').on('change', event => {
+      let filterPool = null;
+      switch (event.target.dataset.filterType) {
+        case 'role': filterPool = this._heroFilters.roles; break;
+        case 'universe': filterPool = this._heroFilters.universes; break;
+        default:
+          console.error(event.target.dataset.filterType, 'is an unknown filter type');
+          return;
+      }
+
+      if (event.target.checked)
+        filterPool.add(event.target.value);
+      else
+        filterPool.delete(event.target.value);
+
+      this.updateHeroIcons($hotsDialog, heroes);
+    });
+
+    //Generate hero icons
+    this.updateHeroIcons($hotsDialog, heroes);
 
     //Add click handler for hero icons
     $hotsDialog.find('img.hots_dialog__hero-icon').on('click', event => {
       const hero = heroes[event.target.dataset.heroId];
       console.log('Hero clicked:', hero.name);
       this._setSelectedHero($hotsDialog, hero);
-    })
+    });
 
     //Prepare checkboxes
     //$hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });
@@ -137,12 +160,38 @@ var HotsDialog = {
     for (const talentLevel in hero.talents) {
       hero.talents[talentLevel].forEach((talent, index) => talent.index = index);
       talents.push({
-         talentLevel,
-         talentGroup: hero.talents[talentLevel]
+        talentLevel,
+        talentGroup: hero.talents[talentLevel]
       });
     }
     $dialog.children('.hots_dialog__talents').empty()
       .append(Mustache.render(this._templates['dialog-talents'], { talents, id: hero.id }));
+  },
+
+  /**
+   * Updates the hero icons, filtered by `HotsDialog._heroFilters`.
+   * @param {jQuery} $hotsDialog HotsDialog <div> element
+   * @param {Object.<string, Object>} heroes key => value pairs of hero ID => hero data
+   */
+  updateHeroIcons($hotsDialog, heroes) {
+    const filteredHeroes = [], filters = this._heroFilters;
+
+    for (const heroId in heroes) {
+      const hero = heroes[heroId];
+
+      //Discard this hero if the universe filter is non-empty and does not match this hero
+      if (filters.universes.size && !filters.universes.has(hero.universe))
+        continue;
+
+      //Discard this hero if the role filter is non-empty and does not match this hero
+      if (filters.roles.size && !filters.roles.has(hero.role))
+        continue;
+
+      filteredHeroes.push(hero);
+    }
+
+    const html = Mustache.render(this._templates['dialog-heroes'], { heroes: filteredHeroes });
+    $hotsDialog.find('.hots_dialog__hero-icons').html(html);
   }
 };
 

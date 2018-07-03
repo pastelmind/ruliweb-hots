@@ -13,72 +13,13 @@
 </head>
 
 <body>
-  <div id="hots_dialog">
-    <div class="hots_dialog__section">
-      <fieldset class="hots_dialog__hero_filters">
-        <legend>세계관: </legend>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-universe-warcraft">
-          <img src="images/universe-warcraft.png" alt="워크래프트" title="워크래프트">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-universe-starcraft">
-          <img src="images/universe-starcraft.png" alt="스타크래프트" title="스타크래프트">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-universe-diablo">
-          <img src="images/universe-diablo.png" alt="디아블로" title="디아블로">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-universe-retro">
-          <img src="images/universe-classic.png" alt="클래식" title="클래식">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-universe-overwatch">
-          <img src="images/universe-overwatch.png" alt="오버워치" title="오버워치">
-        </label>
-      </fieldset>
-
-      <fieldset class="hots_dialog__hero_filters">
-        <legend>역할: </legend>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-role-warrior">
-          <img src="images/role-warrior.png" alt="전사" title="전사">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-role-assassin">
-          <img src="images/role-assassin.png" alt="암살자" title="암살자">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-role-support">
-          <img src="images/role-support.png" alt="지원가" title="지원가">
-        </label>
-        <label class="hero-filter">
-          <input type="checkbox" id="hero-filter-role-specialist">
-          <img src="images/role-specialist.png" alt="전문가" title="전문가">
-        </label>
-      </fieldset>
-    </div>
-
-    <div class="hots_dialog__section hots_dialog__hero-icons">
-      {{#heroArray}}
-      <img class="hots_dialog__hero-icon" src="{{iconUrl}}" data-hero-id="{{id}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
-      {{/heroArray}}
-    </div>
-    <div class="hots_dialog__section hots_dialog__skills"></div>
-    <ul class="hots_dialog__section hots_dialog__talents">
-      <li class="hots_dialog__talent-group">
-        <span class="hots_dialog__talent-group-description">1레벨</span>
-      </li>
-    </ul>
-  </div>
-
   <script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/mustache.js"></script>
   <script src="js/init.js"></script>
   <script src="js/hots-dialog.js"></script>
   <script>
+    'use strict';
 
     //Stub for test
     if (typeof chrome === 'undefined')
@@ -86,21 +27,17 @@
     if (!chrome.runtime)
       chrome.runtime = {};
     if (!chrome.runtime.getURL)
-      chrome.runtime.getURL = str => str || '';
+      chrome.runtime.getURL = str => '.' + str;
 
     //Test code
     (async () => {
       const heroes = JSON.parse(await $.get('../../docs/heroes.json', 'json'));
       prepareHeroData(heroes);
 
-      const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
+      const templateNames = ['dialog', 'dialog-heroes', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
       const templates = {};
       for (const templateName of templateNames)
         templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache', 'text');
-
-      //Comment out the next line to use dialog template from mustache
-      templates['dialog'] = $('#hots_dialog')[0].outerHTML;
-      $('#hots_dialog').remove();
 
       HotsDialog.launchDialog(heroes, templates, htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV
