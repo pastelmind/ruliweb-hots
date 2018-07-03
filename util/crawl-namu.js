@@ -47,6 +47,9 @@ class CachedImageToUrlConverter extends ImageNameConverter {
     this.resolvedNames = {};
     this.nameToHash = {};
     this.hashToHostedUrl = hashToHostedUrl;
+    this.unusedHostedUrls = new Set;
+    for (const hashes in hashToHostedUrl)
+      this.unusedHostedUrls.add(hashToHostedUrl[hashes]);
   }
 
   /**
@@ -71,7 +74,7 @@ class CachedImageToUrlConverter extends ImageNameConverter {
       }
 
       this.resolvedNames[name] = this.hashToHostedUrl[hash];
-      delete this.hashToHostedUrl[hash];
+      this.unusedHostedUrls.delete(this.hashToHostedUrl[hash]);
     }
 
     return this.resolvedNames[name];
@@ -266,10 +269,10 @@ if (require.main === module) {
       console.log('Hero data saved to', jsonPath);
     }
 
-    if (converter instanceof CachedImageToUrlConverter) {
-      console.log('The following URLs from the listfile were not matched with any icon:');
-      for (const hash in converter.hashToHostedUrl)
-        console.log(converter.hashToHostedUrl[hash]);
+    if (converter.unusedHostedUrls && converter.unusedHostedUrls.size) {
+      console.warn('The following URLs from the listfile were not matched with any icon:');
+      for (const url of converter.unusedHostedUrls)
+        console.warn('- ' + url);
     }
   })();
 }
@@ -297,14 +300,14 @@ async function crawlArticles(articleNames, converter) {
       if (heroData instanceof Hero) { //Normal hero
         heroes[heroData.id] = heroData;
         if (converter)
-          forEachIconAsync(heroData, converter);
+          await forEachIconAsync(heroData, converter);
       }
       else {  //Cho'Gall
         for (const heroEntry in heroData) {
           const hero = heroData[heroEntry];
           heroes[hero.id] = hero;
           if (converter)
-            forEachIconAsync(hero, converter);
+            await forEachIconAsync(hero, converter);
         }
       }
     } catch (e) {
@@ -460,8 +463,14 @@ async function generateHashToUrlMapping(urls) {
   for (const url of urls) {
     try {
       const arrBuffer = await downloadArrayBuffer(url);
-      hashToUrls[computeHash(arrBuffer)] = url;
-      process.stdout.write('.');
+
+      const hash = computeHash(arrBuffer);
+      if (hash in hashToUrls)
+        console.warn(`\nDuplicate image: ${url}\n  is identical to ${hashToUrls[hash]}`);
+      else {
+        hashToUrls[computeHash(arrBuffer)] = url;
+        process.stdout.write('.');
+      }
     } catch (e) {
       console.error(e);
     }
