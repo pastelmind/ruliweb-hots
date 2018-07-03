@@ -109,7 +109,8 @@ var HotsDialog = {
     this.updateHeroIcons($hotsDialog, heroes);
 
     //Add click handler for hero icons
-    $hotsDialog.find('img.hots_dialog__hero-icon').on('click', event => {
+    $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
+      if (!(event.target && event.target.nodeName === 'IMG')) return;
       const hero = heroes[event.target.dataset.heroId];
       console.log('Hero clicked:', hero.name);
       this._setSelectedHero($hotsDialog, hero);
@@ -123,7 +124,7 @@ var HotsDialog = {
 
     //Add event handlers for skill and talents
     $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').on('click', event => {
-      if (!event.target || event.target.nodeName !== 'IMG') return;
+      if (!(event.target && event.target.nodeName === 'IMG')) return;
 
       const dataset = event.target.dataset; //Read data-* attributes
 
