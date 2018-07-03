@@ -286,7 +286,7 @@ async function crawlArticles(articleNames, converter) {
 
   for (const articleName of articleNames) {
     try {
-      console.log(`Crawling ${articleName}...`);
+      process.stdout.write(`Crawling ${articleName}...`);
       const heroData = await crawlHeroData(articleName);
 
       if (converter) {
@@ -456,17 +456,16 @@ async function generateHashToUrlMapping(urls) {
   const hashToUrls = {};
   process.stdout.write('Retrieving hosted images...');
 
-  //Load all images in parallel to speed up download
-  //Assume that the hosting service is robust :)
-  await Promise.all(urls.map(url =>
-    downloadArrayBuffer(url).then(
-      arrBuffer => {
-        hashToUrls[computeHash(arrBuffer)] = url;
-        process.stdout.write('.');
-      },
-      e => console.error(e) //Report and consume error, so that Promise.all() will resolve anyway
-    )
-  ));
+  //Load images sequentially to avoid hammering the servers too hard
+  for (const url of urls) {
+    try {
+      const arrBuffer = await downloadArrayBuffer(url);
+      hashToUrls[computeHash(arrBuffer)] = url;
+      process.stdout.write('.');
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   console.log('done');
   return hashToUrls;
