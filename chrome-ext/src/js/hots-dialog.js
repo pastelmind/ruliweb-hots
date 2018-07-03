@@ -116,9 +116,6 @@ var HotsDialog = {
       this._setSelectedHero($hotsDialog, hero);
     });
 
-    //Prepare checkboxes
-    //$hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });
-
     //Clear the skill and talent sections
     $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
 
