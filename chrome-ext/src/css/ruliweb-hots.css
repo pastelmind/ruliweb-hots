@@ -1,18 +1,3 @@
-/* Override default styles */
-
-fieldset.hots_dialog__hero_filters {
-  border: 0; margin: 0; padding: 0; /* Reset fieldset styles */
-}
-
-.hots_dialog__hero_filters > legend {
-  padding: 0;
-}
-
-.hots_dialog__talents
-{
-  list-style: none; margin: 0; padding: 0; /* Reset list styles */
-}
-
 /* Icons */
 
 .hots_dialog__hero-icon,
@@ -39,27 +24,36 @@ fieldset.hots_dialog__hero_filters {
 /* Hero filter section */
 
 .hots_dialog__section .hots_dialog__hero_filters {
+  border: 0; margin: 0; padding: 0; /* Reset user agent style (fieldset) */
   margin-right: 1em;
   float: left;
 }
 
 .hots_dialog__hero_filters > legend {
+  padding: 0;                       /* Reset user agent style (legend) */
   padding-right: 1em;
   float: left;
 }
 
 .hero-filter {
+  float: left;
   padding: 1px;
+  margin-right: 5px;
 }
 
 .hero-filter img {
   display: block;
-  width: 28px; height: 28px;
-  opacity: .5;
+  width: 24px; height: 24px;
+  opacity: .33;
+  cursor: pointer;
 }
 
-.hero-filter.ui-checkboxradio-checked img {
+.hero-filter input[type=checkbox]:checked + img {
   opacity: 1;
+}
+
+.hero-filter input[type=checkbox] {
+  display: none;
 }
 
 /* Skills section */
@@ -73,6 +67,7 @@ fieldset.hots_dialog__hero_filters {
 
 .hots_dialog__talents
 {
+  list-style: none; margin: 0; padding: 0; /* Reset user agent styles (li) */
   background-color: #0b0b3b;
   border: 1px solid #5353df;
 }
