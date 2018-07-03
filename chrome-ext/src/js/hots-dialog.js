@@ -97,40 +97,59 @@ var HotsDialog = {
     //Clear the skill and talent sections
     $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
 
+    //Add event handlers for skill and talents
+    $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').on('click', event => {
+      if (!event.target || event.target.nodeName !== 'IMG') return;
+
+      const dataset = event.target.dataset; //Read data-* attributes
+
+      if (!(dataset.heroId in heroes)) return;  //data-hero-id
+      const hero = heroes[dataset.heroId];
+
+      if (dataset.skillIndex in hero.skills) {  //data-skill-index
+        //Is skill icon
+        const skill = hero.skills[dataset.skillIndex];
+        console.log('Skill clicked:', skill.name);
+        this._injector(Mustache.render(this._templates['insert-skill'], { skill, hots_version: '34.1' }));
+      }
+      else if (dataset.talentLevel in hero.talents                      //data-talent-level
+        && dataset.talentIndex in hero.talents[dataset.talentLevel]) {  //data-talent-index
+        //Is talent icon
+        const talent = hero.talents[dataset.talentLevel][dataset.talentIndex];
+        console.log('Talent clicked:', talent.name);
+        this._injector(Mustache.render(this._templates['insert-talent'], { talent, hots_version: '34.1' }));
+      }
+      else console.error('Unknown icon');
+    });
+
     return $hotsDialog;
   },
 
-  _createSkillImg(skill) {
+  _createSkillImg(skill, heroId, skillIndex) {
     return $(Mustache.render(
-      '<img class="hots_dialog__skill-icon" src="{{iconUrl}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">',
-      skill
-    )).on('click', () => {
-      console.log('Skill clicked:', skill.name);
-      this._injector(Mustache.render(this._templates['insert-skill'], { skill, hots_version: '34.1' }));
-    });
+      '<img class="hots_dialog__skill-icon" src="{{skill.iconUrl}}" alt="{{skill.type}} - {{skill.name}}" title="{{skill.type}} - {{skill.name}}" data-hero-id="{{heroId}}" data-skill-index="{{skillIndex}}">',
+      { skill, heroId, skillIndex }
+    ));
   },
 
-  _createTalentImg(talent) {
+  _createTalentImg(talent, heroId, talentLevel, talentIndex) {
     return $(Mustache.render(
-      '<img class="hots_dialog__talent-icon" src="{{iconUrl}}" data-talent-id="{{alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">',
-      talent
-    )).on('click', () => {
-      console.log('Talent clicked:', talent.name);
-      this._injector(Mustache.render(this._templates['insert-talent'], { talent, hots_version: '34.1' }));
-    });
+      '<img class="hots_dialog__talent-icon" src="{{talent.iconUrl}}" alt="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})" title="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})" data-hero-id="{{heroId}}" data-talent-level="{{talentLevel}}" data-talent-index="{{talentIndex}}">',
+      { talent, heroId, talentLevel, talentIndex }
+    ));
   },
 
   _setSelectedHero($dialog, hero) {
     //Generate skills
     $dialog.children('.hots_dialog__skills').empty()
-      .append(hero.skills.map(skill => this._createSkillImg(skill)));
+      .append(hero.skills.map((skill, index) => this._createSkillImg(skill, hero.id, index)));
 
     //Generate talents
     const $talents = $dialog.children('.hots_dialog__talents').empty();
 
     for (const talentLevel in hero.talents) {
       $(`<li class="hots_dialog__talent-group"><span class="hots_dialog__talent-group-description">${talentLevel}레벨</span></li>`)
-        .append(hero.talents[talentLevel].map(talent => this._createTalentImg(talent)))
+        .append(hero.talents[talentLevel].map((talent, index) => this._createTalentImg(talent, hero.id, talentLevel, index)))
         .appendTo($talents);
     }
   }
