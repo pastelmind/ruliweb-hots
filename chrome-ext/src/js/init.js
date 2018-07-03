@@ -56,87 +56,92 @@ function updateDataFromApiServer() {
 }
 
 
-//Things that should be called only once when installed
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    "id": "ruli-context-menu",
-    "title": "히오스 공략툴 열기",
-    "contexts": ["frame"],
-    "documentUrlPatterns": ["about:blank"]
-  });
+//"main" code of this script, this should be called only inside an extension
+if (window.chrome && chrome.extension) {
 
-  //Load pre-packaged hero data
-  $.get(chrome.runtime.getURL('data/heroes.json'), heroes => {
-    prepareHeroData(heroes);
-    chrome.storage.local.set({ heroes }, () => {
-      //Attempt an update immediately
-      updateDataFromApiServer();
-
-      if (chrome.runtime.lastError)
-        throw chrome.runtime.lastError;
+  //Things that should be called only once when installed
+  chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+      "id": "ruli-context-menu",
+      "title": "히오스 공략툴 열기",
+      "contexts": ["frame"],
+      "documentUrlPatterns": ["about:blank"]
     });
-  }, 'json');
 
-  //Load templates
-  const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
-  const templates = {};
+    //Load pre-packaged hero data
+    $.get(chrome.runtime.getURL('data/heroes.json'), heroes => {
+      prepareHeroData(heroes);
+      chrome.storage.local.set({ heroes }, () => {
+        //Attempt an update immediately
+        updateDataFromApiServer();
 
-  //Create a resolved Deferred object
-  let prom = $.Deferred().resolve();
+        if (chrome.runtime.lastError)
+          throw chrome.runtime.lastError;
+      });
+    }, 'json');
 
-  //Chain then() calls to sequentially retrieve templates
-  while (templateNames.length) {
-    const templateName = templateNames.pop();
+    //Load templates
+    const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
+    const templates = {};
+
+    //Create a resolved Deferred object
+    let prom = $.Deferred().resolve();
+
+    //Chain then() calls to sequentially retrieve templates
+    while (templateNames.length) {
+      const templateName = templateNames.pop();
+      prom = prom.then(() => {
+        return $.get(chrome.runtime.getURL(`templates/${templateName}.mustache`), null, 'text')
+          .then(template => {
+            templates[templateName] = template;
+          });
+      });
+    }
+
+    //Finish by loading the templates into local storage
     prom = prom.then(() => {
-      return $.get(chrome.runtime.getURL(`templates/${templateName}.mustache`), null, 'text')
-        .then(template => {
-          templates[templateName] = template;
-        });
+      chrome.storage.local.set({ templates }, () => {
+        if (chrome.runtime.lastError)
+          throw chrome.runtime.lastError;
+      });
     });
-  }
 
-  //Finish by loading the templates into local storage
-  prom = prom.then(() => {
-    chrome.storage.local.set({ templates }, () => {
-      if (chrome.runtime.lastError)
-        throw chrome.runtime.lastError;
-    });
-  });
-
-  //Clear and setup an alarm to update the ID.
-  chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
-    console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
-    chrome.alarms.create(ALARM_UPDATE_DATA, {
-      delayInMinutes: 1,
-      periodInMinutes: 360  //6 hours = 360 minutes
+    //Clear and setup an alarm to update the ID.
+    chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
+      console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
+      chrome.alarms.create(ALARM_UPDATE_DATA, {
+        delayInMinutes: 1,
+        periodInMinutes: 360  //6 hours = 360 minutes
+      });
     });
   });
-});
 
 
-//Things that should be done whenever the background page loads
-//See quotes from:
-//  https://bugs.chromium.org/p/chromium/issues/detail?id=316315#c3
-//  https://stackoverflow.com/a/19915752/
-//
-//  Because the listeners themselves only exist in the context of the event
-//  page, you must use addListener each time the event page loads; only doing so
-//  at runtime.onInstalled by itself is insufficient.
+  //Things that should be done whenever the background page loads
+  //See quotes from:
+  //  https://bugs.chromium.org/p/chromium/issues/detail?id=316315#c3
+  //  https://stackoverflow.com/a/19915752/
+  //
+  //  Because the listeners themselves only exist in the context of the event
+  //  page, you must use addListener each time the event page loads; only doing so
+  //  at runtime.onInstalled by itself is insufficient.
 
-//Register an event listener for the right-click menu
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-    chrome.tabs.executeScript({ code: "openHotsDialog();" });
-  }
-  else
-    alert('루리웹에서만 실행할 수 있습니다.');
-});
+  //Register an event listener for the right-click menu
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
+      chrome.tabs.executeScript({ code: "openHotsDialog();" });
+    }
+    else
+      alert('루리웹에서만 실행할 수 있습니다.');
+  });
 
-//Register an event listener for the alarm.
-chrome.alarms.onAlarm.addListener(alarm => {
-  const alarmDate = new Date();
-  alarmDate.setTime(alarm.scheduledTime)
-  console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
-  if (alarm.name === ALARM_UPDATE_DATA)
-    updateDataFromApiServer();
-});
+  //Register an event listener for the alarm.
+  chrome.alarms.onAlarm.addListener(alarm => {
+    const alarmDate = new Date();
+    alarmDate.setTime(alarm.scheduledTime)
+    console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
+    if (alarm.name === ALARM_UPDATE_DATA)
+      updateDataFromApiServer();
+  });
+
+}

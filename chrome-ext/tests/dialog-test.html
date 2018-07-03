@@ -88,35 +88,45 @@
     if (!chrome.runtime.getURL)
       chrome.runtime.getURL = str => str || '';
 
-    //영웅 데이터를 가져온다
-    $.get('../../docs/heroes.json', heroes => {
+    //Override the injector with a logger
+    HotsDialog._injector = htmlFragment => {
+      const div = document.createElement('div');
+      document.body.appendChild(div);
+      div.innerHTML = htmlFragment;
+    };
+
+    //Test code
+    (async () => {
+      const heroes = JSON.parse(await $.get('../../docs/heroes.json', 'json'));
       prepareHeroData(heroes);
 
-      //Manually build the dialog
-      const $hotsDialog = $('#hots_dialog');
+      const templateNames = ['dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
+      const templates = {};
+      for (const templateName of templateNames)
+        templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache');
 
-      //Create hero icons (render template)
-      const $heroIcons = $hotsDialog.children('.hots_dialog__hero-icons');
-      $heroIcons.html(Mustache.render($heroIcons.html(), {
-        heroArray: Object.values(heroes)
-      }));
+      templates['dialog'] = $('#hots_dialog')[0].outerHTML;
+      $('#hots_dialog').remove();
 
-      //Add click handler for hero icons
-      $hotsDialog.find('img.hots_dialog__hero-icon').on('click', event => {
-        const hero = heroes[event.target.dataset.heroId];
-        console.log('Hero clicked:', hero.name);
-        HotsDialog._setSelectedHero($hotsDialog, hero);
-      })
+      HotsDialog._templates = templates;
 
-      //Prepare checkboxes  
-      $hotsDialog.find('input[type=checkbox]').checkboxradio({ icon: false });
+      //Generate skill description
+      const $hotsDialog = HotsDialog.buildDialog(templates['dialog'], heroes);
 
-      //Clear the skill and talent sections
-      $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
-
-      //Pass in dummy object {} for testing
-      HotsDialog.launchDialog({}, heroes);
-    }, 'json');
+      //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
+      //state is corrupted when this content script finishes execution.
+      //Thus, the dialog must be created from scratch every time.
+      $hotsDialog.dialog({
+        modal: true,
+        resizable: false,
+        title: '입력할 내용을 선택하세요',
+        width: 600,
+        close: function () {
+          //Destroy the dialog upon closing to clean up UI state
+          $(this).dialog('destroy').hide();
+        }
+      }).dialog('open');
+    })();
 
   </script>
 </body>
