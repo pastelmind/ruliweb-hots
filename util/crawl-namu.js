@@ -257,10 +257,14 @@ if (require.main === module) {
     const heroes = await crawlArticles(articleNames, converter);
 
     //Set portrait URLs
-    if (cmd.heroPortraits)
-      for (const heroId in heroes)
+    if (cmd.heroPortraits) {
+      for (const heroId in heroes) {
         if (heroId in cmd.heroPortraits)
           heroes[heroId].iconUrl = cmd.heroPortraits[heroId];
+        else
+          console.warn('Missing portrait for', heroes[heroId].name);
+      }
+    }
 
     //Save hero JSON
     if (cmd.type === CMD_SAVE_JSON) {

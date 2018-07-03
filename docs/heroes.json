@@ -15416,6 +15416,7 @@
   },
   "kharazim": {
     "name": "카라짐",
+    "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a8c319dc2c.png",
     "type": "근접",
     "role": "지원가",
     "universe": "디아블로",
@@ -15667,6 +15668,7 @@
   },
   "cassia": {
     "name": "카시아",
+    "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22369b19dc2c.png",
     "type": "원거리",
     "role": "암살자",
     "universe": "디아블로",
