@@ -78,7 +78,7 @@ chrome.runtime.onInstalled.addListener(() => {
   }, 'json');
 
   //Load templates
-  const templateNames = ['dialog', 'insert-hero', 'insert-skill', 'insert-talent'];
+  const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
   const templates = {};
 
   //Create a resolved Deferred object

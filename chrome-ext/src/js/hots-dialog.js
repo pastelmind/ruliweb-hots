@@ -125,33 +125,23 @@ var HotsDialog = {
     return $hotsDialog;
   },
 
-  _createSkillImg(skill, heroId, skillIndex) {
-    return $(Mustache.render(
-      '<img class="hots_dialog__skill-icon" src="{{skill.iconUrl}}" alt="{{skill.type}} - {{skill.name}}" title="{{skill.type}} - {{skill.name}}" data-hero-id="{{heroId}}" data-skill-index="{{skillIndex}}">',
-      { skill, heroId, skillIndex }
-    ));
-  },
-
-  _createTalentImg(talent, heroId, talentLevel, talentIndex) {
-    return $(Mustache.render(
-      '<img class="hots_dialog__talent-icon" src="{{talent.iconUrl}}" alt="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})" title="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})" data-hero-id="{{heroId}}" data-talent-level="{{talentLevel}}" data-talent-index="{{talentIndex}}">',
-      { talent, heroId, talentLevel, talentIndex }
-    ));
-  },
-
   _setSelectedHero($dialog, hero) {
     //Generate skills
+    hero.skills.forEach((skill, index) => skill.index = index);
     $dialog.children('.hots_dialog__skills').empty()
-      .append(hero.skills.map((skill, index) => this._createSkillImg(skill, hero.id, index)));
+      .append(Mustache.render(this._templates['dialog-skills'], hero));
 
     //Generate talents
-    const $talents = $dialog.children('.hots_dialog__talents').empty();
-
+    const talents = [];
     for (const talentLevel in hero.talents) {
-      $(`<li class="hots_dialog__talent-group"><span class="hots_dialog__talent-group-description">${talentLevel}레벨</span></li>`)
-        .append(hero.talents[talentLevel].map((talent, index) => this._createTalentImg(talent, hero.id, talentLevel, index)))
-        .appendTo($talents);
+      hero.talents[talentLevel].forEach((talent, index) => talent.index = index);
+      talents.push({
+         talentLevel,
+         talentGroup: hero.talents[talentLevel]
+      });
     }
+    $dialog.children('.hots_dialog__talents').empty()
+      .append(Mustache.render(this._templates['dialog-talents'], { talents, id: hero.id }));
   }
 };
 
