@@ -60,7 +60,7 @@
   display: block;
   width: 20px;
   height: 20px;
-  opacity: .33;
+  opacity: .3;
   cursor: pointer;
 }
 
@@ -78,6 +78,10 @@
   float: left;
   margin-right: 4px;
   margin-bottom: 4px;
+}
+
+.hots-hero-icon--excluded {
+  opacity: .2;
 }
 
 /* Skillset section */

@@ -96,27 +96,25 @@ const HotsDialog = {
   },
 
   /**
-   * 영웅 선택창을 만들기 위한 DIV를 생성하여 현재 문서에 추가한다.
-   * 이미 DIV가 존재할 경우 가져오기만 하고 생성하지 않는다.
+   * Generates the dialog content and appends it to <body>.
+   * Also creates event handlers.
    * @param {Object<string, string>} templates Template name => template string
-   * @param {object} heroes Key-value mappings of the form: hero ID => hero data
+   * @param {Object<string, Hero>} heroes Hero ID => hero data
    * @return {jQuery} 생성된 DIV
    */
   buildDialog(templates, heroes) {
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
-    const html = this.htmlGenerators.generateDialogContent(this.heroFilters);
+    const html = this.htmlGenerators.generateDialogContent(this.heroFilters, heroes);
     const $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
 
     //Add click handler for hero filters
-    const $heroFilterCheckboxes = $hotsDialog.find('.hero-filter input[type=checkbox]')
+    const heroIconElems = $hotsDialog.find('.hots-hero-icons .hots-hero-icon').toArray();
+    const heroFilterCheckboxes = $hotsDialog.find('.hero-filter input[type=checkbox]')
       .on('change', event => {
-        this.updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes);
-      });
-
-    //Generate hero icons
-    this.updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes);
+        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes);
+      }).toArray();
 
     //Add click handler for hero icons
     $hotsDialog.find('.hots-hero-icons').on('click', event => {
@@ -164,45 +162,39 @@ const HotsDialog = {
   },
 
   /**
-   * Updates the hero icons, filtered by `$heroFilterCheckboxes`.
-   * @param {jQuery} $hotsDialog HotsDialog <div> element
-   * @param {jQuery} $heroFilterCheckboxes Collection of checkbox <input> elements
+   * Updates the hero icons, filtered by `heroFilterCheckboxes`.
+   * @param {Element[]} heroIconElems Array of hero icon elements
+   * @param {HTMLInputElement[]} heroFilterCheckboxes Array of checkbox <input> elements
    * @param {Object.<string, Object>} heroes key => value pairs of hero ID => hero data
    */
-  updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes) {
+  updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes) {
     //Generate a collection of active filters
     const activeFilters = {};
 
     for (const filterType in this.heroFilters)
       activeFilters[filterType] = new Set;
 
-    $heroFilterCheckboxes.each(function () {
-      if (this.checked)
-        activeFilters[this.dataset.filterType].add(this.value); //data-filter-type
+    heroFilterCheckboxes.forEach(checkbox => {
+      if (checkbox.checked)
+        activeFilters[checkbox.dataset.filterType].add(checkbox.value); //data-filter-type
     });
 
-    //Generate an array of heroes that match the filter
-    const filteredHeroes = [];
-
-    for (const heroId in heroes) {
-      const hero = heroes[heroId];
-      let isMatch = true;
+    //Toggle CSS class of each hero icon
+    heroIconElems.forEach(heroIconElem => {
+      const hero = heroes[heroIconElem.dataset.heroId]; //data-hero-id
+      let isExcluded = false;
 
       for (const filterType in activeFilters) {
         const filterSet = activeFilters[filterType];
         //Discard this hero if the filter set is non-empty and does not include this hero
         if (filterSet.size && !filterSet.has(hero[filterType])) {
-          isMatch = false;
+          isExcluded = true;
           break;
         }
       }
 
-      if (isMatch)
-        filteredHeroes.push(hero);
-    }
-
-    $hotsDialog.find('.hots-hero-icons').html(
-      this.htmlGenerators.generateHeroIcons(filteredHeroes));
+      heroIconElem.classList.toggle('hots-hero-icon--excluded', isExcluded);
+    });
   },
 
   /** Collection of methods that generate HTML source strings from templates */
@@ -213,9 +205,10 @@ const HotsDialog = {
     /**
      * Generates the HTML source of the main dialog.
      * @param {Object<string, {name: string, filters: Object<string, string>}>} heroFilterGroups A collection of hero filter groups
+     * @param {Object<string, Hero>} heroes Hero ID => hero data
      * @return {string} HTML source
      */
-    generateDialogContent(heroFilterGroups) {
+    generateDialogContent(heroFilterGroups, heroes) {
       const filterGroups = [];
       for (const heroFilterGroupId in heroFilterGroups) {
         const heroFilterGroup = heroFilterGroups[heroFilterGroupId];
@@ -233,16 +226,11 @@ const HotsDialog = {
         filterGroups.push({ name: heroFilterGroup.name, filters });
       }
 
-      return Mustache.render(this.templates['dialog'], { filterGroups });
-    },
+      const heroesArray = [];
+      for (const heroId in heroes)
+        heroesArray.push(heroes[heroId]);
 
-    /**
-     * Generates a group of hero icons.
-     * @param {Hero[]} heroes Array of hero data
-     * @return {string} HTML source
-     */
-    generateHeroIcons(heroes) {
-      return Mustache.render(this.templates['dialog-heroes'], { heroes });
+      return Mustache.render(this.templates['dialog'], { filterGroups, heroes: heroesArray });
     },
 
     /**

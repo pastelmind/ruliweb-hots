@@ -13,7 +13,11 @@
     {{/filterGroups}}
   </section>
 
-  <section class="hots-dialog__section hots-hero-icons"></section>
+  <section class="hots-dialog__section hots-hero-icons">
+    {{#heroes}}
+    <img class="hots-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}})" title="{{name}} ({{type}})">
+    {{/heroes}}
+  </section>
   <section class="hots-dialog__section hots-skillset"></section>
   <ul class="hots-dialog__section hots-talentset"></ul>
 </div>

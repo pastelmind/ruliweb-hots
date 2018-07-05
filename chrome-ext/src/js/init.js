@@ -81,7 +81,7 @@ if (window.chrome && chrome.extension) {
     }, 'json');
 
     //Load templates
-    const templateNames = ['dialog', 'dialog-heroes', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
+    const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
     const templates = {};
 
     //Create a resolved Deferred object

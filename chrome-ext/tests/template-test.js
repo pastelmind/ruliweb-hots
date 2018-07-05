@@ -35,7 +35,7 @@ describe('HotsDialog.templates', () => {
 
     const templates = HotsDialog.htmlGenerators.templates = {};
     [
-      'dialog', 'dialog-heroes', 'dialog-skills', 'dialog-talents',
+      'dialog', 'dialog-skills', 'dialog-talents',
       'insert-hero', 'insert-skill', 'insert-talent'
     ].forEach(templateName => {
       templates[templateName] = fs.readFileSync(
@@ -47,16 +47,9 @@ describe('HotsDialog.templates', () => {
   describe('Dialog templates', () => {
     it('generates dialog content correctly', () => {
       const dialogHtml =
-        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters);
+        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters, heroes);
 
       assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
-    });
-
-    it('generates hero icons correctly', () => {
-      const heroIconsHtml =
-        HotsDialog.htmlGenerators.generateHeroIcons(Object.values(heroes));
-
-      assert.strictEqual(heroIconsHtml, getExpectedHtml('dialog-heroes'));
     });
 
     it('generates skill icons correctly', () => {

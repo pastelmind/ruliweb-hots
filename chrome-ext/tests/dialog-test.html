@@ -34,7 +34,7 @@
       const heroes = JSON.parse(await $.get('../../docs/heroes.json', 'json'));
       prepareHeroData(heroes);
 
-      const templateNames = ['dialog', 'dialog-heroes', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
+      const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
       const templates = {};
       for (const templateName of templateNames)
         templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache', 'text');
