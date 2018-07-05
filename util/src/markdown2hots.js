@@ -178,6 +178,8 @@ function parseSkillMarkdown(name, markdown) {
           skill.manaCost = parseInt(extraValue); break;
         case '재사용 대기시간':
           skill.cooldown = parseFloat(extraValue); break;
+        case '충전 대기시간':
+          skill.rechargeCooldown = parseFloat(extraValue); break;
         default:
           skill.extras[extraName] = extraValue;
       }
@@ -219,6 +221,9 @@ function skillToMarkdown(skill) {
 
   if (skill.cooldown)
     markdown += `* 재사용 대기시간: ${skill.cooldown} \n`;
+
+  if (skill.rechargeCooldown)
+    markdown += `* 충전 대기시간: ${skill.rechargeCooldown} \n`;
 
   for (const extra in skill.extras)
     markdown += `* ${extra}: ${skill.extras[extra]} \n`;
