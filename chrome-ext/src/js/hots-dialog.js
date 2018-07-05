@@ -227,8 +227,11 @@ const HotsDialog = {
       }
 
       const heroesArray = [];
-      for (const heroId in heroes)
-        heroesArray.push(heroes[heroId]);
+      for (const heroId in heroes) {
+        const hero = heroes[heroId];
+        hero.roleName = heroFilterGroups.role.filters[hero.role];
+        heroesArray.push(hero);
+      }
 
       return Mustache.render(this.templates['dialog'], { filterGroups, heroes: heroesArray });
     },
