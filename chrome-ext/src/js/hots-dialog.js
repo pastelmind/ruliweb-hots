@@ -48,7 +48,6 @@ function getHtmlInjectorAtSelectedPosition() {
 }
 
 const HotsDialog = {
-  /** @type {{ hotsVersion: string, heroes: Object<string, Hero>, templates: Object<string, string> }} */
   data: null,
 
   /** @type {HtmlStringInjector} */
@@ -275,7 +274,10 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      */
     generateSkillInfoTable(skill, hotsVersion) {
-      return Mustache.render(this.templates['insert-skill'], { skill, hots_version: hotsVersion });
+      const skillView = Object.create(skill);
+      skillView.hotsVersion = hotsVersion;
+      skillView.description = skill.description.replace('\n', '<br>');
+      return Mustache.render(this.templates['insert-skill'], skillView);
     },
 
     /**
@@ -284,12 +286,14 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      */
     generateTalentInfoTable(talent, hotsVersion) {
-      return Mustache.render(this.templates['insert-talent'], { talent, hots_version: hotsVersion });
+      const talentView = Object.create(talent);
+      talentView.hotsVersion = hotsVersion;
+      talentView.description = talent.description.replace('\n', '<br>');
+      return Mustache.render(this.templates['insert-talent'], talentView);
     }
   }
 };
 
-let data = null;
 
 /**
  * Load HotS data on first run and launch the Hots dialog.

@@ -1,23 +1,23 @@
 <table style="width: 100%; border: 2px solid #5353df; background-color: #0b0b3b; color: #eefee7;">
   <tr style="background-color: #08082b">
     <td rowspan="2" style="padding: .5em; border: 1px solid #5353df; width: 48px; vertical-align: top; background-color: #181881;">
-      <img style="width: 100%" src="{{{talent.iconUrl}}}" alt="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})" title="{{talent.name}} ({{talent.type}} - 레벨 {{talent.level}})">
+      <img style="width: 100%" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">
     </td>
     <td style="padding: .5em; border: 1px solid #5353df; text-align: center;">
-      <b style="color: #66ccec">{{talent.name}}</b>
+      <b style="color: #66ccec">{{name}}</b>
     </td>
     <td style="padding: .5em; border: 1px solid #5353df; text-align: center; width: 30%;">
-      <b style="color: #66ccec">{{talent.type}} - 레벨 {{talent.level}}</b>
+      <b style="color: #66ccec">{{type}} - 레벨 {{level}}</b>
     </td>
   </tr>
   <tr>
-    <td colspan="2" style="padding: .5em; border: 1px solid #5353df;">{{{talent.description}}}</td>
+    <td colspan="2" style="padding: .5em; border: 1px solid #5353df;">{{{description}}}</td>
   </tr>
-  {{#hots_version}}
+  {{#hotsVersion}}
   <tr>
     <td colspan="3" style="padding: .25em .5em; border: 1px solid #5353df; text-align: right;">
-      <i>패치 {{hots_version}}</i>
+      <i>패치 {{hotsVersion}}</i>
     </td>
   </tr>
-  {{/hots_version}}
+  {{/hotsVersion}}
 </table>

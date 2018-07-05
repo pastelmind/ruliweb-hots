@@ -238,21 +238,21 @@
 
     //Generate hero description
     $.get('templates/insert-hero.mustache', (htmlTemplate) => {
-      const html = Mustache.render(htmlTemplate, { hero, hots_version: '34.1' });
+      const html = Mustache.render(htmlTemplate, { hero, hotsVersion: '34.1' });
 
       $('<div><h2>영웅</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate skill description
     $.get('templates/insert-skill.mustache', (htmlTemplate) => {
-      const html = Mustache.render(htmlTemplate, { skill: hero.skills[1], hots_version: '34.1' });
+      const html = Mustache.render(htmlTemplate, { skill: hero.skills[1], hotsVersion: '34.1' });
 
       $('<div><h2>기술</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
 
     //Generate talent description
     $.get('templates/insert-talent.mustache', (htmlTemplate) => {
-      const html = Mustache.render(htmlTemplate, { talent: hero.talents["4"][0], hots_version: '34.1' });
+      const html = Mustache.render(htmlTemplate, { talent: hero.talents["4"][0], hotsVersion: '34.1' });
 
       $('<div><h2>특성</h2></div>').appendTo('#generated_content').append(html);
     }, 'text');
