@@ -6,53 +6,50 @@
 'use strict';
 
 /**
- * A collection of data that represents a skill.
- * @typedef {Object<string, *>} Skill
+ * Captures the currently selected position in a child frame of the document, and
+ * returns a callback that can inject an HTML string at the position.
+ * @return {HtmlStringInjector} A callback that injects a valid HTML string into the currently selected frame.
  */
-
-/**
- * A collection of data that represents a talent.
- * @typedef {Object<string, *>} Talent
- */
-
-/**
- * A collection of data that represents a hero.
- * @typedef {{skills: Skill[], talents: Object<number, Talent[]>}} Hero
- */
-
-/**
- * 현재 선택된 위치에 HTML을 주입할 수 있는 콜백 함수를 생성한다.
- * @return {function} 현재 선택된 위치에 HTML을 주입할 수 있는 콜백 함수 (인자로 Element를 넘길 것)
- */
-function getElementInjectorAtSelectedArea() {
-  let selectedWindow = null;
-  for (let i = 0; i < window.length; ++i) {
-    if (window[i].getSelection().rangeCount) {
-      selectedWindow = window[i];
-      break;
-    }
-  }
+function getHtmlInjectorAtSelectedPosition() {
+  const selectedWindow = Array.from(window)
+    .find(childWindow => childWindow.getSelection().rangeCount);
 
   if (!selectedWindow)
     throw new Error('선택된 프레임을 찾을 수 없습니다.');
 
   const range = selectedWindow.getSelection().getRangeAt(0);
+  if (range.startContainer.nodeName == 'HTML') { //Weird edge case
+    console.debug('<html> tag is selected, using <body> instead...');
+    return html => {
+      const docFragment = createDocumentFragment(selectedWindow.document, html);
+      selectedWindow.document.body.appendChild(docFragment);
 
-  return htmlFragment => {
-    const rootElement = $(htmlFragment)[0];
-    if (range.startContainer.nodeName == 'HTML') { //Weird edge case
-      console.debug('<html> tag is selected, using <body> instead...');
-      selectedWindow.document.body.appendChild(rootElement);
-    }
-    else
-      range.insertNode(rootElement);
+      selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
+    };
+  }
+  else {
+    return html => {
+      const docFragment = createDocumentFragment(selectedWindow.document, html);
+      range.insertNode(docFragment);
 
-    selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
-  };
+      selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
+    };
+  }
+
+  function createDocumentFragment(document, html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    const docFragment = document.createDocumentFragment();
+    for (const node of tempDiv.childNodes)
+      docFragment.appendChild(node);
+    return docFragment;
+  }
 }
 
-var HotsDialog = {
-  _injector: null,
+const HotsDialog = {
+  /** @type {HtmlStringInjector} */
+  injectHtml: null,
 
   /**
    * Launch the hero/skill/talent selection dialog
@@ -62,7 +59,7 @@ var HotsDialog = {
    */
   launchDialog(heroes, templates, injector) {
     //Snapshot currently selected area
-    this._injector = injector;
+    this.injectHtml = injector;
     this._heroFilters = { universes: new Set, roles: new Set };
 
     //Generate skill description
@@ -138,7 +135,7 @@ var HotsDialog = {
       const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
       const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-      this._injector(this.htmlGenerators.generateSkillInfoTable(skill, '34.1'));
+      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, '34.1'));
     });
 
     //Add event handlers for talent icons
@@ -150,7 +147,7 @@ var HotsDialog = {
       const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
       const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-      this._injector(this.htmlGenerators.generateTalentInfoTable(talent, '34.1'));
+      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, '34.1'));
     });
 
     return $hotsDialog;
@@ -283,7 +280,7 @@ function openHotsDialog() {
     });
   }
   else
-    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates, getElementInjectorAtSelectedArea());
+    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates, getHtmlInjectorAtSelectedPosition());
 }
 
 
@@ -292,3 +289,25 @@ if (typeof module !== 'undefined' && module.exports) {
   var Mustache = require('mustache');
   module.exports = exports = HotsDialog;
 }
+
+
+/**
+ * A collection of data that represents a skill.
+ * @typedef {Object<string, *>} Skill
+ */
+
+/**
+ * A collection of data that represents a talent.
+ * @typedef {Object<string, *>} Talent
+ */
+
+/**
+ * A collection of data that represents a hero.
+ * @typedef {{skills: Skill[], talents: Object<number, Talent[]>}} Hero
+ */
+
+/**
+ * A callback that injects the given HTML string into a desired position.
+ * @typedef {function(string): void} HtmlStringInjector
+ */
+
