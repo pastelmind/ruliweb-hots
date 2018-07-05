@@ -273,7 +273,7 @@ if (require.main === module) {
       console.log('Hero data saved to', jsonPath);
     }
 
-    if (converter.unusedHostedUrls && converter.unusedHostedUrls.size) {
+    if (converter && converter.unusedHostedUrls && converter.unusedHostedUrls.size) {
       console.warn('The following URLs from the listfile were not matched with any icon:');
       for (const url of converter.unusedHostedUrls)
         console.warn('- ' + url);

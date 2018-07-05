@@ -3,8 +3,8 @@
     "name": "D.Va",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc223a4f19dc2c.png",
     "type": "원거리",
-    "role": "전사",
-    "universe": "오버워치",
+    "role": "warrior",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "로봇 모드 (Mech Mode)",
@@ -287,8 +287,8 @@
     "name": "가로쉬",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1f0419dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "방어력 증가 (Armor Up)",
@@ -528,8 +528,8 @@
     "name": "가즈로",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "워크래프트",
+    "role": "specialist",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "고물상 (Salvager)",
@@ -782,8 +782,8 @@
     "name": "갈",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "오우거의 분노 (Ogre Rage)",
@@ -1013,8 +1013,8 @@
     "name": "겐지",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227acf19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "오버워치",
+    "role": "assassin",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "사이보그의 날렵함 (Cyber Agility)",
@@ -1251,8 +1251,8 @@
     "name": "굴단",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc227d4919dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "생명력 전환 (Life Tap)",
@@ -1482,8 +1482,8 @@
     "name": "그레이메인",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227c8e19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "늑대인간의 저주 (Curse of the Worgen)",
@@ -1730,8 +1730,8 @@
     "name": "길 잃은 바이킹",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23302619dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "블리자드 고전",
+    "role": "specialist",
+    "universe": "classic",
     "skills": [
       {
         "name": "바이킹 비상 식량 (Viking Hoard)",
@@ -1999,8 +1999,8 @@
     "name": "나지보",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23088119dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "디아블로",
+    "role": "specialist",
+    "universe": "diablo",
     "skills": [
       {
         "name": "부두 의식 (Voodoo Ritual)",
@@ -2237,8 +2237,8 @@
     "name": "노바",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23093d19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "영구 은신 (Permanent Cloak)",
@@ -2475,8 +2475,8 @@
     "name": "누더기",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e223819dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "유독 가스 (Vile Gas)",
@@ -2737,8 +2737,8 @@
     "name": "데커드",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22398819dc2c.png",
     "type": "근접",
-    "role": "지원가",
-    "universe": "디아블로",
+    "role": "support",
+    "universe": "diablo",
     "skills": [
       {
         "name": "케인의 수호자 (Fortitude of the Faithful)",
@@ -2951,8 +2951,8 @@
     "name": "데하카",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1d8c19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "스타크래프트",
+    "role": "warrior",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "정수 수집 (Essence Collection)",
@@ -3174,8 +3174,8 @@
     "name": "도살자",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc232f6f19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "디아블로",
+    "role": "assassin",
+    "universe": "diablo",
     "skills": [
       {
         "name": "신선한 고기 (Fresh Meat)",
@@ -3401,8 +3401,8 @@
     "name": "디아블로",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1e4519dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "디아블로",
+    "role": "warrior",
+    "universe": "diablo",
     "skills": [
       {
         "name": "검은 영혼석 (Black Soulstone)",
@@ -3633,8 +3633,8 @@
     "name": "라그나로스",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc230abb19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "화산 심장부 (Molten Core)",
@@ -3897,8 +3897,8 @@
     "name": "레가르",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230c2b19dc2c.png",
     "type": "근접",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "늑대 정령 (Ghost Wolf)",
@@ -4152,8 +4152,8 @@
     "name": "레오릭",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1fd219dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "디아블로",
+    "role": "warrior",
+    "universe": "diablo",
     "skills": [
       {
         "name": "불사, 해골 왕의 분노 (Undying, Wrath Of The Bone King)",
@@ -4410,8 +4410,8 @@
     "name": "레이너",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230b7619dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "향상된 시력 (Advanced Optics)",
@@ -4651,8 +4651,8 @@
     "name": "렉사르",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
     "type": "원거리",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "기백 날리기 (Spirit Swoop)",
@@ -4881,8 +4881,8 @@
     "name": "루나라",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22d94b19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "자연의 독소 (Nature's Toxin)",
@@ -5122,8 +5122,8 @@
     "name": "루시우",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "오버워치",
+    "role": "support",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "벽 타기 (Wall Ride)",
@@ -5356,8 +5356,8 @@
     "name": "리 리",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a97519dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "빠른 발 (Fast Feet)",
@@ -5587,8 +5587,8 @@
     "name": "리밍",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22aa2519dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "디아블로",
+    "role": "assassin",
+    "universe": "diablo",
     "skills": [
       {
         "name": "극대화 반응 (Critical Mass)",
@@ -5829,8 +5829,8 @@
     "name": "마이에브",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22da0319dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "감시관의 도약 (Vault of the Wardens)",
@@ -6054,8 +6054,8 @@
     "name": "말티엘",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "디아블로",
+    "role": "assassin",
+    "universe": "diablo",
     "skills": [
       {
         "name": "사신의 징표 (Reaper's Mark)",
@@ -6289,8 +6289,8 @@
     "name": "말퓨리온",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dabd19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "정신 자극 (Innervate)",
@@ -6518,8 +6518,8 @@
     "name": "머키",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230db119dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "워크래프트",
+    "role": "specialist",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "알 놓기 (Spawn Egg)",
@@ -6745,8 +6745,8 @@
     "name": "메디브",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dc3619dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "워크래프트",
+    "role": "specialist",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "까마귀 변신 (Raven Form)",
@@ -6991,8 +6991,8 @@
     "name": "모랄레스 중위",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22dd9d19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "스타크래프트",
+    "role": "support",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "카두세우스 반응로 (Caduceus Reactor)",
@@ -7209,8 +7209,8 @@
     "name": "무라딘",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e209419dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "재기의 바람 (Second Wind)",
@@ -7439,7 +7439,7 @@
     "name": "바리안",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23818119dc2c.png",
     "type": "근접",
-    "role": "전사",
+    "role": "warrior",
     "universe": "",
     "skills": [
       {
@@ -7689,8 +7689,8 @@
     "name": "발라",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23546119dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "디아블로",
+    "role": "assassin",
+    "universe": "diablo",
     "skills": [
       {
         "name": "증오 (Hatred)",
@@ -7919,8 +7919,8 @@
     "name": "발리라",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2353a119dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "소멸 (Vanish)",
@@ -8187,8 +8187,8 @@
     "name": "블레이즈",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e1ccf19dc2c.png",
     "type": "원거리",
-    "role": "전사",
-    "universe": "스타크래프트",
+    "role": "warrior",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "방화광 (Pyromania)",
@@ -8438,8 +8438,8 @@
     "name": "빛나래",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2234ce19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "위안의 안개 (Soothing Mist)",
@@ -8689,8 +8689,8 @@
     "name": "사무로",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2330de19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "파죽지세, 환영 이동술 (Advancing Strikes, Image Transmission)",
@@ -8901,8 +8901,8 @@
     "name": "소냐",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23324d19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "디아블로",
+    "role": "warrior",
+    "universe": "diablo",
     "skills": [
       {
         "name": "분노 (Fury)",
@@ -9123,8 +9123,8 @@
     "name": "스랄",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc23552519dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "서리늑대의 회복력 (Frostwolf Resilience)",
@@ -9350,8 +9350,8 @@
     "name": "스투코프",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23332019dc2c.png",
     "type": "근접",
-    "role": "지원가",
-    "universe": "스타크래프트",
+    "role": "support",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "감염체 폭발 (Bio-Kill Switch)",
@@ -9605,8 +9605,8 @@
     "name": "실바나스",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2333df19dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "워크래프트",
+    "role": "specialist",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "검은 화살 (Black Arrows)",
@@ -9853,8 +9853,8 @@
     "name": "아나",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "오버워치",
+    "role": "support",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "때까치 (Shrike)",
@@ -10091,8 +10091,8 @@
     "name": "아눕아락",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f8f419dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "풍뎅이 숙주 (Scarab Host)",
@@ -10334,8 +10334,8 @@
     "name": "아르타니스",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f3ad19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "스타크래프트",
+    "role": "warrior",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "과부하 보호막 (Shield Overload)",
@@ -10584,8 +10584,8 @@
     "name": "아바투르",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f60119dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "스타크래프트",
+    "role": "specialist",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "식충 변종 (Locust Strain)",
@@ -10878,8 +10878,8 @@
     "name": "아서스",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac4df19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "서리한이 굶주렸다 (Frostmourne Hungers)",
@@ -11106,8 +11106,8 @@
     "name": "아우리엘",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f47c19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "디아블로",
+    "role": "support",
+    "universe": "diablo",
     "skills": [
       {
         "name": "희망 불어넣기 (Bestow Hope)",
@@ -11340,8 +11340,8 @@
     "name": "아즈모단",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f54519dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "디아블로",
+    "role": "specialist",
+    "universe": "diablo",
     "skills": [
       {
         "name": "지옥의 장군 (General of Hell)",
@@ -11594,8 +11594,8 @@
     "name": "알라라크",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f6bc19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "가학성 (Sadism)",
@@ -11832,8 +11832,8 @@
     "name": "알렉스트라자",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f78419dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "용의 여왕 (Dragonqueen)",
@@ -12101,8 +12101,8 @@
     "name": "요한나",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a5d219dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "디아블로",
+    "role": "warrior",
+    "universe": "diablo",
     "skills": [
       {
         "name": "철갑 피부 (Iron Skin)",
@@ -12336,8 +12336,8 @@
     "name": "우서",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2352d919dc2c.png",
     "type": "근접",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "헌신, 영원한 선봉장 (Devotion, Eternal Vanguard)",
@@ -12577,8 +12577,8 @@
     "name": "이렐",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237dd219dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "신성한 목적 (Divine Purpose)",
@@ -12809,8 +12809,8 @@
     "name": "일리단",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22aae919dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "배신자의 갈증 (Betrayer's Thirst)",
@@ -13030,8 +13030,8 @@
     "name": "자가라",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc237e8c19dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "스타크래프트",
+    "role": "specialist",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "점막 종양 (Creep Tumor)",
@@ -13264,8 +13264,8 @@
     "name": "자리야",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237f4419dc2c.png",
     "type": "원거리",
-    "role": "전사",
-    "universe": "오버워치",
+    "role": "warrior",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "에너지 (Energy)",
@@ -13525,8 +13525,8 @@
     "name": "정예 타우렌 족장",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2233b019dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "록스타 (Rockstar)",
@@ -13767,8 +13767,8 @@
     "name": "정크랫",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a68719dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "오버워치",
+    "role": "assassin",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "완전 난장판, 지뢰 폭발 (Total Mayhem, Detonate Mine)",
@@ -14011,8 +14011,8 @@
     "name": "제라툴",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237ffa19dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "영구 은신 (Permanent Cloak)",
@@ -14240,8 +14240,8 @@
     "name": "제이나",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/13/163f62ac5c319dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "동상 (Frostbite)",
@@ -14479,8 +14479,8 @@
     "name": "줄",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237d0619dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "디아블로",
+    "role": "specialist",
+    "universe": "diablo",
     "skills": [
       {
         "name": "해골 되살리기 (Raise Skeleton)",
@@ -14720,8 +14720,8 @@
     "name": "줄진",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2380c119dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "광전사, 도끼 맛 좀 보여줄까? (Berserker, You Want Axe?)",
@@ -14947,8 +14947,8 @@
     "name": "첸",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22375019dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "강화주 (Fortifying Brew)",
@@ -15192,8 +15192,8 @@
     "name": "초",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "오우거의 가죽 (Ogre Hide)",
@@ -15418,8 +15418,8 @@
     "name": "카라짐",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a8c319dc2c.png",
     "type": "근접",
-    "role": "지원가",
-    "universe": "디아블로",
+    "role": "support",
+    "universe": "diablo",
     "skills": [
       {
         "name": "고유 능력 선택 (Pick Your Trait)",
@@ -15670,8 +15670,8 @@
     "name": "카시아",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22369b19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "디아블로",
+    "role": "assassin",
+    "universe": "diablo",
     "skills": [
       {
         "name": "공격 저지 (Avoidance)",
@@ -15896,8 +15896,8 @@
     "name": "캘타스",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a73f19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "신록의 구슬 (Verdant Spheres)",
@@ -16123,8 +16123,8 @@
     "name": "케리건",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac69419dc2c.png",
     "type": "근접",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "동화 작용 (Assimilation)",
@@ -16368,8 +16368,8 @@
     "name": "켈투자드",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a80d19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "차디찬 어둠의 지배자 (Master of the Cold Dark)",
@@ -16612,8 +16612,8 @@
     "name": "크로미",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2238c619dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "시간여행자 (Timewalker)",
@@ -16843,8 +16843,8 @@
     "name": "타이커스",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23509019dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "미니건 (Minigun)",
@@ -17099,8 +17099,8 @@
     "name": "태사다르",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc232eb319dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "스타크래프트",
+    "role": "support",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "왜곡 광선, 계시 (Distortion Beam, Oracle)",
@@ -17327,8 +17327,8 @@
     "name": "트레이서",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc234fd619dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "오버워치",
+    "role": "assassin",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "재장전 (Reload)",
@@ -17550,8 +17550,8 @@
     "name": "티란데",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23521c19dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "워크래프트",
+    "role": "support",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "사냥꾼의 징표 (Hunter's Mark)",
@@ -17784,8 +17784,8 @@
     "name": "티리엘",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "디아블로",
+    "role": "warrior",
+    "universe": "diablo",
     "skills": [
       {
         "name": "대천사의 분노 (Archangel's Wrath)",
@@ -18012,8 +18012,8 @@
     "name": "폴스타트",
     "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227ebe19dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "순풍 (Tailwind)",
@@ -18239,8 +18239,8 @@
     "name": "프로비우스",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230a0119dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "스타크래프트",
+    "role": "specialist",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "수정탑 소환 (Warp In Pylon)",
@@ -18476,8 +18476,8 @@
     "name": "피닉스",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "보호막 축전기 (Shield Capacitor)",
@@ -18700,8 +18700,8 @@
     "name": "한조",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227e0619dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "오버워치",
+    "role": "assassin",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "선천적인 날렵함 (Natural Agility)",
@@ -18938,8 +18938,8 @@
     "name": "해머 상사",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23319819dc2c.png",
     "type": "원거리",
-    "role": "전문가",
-    "universe": "스타크래프트",
+    "role": "specialist",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "공성 모드 (Siege Mode)",

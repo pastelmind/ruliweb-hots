@@ -21,6 +21,22 @@ class Hero {
   }
 
   /**
+   * Returns the role name of this hero.
+   * @return {string} Role name defined in `Hero.roles`, or '' if unknown
+   */
+  getRoleName() {
+    return Hero.roles[this.role] || '';
+  }
+
+  /**
+   * Returns the universe name of this hero.
+   * @return {string} Universe name defined in `Hero.universes`, or '' if unknown
+   */
+  getUniverseName() {
+    return Hero.universes[this.universe] || '';
+  }
+
+  /**
    * Produce a compact, minimal JSON
    */
   compact() {
@@ -59,7 +75,51 @@ class Hero {
 
     return heroesCompact;
   }
+
+  /**
+   * Parse a role name from the given string and return the role ID.
+   * @param {string} roleString String containing the role name
+   * @return {string} A role ID defined in `Hero.roles`, or '' if unknown.
+   */
+  static parseRole(roleString) {
+    for (const roleId in Hero.roles)
+      if (roleString.includes(Hero.roles[roleId]))
+        return roleId;
+
+    return '';
+  }
+
+  /**
+   * Parse a universe name from the given string and return the universe ID.
+   * @param {string} universeString String containing the universe name
+   * @return {string} A universe ID defined in `Hero.universes`, or '' if unknown.
+   */
+  static parseUniverse(universeString) {
+    for (const universeId in Hero.universes)
+      if (universeString.includes(Hero.universes[universeId]))
+        return universeId;
+
+    return '';
+  }
 }
+
+Hero.roles = {
+  'warrior': '전사',
+  'assassin': '암살자',
+  'support': '지원가',
+  'specialist': '전문가'
+};
+
+Hero.universes = {
+  'warcraft': '워크래프트',
+  'starcraft': '스타크래프트',
+  'diablo': '디아블로',
+  'classic': '고전',
+  'overwatch': '오버워치'
+};
+
+Object.freeze(Hero.roles);
+Object.freeze(Hero.universes);
 
 class Skill {
   constructor(o = {}) {

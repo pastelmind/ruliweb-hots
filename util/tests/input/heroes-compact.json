@@ -3,8 +3,8 @@
     "name": "루시우",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
     "type": "원거리",
-    "role": "지원가",
-    "universe": "오버워치",
+    "role": "support",
+    "universe": "overwatch",
     "skills": [
       {
         "name": "벽 타기 (Wall Ride)",
@@ -236,8 +236,8 @@
   "abathur": {
     "name": "아바투르",
     "type": "근접",
-    "role": "전문가",
-    "universe": "스타크래프트",
+    "role": "specialist",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "식충 변종 (Locust Strain)",
@@ -530,8 +530,8 @@
     "name": "초",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "type": "근접",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "오우거의 가죽 (Ogre Hide)",
@@ -756,8 +756,8 @@
     "name": "갈",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "워크래프트",
+    "role": "assassin",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "오우거의 분노 (Ogre Rage)",

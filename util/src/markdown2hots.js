@@ -78,9 +78,9 @@ module.exports = {
     if (hero.type)
       markdown += `* 유형: ${hero.type}\n`;
     if (hero.role)
-      markdown += `* 역할: ${hero.role}\n`;
+      markdown += `* 역할: ${hero.getRoleName()}\n`;
     if (hero.universe)
-      markdown += `* 세계관: ${hero.universe}\n`;
+      markdown += `* 세계관: ${hero.getUniverseName()}\n`;
 
     markdown += '\n## 기술\n';
     markdown += hero.skills.map(skillToMarkdown).join('\n\n');
@@ -143,8 +143,8 @@ function parseHeroContent(name, markdown) {
         case 'ID': hero.id = propValue; break;
         case '아이콘': hero.iconUrl = propValue; break;
         case '유형': hero.type = propValue; break;
-        case '역할': hero.role = propValue; break;
-        case '세계관': hero.universe = propValue; break;
+        case '역할': hero.role = Hero.parseRole(propValue); break;
+        case '세계관': hero.universe = Hero.parseUniverse(propValue); break;
         default:
           console.warn('Unknown property:', propName, '/', propValue);
       }
@@ -241,4 +241,14 @@ function skillToMarkdown(skill) {
  */
 function talentToMarkdown(talent) {
   return '#' + skillToMarkdown(talent);
+}
+
+//-------- String converters --------//
+
+const universes = {
+
+};
+
+function universeToId(universe) {
+
 }

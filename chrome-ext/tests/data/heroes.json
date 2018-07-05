@@ -3,8 +3,8 @@
     "name": "가즈로",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png",
     "type": "근접",
-    "role": "전문가",
-    "universe": "워크래프트",
+    "role": "specialist",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "고물상 (Salvager)",
@@ -257,8 +257,8 @@
     "name": "렉사르",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
     "type": "원거리",
-    "role": "전사",
-    "universe": "워크래프트",
+    "role": "warrior",
+    "universe": "warcraft",
     "skills": [
       {
         "name": "기백 날리기 (Spirit Swoop)",
@@ -487,8 +487,8 @@
     "name": "피닉스",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
     "type": "원거리",
-    "role": "암살자",
-    "universe": "스타크래프트",
+    "role": "assassin",
+    "universe": "starcraft",
     "skills": [
       {
         "name": "보호막 축전기 (Shield Capacitor)",

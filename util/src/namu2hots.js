@@ -8,7 +8,7 @@
 'use strict';
 
 const assert = require('assert');
-const { Hero, Skill, Talent } = require('./models.js');
+const { Hero, Skill, Talent } = require('./models');
 
 module.exports = {
   /**
@@ -306,21 +306,25 @@ function parseHeroType(content) {
 /**
  * Parse a hero's role (warrior/assassin/support/specialist).
  * @param {string} content NamuWiki markup
- * @return {string} One of '전사', '암살자', '지원가', '전문가', ''
+ * @return {string} A role ID defined in `Hero.roles`, or '' if unknown.
  */
 function parseHeroRole(content) {
-  const match = /전사|암살자|지원가|전문가/.exec(content);
-  return match ? match[0] : '';
+  const roleId = Hero.parseRole(content);
+  if (!roleId)
+    console.warn('Hero role unknown:', content);
+  return roleId;
 }
 
 /**
  * Parse a hero's universe (warcraft/starcraft/diablo/classic/overwatch).
  * @param {string} content NamuWiki markup
- * @return {string} One of '워크래프트', '스타크래프트', '디아블로', '블리자드 고전', '오버워치', ''
+ * @return {string} A role ID defined in `Hero.universes`, or '' if unknown.
  */
 function parseHeroUniverse(content) {
-  const match = /워크래프트|스타크래프트|디아블로|블리자드 고전|오버워치/.exec(content);
-  return match ? match[0] : '';
+  const universeId = Hero.parseUniverse(content);
+  if (!universeId)
+    console.warn('Hero universe unknown:', content);
+  return universeId;
 }
 
 /**

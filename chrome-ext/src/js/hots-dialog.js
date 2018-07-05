@@ -190,8 +190,6 @@ const HotsDialog = {
         activeFilters[this.dataset.filterType].add(this.value); //data-filter-type
     });
 
-    console.log(activeFilters);
-
     //Generate an array of heroes that match the filter
     const filteredHeroes = [];
 
