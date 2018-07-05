@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * Constructs the HotS hero/skill/talent selection dialog.
  */
@@ -288,4 +290,11 @@ function openHotsDialog() {
   }
   else
     HotsDialog.launchDialog(hotsData.heroes, hotsData.templates, getElementInjectorAtSelectedArea());
+}
+
+
+//For testing in Node.js
+if (typeof module !== 'undefined' && module.exports) {
+  var Mustache = require('mustache');
+  module.exports = exports = HotsDialog;
 }
