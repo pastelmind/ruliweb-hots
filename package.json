@@ -11,8 +11,10 @@
     "namu:parse": "node util/parse-namu.js",
     "env": "SET",
     "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json",
-    "postinstall": "npm run update-dependencies",
-    "update-dependencies": "COPY /B node_modules\\jquery\\dist\\jquery.min.js chrome-ext\\src\\js\\jquery.js && COPY /B node_modules\\mustache\\mustache.min.js chrome-ext\\src\\js\\mustache.js"
+    "postinstall": "npm run -s update:jquery && npm run -s update:mustache && npm run -s update:tingle.js",
+    "update:jquery": "COPY /B node_modules\\jquery\\dist\\jquery.min.js chrome-ext\\src\\js\\jquery.js",
+    "update:mustache": "COPY /B node_modules\\mustache\\mustache.min.js chrome-ext\\src\\js\\mustache.js",
+    "update:tingle.js": "COPY /B node_modules\\tingle.js\\dist\\tingle.min.js chrome-ext\\src\\js\\tingle.js && COPY /B node_modules\\tingle.js\\dist\\tingle.min.css chrome-ext\\src\\css\\tingle.css"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "commander": "^2.16.0",
     "html-entities": "^1.2.1",
     "jquery": "^3.3.1",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "tingle.js": "^0.13.2"
   }
 }

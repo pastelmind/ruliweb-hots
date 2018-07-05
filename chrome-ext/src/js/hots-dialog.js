@@ -83,22 +83,14 @@ const HotsDialog = {
     //Snapshot currently selected area
     this.injectHtml = injector;
 
-    //Generate skill description
-    const $hotsDialog = this.buildDialog(templates, heroes);
+    if (!this.dialog) {
+      const $dialog = this.buildDialog(templates, heroes);
 
-    //Because jQuery UI stores the UI state using jQuery.data(), the dialog's
-    //state is corrupted when this content script finishes execution.
-    //Thus, the dialog must be created from scratch every time.
-    $hotsDialog.dialog({
-      modal: true,
-      resizable: false,
-      title: '입력할 내용을 선택하세요',
-      width: 600,
-      close: function () {
-        //Destroy the dialog upon closing to clean up UI state
-        $(this).dialog('destroy').hide();
-      }
-    }).dialog('open');
+      this.dialog = new tingle.modal();
+      this.dialog.setContent($dialog[0]);
+    }
+
+    this.dialog.open();
   },
 
   /**
@@ -109,14 +101,11 @@ const HotsDialog = {
    * @return {jQuery} 생성된 DIV
    */
   buildDialog(templates, heroes) {
-    let $hotsDialog = $('#hots_dialog');
-    if ($hotsDialog.length) return $hotsDialog;  //Dialog already exists
-
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
     const html = this.htmlGenerators.generateDialogContent(this.heroFilters);
-    $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
+    const $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
 
     //Add click handler for hero filters
     const $heroFilterCheckboxes = $hotsDialog.find('.hero-filter input[type=checkbox]')

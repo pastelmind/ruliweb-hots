@@ -22,12 +22,12 @@
         "*://*.ruliweb.com/*/modify/*"
       ],
       "css": [
-        "css/jquery-ui.css",
+        "css/tingle.css",
         "css/ruliweb-hots.css"
       ],
       "js": [
         "js/jquery.js",
-        "js/jquery-ui.js",
+        "js/tingle.js",
         "js/mustache.js",
         "js/hots-dialog.js"
       ]
