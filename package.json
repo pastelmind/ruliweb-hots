@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "A Chrome extension that assists in creating and posting Heroes of the Storm guides on Ruliweb.com",
   "scripts": {
-    "test": "mocha util/tests/",
+    "test": "mocha util/tests/ chrome-ext/tests/",
     "build": "npm run build:prep-dir && npm run build:zip-extension",
     "build:prep-dir": "DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
     "build:zip-extension": "PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
