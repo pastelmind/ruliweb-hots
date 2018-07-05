@@ -48,6 +48,9 @@ function getHtmlInjectorAtSelectedPosition() {
 }
 
 const HotsDialog = {
+  /** @type {{ hotsVersion: string, heroes: Object<string, Hero>, templates: Object<string, string> }} */
+  data: null,
+
   /** @type {HtmlStringInjector} */
   injectHtml: null,
 
@@ -75,16 +78,14 @@ const HotsDialog = {
 
   /**
    * Launch the hero/skill/talent selection dialog
-   * @param {Object} heroes Key-value mappings of the form: hero ID => hero data
-   * @param {Object} templates Key-value mappings of the form: template name => template string
-   * @param {function} injector Callback that injects the given HTML fragment into the appropriate position
+   * @param {HtmlStringInjector} injector Callback that injects the given HTML fragment into the appropriate position
    */
-  launchDialog(heroes, templates, injector) {
+  launchDialog(injector) {
     //Snapshot currently selected area
     this.injectHtml = injector;
 
     if (!this.dialog) {
-      const $dialog = this.buildDialog(templates, heroes);
+      const $dialog = this.buildDialog(this.data.templates, this.data.heroes, this.data.hotsVersion);
 
       this.dialog = new tingle.modal({
         cssClass: ['hots-dialog-container']
@@ -100,9 +101,10 @@ const HotsDialog = {
    * Also creates event handlers.
    * @param {Object<string, string>} templates Template name => template string
    * @param {Object<string, Hero>} heroes Hero ID => hero data
+   * @param {string} hotsVersion HotS version
    * @return {jQuery} 생성된 DIV
    */
-  buildDialog(templates, heroes) {
+  buildDialog(templates, heroes, hotsVersion) {
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
@@ -132,7 +134,7 @@ const HotsDialog = {
       const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
       const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, '34.1'));
+      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, hotsVersion));
     });
 
     //Add event handlers for talent icons
@@ -144,7 +146,7 @@ const HotsDialog = {
       const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
       const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, '34.1'));
+      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, hotsVersion));
     });
 
     return $hotsDialog;
@@ -287,24 +289,24 @@ const HotsDialog = {
   }
 };
 
-let hotsData = null;
+let data = null;
 
 /**
  * Load HotS data on first run and launch the Hots dialog.
  * This function is called when the right-click menu is selected.
  */
 function openHotsDialog() {
-  if (!hotsData) {
-    chrome.storage.local.get(['heroes', 'templates'], (data) => {
+  if (!HotsDialog.data) {
+    chrome.storage.local.get(['heroes', 'templates', 'hotsVersion'], data => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 
-      hotsData = data;  //Cache the data for subsequent calls
+      HotsDialog.data = data;  //Cache the data for subsequent calls
       openHotsDialog();
     });
   }
   else
-    HotsDialog.launchDialog(hotsData.heroes, hotsData.templates, getHtmlInjectorAtSelectedPosition());
+    HotsDialog.launchDialog(getHtmlInjectorAtSelectedPosition());
 }
 
 

@@ -31,15 +31,16 @@
 
     //Test code
     (async () => {
-      const heroes = JSON.parse(await $.get('../../docs/heroes.json', 'json'));
+      HotsDialog.data = JSON.parse(await $.get('../../docs/hots.json', 'json'));
+      const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);
 
       const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
-      const templates = {};
+      HotsDialog.data.templates = {};
       for (const templateName of templateNames)
-        templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache', 'text');
+        HotsDialog.data.templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache', 'text');
 
-      HotsDialog.launchDialog(heroes, templates, htmlFragment => {
+      HotsDialog.launchDialog(htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV
         const div = document.createElement('div');
         document.body.appendChild(div);

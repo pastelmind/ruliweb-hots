@@ -42,11 +42,11 @@ function prepareHeroData(heroData) {
  * Asynchronously retrieves and updates HotS data from the "API server"
  */
 function updateDataFromApiServer() {
-  $.get("https://pastelmind.github.io/ruliweb-hots/heroes.json", heroes => {
+  $.get("https://pastelmind.github.io/ruliweb-hots/hots.json", hotsData => {
     console.debug('Data download successful');
 
-    prepareHeroData(heroes);
-    chrome.storage.local.set({ heroes }, () => {
+    prepareHeroData(hotsData.heroes);
+    chrome.storage.local.set(hotsData, () => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 
@@ -69,9 +69,9 @@ if (window.chrome && chrome.extension) {
     });
 
     //Load pre-packaged hero data
-    $.get(chrome.runtime.getURL('data/heroes.json'), heroes => {
-      prepareHeroData(heroes);
-      chrome.storage.local.set({ heroes }, () => {
+    $.get(chrome.runtime.getURL('data/hots.json'), hotsData => {
+      prepareHeroData(hotsData.heroes);
+      chrome.storage.local.set(hotsData, () => {
         //Attempt an update immediately
         updateDataFromApiServer();
 

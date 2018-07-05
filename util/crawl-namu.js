@@ -215,16 +215,17 @@ if (require.main === module) {
       cmd = { type: CMD_SAVE_IMAGES, saveDir };
     });
 
-  const defaultSaveJsonPath = path.normalize('temp/heroes.json');
+  const defaultSaveJsonPath = path.normalize('temp/hots.json');
 
-  program.command('save-json [savepath]')
-    .description(`Parse and save hero data (JSON) to [jsonfile] (default: ${defaultSaveJsonPath})`)
+  program.command('save-json <hots_ver> [savepath]')
+    .description(`Parse and save hero data (JSON) marked as <hots_ver> to [jsonfile] (default: ${defaultSaveJsonPath})`)
     .option('-p, --hero-portraits [jsonfile]', 'Load hero portrait from [jsonfile]', path.normalize('util/data/hero-portraits.json'))
     .option('-l, --image-url-list <listfile>', 'Replace skill/talent icon names with image URLs in <listfile>')
-    .action((saveJsonPath, options) => {
+    .action((hotsVersion, saveJsonPath, options) => {
       saveJsonPath = saveJsonPath || defaultSaveJsonPath;
       cmd = {
         type: CMD_SAVE_JSON,
+        hotsVersion,
         saveJsonPath,
         imageUrlListFile: options.imageUrlList
       };
@@ -270,8 +271,9 @@ if (require.main === module) {
 
     //Save hero JSON
     if (cmd.type === CMD_SAVE_JSON) {
+      const outputJson = { hotsVersion: cmd.hotsVersion, heroes: Hero.compact(heroes) };
       const jsonPath = path.normalize(cmd.saveJsonPath);
-      fs.writeFileSync(jsonPath, JSON.stringify(Hero.compact(heroes), null, 2));
+      fs.writeFileSync(jsonPath, JSON.stringify(outputJson, null, 2));
       console.log('Hero data saved to', jsonPath);
     }
 
