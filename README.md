@@ -1,6 +1,8 @@
 # ruliweb-hots
 루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 확장 프로그램
 
+[설치하러 가기](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
+
 # Organization
 * `chrome-ext`: 크롬 확장 프로그램(extension)에 관련된 파일
     * `src`: 확장 프로그램 소스
