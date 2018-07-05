@@ -39,20 +39,27 @@ function prepareHeroData(heroData) {
 }
 
 /**
- * Asynchronously retrieves and updates HotS data from the "API server"
+ * Asynchronously retrieves HotS data from the given URL to local storage
+ * @param {string} url URL to load from
  */
-function updateDataFromApiServer() {
-  $.get("https://pastelmind.github.io/ruliweb-hots/hots.json", hotsData => {
-    console.debug('Data download successful');
+async function updateDataFromUrl(url) {
+  const hotsData = (await axios.get(url)).data;
+  console.debug('Retrieved data from', url);
 
-    prepareHeroData(hotsData.heroes);
-    chrome.storage.local.set(hotsData, () => {
-      if (chrome.runtime.lastError)
-        throw chrome.runtime.lastError;
+  prepareHeroData(hotsData.heroes);
+  chrome.storage.local.set(hotsData, () => {
+    if (chrome.runtime.lastError)
+      throw chrome.runtime.lastError;
 
-      console.debug('Data load successful');
-    });
-  }, 'json');
+    console.debug('Loaded data from', url, 'to local storage');
+  });
+}
+
+/**
+ * Asynchronously retrieves HotS data from the "API server" to local storage
+ */
+async function updateDataFromApi() {
+  updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
 }
 
 
@@ -69,16 +76,8 @@ if (window.chrome && chrome.extension) {
     });
 
     //Load pre-packaged hero data
-    $.get(chrome.runtime.getURL('data/hots.json'), hotsData => {
-      prepareHeroData(hotsData.heroes);
-      chrome.storage.local.set(hotsData, () => {
-        //Attempt an update immediately
-        updateDataFromApiServer();
-
-        if (chrome.runtime.lastError)
-          throw chrome.runtime.lastError;
-      });
-    }, 'json');
+    updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
+      .then(() => updateDataFromApi()); //Immediately attempt an update from API
 
     //Load templates
     const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
@@ -87,8 +86,10 @@ if (window.chrome && chrome.extension) {
       const templates = {};
 
       await Promise.all(templateNames.map(templateName =>
-        $.get(chrome.runtime.getURL(`templates/${templateName}.mustache`), null, 'text')
-          .then(template => templates[templateName] = template)
+        axios.get(
+          chrome.runtime.getURL(`templates/${templateName}.mustache`),
+          { responseType: 'text' }
+        ).then(response => templates[templateName] = response.data)
       ));
 
       chrome.storage.local.set({ templates }, () => {
@@ -132,7 +133,7 @@ if (window.chrome && chrome.extension) {
     alarmDate.setTime(alarm.scheduledTime)
     console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
     if (alarm.name === ALARM_UPDATE_DATA)
-      updateDataFromApiServer();
+      updateDataFromApi();
   });
 
 }

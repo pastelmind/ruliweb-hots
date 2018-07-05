@@ -6,6 +6,22 @@
 'use strict';
 
 /**
+ * Creates a DocumentFragment filled with the given HTML.
+ * @param {Document} document Base document
+ * @param {string} html HTML source
+ * @return {DocumentFragment} DocumentFragment object
+ */
+function createDocumentFragment(document, html) {
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+
+  const docFragment = document.createDocumentFragment();
+  for (const node of tempDiv.childNodes)
+    docFragment.appendChild(node);
+  return docFragment;
+}
+
+/**
  * Captures the currently selected position in a child frame of the document, and
  * returns a callback that can inject an HTML string at the position.
  * @return {HtmlStringInjector} A callback that injects a valid HTML string into the currently selected frame.
@@ -34,16 +50,6 @@ function getHtmlInjectorAtSelectedPosition() {
 
       selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
     };
-  }
-
-  function createDocumentFragment(document, html) {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
-
-    const docFragment = document.createDocumentFragment();
-    for (const node of tempDiv.childNodes)
-      docFragment.appendChild(node);
-    return docFragment;
   }
 }
 
@@ -84,49 +90,54 @@ const HotsDialog = {
     this.injectHtml = injector;
 
     if (!this.dialog) {
-      const $dialog = this.buildDialog(this.data.templates, this.data.heroes, this.data.hotsVersion);
+      this.dialog = new tingle.modal({ cssClass: ['hots-dialog-container'] });
 
-      this.dialog = new tingle.modal({
-        cssClass: ['hots-dialog-container']
-      });
-      this.dialog.setContent($dialog[0]);
+      this.dialog.setContent(this.buildDialogContent(
+        this.data.templates, this.data.heroes, this.data.hotsVersion));
     }
 
     this.dialog.open();
   },
 
   /**
-   * Generates the dialog content and appends it to <body>.
-   * Also creates event handlers.
+   * Generates the dialog content and attaches event handlers.
    * @param {Object<string, string>} templates Template name => template string
    * @param {Object<string, Hero>} heroes Hero ID => hero data
    * @param {string} hotsVersion HotS version
-   * @return {jQuery} 생성된 DIV
+   * @return {DocumentFragment} A collection of generated DOM elements
    */
-  buildDialog(templates, heroes, hotsVersion) {
+  buildDialogContent(templates, heroes, hotsVersion) {
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
-    const html = this.htmlGenerators.generateDialogContent(this.heroFilters, heroes);
-    const $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
+    const dialogFragment = createDocumentFragment(document,
+      this.htmlGenerators.generateDialogContent(this.heroFilters, heroes));
+
+    const heroFilterSection = dialogFragment.querySelector('.hots-hero-filters');
+    const heroIconsSection = dialogFragment.querySelector('.hots-hero-icons');
+    const skillsetSection = dialogFragment.querySelector('.hots-skillset');
+    const talentsetSection = dialogFragment.querySelector('.hots-talentset');
+
+    const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
+    const heroFilterCheckboxes = heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
 
     //Add click handler for hero filters
-    const heroIconElems = $hotsDialog.find('.hots-hero-icons .hots-hero-icon').toArray();
-    const heroFilterCheckboxes = $hotsDialog.find('.hero-filter input[type=checkbox]')
-      .on('change', event => {
-        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes);
-      }).toArray();
+    for (const checkbox of heroFilterCheckboxes) {
+      checkbox.addEventListener('change', () =>
+        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes));
+    }
 
     //Add click handler for hero icons
-    $hotsDialog.find('.hots-hero-icons').on('click', event => {
+    heroIconsSection.addEventListener('click', event => {
       if (!(event.target && event.target.classList.contains('hots-hero-icon'))) return;
-
       const hero = heroes[event.target.dataset.heroId];
-      this._setSelectedHero($hotsDialog, hero);
+
+      skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
+      talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
     });
 
     //Add event handlers for skill icons
-    $hotsDialog.find('.hots-skillset').on('click', event => {
+    skillsetSection.addEventListener('click', event => {
       if (!(event.target && event.target.classList.contains('hots-skill-icon'))) return;
       const iconElem = event.target;
 
@@ -137,7 +148,7 @@ const HotsDialog = {
     });
 
     //Add event handlers for talent icons
-    $hotsDialog.find('.hots-talentset').on('click', event => {
+    talentsetSection.addEventListener('click', event => {
       if (!(event.target && event.target.classList.contains('hots-talent-icon'))) return;
       const iconElem = event.target;
 
@@ -148,24 +159,13 @@ const HotsDialog = {
       this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, hotsVersion));
     });
 
-    return $hotsDialog;
-  },
-
-  _setSelectedHero($dialog, hero) {
-    //Generate skills
-    hero.skills.forEach((skill, index) => skill.index = index);
-    $dialog.children('.hots-skillset').html(
-      this.htmlGenerators.generateSkillIcons(hero));
-
-    //Generate talents
-    $dialog.children('.hots-talentset').html(
-      this.htmlGenerators.generateTalentList(hero));
+    return dialogFragment;
   },
 
   /**
    * Updates the hero icons, filtered by `heroFilterCheckboxes`.
-   * @param {Element[]} heroIconElems Array of hero icon elements
-   * @param {HTMLInputElement[]} heroFilterCheckboxes Array of checkbox <input> elements
+   * @param {Iterable<Element>} heroIconElems Array of hero icon elements
+   * @param {Iterable<HTMLInputElement>} heroFilterCheckboxes Array of checkbox <input> elements
    * @param {Object.<string, Object>} heroes key => value pairs of hero ID => hero data
    */
   updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes) {
@@ -175,13 +175,12 @@ const HotsDialog = {
     for (const filterType in this.heroFilters)
       activeFilters[filterType] = new Set;
 
-    heroFilterCheckboxes.forEach(checkbox => {
+    for (const checkbox of heroFilterCheckboxes)
       if (checkbox.checked)
         activeFilters[checkbox.dataset.filterType].add(checkbox.value); //data-filter-type
-    });
 
     //Toggle CSS class of each hero icon
-    heroIconElems.forEach(heroIconElem => {
+    for (const heroIconElem of heroIconElems) {
       const hero = heroes[heroIconElem.dataset.heroId]; //data-hero-id
       let isExcluded = false;
 
@@ -195,7 +194,7 @@ const HotsDialog = {
       }
 
       heroIconElem.classList.toggle('hots-hero-icon--excluded', isExcluded);
-    });
+    }
   },
 
   /** Collection of methods that generate HTML source strings from templates */
@@ -243,6 +242,7 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateSkillIcons(hero) {
+      hero.skills.forEach((skill, index) => skill.index = index);
       return Mustache.render(this.templates['dialog-skills'], hero);
     },
 

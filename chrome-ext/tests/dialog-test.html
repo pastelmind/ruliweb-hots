@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <script src="js/jquery.js"></script>
+  <script src="js/axios.js"></script>
   <script src="js/tingle.js"></script>
   <script src="js/mustache.js"></script>
   <script src="js/init.js"></script>
@@ -31,14 +31,17 @@
 
     //Test code
     (async () => {
-      HotsDialog.data = JSON.parse(await $.get('../../docs/hots.json', 'json'));
+      HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
       const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);
 
       const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
       HotsDialog.data.templates = {};
-      for (const templateName of templateNames)
-        HotsDialog.data.templates[templateName] = await $.get('../src/templates/' + templateName + '.mustache', 'text');
+
+      await Promise.all(templateNames.map(templateName =>
+        axios.get('../src/templates/' + templateName + '.mustache', { responseType: 'text' })
+          .then(response => HotsDialog.data.templates[templateName] = response.data)
+      ));
 
       HotsDialog.launchDialog(htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV
