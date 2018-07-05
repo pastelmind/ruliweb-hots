@@ -1,36 +1,37 @@
 /* Icons */
 
-.hots_dialog__hero-icon,
-.hots_dialog__skill-icon,
-.hots_dialog__talent-icon
-{
-  width: 32px; height: 32px;
+.hots-hero-icon, .hots-skill-icon, .hots-talent-icon {
+  width: 32px;
+  height: 32px;
   margin-right: 4px;
   cursor: pointer;
 }
 
 /* All dialog sections */
 
-.hots_dialog__section {
-  margin: 0; padding: 0;
+.hots-dialog__section {
+  margin: 0;
+  padding: 0;
   margin-top: .5em;
   overflow: auto;
 }
 
-.hots_dialog__section:first-child {
+.hots-dialog__section:first-child {
   margin-top: 0;
 }
 
-/* Hero filter section */
+/* Hero filters */
 
-.hots_dialog__section .hots_dialog__hero_filters {
-  border: 0; margin: 0; padding: 0; /* Reset user agent style (fieldset) */
+.hots-hero-filter-group {
+  border: 0;  /* Reset user agent style (<fieldset>) */
+  margin: 0;  /* Reset user agent style (<fieldset>) */
+  padding: 0; /* Reset user agent style (<fieldset>) */
   margin-right: 1em;
   float: left;
 }
 
-.hots_dialog__hero_filters > legend {
-  padding: 0;                       /* Reset user agent style (legend) */
+.hots-hero-filter-group__description {
+  padding: 0; /* Reset user agent style (<legend>) */
   padding-right: 1em;
   float: left;
 }
@@ -41,14 +42,15 @@
   margin-right: 5px;
 }
 
-.hero-filter img {
+.hero-filter__content {
   display: block;
-  width: 24px; height: 24px;
+  width: 24px;
+  height: 24px;
   opacity: .33;
   cursor: pointer;
 }
 
-.hero-filter input[type=checkbox]:checked + img {
+.hero-filter input[type=checkbox]:checked+.hero-filter__content {
   opacity: 1;
 }
 
@@ -56,34 +58,31 @@
   display: none;
 }
 
-/* Skills section */
+/* Skillset section */
 
-.hots_dialog__skills
-{
+.hots-skillset {
   background-color: #1a0a33;
 }
 
-/* Talents section */
+/* Talentset section */
 
-.hots_dialog__talents
-{
-  list-style: none; margin: 0; padding: 0; /* Reset user agent styles (li) */
+.hots-talentset {
+  list-style: none; /* Reset user agent style (<li>) */
+  margin: 0;        /* Reset user agent style (<li>) */
+  padding: 0;       /* Reset user agent style (<li>) */
   background-color: #0b0b3b;
   border: 1px solid #5353df;
 }
 
-.hots_dialog__talent-group
-{
+.hots-talentset__group {
   border-top: 1px solid #5353df;
 }
 
-.hots_dialog__talent-group:first-child
-{
+.hots-talentset__group:first-child {
   border-top: none;
 }
 
-.hots_dialog__talent-group-description
-{
+.hots-talentset__group-title {
   display: inline-block;
   width: 4em;
   position: relative;

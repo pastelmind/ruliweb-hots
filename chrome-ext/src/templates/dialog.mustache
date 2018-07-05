@@ -1,55 +1,51 @@
-<div id="hots_dialog">
-  <div class="hots_dialog__section">
-    <fieldset class="hots_dialog__hero_filters">
-      <legend>세계관: </legend>
+<div class="hots-dialog">
+  <section class="hots-dialog__section hots-hero-filters">
+    <fieldset class="hots-hero-filter-group">
+      <legend class="hots-hero-filter-group__description">세계관: </legend>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="universe" value="워크래프트">
-        <img src="{{{baseUrl}}}images/universe-warcraft.png" alt="워크래프트" title="워크래프트">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/universe-warcraft.png" alt="워크래프트" title="워크래프트">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="universe" value="스타크래프트">
-        <img src="{{{baseUrl}}}images/universe-starcraft.png" alt="스타크래프트" title="스타크래프트">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/universe-starcraft.png" alt="스타크래프트" title="스타크래프트">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="universe" value="디아블로">
-        <img src="{{{baseUrl}}}images/universe-diablo.png" alt="디아블로" title="디아블로">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/universe-diablo.png" alt="디아블로" title="디아블로">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="universe" value="블리자드 고전">
-        <img src="{{{baseUrl}}}images/universe-classic.png" alt="블리자드 고전" title="블리자드 고전">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/universe-classic.png" alt="블리자드 고전" title="블리자드 고전">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="universe" value="오버워치">
-        <img src="{{{baseUrl}}}images/universe-overwatch.png" alt="오버워치" title="오버워치">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/universe-overwatch.png" alt="오버워치" title="오버워치">
       </label>
     </fieldset>
 
-    <fieldset class="hots_dialog__hero_filters">
-      <legend>역할: </legend>
+    <fieldset class="hots-hero-filter-group">
+      <legend class="hots-hero-filter-group__description">역할: </legend>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="role" value="전사">
-        <img src="{{{baseUrl}}}images/role-warrior.png" alt="전사" title="전사">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/role-warrior.png" alt="전사" title="전사">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="role" value="암살자">
-        <img src="{{{baseUrl}}}images/role-assassin.png" alt="암살자" title="암살자">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/role-assassin.png" alt="암살자" title="암살자">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="role" value="지원가">
-        <img src="{{{baseUrl}}}images/role-support.png" alt="지원가" title="지원가">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/role-support.png" alt="지원가" title="지원가">
       </label>
       <label class="hero-filter">
         <input type="checkbox" data-filter-type="role" value="전문가">
-        <img src="{{{baseUrl}}}images/role-specialist.png" alt="전문가" title="전문가">
+        <img class="hero-filter__content" src="{{{baseUrl}}}images/role-specialist.png" alt="전문가" title="전문가">
       </label>
     </fieldset>
-  </div>
+  </section>
 
-  <div class="hots_dialog__section hots_dialog__hero-icons"></div>
-  <div class="hots_dialog__section hots_dialog__skills"></div>
-  <ul class="hots_dialog__section hots_dialog__talents">
-    <li class="hots_dialog__talent-group">
-      <span class="hots_dialog__talent-group-description">1레벨</span>
-    </li>
-  </ul>
+  <section class="hots-dialog__section hots-hero-icons"></section>
+  <section class="hots-dialog__section hots-skillset"></section>
+  <ul class="hots-dialog__section hots-talentset"></ul>
 </div>

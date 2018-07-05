@@ -1,7 +1,6 @@
-#!/usr/bin/env node
-
 /**
  * Constructs the HotS hero/skill/talent selection dialog.
+ * Can be run in Node.js or in the browser.
  */
 
 'use strict';
@@ -99,7 +98,7 @@ var HotsDialog = {
 
     //Generate dialog
     const html = this.htmlGenerators.generateDialogContent();
-    $hotsDialog = $(html).appendTo(document.body);
+    $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
 
     //Add click handler for hero filters
     $hotsDialog.find('.hero-filter input[type=checkbox]').on('change', event => {
@@ -124,39 +123,34 @@ var HotsDialog = {
     this.updateHeroIcons($hotsDialog, heroes);
 
     //Add click handler for hero icons
-    $hotsDialog.find('.hots_dialog__hero-icons').on('click', event => {
-      if (!(event.target && event.target.nodeName === 'IMG')) return;
+    $hotsDialog.find('.hots-hero-icons').on('click', event => {
+      if (!(event.target && event.target.classList.contains('hots-hero-icon'))) return;
+
       const hero = heroes[event.target.dataset.heroId];
-      console.log('Hero clicked:', hero.name);
       this._setSelectedHero($hotsDialog, hero);
     });
 
-    //Clear the skill and talent sections
-    $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').empty();
+    //Add event handlers for skill icons
+    $hotsDialog.find('.hots-skillset').on('click', event => {
+      if (!(event.target && event.target.classList.contains('hots-skill-icon'))) return;
+      const iconElem = event.target;
 
-    //Add event handlers for skill and talents
-    $hotsDialog.find('.hots_dialog__skills,.hots_dialog__talents').on('click', event => {
-      if (!(event.target && event.target.nodeName === 'IMG')) return;
+      const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
+      const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-      const dataset = event.target.dataset; //Read data-* attributes
+      this._injector(this.htmlGenerators.generateSkillInfoTable(skill, '34.1'));
+    });
 
-      if (!(dataset.heroId in heroes)) return;  //data-hero-id
-      const hero = heroes[dataset.heroId];
+    //Add event handlers for talent icons
+    $hotsDialog.find('.hots-talentset').on('click', event => {
+      if (!(event.target && event.target.classList.contains('hots-talent-icon'))) return;
+      const iconElem = event.target;
 
-      if (dataset.skillIndex in hero.skills) {  //data-skill-index
-        //Is skill icon
-        const skill = hero.skills[dataset.skillIndex];
-        console.log('Skill clicked:', skill.name);
-        this._injector(this.htmlGenerators.generateSkillInfoTable(skill, '34.1'));
-      }
-      else if (dataset.talentLevel in hero.talents                      //data-talent-level
-        && dataset.talentIndex in hero.talents[dataset.talentLevel]) {  //data-talent-index
-        //Is talent icon
-        const talent = hero.talents[dataset.talentLevel][dataset.talentIndex];
-        console.log('Talent clicked:', talent.name);
-        this._injector(this.htmlGenerators.generateTalentInfoTable(talent, '34.1'));
-      }
-      else console.error('Unknown icon');
+      const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
+      const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
+      const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
+
+      this._injector(this.htmlGenerators.generateTalentInfoTable(talent, '34.1'));
     });
 
     return $hotsDialog;
@@ -165,12 +159,12 @@ var HotsDialog = {
   _setSelectedHero($dialog, hero) {
     //Generate skills
     hero.skills.forEach((skill, index) => skill.index = index);
-    $dialog.children('.hots_dialog__skills').empty()
-      .append(this.htmlGenerators.generateSkillIcons(hero));
+    $dialog.children('.hots-skillset').html(
+      this.htmlGenerators.generateSkillIcons(hero));
 
     //Generate talents
-    $dialog.children('.hots_dialog__talents').empty()
-      .append(this.htmlGenerators.generateTalentList(hero));
+    $dialog.children('.hots-talentset').html(
+      this.htmlGenerators.generateTalentList(hero));
   },
 
   /**
@@ -195,8 +189,8 @@ var HotsDialog = {
       filteredHeroes.push(hero);
     }
 
-    const html = this.htmlGenerators.generateHeroIcons(filteredHeroes);
-    $hotsDialog.find('.hots_dialog__hero-icons').html(html);
+    $hotsDialog.find('.hots-hero-icons').html(
+      this.htmlGenerators.generateHeroIcons(filteredHeroes));
   },
 
   /** Collection of methods that generate HTML source strings from templates */
