@@ -86,7 +86,9 @@ const HotsDialog = {
     if (!this.dialog) {
       const $dialog = this.buildDialog(templates, heroes);
 
-      this.dialog = new tingle.modal();
+      this.dialog = new tingle.modal({
+        cssClass: ['hots-dialog-container']
+      });
       this.dialog.setContent($dialog[0]);
     }
 

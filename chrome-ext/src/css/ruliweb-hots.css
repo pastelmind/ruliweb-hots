@@ -1,10 +1,24 @@
+/* Dialog (tingle.js) */
+
+.hots-dialog-container .tingle-modal-box {
+  max-width: 465px;
+  background-color: #111122;
+  color: #cccccc;
+  border-radius: 10px;
+}
+
+.hots-dialog-container .tingle-modal-box__content {
+  padding: 1rem;
+}
+
 /* Icons */
 
 .hots-hero-icon, .hots-skill-icon, .hots-talent-icon {
   width: 32px;
   height: 32px;
-  margin-right: 4px;
+  border: 1px solid #333333;
   cursor: pointer;
+  margin-right: 2px;
 }
 
 /* All dialog sections */
@@ -44,8 +58,8 @@
 
 .hero-filter__content {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   opacity: .33;
   cursor: pointer;
 }
@@ -58,10 +72,21 @@
   display: none;
 }
 
+/* Hero icons section */
+
+.hots-hero-icon {
+  float: left;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
 /* Skillset section */
 
 .hots-skillset {
+  padding: 3px 3px 0;
   background-color: #1a0a33;
+  border: 1px solid #5353df;
+  border-bottom: none;
 }
 
 /* Talentset section */
@@ -75,6 +100,7 @@
 }
 
 .hots-talentset__group {
+  padding-top: 3px;
   border-top: 1px solid #5353df;
 }
 
