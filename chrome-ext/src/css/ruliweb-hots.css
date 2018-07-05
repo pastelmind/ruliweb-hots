@@ -3,8 +3,10 @@
 .hots-dialog-container .tingle-modal-box {
   max-width: 465px;
   background-color: #111122;
-  color: #cccccc;
   border-radius: 10px;
+  color: #cccccc;
+  font-family: "맑은 고딕", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .hots-dialog-container .tingle-modal-box__content {
@@ -32,6 +34,10 @@
 
 .hots-dialog__section:first-child {
   margin-top: 0;
+}
+
+.hots-dialog__section:empty {
+  display: none;
 }
 
 /* Hero filters */
@@ -76,8 +82,7 @@
 
 .hots-hero-icon {
   float: left;
-  margin-right: 4px;
-  margin-bottom: 4px;
+  margin: 2px;
 }
 
 .hots-hero-icon--excluded {
