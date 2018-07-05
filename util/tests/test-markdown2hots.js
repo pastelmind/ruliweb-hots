@@ -8,6 +8,7 @@
 
 const assert = require('assert');
 const fs = require('fs');
+const path = require('path');
 const markdown2hots = require('../src/markdown2hots');
 const { Hero } = require('../src/models');
 
@@ -16,10 +17,10 @@ describe('markdown2hots', () => {
   const ref = {};
 
   before('Loading test data files', () => {
-    ref.heroMarkdown = fs.readFileSync('./util/tests/input/heroes.md', 'utf8');
+    ref.heroMarkdown = fs.readFileSync(path.join(__dirname, 'input/heroes.md'), 'utf8');
     ref.heroJsonCompact = JSON.parse(
-      fs.readFileSync('./util/tests/input/heroes-compact.json', 'utf8'));
-      
+      fs.readFileSync(path.join(__dirname, 'input/heroes-compact.json'), 'utf8'));
+
     Object.freeze(ref);
   });
 
@@ -31,7 +32,7 @@ describe('markdown2hots', () => {
 
     assert.deepStrictEqual(heroJsonCompact, ref.heroJsonCompact);
   });
-  
+
   it('should convert hero to markdown correctly', () => {
     let markdown = '';
     for (const heroId in ref.heroJsonCompact) {
