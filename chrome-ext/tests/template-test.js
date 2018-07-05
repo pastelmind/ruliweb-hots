@@ -8,6 +8,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+
 const HotsDialog = require('../src/js/hots-dialog');
 
 /**
@@ -44,6 +45,13 @@ describe('HotsDialog.templates', () => {
 
 
   describe('Dialog templates', () => {
+    it('generates dialog content correctly', () => {
+      const dialogHtml =
+        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters);
+
+      assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
+    });
+
     it('generates hero icons correctly', () => {
       const heroIconsHtml =
         HotsDialog.htmlGenerators.generateHeroIcons(Object.values(heroes));

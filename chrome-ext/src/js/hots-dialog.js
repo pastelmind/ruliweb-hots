@@ -51,6 +51,28 @@ const HotsDialog = {
   /** @type {HtmlStringInjector} */
   injectHtml: null,
 
+  heroFilters: {
+    'universe': {
+      name: '세계관',
+      filters: {
+        'warcraft': '워크래프트',
+        'starcraft': '스타크래프트',
+        'diablo': '디아블로',
+        'classic': '블리자드 고전',
+        'overwatch': '오버워치'
+      }
+    },
+    'role': {
+      name: '역할',
+      filters: {
+        'warrior': '전사',
+        'assassin': '암살자',
+        'support': '지원가',
+        'specialist': '전문가'
+      }
+    }
+  },
+
   /**
    * Launch the hero/skill/talent selection dialog
    * @param {Object} heroes Key-value mappings of the form: hero ID => hero data
@@ -60,7 +82,6 @@ const HotsDialog = {
   launchDialog(heroes, templates, injector) {
     //Snapshot currently selected area
     this.injectHtml = injector;
-    this._heroFilters = { universes: new Set, roles: new Set };
 
     //Generate skill description
     const $hotsDialog = this.buildDialog(templates, heroes);
@@ -94,30 +115,17 @@ const HotsDialog = {
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
-    const html = this.htmlGenerators.generateDialogContent();
+    const html = this.htmlGenerators.generateDialogContent(this.heroFilters);
     $hotsDialog = $(html).attr('id', 'hots_dialog').appendTo(document.body);
 
     //Add click handler for hero filters
-    $hotsDialog.find('.hero-filter input[type=checkbox]').on('change', event => {
-      let filterPool = null;
-      switch (event.target.dataset.filterType) {
-        case 'role': filterPool = this._heroFilters.roles; break;
-        case 'universe': filterPool = this._heroFilters.universes; break;
-        default:
-          console.error(event.target.dataset.filterType, 'is an unknown filter type');
-          return;
-      }
-
-      if (event.target.checked)
-        filterPool.add(event.target.value);
-      else
-        filterPool.delete(event.target.value);
-
-      this.updateHeroIcons($hotsDialog, heroes);
-    });
+    const $heroFilterCheckboxes = $hotsDialog.find('.hero-filter input[type=checkbox]')
+      .on('change', event => {
+        this.updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes);
+      });
 
     //Generate hero icons
-    this.updateHeroIcons($hotsDialog, heroes);
+    this.updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes);
 
     //Add click handler for hero icons
     $hotsDialog.find('.hots-hero-icons').on('click', event => {
@@ -165,25 +173,43 @@ const HotsDialog = {
   },
 
   /**
-   * Updates the hero icons, filtered by `HotsDialog._heroFilters`.
+   * Updates the hero icons, filtered by `$heroFilterCheckboxes`.
    * @param {jQuery} $hotsDialog HotsDialog <div> element
+   * @param {jQuery} $heroFilterCheckboxes Collection of checkbox <input> elements
    * @param {Object.<string, Object>} heroes key => value pairs of hero ID => hero data
    */
-  updateHeroIcons($hotsDialog, heroes) {
-    const filteredHeroes = [], filters = this._heroFilters;
+  updateHeroIcons($hotsDialog, $heroFilterCheckboxes, heroes) {
+    //Generate a collection of active filters
+    const activeFilters = {};
+
+    for (const filterType in this.heroFilters)
+      activeFilters[filterType] = new Set;
+
+    $heroFilterCheckboxes.each(function () {
+      if (this.checked)
+        activeFilters[this.dataset.filterType].add(this.value); //data-filter-type
+    });
+
+    console.log(activeFilters);
+
+    //Generate an array of heroes that match the filter
+    const filteredHeroes = [];
 
     for (const heroId in heroes) {
       const hero = heroes[heroId];
+      let isMatch = true;
 
-      //Discard this hero if the universe filter is non-empty and does not match this hero
-      if (filters.universes.size && !filters.universes.has(hero.universe))
-        continue;
+      for (const filterType in activeFilters) {
+        const filterSet = activeFilters[filterType];
+        //Discard this hero if the filter set is non-empty and does not include this hero
+        if (filterSet.size && !filterSet.has(hero[filterType])) {
+          isMatch = false;
+          break;
+        }
+      }
 
-      //Discard this hero if the role filter is non-empty and does not match this hero
-      if (filters.roles.size && !filters.roles.has(hero.role))
-        continue;
-
-      filteredHeroes.push(hero);
+      if (isMatch)
+        filteredHeroes.push(hero);
     }
 
     $hotsDialog.find('.hots-hero-icons').html(
@@ -197,10 +223,28 @@ const HotsDialog = {
 
     /**
      * Generates the HTML source of the main dialog.
+     * @param {Object<string, {name: string, filters: Object<string, string>}>} heroFilterGroups A collection of hero filter groups
      * @return {string} HTML source
      */
-    generateDialogContent() {
-      return Mustache.render(this.templates['dialog'], { baseUrl: chrome.runtime.getURL('/') });
+    generateDialogContent(heroFilterGroups) {
+      const filterGroups = [];
+      for (const heroFilterGroupId in heroFilterGroups) {
+        const heroFilterGroup = heroFilterGroups[heroFilterGroupId];
+
+        const filters = [];
+        for (const filterId in heroFilterGroup.filters) {
+          filters.push({
+            type: heroFilterGroupId,
+            value: filterId,
+            name: heroFilterGroup.filters[filterId],
+            iconUrl: chrome.runtime.getURL(`/images/${heroFilterGroupId}-${filterId}.png`)
+          });
+        }
+
+        filterGroups.push({ name: heroFilterGroup.name, filters });
+      }
+
+      return Mustache.render(this.templates['dialog'], { filterGroups });
     },
 
     /**
@@ -288,6 +332,7 @@ function openHotsDialog() {
 if (typeof module !== 'undefined' && module.exports) {
   var Mustache = require('mustache');
   module.exports = exports = HotsDialog;
+  var chrome = { runtime: { getURL(url) { return url } } };
 }
 
 
