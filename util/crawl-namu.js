@@ -6,12 +6,15 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const assert = require('assert');
+const util = require('util');
 const axios = require('axios');
 const program = require('commander');
 const entities = new require('html-entities').AllHtmlEntities;
 const namu2hots = require('./src/namu2hots');
 const { Hero } = require('./src/models');
 
+const setTimeoutAsync = util.promisify(setTimeout);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 /**
  * Abstract base class that can take an image name and do something with it.
@@ -103,12 +106,11 @@ class CachedImageDownloader extends ImageNameConverter {
     if (name in this.downloaded) return;
 
     assert(name in this.urls, name + ' is not associated with any known image URL');
-    const arrBuffer = await downloadArrayBuffer(this.urls[name]);
+    const arrayBuffer = await downloadArrayBuffer(this.urls[name]);
+    this.downloaded[name] = true; //Prevent further downloads
 
     const savePath = path.join(this.downloadDir, name.replace('파일:', ''));
-    fs.writeFileSync(savePath, Buffer.from(arrBuffer));
-
-    this.downloaded[name] = true;
+    await writeFileAsync(savePath, Buffer.from(arrayBuffer));
   }
 }
 
@@ -283,7 +285,7 @@ if (require.main === module) {
 
 
 /**
- * Crawls all articles and generates a collection of hero data.
+ * Asynchronously crawls all articles and generates a collection of hero data.
  * @param {Iterable<string>} articleNames
  * @param {ImageNameConverter=} converter
  * @return {Promise<Object.<string, Hero>} A collection of hero ID => Hero object
@@ -291,38 +293,49 @@ if (require.main === module) {
 async function crawlArticles(articleNames, converter) {
   const heroes = {};
 
+  const crawlPromises = [];
+  let activeCrawlerCount = 0;
+
   for (const articleName of articleNames) {
-    try {
-      process.stdout.write(`Crawling ${articleName}...`);
-      const heroData = await crawlHeroData(articleName);
+    console.log(`Crawling ${articleName} [${++activeCrawlerCount} active]...`);
 
-      if (converter) {
-        const namuImageUrls = await crawlImageUrls(articleName);
-        converter.addUrls(namuImageUrls);
-      }
+    crawlPromises.push((async () => {
+      try {
+        const heroData = await crawlHeroData(articleName);
 
-      if (heroData instanceof Hero) { //Normal hero
-        heroes[heroData.id] = heroData;
-        if (converter)
-          await forEachIconAsync(heroData, converter);
-      }
-      else {  //Cho'Gall
-        for (const heroEntry in heroData) {
-          const hero = heroData[heroEntry];
-          heroes[hero.id] = hero;
-          if (converter)
-            await forEachIconAsync(hero, converter);
+        if (converter) {
+          const namuImageUrls = await crawlImageUrls(articleName);
+          converter.addUrls(namuImageUrls);
         }
+
+        if (heroData instanceof Hero) { //Normal hero
+          heroes[heroData.id] = heroData;
+          if (converter)
+            await forEachIconAsync(heroData, converter);
+        }
+        else {  //Cho'Gall
+          for (const heroEntry in heroData) {
+            const hero = heroData[heroEntry];
+            heroes[hero.id] = hero;
+            if (converter)
+              await forEachIconAsync(hero, converter);
+          }
+        }
+
+        console.log(`Finished crawling ${articleName} [${--activeCrawlerCount} active]...`);
       }
-    } catch (e) {
-      console.error(e);
-    }
+      catch (e) {
+        console.error(e);//Report and consume error
+        --activeCrawlerCount;
+      }
+    })());
 
-    console.log('done');
-
-    //Avg 3-second delay with 20% variance, to prevent triggering 429 Too Many Requests error
-    await delay(Math.floor(3000 * (.8 + .4 * Math.random())));
+    //Avg 4-second delay with 20% variance, to prevent triggering 429 Too Many Requests error
+    await setTimeoutAsync(Math.floor(4000 * (.8 + .4 * Math.random())));
   }
+
+  //Wait until all crawl operations are resolved
+  await Promise.all(crawlPromises);
 
   return heroes;
 }
@@ -330,7 +343,7 @@ async function crawlArticles(articleNames, converter) {
 /**
  * Downloads the raw article and parses hero data.
  * @param {string} articleName
- * @return {Promise<any>} Hero object for most heroes, `{ cho, gall }` for Cho'Gall
+ * @return {Promise<Hero | { cho: Hero, gall: Hero }>} Hero object for most heroes, `{ cho, gall }` for Cho'Gall
  */
 async function crawlHeroData(articleName) {
   const rawArticleResponse = await axios.get(
@@ -363,15 +376,6 @@ async function crawlImageUrls(articleName) {
 }
 
 /**
- * Creates a promise that resolves after a given delay.
- * @param {number} milliseconds Time to wait
- * @param {*} [value] (Optional) value to resolve with
- */
-async function delay(milliseconds, value) {
-  return new Promise(resolve => { setTimeout(resolve, milliseconds, value); });
-}
-
-/**
  * Extracts src and alt attributes from <img> tags in the given HTML.
  * Will decode HTML entities in both src and alt text
  * @param {string} html HTML document source
@@ -401,6 +405,7 @@ function extractImgAltTextToUrl(html) {
  * Downloads the URL and returns its contents.
  * @param {string} url
  * @return {Promise<ArrayBuffer>}
+ * @throws Any errors thrown by `axios.get()`
  */
 async function downloadArrayBuffer(url) {
   const response = await axios.get(url, { responseType: 'arraybuffer' });
@@ -419,29 +424,32 @@ function computeHash(arrayBuffer) {
 }
 
 /**
- * Applies `converter.convert()` to the iconUrl of every skill/talent of the
- * given hero object.
+ * Asynchronously applies `converter.convert()` to the iconUrl of every
+ * skill/talent of the given hero object.
  * @param {Hero} hero
  * @param {ImageNameConverter} converter
  */
 async function forEachIconAsync(hero, converter) {
+  const converterPromises = [];
+
   for (const skill of hero.skills) {
-    try {
-      skill.iconUrl = await converter.convert(skill.iconUrl);
-    } catch (e) {
-      console.error(e);
-    }
+    converterPromises.push(converter.convert(skill.iconUrl).then(
+      iconUrl => skill.iconUrl = iconUrl,
+      e => console.error(e) //Report and consume error
+    ));
   }
 
   for (const talentLevel in hero.talents) {
     for (const talent of hero.talents[talentLevel]) {
-      try {
-        talent.iconUrl = await converter.convert(talent.iconUrl);
-      } catch (e) {
-        console.error(e);
-      }
+      converterPromises.push(converter.convert(talent.iconUrl).then(
+        iconUrl => talent.iconUrl = iconUrl,
+        e => console.error(e) //Report and consume error
+      ));
     }
   }
+
+  //Wait until all operations are resolved
+  await Promise.all(converterPromises);
 }
 
 /**
@@ -463,20 +471,32 @@ async function generateHashToUrlMapping(urls) {
   const hashToUrls = {};
   process.stdout.write('Retrieving hosted images...');
 
-  //Load images sequentially to avoid hammering the servers too hard
-  for (const url of urls) {
-    try {
-      const arrBuffer = await downloadArrayBuffer(url);
+  //Load images concurrently in groups of 20 to avoid hammering the servers too hard
+  let hashPromises = [];
 
-      const hash = computeHash(arrBuffer);
-      if (hash in hashToUrls)
-        console.warn(`\nDuplicate image: ${url}\n  is identical to ${hashToUrls[hash]}`);
-      else {
-        hashToUrls[computeHash(arrBuffer)] = url;
-        process.stdout.write('.');
+  for (let i = 0; i < urls.length; ++i) {
+    const url = urls[i];
+    hashPromises.push(downloadArrayBuffer(url).then(
+      arrayBuffer => {
+        const hash = computeHash(arrayBuffer);
+
+        if (hash in hashToUrls)
+          console.warn(`\nDuplicate image: ${url}\n is identical to ${hashToUrls[hash]}`);
+        else {
+          hashToUrls[hash] = url;
+          process.stdout.write('.');
+        }
+      },
+      e => {
+        console.error();
+        console.error(e); //Report and consume error
       }
-    } catch (e) {
-      console.error(e);
+    ));
+
+    if (i % 20 === 0 || i === urls.length - 1) {
+      await Promise.all(hashPromises);  //Wait for all requests to resolve
+      await setTimeoutAsync(500);  //0.5s delay
+      hashPromises = [];
     }
   }
 
