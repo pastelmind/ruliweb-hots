@@ -110,7 +110,7 @@ if (window.chrome && chrome.extension) {
     chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
       console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
       chrome.alarms.create(ALARM_UPDATE_DATA, {
-        delayInMinutes: 1,
+        delayInMinutes: 360,  //6 hours = 360 minutes
         periodInMinutes: 360  //6 hours = 360 minutes
       });
     });
