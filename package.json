@@ -1,6 +1,6 @@
 {
   "name": "ruliweb-hots",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Chrome extension that assists in creating and posting Heroes of the Storm guides on Ruliweb.com",
   "scripts": {
     "test": "mocha util/tests/ chrome-ext/tests/",
