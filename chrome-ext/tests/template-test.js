@@ -11,17 +11,16 @@ const path = require('path');
 const HotsDialog = require('../src/js/hots-dialog');
 
 /**
- * Trims each line of a multiline string
- * @param {string} str
- * @return Result string with each line trimmed
+ * Retrieves the contents of the HTML file in the expected/ directory
+ * @param {string} fileName HTML file name without the .html extension
+ * @return {string} HTML source
  */
-function trimLines(str) {
-  return str.split('\n').map(line => line.trim()).join('\n');
+function getExpectedHtml(fileName) {
+  return fs.readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8');
 }
 
 describe('HotsDialog.templates', () => {
   let heroes;
-  let refHtml;
 
 
   before('Loading test data files', () => {
@@ -32,14 +31,6 @@ describe('HotsDialog.templates', () => {
       hero.id = heroId;
       hero.skills.forEach((skill, index) => skill.index = index);
     }
-
-    refHtml = {};
-    [
-      'dialog-heroes', 'dialog-skills', 'dialog-talents'
-    ].forEach(refName => {
-      refHtml[refName] = fs.readFileSync(
-        path.join(__dirname, `expected/${refName}.html`), 'utf8');
-    });
 
     const templates = HotsDialog.htmlGenerators.templates = {};
     [
@@ -57,21 +48,44 @@ describe('HotsDialog.templates', () => {
       const heroIconsHtml =
         HotsDialog.htmlGenerators.generateHeroIcons(Object.values(heroes));
 
-      assert.strictEqual(heroIconsHtml, refHtml['dialog-heroes']);
+      assert.strictEqual(heroIconsHtml, getExpectedHtml('dialog-heroes'));
     });
 
     it('generates skill icons correctly', () => {
       const skillIconsHtml =
         HotsDialog.htmlGenerators.generateSkillIcons(heroes.gazlowe);
 
-      assert.strictEqual(skillIconsHtml, refHtml['dialog-skills']);
+      assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
     });
 
     it('generates talent list correctly', () => {
       const talentIconsHtml =
         HotsDialog.htmlGenerators.generateTalentList(heroes.gazlowe);
 
-      assert.strictEqual(talentIconsHtml, refHtml['dialog-talents']);
+      assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));
+    });
+  });
+
+
+  describe('Inserted templates', () => {
+    it('generates skill info table correctly', () => {
+      const skillInfoTableHtml =
+        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.skills[1]);
+      const skillInfoTableHtmlWithVersion =
+        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.skills[2], '34.1');
+
+      assert.strictEqual(skillInfoTableHtml, getExpectedHtml('insert-skill-info'));
+      assert.strictEqual(skillInfoTableHtmlWithVersion, getExpectedHtml('insert-skill-info-version'));
+    });
+
+    it('generates talent info table correctly', () => {
+      const talentInfoTableHtml =
+        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.talents['13'][1]);
+      const talentInfoTableHtmlWithVersion =
+        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.talents['13'][2], '34.1');
+
+      assert.strictEqual(talentInfoTableHtml, getExpectedHtml('insert-talent-info'));
+      assert.strictEqual(talentInfoTableHtmlWithVersion, getExpectedHtml('insert-talent-info-version'));
     });
   });
 });
