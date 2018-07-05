@@ -11,10 +11,11 @@
 
 # Dependencies
 * 크롬 확장 프로그램
-    * [jQuery](https://jquery.com/) 3.3.1
-    * [jQuery UI](https://jqueryui.com/) 1.12.1 (Dot Luv theme)
-    * [mustache.js](https://github.com/janl/mustache.js) 2.3.0
+    * [axios](https://github.com/axios/axios)
+    * [tingle.js](https://robinparisi.github.io/tingle/)
+    * [mustache.js](https://github.com/janl/mustache.js)
 * 서버 스크립트
     * [Node.js](https://nodejs.org/)
-    * PowerShell /  (ZIP 파일 생성용)
+    * [axios](https://github.com/axios/axios)
+    * PowerShell (ZIP 파일 생성용)
     * 자세한 것은 [package.json](package.json) 참조
