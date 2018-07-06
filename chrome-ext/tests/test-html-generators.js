@@ -77,8 +77,8 @@ describe('HotsDialog.templates', () => {
         const hero = heroes[heroId];
 
         for (const skill of hero.skills) {
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill) + '\r\n';
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, '34.3') + '\r\n';
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill);
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, '34.3');
         }
       }
 
@@ -93,8 +93,8 @@ describe('HotsDialog.templates', () => {
 
         for (const talentLevel in hero.talents) {
           for (const talent of hero.talents[talentLevel]) {
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent) + '\r\n';
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, '34.3') + '\r\n';
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent);
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, '34.3');
           }
         }
       }
