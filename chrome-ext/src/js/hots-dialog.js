@@ -113,11 +113,15 @@ const HotsDialog = {
     const dialogFragment = createDocumentFragment(document,
       this.htmlGenerators.generateDialogContent(this.heroFilters, heroes));
 
+    //Retrieve each dialog section
+    const optionsSection = dialogFragment.querySelector('.hots-dialog-options');
     const heroFilterSection = dialogFragment.querySelector('.hots-hero-filters');
     const heroIconsSection = dialogFragment.querySelector('.hots-hero-icons');
     const skillsetSection = dialogFragment.querySelector('.hots-skillset');
     const talentsetSection = dialogFragment.querySelector('.hots-talentset');
 
+    //Retrieve individual elements and element groups
+    const addVersionCheckbox = optionsSection.querySelector('#hots-dialog-option-add-version');
     const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
     const heroFilterCheckboxes = heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
 
@@ -144,7 +148,8 @@ const HotsDialog = {
       const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
       const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, hotsVersion));
+      const version = addVersionCheckbox.checked ? hotsVersion : '';
+      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
     });
 
     //Add event handlers for talent icons
@@ -156,7 +161,8 @@ const HotsDialog = {
       const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
       const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, hotsVersion));
+      const version = addVersionCheckbox.checked ? hotsVersion : '';
+      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
     });
 
     return dialogFragment;

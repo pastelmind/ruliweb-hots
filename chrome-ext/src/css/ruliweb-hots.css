@@ -40,6 +40,35 @@
   display: none;
 }
 
+/* Dialog options */
+
+.hots-dialog-options {
+  font-size: .75em;
+}
+
+.hots-dialog-option {
+  padding: 0 .5em 0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #aaaaaa;
+}
+
+.hots-dialog-option:hover {
+  background-color: #333344;
+}
+
+.hots-dialog-option input[type=checkbox] {
+  vertical-align: middle;
+  width: 1em; height: 1em;
+  margin: 0; padding: 0;
+  margin-top: -0.2em;
+  cursor: pointer;
+}
+
+.hots-dialog-option input[type=checkbox]:checked+.hots-dialog-option__description {
+  color: #eeeeee;
+}
+
 /* Hero filters */
 
 .hots-hero-filter-group {
