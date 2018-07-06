@@ -4,6 +4,7 @@
  * Tests for methods that convert mustache templates to HTML
  */
 
+'use strict';
 
 const assert = require('assert');
 const fs = require('fs');
@@ -70,23 +71,35 @@ describe('HotsDialog.templates', () => {
 
   describe('Inserted templates', () => {
     it('generates skill info table correctly', () => {
-      const skillInfoTableHtml =
-        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.skills[1]);
-      const skillInfoTableHtmlWithVersion =
-        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.skills[2], '34.1');
+      let skillInfoHtml = '';
 
-      assert.strictEqual(skillInfoTableHtml, getExpectedHtml('insert-skill-info'));
-      assert.strictEqual(skillInfoTableHtmlWithVersion, getExpectedHtml('insert-skill-info-version'));
+      for (const heroId in heroes) {
+        const hero = heroes[heroId];
+
+        for (const skill of hero.skills) {
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill) + '\n';
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, '34.3') + '\n';
+        }
+      }
+
+      assert.strictEqual(skillInfoHtml, getExpectedHtml('insert-skill-info'));
     });
 
     it('generates talent info table correctly', () => {
-      const talentInfoTableHtml =
-        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.talents['13'][1]);
-      const talentInfoTableHtmlWithVersion =
-        HotsDialog.htmlGenerators.generateSkillInfoTable(heroes.rexxar.talents['13'][2], '34.1');
+      let talentInfoHtml = '';
 
-      assert.strictEqual(talentInfoTableHtml, getExpectedHtml('insert-talent-info'));
-      assert.strictEqual(talentInfoTableHtmlWithVersion, getExpectedHtml('insert-talent-info-version'));
+      for (const heroId in heroes) {
+        const hero = heroes[heroId];
+
+        for (const talentLevel in hero.talents) {
+          for (const talent of hero.talents[talentLevel]) {
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent) + '\n';
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, '34.3') + '\n';
+          }
+        }
+      }
+
+      assert.strictEqual(talentInfoHtml, getExpectedHtml('insert-talent-info'));
     });
   });
 });
