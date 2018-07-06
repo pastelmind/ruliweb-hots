@@ -15,13 +15,7 @@
       {{#hero.skills}}
       <img style="WIDTH: 48px; margin: 0 .25em" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
       {{/hero.skills}}
+      {{#hotsVersion}}<div style="text-align: right; font-size: .75em; font-style: italic; color: #ccccaa">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </td>
   </tr>
-  {{#hotsVersion}}
-  <tr>
-    <td colspan="3" style="padding: .25em .5em; border: 1px solid #726bd6; text-align: right;">
-      <i>패치 {{hotsVersion}}</i>
-    </td>
-  </tr>
-  {{/hotsVersion}}
 </table>
