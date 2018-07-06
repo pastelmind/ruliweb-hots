@@ -282,7 +282,7 @@ const HotsDialog = {
     generateSkillInfoTable(skill, hotsVersion) {
       const skillView = Object.create(skill);
       skillView.hotsVersion = hotsVersion;
-      skillView.description = skill.description.replace('\n', '<br>');
+      skillView.description = skill.description.replace(/\r?\n/g, '<br>');
       return Mustache.render(this.templates['insert-skill'], skillView);
     },
 
@@ -294,7 +294,7 @@ const HotsDialog = {
     generateTalentInfoTable(talent, hotsVersion) {
       const talentView = Object.create(talent);
       talentView.hotsVersion = hotsVersion;
-      talentView.description = talent.description.replace('\n', '<br>');
+      talentView.description = talent.description.replace(/\r?\n/g, '<br>');
       return Mustache.render(this.templates['insert-talent'], talentView);
     }
   }
