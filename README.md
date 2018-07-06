@@ -11,6 +11,12 @@
 * `util`: 프로젝트를 관리하는 데 필요한 여러 Node.js 스크립트를 모아놓은 디렉토리
 * `docs`: GitHub Pages를 사용하기 위해 만든 디렉토리 (설명서 아님!)
 
+# npm Scripts
+* `npm run http-server`: Serve working dir on http://localhost:8080/. Used for testing HTML, CSS, and browser-side JavaScript.
+* `npm run build`: Package the Chrome extension source into a ZIP file which can be uploaded to the Chrome Web Store.
+* `npm run crawl-namu`: Run the NamuWiki crawl script. For usage, run `npm run crawl-namu -- --help` .
+* `npm run update-dep`: Copy necessary dependencies from `node_modules/` to `chrome-ext/src/js/` . Automatically called when running `npm install` or `npm build`.
+
 # Dependencies
 * 크롬 확장 프로그램
     * [axios](https://github.com/axios/axios)

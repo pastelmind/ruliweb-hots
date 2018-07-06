@@ -4,16 +4,17 @@
   "description": "A Chrome extension that assists in creating and posting Heroes of the Storm guides on Ruliweb.com",
   "scripts": {
     "test": "mocha util/tests/ chrome-ext/tests/",
-    "build": "npm run build:prep-dir && npm run build:zip-extension",
-    "build:prep-dir": "DEL build\\*.zip & @MKDIR build & @ECHO done > NUL",
+    "http-server": "http-server -a localhost",
+    "build": "npm run -s update-dep && npm run -s build:prep-dir && npm run -s build:zip-extension",
+    "build:prep-dir": "DEL build\\*.zip & MKDIR build & ECHO done > NUL",
     "build:zip-extension": "PowerShell -Command Compress-Archive -Path chrome-ext/src/* -Force -CompressionLevel Optimal -DestinationPath build/ruliweb-hots.%npm_package_version%.zip",
-    "namu:crawl": "node util/crawl-namu.js",
-    "env": "SET",
+    "crawl-namu": "node util/crawl-namu.js",
     "version": "node util/update-manifest.js && git add ./chrome-ext/src/manifest.json",
-    "postinstall": "npm run -s update:axios && npm run -s update:mustache && npm run -s update:tingle.js",
-    "update:axios": "COPY /B node_modules\\axios\\dist\\axios.min.js chrome-ext\\src\\js\\axios.js",
-    "update:mustache": "COPY /B node_modules\\mustache\\mustache.min.js chrome-ext\\src\\js\\mustache.js",
-    "update:tingle.js": "COPY /B node_modules\\tingle.js\\dist\\tingle.min.js chrome-ext\\src\\js\\tingle.js && COPY /B node_modules\\tingle.js\\dist\\tingle.min.css chrome-ext\\src\\css\\tingle.css"
+    "postinstall": "npm run -s update-dep",
+    "update-dep": "npm run update-dep:axios && npm run update-dep:mustache && npm run update-dep:tingle.js",
+    "update-dep:axios": "COPY /B node_modules\\axios\\dist\\axios.min.js chrome-ext\\src\\js\\axios.js",
+    "update-dep:mustache": "COPY /B node_modules\\mustache\\mustache.min.js chrome-ext\\src\\js\\mustache.js",
+    "update-dep:tingle.js": "COPY /B node_modules\\tingle.js\\dist\\tingle.min.js chrome-ext\\src\\js\\tingle.js && COPY /B node_modules\\tingle.js\\dist\\tingle.min.css chrome-ext\\src\\css\\tingle.css"
   },
   "repository": {
     "type": "git",
