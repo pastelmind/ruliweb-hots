@@ -4657,6 +4657,13 @@
       "universe": "warcraft",
       "skills": [
         {
+          "name": "미샤, 집중해! (Misha, Focus!)",
+          "type": "고유능력",
+          "iconUrl": "파일:rexxar_mishaFocus.png",
+          "description": "지속 효과: 미샤의 이동 속도가 15% 증가합니다.\n\n미샤에게 특정 적을 공격하거나 특정 위치로 이동해 대기하라고 명령합니다.\n\n렉사르를 대상으로 사용하면 미샤가 렉사르에게 돌아오며 이 동안 미샤의 이동 속도가 30% 추가로  증가합니다.\n\n미샤를 대상으로 사용하면 현재 위치에 대기합니다.",
+          "extras": {}
+        },
+        {
           "name": "기백 날리기 (Spirit Swoop)",
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",

@@ -39,7 +39,7 @@ module.exports = {
       if (title === '소개') {
         Object.assign(hero, parseHeroIntroSection(content));
       }
-      else if (skillTitleMatch = /(고유 능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
+      else if (skillTitleMatch = /(고유\s*능력|Q|W|E|R|1)\s*(?:-|:)\s*(.*)/.exec(title)) {
         const tables = parseTables(content);
         assert(tables.length > 0, 'Skill section (%s) does not contain a table:', title, content);
         assert(tables[0].length > 1, 'First table in skill section (%s) does not contain enough cells:', title, content);

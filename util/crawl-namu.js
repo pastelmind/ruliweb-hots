@@ -324,7 +324,7 @@ async function crawlArticles(articleNames, converter) {
           }
         }
 
-        console.log(`Finished crawling ${articleName} [${--activeCrawlerCount} active]...`);
+        console.log(`Finished crawling ${articleName} [${--activeCrawlerCount} active]`);
       }
       catch (e) {
         console.error(e);//Report and consume error
