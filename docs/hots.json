@@ -18508,10 +18508,17 @@
           }
         },
         {
-          "name": "무기 모드: 연발포 / 위상 폭탄 (Weapon Mode: Repeater Cannon / Phase Bomb)",
+          "name": "무기 모드: 연발포 (Weapon Mode: Repeater Cannon)",
           "type": "W",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
           "description": "공격 속도가 150% 증가합니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.",
+          "extras": {}
+        },
+        {
+          "name": "무기 모드: 위상 폭탄 (Weapon Mode: Phase Bomb)",
+          "type": "W",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
+          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해 및 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
           "extras": {}
         },
         {
