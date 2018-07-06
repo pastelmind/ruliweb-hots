@@ -215,6 +215,7 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateDialogContent(heroFilterGroups, heroes) {
+      //Prepare filter groups
       const filterGroups = [];
       for (const heroFilterGroupId in heroFilterGroups) {
         const heroFilterGroup = heroFilterGroups[heroFilterGroupId];
@@ -232,12 +233,16 @@ const HotsDialog = {
         filterGroups.push({ name: heroFilterGroup.name, filters });
       }
 
+      //Create hero array
       const heroesArray = [];
       for (const heroId in heroes) {
         const hero = heroes[heroId];
         hero.roleName = heroFilterGroups.role.filters[hero.role];
         heroesArray.push(hero);
       }
+
+      //Sort heroes by name
+      heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
 
       return Mustache.render(this.templates['dialog'], { filterGroups, heroes: heroesArray });
     },

@@ -65,13 +65,9 @@ class Hero {
     const heroesCompact = {};
 
     //Sort by hero name in ascending order
-    Object.keys(heroes).sort((heroId1, heroId2) => {
-      const heroName1 = heroes[heroId1].name;
-      const heroName2 = heroes[heroId2].name;
-      return heroName1 < heroName2 ? -1 : (heroName1 === heroName2 ? 0 : 1);
-    }).forEach(heroId => {
-      heroesCompact[heroId] = heroes[heroId].compact();
-    });
+    Object.values(heroes)
+      .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'))
+      .forEach(hero => heroesCompact[hero.id] = hero.compact());
 
     return heroesCompact;
   }
