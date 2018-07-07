@@ -147,7 +147,7 @@
           "name": "역재생 앰프 (Reverse Amp)",
           "type": "R",
           "iconUrl": "파일:lucio_reverseAmp.png",
-          "description": "분위기 전환! 음악으로 적을 4초 동안 공격합니다. <span style=\"color: #fff800\">치유 증폭</span> 음악은 적에게 초당 108(+4%)의 피해를 주고, <span style=\"color: #3dff7f\">속도 증폭</span> 음악은 적을 45% 느려지게 합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 볼륨을 높여라!의 지속 시간이 4초로 증가합니다.",
+          "description": "분위기 전환! 음악으로 적을 4초 동안 공격합니다. <span style=\"color: #fff800\">치유 증폭</span> 음악은 적에게 초당 108(+4%)의 피해를 주고, <span style=\"color: #3dff7f\">속도 증폭</span> 음악은 적을 45% 느려지게 합니다.\n\n지속 효과: 볼륨을 높여라!의 지속 시간이 4초로 증가합니다.",
           "cooldown": 45,
           "manaCost": 55,
           "extras": {
@@ -650,7 +650,7 @@
           "name": "방화범 (Firestarter)",
           "type": "능력 강화 (W)",
           "iconUrl": "파일:cho_consumingBlaze.png",
-          "description": "잠식하는 불길로 불태운 적 영웅을 일반 공격할 때마다 잠식하는 불길의 재사용 대기시간이 1초 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 잠식하는 불길의 재사용 대기시간이 3초 감소합니다.",
+          "description": "잠식하는 불길로 불태운 적 영웅을 일반 공격할 때마다 잠식하는 불길의 재사용 대기시간이 1초 감소합니다.\n\n지속 효과: 잠식하는 불길의 재사용 대기시간이 3초 감소합니다.",
           "extras": {}
         },
         {
@@ -666,7 +666,7 @@
           "name": "황혼의 망치 (Hammer of Twilight)",
           "type": "R",
           "iconUrl": "파일:cho_hammerOfTwilight.png",
-          "description": "사용하면 황혼의 망치를 휘둘러 157(+4%)의 피해를 주고, 적을 밀쳐내며 0.75초 동안 기절시킵니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 초의 일반 공격력이 25% 증가합니다.",
+          "description": "사용하면 황혼의 망치를 휘둘러 157(+4%)의 피해를 주고, 적을 밀쳐내며 0.75초 동안 기절시킵니다.\n\n지속 효과: 초의 일반 공격력이 25% 증가합니다.",
           "cooldown": 15,
           "extras": {
             "피해 반경": "4.5",
@@ -780,7 +780,7 @@
         "name": "오우거의 분노 (Ogre Rage)",
         "type": "고유 능력",
         "iconUrl": "파일:gall_ogreRage.png",
-        "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
+        "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n지속 효과: 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
         "cooldown": 5,
         "extras": {}
       },
@@ -864,7 +864,7 @@
           "name": "백도 (Double Back)",
           "type": "능력 강화 (W)",
           "iconUrl": "파일:gall_dreadOrb.png",
-          "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n<span style=\"color: #01f189\">지속 효과:</span> 세 번째로 튀는 공포의 보주가 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
+          "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n지속 효과: 세 번째로 튀는 공포의 보주가 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
           "extras": {}
         },
         {

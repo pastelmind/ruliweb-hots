@@ -346,13 +346,13 @@ function parseHeroUniverse(content) {
  * @return {Skill[]} Array of one or two skills
  */
 function parseSkillTable(name, type, cells) {
-  const dualSkillMatch = /(.*?):(.*?)\/(.*?)\((.*?):(.*?)\/(.*?)\)/.exec(name);
   assert(cells.length > 1, 'Skill table for %s does not contain enough cells:', name, cells);
 
-  if (dualSkillMatch) {
+  const matches = /\s*(.*?)\s*:\s*(.*?)\s*\/\s*(.*?)\s*\(\s*(.*?)\s*:\s*(.*?)\s*\/\s*(.*?)\s*\)/.exec(name);
+
+  if (matches) {
     assert(cells.length > 3, `Dual skill (${name}) detected, but skill table has insufficient cells`);
 
-    const matches = dualSkillMatch.map(String.prototype.trim);
     const skillName1 = `${matches[1]}: ${matches[2]} (${matches[4]}: ${matches[5]})`;
     const skillName2 = `${matches[1]}: ${matches[3]} (${matches[4]}: ${matches[6]})`;
 
@@ -503,6 +503,7 @@ const COMMON_TEXT_COLORS = [
   '#52e41e',  //Life cost
   '#cc9999',  //Skill and talent range, area-of-effect, and width.
   '#ffc000',  //Quests
+  '#01f189',  //Passive skill component
 ];
 
 /**
