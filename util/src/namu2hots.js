@@ -547,7 +547,32 @@ const COMMON_IMAGES = [
  * @return {string} Modified NamuWiki markup
  */
 function removeNamuFootnotes(namuMarkup) {
-  return namuMarkup.replace(/\[\* [^\[]*(\[\[[^\]]*\]\][^\[]*)*\]/g, '');
+  let result = '';
+  const footnoteBeginPattern = /\[\*/g;
+  let footnoteMatch;
+  let sliceBegin = 0;
+
+  while (footnoteMatch = footnoteBeginPattern.exec(namuMarkup)) {
+    const bracketPattern = /[\[\]]/g;
+    bracketPattern.lastIndex = footnoteBeginPattern.lastIndex;
+    let bracketMatch;
+    let bracketDepth = 1;
+
+    while (bracketDepth && (bracketMatch = bracketPattern.exec(namuMarkup))) {
+      if ('[' === bracketMatch[0])
+        ++bracketDepth;
+      else
+        --bracketDepth;
+    }
+
+    result += namuMarkup.slice(sliceBegin, footnoteMatch.index);
+    if (bracketMatch) //End of footnote found
+      sliceBegin = footnoteBeginPattern.lastIndex = bracketPattern.lastIndex;
+    else              //End of document reached
+      return result;
+  }
+
+  return result + namuMarkup.slice(sliceBegin);
 }
 
 /**

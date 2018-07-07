@@ -3619,7 +3619,7 @@
           {
             "name": "압도적인 악몽 (Overpowering Nightmare)",
             "type": "능력 강화 (E)",
-            "iconUrl": "파일:diablo_overpower.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953bbc519dc2c.png",
             "description": "압도의 충전 횟수가 2회 증가합니다. 첫 번째 사용 후 두 번째 사용까지 2초의 재사용 대기시간이 발생합니다.",
             "extras": {}
           }
@@ -8890,14 +8890,14 @@
             "extras": {}
           },
           {
-            "name": "분신술 (Kawarimi[* [include(틀:루비, 글자=代,루비=か)]わり[include(틀:루비, 글자=身,루비=み)]])",
+            "name": "분신술 (Kawarimi)",
             "type": "능력 강화 (E)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595e79db19dc2c.png",
             "description": "바람 걸음을 사용하면 자신의 위치에 환영을 생성합니다. 환영은 사무로가 바람 걸음 전에 하고 있던 행동을 이어서 수행합니다.",
             "extras": {}
           },
           {
-            "name": "축지법 (Shukuchi[* [include(틀:루비, 글자=縮地,루비=しゅくち)]])",
+            "name": "축지법 (Shukuchi)",
             "type": "능력 강화 (E)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595e7dc419dc2c.png",
             "description": "바람 걸음을 사용하면 바라보고 있는 방향으로 짧은 거리를 순간이동합니다.",
@@ -13688,7 +13688,7 @@
           {
             "name": "스피드 메탈 (Speed Metal)",
             "type": "능력 강화 (고유 능력)",
-            "iconUrl": "파일:etc_speedMetal.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459542b7019dc2c.png",
             "description": "록스타가 자신과 주위 아군들의 이동 속도를 2초 동안 15% 증가시킵니다.",
             "extras": {}
           }
