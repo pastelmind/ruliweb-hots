@@ -217,15 +217,14 @@ function parseHeroIntroSection(section) {
   assert(tables[0].length > 8, 'First table in hero intro section does not contain enough cells:', section);
 
   const heroNameCell = tables[0][1];
-  const typeAndRoleCell = tables[0][7];
-  const universeCell = tables[0][8];
+  const metadataCells = tables[0].slice(7).join('');
 
   return {
     name: parseHeroKorName(heroNameCell),
     id: parseHeroId(heroNameCell),
-    type: parseHeroType(typeAndRoleCell),
-    role: parseHeroRole(typeAndRoleCell),
-    universe: parseHeroUniverse(universeCell)
+    type: parseHeroType(metadataCells),
+    role: parseHeroRoles(metadataCells).join(','),
+    universe: parseHeroUniverse(metadataCells)
   };
 }
 
@@ -242,20 +241,20 @@ function parseChoGallIntroSection(section) {
 
   const choTypeAndRoleCell = tables[0][8];
   const gallTypeAndRoleCell = tables[0][9];
-  const universeCell = tables[0][10];
+  const metadataCells = tables[0].slice(10);
 
   const cho = {
     name: '초',
     id: 'cho',
     type: parseHeroType(choTypeAndRoleCell),
-    role: parseHeroRole(choTypeAndRoleCell),
-    universe: parseHeroUniverse(universeCell)
+    role: parseHeroRoles(choTypeAndRoleCell).join(','),
+    universe: parseHeroUniverse(metadataCells.join(''))
   };
   const gall = {
     name: '갈',
     id: 'gall',
     type: parseHeroType(gallTypeAndRoleCell),
-    role: parseHeroRole(gallTypeAndRoleCell),
+    role: parseHeroRoles(gallTypeAndRoleCell).join(','),
     universe: cho.universe
   };
 
@@ -299,20 +298,32 @@ function parseHeroId(heroNameCell) {
  * @return {string} One of '근접', '원거리', '근접 / 원거리', ''
  */
 function parseHeroType(content) {
-  const match = /근접|원거리|근접 \/ 원거리/.exec(content);
-  return match ? match[0] : '';
+  const isMelee = content.includes('근접');
+  const isRanged = content.includes('원거리');
+
+  if (isMelee) {
+    if (isRanged) return '근접 / 원거리';
+    else return '근접';
+  }
+  else {
+    if (isRanged) return '원거리';
+    else {
+      console.warn('Hero type unknown:', content);
+      return '';
+    }
+  }
 }
 
 /**
  * Parse a hero's role (warrior/assassin/support/specialist).
  * @param {string} content NamuWiki markup
- * @return {string} A role ID defined in `Hero.roles`, or '' if unknown.
+ * @return {string[]} An array of role IDs defined in `Hero.roles`, or an empty array if unknown.
  */
-function parseHeroRole(content) {
-  const roleId = Hero.parseRole(content);
-  if (!roleId)
+function parseHeroRoles(content) {
+  const roleIds = Hero.parseRoles(content);
+  if (!roleIds.length)
     console.warn('Hero role unknown:', content);
-  return roleId;
+  return roleIds;
 }
 
 /**

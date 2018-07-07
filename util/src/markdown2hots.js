@@ -143,7 +143,7 @@ function parseHeroContent(name, markdown) {
         case 'ID': hero.id = propValue; break;
         case '아이콘': hero.iconUrl = propValue; break;
         case '유형': hero.type = propValue; break;
-        case '역할': hero.role = Hero.parseRole(propValue); break;
+        case '역할': hero.role = Hero.parseRoles(propValue).join(); break;
         case '세계관': hero.universe = Hero.parseUniverse(propValue); break;
         default:
           console.warn('Unknown property:', propName, '/', propValue);

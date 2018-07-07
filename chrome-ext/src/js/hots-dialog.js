@@ -188,18 +188,29 @@ const HotsDialog = {
     //Toggle CSS class of each hero icon
     for (const heroIconElem of heroIconElems) {
       const hero = heroes[heroIconElem.dataset.heroId]; //data-hero-id
-      let isExcluded = false;
+      heroIconElem.classList.toggle('hots-hero-icon--excluded', !testHero(hero, activeFilters));
+    }
 
+    //Helper function
+    function testHero(hero, activeFilters) {
       for (const filterType in activeFilters) {
         const filterSet = activeFilters[filterType];
-        //Discard this hero if the filter set is non-empty and does not include this hero
-        if (filterSet.size && !filterSet.has(hero[filterType])) {
-          isExcluded = true;
-          break;
-        }
+        const heroAttribute = hero[filterType];
+
+        //Keep this hero if the filterSet is empty
+        if (!filterSet.size) continue;
+
+        let isMatched = false;
+
+        //Keep this hero if there is a filter that matches him/her/it/them.
+        for (const filter of activeFilters[filterType])
+          if (heroAttribute.includes(filter))
+            isMatched =  true;
+
+        if (!isMatched) return false;
       }
 
-      heroIconElem.classList.toggle('hots-hero-icon--excluded', isExcluded);
+      return true;
     }
   },
 
@@ -237,7 +248,11 @@ const HotsDialog = {
       const heroesArray = [];
       for (const heroId in heroes) {
         const hero = heroes[heroId];
-        hero.roleName = heroFilterGroups.role.filters[hero.role];
+
+        for (const roleId in heroFilterGroups.role.filters)
+          if (hero.role.includes(roleId))
+            hero.roleName = (hero.roleName ? hero.roleName + ' / ' : '') + heroFilterGroups.role.filters[roleId];
+
         heroesArray.push(hero);
       }
 

@@ -22,10 +22,16 @@ class Hero {
 
   /**
    * Returns the role name of this hero.
-   * @return {string} Role name defined in `Hero.roles`, or '' if unknown
+   * @return {string} Role name defined in `Hero.roles`, or '' if unknown. Multiple roles are separated by a comma(,).
    */
   getRoleName() {
-    return Hero.roles[this.role] || '';
+    let roleNames = ''
+
+    for (const roleId in Hero.roles)
+      if (this.role.includes(roleId))
+        roleNames += (roleNames ? ',' : '') + Hero.roles[roleId];
+
+    return roleNames;
   }
 
   /**
@@ -73,16 +79,18 @@ class Hero {
   }
 
   /**
-   * Parse a role name from the given string and return the role ID.
+   * Parse one or more role names from the given string and return an array of role IDs.
    * @param {string} roleString String containing the role name
-   * @return {string} A role ID defined in `Hero.roles`, or '' if unknown.
+   * @return {string[]} An array of role IDs, or an empty Array if unknown.
    */
-  static parseRole(roleString) {
+  static parseRoles(roleString) {
+    const roles = new Set;
+
     for (const roleId in Hero.roles)
       if (roleString.includes(Hero.roles[roleId]))
-        return roleId;
+        roles.add(roleId);
 
-    return '';
+    return [...roles];
   }
 
   /**
