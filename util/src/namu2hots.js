@@ -42,18 +42,18 @@ module.exports = {
       else if (skillTitleMatch = /(고유\s*능력|[QWERZ1])\s*[\-:]\s*(.*)/i.exec(title)) {
         const tables = parseTables(content);
         assert(tables.length > 0, 'Skill section (%s) does not contain a table:', title, content);
-        assert(tables[0].length > 1, 'First table in skill section (%s) does not contain enough cells:', title, content);
 
-        //Assumption: The second cell of the  first table contains the skill description.
-        const skill = parseSkill(skillTitleMatch[2], tables[0][0], skillTitleMatch[1], tables[0][1]);
-        if (isUltimateSection) {
-          skill.level = talentLevel;
-          if (!hero.talents[talentLevel])
-            hero.talents[talentLevel] = [];
-          hero.talents[talentLevel].push(new Talent(skill));
+        const skills = parseSkillTable(skillTitleMatch[2], skillTitleMatch[1], tables[0]);
+        for (const skill of skills) {
+          if (isUltimateSection) {
+            skill.level = talentLevel;
+            if (!hero.talents[talentLevel])
+              hero.talents[talentLevel] = [];
+            hero.talents[talentLevel].push(new Talent(skill));
+          }
+          else
+            hero.skills.push(skill);
         }
-        else
-          hero.skills.push(skill);
       }
       else if (talentTitleMatch = /(\d)단계: 레벨 (\d+)/.exec(title)) {
         talentLevel = parseInt(talentTitleMatch[2]);
@@ -339,14 +339,39 @@ function parseHeroUniverse(content) {
 }
 
 /**
+ * Parse a skill table and returns one or more skills
+ * @param {string} name Skill name
+ * @param {string} type Skill type
+ * @param {string[]} cells NamuWiki skill table
+ * @return {Skill[]} Array of one or two skills
+ */
+function parseSkillTable(name, type, cells) {
+  const dualSkillMatch = /(.*?):(.*?)\/(.*?)\((.*?):(.*?)\/(.*?)\)/.exec(name);
+  assert(cells.length > 1, 'Skill table for %s does not contain enough cells:', name, cells);
+
+  if (dualSkillMatch) {
+    assert(cells.length > 3, `Dual skill (${name}) detected, but skill table has insufficient cells`);
+
+    const matches = dualSkillMatch.map(String.prototype.trim);
+    const skillName1 = `${matches[1]}: ${matches[2]} (${matches[4]}: ${matches[5]})`;
+    const skillName2 = `${matches[1]}: ${matches[3]} (${matches[4]}: ${matches[6]})`;
+
+    return [parseSkill(skillName1, type, cells[0], cells[1]), parseSkill(skillName2, type, cells[2], cells[3])];
+  }
+
+  //Assumption: The second cell of the  first table contains the skill description.
+  return [parseSkill(name, type, cells[0], cells[1])];
+}
+
+/**
  * Parse a skill section and produces skill data
  * @param {string} name Skill name
- * @param {string} iconCell NamuWiki markup of table cell containing the skill icon
  * @param {string} type Skill type
+ * @param {string} iconCell NamuWiki markup of table cell containing the skill icon
  * @param {string} rawDescription Unparsed description in the skill table
  * @returns {Skill} Skill data
  */
-function parseSkill(name, iconCell, type, rawDescription) {
+function parseSkill(name, type, iconCell, rawDescription) {
   const skill = { name, type, extras: {} };
 
   const iconNameMatch = /\[\[(파일:.+?)\s*(?:\|.*?)?\]\]/.exec(iconCell);
@@ -385,8 +410,7 @@ function parseTalentTable(talentLevel, table) {
   //Assumption: The talent table contains 4x the number of talents.
   //            Each cell represents: talent icon, name, type, and description.
   for (let i = 0; i + 3 < table.length; i += 4) {
-    const talentData = parseSkill(
-      removeBoldFormatting(table[i + 1]), table[i], table[i + 2], table[i + 3]);
+    const talentData = parseSkill(removeBoldFormatting(table[i + 1]), table[i + 2], table[i], table[i + 3]);
     talentData.level = talentLevel;
     talents.push(new Talent(talentData));
   }
