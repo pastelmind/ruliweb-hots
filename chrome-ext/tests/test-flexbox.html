@@ -7,8 +7,16 @@
   <title>Flexbox test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      font-size: 12px;
+    @media (min-width: 801px) {
+      body {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      body {
+        font-size: 15px;
+      }
     }
 
     .skill-table, .talent-table {
@@ -19,17 +27,17 @@
 
     .skill-table {
       display: flex;
-      border: 2px solid #8955dd;
-      border-right-width: 1px;
+      border: 10px solid #8955dd;
+      border-right-width: 5px;
       max-width: 60em;
       box-sizing: border-box;
       font-family: sans-serif;
     }
 
-    .skill-table__icon-cell {
+    .skill-table__icon {
       flex: none;
-      border-right: 1px solid #8955dd;
-      width: 48px;
+      border-right: 5px solid #8955dd;
+      width: 64px;
       padding: .5em;
       background-color: #411980;
     }
@@ -40,7 +48,7 @@
       flex-flow: column;
     }
 
-    .skill-table__title-group {
+    .skill-table__header {
       display: flex;
       flex-wrap: wrap;
       background-color: #08082b;
@@ -49,41 +57,41 @@
     }
 
     .skill-table__title {
-      flex: 3 18em;
+      flex: 3 15em;
       border: solid #8955dd;
-      border-width: 0 1px 1px 0;
+      border-width: 0 5px 5px 0;
       padding: .5em;
     }
 
     .skill-table__type {
-      flex: 2 12em;
+      flex: 1 5em;
       border: solid #8955dd;
-      border-width: 0 1px 1px 0;
+      border-width: 0 5px 5px 0;
       padding: .5em;
     }
 
     .skill-table__description {
       flex: 1;
-      border-right: 1px solid #8955dd;
+      border-right: 5px solid #8955dd;
       padding: .5em;
       background-color: #1a0a33;
       color: #f2fee7;
+      text-align: left;
     }
 
     /* Talent table CSS */
 
     .talent-table {
       display: flex;
-      border: 2px solid #5353df;
-      border-right-width: 1px;
+      border: 10px solid #5353df; border-right-width: 5px;
       max-width: 60em;
       box-sizing: border-box;
       font-family: sans-serif;
     }
 
-    .talent-table__icon-cell {
+    .talent-table__icon {
       flex: none;
-      border-right: 1px solid #5353df;
+      border-right: 5px solid #5353df;
       width: 48px;
       padding: .5em;
       background-color: #181881;
@@ -95,7 +103,7 @@
       flex-flow: column;
     }
 
-    .talent-table__title-group {
+    .talent-table__header {
       display: flex;
       flex-wrap: wrap;
       background-color: #08082b;
@@ -104,36 +112,82 @@
     }
 
     .talent-table__title {
-      flex: 3 18em;
-      border: solid #5353df;
-      border-width: 0 1px 1px 0;
+      flex: 2 16em;
+      border: solid #5353df; border-width: 0 5px 5px 0;
       padding: .5em;
     }
 
     .talent-table__type {
-      flex: 2 12em;
-      border: solid #5353df;
-      border-width: 0 1px 1px 0;
+      flex: 1 8em;
+      border: solid #5353df; border-width: 0 5px 5px 0;
       padding: .5em;
     }
 
     .talent-table__description {
       flex: 1;
-      border-right: 1px solid #5353df;
+      border-right: 5px solid #5353df;
       padding: .5em;
       background-color: #0b0b3b;
       color: #eefee7;
+      text-align: left;
     }
   </style>
 </head>
 
 <body>
+  <div class="skill-table">
+    <div class="skill-table__icon">
+      <img style="WIDTH: 100%" src="http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png" alt="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)" title="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)">
+    </div>
+    <div class="skill-table__content">
+      <div class="skill-table__header">
+        <b class="skill-table__title">무기 모드: 연발포 (Weapon Mode: Repeater Cannon)</b>
+        <b class="skill-table__type">W</b>
+      </div>
+      <div class="skill-table__description">
+        공격 속도가 150% 증가합니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.
+        <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-table">
+    <div class="skill-table__icon">
+       <img style="WIDTH: 100%" src="http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png" alt="고유 능력 - 고물상 (Salvager)" title="고유 능력 - 고물상 (Salvager)" />
+    </div>
+    <div class="skill-table__content">
+       <div class="skill-table__header">
+          <b class="skill-table__title">고물상 (Salvager)</b>
+          <b class="skill-table__type">고유 능력</b>
+       </div>
+       <div class="skill-table__description">
+          파괴된 적 구조물이나 직접 설치한 잘나가! 포탑에서 고철이 떨어집니다. 고철을 획득하면 3초에 걸쳐 30의 마나를 회복하고 이 동안 기술의 재사용 대기시간이 세 배 빨리 감소합니다.<br><br>고물상을 사용하면 대상 잘나가! 포탑을 해체해서 고철로 만듭니다.
+          <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
+        </div>
+    </div>
+ </div>
+
+ <div class="skill-table">
+    <div class="skill-table__icon">
+       <img style="WIDTH: 100%" src="http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png" alt="1 - 집중 포화! (Focus Turrets!)" title="1 - 집중 포화! (Focus Turrets!)" />
+    </div>
+    <div class="skill-table__content">
+       <div class="skill-table__header">
+          <b class="skill-table__title">집중 포화! (Focus Turrets!)</b>
+          <b class="skill-table__type">1</b>
+       </div>
+       <div class="skill-table__description">
+         주위의 잘나가! 포탑들이 대상을 집중 공격하게 만듭니다.
+        </div>
+    </div>
+ </div>
+
   <div class="talent-table">
-    <div class="talent-table__icon-cell">
+    <div class="talent-table__icon">
       <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595684ab19dc2c.png" alt="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)" title="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)">
     </div>
     <div class="talent-table__content">
-      <div class="talent-table__title-group">
+      <div class="talent-table__header">
         <b class="talent-table__title">비할 데 없는 힘 (Unrivaled Strength)</b>
         <b class="talent-table__type">능력 강화 (E) - 레벨 1</b>
       </div>
@@ -145,11 +199,11 @@
   </div>
 
   <div class="talent-table">
-    <div class="talent-table__icon-cell">
+    <div class="talent-table__icon">
       <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595efb9419dc2c.png" alt="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)" title="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)">
     </div>
     <div class="talent-table__content">
-      <div class="talent-table__title-group">
+      <div class="talent-table__header">
         <b class="talent-table__title">유성 폭탄 (Meteor Bomb)</b>
         <b class="talent-table__type">능력 강화 (W) - 레벨 16</b>
       </div>
@@ -160,11 +214,11 @@
   </div>
 
   <div class="talent-table">
-    <div class="talent-table__icon-cell">
+    <div class="talent-table__icon">
       <img style="WIDTH: 100%" src="http://i2.ruliweb.com/img/18/07/02/164596187f019dc2c.png" alt="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)" title="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)">
     </div>
     <div class="talent-table__content">
-      <div class="talent-table__title-group">
+      <div class="talent-table__header">
         <b class="talent-table__title">저거, 설마 생명력 팩?! (Is That a Health Pack?!)</b>
         <b class="talent-table__type">지속 효과 - 레벨 4</b>
       </div>
