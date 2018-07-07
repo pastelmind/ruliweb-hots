@@ -322,6 +322,7 @@ const HotsDialog = {
 
     /**
      * Generates a Mustache-compatible view from a Skill or Talent.
+     * This is an internal method called by other generator methods.
      * @package
      * @param {Skill | Talent} skill Skill or Talent object
      * @param {string=} hotsVersion (optional) HotS version string
@@ -331,7 +332,12 @@ const HotsDialog = {
       view.hotsVersion = hotsVersion;
       view.hasStats = !!(skill.cooldown || skill.rechargeCooldown || skill.manaCost);
 
-      view.description = skill.description.replace(/\r?\n/g, '<br>');
+      //Parse skill description
+      view.description = skill.description
+        .replace(/^[^\S\r\n]*(퀘스트|보상|반복\s*퀘스트)\s*(?=:)/gm,
+          '<img style="HEIGHT: 1.3em; vertical-align: -20%" src="http://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" alt="$1" title="$1"> <b style="color: #fb0">$1</b>')
+        .replace(/^[^\S\r\n]*(지속\s*효과)\s*(?=:)/gm, '<b style="color: #0e8">$1</b>')
+        .replace(/\r?\n/g, '<br>');
 
       //Parse extra properties
       view.extras = [];
