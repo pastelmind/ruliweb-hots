@@ -19,7 +19,8 @@
     {
       "matches": [
         "*://*.ruliweb.com/*/write",
-        "*://*.ruliweb.com/*/modify/*"
+        "*://*.ruliweb.com/*/modify/*",
+        "*://mypi.ruliweb.com/write*"
       ],
       "css": [
         "css/tingle.css",
