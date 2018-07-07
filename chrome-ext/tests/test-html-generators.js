@@ -82,6 +82,7 @@ describe('HotsDialog.templates', () => {
         }
       }
 
+      // fs.writeFileSync(path.join(__dirname, 'expected/insert-skill-info.html'), skillInfoHtml);
       assert.strictEqual(skillInfoHtml, getExpectedHtml('insert-skill-info'));
     });
 
@@ -99,6 +100,7 @@ describe('HotsDialog.templates', () => {
         }
       }
 
+      // fs.writeFileSync(path.join(__dirname, 'expected/insert-talent-info.html'), talentInfoHtml);
       assert.strictEqual(talentInfoHtml, getExpectedHtml('insert-talent-info'));
     });
   });

@@ -1,19 +1,15 @@
-<table style="WIDTH: 100%; border: 2px solid #5353df; background-color: #0b0b3b; color: #eefee7; font-family: sans-serif">
-  <tr style="background-color: #08082b">
-    <td rowspan="2" style="padding: .5em; border: 1px solid #5353df; WIDTH: 48px; vertical-align: top; background-color: #181881">
-      <img style="WIDTH: 100%" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">
-    </td>
-    <td style="padding: .5em; border: 1px solid #5353df; text-align: center">
-      <b style="color: #66ccec">{{name}}</b>
-    </td>
-    <td style="padding: .5em; border: 1px solid #5353df; text-align: center; WIDTH: 30%">
-      <b style="color: #66ccec">{{type}} - 레벨 {{level}}</b>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding: .5em; border: 1px solid #5353df">
+<div style="display: flex; border: 2px solid #5353df; border-right-WIDTH: 1px; max-WIDTH: 60em; box-sizing: border-box; font-family: sans-serif">
+  <div style="flex: none; border-right: 1px solid #5353df; WIDTH: 48px; padding: .5em; background-color: #181881">
+    <img style="WIDTH: 100%" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">
+  </div>
+  <div style="flex: 1; display: flex; flex-flow: column">
+    <div style="display: flex; flex-wrap: wrap; background-color: #08082b; text-align: center; color: #66ccec">
+      <b style="flex: 2 16em; border: solid #5353df; border-WIDTH: 0 1px 1px 0; padding: .5em">{{name}}</b>
+      <b style="flex: 1 8em; border: solid #5353df; border-WIDTH: 0 1px 1px 0; padding: .5em">{{type}} - 레벨 {{level}}</b>
+    </div>
+    <div style="flex: 1; border-right: 1px solid #5353df; padding: .5em; background-color: #0b0b3b; color: #eefee7">
       {{{description}}}{{#hotsVersion}}
-      <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 {{hotsVersion}}</div>{{/hotsVersion}}
-    </td>
-  </tr>
-</table>
+      <i style="display: block; text-align: right; font-size: .8em; color: #ccccaa">패치 {{hotsVersion}}</i>{{/hotsVersion}}
+    </div>
+  </div>
+</div>

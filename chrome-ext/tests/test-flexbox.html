@@ -11,13 +11,15 @@
       font-size: 12px;
     }
 
-    .skill-table {
+    .skill-table, .talent-table {
       margin-bottom: 20px;
     }
 
+    /* Skill table CSS */
+
     .skill-table {
       display: flex;
-      border: 2px solid #5353df;
+      border: 2px solid #8955dd;
       border-right-width: 1px;
       max-width: 60em;
       box-sizing: border-box;
@@ -26,10 +28,10 @@
 
     .skill-table__icon-cell {
       flex: none;
-      border-right: 1px solid #5353df;
+      border-right: 1px solid #8955dd;
       width: 48px;
       padding: .5em;
-      background-color: #181881;
+      background-color: #411980;
     }
 
     .skill-table__content {
@@ -43,24 +45,79 @@
       flex-wrap: wrap;
       background-color: #08082b;
       text-align: center;
-      color: #66ccec;
+      color: #eebbff;
     }
 
     .skill-table__title {
       flex: 3 18em;
-      border: solid #5353df;
+      border: solid #8955dd;
       border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .skill-table__type {
       flex: 2 12em;
-      border: solid #5353df;
+      border: solid #8955dd;
       border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .skill-table__description {
+      flex: 1;
+      border-right: 1px solid #8955dd;
+      padding: .5em;
+      background-color: #1a0a33;
+      color: #f2fee7;
+    }
+
+    /* Talent table CSS */
+
+    .talent-table {
+      display: flex;
+      border: 2px solid #5353df;
+      border-right-width: 1px;
+      max-width: 60em;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    .talent-table__icon-cell {
+      flex: none;
+      border-right: 1px solid #5353df;
+      width: 48px;
+      padding: .5em;
+      background-color: #181881;
+    }
+
+    .talent-table__content {
+      flex: 1;
+      display: flex;
+      flex-flow: column;
+    }
+
+    .talent-table__title-group {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #08082b;
+      text-align: center;
+      color: #66ccec;
+    }
+
+    .talent-table__title {
+      flex: 3 18em;
+      border: solid #5353df;
+      border-width: 0 1px 1px 0;
+      padding: .5em;
+    }
+
+    .talent-table__type {
+      flex: 2 12em;
+      border: solid #5353df;
+      border-width: 0 1px 1px 0;
+      padding: .5em;
+    }
+
+    .talent-table__description {
       flex: 1;
       border-right: 1px solid #5353df;
       padding: .5em;
@@ -71,47 +128,47 @@
 </head>
 
 <body>
-  <div class="skill-table">
-    <div class="skill-table__icon-cell">
-        <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595684ab19dc2c.png" alt="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)" title="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)">
+  <div class="talent-table">
+    <div class="talent-table__icon-cell">
+      <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595684ab19dc2c.png" alt="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)" title="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)">
     </div>
-    <div class="skill-table__content">
-      <div class="skill-table__title-group">
-        <b class="skill-table__title">비할 데 없는 힘 (Unrivaled Strength)</b>
-        <b class="skill-table__type">능력 강화 (E) - 레벨 1</b>
+    <div class="talent-table__content">
+      <div class="talent-table__title-group">
+        <b class="talent-table__title">비할 데 없는 힘 (Unrivaled Strength)</b>
+        <b class="talent-table__type">능력 강화 (E) - 레벨 1</b>
       </div>
-      <div class="skill-table__description">
+      <div class="talent-table__description">
         파쇄추의 투척 사거리가 25% 증가하고 공격력이 75% 증가합니다.
         <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
       </div>
     </div>
   </div>
 
-  <div class="skill-table">
-    <div class="skill-table__icon-cell">
-        <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595efb9419dc2c.png" alt="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)" title="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)">
+  <div class="talent-table">
+    <div class="talent-table__icon-cell">
+      <img style="WIDTH: 100%" src="http://i1.ruliweb.com/img/18/07/02/164595efb9419dc2c.png" alt="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)" title="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)">
     </div>
-    <div class="skill-table__content">
-      <div class="skill-table__title-group">
-        <b class="skill-table__title">유성 폭탄 (Meteor Bomb)</b>
-        <b class="skill-table__type">능력 강화 (W) - 레벨 16</b>
+    <div class="talent-table__content">
+      <div class="talent-table__title-group">
+        <b class="talent-table__title">유성 폭탄 (Meteor Bomb)</b>
+        <b class="talent-table__type">능력 강화 (W) - 레벨 16</b>
       </div>
-      <div class="skill-table__description">
+      <div class="talent-table__description">
         살아있는 유성이 이동 경로 끝에 도달하면 주위 모든 적에게 229(+4%)의 피해를 줍니다.
       </div>
     </div>
   </div>
 
-  <div class="skill-table">
-    <div class="skill-table__icon-cell">
+  <div class="talent-table">
+    <div class="talent-table__icon-cell">
       <img style="WIDTH: 100%" src="http://i2.ruliweb.com/img/18/07/02/164596187f019dc2c.png" alt="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)" title="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)">
     </div>
-    <div class="skill-table__content">
-      <div class="skill-table__title-group">
-        <b class="skill-table__title">저거, 설마 생명력 팩?! (Is That a Health Pack?!)</b>
-        <b class="skill-table__type">지속 효과 - 레벨 4</b>
+    <div class="talent-table__content">
+      <div class="talent-table__title-group">
+        <b class="talent-table__title">저거, 설마 생명력 팩?! (Is That a Health Pack?!)</b>
+        <b class="talent-table__type">지속 효과 - 레벨 4</b>
       </div>
-      <div class="skill-table__description">
+      <div class="talent-table__description">
         재생의 구슬과 치유의 샘의 회복량이 100% 증가합니다.
         <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
       </div>
