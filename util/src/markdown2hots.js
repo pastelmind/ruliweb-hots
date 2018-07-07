@@ -214,19 +214,19 @@ function skillToMarkdown(skill) {
   let markdown = `### ${skill.name}\n* 유형: ${skill.type}\n`;
 
   if (skill.iconUrl)
-    markdown += `* 아이콘: ${skill.iconUrl} \n`;
+    markdown += `* 아이콘: ${skill.iconUrl}\n`;
 
   if (skill.manaCost)
-    markdown += `* 마나: ${skill.manaCost} \n`;
+    markdown += `* 마나: ${skill.manaCost}\n`;
 
   if (skill.cooldown)
-    markdown += `* 재사용 대기시간: ${skill.cooldown} \n`;
+    markdown += `* 재사용 대기시간: ${skill.cooldown}\n`;
 
   if (skill.rechargeCooldown)
-    markdown += `* 충전 대기시간: ${skill.rechargeCooldown} \n`;
+    markdown += `* 충전 대기시간: ${skill.rechargeCooldown}\n`;
 
   for (const extra in skill.extras)
-    markdown += `* ${extra}: ${skill.extras[extra]} \n`;
+    markdown += `* ${extra}: ${skill.extras[extra]}\n`;
 
   //Add two spaces after lines so that single line breaks are not removed by Markdown parsers
   markdown += '\n' + skill.description.replace(/^(?!\*|#).*\S(?=\n\S)/mg, '$&  ');
