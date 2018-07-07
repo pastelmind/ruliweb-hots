@@ -1,27 +1,26 @@
-{{#hasStats}}
-  <br>
-  {{#manaCost}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png" alt="마나" title="마나">
-  <span style="color: #4be"><b>마나</b> {{manaCost}}</span>
-  {{/manaCost}}
-  {{#lifeCost}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png" alt="생명력" title="생명력">
-  <span style="color: #5d2"><b>생명력</b> {{lifeCost}}</span>
-  {{/lifeCost}}
-  {{#energyCost}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png" alt="{{energyCostName}}" title="{{energyCostName}}">
-  <span style="color: #ee3"><b>{{energyCostName}}</b> {{energyCost}}</span>
-  {{/energyCost}}
-  {{#cooldown}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164741ab52c19dc2c.png" alt="재사용 대기시간" title="재사용 대기시간">
-  <span style="color: #ddd"><b>재사용 대기시간</b> {{cooldown}}초</span>
-  {{/cooldown}}
-  {{#rechargeCooldown}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164741ab52c19dc2c.png" alt="충전 대기시간" title="충전 대기시간">
-  <span style="color: #ddd"><b>충전 대기시간</b> {{rechargeCooldown}}초</span>
-  {{/rechargeCooldown}}
-  {{#extras.length}}
-  <br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png" alt="기타 수치" title="기타 수치">
-  <span style="color: #d90">{{#extras}}<b>{{name}}</b> {{value}} {{/extras}}</span>
-  {{/extras.length}}
+{{#hasStats}}<br>
+{{#manaCost}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png" alt="마나" title="마나">
+<span style="color: #4be"><b>마나</b> {{manaCost}}</span>
+{{/manaCost}}
+{{#lifeCost}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png" alt="생명력" title="생명력">
+<span style="color: #5d2"><b>생명력</b> {{lifeCost}}</span>
+{{/lifeCost}}
+{{#energyCost}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png" alt="{{energyCostName}}" title="{{energyCostName}}">
+<span style="color: #ee3"><b>{{energyCostName}}</b> {{energyCost}}</span>
+{{/energyCost}}
+{{#cooldown}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164741ab52c19dc2c.png" alt="재사용 대기시간" title="재사용 대기시간">
+<span style="color: #ddd"><b>재사용 대기시간</b> {{cooldown}}초</span>
+{{/cooldown}}
+{{#rechargeCooldown}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164741ab52c19dc2c.png" alt="충전 대기시간" title="충전 대기시간">
+<span style="color: #ddd"><b>충전 대기시간</b> {{rechargeCooldown}}초</span>
+{{/rechargeCooldown}}
+{{#extras.length}}
+<br><img style="WIDTH: 1.1em; HEIGHT: 1.1em; vertical-align: sub" src="http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png" alt="기타 수치" title="기타 수치">
+<span style="color: #d90">{{#extras}}<b>{{name}}</b> {{value}} {{/extras}}</span>
+{{/extras.length}}
 {{/hasStats}}
