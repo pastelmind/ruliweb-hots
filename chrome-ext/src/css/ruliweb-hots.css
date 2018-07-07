@@ -2,9 +2,9 @@
 
 .hots-dialog-container .tingle-modal-box {
   max-width: 465px;
-  background-color: #111122;
+  background-color: #112;
   border-radius: 10px;
-  color: #cccccc;
+  color: #ccc;
   font-family: "맑은 고딕", Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
@@ -18,7 +18,7 @@
 .hots-hero-icon, .hots-skill-icon, .hots-talent-icon {
   width: 32px;
   height: 32px;
-  border: 1px solid #333333;
+  border: 1px solid #333;
   cursor: pointer;
   margin-right: 2px;
 }
@@ -50,11 +50,11 @@
   padding: 0 .5em 0;
   border-radius: 3px;
   cursor: pointer;
-  color: #aaaaaa;
+  color: #aaa;
 }
 
 .hots-dialog-option:hover {
-  background-color: #333344;
+  background-color: #334;
 }
 
 .hots-dialog-option input[type=checkbox] {
@@ -66,7 +66,7 @@
 }
 
 .hots-dialog-option input[type=checkbox]:checked+.hots-dialog-option__description {
-  color: #eeeeee;
+  color: #eee;
 }
 
 /* Hero filters */
@@ -122,8 +122,8 @@
 
 .hots-skillset {
   padding: 3px 3px 0;
-  background-color: #1a0a33;
-  border: 1px solid #5353df;
+  background-color: #213;
+  border: 1px solid #55d;
   border-bottom: none;
 }
 
@@ -133,13 +133,13 @@
   list-style: none; /* Reset user agent style (<li>) */
   margin: 0;        /* Reset user agent style (<li>) */
   padding: 0;       /* Reset user agent style (<li>) */
-  background-color: #0b0b3b;
-  border: 1px solid #5353df;
+  background-color: #113;
+  border: 1px solid #55d;
 }
 
 .hots-talentset__group {
   padding-top: 3px;
-  border-top: 1px solid #5353df;
+  border-top: 1px solid #55d;
 }
 
 .hots-talentset__group:first-child {
