@@ -42,6 +42,13 @@
         "cooldown": 15,
         "manaCost": 100,
         "extras": {}
+      },
+      {
+        "name": "스케이트 모드 (Skate Mode)",
+        "type": "Z",
+        "iconUrl": "파일:lucio_skateMode.png",
+        "description": "루시우는 이동 중에 적을 공격할 수 있습니다. 계속 움직이세요!",
+        "extras": {}
       }
     ],
     "talents": {
@@ -294,6 +301,16 @@
         "description": "일정 시간 후 활성화되는 지뢰를 생성합니다. 지뢰는 159(+4%)의 피해를 주고 4초 동안 적을 드러냅니다. 90초 동안 지속됩니다.\n\n최대 3회 충전됩니다.",
         "extras": {
           "사거리": "70"
+        }
+      },
+      {
+        "name": "굴 파기 (Deep Tunnel)",
+        "type": "Z",
+        "iconUrl": "파일:abathur_deepTunnel.png",
+        "description": "시야가 확보된 곳으로 빠르게 굴을 파서 이동합니다.",
+        "cooldown": 30,
+        "extras": {
+          "사거리": "∞"
         }
       }
     ],
@@ -797,6 +814,14 @@
         "extras": {
           "피해 반경": "2.5"
         }
+      },
+      {
+        "name": "밀치기 (Shove)",
+        "type": "Z",
+        "iconUrl": "파일:gall_shove.png",
+        "description": "초를 밀쳐서 짧은 거리를 이동시키고 초의 이동 속도를 2초 동안 25% 증가시킵니다.",
+        "cooldown": 30,
+        "extras": {}
       },
       {
         "name": "킬로그의 눈 (Eye of Kilrogg)",
