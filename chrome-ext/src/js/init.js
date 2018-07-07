@@ -62,6 +62,33 @@ async function updateDataFromApi() {
   updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
 }
 
+/**
+ * Asynchronously retrieves all template files.
+ * @return {Promise<Object<string, string>>} Template name => template string
+ */
+async function loadTemplates() {
+  const templateNames = [
+    'dialog',
+    'dialog-skills',
+    'dialog-talents',
+    'insert-hero',
+    'insert-skill',
+    'insert-talent',
+    'insert-skill-stats'
+  ];
+
+  const templates = {};
+
+  await Promise.all(templateNames.map(templateName =>
+    axios.get(
+      chrome.runtime.getURL(`templates/${templateName}.mustache`),
+      { responseType: 'text' }
+    ).then(response => templates[templateName] = response.data)
+  ));
+
+  return templates;
+}
+
 
 //"main" code of this script, this should be called only inside an extension
 if (window.chrome && chrome.extension) {
@@ -80,17 +107,8 @@ if (window.chrome && chrome.extension) {
       .then(() => updateDataFromApi()); //Immediately attempt an update from API
 
     //Load templates
-    const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
-
     (async () => {
-      const templates = {};
-
-      await Promise.all(templateNames.map(templateName =>
-        axios.get(
-          chrome.runtime.getURL(`templates/${templateName}.mustache`),
-          { responseType: 'text' }
-        ).then(response => templates[templateName] = response.data)
-      ));
+      const templates = await loadTemplates();
 
       chrome.storage.local.set({ templates }, () => {
         if (chrome.runtime.lastError)

@@ -37,7 +37,7 @@ describe('HotsDialog.templates', () => {
     const templates = HotsDialog.htmlGenerators.templates = {};
     [
       'dialog', 'dialog-skills', 'dialog-talents',
-      'insert-hero', 'insert-skill', 'insert-talent'
+      'insert-hero', 'insert-skill', 'insert-talent', 'insert-skill-stats'
     ].forEach(templateName => {
       templates[templateName] = fs.readFileSync(
         path.join(__dirname, `../src/templates/${templateName}.mustache`), 'utf8');

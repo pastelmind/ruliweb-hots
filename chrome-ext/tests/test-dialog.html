@@ -40,7 +40,7 @@
     if (!chrome.runtime)
       chrome.runtime = {};
     if (!chrome.runtime.getURL)
-      chrome.runtime.getURL = str => '.' + str;
+      chrome.runtime.getURL = str => './' + str;
 
     //Test code
     (async () => {
@@ -48,13 +48,7 @@
       const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);
 
-      const templateNames = ['dialog', 'dialog-skills', 'dialog-talents', 'insert-hero', 'insert-skill', 'insert-talent'];
-      HotsDialog.data.templates = {};
-
-      await Promise.all(templateNames.map(templateName =>
-        axios.get('../src/templates/' + templateName + '.mustache', { responseType: 'text' })
-          .then(response => HotsDialog.data.templates[templateName] = response.data)
-      ));
+      HotsDialog.data.templates = await loadTemplates();
 
       HotsDialog.launchDialog(htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV

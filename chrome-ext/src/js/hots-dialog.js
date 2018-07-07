@@ -285,10 +285,11 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      */
     generateSkillInfoTable(skill, hotsVersion) {
-      const skillView = Object.create(skill);
-      skillView.hotsVersion = hotsVersion;
-      skillView.description = skill.description.replace(/\r?\n/g, '<br>');
-      return Mustache.render(this.templates['insert-skill'], skillView);
+      return Mustache.render(
+        this.templates['insert-skill'],
+        this.generateSkillTalentView(skill, hotsVersion),
+        { stats: this.templates['insert-skill-stats'] }
+      );
     },
 
     /**
@@ -297,10 +298,43 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      */
     generateTalentInfoTable(talent, hotsVersion) {
-      const talentView = Object.create(talent);
-      talentView.hotsVersion = hotsVersion;
-      talentView.description = talent.description.replace(/\r?\n/g, '<br>');
-      return Mustache.render(this.templates['insert-talent'], talentView);
+      return Mustache.render(
+        this.templates['insert-talent'],
+        this.generateSkillTalentView(talent, hotsVersion),
+        { stats: this.templates['insert-skill-stats'] }
+      );
+    },
+
+    /**
+     * Generates a Mustache-compatible view from a Skill or Talent.
+     * @package
+     * @param {Skill | Talent} skill Skill or Talent object
+     * @param {string=} hotsVersion (optional) HotS version string
+     */
+    generateSkillTalentView(skill, hotsVersion) {
+      const view = Object.create(skill);
+      view.hotsVersion = hotsVersion;
+      view.hasStats = !!(skill.cooldown || skill.rechargeCooldown || skill.manaCost);
+
+      view.description = skill.description.replace(/\r?\n/g, '<br>');
+
+      //Parse extra properties
+      view.extras = [];
+
+      for (const name in skill.extras) {
+        if (name.includes('생명력'))
+          view.lifeCost = skill.extras[name];
+        else if (/기력|에너지|취기|분노/.test(name)) {
+          view.energyCost = skill.extras[name];
+          view.energyCostName = name;
+        }
+        else
+          view.extras.push({ name, value: skill.extras[name] });
+
+        view.hasStats = true;
+      }
+
+      return view;
     }
   }
 };
