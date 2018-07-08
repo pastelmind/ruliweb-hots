@@ -16,8 +16,8 @@ function createDocumentFragment(document, html) {
   tempDiv.innerHTML = html;
 
   const docFragment = document.createDocumentFragment();
-  for (const node of tempDiv.childNodes)
-    docFragment.appendChild(node);
+  while (tempDiv.firstChild)
+    docFragment.appendChild(tempDiv.firstChild);
   return docFragment;
 }
 
