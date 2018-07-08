@@ -4,12 +4,12 @@
   </div>
   <div style="flex: 1; display: flex; flex-flow: column">
     <div style="display: flex; flex-wrap: wrap; background-color: #102; text-align: center; color: #ebf">
-      <b style="flex: 3 18em; border: solid #85d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{name}}</b>
-      <b style="flex: 1 6em; border: solid #85d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{type}}</b>
+      <div style="flex: 3 18em; border: solid #85d; border-WIDTH: 0 1px 1px 0; padding: .5em; font-weight: bold">{{name}}</div>
+      <div style="flex: 1 6em; border: solid #85d; border-WIDTH: 0 1px 1px 0; padding: .5em; font-weight: bold">{{type}}</div>
     </div>
     <div style="flex: 1; border-right: 1px solid #85d; padding: .5em; background-color: #213; color: #efe">
       {{{description}}}{{> stats}}{{#hotsVersion}}
-      <i style="display: block; text-align: right; font-size: .8em; color: #cca">패치 {{hotsVersion}}</i>{{/hotsVersion}}
+      <div style="text-align: right; font-size: .8em; color: #cca; font-style: italic">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>
   </div>
 </div>
