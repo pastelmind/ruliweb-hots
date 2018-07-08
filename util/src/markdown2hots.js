@@ -175,7 +175,7 @@ function parseSkillMarkdown(name, markdown) {
         case '유형':
           skill.type = extraValue; break;
         case '마나':
-          skill.manaCost = parseInt(extraValue); break;
+          skill.manaCost = extraValue; break;
         case '재사용 대기시간':
           skill.cooldown = parseFloat(extraValue); break;
         case '충전 대기시간':

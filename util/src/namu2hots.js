@@ -386,7 +386,7 @@ function parseSkill(name, type, iconCell, rawDescription) {
       else if (extraName.includes('충전 대기시간') && !skill.rechargeCooldown)
         skill.rechargeCooldown = parseFloat(extraInfo);
       else if (extraName.includes('마나') && !skill.manaCost)
-        skill.manaCost = parseFloat(extraInfo);
+        skill.manaCost = extraInfo.trim();
       else if (!(extraName in skill.extras))
         skill.extras[extraName] = extraInfo.trim();
       else
