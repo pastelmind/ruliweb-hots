@@ -5,53 +5,6 @@
 
 'use strict';
 
-/**
- * Creates a DocumentFragment filled with the given HTML.
- * @param {Document} document Base document
- * @param {string} html HTML source
- * @return {DocumentFragment} DocumentFragment object
- */
-function createDocumentFragment(document, html) {
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = html;
-
-  const docFragment = document.createDocumentFragment();
-  while (tempDiv.firstChild)
-    docFragment.appendChild(tempDiv.firstChild);
-  return docFragment;
-}
-
-/**
- * Captures the currently selected position in a child frame of the document, and
- * returns a callback that can inject an HTML string at the position.
- * @return {HtmlStringInjector} A callback that injects a valid HTML string into the currently selected frame.
- */
-function getHtmlInjectorAtSelectedPosition() {
-  const selectedWindow = Array.from(window)
-    .find(childWindow => childWindow.getSelection().rangeCount);
-
-  if (!selectedWindow)
-    throw new Error('선택된 프레임을 찾을 수 없습니다.');
-
-  const range = selectedWindow.getSelection().getRangeAt(0);
-  if (range.startContainer.nodeName == 'HTML') { //Weird edge case
-    console.debug('<html> tag is selected, using <body> instead...');
-    return html => {
-      const docFragment = createDocumentFragment(selectedWindow.document, html);
-      selectedWindow.document.body.appendChild(docFragment);
-
-      selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
-    };
-  }
-  else {
-    return html => {
-      const docFragment = createDocumentFragment(selectedWindow.document, html);
-      range.insertNode(docFragment);
-
-      selectedWindow.getSelection().collapse(null); //Deselect inserted HTML
-    };
-  }
-}
 
 const HotsDialog = {
   data: null,
@@ -110,7 +63,7 @@ const HotsDialog = {
     this.htmlGenerators.templates = templates;
 
     //Generate dialog
-    const dialogFragment = createDocumentFragment(document,
+    const dialogFragment = this.util.createDocumentFragmentFromHtml(document,
       this.htmlGenerators.generateDialogContent(this.heroFilters, heroes));
 
     //Retrieve each dialog section
@@ -205,7 +158,7 @@ const HotsDialog = {
         //Keep this hero if there is a filter that matches him/her/it/them.
         for (const filter of activeFilters[filterType])
           if (heroAttribute.includes(filter))
-            isMatched =  true;
+            isMatched = true;
 
         if (!isMatched) return false;
       }
@@ -357,6 +310,147 @@ const HotsDialog = {
 
       return view;
     }
+  },
+
+  /** Collection of utility functions */
+  util: {
+
+    /**
+     * Captures the currently selected position in a child frame of the current
+     * window, and returns a callback that can inject HTML to it
+     * @return {HtmlStringInjector} A callback that injects a valid HTML string
+     * into the currently selected frame.
+     */
+    getHtmlInjectorAtSelectedPosition() {
+      const selectedWindow = Array.from(window)
+        .find(childWindow => childWindow.getSelection().rangeCount);
+
+      if (!selectedWindow)
+        throw new Error('선택된 프레임을 찾을 수 없습니다.');
+
+      return html => {
+        const range = getSelectedRange(selectedWindow);
+        if (!range.collapsed)
+          range.deleteContents();
+        splitAncestorElements(range);
+
+        //Add padding to help editing
+        const prevSibling = range.startContainer.childNodes.item(range.startOffset - 1);
+        console.log('prevSibling', prevSibling ? prevSibling.nodeName : null);
+        if (!prevSibling || ('P' !== prevSibling.nodeName && 'BR' !== prevSibling.nodeName))
+          html = '<br>' + html;
+
+        //Add padding to help editing
+        const nextSibling = prevSibling ? prevSibling.nextSibling : null;
+        console.log('nextSibling', nextSibling ? nextSibling.nodeName : null);
+        if (!nextSibling || ('P' !== nextSibling.nodeName && 'BR' !== nextSibling.nodeName))
+            html += '<br>';
+
+        const docFragment = this.createDocumentFragmentFromHtml(selectedWindow.document, html);
+        range.insertNode(docFragment);
+
+        //Deselect inserted HTML
+        selectedWindow.getSelection().collapse(range.endContainer, range.endOffset);
+      };
+
+      /**
+       * Helper function that retrieves the currently selected range
+       * @param {Window} window
+       * @return {Range | undefined}
+       */
+      function getSelectedRange(selectedWindow) {
+        const selection = selectedWindow.getSelection();
+        let range = null;
+
+        if (selection.rangeCount) {
+          range = selection.getRangeAt(0);
+          if ('HTML' !== range.startContainer.nodeName) //Weird edge case
+            return range;
+        }
+
+        const document = selectedWindow.document;
+
+        if (!range) {
+          range = document.createRange();
+          selection.addRange(range);
+        }
+
+        range.setStart(document.body, document.body.childNodes.length);
+        range.setEnd(document.body, document.body.childNodes.length);
+        return range;
+      }
+
+      /**
+       * Helper function that prepares insert into a range's start position
+       * @param {Range} range Range to insert into
+       */
+      function splitAncestorElements(range) {
+        let targetNode = range.startContainer;
+        let insertOffset = range.startOffset;
+
+        while (true) {
+          //If current target container is a Text node, split it
+          if (3 === targetNode.nodeType)
+            targetNode.splitText(insertOffset);
+          else if (canSplit(targetNode)) {
+            //Split the containing element
+            const nextElement = targetNode.cloneNode(false);
+
+            //Move all child nodes after insertOffset to the next paragraph
+            while (insertOffset < targetNode.childNodes.length)
+              nextElement.appendChild(targetNode.childNodes[insertOffset]);
+
+            nextElement.normalize();
+            if (nextElement.hasChildNodes())
+              targetNode.parentNode.insertBefore(nextElement, targetNode.nextSibling);
+
+            targetNode.normalize();
+            if (!targetNode.hasChildNodes())
+              targetNode.innerHTML += '<br>';
+          }
+          else {
+            range.setStart(targetNode, insertOffset);
+            range.setEnd(targetNode, insertOffset);
+            return;
+          }
+
+          insertOffset = Array.prototype.indexOf.call(targetNode.parentNode.childNodes, targetNode) + 1;
+          targetNode = targetNode.parentNode;
+        }
+      }
+
+      /**
+       * Helper function
+       * @param {Node} node
+       */
+      function canSplit(node) {
+        if (1 !== node.nodeType)  //If the node is not an Element
+          return false;
+
+        if ('P' === node.nodeName)
+          return true;
+
+        const styles = node.ownerDocument.defaultView.getComputedStyle(node);
+        return 'inline' === styles.display;
+      }
+    },
+
+    /**
+     * Creates a DocumentFragment filled with the given HTML.
+     * @param {Document} document Base document
+     * @param {string} html HTML source
+     * @return {DocumentFragment} DocumentFragment object
+     */
+    createDocumentFragmentFromHtml(document, html) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+
+      const docFragment = document.createDocumentFragment();
+      while (tempDiv.firstChild)
+        docFragment.appendChild(tempDiv.firstChild);
+
+      return docFragment;
+    }
   }
 };
 
@@ -376,7 +470,7 @@ function openHotsDialog() {
     });
   }
   else
-    HotsDialog.launchDialog(getHtmlInjectorAtSelectedPosition());
+    HotsDialog.launchDialog(HotsDialog.util.getHtmlInjectorAtSelectedPosition());
 }
 
 
