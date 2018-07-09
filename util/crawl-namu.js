@@ -404,25 +404,16 @@ function extractImgAltTextToUrl(html) {
  * Asynchronously applies `converter.convert()` to the iconUrl of every
  * skill/talent of the given hero object.
  * @param {Hero} hero
- * @param {ImageNameConverter} converter
+ * @param {Iterable} converter
  */
 async function forEachIconAsync(hero, converter) {
   const converterPromises = [];
 
-  for (const skill of hero.skills) {
-    converterPromises.push(converter.convert(skill.iconUrl).then(
-      iconUrl => skill.iconUrl = iconUrl,
+  for (const skillOrTalent of hero) {
+    converterPromises.push(converter.convert(skillOrTalent.iconUrl).then(
+      iconUrl => skillOrTalent.iconUrl = iconUrl,
       e => console.error(e) //Report and consume error
     ));
-  }
-
-  for (const talentLevel in hero.talents) {
-    for (const talent of hero.talents[talentLevel]) {
-      converterPromises.push(converter.convert(talent.iconUrl).then(
-        iconUrl => talent.iconUrl = iconUrl,
-        e => console.error(e) //Report and consume error
-      ));
-    }
   }
 
   //Wait until all operations are resolved
