@@ -1,13 +1,12 @@
-<div style="display: flex; border: 2px solid #55d; border-right-WIDTH: 1px; max-WIDTH: 60em; box-sizing: border-box; font-family: sans-serif">
-  <div style="border-right: 1px solid #55d; WIDTH: 48px; padding: .5em; background-color: #118">
-    <img style="WIDTH: 100%" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})">
-  </div>
-  <div style="flex: 1; display: flex; flex-flow: column">
-    <div style="display: flex; flex-wrap: wrap; background-color: #003; text-align: center; color: #6ce">
-      <div style="flex: 2 18em; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em; font-weight: bold">{{name}}</div>
-      <div style="flex: 1 9em; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em; font-weight: bold">{{type}} - 레벨 {{level}}</div>
+<div style="display: flex; flex-wrap: wrap; border: solid #55d; border-WIDTH: 2px 1px 1px 2px; max-WIDTH: 60em; background: #55d; font-family: sans-serif; text-align: center">
+  <div style="flex: 1; border: inherit; border-WIDTH: 0 1px 1px 0; padding: .5em; background: #118">
+    <img style="WIDTH: 48px" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})"> </div>
+  <div style="flex: 999 22em; display: flex; flex-flow: column">
+    <div style="display: flex; flex-wrap: wrap; background: #003; color: #6ce; font-weight: bold">
+      <div style="flex: 2 14em; display: flex; align-items: center; justify-content: center; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{name}}</div>
+      <div style="flex: 1 7em; display: flex; align-items: center; justify-content: center; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{type}}</div>
     </div>
-    <div style="flex: 1; border-right: 1px solid #55d; padding: .5em; background-color: #113; color: #efe">
+    <div style="flex: 1; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em; background: #114; color: #efe; text-align: left">
       {{{description}}}{{> stats}}{{#hotsVersion}}
       <div style="text-align: right; font-size: .8em; color: #cca; font-style: italic">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>

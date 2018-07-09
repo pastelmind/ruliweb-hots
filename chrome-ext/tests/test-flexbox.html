@@ -27,21 +27,23 @@
 
     .skill-table {
       display: flex;
-      border: 10px solid #8955dd;
-      border-right-width: 5px;
+      flex-wrap: wrap;
+      border: solid #85d; border-width: 2px 1px 1px 2px;
       max-width: 60em;
-      box-sizing: border-box;
+      background: #85d; /* Fix border gap glitch */
       font-family: sans-serif;
+      text-align: center;
     }
 
     .skill-table__icon {
-      border-right: 5px solid #8955dd;
+      flex: 1;
+      border: inherit; border-width: 0 1px 1px 0;
       padding: .5em;
-      background-color: #411980;
+      background: #418;
     }
 
     .skill-table__content {
-      flex: 1;
+      flex: 999 21em; /* Prevent icon cell from growing when side-by-side */
       display: flex;
       flex-flow: column;
     }
@@ -49,31 +51,33 @@
     .skill-table__header {
       display: flex;
       flex-wrap: wrap;
-      background-color: #08082b;
-      text-align: center;
-      color: #eebbff;
+      background: #103;
+      color: #fbf;
+      font-weight: bold;
     }
 
     .skill-table__title {
       flex: 3 15em;
-      border: solid #8955dd;
-      border-width: 0 5px 5px 0;
+      /* center text node (also requires text-align: center on root div) */
+      display: flex; align-items: center; justify-content: center;
+      border: solid #85d; border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .skill-table__type {
-      flex: 1 5em;
-      border: solid #8955dd;
-      border-width: 0 5px 5px 0;
+      flex: 1 6em;
+      /* center text node (also requires text-align: center on root div) */
+      display: flex; align-items: center; justify-content: center;
+      border: solid #85d; border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .skill-table__description {
       flex: 1;
-      border-right: 5px solid #8955dd;
+      border: solid #85d; border-width: 0 1px 1px 0;
       padding: .5em;
-      background-color: #1a0a33;
-      color: #f2fee7;
+      background: #214;
+      color: #efe;
       text-align: left;
     }
 
@@ -81,20 +85,23 @@
 
     .talent-table {
       display: flex;
-      border: 10px solid #5353df; border-right-width: 5px;
+      flex-wrap: wrap;
+      border: solid #55d; border-width: 2px 1px 1px 2px;
       max-width: 60em;
-      box-sizing: border-box;
+      background: #55d; /* Fix border gap glitch */
       font-family: sans-serif;
+      text-align: center;
     }
 
     .talent-table__icon {
-      border-right: 5px solid #5353df;
+      flex: 1;
+      border: inherit; border-width: 0 1px 1px 0;
       padding: .5em;
-      background-color: #181881;
+      background: #118;
     }
 
     .talent-table__content {
-      flex: 1;
+      flex: 999 22em; /* Prevent icon cell from growing when side-by-side */
       display: flex;
       flex-flow: column;
     }
@@ -102,29 +109,32 @@
     .talent-table__header {
       display: flex;
       flex-wrap: wrap;
-      background-color: #08082b;
-      text-align: center;
-      color: #66ccec;
+      background: #003;
+      color: #6ce;
     }
 
     .talent-table__title {
-      flex: 2 16em;
-      border: solid #5353df; border-width: 0 5px 5px 0;
+      flex: 2 14em;
+      /* center text node (also requires text-align: center on root div) */
+      display: flex; align-items: center; justify-content: center;
+      border: solid #55d; border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .talent-table__type {
-      flex: 1 8em;
-      border: solid #5353df; border-width: 0 5px 5px 0;
+      flex: 1 7em;
+      /* center text node (also requires text-align: center on root div) */
+      display: flex; align-items: center; justify-content: center;
+      border: solid #55d; border-width: 0 1px 1px 0;
       padding: .5em;
     }
 
     .talent-table__description {
       flex: 1;
-      border-right: 5px solid #5353df;
+      border: solid #55d; border-width: 0 1px 1px 0;
       padding: .5em;
-      background-color: #0b0b3b;
-      color: #eefee7;
+      background: #114;
+      color: #efe;
       text-align: left;
     }
   </style>
@@ -133,44 +143,44 @@
 <body>
   <div class="skill-table">
     <div class="skill-table__icon">
-      <img width="64" src="http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png" alt="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)" title="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)">
+      <img style="width: 64px" src="http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png" alt="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)" title="W - 무기 모드: 연발포 (Weapon Mode: Repeater Cannon)">
     </div>
     <div class="skill-table__content">
       <div class="skill-table__header">
-        <b class="skill-table__title">무기 모드: 연발포 (Weapon Mode: Repeater Cannon)</b>
-        <b class="skill-table__type">W</b>
+        <div class="skill-table__title">무기 모드: 연발포 (Weapon Mode: Repeater Cannon)</div>
+        <div class="skill-table__type">W</div>
       </div>
       <div class="skill-table__description">
-        공격 속도가 150% 증가합니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.
-        <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
+        공격 속도가 150% 증가합니다.<br><br>사용하면 <span style="color: #0f8">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.
+        <div style="text-align: right; font-size: .8em; font-style: italic; color: #cca">패치 34.3</div>
       </div>
     </div>
   </div>
 
   <div class="skill-table">
     <div class="skill-table__icon">
-       <img width="64" src="http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png" alt="고유 능력 - 고물상 (Salvager)" title="고유 능력 - 고물상 (Salvager)" />
+       <img style="width: 64px" src="http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png" alt="고유 능력 - 고물상 (Salvager)" title="고유 능력 - 고물상 (Salvager)" />
     </div>
     <div class="skill-table__content">
        <div class="skill-table__header">
-          <b class="skill-table__title">고물상 (Salvager)</b>
-          <b class="skill-table__type">고유 능력</b>
+          <div class="skill-table__title">고물상 (Salvager)</div>
+          <div class="skill-table__type">고유 능력</div>
        </div>
        <div class="skill-table__description">
           파괴된 적 구조물이나 직접 설치한 잘나가! 포탑에서 고철이 떨어집니다. 고철을 획득하면 3초에 걸쳐 30의 마나를 회복하고 이 동안 기술의 재사용 대기시간이 세 배 빨리 감소합니다.<br><br>고물상을 사용하면 대상 잘나가! 포탑을 해체해서 고철로 만듭니다.
-          <div style="text-align: right; font-size: .8em; font-style: italic; color: #ccccaa">패치 34.3</div>
+          <div style="text-align: right; font-size: .8em; font-style: italic; color: #cca">패치 34.3</div>
         </div>
     </div>
  </div>
 
  <div class="skill-table">
     <div class="skill-table__icon">
-       <img width="64" src="http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png" alt="1 - 집중 포화! (Focus Turrets!)" title="1 - 집중 포화! (Focus Turrets!)" />
+       <img style="width: 64px" src="http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png" alt="1 - 집중 포화! (Focus Turrets!)" title="1 - 집중 포화! (Focus Turrets!)" />
     </div>
     <div class="skill-table__content">
        <div class="skill-table__header">
-          <b class="skill-table__title">집중 포화! (Focus Turrets!)</b>
-          <b class="skill-table__type">1</b>
+          <div class="skill-table__title">집중 포화! (Focus Turrets!)</div>
+          <div class="skill-table__type">1</div>
        </div>
        <div class="skill-table__description">
          주위의 잘나가! 포탑들이 대상을 집중 공격하게 만듭니다.
@@ -180,12 +190,12 @@
 
   <div class="talent-table">
     <div class="talent-table__icon">
-      <img width="48" src="http://i1.ruliweb.com/img/18/07/02/164595684ab19dc2c.png" alt="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)" title="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)">
+      <img style="width: 48px" src="http://i1.ruliweb.com/img/18/07/02/164595684ab19dc2c.png" alt="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)" title="비할 데 없는 힘 (Unrivaled Strength) (능력 강화 (E) - 레벨 1)">
     </div>
     <div class="talent-table__content">
       <div class="talent-table__header">
-        <b class="talent-table__title">비할 데 없는 힘 (Unrivaled Strength)</b>
-        <b class="talent-table__type">능력 강화 (E) - 레벨 1</b>
+        <div class="talent-table__title">비할 데 없는 힘 (Unrivaled Strength)</div>
+        <div class="talent-table__type">능력 강화 (E) - 레벨 1</div>
       </div>
       <div class="talent-table__description">
         파쇄추의 투척 사거리가 25% 증가하고 공격력이 75% 증가합니다.
@@ -196,12 +206,12 @@
 
   <div class="talent-table">
     <div class="talent-table__icon">
-      <img width="48" src="http://i1.ruliweb.com/img/18/07/02/164595efb9419dc2c.png" alt="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)" title="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)">
+      <img style="width: 48px" src="http://i1.ruliweb.com/img/18/07/02/164595efb9419dc2c.png" alt="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)" title="유성 폭탄 (Meteor Bomb) (능력 강화 (W) - 레벨 16)">
     </div>
     <div class="talent-table__content">
       <div class="talent-table__header">
-        <b class="talent-table__title">유성 폭탄 (Meteor Bomb)</b>
-        <b class="talent-table__type">능력 강화 (W) - 레벨 16</b>
+        <div class="talent-table__title">유성 폭탄 (Meteor Bomb)</div>
+        <div class="talent-table__type">능력 강화 (W) - 레벨 16</div>
       </div>
       <div class="talent-table__description">
         살아있는 유성이 이동 경로 끝에 도달하면 주위 모든 적에게 229(+4%)의 피해를 줍니다.
@@ -211,12 +221,12 @@
 
   <div class="talent-table">
     <div class="talent-table__icon">
-      <img width="48" src="http://i2.ruliweb.com/img/18/07/02/164596187f019dc2c.png" alt="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)" title="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)">
+      <img style="width: 48px" src="http://i2.ruliweb.com/img/18/07/02/164596187f019dc2c.png" alt="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)" title="저거, 설마 생명력 팩?! (Is That a Health Pack?!) (지속 효과 - 레벨 4)">
     </div>
     <div class="talent-table__content">
       <div class="talent-table__header">
-        <b class="talent-table__title">저거, 설마 생명력 팩?! (Is That a Health Pack?!)</b>
-        <b class="talent-table__type">지속 효과 - 레벨 4</b>
+        <div class="talent-table__title">저거, 설마 생명력 팩?! (Is That a Health Pack?!)</div>
+        <div class="talent-table__type">지속 효과 - 레벨 4</div>
       </div>
       <div class="talent-table__description">
         재생의 구슬과 치유의 샘의 회복량이 100% 증가합니다.
