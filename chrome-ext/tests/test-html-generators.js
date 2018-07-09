@@ -10,6 +10,16 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
+//Mocks for HotsDialog
+
+global.Mustache = require('mustache');
+global.chrome = {
+  runtime: {
+    getURL: url => url,
+    getManifest: () => JSON.parse(fs.readFileSync(path.join(__dirname, '../src/manifest.json')))
+  }
+};
+
 const HotsDialog = require('../src/js/hots-dialog');
 
 /**

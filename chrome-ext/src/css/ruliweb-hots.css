@@ -48,6 +48,14 @@
   display: none;
 }
 
+/* App version section */
+
+.hots-dialog-version {
+  text-align: right;
+  font-size: 70%;
+  color: #789
+}
+
 /* Dialog options */
 
 .hots-dialog-options {
