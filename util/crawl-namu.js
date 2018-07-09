@@ -300,25 +300,18 @@ async function crawlArticles(articleNames, converter) {
 
     crawlPromises.push((async () => {
       try {
-        const heroData = await crawlHeroData(articleName);
+        const heroArray = await crawlHeroData(articleName);
 
         if (converter) {
           const namuImageUrls = await crawlImageUrls(articleName);
           converter.addUrls(namuImageUrls);
         }
 
-        if (heroData instanceof Hero) { //Normal hero
-          heroes[heroData.id] = heroData;
+        //Handle normal hero and Cho'Gall
+        for (const hero of heroArray) {
+          heroes[hero.id] = hero;
           if (converter)
-            await forEachIconAsync(heroData, converter);
-        }
-        else {  //Cho'Gall
-          for (const heroEntry in heroData) {
-            const hero = heroData[heroEntry];
-            heroes[hero.id] = hero;
-            if (converter)
-              await forEachIconAsync(hero, converter);
-          }
+            await forEachIconAsync(hero, converter);
         }
 
         console.log(`Finished crawling ${articleName} [${--activeCrawlerCount} active]`);
@@ -342,7 +335,7 @@ async function crawlArticles(articleNames, converter) {
 /**
  * Downloads the raw article and parses hero data.
  * @param {string} articleName
- * @return {Promise<Hero | { cho: Hero, gall: Hero }>} Hero object for most heroes, `{ cho, gall }` for Cho'Gall
+ * @return {Promise<Hero[]]>} Array that contains a single hero object, or two in case of Cho'Gall
  */
 async function crawlHeroData(articleName) {
   const rawArticleResponse = await axios.get(
@@ -353,10 +346,12 @@ async function crawlHeroData(articleName) {
   const namuMarkup = rawArticleResponse.data;
 
   //Exception: Cho'Gall is two heroes in one
-  if (articleName.includes('초갈'))
-    return namu2hots.parseChoGallPage(namuMarkup);
+  if (articleName.includes('초갈')) {
+    const choGall = namu2hots.parseChoGallPage(namuMarkup);
+    return [choGall.cho, choGall.gall];
+  }
   else
-    return namu2hots.parseHeroPage(namuMarkup);
+    return [namu2hots.parseHeroPage(namuMarkup)];
 }
 
 
