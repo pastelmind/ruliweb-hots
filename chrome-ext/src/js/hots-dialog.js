@@ -212,7 +212,8 @@ const HotsDialog = {
       //Sort heroes by name
       heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
 
-      return Mustache.render(this.templates['dialog'], { filterGroups, heroes: heroesArray });
+      return Mustache.render(this.templates['dialog'],
+        { filterGroups, heroes: heroesArray, appVersion: chrome.runtime.getManifest().version });
     },
 
     /**
@@ -344,7 +345,7 @@ const HotsDialog = {
         const nextSibling = prevSibling ? prevSibling.nextSibling : null;
         console.log('nextSibling', nextSibling ? nextSibling.nodeName : null);
         if (!nextSibling || ('P' !== nextSibling.nodeName && 'BR' !== nextSibling.nodeName))
-            html += '<br>';
+          html += '<br>';
 
         const docFragment = this.createDocumentFragmentFromHtml(selectedWindow.document, html);
         range.insertNode(docFragment);
@@ -476,9 +477,7 @@ function openHotsDialog() {
 
 //For testing in Node.js
 if (typeof module !== 'undefined' && module.exports) {
-  var Mustache = require('mustache');
   module.exports = exports = HotsDialog;
-  var chrome = { runtime: { getURL(url) { return url } } };
 }
 
 

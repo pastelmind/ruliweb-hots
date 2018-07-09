@@ -41,9 +41,13 @@
       chrome.runtime = {};
     if (!chrome.runtime.getURL)
       chrome.runtime.getURL = str => './' + str;
+    if (!chrome.runtime.getManifest)
+      chrome.runtime.getManifest = () => chrome.runtime._manifest;
 
     //Test code
     (async () => {
+      chrome.runtime._manifest = (await axios.get('./manifest.json')).data;
+
       HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
       const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);
