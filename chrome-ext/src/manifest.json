@@ -33,6 +33,21 @@
         "js/mustache.js",
         "js/hots-dialog.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.ruliweb.com/*/write",
+        "*://*.ruliweb.com/*/modify/*",
+        "*://mypi.ruliweb.com/write*"
+      ],
+      "match_about_blank": true,
+      "all_frames": true,
+      "css": [
+        "css/editor-iframe.css"
+      ],
+      "js": [
+        "js/editor-iframe.js"
+      ]
     }
   ],
   "web_accessible_resources": [

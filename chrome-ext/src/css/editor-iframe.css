@@ -1,0 +1,19 @@
+.ruliweb-hots-skill-table:hover,
+.ruliweb-hots-talent-table:hover,
+.ruliweb-hots-hero-table:hover
+{
+  position: relative;
+}
+
+.ruliweb-hots-skill-table:hover > :first-child::before,
+.ruliweb-hots-talent-table:hover > :first-child::before,
+.ruliweb-hots-hero-table:hover > :first-child::before
+{
+  position: absolute;
+  content: "삭제하려면 더블클릭하세요";
+  border: 1px solid #f00;
+  background: #800;
+  color: #ddd;
+  font-size: 80%;
+  padding: .5em;
+}
