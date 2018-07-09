@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reduce Hex Color</title>
+
+  <style>
+    input:invalid {
+      border: 2px dotted red;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Reduces a 6-character color code to the nearest 3-character color code.</p>
+  Input: #
+  <input type="text" id="hex6" pattern="[a-zA-Z0-9]{6}"> Output: #
+  <input type="text" id="hex3" readonly>
+  <input type="button" id="btn-convert" value="Convert">
+
+  <script>
+    document.getElementById('btn-convert').addEventListener('click', () => {
+      document.getElementById('hex3').value =
+        hex6to3(document.getElementById('hex6').value);
+    });
+
+    function hex6to3(hexStr) {
+      return [hexStr.slice(0, 2), hexStr.slice(2, 4), hexStr.slice(4, 6)]
+        .reduce((acc, val) => acc + Math.round(parseInt(val, 16) / 17).toString(16), '');
+    }
+  </script>
+</body>
+
+</html>
