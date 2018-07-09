@@ -8,6 +8,7 @@
     "build:prep-dir": "rm -rf ./build/* && mkdir -p ./build",
     "build:zip-extension": "PowerShell -Command Compress-Archive -Path \"./chrome-ext/src/*\" -Force -CompressionLevel Optimal -DestinationPath ./build/ruliweb-hots.$npm_package_version.zip",
     "crawl-namu": "node ./util/crawl-namu.js",
+    "preversion": "npm test",
     "version": "node ./util/update-manifest.js && git add ./chrome-ext/src/manifest.json",
     "postinstall": "npm run -s update-dep",
     "update-dep": "npm run update-dep:axios && npm run update-dep:mustache && npm run update-dep:tingle.js",
