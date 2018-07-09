@@ -6,6 +6,11 @@
 
 'use strict';
 
+/**
+ * Represents a Heroes of the Storm hero.
+ * This class can be iterated with `for...of` to retrieve each skill and talent.
+ * @implements {Iterable<Skill|Talent>}
+ */
 class Hero {
   constructor(o = {}) {
     this.name = o.name || '';
@@ -40,6 +45,18 @@ class Hero {
    */
   getUniverseName() {
     return Hero.universes[this.universe] || '';
+  }
+
+  /**
+   * Iterate through each skill and talent of this hero.
+   */
+  *[Symbol.iterator]() {
+    for (const skill of this.skills)
+      yield skill;
+
+    for (const talentLevel in this.talents)
+      for (const talent of this.talents[talentLevel])
+        yield talent;
   }
 
   /**
