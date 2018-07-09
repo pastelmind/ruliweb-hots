@@ -4,7 +4,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const assert = require('assert');
 const util = require('util');
 const axios = require('axios');
@@ -12,9 +11,12 @@ const program = require('commander');
 const entities = new require('html-entities').AllHtmlEntities;
 const namu2hots = require('./src/namu2hots');
 const { Hero } = require('./src/models');
+const CachedUrlHasher = require('./src/cached-url-hasher');
+const CachedUrlDownloader = require('./src/cached-url-downloader');
 
 const setTimeoutAsync = util.promisify(setTimeout);
-const writeFileAsync = util.promisify(fs.writeFile);
+
+const urlHasher = new CachedUrlHasher;
 
 /**
  * Abstract base class that can take an image name and do something with it.
@@ -66,8 +68,7 @@ class CachedImageToUrlConverter extends ImageNameConverter {
     if (!(name in this.resolvedNames)) {
       if (!(name in this.nameToHash)) {
         assert(name in this.urls, name + ' is not associated with any known image URL');
-        const arrBuffer = await downloadArrayBuffer(this.urls[name]);
-        this.nameToHash[name] = computeHash(arrBuffer);
+        this.nameToHash[name] = await urlHasher.hash(this.urls[name]);
       }
 
       const hash = this.nameToHash[name];
@@ -94,7 +95,7 @@ class CachedImageDownloader extends ImageNameConverter {
   constructor(downloadDir) {
     super();
     this.downloadDir = path.resolve(downloadDir);
-    this.downloaded = {};
+    this.urlDownloader = new CachedUrlDownloader;
   }
 
   /**
@@ -103,14 +104,10 @@ class CachedImageDownloader extends ImageNameConverter {
    * @return {Promise<string>} Image name, unmodified.
    */
   async convert(name) {
-    if (name in this.downloaded) return;
-
     assert(name in this.urls, name + ' is not associated with any known image URL');
-    const arrayBuffer = await downloadArrayBuffer(this.urls[name]);
-    this.downloaded[name] = true; //Prevent further downloads
 
     const savePath = path.join(this.downloadDir, name.replace('파일:', ''));
-    await writeFileAsync(savePath, Buffer.from(arrayBuffer));
+    this.urlDownloader.download(this.urls[name], savePath);
   }
 }
 
@@ -404,28 +401,6 @@ function extractImgAltTextToUrl(html) {
 }
 
 /**
- * Downloads the URL and returns its contents.
- * @param {string} url
- * @return {Promise<ArrayBuffer>}
- * @throws Any errors thrown by `axios.get()`
- */
-async function downloadArrayBuffer(url) {
-  const response = await axios.get(url, { responseType: 'arraybuffer' });
-  return response.data;
-}
-
-/**
- * Computes the sha1 hash of the given buffer.
- * @param {ArrayBuffer} arrayBuffer
- * @return {string} sha1 hash string
- */
-function computeHash(arrayBuffer) {
-  const hash = crypto.createHash('sha1');
-  hash.write(Buffer.from(arrayBuffer));
-  return hash.digest('hex');
-}
-
-/**
  * Asynchronously applies `converter.convert()` to the iconUrl of every
  * skill/talent of the given hero object.
  * @param {Hero} hero
@@ -478,9 +453,9 @@ async function generateHashToUrlMapping(urls) {
 
   for (let i = 0; i < urls.length; ++i) {
     const url = urls[i];
-    hashPromises.push(downloadArrayBuffer(url).then(
-      arrayBuffer => {
-        const hash = computeHash(arrayBuffer);
+    hashPromises.push((async () => {
+      try {
+        const hash = await urlHasher.hash(url);
 
         if (hash in hashToUrls)
           console.warn(`\nDuplicate image: ${url}\n is identical to ${hashToUrls[hash]}`);
@@ -488,12 +463,9 @@ async function generateHashToUrlMapping(urls) {
           hashToUrls[hash] = url;
           process.stdout.write('.');
         }
-      },
-      e => {
-        console.error();
-        console.error(e); //Report and consume error
       }
-    ));
+      catch (e) { console.error('\n', e); } //Report and consume error
+    })());
 
     if (i % 20 === 0 || i === urls.length - 1) {
       await Promise.all(hashPromises);  //Wait for all requests to resolve
