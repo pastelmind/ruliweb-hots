@@ -77,7 +77,7 @@ module.exports = {
   /**
    * Parse Cho'Gall's page content to and generate two Hero objects.
    * @param {string} namuMarkup NamuWiki markup
-   * @returns {Object<string, Hero>} Hero objects in `{ "cho": cho, "gall": gall }` format
+   * @returns {{ cho: Hero, gall: Hero }} Hero objects
    */
   parseChoGallPage(namuMarkup) {
     const ogreMarkups = namuMarkup.split(/=+.*(?:초.*Cho|갈.*Gall).*=+/i);
