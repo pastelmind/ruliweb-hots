@@ -19,6 +19,7 @@ class Hero {
     this.type = o.type || '';
     this.role = o.role || '';
     this.universe = o.universe || '';
+    this.stats = o.stats || {};
     this.skills = (o.skills || []).map(skill => new Skill(skill));
     this.talents = {};
     for (const talentLevel in o.talents)
@@ -71,11 +72,12 @@ class Hero {
     o.type = this.type;
     o.role = this.role;
     o.universe = this.universe;
+    o.stats = this.stats;
     o.skills = this.skills.map(skill => skill.compact());
     o.talents = {};
-    Object.keys(this.talents).sort().forEach(talentLevel => {
+    for (const talentLevel of Object.keys(this.talents).sort())
       o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.compact());
-    });
+
     return o;
   }
 
