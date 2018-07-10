@@ -45,7 +45,11 @@ module.exports = class CachedUrlHasher {
       const hashStream = crypto.createHash('sha1');
 
       return new Promise(resolve => {
-        hashStream.on('readable', () => resolve(cachedHashes[url] = hashStream.read().toString('hex')));
+        hashStream.on('readable', () => {
+          const data = hashStream.read();
+          if (data)
+            resolve(cachedHashes[url] = data.toString('hex'));
+        });
         hashStream.on('error', error => { throw error; });
         downloadStream.pipe(hashStream);  //Pipe the download as a stream for performance
       });
