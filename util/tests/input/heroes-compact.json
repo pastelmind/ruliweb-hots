@@ -5,6 +5,31 @@
     "type": "원거리",
     "role": "support",
     "universe": "overwatch",
+    "stats": {
+      "attackDamage": {
+        "base": 24,
+        "percentGrowth": 4
+      },
+      "attackRange": 5.5,
+      "attackSpeed": 0.8,
+      "hp": {
+        "base": 1500,
+        "percentGrowth": 4
+      },
+      "hpRegen": {
+        "base": 3.12,
+        "percentGrowth": 4
+      },
+      "mp": {
+        "base": 500,
+        "growth": 10
+      },
+      "mpRegen": {
+        "base": 3,
+        "growth": 0.098
+      },
+      "speed": 4.4
+    },
     "skills": [
       {
         "name": "벽 타기 (Wall Ride)",
@@ -245,6 +270,23 @@
     "type": "근접",
     "role": "specialist",
     "universe": "starcraft",
+    "stats": {
+      "attackDamage": {
+        "base": 27,
+        "percentGrowth": 4
+      },
+      "attackRange": 1,
+      "attackSpeed": 1.43,
+      "hp": {
+        "base": 712,
+        "percentGrowth": 4
+      },
+      "hpRegen": {
+        "base": 1.48,
+        "percentGrowth": 4
+      },
+      "speed": 4.4
+    },
     "skills": [
       {
         "name": "식충 변종 (Locust Strain)",
@@ -549,6 +591,23 @@
     "type": "근접",
     "role": "warrior",
     "universe": "warcraft",
+    "stats": {
+      "attackDamage": {
+        "base": 136,
+        "percentGrowth": 4
+      },
+      "attackRange": 2,
+      "attackSpeed": 0.91,
+      "hp": {
+        "base": 3083,
+        "percentGrowth": 4.5
+      },
+      "hpRegen": {
+        "base": 6.43,
+        "percentGrowth": 4.5
+      },
+      "speed": 4.4
+    },
     "skills": [
       {
         "name": "오우거의 가죽 (Ogre Hide)",
@@ -775,6 +834,14 @@
     "type": "원거리",
     "role": "assassin",
     "universe": "warcraft",
+    "stats": {
+      "attackDamage": 0,
+      "attackRange": 0,
+      "attackSpeed": 0,
+      "hp": 0,
+      "hpRegen": 0,
+      "speed": 0
+    },
     "skills": [
       {
         "name": "오우거의 분노 (Ogre Rage)",

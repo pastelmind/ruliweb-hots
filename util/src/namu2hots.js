@@ -39,6 +39,9 @@ module.exports = {
       if (title === '소개') {
         Object.assign(hero, parseHeroIntroSection(content));
       }
+      else if (title.includes('능력치')) {
+        hero.stats = parseHeroStatsSection(content);
+      }
       else if (skillTitleMatch = /(고유\s*능력|[QWERZ1])\s*[\-:]\s*(.*)/i.exec(title)) {
         const tables = parseTables(content);
         assert(tables.length > 0, 'Skill section (%s) does not contain a table:', title, content);
@@ -259,6 +262,94 @@ function parseChoGallIntroSection(section) {
   };
 
   return { cho, gall };
+}
+
+
+/**
+ * Parses the hero stats section and returns hero stats.
+ * @param {string} section NamuWiki markup
+ * @return {Object<string, Object>} A collection of hero stats
+ */
+function parseHeroStatsSection(section) {
+  const heroStats = {};
+
+  const tables = parseTables(section);
+  const statTable = tables[1];
+  assert(statTable, 'stat table not found in section:', section);
+
+  let i = 0;
+  while (i < statTable.length && !statTable[i++].includes('20레벨')); //Seek header row of stats section
+
+  let statName = null;
+
+  while (i < statTable.length) {
+    const cell = statTable[i];
+    let statNameMatch;
+
+    if (statName) { //Looking for the stat's value
+      let statValueMatch;
+      if (statValueMatch = /(\d*\.?\d+)(?:.*?\(\+(\d*\.?\d+)(%)?\))?/.exec(cell)) {
+        let stat = parseFloat(statValueMatch[1]);
+
+        if (statValueMatch[2]) {
+          stat = { base: stat };
+          if (statValueMatch[3])
+            stat.percentGrowth = parseFloat(statValueMatch[2]);
+          else
+            stat.growth = parseFloat(statValueMatch[2]);
+        }
+
+        const statId = parseStatId(statName);
+        if (statId in heroStats)
+          console.warn('Duplicate stat found:', statName, 'maps to', statId);
+        heroStats[statId] = stat;
+
+        statName = null;
+      }
+    }
+    else {  //Looking for a stat name
+      if (statNameMatch = /파일:.*?'''(.*?)'''/.exec(cell))
+        statName = statNameMatch[1];
+    }
+
+    ++i;
+  }
+
+  return heroStats;
+}
+
+/**
+ * Attempts to parse the stat's name and determine the stat ID.
+ * @param {string} statName
+ * @return {string} Know stat ID, or statName if unknown.
+ */
+function parseStatId(statName) {
+  const statTokens = {
+    'hp': '생명',
+    'mp': '마나',
+    'healEnergy': '치유 에너지',
+    'energy': '에너지',
+    'rogueEnergy': '기력',
+    'fury': '분노',
+    'brew': '취기',
+    'ammo': '탄환',
+    'attackDamage': '공격력',
+    'attackSpeed': '공격 속도',
+    'attackRange': '공격 사거리',
+    'speed': '이동 속도',
+    'spellArmor': '기술 방어력',
+    'physicalArmor': '물리 방어력',
+    'armor': '방어력',
+    'charge': '충전',
+    'shields': '보호막'
+  };
+
+  for (const statId in statTokens)
+    if (statName.includes(statTokens[statId]))
+      return statId + (/재생|회복/.test(statName) ? 'Regen' : '');
+
+  console.warn('Unknown stat name:', statName);
+  return statName;  //Unknown, use stat name
 }
 
 /**
@@ -504,6 +595,7 @@ const COMMON_TEXT_COLORS = [
   '#cc9999',  //Skill and talent range, area-of-effect, and width.
   '#ffc000',  //Quests
   '#01f189',  //Passive skill component
+  '#e8fee7',  //Stat table
 ];
 
 /**

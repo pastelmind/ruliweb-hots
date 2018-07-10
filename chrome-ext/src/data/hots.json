@@ -7,6 +7,25 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 2081,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.33,
+          "percentGrowth": 4
+        },
+        "charge": 100,
+        "chargeRegen": 0,
+        "attackDamage": {
+          "base": 25,
+          "percentGrowth": 4
+        },
+        "attackRange": 3.75,
+        "attackSpeed": 4,
+        "speed": 3.74
+      },
       "skills": [
         {
           "name": "로봇 모드 (Mech Mode)",
@@ -298,6 +317,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2142,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.46,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 142,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 0.83,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "방어력 증가 (Armor Up)",
@@ -539,6 +583,31 @@
       "type": "근접",
       "role": "specialist",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1900,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.96,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 99,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.25,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "고물상 (Salvager)",
@@ -793,6 +862,14 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": 0,
+        "hpRegen": 0,
+        "attackDamage": 0,
+        "attackRange": 0,
+        "attackSpeed": 0,
+        "speed": 0
+      },
       "skills": [
         {
           "name": "오우거의 분노 (Ogre Rage)",
@@ -1032,6 +1109,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1620,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.375,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 44,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "사이보그의 날렵함 (Cyber Agility)",
@@ -1270,6 +1372,28 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1768,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.68,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": 0,
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "생명력 전환 (Life Tap)",
@@ -1501,6 +1625,32 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1960,
+          "percentGrowth": 4.5
+        },
+        "hpRegen": {
+          "base": 4.09,
+          "percentGrowth": 4.5
+        },
+        "armor": 0,
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 146,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "늑대인간의 저주 (Curse of the Worgen)",
@@ -1749,6 +1899,17 @@
       "type": "근접 / 원거리",
       "role": "specialist",
       "universe": "classic",
+      "stats": {
+        "hp": 1481,
+        "hpRegen": 3.08,
+        "attackDamage": {
+          "base": 54,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 1,
+        "speed": 4
+      },
       "skills": [
         {
           "name": "바이킹 비상 식량 (Viking Hoard)",
@@ -2026,6 +2187,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1562,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.25,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 92,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "부두 의식 (Voodoo Ritual)",
@@ -2264,6 +2450,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1352,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.82,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 109,
+          "percentGrowth": 4
+        },
+        "attackRange": 6.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "영구 은신 (Permanent Cloak)",
@@ -2502,6 +2713,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 3120,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 6.5,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 88,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "유독 가스 (Vile Gas)",
@@ -2764,6 +3000,31 @@
       "type": "근접",
       "role": "support",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1662,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.46,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 66,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "케인의 수호자 (Fortitude of the Faithful)",
@@ -2978,6 +3239,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 2531,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.27,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 104,
+          "percentGrowth": 4
+        },
+        "attackRange": 1,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "정수 수집 (Essence Collection)",
@@ -3209,6 +3495,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2251,
+          "percentGrowth": 4.5
+        },
+        "hpRegen": {
+          "base": 4.69,
+          "percentGrowth": 4.5
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 135,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "신선한 고기 (Fresh Meat)",
@@ -3436,6 +3747,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2777,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.79,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 109,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.25,
+        "attackSpeed": 0.95,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "검은 영혼석 (Black Soulstone)",
@@ -3668,6 +4004,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2080,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.34,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 178,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 0.83,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "화산 심장부 (Molten Core)",
@@ -3932,6 +4293,31 @@
       "type": "근접",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2131,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.44,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 118,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "늑대 정령 (Ghost Wolf)",
@@ -4187,6 +4573,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2567,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.35,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 113,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 0.77,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "불사, 해골 왕의 분노 (Undying, Wrath Of The Bone King)",
@@ -4445,6 +4856,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1354,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.82,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 127,
+          "percentGrowth": 4
+        },
+        "attackRange": 6.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "뜨거운 맛을 보여주지 (Give 'Em Some Pepper)",
@@ -4669,6 +5105,31 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1794,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.73,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 103,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 0.87,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "미샤, 집중해! (Misha, Focus!)",
@@ -4906,6 +5367,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1487,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.1,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 94,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "자연의 독소 (Nature's Toxin)",
@@ -5154,6 +5640,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1500,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.12,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 24,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 0.8,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "벽 타기 (Wall Ride)",
@@ -5395,6 +5906,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1535,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.19,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "빠른 발 (Fast Feet)",
@@ -5626,6 +6162,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1282,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.66,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 66,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "극대화 반응 (Critical Mass)",
@@ -5868,6 +6429,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2102,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.38,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 151,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "감시관의 도약 (Vault of the Wardens)",
@@ -6093,6 +6679,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2041,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.25,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 85,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "사신의 징표 (Reaper's Mark)",
@@ -6328,6 +6939,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1587,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.3,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "정신 자극 (Innervate)",
@@ -6557,6 +7193,23 @@
       "type": "근접",
       "role": "specialist",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 759,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 30.37,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "알 놓기 (Spawn Egg)",
@@ -6784,6 +7437,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1529,
+          "percentGrowth": 4.5
+        },
+        "hpRegen": {
+          "base": 3.18,
+          "percentGrowth": 4.5
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 83,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "까마귀 변신 (Raven Form)",
@@ -7030,6 +7708,24 @@
       "type": "원거리",
       "role": "support",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1531,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.19,
+          "percentGrowth": 4
+        },
+        "rogueEnergy": 100,
+        "attackDamage": {
+          "base": 86,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "카두세우스 반응로 (Caduceus Reactor)",
@@ -7248,6 +7944,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2876,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.99,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 92,
+          "percentGrowth": 4
+        },
+        "attackRange": 1,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "재기의 바람 (Second Wind)",
@@ -7478,6 +8199,25 @@
       "type": "근접",
       "role": "warrior,assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": 1,
+        "hpRegen": 4.58,
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 1,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "영웅의 일격 (Heroic Strike)",
@@ -7728,6 +8468,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1324,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.76,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 78,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.67,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "증오 (Hatred)",
@@ -7958,6 +8723,25 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2129,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.43,
+          "percentGrowth": 4
+        },
+        "rogueEnergy": 100,
+        "rogueEnergyRegen": 10,
+        "attackDamage": {
+          "base": 82,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 2,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "소멸 (Vanish)",
@@ -8226,6 +9010,31 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 2886,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 6.01,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 57,
+          "percentGrowth": 4
+        },
+        "attackRange": 4.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "방화광 (Pyromania)",
@@ -8477,6 +9286,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1508,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.14,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 84,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "위안의 안개 (Soothing Mist)",
@@ -8738,6 +9572,23 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1794,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.74,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 114,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 1.67,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "파죽지세, 환영 이동술 (Advancing Strikes, Image Transmission)",
@@ -8950,6 +9801,24 @@
       "type": "근접",
       "role": "warrior",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2435,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.08,
+          "percentGrowth": 4
+        },
+        "fury": 100,
+        "attackDamage": {
+          "base": 84,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "분노 (Fury)",
@@ -9172,6 +10041,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1951,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.06,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 180,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "서리늑대의 회복력 (Frostwolf Resilience)",
@@ -9399,6 +10293,31 @@
       "type": "근접",
       "role": "support",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1749,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.64,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 259,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.67,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "감염체 폭발 (Bio-Kill Switch)",
@@ -9654,6 +10573,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1482,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.09,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 94,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.67,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "검은 화살 (Black Arrows)",
@@ -9902,6 +10846,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1598,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.32,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 30,
+          "percentGrowth": 4
+        },
+        "attackRange": 6.5,
+        "attackSpeed": 1.33,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "때까치 (Shrike)",
@@ -10140,6 +11109,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2184,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.34,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 95,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "풍뎅이 숙주 (Scarab Host)",
@@ -10383,6 +11377,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 2569,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.35,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 115,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.2,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "과부하 보호막 (Shield Overload)",
@@ -10633,6 +11652,23 @@
       "type": "근접",
       "role": "specialist",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 712,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 1.48,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 27,
+          "percentGrowth": 4
+        },
+        "attackRange": 1,
+        "attackSpeed": 1.43,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "식충 변종 (Locust Strain)",
@@ -10937,6 +11973,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2756,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.47,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 99,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "서리한이 굶주렸다 (Frostmourne Hungers)",
@@ -11166,6 +12227,27 @@
       "type": "원거리",
       "role": "support",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1829,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.8,
+          "percentGrowth": 4
+        },
+        "healEnergy": {
+          "base": 495,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 71,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "희망 불어넣기 (Bestow Hope)",
@@ -11400,6 +12482,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2848,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.93,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 88,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "악마 부관 (Demon Lieutenant)",
@@ -11624,6 +12731,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1976,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.11,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 146,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.2,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "가학성 (Sadism)",
@@ -11862,6 +12994,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1766,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.68,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 76,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "용의 여왕 (Dragonqueen)",
@@ -12131,6 +13288,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2809,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.85,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 103,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "철갑 피부 (Iron Skin)",
@@ -12366,6 +13548,31 @@
       "type": "근접",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2243,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.67,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 82,
+          "percentGrowth": 4
+        },
+        "attackRange": 1,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "헌신, 영원한 선봉장 (Devotion, Eternal Vanguard)",
@@ -12607,6 +13814,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2786,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.63,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 161,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 0.77,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "신성한 목적 (Divine Purpose)",
@@ -12839,6 +14071,23 @@
       "type": "근접",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1716,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.58,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 81,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.25,
+        "attackSpeed": 1.82,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "배신자의 갈증 (Betrayer's Thirst)",
@@ -13060,6 +14309,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1638,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.41,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 83,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "점막 종양 (Creep Tumor)",
@@ -13294,6 +14568,25 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 2384,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.96,
+          "percentGrowth": 4
+        },
+        "energy": 100,
+        "energyRegen": 3,
+        "attackDamage": {
+          "base": 21,
+          "percentGrowth": 4
+        },
+        "attackRange": 4.5,
+        "attackSpeed": 4,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "에너지 (Energy)",
@@ -13555,6 +14848,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2267,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.73,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 103,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "록스타 (Rockstar)",
@@ -13797,6 +15115,23 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1404,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.92,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 114,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "완전 난장판, 지뢰 폭발 (Total Mayhem, Detonate Mine)",
@@ -14041,6 +15376,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1687,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.52,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 131,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "영구 은신 (Permanent Cloak)",
@@ -14270,6 +15630,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1420,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.95,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "동상 (Frostbite)",
@@ -14509,6 +15894,31 @@
       "type": "근접",
       "role": "specialist",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2081,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.33,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 114,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.2,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "해골 되살리기 (Raise Skeleton)",
@@ -14750,6 +16160,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1951,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.53,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 98,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "광전사, 도끼 맛 좀 보여줄까? (Berserker, You Want Axe?)",
@@ -14977,6 +16412,24 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 2572,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.36,
+          "percentGrowth": 4
+        },
+        "brew": 100,
+        "attackDamage": {
+          "base": 87,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "강화주 (Fortifying Brew)",
@@ -15222,6 +16675,23 @@
       "type": "근접",
       "role": "warrior",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 3083,
+          "percentGrowth": 4.5
+        },
+        "hpRegen": {
+          "base": 6.43,
+          "percentGrowth": 4.5
+        },
+        "attackDamage": {
+          "base": 136,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 0.91,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "오우거의 가죽 (Ogre Hide)",
@@ -15448,6 +16918,31 @@
       "type": "근접",
       "role": "support",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2109,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.39,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 62,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.75,
+        "attackSpeed": 2,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "고유 능력 선택 (Pick Your Trait)",
@@ -15700,6 +17195,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 1914,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.828,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 135,
+          "percentGrowth": 4
+        },
+        "attackRange": 4,
+        "attackSpeed": 1.33,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "공격 저지 (Avoidance)",
@@ -15926,6 +17446,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1581,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.3,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 68,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.11,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "신록의 구슬 (Verdant Spheres)",
@@ -16153,6 +17698,31 @@
       "type": "근접",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1748,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.64,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 125,
+          "percentGrowth": 4
+        },
+        "attackRange": 2,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "동화 작용 (Assimilation)",
@@ -16398,6 +17968,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1503,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.13,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 75,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "차디찬 어둠의 지배자 (Master of the Cold Dark)",
@@ -16642,6 +18237,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1376,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.87,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 76,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "시간여행자 (Timewalker)",
@@ -16874,6 +18494,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 2002,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 4.2,
+          "percentGrowth": 4.5
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 50,
+          "percentGrowth": 4
+        },
+        "attackRange": 4.5,
+        "attackSpeed": 4,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "미니건 (Minigun)",
@@ -17130,6 +18775,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1339,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.79,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 14,
+          "percentGrowth": 4
+        },
+        "attackRange": 6.5,
+        "attackSpeed": 4,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "왜곡 광선, 계시 (Distortion Beam, Oracle)",
@@ -17358,6 +19028,24 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1331,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.55,
+          "percentGrowth": 4
+        },
+        "ammo": 20,
+        "attackDamage": {
+          "base": 28,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 8,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "재장전 (Reload)",
@@ -17581,6 +19269,31 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1571,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.28,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 85,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.33,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "사냥꾼의 징표 (Hunter's Mark)",
@@ -17815,6 +19528,31 @@
       "type": "근접",
       "role": "warrior",
       "universe": "diablo",
+      "stats": {
+        "hp": {
+          "base": 2567,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 5.35,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 81,
+          "percentGrowth": 4
+        },
+        "attackRange": 1.5,
+        "attackSpeed": 1.25,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "대천사의 분노 (Archangel's Wrath)",
@@ -18043,6 +19781,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "base": 1420,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.95,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 108,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1.43,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "순풍 (Tailwind)",
@@ -18278,6 +20041,25 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1310,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.72,
+          "percentGrowth": 4
+        },
+        "mp": 600,
+        "mpRegen": 100,
+        "attackDamage": {
+          "base": 34,
+          "percentGrowth": 4
+        },
+        "attackRange": 3,
+        "attackSpeed": 1.11,
+        "speed": 4.84
+      },
       "skills": [
         {
           "name": "수정탑 소환 (Warp In Pylon)",
@@ -18523,6 +20305,27 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1186,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.48,
+          "percentGrowth": 4
+        },
+        "shields": {
+          "base": 790,
+          "percentGrowth": 4
+        },
+        "attackDamage": {
+          "base": 89,
+          "percentGrowth": 4
+        },
+        "attackRange": 5,
+        "attackSpeed": 1.85,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "보호막 축전기 (Shield Capacitor)",
@@ -18754,6 +20557,31 @@
       "type": "원거리",
       "role": "assassin",
       "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "base": 1376,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 2.87,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 180,
+          "percentGrowth": 4
+        },
+        "attackRange": 6.5,
+        "attackSpeed": 0.67,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "선천적인 날렵함 (Natural Agility)",
@@ -18992,6 +20820,31 @@
       "type": "원거리",
       "role": "specialist",
       "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "base": 1789,
+          "percentGrowth": 4
+        },
+        "hpRegen": {
+          "base": 3.72,
+          "percentGrowth": 4
+        },
+        "mp": {
+          "base": 500,
+          "growth": 10
+        },
+        "mpRegen": {
+          "base": 3,
+          "growth": 0.098
+        },
+        "attackDamage": {
+          "base": 146,
+          "percentGrowth": 4
+        },
+        "attackRange": 5.5,
+        "attackSpeed": 1,
+        "speed": 4.4
+      },
       "skills": [
         {
           "name": "공성 모드 (Siege Mode)",
