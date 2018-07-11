@@ -31,6 +31,7 @@
   <script src="js/mustache.js"></script>
   <script src="js/init.js"></script>
   <script src="js/hots-dialog.js"></script>
+  <script src="js/templates.js"></script>
   <script>
     'use strict';
 
@@ -51,8 +52,6 @@
       HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
       const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);
-
-      HotsDialog.data.templates = await loadTemplates();
 
       HotsDialog.launchDialog(htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV

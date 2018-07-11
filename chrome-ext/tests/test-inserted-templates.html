@@ -175,6 +175,7 @@
   <script src="js/mustache.js"></script>
   <script src="js/init.js"></script>
   <script src="js/hots-dialog.js"></script>
+  <script src="js/templates.js"></script>
   <script>
     //Dummy hero data for testing
     const hero = {
@@ -251,27 +252,22 @@
       chrome.runtime.getURL = url => '../src/' + url;
     }
 
-    const genContent = document.getElementById('generated_content');
+    let html = '';
 
-    (async () => {
-      HotsDialog.htmlGenerators.templates = await loadTemplates();
+    //Generate hero description
+    html += '<h2>영웅</h2>' + Mustache.render(
+      HotsDialog.htmlGenerators.templates['insert-hero'],
+      { hero, hotsVersion: '34.1' }
+    );
 
-      let html = '';
+    //Generate skill description
+    html += '<h2>기술</h2>' + HotsDialog.htmlGenerators.generateSkillInfoTable(hero.skills[1], '34.1');
 
-      //Generate hero description
-      html += '<h2>영웅</h2>' + Mustache.render(
-        HotsDialog.htmlGenerators.templates['insert-hero'],
-        { hero, hotsVersion: '34.1' }
-      );
+    //Generate talent description
+    html += '<h2>특성</h2>' + HotsDialog.htmlGenerators.generateTalentInfoTable(hero.talents[4][0], '34.1');
 
-      //Generate skill description
-      html += '<h2>기술</h2>' + HotsDialog.htmlGenerators.generateSkillInfoTable(hero.skills[1], '34.1');
+    document.getElementById('generated_content').innerHTML = html;
 
-      //Generate talent description
-      html += '<h2>특성</h2>' + HotsDialog.htmlGenerators.generateTalentInfoTable(hero.talents[4][0], '34.1');
-
-      genContent.innerHTML = html;
-    })();
   </script>
 </body>
 
