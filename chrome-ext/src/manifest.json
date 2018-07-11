@@ -28,7 +28,6 @@
         "css/ruliweb-hots.css"
       ],
       "js": [
-        "js/axios.js",
         "js/tingle.js",
         "js/mustache.js",
         "js/hots-dialog.js",
@@ -52,8 +51,7 @@
     }
   ],
   "web_accessible_resources": [
-    "images/*",
-    "css/images/*"
+    "images/*"
   ],
   "icons": {
     "16": "icons/RuHeros_01_16.png",
