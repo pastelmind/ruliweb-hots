@@ -45,8 +45,7 @@ const HotsDialog = {
     if (!this.dialog) {
       this.dialog = new tingle.modal({ cssClass: ['hots-dialog-container'] });
 
-      this.dialog.setContent(this.buildDialogContent(
-        this.data.templates, this.data.heroes, this.data.hotsVersion));
+      this.dialog.setContent(this.buildDialogContent(this.data.heroes, this.data.hotsVersion));
     }
 
     this.dialog.open();
@@ -54,14 +53,11 @@ const HotsDialog = {
 
   /**
    * Generates the dialog content and attaches event handlers.
-   * @param {Object<string, string>} templates Template name => template string
    * @param {Object<string, Hero>} heroes Hero ID => hero data
    * @param {string} hotsVersion HotS version
    * @return {DocumentFragment} A collection of generated DOM elements
    */
-  buildDialogContent(templates, heroes, hotsVersion) {
-    this.htmlGenerators.templates = templates;
-
+  buildDialogContent(heroes, hotsVersion) {
     //Generate dialog
     const dialogFragment = this.util.createDocumentFragmentFromHtml(document,
       this.htmlGenerators.generateDialogContent(this.heroFilters, heroes));
@@ -169,7 +165,11 @@ const HotsDialog = {
 
   /** Collection of methods that generate HTML source strings from templates */
   htmlGenerators: {
-    /** @type {Object<string, string>} Template name => template string */
+    /**
+     * Object containing template name => template string.
+     * This property is set by `./templates.js`
+     * @type {Object<string, string>}
+     */
     templates: null,
 
     /**
@@ -462,7 +462,7 @@ const HotsDialog = {
  */
 function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(['heroes', 'templates', 'hotsVersion'], data => {
+    chrome.storage.local.get(['heroes', 'hotsVersion'], data => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 

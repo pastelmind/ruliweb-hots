@@ -31,7 +31,7 @@ function getExpectedHtml(fileName) {
   return fs.readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8');
 }
 
-describe('HotsDialog.templates', () => {
+describe('HotsDialog.htmlGenerators', () => {
   let heroes;
 
 
@@ -44,14 +44,8 @@ describe('HotsDialog.templates', () => {
       hero.skills.forEach((skill, index) => skill.index = index);
     }
 
-    const templates = HotsDialog.htmlGenerators.templates = {};
-    [
-      'dialog', 'dialog-skills', 'dialog-talents',
-      'insert-hero', 'insert-skill', 'insert-talent', 'insert-skill-stats'
-    ].forEach(templateName => {
-      templates[templateName] = fs.readFileSync(
-        path.join(__dirname, `../src/templates/${templateName}.mustache`), 'utf8');
-    });
+    const templateFileContent = fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
+    HotsDialog.htmlGenerators.templates = JSON.parse(templateFileContent.replace(/^[^{]*/, ''));
   });
 
 
