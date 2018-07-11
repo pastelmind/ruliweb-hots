@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/pastelmind/ruliweb-hots#readme",
   "devDependencies": {
+    "juice": "^4.3.1",
     "mocha": "^5.2.0"
   },
   "dependencies": {
