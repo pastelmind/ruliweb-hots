@@ -1,14 +1,14 @@
-<div class="ruliweb-hots-talent-table" style="display: flex; flex-wrap: wrap; border: solid #55d; border-WIDTH: 2px 1px 1px 2px; max-WIDTH: 60em; background: #55d; font-family: sans-serif; text-align: center">
-  <div style="flex: 1; border: inherit; border-WIDTH: 0 1px 1px 0; padding: .5em; background: #118">
-    <img style="WIDTH: 48px" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})"> </div>
-  <div style="flex: 999 22em; display: flex; flex-flow: column">
-    <div style="display: flex; flex-wrap: wrap; background: #003; color: #6ce; font-weight: bold">
-      <div style="flex: 2 14em; display: flex; align-items: center; justify-content: center; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{name}}</div>
-      <div style="flex: 1 7em; display: flex; align-items: center; justify-content: center; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em">{{type}}</div>
+<div class="ruliweb-hots-talent-table">
+  <div class="ruliweb-hots-talent-table__icon-cell">
+    <img class="ruliweb-hots-talent-table__icon" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{level}})" title="{{name}} ({{type}} - 레벨 {{level}})"> </div>
+  <div class="ruliweb-hots-talent-table__content">
+    <div class="ruliweb-hots-talent-table__header">
+      <div class="ruliweb-hots-talent-table__title">{{name}}</div>
+      <div class="ruliweb-hots-talent-table__type">{{type}}</div>
     </div>
-    <div style="flex: 1; border: solid #55d; border-WIDTH: 0 1px 1px 0; padding: .5em; background: #114; color: #efe; text-align: left">
+    <div class="ruliweb-hots-talent-table__description">
       {{{description}}}{{> stats}}{{#hotsVersion}}
-      <div style="text-align: right; font-size: .8em; color: #cca; font-style: italic">패치 {{hotsVersion}}</div>{{/hotsVersion}}
+      <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>
   </div>
 </div>

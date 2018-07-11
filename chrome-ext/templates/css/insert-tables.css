@@ -1,0 +1,138 @@
+/******** Skill table ********/
+
+.ruliweb-hots-skill-table {
+  display: flex;
+  flex-wrap: wrap;
+  border: solid #85d; border-width: 2px 1px 1px 2px;
+  max-width: 60em;
+  background: #85d; /* Fix border gap glitch */
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.ruliweb-hots-skill-table__icon-cell {
+  flex: 1;
+  border: inherit; border-width: 0 1px 1px 0;
+  padding: .5em;
+  background: #418;
+}
+
+.ruliweb-hots-skill-table__icon {
+  width: 64px;
+}
+
+.ruliweb-hots-skill-table__content {
+  flex: 999 21em; /* Prevent icon cell from growing when side-by-side */
+  display: flex;
+  flex-flow: column;
+}
+
+.ruliweb-hots-skill-table__header {
+  display: flex;
+  flex-wrap: wrap;
+  background: #103;
+  color: #fbf;
+  font-weight: bold;
+}
+
+.ruliweb-hots-skill-table__title {
+  flex: 3 15em;
+  /* center text node (also requires text-align: center on root div) */
+  display: flex; align-items: center; justify-content: center;
+  border: solid #85d; border-width: 0 1px 1px 0;
+  padding: .5em;
+}
+
+.ruliweb-hots-skill-table__type {
+  flex: 1 6em;
+  /* center text node (also requires text-align: center on root div) */
+  display: flex; align-items: center; justify-content: center;
+  border: solid #85d; border-width: 0 1px 1px 0;
+  padding: .5em;
+}
+
+.ruliweb-hots-skill-table__description {
+  flex: 1;
+  border: solid #85d; border-width: 0 1px 1px 0;
+  padding: .5em;
+  background: #214;
+  color: #efe;
+  text-align: left;
+}
+
+/******** Talent table ********/
+
+.ruliweb-hots-talent-table {
+  display: flex;
+  flex-wrap: wrap;
+  border: solid #55d; border-width: 2px 1px 1px 2px;
+  max-width: 60em;
+  background: #55d; /* Fix border gap glitch */
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.ruliweb-hots-talent-table__icon-cell {
+  flex: 1;
+  border: inherit; border-width: 0 1px 1px 0;
+  padding: .5em;
+  background: #118;
+}
+
+.ruliweb-hots-talent-table__icon {
+  width: 48px;
+}
+
+.ruliweb-hots-talent-table__content {
+  flex: 999 22em; /* Prevent icon cell from growing when side-by-side */
+  display: flex;
+  flex-flow: column;
+}
+
+.ruliweb-hots-talent-table__header {
+  display: flex;
+  flex-wrap: wrap;
+  background: #003;
+  color: #6ce;
+  font-weight: bold;
+}
+
+.ruliweb-hots-talent-table__title {
+  flex: 2 14em;
+  /* center text node (also requires text-align: center on root div) */
+  display: flex; align-items: center; justify-content: center;
+  border: solid #55d; border-width: 0 1px 1px 0;
+  padding: .5em;
+}
+
+.ruliweb-hots-talent-table__type {
+  flex: 1 7em;
+  /* center text node (also requires text-align: center on root div) */
+  display: flex; align-items: center; justify-content: center;
+  border: solid #55d; border-width: 0 1px 1px 0;
+  padding: .5em;
+}
+
+.ruliweb-hots-talent-table__description {
+  flex: 1;
+  border: solid #55d; border-width: 0 1px 1px 0;
+  padding: .5em;
+  background: #114;
+  color: #efe;
+  text-align: left;
+}
+
+/******** Stat sections in skill/talent tables ********/
+
+.skill-stat-icon {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: sub;
+}
+
+.hots-version {
+  text-align: right;
+  font-size: .8em;
+  color: #cca;
+  font-style: italic
+}
