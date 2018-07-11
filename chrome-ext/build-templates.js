@@ -18,7 +18,7 @@ const fileNames = fs.readdirSync(templatesDir);
 
 //Load CSS
 const cssPath = path.join(templatesDir, 'css/insert-tables.css');
-console.log('Using CSS file:', cssPath);
+console.log('Using CSS file:', cssPath, '\n');
 const css = fs.readFileSync(cssPath, 'utf8');
 
 //Read and process the contents of each file and store it in an object
@@ -58,7 +58,7 @@ for (const fileName of fileNames) {
 const assignTarget = 'HotsDialog.htmlGenerators.templates';  //Target variable or object to assign the JSON to
 const outputFilePath = path.join(__dirname, 'src/js/templates.js');
 fs.writeFileSync(outputFilePath, assignTarget + ' = ' + JSON.stringify(templates, null, 2));
-console.log('Templates written to', outputFilePath);
+console.log('\nTemplates written to', outputFilePath);
 console.log('Once loaded, templates can be accessed with', assignTarget);
 
 
