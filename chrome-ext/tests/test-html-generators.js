@@ -74,6 +74,18 @@ describe('HotsDialog.htmlGenerators', () => {
 
 
   describe('Inserted templates', () => {
+    it('generates hero info table correctly', () => {
+      let heroInfoHtml = '';
+
+      for (const heroId in heroes) {
+        const hero = heroes[heroId];
+        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero);
+      }
+
+      // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
+      assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));
+    });
+
     it('generates skill info table correctly', () => {
       let skillInfoHtml = '';
 

@@ -15,7 +15,7 @@
 
 /* Icons */
 
-.hots-hero-icon, .hots-skill-icon, .hots-talent-icon {
+.hots-hero-icon, .hots-current-hero-icon, .hots-skill-icon, .hots-talent-icon {
   box-sizing: border-box;
   width: 32px;
   height: 32px;
@@ -25,7 +25,7 @@
   transition: border .25s, filter .25s;
 }
 
-.hots-hero-icon:active, .hots-skill-icon:active, .hots-talent-icon:active {
+.hots-hero-icon:active, .hots-current-hero-icon:active, .hots-skill-icon:active, .hots-talent-icon:active {
   transition: none;
   border: 1px solid #ff5;
   filter: brightness(200%);

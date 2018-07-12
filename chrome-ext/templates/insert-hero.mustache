@@ -1,21 +1,15 @@
-<table data-ruliweb-hots-version="{{appVersion}}" style="border: 2px solid #76d; background-color: #112; color: #efe; font-family: sans-serif">
-  <tr style="background-color: #224">
-    <td rowspan="2" style="padding: .5em; border: 1px solid #76d; WIDTH: 64px; vertical-align: top; background-color: #118">
-      <img style="WIDTH: 100%" src="{{{hero.iconUrl}}}" alt="{{hero.name}} ({{hero.type}})" title="{{hero.name}} ({{hero.type}})">
-    </td>
-    <td style="padding: .5em; border: 1px solid #76d; text-align: center">
-      <b style="color: #6ce">{{hero.name}}</b>
-    </td>
-    <td style="padding: .5em; border: 1px solid #76d; text-align: center; WIDTH: 10em">
-      <b style="color: #6ce">{{hero.type}}</b>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding: .5em; border: 1px solid #76d">
-      {{#hero.skills}}
+<details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-hero-table">
+  <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{iconUrl}}) center/64px no-repeat" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
+  <div class="ruliweb-hots-hero-table__content">
+    <div class="ruliweb-hots-hero-table__header">
+      <div class="ruliweb-hots-hero-table__title">{{name}}</div>
+      <div class="ruliweb-hots-hero-table__type">{{type}} {{roleName}}</div>
+    </div>
+    <div class="ruliweb-hots-hero-table__description">
+      {{#skills}}
       <img style="WIDTH: 48px; margin: 0 .25em" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
-      {{/hero.skills}}
-      {{#hotsVersion}}<div style="text-align: right; font-size: .8em; font-style: italic; color: #cca">패치 {{hotsVersion}}</div>{{/hotsVersion}}
-    </td>
-  </tr>
-</table>
+      {{/skills}}{{#hotsVersion}}
+      <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
+    </div>
+  </div>
+</details>

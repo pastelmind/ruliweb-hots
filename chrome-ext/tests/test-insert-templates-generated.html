@@ -179,20 +179,19 @@
     if (typeof chrome !== undefined) {
       chrome.runtime = chrome.runtime || {};
       chrome.runtime.getURL = url => '../src/' + url;
+      chrome.runtime.getManifest = () => ({ version: "34.1" });
     }
 
     (async () => {
       //Load hero data for testing
       const heroes = (await axios.get('./data/heroes.json')).data;
       const hero = heroes.fenix;
+      hero.roleName = '암살자'; //TODO Use data prepare function
 
       let html = '';
 
       //Generate hero description
-      html += '<h2>영웅</h2>' + Mustache.render(
-        HotsDialog.htmlGenerators.templates['insert-hero'],
-        { hero, hotsVersion: '34.1' }
-      );
+      html += '<h2>영웅</h2>' + HotsDialog.htmlGenerators.generateHeroInfoTable(hero, '34.1');
 
       //Generate skill description
       html += '<h2>기술</h2>' + HotsDialog.htmlGenerators.generateSkillInfoTable(hero.skills[1], '34.1');
