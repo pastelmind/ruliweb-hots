@@ -285,6 +285,7 @@ const HotsDialog = {
       const view = Object.create(skill);
       view.hotsVersion = hotsVersion;
       view.hasStats = !!(skill.cooldown || skill.rechargeCooldown || skill.manaCost);
+      view.appVersion = chrome.runtime.getManifest().version;
 
       //Parse skill description
       view.description = skill.description
