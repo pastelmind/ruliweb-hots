@@ -68,6 +68,7 @@ describe('HotsDialog.htmlGenerators', () => {
       const talentIconsHtml =
         HotsDialog.htmlGenerators.generateTalentList(heroes.gazlowe);
 
+      // fs.writeFileSync(path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml);
       assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));
     });
   });

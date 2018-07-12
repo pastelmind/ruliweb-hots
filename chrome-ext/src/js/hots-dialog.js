@@ -114,9 +114,9 @@ const HotsDialog = {
     //Add event handlers for selected hero icon and skill icons
     skillsetSection.addEventListener('click', event => {
       if (!(event.target)) return;
-      const iconElem = event.target
+      const iconElem = event.target;
 
-      if (event.target.classList.contains('hots-current-hero-icon')) {
+      if (iconElem.classList.contains('hots-current-hero-icon')) {
         const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
 
         const version = addVersionCheckbox.checked ? hotsVersion : '';
@@ -133,15 +133,24 @@ const HotsDialog = {
 
     //Add event handlers for talent icons
     talentsetSection.addEventListener('click', event => {
-      if (!(event.target && event.target.classList.contains('hots-talent-icon'))) return;
+      if (!(event.target)) return;
       const iconElem = event.target;
 
-      const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
-      const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
-      const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
+      if (iconElem.classList.contains('hots-talent-icon')) {
+        const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
+        const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
+        const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-      const version = addVersionCheckbox.checked ? hotsVersion : '';
-      this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
+        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
+      }
+      else if (iconElem.classList.contains('hots-talentset__group-add-all')) {
+        const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
+        const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
+
+        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
+      }
     });
 
     return dialogFragment;
@@ -282,6 +291,7 @@ const HotsDialog = {
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {string=} hotsVersion (optional) HotS version string to display
+     * @return {string} HTML source
      */
     generateHeroInfoTable(hero, hotsVersion) {
       const heroView = Object.create(hero);
@@ -298,6 +308,7 @@ const HotsDialog = {
      * Generates a table of skill information to be injected into a page.
      * @param {Skill} skill Skill data
      * @param {string=} hotsVersion (optional) HotS version string to display
+     * @return {string} HTML source
      */
     generateSkillInfoTable(skill, hotsVersion) {
       return Mustache.render(
@@ -311,6 +322,7 @@ const HotsDialog = {
      * Generates a table of talent information to be injected into a page.
      * @param {Talent} talent Talent data
      * @param {string=} hotsVersion (optional) HotS version string to display
+     * @return {string} HTML source
      */
     generateTalentInfoTable(talent, hotsVersion) {
       return Mustache.render(
@@ -318,6 +330,16 @@ const HotsDialog = {
         this.generateSkillTalentView(talent, hotsVersion),
         { stats: this.templates['insert-skill-stats'] }
       );
+    },
+
+    /**
+     * Generates a row of talent tables from a talent group.
+     * @param {Talent[]} talentGroup Talent group
+     * @param {string=} hotsVersion (optional) HotS version string to display
+     * @return {string} HTML source
+     */
+    generateTalentGroupInfoTable(talentGroup, hotsVersion) {
+      return talentGroup.map(talent => this.generateTalentInfoTable(talent, hotsVersion)).join('&nbsp;');
     },
 
     /**
