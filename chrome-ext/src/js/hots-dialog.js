@@ -333,19 +333,10 @@ const HotsDialog = {
         const range = getSelectedRange(selectedWindow);
         if (!range.collapsed)
           range.deleteContents();
-        splitAncestorElements(range);
+        // splitAncestorElements(range);
 
         //Add padding to help editing
-        const prevSibling = range.startContainer.childNodes.item(range.startOffset - 1);
-        console.log('prevSibling', prevSibling ? prevSibling.nodeName : null);
-        if (!prevSibling || ('P' !== prevSibling.nodeName && 'BR' !== prevSibling.nodeName))
-          html = '<br>' + html;
-
-        //Add padding to help editing
-        const nextSibling = prevSibling ? prevSibling.nextSibling : null;
-        console.log('nextSibling', nextSibling ? nextSibling.nodeName : null);
-        if (!nextSibling || ('P' !== nextSibling.nodeName && 'BR' !== nextSibling.nodeName))
-          html += '<br>';
+        html += '&nbsp;';
 
         const docFragment = this.createDocumentFragmentFromHtml(selectedWindow.document, html);
         range.insertNode(docFragment);
@@ -379,60 +370,6 @@ const HotsDialog = {
         range.setStart(document.body, document.body.childNodes.length);
         range.setEnd(document.body, document.body.childNodes.length);
         return range;
-      }
-
-      /**
-       * Helper function that prepares insert into a range's start position
-       * @param {Range} range Range to insert into
-       */
-      function splitAncestorElements(range) {
-        let targetNode = range.startContainer;
-        let insertOffset = range.startOffset;
-
-        while (true) {
-          //If current target container is a Text node, split it
-          if (3 === targetNode.nodeType)
-            targetNode.splitText(insertOffset);
-          else if (canSplit(targetNode)) {
-            //Split the containing element
-            const nextElement = targetNode.cloneNode(false);
-
-            //Move all child nodes after insertOffset to the next paragraph
-            while (insertOffset < targetNode.childNodes.length)
-              nextElement.appendChild(targetNode.childNodes[insertOffset]);
-
-            nextElement.normalize();
-            if (nextElement.hasChildNodes())
-              targetNode.parentNode.insertBefore(nextElement, targetNode.nextSibling);
-
-            targetNode.normalize();
-            if (!targetNode.hasChildNodes())
-              targetNode.innerHTML += '<br>';
-          }
-          else {
-            range.setStart(targetNode, insertOffset);
-            range.setEnd(targetNode, insertOffset);
-            return;
-          }
-
-          insertOffset = Array.prototype.indexOf.call(targetNode.parentNode.childNodes, targetNode) + 1;
-          targetNode = targetNode.parentNode;
-        }
-      }
-
-      /**
-       * Helper function
-       * @param {Node} node
-       */
-      function canSplit(node) {
-        if (1 !== node.nodeType)  //If the node is not an Element
-          return false;
-
-        if ('P' === node.nodeName)
-          return true;
-
-        const styles = node.ownerDocument.defaultView.getComputedStyle(node);
-        return 'inline' === styles.display;
       }
     },
 
