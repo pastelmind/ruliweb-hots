@@ -11,6 +11,9 @@ const path = require('path');
 const juice = require('juice');
 
 
+juice.codeBlocks.mustacheCss = { start: '({{', end: '}})' };
+
+
 //Load a list of template files
 const templatesDir = path.join(__dirname, 'templates/');
 console.log('Using template dir:', templatesDir);

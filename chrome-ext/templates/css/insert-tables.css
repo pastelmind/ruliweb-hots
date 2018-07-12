@@ -53,20 +53,22 @@
 .ruliweb-hots-skill-table {
   border: 2px solid #85d;
   background: #418; /* Fake equal height columns */
-  color: #fbf;
+  color: #fdf;  /* Color of collapse/expand arrow */
 }
 
 .ruliweb-hots-skill-table__icon-cell {
-  width: 64px;
+  width: 64px; height: 64px;
+  /* background: center/64px no-repeat; */  /* Should be entered directly in template */
 }
 
 .ruliweb-hots-skill-table__content {
   max-width: calc(100% - 64px - 1em);
-  min-height: calc(64px + 2.6em);
+  min-height: calc(64px + 1em);
 }
 
 .ruliweb-hots-skill-table__header {
   background: #103;
+  color: #fbf;
 }
 
 .ruliweb-hots-skill-table__title {
@@ -94,20 +96,22 @@
 .ruliweb-hots-talent-table {
   border: 2px solid #55d;
   background: #118; /* Fake equal height columns */
-  color: #6ce;
+  color: #bef;  /* Color of collapse/expand arrow */
 }
 
 .ruliweb-hots-talent-table__icon-cell {
-  width: 48px;
+  width: 48px; height: 48px;
+  /* background: center/48px no-repeat; */ /* Should be entered directly in template */
 }
 
 .ruliweb-hots-talent-table__content {
   max-width: calc(100% - 48px - 1em);
-  min-height: calc(48px + 2.6em);
+  min-height: calc(48px + 1em);
 }
 
 .ruliweb-hots-talent-table__header {
   background: #003;
+  color: #6ce;
 }
 
 .ruliweb-hots-talent-table__title {
