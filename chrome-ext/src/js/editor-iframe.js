@@ -1,15 +1,17 @@
 /**
- * Injects event listeners in the WYSIWYG editor's iframe
+ * Injects event listeners in the WYSIWYG editor's iframe.
+ * This file is injected into Ruliweb's "create/edit article" pages, as well as
+ * any <iframe>s on such pages.
  */
 
 if (isInIframe()) {
-  //Delete hero/skill/talent tables when double-clicked
+  //Delete hero/skill/talent tables when Ctrl + clicked
   //Note: The editor normally prevents click events from going through,
   //      but clicks made on the pseudo-elements register just fine. Yay!
   //Add the event listener to the <html> element, because Cheditor will replace
   //the <body> element when switching between editor modes
-  document.body.parentNode.addEventListener('dblclick', event => {
-    if (!event.target) return;
+  document.body.parentNode.addEventListener('click', event => {
+    if (!(event.target && event.ctrlKey)) return;
 
     const rootElem = event.target.parentNode;
     if (rootElem.classList.contains('ruliweb-hots-hero-table')
