@@ -2,6 +2,7 @@
 
 /**
  * Defines the model classes (Hero, Skill, Talent) for use in other scripts
+ * @module models
  */
 
 'use strict';
@@ -11,7 +12,7 @@
  * This class can be iterated with `for...of` to retrieve each skill and talent.
  * @implements {Iterable<Skill|Talent>}
  */
-class Hero {
+exports.Hero = class {
   constructor(o = {}) {
     this.name = o.name || '';
     this.iconUrl = o.iconUrl || '';
@@ -124,16 +125,18 @@ class Hero {
 
     return '';
   }
-}
+};
 
-Hero.roles = {
+const Hero = exports.Hero;
+
+exports.Hero.roles = {
   'warrior': '전사',
   'assassin': '암살자',
   'support': '지원가',
   'specialist': '전문가'
 };
 
-Hero.universes = {
+exports.Hero.universes = {
   'warcraft': '워크래프트',
   'starcraft': '스타크래프트',
   'diablo': '디아블로',
@@ -141,10 +144,14 @@ Hero.universes = {
   'overwatch': '오버워치'
 };
 
-Object.freeze(Hero.roles);
-Object.freeze(Hero.universes);
+Object.freeze(exports.Hero.roles);
+Object.freeze(exports.Hero.universes);
 
-class Skill {
+
+/**
+ * Represents a hero's skill in Heroes of the Storm.
+ */
+exports.Skill = class {
   constructor(o = {}) {
     this.name = o.name || '';
     this.iconUrl = o.iconUrl || '';
@@ -178,9 +185,15 @@ class Skill {
     o.extras = this.extras;
     return o;
   }
-}
+};
 
-class Talent extends Skill {
+const Skill = exports.Skill;
+
+
+/**
+ * Represents a hero's talent in Heroes of the Storm.
+ */
+exports.Talent = class extends exports.Skill {
   /**
    * Produce a compact, minimal JSON
    */
@@ -190,9 +203,6 @@ class Talent extends Skill {
     delete o.level;
     return o;
   }
-}
+};
 
-
-if (typeof module === 'object') {
-  module.exports = { Hero, Skill, Talent };
-}
+const Talent = exports.Talent;
