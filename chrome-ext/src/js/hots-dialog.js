@@ -111,16 +111,24 @@ const HotsDialog = {
       talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
     });
 
-    //Add event handlers for skill icons
+    //Add event handlers for selected hero icon and skill icons
     skillsetSection.addEventListener('click', event => {
-      if (!(event.target && event.target.classList.contains('hots-skill-icon'))) return;
-      const iconElem = event.target;
+      if (!(event.target)) return;
+      const iconElem = event.target
 
-      const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
-      const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
+      if (event.target.classList.contains('hots-current-hero-icon')) {
+        const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
 
-      const version = addVersionCheckbox.checked ? hotsVersion : '';
-      this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
+        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version));
+      }
+      else if (event.target.classList.contains('hots-skill-icon')) {
+        const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
+        const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
+
+        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
+      }
     });
 
     //Add event handlers for talent icons
@@ -268,6 +276,22 @@ const HotsDialog = {
       }
 
       return Mustache.render(this.templates['dialog-talents'], { talents, id: hero.id });
+    },
+
+    /**
+     * Generates a table of hero information to be injected into a page.
+     * @param {Hero} hero Hero data
+     * @param {string=} hotsVersion (optional) HotS version string to display
+     */
+    generateHeroInfoTable(hero, hotsVersion) {
+      const heroView = Object.create(hero);
+      heroView.hotsVersion = hotsVersion;
+      heroView.appVersion = chrome.runtime.getManifest().version;
+
+      return Mustache.render(
+        this.templates['insert-hero'],
+        heroView
+      );
     },
 
     /**
