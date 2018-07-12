@@ -1,125 +1,133 @@
-/******** Skill table ********/
+/******** Skill & talent table ********/
 
-.ruliweb-hots-skill-table {
+.ruliweb-hots-skill-table,
+.ruliweb-hots-talent-table {
+  display: inline-block;
+  max-width: 100%;    /* Contain within bounds */
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.ruliweb-hots-skill-table__icon-cell,
+.ruliweb-hots-talent-table__icon-cell {
+  float: left;
+  padding: .5em;
+}
+
+.ruliweb-hots-skill-table__icon,
+.ruliweb-hots-talent-table__icon {
+  width: 100%;
+}
+
+.ruliweb-hots-skill-table__content,
+.ruliweb-hots-talent-table__content {
+  float: left;
+  display: flex;
+  flex-flow: column;
+  width: 999vw;
+}
+
+.ruliweb-hots-skill-table__header,
+.ruliweb-hots-talent-table__header {
   display: flex;
   flex-wrap: wrap;
-  border: solid #85d; border-width: 2px 1px 1px 2px;
-  max-width: 60em;
-  background: #85d; /* Fix border gap glitch */
-  font-family: sans-serif;
+  font-weight: bold;
   text-align: center;
 }
 
-.ruliweb-hots-skill-table__icon-cell {
-  flex: 1;
-  border: inherit; border-width: 0 1px 1px 0;
+.ruliweb-hots-skill-table__title, .ruliweb-hots-skill-table__type,
+.ruliweb-hots-talent-table__title, .ruliweb-hots-talent-table__type {
   padding: .5em;
-  background: #418;
 }
 
-.ruliweb-hots-skill-table__icon {
+.ruliweb-hots-skill-table__description,
+.ruliweb-hots-talent-table__description {
+  flex: 1;
+  padding: .5em;
+  text-align: left;
+}
+
+
+/******** Skill table ********/
+
+.ruliweb-hots-skill-table {
+  border: 2px solid #85d;
+  background: #418; /* Fake equal height columns */
+  color: #fbf;
+}
+
+.ruliweb-hots-skill-table__icon-cell {
   width: 64px;
 }
 
 .ruliweb-hots-skill-table__content {
-  flex: 999 21em; /* Prevent icon cell from growing when side-by-side */
-  display: flex;
-  flex-flow: column;
+  max-width: calc(100% - 64px - 1em);
+  min-height: calc(64px + 2.6em);
 }
 
 .ruliweb-hots-skill-table__header {
-  display: flex;
-  flex-wrap: wrap;
   background: #103;
-  color: #fbf;
-  font-weight: bold;
 }
 
 .ruliweb-hots-skill-table__title {
   flex: 3 15em;
-  /* center text node (also requires text-align: center on root div) */
-  display: flex; align-items: center; justify-content: center;
-  border: solid #85d; border-width: 0 1px 1px 0;
-  padding: .5em;
 }
 
 .ruliweb-hots-skill-table__type {
   flex: 1 6em;
-  /* center text node (also requires text-align: center on root div) */
-  display: flex; align-items: center; justify-content: center;
-  border: solid #85d; border-width: 0 1px 1px 0;
-  padding: .5em;
+}
+
+.ruliweb-hots-skill-table__title,
+.ruliweb-hots-skill-table__type {
+  border: solid #85d;
+  border-width: 0 0 1px 1px;
 }
 
 .ruliweb-hots-skill-table__description {
-  flex: 1;
-  border: solid #85d; border-width: 0 1px 1px 0;
-  padding: .5em;
+  border-left: 1px solid #85d;
   background: #214;
   color: #efe;
-  text-align: left;
 }
 
 /******** Talent table ********/
 
 .ruliweb-hots-talent-table {
-  display: flex;
-  flex-wrap: wrap;
-  border: solid #55d; border-width: 2px 1px 1px 2px;
-  max-width: 60em;
-  background: #55d; /* Fix border gap glitch */
-  font-family: sans-serif;
-  text-align: center;
+  border: 2px solid #55d;
+  background: #118; /* Fake equal height columns */
+  color: #6ce;
 }
 
 .ruliweb-hots-talent-table__icon-cell {
-  flex: 1;
-  border: inherit; border-width: 0 1px 1px 0;
-  padding: .5em;
-  background: #118;
-}
-
-.ruliweb-hots-talent-table__icon {
   width: 48px;
 }
 
 .ruliweb-hots-talent-table__content {
-  flex: 999 22em; /* Prevent icon cell from growing when side-by-side */
-  display: flex;
-  flex-flow: column;
+  max-width: calc(100% - 48px - 1em);
+  min-height: calc(48px + 2.6em);
 }
 
 .ruliweb-hots-talent-table__header {
-  display: flex;
-  flex-wrap: wrap;
   background: #003;
-  color: #6ce;
-  font-weight: bold;
 }
 
 .ruliweb-hots-talent-table__title {
   flex: 2 14em;
-  /* center text node (also requires text-align: center on root div) */
-  display: flex; align-items: center; justify-content: center;
-  border: solid #55d; border-width: 0 1px 1px 0;
-  padding: .5em;
 }
 
 .ruliweb-hots-talent-table__type {
   flex: 1 7em;
-  /* center text node (also requires text-align: center on root div) */
-  display: flex; align-items: center; justify-content: center;
-  border: solid #55d; border-width: 0 1px 1px 0;
-  padding: .5em;
+}
+
+.ruliweb-hots-talent-table__title,
+.ruliweb-hots-talent-table__type {
+  border: solid #55d;
+  border-width: 0 0 1px 1px;
 }
 
 .ruliweb-hots-talent-table__description {
-  flex: 1;
-  border: solid #55d; border-width: 0 1px 1px 0;
-  padding: .5em;
+  border-left: 1px solid #55d;
   background: #114;
   color: #efe;
-  text-align: left;
 }
 
 /******** Stat sections in skill/talent tables ********/
