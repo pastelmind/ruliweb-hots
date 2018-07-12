@@ -6,6 +6,37 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+
+## [0.5.0] - 2018-07-13
+### Added
+- Added 'insert hero table' feature, generating a table of the hero's basic
+  skills.
+- Skill, talent, and hero tables can be expanded and collapsed with a click.
+  Does not work in Internet Explorer and Edge (yet), which will always display
+  an expanded table. See https://caniuse.com/#feat=details
+- Inserted HTML tables can be quickly deleted in the editor with Ctrl + click.
+- Added buttons that insert an entire row of talents (AKA talent groups).
+
+### Changes
+- Updated data with Heroes of the Storm v2.35.0 patch information.
+- Inserted HTML table width has been slightly reduced.
+- Inserted HTML tables are now `inline-block`, and can be mixed with text.
+- Use CSS `background-image` instead of `<img>` to show icons. This is necessary
+  to prevent launching a popup (enforced by Ruliweb) when clicking on an icon to
+  expand/collapse a table.
+- Added application version info at bottom of table.
+- All inserted HTML now contain a Ruliweb-HotS version signature for debugging.
+- Always run tests before building.
+- Always generate a build after bumping version.
+- Use [juice](https://github.com/Automattic/juice) to generate inline CSS i
+  templates.
+- Hero basic stats are added in `docs/hots.json`, but not usable in the
+  extension yet.
+
+### Fixed
+- (none)
+
+
 ## [0.4.0] - 2018-07-09
 ### Added
 - Ruliweb-HotS extension can now be used in Ruliweb MYPI pages.
