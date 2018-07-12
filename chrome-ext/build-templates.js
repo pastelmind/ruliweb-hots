@@ -44,6 +44,7 @@ for (const fileName of fileNames) {
   if (rawTemplate !== template) {
     //Strip unnecessary CSS classes
     template = stripCssClasses(template, [
+      'ruliweb-hots-hero-table',
       'ruliweb-hots-skill-table',
       'ruliweb-hots-talent-table'
     ]);

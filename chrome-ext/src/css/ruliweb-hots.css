@@ -28,7 +28,7 @@
 .hots-hero-icon:active, .hots-current-hero-icon:active, .hots-skill-icon:active, .hots-talent-icon:active {
   transition: none;
   border: 1px solid #ff5;
-  filter: brightness(200%);
+  filter: brightness(300%);
 }
 
 /* All dialog sections */
@@ -168,4 +168,23 @@
   position: relative;
   top: -0.4em;
   padding-left: .5em;
+}
+
+.hots-talentset__group-add-all {
+  float: right;
+  margin: .35em 1em 0 0;
+  padding: .25em;
+  cursor: pointer;
+  font-size: .75em;
+  border: 1px solid #27f;
+  background: #336;
+  color: #ccc;
+  transition: border .25s, background-color .25s, color .25s;
+}
+
+.hots-talentset__group-add-all:active {
+  transition: none;
+  border: 1px solid #5df;
+  background: #77c;
+  color: #fff;
 }
