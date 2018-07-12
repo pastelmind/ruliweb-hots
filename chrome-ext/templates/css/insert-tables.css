@@ -24,7 +24,7 @@
   float: left;
   display: flex;
   flex-flow: column;
-  width: 999vw;
+  width: 50em;
 }
 
 .ruliweb-hots-skill-table__header,
@@ -106,7 +106,6 @@
 
 .ruliweb-hots-talent-table__content {
   max-width: calc(100% - 48px - 1em);
-  min-height: calc(48px + 1em);
 }
 
 .ruliweb-hots-talent-table__header {
