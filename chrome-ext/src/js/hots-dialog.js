@@ -5,6 +5,28 @@
 
 'use strict';
 
+/**
+ * A collection of data that represents a skill.
+ * @typedef {import("../../../util/src/models").Skill} Skill
+ */
+
+/**
+ * A collection of data that represents a talent.
+ * @typedef {import("../../../util/src/models").Talent} Talent
+ */
+
+/**
+ * A collection of data that represents a hero.
+ * @typedef {import("../../../util/src/models").Hero} Hero
+ */
+
+/**
+ * A callback that injects the given HTML string into a desired position.
+ * @callback HtmlStringInjector
+ * @param {string} html
+ * @return {void}
+ */
+
 
 const HotsDialog = {
   data: null,
@@ -348,8 +370,8 @@ const HotsDialog = {
 
       /**
        * Helper function that retrieves the currently selected range
-       * @param {Window} window
-       * @return {Range | undefined}
+       * @param {Window} selectedWindow
+       * @return {Range}
        */
       function getSelectedRange(selectedWindow) {
         const selection = selectedWindow.getSelection();
@@ -417,25 +439,3 @@ function openHotsDialog() {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = exports = HotsDialog;
 }
-
-
-/**
- * A collection of data that represents a skill.
- * @typedef {Object<string, *>} Skill
- */
-
-/**
- * A collection of data that represents a talent.
- * @typedef {Object<string, *>} Talent
- */
-
-/**
- * A collection of data that represents a hero.
- * @typedef {{skills: Skill[], talents: Object<number, Talent[]>}} Hero
- */
-
-/**
- * A callback that injects the given HTML string into a desired position.
- * @typedef {function(string): void} HtmlStringInjector
- */
-
