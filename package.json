@@ -37,6 +37,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
+    "ajv-cli": "^3.0.0",
     "axios": "^0.18.0",
     "commander": "^2.16.0",
     "html-entities": "^1.2.1",
