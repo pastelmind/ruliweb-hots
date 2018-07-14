@@ -1,0 +1,281 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Heroes of the Storm dataset for Ruliweb-HotS",
+  "type": "object",
+  "properties": {
+    "hotsVersion": {
+      "description": "Heroes of the Storm patch version on which the current dataset is based",
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d+){1,2}$"
+    },
+    "heroes": {
+      "description": "Collection of hero data",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z\\-\\.]+$"
+      },
+      "minProperties": 80,
+      "maxProperties": 80,
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
+            "$ref": "#/definitions/trimmedString"
+          },
+          "iconUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "근접",
+              "원거리",
+              "근접 / 원거리"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "pattern": "^(warrior|assassin|support|specialist)(,(warrior|assassin|support|specialist))*$"
+          },
+          "universe": {
+            "type": "string",
+            "enum": [
+              "warcraft",
+              "starcraft",
+              "diablo",
+              "classic",
+              "overwatch"
+            ]
+          },
+          "stats": {
+            "description": "Collection of hero stats",
+            "type": "object",
+            "propertyNames": {
+              "$comment": "TODO: Remove chargeRegen as it is always 0 (D.Va)",
+              "enum": [
+                "hp",
+                "hpRegen",
+                "mp",
+                "mpRegen",
+                "energy",
+                "energyRegen",
+                "rogueEnergy",
+                "rogueEnergyRegen",
+                "fury",
+                "brew",
+                "charge",
+                "chargeRegen",
+                "ammo",
+                "healEnergy",
+                "armor",
+                "physicalArmor",
+                "spellArmor",
+                "shields",
+                "attackDamage",
+                "attackRange",
+                "attackSpeed",
+                "speed"
+              ]
+            },
+            "required": [
+              "hp",
+              "hpRegen",
+              "attackDamage",
+              "attackRange",
+              "attackSpeed",
+              "speed"
+            ],
+            "dependencies": {
+              "hpRegen": [
+                "hp"
+              ],
+              "mpRegen": [
+                "mp"
+              ],
+              "energyRegen": [
+                "energy"
+              ],
+              "rogueEnergyRegen": [
+                "rogueEnergy"
+              ],
+              "chargeRegen": [
+                "charge"
+              ]
+            },
+            "additionalProperties": {
+              "title": "stat",
+              "description": "Represents a hero's basic stat",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "base": {
+                      "type": "number"
+                    },
+                    "growth": {
+                      "type": "number"
+                    },
+                    "percentGrowth": {
+                      "type": "number",
+                      "multipleOf": 0.5
+                    }
+                  },
+                  "required": [
+                    "base"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "skills": {
+            "description": "Collection of a hero's basic skills (available at level 0)",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/skill"
+            },
+            "minItems": 1
+          },
+          "talents": {
+            "description": "Collection of a hero's talents grouped by unlock level",
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^([1-9]|1\\d|20)$"
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/talent"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "role",
+          "universe",
+          "stats",
+          "skills",
+          "talents"
+        ]
+      }
+    }
+  },
+  "required": [
+    "hotsVersion",
+    "heroes"
+  ],
+  "definitions": {
+    "talent": {
+      "description": "Represents a talent",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/trimmedString"
+        },
+        "type": {
+          "$ref": "#/definitions/trimmedString"
+        },
+        "iconUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/trimmedString"
+            },
+            {
+              "description": "All newlines must be normalized to LF",
+              "not": {
+                "pattern": "\\r"
+              }
+            },
+            {
+              "description": "Each line must be trimmed",
+              "not": {
+                "pattern": " \\n|\\n "
+              }
+            }
+          ]
+        },
+        "cooldown": {
+          "type": "number",
+          "minimum": 0
+        },
+        "chargeCooldown": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rechargeCooldown": {
+          "type": "number",
+          "minimum": 0
+        },
+        "manaCost": {
+          "$comment": "TODO: Convert all strings (X per second) to numbers",
+          "type": [
+            "number",
+            "string"
+          ],
+          "minimum": 0
+        },
+        "manaCostPerSecond": {
+          "type": "number",
+          "minimum": 0
+        },
+        "extras": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/trimmedString"
+          },
+          "propertyNames": {
+            "$ref": "#/definitions/trimmedString"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "iconUrl",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "skill": {
+      "description": "Represents a talent",
+      "allOf": [
+        {
+          "$ref": "#/definitions/talent"
+        },
+        {
+          "properties": {
+            "type": {
+              "$comment": "TODO: Use 'D' instead of '고유 능력'",
+              "enum": [
+                "Q",
+                "W",
+                "E",
+                "R",
+                "고유 능력",
+                "Z",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "trimmedString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S([^]*\\S)?$"
+    }
+  }
+}
