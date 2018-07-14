@@ -16,7 +16,7 @@ global.Mustache = require('mustache');
 global.chrome = {
   runtime: {
     getURL: url => url,
-    getManifest: () => JSON.parse(fs.readFileSync(path.join(__dirname, '../src/manifest.json')))
+    getManifest: () => ({ version: 'test-ver' })
   }
 };
 
