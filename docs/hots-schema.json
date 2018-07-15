@@ -53,7 +53,6 @@
             "description": "Collection of hero stats",
             "type": "object",
             "propertyNames": {
-              "$comment": "TODO: Remove chargeRegen as it is always 0 (D.Va)",
               "enum": [
                 "hp",
                 "hpRegen",
@@ -65,10 +64,7 @@
                 "rogueEnergyRegen",
                 "fury",
                 "brew",
-                "charge",
-                "chargeRegen",
                 "ammo",
-                "healEnergy",
                 "armor",
                 "physicalArmor",
                 "spellArmor",

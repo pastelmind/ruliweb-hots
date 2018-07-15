@@ -16,8 +16,6 @@
           "base": 4.33,
           "percentGrowth": 4
         },
-        "charge": 100,
-        "chargeRegen": 0,
         "attackDamage": {
           "base": 25,
           "percentGrowth": 4
@@ -12234,10 +12232,6 @@
         },
         "hpRegen": {
           "base": 3.8,
-          "percentGrowth": 4
-        },
-        "healEnergy": {
-          "base": 495,
           "percentGrowth": 4
         },
         "attackDamage": {
