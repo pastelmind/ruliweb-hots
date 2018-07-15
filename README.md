@@ -16,6 +16,7 @@
 * `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/js/templates.js` when anything changes.
 * `npm run crawl-namu`: Run the NamuWiki crawl script. For usage, run `npm run crawl-namu -- --help` .
 * `npm run update-dep`: Copy necessary dependencies from `node_modules/` to `chrome-ext/src/js/` . Automatically called when running `npm install` or `npm build`.
+* `npm run validate-data`: Validates `hots.json`. This script is called by `npm test`.
 
 # Dependencies
 * 크롬 확장 프로그램
