@@ -17,11 +17,12 @@ console.log('Loaded schema from', hotsDataSchemaPath);
 
 const hotsDataPath = path.join(__dirname, '../docs/hots.json');
 const hotsData = JSON.parse(fs.readFileSync(hotsDataPath, 'utf8'));
-console.log('Loaded HotS data from', hotsDataSchemaPath);
+console.log('Loaded HotS data from', hotsDataPath);
 
 const ajv = new Ajv();
 if (!ajv.validate(hotsDataSchema, hotsData)) {
   console.error('Schema validation failure');
+  console.error(ajv.errorsText());
   throw ajv.errors;
 }
 
