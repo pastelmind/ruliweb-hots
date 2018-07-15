@@ -95,9 +95,6 @@
               ],
               "rogueEnergyRegen": [
                 "rogueEnergy"
-              ],
-              "chargeRegen": [
-                "charge"
               ]
             },
             "additionalProperties": {
