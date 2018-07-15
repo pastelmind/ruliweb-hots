@@ -19,7 +19,7 @@ const hotsDataPath = path.join(__dirname, '../docs/hots.json');
 const hotsData = JSON.parse(fs.readFileSync(hotsDataPath, 'utf8'));
 console.log('Loaded HotS data from', hotsDataPath);
 
-const ajv = new Ajv();
+const ajv = new Ajv({ multipleOfPrecision: 5 });
 if (!ajv.validate(hotsDataSchema, hotsData)) {
   console.error('Schema validation failure');
   console.error(ajv.errorsText());
@@ -30,11 +30,10 @@ console.log('Passed schema validation');
 
 //Check if hotsData.heroes is properly ordered by hero name
 Object.values(hotsData.heroes).reduce((heroA, heroB) => {
-    if (heroA.name > heroB.name)
-      throw new Error(`Heroes are not sorted: ${heroA.name} should be after ${heroB.name}`);
+  if (heroA.name > heroB.name)
+    throw new Error(`Heroes are not sorted: ${heroA.name} should be after ${heroB.name}`);
 
-    return heroB; //To continue iteration
-  }
-);
+  return heroB; //To continue iteration
+});
 
 console.log('Passed data validation');

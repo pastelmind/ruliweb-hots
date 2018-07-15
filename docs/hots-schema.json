@@ -102,16 +102,19 @@
               "description": "Represents a hero's basic stat",
               "anyOf": [
                 {
-                  "type": "number"
+                  "type": "number",
+                  "multipleOf": 0.0001
                 },
                 {
                   "type": "object",
                   "properties": {
                     "base": {
-                      "type": "number"
+                      "type": "number",
+                      "multipleOf": 0.0001
                     },
                     "growth": {
-                      "type": "number"
+                      "type": "number",
+                      "multipleOf": 0.0001
                     },
                     "percentGrowth": {
                       "type": "number",
@@ -120,6 +123,18 @@
                   },
                   "required": [
                     "base"
+                  ],
+                  "oneOf": [
+                    {
+                      "required": [
+                        "growth"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "percentGrowth"
+                      ]
+                    }
                   ],
                   "additionalProperties": false
                 }
@@ -201,27 +216,25 @@
         },
         "cooldown": {
           "type": "number",
-          "minimum": 0
-        },
-        "chargeCooldown": {
-          "type": "number",
-          "minimum": 0
+          "exclusiveMinimum": 0,
+          "multipleOf": 0.5
         },
         "rechargeCooldown": {
           "type": "number",
-          "minimum": 0
+          "exclusiveMinimum": 0,
+          "multipleOf": 0.5
         },
         "manaCost": {
           "$comment": "TODO: Convert all strings (X per second) to numbers",
           "type": [
-            "number",
+            "integer",
             "string"
           ],
-          "minimum": 0
+          "exclusiveMinimum": 0
         },
         "manaCostPerSecond": {
-          "type": "number",
-          "minimum": 0
+          "type": "integer",
+          "exclusiveMinimum": 0
         },
         "extras": {
           "type": "object",
