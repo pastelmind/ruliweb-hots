@@ -51,95 +51,23 @@
           },
           "stats": {
             "description": "Collection of hero stats",
-            "type": "object",
-            "propertyNames": {
-              "enum": [
-                "hp",
-                "hpRegen",
-                "mp",
-                "mpRegen",
-                "energy",
-                "energyRegen",
-                "rogueEnergy",
-                "rogueEnergyRegen",
-                "fury",
-                "brew",
-                "ammo",
-                "armor",
-                "physicalArmor",
-                "spellArmor",
-                "shields",
-                "attackDamage",
-                "attackRange",
-                "attackSpeed",
-                "speed"
-              ]
-            },
-            "required": [
-              "hp",
-              "hpRegen",
-              "attackDamage",
-              "attackRange",
-              "attackSpeed",
-              "speed"
+            "type": [
+              "object",
+              "array"
             ],
-            "dependencies": {
-              "hpRegen": [
-                "hp"
-              ],
-              "mpRegen": [
-                "mp"
-              ],
-              "energyRegen": [
-                "energy"
-              ],
-              "rogueEnergyRegen": [
-                "rogueEnergy"
-              ]
-            },
-            "additionalProperties": {
-              "title": "stat",
-              "description": "Represents a hero's basic stat",
-              "anyOf": [
-                {
-                  "type": "number",
-                  "multipleOf": 0.0001
+            "oneOf": [
+              {
+                "$ref": "#/definitions/stat"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/stat"
                 },
-                {
-                  "type": "object",
-                  "properties": {
-                    "base": {
-                      "type": "number",
-                      "multipleOf": 0.0001
-                    },
-                    "growth": {
-                      "type": "number",
-                      "multipleOf": 0.0001
-                    },
-                    "percentGrowth": {
-                      "type": "number",
-                      "multipleOf": 0.5
-                    }
-                  },
-                  "required": [
-                    "base"
-                  ],
-                  "oneOf": [
-                    {
-                      "required": [
-                        "growth"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "percentGrowth"
-                      ]
-                    }
-                  ],
-                  "additionalProperties": false
-                }
-              ]
-            }
+                "minItems": 2,
+                "maxItems": 4
+              }
+            ]
           },
           "skills": {
             "description": "Collection of a hero's basic skills (available at level 0)",
@@ -181,6 +109,176 @@
     "heroes"
   ],
   "definitions": {
+    "stat": {
+      "description": "Collection of a unit's stats",
+      "type": "object",
+      "properties": {
+        "hp": {
+          "$ref": "#/definitions/scalingDecimalStat"
+        },
+        "hpRegen": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "multipleOf": 0.0001
+            },
+            "levelScaling": {
+              "type": "number",
+              "multipleOf": 0.005
+            }
+          }
+        },
+        "mp": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                },
+                "levelAdd": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                }
+              }
+            },
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            }
+          ]
+        },
+        "mpRegen": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "multipleOf": 1
+            },
+            "levelAdd": {
+              "type": "number",
+              "multipleOf": 0.001
+            }
+          }
+        },
+        "chargeRegen": {
+          "type": "number",
+          "multipleOf": 0.0001
+        },
+        "radius": {
+          "type": "number",
+          "multipleOf": 0.0625
+        },
+        "damage": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/scalingDecimalStat"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {
+              "$ref": "#/definitions/scalingDecimalStat"
+            }
+          ]
+        },
+        "range": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "multipleOf": 0.25
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {
+              "type": "number",
+              "multipleOf": 0.25
+            }
+          ]
+        },
+        "period": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "multipleOf": 0.0001
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {
+              "type": "number",
+              "multipleOf": 0.0001
+            }
+          ]
+        },
+        "speed": {
+          "type": "number",
+          "multipleOf": 0.0001
+        }
+      },
+      "patternProperties": {
+        "^(shields|healEnergy)$": {
+          "$ref": "#/definitions/scalingIntegerStat"
+        },
+        "^(charge|energy|energyRegen|zaryaEnergy|fury|brew|ammo)$": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "hp",
+        "hpRegen",
+        "radius",
+        "speed"
+      ],
+      "dependencies": {
+        "hpRegen": [
+          "hp"
+        ],
+        "mpRegen": [
+          "mp"
+        ],
+        "energyRegen": [
+          "energy"
+        ]
+      },
+      "additionalProperties": false
+    },
+    "scalingDecimalStat": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "multipleOf": 0.1
+        },
+        "levelScaling": {
+          "type": "number",
+          "multipleOf": 0.005
+        }
+      }
+    },
+    "scalingIntegerStat": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
+        "levelScaling": {
+          "type": "number",
+          "multipleOf": 0.005
+        }
+      }
+    },
     "talent": {
       "description": "Represents a talent",
       "type": "object",
