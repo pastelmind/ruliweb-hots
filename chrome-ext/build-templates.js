@@ -1,18 +1,30 @@
 #!/usr/bin/env node
 
 /**
- * @file Combines the contents of all files in `templates/` and stores them as
- * in src/js/templates.js
+ * Combines the contents of all files in `templates/` and stores them as a
+ * browser-side script in src/js/templates.js
+ *
+ * TODO Add this script to npm install script
  */
 
 
 const fs = require('fs');
 const path = require('path');
 const juice = require('juice');
+const minifyHtml = require('html-minifier').minify;
 
 
-juice.codeBlocks.mustacheCss = { start: '({{', end: '}})' };
+/**
+ * List of CSS class names to preserve when inlining CSS.
+ */
+const CSS_CLASSES_PRESERVED = Object.freeze({
+  'ruliweb-hots-hero-table': 0,
+  'ruliweb-hots-skill-table': 0,
+  'ruliweb-hots-talent-table': 0
+});
 
+
+//-------- Main code -------- //
 
 //Load a list of template files
 const templatesDir = path.join(__dirname, 'templates/');
@@ -25,37 +37,27 @@ console.log('Using CSS file:', cssPath, '\n');
 const css = fs.readFileSync(cssPath, 'utf8');
 
 //Read and process the contents of each file and store it in an object
-const templates = {}
+const templates = {};
 for (const fileName of fileNames) {
   const filePath = path.join(templatesDir, fileName);
   if (fs.statSync(filePath).isDirectory()) continue;
 
   const templateName = fileName.replace(/\.[^\.]+$/, ''); //Remove file extension
-  if (templateName in templates)
-    throw new Error('Duplicate template name:', templateName, '/ contents:', templates[templateName]);
+  console.assert(!(templateName in templates), 'Duplicate template name found: ' + templateName);
 
-  const rawTemplate = fs.readFileSync(filePath, 'utf8');
-  console.log('Read template:', JSON.stringify(templateName) + ' '.repeat(Math.max(0, 20 - templateName.length)), 'from', filePath);
+  let template = fs.readFileSync(filePath, 'utf8').replace(/\r/g, '');  //Normalize CRLF to LF
+  console.log('Read template:', templateName.padEnd(20), 'from', filePath);
 
-  //Covert CSS classes to inline CSS
-  let template = juice.inlineContent(rawTemplate, css);
+  //Check if the template is insertable content and should be CSS-inlined
+  if (/^insert-/gi.test(templateName))
+    template = inlineCss(template, css);
 
-  //Did CSS inlining make a difference?
-  if (rawTemplate !== template) {
-    //Strip unnecessary CSS classes
-    template = stripCssClasses(template, [
-      'ruliweb-hots-hero-table',
-      'ruliweb-hots-skill-table',
-      'ruliweb-hots-talent-table'
-    ]);
-  }
-
-  //Additional processing
-  template = ruliwebCssFix(template);
-  template = compactInlineCss(template);
-  template = compactElements(template);
-
-  templates[templateName] = template;
+  //Minify HTML
+  templates[templateName] = minifyHtml(template, {
+    collapseBooleanAttributes: true,
+    minifyCSS: true,
+    removeEmptyAttributes: true
+  });
 }
 
 //Save the templates as a JavaScript file
@@ -66,19 +68,36 @@ console.log('\nTemplates written to', outputFilePath);
 console.log('Once loaded, templates can be accessed with', assignTarget);
 
 
+//-------- Support functions --------//
+
+/**
+ * Convert all styles in the given HTML to inline CSS and removes unnecessary
+ * CSS classes.
+ * @param {string} html HTML source
+ * @param {string} cssToInline Contents of stylesheet to use for inlining CSS
+ * @return {string} Processed HTML
+ */
+function inlineCss(html, cssToInline) {
+  //Convert CSS classes to inline CSS
+  html = juice.inlineContent(html, cssToInline);
+
+  //Postprocessing for inlined CSS
+  html = stripCssClasses(html, CSS_CLASSES_PRESERVED);
+  html = ruliwebCssFix(html);
+
+  return html;
+}
+
 /**
  * Removes all CSS classes from each element, except for those in `whitelist`.
- * If the `class` attribute is emptied by this, it is removed.
  * @param {string} html HTML source
- * @param {string[]=} whitelist CSS classes that should not be removed
+ * @param {Object<string, *>} whitelist Object whose keys are CSS classes that should not be removed. Values are ignored.
  * @return {string} Modified HTML
  */
-function stripCssClasses(html, whitelist = []) {
-  whitelist = whitelist.map(cssClass => cssClass.toLowerCase());
-
-  return html.replace(/\s*class="(.*?)"/gi, (classAttr, classList) => {
-    classList = classList.split(/\s+/g).filter(cssClass => whitelist.includes(cssClass.toLowerCase())).join(' ');
-    return classList ? ' class="' + classList + '" ' : ' ';
+function stripCssClasses(html, whitelist = {}) {
+  return html.replace(/\sclass="([^]*?)"/gi, (classAttr, classList) => {
+    classList = classList.trim().split(/\s+/).filter(cssClass => cssClass in whitelist).join(' ');
+    return classList ? ` class="${classList}"` : '';
   });
 }
 
@@ -90,27 +109,6 @@ function stripCssClasses(html, whitelist = []) {
  * @return {string} Modified HTML
  */
 function ruliwebCssFix(html) {
-  return html.replace(/\s*style=".*?"/gi, styleAttr =>
-    styleAttr.replace(/width|height/gi, keyword => keyword.toUpperCase())
-  );
-}
-
-/**
- * Removes trailing semicolon in inline CSS
- * @param {string} html HTML source
- * @return {string} Modified HTML
- */
-function compactInlineCss(html) {
-  return html.replace(/\s*style="(.*?);\s*"/gi, (styleAttr, css) => ` style="${css}"`);
-}
-
-/**
- * Removes extraneous spaces between element attributes
- * @param {string} html HTML source
- * @return {string} Modified HTML
- */
-function compactElements(html) {
-  return html.replace(/<(\w+)((?:\s+[\w\-]+(?:\=".*?")?)*)\s*>/gi, (match, elem, attrList) =>
-    '<' + elem + (attrList ? attrList.match(/\s[\w\-]+(?:\=".*?")?/g).join('') : '') + '>'
-  );
+  return html.replace(/\sstyle="[^]*?"/gi, styleAttr =>
+    styleAttr.replace(/width/gi, 'WIDTH').replace(/height/gi, 'HEIGHT'));
 }

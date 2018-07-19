@@ -25,10 +25,10 @@ const HotsDialog = require('../src/js/hots-dialog');
 /**
  * Retrieves the contents of the HTML file in the expected/ directory
  * @param {string} fileName HTML file name without the .html extension
- * @return {string} HTML source
+ * @return {string} HTML source with newlines normalized to LF
  */
 function getExpectedHtml(fileName) {
-  return fs.readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8');
+  return fs.readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8').replace(/\r/g, '');
 }
 
 describe('HotsDialog.htmlGenerators', () => {
@@ -54,6 +54,7 @@ describe('HotsDialog.htmlGenerators', () => {
       const dialogHtml =
         HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters, heroes);
 
+      // fs.writeFileSync(path.join(__dirname, 'expected/dialog.html'), dialogHtml);
       assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
     });
 
@@ -61,6 +62,7 @@ describe('HotsDialog.htmlGenerators', () => {
       const skillIconsHtml =
         HotsDialog.htmlGenerators.generateSkillIcons(heroes.gazlowe);
 
+      // fs.writeFileSync(path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml);
       assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
     });
 
