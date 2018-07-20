@@ -9,7 +9,7 @@
     "postbuild": "rm -rf ./build/* && mkdir -p ./build && npm run -s build:zip-extension",
     "build:templates": "node ./chrome-ext/build-templates.js",
     "build:zip-extension": "PowerShell -Command Compress-Archive -Path \"./chrome-ext/src/*\" -Force -CompressionLevel Optimal -DestinationPath ./build/ruliweb-hots.$npm_package_version.zip",
-    "watch": "watch 'npm run -s build:templates' ./chrome-ext/templates/ --wait=3 --interval=1 &",
+    "watch": "watch \"npm run -s build:templates\" ./chrome-ext/templates/ --wait=3 --interval=1",
     "crawl-namu": "node ./util/crawl-namu.js",
     "preversion": "npm run -s prebuild",
     "version": "node ./util/update-manifest.js && git add ./chrome-ext/src/manifest.json",
