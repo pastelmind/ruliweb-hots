@@ -30,9 +30,10 @@
 /**
  * A preset description for a hero's stat.
  * @typedef {Object} StatPreset
- * @prop {boolean=} isDisabled
+ * @prop {string} id Stat ID
  * @prop {string} name
  * @prop {string} iconUrl
+ * @prop {boolean=} isDisabled
  */
 
 /**
@@ -40,7 +41,7 @@
  * @typedef {Object} HotsData
  * @prop {Object<string, Hero>} heroes Hero ID => hero data
  * @prop {string} hotsVersion HotS version
- * @prop {Object<string, StatPreset>} statPresets Mapping of stat ID to stat preset
+ * @prop {StatPreset[]} statPresets Array of stat presets
  */
 
 
@@ -310,7 +311,7 @@ const HotsDialog = {
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {string=} hotsVersion (optional) HotS version string to display
-     * @param {Object<string, StatPreset>} statPresets Mapping of stat ID to stat preset
+     * @param {StatPreset[]} statPresets Array of stat presets
      * @return {string} HTML source
      */
     generateHeroInfoTable(hero, hotsVersion, statPresets) {
@@ -332,8 +333,8 @@ const HotsDialog = {
       function createUnitView(unit) {
         const unitView = { unitName: unit.unitName, stats: [] };
 
-        for (const statId in statPresets) {
-          const statView = createStatView(unit[statId === 'attackSpeed' ? 'period' : statId], statId);
+        for (const preset of statPresets) {
+          const statView = createStatView(unit[preset.id === 'attackSpeed' ? 'period' : preset.id], preset);
 
           if (!statView)
             continue;
@@ -346,13 +347,17 @@ const HotsDialog = {
         return unitView;
       }
 
-      function createStatView(stat, statId) {
-        const preset = statPresets[statId];
+      /**
+       * Create a view object of the stat.
+       * @param {Object} stat
+       * @param {StatPreset} preset
+       */
+      function createStatView(stat, preset) {
         if (!stat || preset.isDisabled)
           return undefined;
 
         if (Array.isArray(stat))
-          return stat.map(s => createStatView(s, statId));
+          return stat.map(s => createStatView(s, preset));
 
         const statView = createStatViewBase(stat);
 
@@ -361,11 +366,11 @@ const HotsDialog = {
           statView.name = preset.name;
 
         if (statView.level1 && statView.level20) {
-          statView.level1 = prettifyStatValue(statView.level1, statId);
-          statView.level20 = prettifyStatValue(statView.level20, statId);
+          statView.level1 = prettifyStatValue(statView.level1, preset.id);
+          statView.level20 = prettifyStatValue(statView.level20, preset.id);
         }
         else if (statView.value)
-          statView.value = prettifyStatValue(statView.value, statId);
+          statView.value = prettifyStatValue(statView.value, preset.id);
 
         return statView;
       }

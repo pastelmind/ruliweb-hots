@@ -36,4 +36,12 @@ Object.values(hotsData.heroes).reduce((heroA, heroB) => {
   return heroB; //To continue iteration
 });
 
+//Check for duplicate stat presets
+const statPresets = {};
+for (const preset of hotsData.statPresets) {
+  if (preset.id in statPresets)
+    throw new Error(`Duplicate stat preset ID found: ${preset.id}`);
+  statPresets[preset.id] = preset;
+}
+
 console.log('Passed data validation');
