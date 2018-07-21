@@ -11,14 +11,8 @@ const fs = require('fs');
 const path = require('path');
 
 //Mocks for HotsDialog
-
+require('./js/mocks');
 global.Mustache = require('mustache');
-global.chrome = {
-  runtime: {
-    getURL: url => url,
-    getManifest: () => ({ version: 'test-ver' })
-  }
-};
 
 const HotsDialog = require('../src/js/hots-dialog');
 
@@ -44,7 +38,7 @@ describe('HotsDialog.htmlGenerators', () => {
     }
 
     const templateFileContent = fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
-    HotsDialog.htmlGenerators.templates = JSON.parse(templateFileContent.replace(/^[^{]*/, ''));
+    eval(templateFileContent);
   });
 
 

@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
 
-  <base href="../src/">
-  <link rel="stylesheet" href="css/tingle.css">
-  <link rel="stylesheet" href="css/ruliweb-hots.css">
+  <link rel="stylesheet" href="../src/css/tingle.css">
+  <link rel="stylesheet" href="../src/css/ruliweb-hots.css">
   <style>
     @media (min-width: 801px) {
       body {
@@ -26,29 +25,18 @@
 </head>
 
 <body>
-  <script src="js/axios.js"></script>
-  <script src="js/tingle.js"></script>
-  <script src="js/mustache.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/hots-dialog.js"></script>
-  <script src="js/templates.js"></script>
+  <script src="../src/js/axios.js"></script>
+  <script src="../src/js/tingle.js"></script>
+  <script src="../src/js/mustache.js"></script>
+  <script src="../src/js/init.js"></script>
+  <script src="../src/js/hots-dialog.js"></script>
+  <script src="../src/js/templates.js"></script>
+  <script src="./js/mocks.js"></script>
   <script>
     'use strict';
 
-    //Stub for test
-    if (typeof chrome === 'undefined')
-      var chrome = {};
-    if (!chrome.runtime)
-      chrome.runtime = {};
-    if (!chrome.runtime.getURL)
-      chrome.runtime.getURL = str => './' + str;
-    if (!chrome.runtime.getManifest)
-      chrome.runtime.getManifest = () => chrome.runtime._manifest;
-
     //Test code
     (async () => {
-      chrome.runtime._manifest = (await axios.get('./manifest.json')).data;
-
       HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
       const heroes = HotsDialog.data.heroes;
       prepareHeroData(heroes);

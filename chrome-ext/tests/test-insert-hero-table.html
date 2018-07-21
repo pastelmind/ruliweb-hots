@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Stat table section of insertable hero table</title>
+  <title>Insertable hero table test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="../templates/css/insert-tables.css" />
   <style>
@@ -26,26 +26,12 @@
   <script src="../src/js/axios.js"></script>
   <script src="../src/js/mustache.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
+  <script src="./js/mocks.js"></script>
   <script>
-    if (typeof chrome !== undefined) {
-      chrome.runtime = chrome.runtime || {};
-      chrome.runtime.getURL = url => '../src/' + url;
-      chrome.runtime.getManifest = () => ({ version: "test version" });
-    }
-
-    async function loadTemplate(templateName) {
-      const response = await axios.get(`../templates/${templateName}.mustache`, { responseType: 'text' });
-      HotsDialog.htmlGenerators.templates = {};
-      HotsDialog.htmlGenerators.templates[templateName] = response.data;
-    }
-
-    let statPresets;
-
     (async () => {
 
-      await loadTemplate('insert-hero');
+      HotsDialog.htmlGenerators.templates = await loadTemplates();
       const hotsData = (await axios.get('../../docs/hots.json')).data;
-      statPresets = hotsData.statPresets;
 
       //TODO Use better preprocessing code
       for (const heroId in hotsData.heroes) {

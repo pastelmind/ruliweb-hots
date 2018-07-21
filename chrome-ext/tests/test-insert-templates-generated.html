@@ -174,14 +174,8 @@
   <script src="../src/js/init.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
   <script src="../src/js/templates.js"></script>
+  <script src="./js/mocks.js"></script>
   <script>
-    //Stub for testing
-    if (typeof chrome !== undefined) {
-      chrome.runtime = chrome.runtime || {};
-      chrome.runtime.getURL = url => '../src/' + url;
-      chrome.runtime.getManifest = () => ({ version: "34.1" });
-    }
-
     (async () => {
       //Load hero data for testing
       const hotsData = (await axios.get('./data/hots.json')).data;
