@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Stat table section of insertable hero table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../templates/css/insert-tables.css" />
+  <style>
+    @media (min-width: 801px) {
+      body {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      body {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="../src/js/axios.js"></script>
+  <script src="../src/js/mustache.js"></script>
+  <script src="../src/js/hots-dialog.js"></script>
+  <script>
+    if (typeof chrome !== undefined) {
+      chrome.runtime = chrome.runtime || {};
+      chrome.runtime.getURL = url => '../src/' + url;
+      chrome.runtime.getManifest = () => ({ version: "test version" });
+    }
+
+    async function loadTemplate(templateName) {
+      const response = await axios.get(`../templates/${templateName}.mustache`, { responseType: 'text' });
+      HotsDialog.htmlGenerators.templates = {};
+      HotsDialog.htmlGenerators.templates[templateName] = response.data;
+    }
+
+    let statPresets;
+
+    (async () => {
+
+      await loadTemplate('insert-hero');
+      const hotsData = (await axios.get('../../docs/hots.json')).data;
+      statPresets = hotsData.statPresets;
+
+      //TODO Use better preprocessing code
+      for (const heroId in hotsData.heroes) {
+        const hero = hotsData.heroes[heroId];
+        hero.id = heroId;
+      }
+
+      const template = document.createElement('template');
+
+      const heroIds = [
+        'cho',
+        'gall',
+        'fenix',
+        'sgt-hammer',
+        'greymane',
+        'probius',
+        'guldan',
+        'dva',
+        'zarya',
+        'valeera',
+        'lt-morales',
+        'auriel',
+        'tracer',
+        'junkrat',
+        'rexxar',
+        'the-lost-vikings'
+      ];
+
+      for (const heroId of heroIds)
+        template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
+
+      template.content.querySelectorAll('details').forEach(detailsElement => detailsElement.open = true);
+
+      document.body.appendChild(template.content);
+
+    })();
+  </script>
+</body>
+
+</html>

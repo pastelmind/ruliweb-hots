@@ -32,16 +32,15 @@ function getExpectedHtml(fileName) {
 }
 
 describe('HotsDialog.htmlGenerators', () => {
-  let heroes;
+  let hotsData;
 
 
   before('Loading test data files', () => {
-    heroes = JSON.parse(fs.readFileSync(
-      path.join(__dirname, 'data/heroes.json'), 'utf8'));
-    for (const heroId in heroes) {
-      const hero = heroes[heroId];
+    hotsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8'));
+    for (const heroId in hotsData.heroes) {
+      const hero = hotsData.heroes[heroId];
       hero.id = heroId;
-      hero.skills.forEach((skill, index) => skill.index = index);
+      hero.skills.forEach((skill, index) => skill.index = index);   //TODO use data prepare function
     }
 
     const templateFileContent = fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
@@ -52,7 +51,7 @@ describe('HotsDialog.htmlGenerators', () => {
   describe('Dialog templates', () => {
     it('generates dialog content correctly', () => {
       const dialogHtml =
-        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters, heroes);
+        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters, hotsData.heroes);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/dialog.html'), dialogHtml);
       assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
@@ -60,7 +59,7 @@ describe('HotsDialog.htmlGenerators', () => {
 
     it('generates skill icons correctly', () => {
       const skillIconsHtml =
-        HotsDialog.htmlGenerators.generateSkillIcons(heroes.gazlowe);
+        HotsDialog.htmlGenerators.generateSkillIcons(hotsData.heroes.gazlowe);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml);
       assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
@@ -68,7 +67,7 @@ describe('HotsDialog.htmlGenerators', () => {
 
     it('generates talent list correctly', () => {
       const talentIconsHtml =
-        HotsDialog.htmlGenerators.generateTalentList(heroes.gazlowe);
+        HotsDialog.htmlGenerators.generateTalentList(hotsData.heroes.gazlowe);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml);
       assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));
@@ -80,10 +79,8 @@ describe('HotsDialog.htmlGenerators', () => {
     it('generates hero info table correctly', () => {
       let heroInfoHtml = '';
 
-      for (const heroId in heroes) {
-        const hero = heroes[heroId];
-        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero);
-      }
+      for (const hero of Object.values(hotsData.heroes))
+        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion, hotsData.statPresets);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
       assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));
@@ -92,9 +89,7 @@ describe('HotsDialog.htmlGenerators', () => {
     it('generates skill info table correctly', () => {
       let skillInfoHtml = '';
 
-      for (const heroId in heroes) {
-        const hero = heroes[heroId];
-
+      for (const hero of Object.values(hotsData.heroes)) {
         for (const skill of hero.skills) {
           skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill);
           skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, '34.3');
@@ -108,9 +103,7 @@ describe('HotsDialog.htmlGenerators', () => {
     it('generates talent info table correctly', () => {
       let talentInfoHtml = '';
 
-      for (const heroId in heroes) {
-        const hero = heroes[heroId];
-
+      for (const hero of Object.values(hotsData.heroes)) {
         for (const talentLevel in hero.talents) {
           for (const talent of hero.talents[talentLevel]) {
             talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent);

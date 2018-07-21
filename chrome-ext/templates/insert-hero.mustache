@@ -12,4 +12,33 @@
       <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>
   </div>
+  <div class="ruliweb-hots-hero-table__stats">
+    {{#units}}
+    <table class="ruliweb-hots-hero-stat-table">
+      <thead>
+        {{#unitName}}
+        <tr>
+          <th colspan="3">{{unitName}}</th>
+        </tr>
+        {{/unitName}}
+        <tr>
+          <th>능력치</th>
+          <th>1레벨 (성장률)</th>
+          <th>20레벨</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#stats}}
+        <tr>
+          <td><img class="ruliweb-hots-hero-stat-table__stat-icon" src="{{iconUrl}}" alt="{{name}}" title="{{name}}"> {{name}}{{#altName}} ({{altName}}){{/altName}}</td>
+          {{^level1}}<td colspan="2">{{value}}</td>{{/level1}}
+          {{#percentScaling}}<td>{{level1}} (+{{percentScaling}}%)</td>{{/percentScaling}}
+          {{#levelAdd}}<td>{{level1}} (+{{levelAdd}})</td>{{/levelAdd}}
+          {{#level20}}<td>{{level20}}</td>{{/level20}}
+        </tr>
+        {{/stats}}
+      </tbody>
+    </table>
+    {{/units}}
+  </div>
 </details>

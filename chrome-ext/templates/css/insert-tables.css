@@ -96,6 +96,49 @@
 }
 
 
+/******** Stat sections in hero tables ********/
+
+.ruliweb-hots-hero-table__stats {
+  width: 50em;
+  max-width: 100%;
+  box-sizing: border-box;
+  clear: both;
+  border-top: 1px solid #47a;
+  padding: .5em 0 0 .5em;
+  background-color: #244;
+  color: #efe;
+}
+
+.ruliweb-hots-hero-stat-table {
+  display: inline-table;
+  margin: 0 .5em .5em 0;
+  border: 2px solid #76d;
+  border-collapse: collapse;
+  background: #112;
+  text-align: center;
+}
+
+.ruliweb-hots-hero-stat-table thead {
+  background: #224;
+  color: #6ce;
+}
+
+.ruliweb-hots-hero-stat-table tbody td:first-child {
+  text-align: initial;
+}
+
+.ruliweb-hots-hero-stat-table th, .ruliweb-hots-hero-stat-table td {
+  border: 1px solid #76d;
+  padding: .4em;
+}
+
+.ruliweb-hots-hero-stat-table__stat-icon {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: sub;
+}
+
+
 /******** Skill table ********/
 
 .ruliweb-hots-skill-table {

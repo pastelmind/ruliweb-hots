@@ -27,8 +27,28 @@
  * @return {void}
  */
 
+/**
+ * A preset description for a hero's stat.
+ * @typedef {Object} StatPreset
+ * @prop {boolean=} isDisabled
+ * @prop {string} name
+ * @prop {string} iconUrl
+ */
+
+/**
+ * Collection of HotS data loaded from hots.json
+ * @typedef {Object} HotsData
+ * @prop {Object<string, Hero>} heroes Hero ID => hero data
+ * @prop {string} hotsVersion HotS version
+ * @prop {Object<string, StatPreset>} statPresets Mapping of stat ID to stat preset
+ */
+
 
 const HotsDialog = {
+  /**
+   * Set by `openHotsDialog()`
+   * @type {HotsData}
+   */
   data: null,
 
   /** @type {HtmlStringInjector} */
@@ -67,7 +87,7 @@ const HotsDialog = {
     if (!this.dialog) {
       this.dialog = new tingle.modal({ cssClass: ['hots-dialog-container'] });
 
-      this.dialog.setContent(this.buildDialogContent(this.data.heroes, this.data.hotsVersion));
+      this.dialog.setContent(this.buildDialogContent(this.data));
     }
 
     this.dialog.open();
@@ -75,14 +95,13 @@ const HotsDialog = {
 
   /**
    * Generates the dialog content and attaches event handlers.
-   * @param {Object<string, Hero>} heroes Hero ID => hero data
-   * @param {string} hotsVersion HotS version
+   * @param {HotsData} hotsData
    * @return {DocumentFragment} A collection of generated DOM elements
    */
-  buildDialogContent(heroes, hotsVersion) {
+  buildDialogContent(hotsData) {
     //Generate dialog
     const dialogFragment = this.util.createDocumentFragmentFromHtml(document,
-      this.htmlGenerators.generateDialogContent(this.heroFilters, heroes));
+      this.htmlGenerators.generateDialogContent(this.heroFilters, hotsData.heroes));
 
     //Retrieve each dialog section
     const optionsSection = dialogFragment.querySelector('.hots-dialog-options');
@@ -99,13 +118,13 @@ const HotsDialog = {
     //Add click handler for hero filters
     for (const checkbox of heroFilterCheckboxes) {
       checkbox.addEventListener('change', () =>
-        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes));
+        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, hotsData.heroes));
     }
 
     //Add click handler for hero icons
     heroIconsSection.addEventListener('click', event => {
       if (!(event.target && event.target.classList.contains('hots-hero-icon'))) return;
-      const hero = heroes[event.target.dataset.heroId];
+      const hero = hotsData.heroes[event.target.dataset.heroId];
 
       skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
       talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
@@ -117,16 +136,16 @@ const HotsDialog = {
       const iconElem = event.target;
 
       if (iconElem.classList.contains('hots-current-hero-icon')) {
-        const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
+        const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
 
-        const version = addVersionCheckbox.checked ? hotsVersion : '';
-        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version));
+        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
+        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, hotsData.statPresets));
       }
       else if (event.target.classList.contains('hots-skill-icon')) {
-        const hero = heroes[iconElem.dataset.heroId];           //data-hero-id
+        const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
         const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
         this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
       }
     });
@@ -137,18 +156,18 @@ const HotsDialog = {
       const iconElem = event.target;
 
       if (iconElem.classList.contains('hots-talent-icon')) {
-        const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
+        const hero = hotsData.heroes[iconElem.dataset.heroId];          //data-hero-id
         const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
         const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
         this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
       }
       else if (iconElem.classList.contains('hots-talentset__group-add-all')) {
-        const hero = heroes[iconElem.dataset.heroId];                   //data-hero-id
+        const hero = hotsData.heroes[iconElem.dataset.heroId];          //data-hero-id
         const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
 
-        const version = addVersionCheckbox.checked ? hotsVersion : '';
+        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
         this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
       }
     });
@@ -291,17 +310,112 @@ const HotsDialog = {
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {string=} hotsVersion (optional) HotS version string to display
+     * @param {Object<string, StatPreset>} statPresets Mapping of stat ID to stat preset
      * @return {string} HTML source
      */
-    generateHeroInfoTable(hero, hotsVersion) {
+    generateHeroInfoTable(hero, hotsVersion, statPresets) {
       const heroView = Object.create(hero);
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
+
+      if (Array.isArray(hero.stats))
+        heroView.units = hero.stats.map(unit => createUnitView(unit));
+      else
+        heroView.units = createUnitView(hero.stats);
 
       return Mustache.render(
         this.templates['insert-hero'],
         heroView
       );
+
+
+      function createUnitView(unit) {
+        const unitView = { unitName: unit.unitName, stats: [] };
+
+        for (const statId in statPresets) {
+          const statView = createStatView(unit[statId === 'attackSpeed' ? 'period' : statId], statId);
+
+          if (!statView)
+            continue;
+          else if (Array.isArray(statView))
+            unitView.stats.push(...statView.filter(stat => stat));
+          else
+            unitView.stats.push(statView);
+        }
+
+        return unitView;
+      }
+
+      function createStatView(stat, statId) {
+        const preset = statPresets[statId];
+        if (!stat || preset.isDisabled)
+          return undefined;
+
+        if (Array.isArray(stat))
+          return stat.map(s => createStatView(s, statId));
+
+        const statView = createStatViewBase(stat);
+
+        statView.iconUrl = preset.iconUrl;
+        if (!statView.name)
+          statView.name = preset.name;
+
+        if (statView.level1 && statView.level20) {
+          statView.level1 = prettifyStatValue(statView.level1, statId);
+          statView.level20 = prettifyStatValue(statView.level20, statId);
+        }
+        else if (statView.value)
+          statView.value = prettifyStatValue(statView.value, statId);
+
+        return statView;
+      }
+
+      function createStatViewBase(stat) {
+        if (typeof stat !== 'object')
+          return { value: stat };
+
+        const statViewBase = Object.create(stat);
+        if (stat.levelScaling) {
+          Object.assign(statViewBase, {
+            level1: stat.value * (1 + stat.levelScaling),
+            level20: stat.value * Math.pow(1 + stat.levelScaling, 20),
+            percentScaling: stat.levelScaling * 100
+          });
+        }
+        else if (stat.levelAdd) {
+          Object.assign(statViewBase, {
+            level1: stat.value,
+            level20: stat.value + stat.levelAdd * 19,
+            levelAdd: stat.levelAdd
+          });
+        }
+
+        return statViewBase;
+      }
+
+      function prettifyStatValue(value, statId) {
+        switch (statId) {
+          case 'hp':
+          case 'shields':
+          case 'damage':
+          case 'healEnergy':
+            return +(value.toFixed(0));
+
+          case 'attackSpeed':
+            value = 1 / value;
+          //Intentional fall-through
+
+          case 'hpRegen':
+            value = +(value.toFixed(3));
+          //Intentional fall-through
+
+          case 'range':
+            if (Number.isInteger(value))
+              return value.toFixed(1);  //Append trailing '.0'
+        }
+
+        return value;
+      }
     },
 
     /**
@@ -468,7 +582,7 @@ const HotsDialog = {
  */
 function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(['heroes', 'hotsVersion'], data => {
+    chrome.storage.local.get(['heroes', 'hotsVersion', 'statPresets'], data => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 
