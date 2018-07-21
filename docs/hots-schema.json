@@ -8,6 +8,29 @@
       "type": "string",
       "pattern": "^\\d+(\\.\\d+){1,2}$"
     },
+    "statPresets": {
+      "type": "object",
+      "additionalItems": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "iconUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "isDisabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "iconUrl"
+        ],
+        "additionalProperties": false
+      }
+    },
     "heroes": {
       "description": "Collection of hero data",
       "type": "object",
