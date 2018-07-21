@@ -70,14 +70,12 @@ if (process.argv.length <= 2 || !program.dataDir) {
     try {
       const heroDataSource = await readFileAsync(path.join(program.dataDir, dataFile), 'utf8');
       const heroData = JSON.parse(heroDataSource);
-
       const hero = heroArray.find(hero => hero.name === heroData.name);
-      if (hero) {
+
+      if (hero)
         hero.stats = extractAllHeroUnitStats(heroData);
-      }
-      else {
+      else
         console.warn('Cannot find hero with name:', heroData.name, '(skipped)');
-      }
     }
     catch (e) {
       console.error(e); //Report and consume error
@@ -101,73 +99,100 @@ if (process.argv.length <= 2 || !program.dataDir) {
 /**
  * Extracts Hero unit stats from the given hero data.
  * @param {Object} heroData
- * @return {UnitStatInfo | UnitStatInfo[]} Map of unit ID string to unit stat information
+ * @return {UnitStatInfo | UnitStatInfo[]} Stat info of a single unit, or an array of unit stat infos
  */
 function extractAllHeroUnitStats(heroData) {
   const unitStats = new Map;
 
   for (const unitData of heroData.units) {
-    const stats = extractUnitStats(unitData, heroData);
+    const unit = extractUnitStats(unitData, heroData);
 
-    if (stats && ((stats.hp.value && stats.damage) || heroData.id === 'Gall'))
-      unitStats.set(String(unitData.id), stats);
+    if (!(unit && ((unit.hp.value && unit.damage) || heroData.id === 'Gall')))
+      continue;
 
-    //Fix for Varian
+    unitStats.set(unitData.id, unit);
+
+    //Fix for Varian: Manually add stats for each heroic ability as separate units
     if (unitData.id === 'HeroVarian') {
-      const varianWeaponDamageBase = jsonFind(heroData,
-        effect => effect && effect.id === 'VarianHeroWeaponDamageBase');
-      const tauntModification = jsonFind(heroData,
-        behavior => behavior && behavior.id === 'VarianTauntHeroModifications');
-      const colossusSmashModification = jsonFind(heroData,
-        behavior => behavior && behavior.id === 'VarianColossusSmashHeroModifications');
-      const twinBladesModification = jsonFind(heroData,
-        behavior => behavior && behavior.id === 'VarianTwinBladesOfFuryHeroModifications');
+      unit.unitName = '기본';
 
-      const varianTaunt = Object.assign({}, stats);
-      varianTaunt.hp = Object.create(stats.hp);
-      varianTaunt.hpRegen = Object.create(stats.hpRegen);
-      varianTaunt.hp.value *= 1 + parseFloat(tauntModification.modification.vitalMaxFraction.life.value);
-      varianTaunt.hpRegen.value += parseFloat(tauntModification.modification.vitalRegen.life.value);
+      const varianWeaponDamageBase = jsonFindId(heroData, 'VarianHeroWeaponDamageBase');
+      const tauntMods = jsonFindId(heroData, 'VarianTauntHeroModifications');
+      const colossusSmashMods = jsonFindId(heroData, 'VarianColossusSmashHeroModifications');
+      const twinBladesMods = jsonFindId(heroData, 'VarianTwinBladesOfFuryHeroModifications');
+
+      const varianTaunt = Object.assign({}, unit);
+      varianTaunt.unitName = jsonFindId(heroData.abilities, 'VarianTaunt').name;
+      varianTaunt.hp = Object.create(unit.hp);
+      varianTaunt.hpRegen = Object.create(unit.hpRegen);
+      varianTaunt.hp.value *= 1 + parseFloat(tauntMods.modification.vitalMaxFraction.life.value);
+      varianTaunt.hpRegen.value += parseFloat(tauntMods.modification.vitalRegen.life.value);
       unitStats.set(unitData.id + 'Taunt', varianTaunt);
 
-      const varianColossusSmash = Object.assign({}, stats);
-      varianColossusSmash.damage = Object.create(stats.damage);
-      varianColossusSmash.hp = Object.create(stats.hp);
-      varianColossusSmash.hpRegen = Object.create(stats.hpRegen);
+      const varianColossusSmash = Object.assign({}, unit);
+      varianColossusSmash.unitName = jsonFindId(heroData.abilities, 'VarianColossusSmash').name;
+      varianColossusSmash.damage = Object.create(unit.damage);
+      varianColossusSmash.hp = Object.create(unit.hp);
+      varianColossusSmash.hpRegen = Object.create(unit.hpRegen);
       varianColossusSmash.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianColossusSmashWeapon.modifier);
-      varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashModification.modification.vitalMaxFraction.life.value);
-      varianColossusSmash.hpRegen.value += parseFloat(colossusSmashModification.modification.vitalRegen.life.value);
+      varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashMods.modification.vitalMaxFraction.life.value);
+      varianColossusSmash.hpRegen.value += parseFloat(colossusSmashMods.modification.vitalRegen.life.value);
       unitStats.set(unitData.id + 'ColossusSmash', varianColossusSmash);
 
-      const varianTwinBlades = Object.assign({}, stats);
-      varianTwinBlades.damage = Object.create(stats.damage);
+      const varianTwinBlades = Object.assign({}, unit);
+      varianTwinBlades.unitName = jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name;
+      varianTwinBlades.damage = Object.create(unit.damage);
       varianTwinBlades.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianTwinBladesOfFuryWeapon.modifier);
-      varianTwinBlades.period /= 1 + parseFloat(twinBladesModification.modification.unifiedAttackSpeedFactor);
+      varianTwinBlades.period /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
       unitStats.set(unitData.id + 'TwinBlades', varianTwinBlades);
     }
-
-    //Fix for Rexxar
-    if (unitData.id === 'HeroRexxar') {
-      const misha = jsonFind(heroData, unit => unit && unit.id === 'RexxarMisha');
-      unitStats.set(misha.id, extractUnitStats(misha, heroData));
+    //Fix for Rexxar: Manually add Misha's stats
+    else if (unitData.id === 'HeroRexxar') {
+      const mishaData = jsonFindId(heroData, 'RexxarMisha');
+      unitStats.set(mishaData.id, extractUnitStats(mishaData, heroData));
     }
   }
 
-  //Postprocessing of stats
-  for (const stats of unitStats.values())
-    stats.speed = +(stats.speed.toFixed(4));
-
   //Sort hero stats in a proper order
-  if (heroData.id === 'DVa')
-    return [unitStats.get('HeroDVaMech'), unitStats.get('HeroDVaPilot')];
-  if (heroData.id === 'Chen')
-    return unitStats.get('HeroChen');
+  if (heroData.id === 'DVa') {
+    const mech = unitStats.get('HeroDVaMech');
+    const pilot = unitStats.get('HeroDVaPilot');
+
+    mech.unitName = '로봇 모드';
+    pilot.unitName = '조종사 모드';
+
+    return [mech, pilot];
+  }
   if (heroData.id === 'LostVikings')
     return [unitStats.get('HeroOlaf'), unitStats.get('HeroBaleog'), unitStats.get('HeroErik')];
 
-  const statArray = [...unitStats.values()];
-  console.assert(statArray.length, heroData.id);
-  return statArray.length === 1 ? statArray[0] : statArray;
+  //Fix for Chen: Remove Earth, Wind, and Fire
+  if (heroData.id === 'Chen') {
+    const chen = unitStats.get('HeroChen');
+    unitStats.clear();
+    unitStats.set('HeroChen', chen);
+  }
+
+  //Unit count assertions
+  console.assert(unitStats.size, 'No units found for ' + heroData.id);
+
+  const EXPECTED_UNIT_COUNT = Object.freeze({
+    'Alexstrasza': 2,
+    'Rexxar': 2,
+    'Varian': 4
+  });
+  const expectedUnitCount = EXPECTED_UNIT_COUNT[heroData.id] || 1;
+  console.assert(unitStats.size <= expectedUnitCount, `Too many units (${unitStats.size}) found for ${heroData.id}, expected ${expectedUnitCount}`);
+  console.assert(unitStats.size >= expectedUnitCount, `Not enough units (${unitStats.size}) found for ${heroData.id}, expected ${expectedUnitCount}`);
+
+  //If there is only 1 unit, return it; otherwise, return an array of units
+  if (unitStats.size === 1) {
+    const unit = unitStats.values().next().value;
+    delete unit.unitName;   //Omit unit names if there is only one unit
+    return unit;
+  }
+  else
+    return [...unitStats.values()];
 }
 
 /**
@@ -176,6 +201,7 @@ function extractAllHeroUnitStats(heroData) {
 
 /**
  * @typedef {Object} UnitStatInfo
+ * @property {string} unitName
  * @property {ScalingStat} hp
  * @property {ScalingStat =} hpRegen
  * @property {ScalingStat =} mp
@@ -205,6 +231,7 @@ function extractUnitStats(unitData, heroData) {
   if (!(unitData && typeof unitData === 'object')) return undefined;
 
   const stats = {
+    unitName: unitData.name,
     hp: {
       value: unitData.lifeMax.value,
       levelScaling: unitData.lifeMax.levelScaling
@@ -222,15 +249,17 @@ function extractUnitStats(unitData, heroData) {
 
   //Fix for Alexstrasza's Dragon form
   if (unitData.id === 'HeroAlexstraszaDragon')
-    stats.hp.value = jsonFind(heroData, obj => obj && obj.id === 'HeroAlexstrasza').lifeMax.value + 500;
+    stats.hp.value = jsonFindId(heroData, 'HeroAlexstrasza').lifeMax.value + 500;
 
   //Fix for D.Va's mech
   if (unitData.id === 'HeroDVaMech')
-    stats.speed += jsonFind(unitData, behavior => behavior && behavior.id === 'DVaMechPermanentSlow').modification.moveSpeedBonus;
+    stats.speed += jsonFindId(unitData, 'DVaMechPermanentSlow').modification.moveSpeedBonus;
 
   //Fix for Rexxar's Misha
   if (unitData.id === 'RexxarMisha')
-    stats.speed *= 1 + jsonFind(unitData, behavior => behavior && behavior.id === 'RexxarMishaPassiveMoveSpeed').modification.unifiedMoveSpeedFactor;
+    stats.speed *= 1 + jsonFindId(unitData, 'RexxarMishaPassiveMoveSpeed').modification.unifiedMoveSpeedFactor;
+
+  stats.speed = +(stats.speed.toFixed(4));
 
   Object.assign(stats, extractResourceInfo(unitData));
 
@@ -295,8 +324,8 @@ function extractResourceInfo(unitData) {
   const resourceInfo = {};
 
   if (unitData.energyMax) {
-    if (unitData.energyMax >= 500) {  //Assume mana
-      if (unitData.energyMax === 500) //Assume standard mana curve
+    if (unitData.energyMax >= 500) {    //Assume mana
+      if (unitData.energyMax === 500)   //Assume standard mana curve
         resourceInfo.mp = { value: unitData.energyMax, levelAdd: 10 };
       else
         resourceInfo.mp = unitData.energyMax;
@@ -411,9 +440,7 @@ function extractWeaponInfo(weaponData, heroData) {
   else {
     //Manual fix for Fenix to compensate for bug in heroes-parser
     if (weaponData.id === 'FenixHeroWeapon') {
-      const phaseBombWeaponDamage = jsonFind(heroData.units,
-        obj => obj && obj.id === 'FenixHeroPhaseBombWeaponDamage'
-      );
+      const phaseBombWeaponDamage = jsonFindId(heroData.units, 'FenixHeroPhaseBombWeaponDamage');
 
       weaponInfo.damage = {
         value: phaseBombWeaponDamage.amount.value / 1.25,
@@ -426,16 +453,12 @@ function extractWeaponInfo(weaponData, heroData) {
 
   //Fix for Fenix
   if (weaponData.id === 'FenixHeroWeapon') {
-    const repeaterCannonBehavior = jsonFind(heroData.abilities,
-      obj => obj && obj.id === 'FenixRepeaterCannonBehavior'
-    );
+    const repeaterCannonBehavior = jsonFindId(heroData.abilities, 'FenixRepeaterCannonBehavior');
 
     weaponInfo.period /= 1 + repeaterCannonBehavior.modification.additiveAttackSpeedFactor;
   }
   else if (weaponData.id === 'FenixPhaseBombWeapon') {
-    const phaseBombBehavior = jsonFind(heroData.abilities,
-      obj => obj && obj.id === 'FenixPhaseBombBehavior'
-    );
+    const phaseBombBehavior = jsonFindId(heroData.abilities, 'FenixPhaseBombBehavior');
 
     weaponInfo.range += phaseBombBehavior.modification.weaponRange;
   }
@@ -476,6 +499,19 @@ function getDamageEffect(effect) {
   }
 
   return undefined;
+}
+
+
+/**
+ * Recursively searches through the given JSON object, and returns the first
+ * non-null object whose `id` property matches the given value.
+ * Wraps around `jsonFind()`
+ * @param {*} json
+ * @param {string} id
+ * @return {*} Matched object or `undefined`
+ */
+function jsonFindId(json, id) {
+  return jsonFind(json, obj => obj && obj.id === id);
 }
 
 

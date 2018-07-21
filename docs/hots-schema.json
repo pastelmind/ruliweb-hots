@@ -50,19 +50,39 @@
             ]
           },
           "stats": {
-            "description": "Collection of hero stats",
+            "description": "Collection of the hero's units (unit === collection of stats)",
             "type": [
               "object",
               "array"
             ],
             "oneOf": [
               {
-                "$ref": "#/definitions/stat"
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/unit"
+              },
+              {
+                    "not": {
+                      "required": [
+                        "unitName"
+                      ]
+                    }
+                  }
+                ]
               },
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/stat"
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/unit"
+                },
+                    {
+                      "required": [
+                        "unitName"
+                      ]
+                    }
+                  ]
                 },
                 "minItems": 2,
                 "maxItems": 4
@@ -109,10 +129,13 @@
     "heroes"
   ],
   "definitions": {
-    "stat": {
-      "description": "Collection of a unit's stats",
+    "unit": {
+      "description": "Represents a unit, which is a collection of stats",
       "type": "object",
       "properties": {
+        "unitName": {
+          "type": "string"
+        },
         "hp": {
           "$ref": "#/definitions/scalingDecimalStat"
         },

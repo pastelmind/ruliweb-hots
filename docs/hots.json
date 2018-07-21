@@ -9,6 +9,7 @@
       "universe": "overwatch",
       "stats": [
         {
+          "unitName": "로봇 모드",
           "hp": {
             "value": 2000,
             "levelScaling": 0.04
@@ -28,6 +29,7 @@
           }
         },
         {
+          "unitName": "조종사 모드",
           "hp": {
             "value": 1109,
             "levelScaling": 0.04
@@ -1939,6 +1941,7 @@
       "universe": "classic",
       "stats": [
         {
+          "unitName": "올라프",
           "hp": {
             "value": 1424,
             "levelScaling": 0.04
@@ -1957,6 +1960,7 @@
           }
         },
         {
+          "unitName": "밸로그",
           "hp": {
             "value": 1095,
             "levelScaling": 0.04
@@ -1975,6 +1979,7 @@
           }
         },
         {
+          "unitName": "에릭",
           "hp": {
             "value": 767,
             "levelScaling": 0.04
@@ -5201,6 +5206,7 @@
       "universe": "warcraft",
       "stats": [
         {
+          "unitName": "렉사르",
           "hp": {
             "value": 1725,
             "levelScaling": 0.04
@@ -5227,6 +5233,7 @@
           }
         },
         {
+          "unitName": "미샤",
           "hp": {
             "value": 1762,
             "levelScaling": 0.04
@@ -8327,6 +8334,7 @@
       "universe": "warcraft",
       "stats": [
         {
+          "unitName": "기본",
           "hp": {
             "value": 2116,
             "levelScaling": 0.04
@@ -8353,6 +8361,7 @@
           }
         },
         {
+          "unitName": "도발",
           "hp": {
             "value": 2750.8
           },
@@ -8377,6 +8386,7 @@
           }
         },
         {
+          "unitName": "거인의 강타",
           "hp": {
             "value": 1904.4
           },
@@ -8400,6 +8410,7 @@
           }
         },
         {
+          "unitName": "분노의 쌍검",
           "hp": {
             "value": 2116,
             "levelScaling": 0.04
@@ -13220,6 +13231,7 @@
       "universe": "warcraft",
       "stats": [
         {
+          "unitName": "알렉스트라자",
           "hp": {
             "value": 1698,
             "levelScaling": 0.04
@@ -13246,6 +13258,7 @@
           }
         },
         {
+          "unitName": "알렉스트라자",
           "hp": {
             "value": 2198,
             "levelScaling": 0.04
