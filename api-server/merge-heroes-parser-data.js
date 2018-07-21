@@ -12,7 +12,6 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const assert = require('assert');
 const program = require('commander');
 
 
@@ -24,8 +23,8 @@ const writeFileAsync = util.promisify(fs.writeFile);
 //Compatibility code for Node v8.11
 //TODO Erase when upgraded to Node v10
 (() => {
-  const { AssertionError } = require('assert');
   if (parseInt(process.version.match(/\d+/)[0]) >= 10) return;
+  const { AssertionError } = require('assert');
 
   const oldAssert = console.assert;
   console.assert = (value, message, ...args) => {
@@ -123,11 +122,6 @@ function extractAllHeroUnitStats(heroData) {
         behavior => behavior && behavior.id === 'VarianColossusSmashHeroModifications');
       const twinBladesModification = jsonFind(heroData,
         behavior => behavior && behavior.id === 'VarianTwinBladesOfFuryHeroModifications');
-
-      console.assert(varianWeaponDamageBase);
-      console.assert(tauntModification);
-      console.assert(colossusSmashModification);
-      console.assert(twinBladesModification);
 
       const varianTaunt = Object.assign({}, stats);
       varianTaunt.hp = Object.create(stats.hp);
@@ -401,8 +395,6 @@ function extractWeaponInfo(weaponData, heroData) {
 
   const damageEffect = getDamageEffect(weaponData.effects);
   if (damageEffect && damageEffect.amount) {
-    console.assert(damageEffect.amount.value, `${weaponData.id}: Missing damageEffect.amount.value`);
-    console.assert(damageEffect.amount.levelScaling, `${weaponData.id}: Missing damageEffect.amount.levelScaling`);
     console.assert(Number.isInteger(damageEffect.amount.levelScaling * 200), `${damageEffect.amount.levelScaling} is not a multiple of 0.005`);
 
     weaponInfo.damage = {
@@ -422,7 +414,6 @@ function extractWeaponInfo(weaponData, heroData) {
       const phaseBombWeaponDamage = jsonFind(heroData.units,
         obj => obj && obj.id === 'FenixHeroPhaseBombWeaponDamage'
       );
-      console.assert(phaseBombWeaponDamage, 'FenixHeroPhaseBombWeaponDamage not found');
 
       weaponInfo.damage = {
         value: phaseBombWeaponDamage.amount.value / 1.25,
@@ -438,7 +429,6 @@ function extractWeaponInfo(weaponData, heroData) {
     const repeaterCannonBehavior = jsonFind(heroData.abilities,
       obj => obj && obj.id === 'FenixRepeaterCannonBehavior'
     );
-    console.assert(repeaterCannonBehavior, 'FenixRepeaterCannonBehavior not found');
 
     weaponInfo.period /= 1 + repeaterCannonBehavior.modification.additiveAttackSpeedFactor;
   }
@@ -446,7 +436,6 @@ function extractWeaponInfo(weaponData, heroData) {
     const phaseBombBehavior = jsonFind(heroData.abilities,
       obj => obj && obj.id === 'FenixPhaseBombBehavior'
     );
-    console.assert(phaseBombBehavior, 'FenixPhaseBombBehavior not found');
 
     weaponInfo.range += phaseBombBehavior.modification.weaponRange;
   }
