@@ -8,31 +8,6 @@
 //Global constants
 const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
 
-/**
- * Asynchronously retrieves HotS data from the given URL to local storage
- * @param {string} url URL to load from
- */
-async function updateDataFromUrl(url) {
-  const hotsData = (await axios.get(url)).data;
-  console.debug('Retrieved data from', url);
-
-  decorateHotsData(hotsData);
-
-  chrome.storage.local.set(hotsData, () => {
-    if (chrome.runtime.lastError)
-      throw chrome.runtime.lastError;
-
-    console.debug('Loaded data from', url, 'to local storage');
-  });
-}
-
-/**
- * Asynchronously retrieves HotS data from the "API server" to local storage
- */
-async function updateDataFromApi() {
-  updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
-}
-
 
 //-------- main script --------//
 
@@ -86,3 +61,31 @@ chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === ALARM_UPDATE_DATA)
     updateDataFromApi();
 });
+
+
+//-------- Support functions --------//
+
+/**
+ * Asynchronously retrieves HotS data from the given URL to local storage
+ * @param {string} url URL to load from
+ */
+async function updateDataFromUrl(url) {
+  const hotsData = (await axios.get(url)).data;
+  console.debug('Retrieved data from', url);
+
+  decorateHotsData(hotsData);
+
+  chrome.storage.local.set(hotsData, () => {
+    if (chrome.runtime.lastError)
+      throw chrome.runtime.lastError;
+
+    console.debug('Loaded data from', url, 'to local storage');
+  });
+}
+
+/**
+ * Asynchronously retrieves HotS data from the "API server" to local storage
+ */
+async function updateDataFromApi() {
+  updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
+}
