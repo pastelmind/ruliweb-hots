@@ -171,7 +171,7 @@
 
   <script src="../src/js/axios.js"></script>
   <script src="../src/js/mustache.js"></script>
-  <script src="../src/js/init.js"></script>
+  <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
   <script src="../src/js/templates.js"></script>
   <script src="./js/mocks.js"></script>
@@ -179,6 +179,7 @@
     (async () => {
       //Load hero data for testing
       const hotsData = (await axios.get('./data/hots.json')).data;
+      decorateHotsData(hotsData);
       const hero = hotsData.heroes.fenix;
       hero.roleName = '암살자'; //TODO Use data prepare function
 

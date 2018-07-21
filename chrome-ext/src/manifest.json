@@ -12,6 +12,7 @@
   "background": {
     "scripts": [
       "js/axios.js",
+      "js/decorate-hots-data.js",
       "js/init.js"
     ],
     "persistent": false

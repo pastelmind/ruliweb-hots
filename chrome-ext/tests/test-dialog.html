@@ -28,7 +28,7 @@
   <script src="../src/js/axios.js"></script>
   <script src="../src/js/tingle.js"></script>
   <script src="../src/js/mustache.js"></script>
-  <script src="../src/js/init.js"></script>
+  <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
   <script src="../src/js/templates.js"></script>
   <script src="./js/mocks.js"></script>
@@ -38,8 +38,8 @@
     //Test code
     (async () => {
       HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
+      decorateHotsData(HotsDialog.data);
       const heroes = HotsDialog.data.heroes;
-      prepareHeroData(heroes);
 
       HotsDialog.launchDialog(htmlFragment => {
         //Insert the HTML fragment wrapped in a new DIV

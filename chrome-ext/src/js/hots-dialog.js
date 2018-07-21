@@ -281,7 +281,6 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateSkillIcons(hero) {
-      hero.skills.forEach((skill, index) => skill.index = index);
       return Mustache.render(this.templates['dialog-skills'], hero);
     },
 
@@ -291,18 +290,10 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateTalentList(hero) {
-      const talents = [];
-
       //Convert talent groups into nested arrays of objects
-      for (const talentLevel in hero.talents) {
-        talents.push({
-          talentLevel,
-          talentGroup: hero.talents[talentLevel].map((talent, index) => {
-            talent.index = index;
-            return talent;
-          })
-        });
-      }
+      const talents = Object.entries(hero.talents).map(
+        ([talentLevel, talentGroup]) => ({ talentLevel, talentGroup })
+      );
 
       return Mustache.render(this.templates['dialog-talents'], { talents, id: hero.id });
     },
