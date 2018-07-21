@@ -208,7 +208,7 @@ function extractAllHeroUnitStats(heroData) {
  * @return {UnitStatInfo} Unit stat information
  */
 function extractUnitStats(unitData, heroData) {
-  if (typeof unitData !== 'object') return undefined;
+  if (!(unitData && typeof unitData === 'object')) return undefined;
 
   const stats = {
     hp: {
@@ -388,7 +388,7 @@ function extractWeaponInfo(weaponData, heroData) {
     return weapons.length <= 1 ? weapons[0] : weapons;
   }
 
-  if (typeof weaponData.link === 'object')
+  if (weaponData.link && typeof weaponData.link === 'object')
     return extractWeaponInfo(weaponData.link, heroData);
 
   if (!(weaponData.range && weaponData.period))
@@ -401,8 +401,8 @@ function extractWeaponInfo(weaponData, heroData) {
 
   const damageEffect = getDamageEffect(weaponData.effects);
   if (damageEffect && damageEffect.amount) {
-    console.assert(damageEffect.amount.value, `${weaponData.id}: Missing weaponData.damageEffect.amount.value`);
-    console.assert(damageEffect.amount.levelScaling, `${weaponData.id}: Missing weaponData.damageEffect.amount.levelScaling`);
+    console.assert(damageEffect.amount.value, `${weaponData.id}: Missing damageEffect.amount.value`);
+    console.assert(damageEffect.amount.levelScaling, `${weaponData.id}: Missing damageEffect.amount.levelScaling`);
     console.assert(Number.isInteger(damageEffect.amount.levelScaling * 200), `${damageEffect.amount.levelScaling} is not a multiple of 0.005`);
 
     weaponInfo.damage = {
@@ -461,36 +461,32 @@ function extractWeaponInfo(weaponData, heroData) {
  * @return {{ effectType: 'damage', amount: ScalingStat } | undefined} Effect object if found, or `undefined`.
  */
 function getDamageEffect(effect) {
-  if (!effect) return undefined;
+  if (!(effect && typeof effect === 'object')) return undefined;
 
   if (Array.isArray(effect)) {
     const damageEffects = effect.map(e => getDamageEffect(e)).filter(e => e);
     return damageEffects.find(e => e.kind === 'Basic') || damageEffects[0];
   }
 
-  if (typeof effect === 'object') {
-    if (effect.effectType === 'damage' && effect.amount)
-      return effect;
+  if (effect.effectType === 'damage' && effect.amount)
+    return effect;
 
-    const SEARCH_PROPS = {
-      'impactEffect': 0,
-      'periodicEffects': 0,
-      'default': 0,
-      'areas': 0,   //Fix for Chen Earth
-      'effects': 0  //Fix for Chen Earth
-    };
+  const SEARCH_PROPS = {
+    'impactEffect': 0,
+    'periodicEffects': 0,
+    'default': 0,
+    'areas': 0,     //Fix for Chen Earth
+    'effects': 0    //Fix for Chen Earth
+  };
 
-    for (const propName in SEARCH_PROPS) {
-      if (effect[propName]) {
-        const damageEffect = getDamageEffect(effect[propName]);
-        if (damageEffect) return damageEffect;
-      }
+  for (const propName in SEARCH_PROPS) {
+    if (effect[propName]) {
+      const damageEffect = getDamageEffect(effect[propName]);
+      if (damageEffect) return damageEffect;
     }
-
-    return undefined;
   }
 
-  throw new Error('Unknown effect: ' + util.inspect(effect));
+  return undefined;
 }
 
 
@@ -506,7 +502,7 @@ function jsonFind(json, callback, key = undefined) {
   if (callback(json, key)) return json;
 
   let result;
-  if (typeof json === 'object') {
+  if (json && typeof json === 'object') {
     if (Array.isArray(json)) {
       for (let i = 0; i < json.length; ++i)
         if (result = jsonFind(json[i], callback, i)) return result;
