@@ -1676,18 +1676,26 @@
           "levelAdd": 0.098
         },
         "range": [
-          5.5,
-          1.25
+          {
+            "value": 5.5,
+            "altName": "인간"
+          },
+          {
+            "value": 1.25,
+            "altName": "늑대인간"
+          }
         ],
         "period": 1,
         "damage": [
           {
             "value": 140,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "인간"
           },
           {
             "value": 196,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "늑대인간"
           }
         ]
       },
@@ -20613,21 +20621,35 @@
           "levelScaling": 0.04
         },
         "range": [
-          5,
-          6.25
+          {
+            "value": 5,
+            "altName": "연발포"
+          },
+          {
+            "value": 6.25,
+            "altName": "위상 폭탄"
+          }
         ],
         "period": [
-          0.54,
-          1.35
+          {
+            "value": 0.54,
+            "altName": "연발포"
+          },
+          {
+            "value": 1.35,
+            "altName": "위상 폭탄"
+          }
         ],
         "damage": [
           {
             "value": 86,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "연발포"
           },
           {
             "value": 107.5,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "위상 폭탄"
           }
         ]
       },
@@ -21146,18 +21168,26 @@
           "levelAdd": 0.098
         },
         "range": [
-          5.5,
-          11
+          {
+            "value": 5.5,
+            "altName": "전차"
+          },
+          {
+            "value": 11,
+            "altName": "공성 모드"
+          }
         ],
         "period": 1,
         "damage": [
           {
             "value": 140,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "전차"
           },
           {
             "value": 168,
-            "levelScaling": 0.04
+            "levelScaling": 0.04,
+            "altName": "공성 모드"
           }
         ]
       },

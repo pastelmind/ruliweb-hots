@@ -272,32 +272,47 @@ function extractUnitStats(unitData, heroData) {
 
   const weapons = extractWeaponInfo(unitData.weapon, heroData);
   if (weapons) {
-    let weapon1, weapon2;
     if (Array.isArray(weapons)) {
       console.assert(weapons.length === 2, `Invalid number of weapons found (${weapons.length}), expected 2`);
-      weapon1 = weapons[0];
-      weapon2 = weapons[1];
-    }
-    else {
-      weapon1 = weapons;
-      weapon2 = null;
-    }
+      const weapon1 = weapons[0], weapon2 = weapons[1];
 
-    Object.assign(stats, weapon1);
+      const ALTERNATE_WEAPON_NAMES = Object.freeze({
+        'Greymane': Object.freeze(['인간', '늑대인간']),
+        'Fenix': Object.freeze(['연발포', '위상 폭탄']),
+        'SgtHammer': Object.freeze(['전차', '공성 모드']),
+      });
 
-    if (weapon2) {
+      const altWeaponNames = ALTERNATE_WEAPON_NAMES[heroData.id];
+      console.assert(altWeaponNames, 'Unexpected hero with multiple weapons:', heroData.id);
+
       if (weapon1.damage.value !== weapon2.damage.value || weapon1.damage.levelScaling !== weapon2.damage.levelScaling)
-        stats.damage = [stats.damage, weapon2.damage];
+        combineWeaponStats(weapon1, weapon2, 'damage', altWeaponNames);
 
       if (weapon1.range !== weapon2.range)
-        stats.range = [stats.range, weapon2.range];
+        combineWeaponStats(weapon1, weapon2, 'range', altWeaponNames);
 
       if (weapon1.period !== weapon2.period)
-        stats.period = [stats.period, weapon2.period];
+        combineWeaponStats(weapon1, weapon2, 'period', altWeaponNames);
+
+      Object.assign(stats, weapon1);
     }
+    else
+      Object.assign(stats, weapons);
   }
 
   return stats;
+
+  function combineWeaponStats(weapon1, weapon2, statName, alternateNames) {
+    if (!weapon1[statName] || typeof weapon1[statName] !== 'object')
+      weapon1[statName] = { value: weapon1[statName] };
+    if (!weapon2[statName] || typeof weapon2[statName] !== 'object')
+      weapon2[statName] = { value: weapon2[statName] };
+
+    weapon1[statName].altName = alternateNames[0];
+    weapon2[statName].altName = alternateNames[1];
+
+    weapon1[statName] = [weapon1[statName], weapon2[statName]];
+  }
 }
 
 
