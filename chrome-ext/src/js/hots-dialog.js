@@ -28,20 +28,10 @@
  */
 
 /**
- * A preset description for a hero's stat.
- * @typedef {Object} StatPreset
- * @prop {string} id Stat ID
- * @prop {string} name
- * @prop {string} iconUrl
- * @prop {boolean=} isDisabled
- */
-
-/**
  * Collection of HotS data loaded from hots.json
  * @typedef {Object} HotsData
  * @prop {Object<string, Hero>} heroes Hero ID => hero data
  * @prop {string} hotsVersion HotS version
- * @prop {StatPreset[]} statPresets Array of stat presets
  */
 
 
@@ -140,7 +130,7 @@ const HotsDialog = {
         const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
 
         const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
-        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, hotsData.statPresets));
+        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version));
       }
       else if (event.target.classList.contains('hots-skill-icon')) {
         const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
@@ -302,116 +292,14 @@ const HotsDialog = {
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {string=} hotsVersion (optional) HotS version string to display
-     * @param {StatPreset[]} statPresets Array of stat presets
      * @return {string} HTML source
      */
-    generateHeroInfoTable(hero, hotsVersion, statPresets) {
+    generateHeroInfoTable(hero, hotsVersion) {
       const heroView = Object.create(hero);
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
 
-      if (Array.isArray(hero.stats))
-        heroView.units = hero.stats.map(unit => createUnitView(unit));
-      else
-        heroView.units = createUnitView(hero.stats);
-
-      return Mustache.render(
-        this.templates['insert-hero'],
-        heroView
-      );
-
-
-      function createUnitView(unit) {
-        const unitView = { unitName: unit.unitName, stats: [] };
-
-        for (const preset of statPresets) {
-          const statView = createStatView(unit[preset.id === 'attackSpeed' ? 'period' : preset.id], preset);
-
-          if (!statView)
-            continue;
-          else if (Array.isArray(statView))
-            unitView.stats.push(...statView.filter(stat => stat));
-          else
-            unitView.stats.push(statView);
-        }
-
-        return unitView;
-      }
-
-      /**
-       * Create a view object of the stat.
-       * @param {Object} stat
-       * @param {StatPreset} preset
-       */
-      function createStatView(stat, preset) {
-        if (!stat || preset.isDisabled)
-          return undefined;
-
-        if (Array.isArray(stat))
-          return stat.map(s => createStatView(s, preset));
-
-        const statView = createStatViewBase(stat);
-
-        statView.iconUrl = preset.iconUrl;
-        if (!statView.name)
-          statView.name = preset.name;
-
-        if (statView.level1 && statView.level20) {
-          statView.level1 = prettifyStatValue(statView.level1, preset.id);
-          statView.level20 = prettifyStatValue(statView.level20, preset.id);
-        }
-        else if (statView.value)
-          statView.value = prettifyStatValue(statView.value, preset.id);
-
-        return statView;
-      }
-
-      function createStatViewBase(stat) {
-        if (typeof stat !== 'object')
-          return { value: stat };
-
-        const statViewBase = Object.create(stat);
-        if (stat.levelScaling) {
-          Object.assign(statViewBase, {
-            level1: stat.value * (1 + stat.levelScaling),
-            level20: stat.value * Math.pow(1 + stat.levelScaling, 20),
-            percentScaling: stat.levelScaling * 100
-          });
-        }
-        else if (stat.levelAdd) {
-          Object.assign(statViewBase, {
-            level1: stat.value,
-            level20: stat.value + stat.levelAdd * 19,
-            levelAdd: stat.levelAdd
-          });
-        }
-
-        return statViewBase;
-      }
-
-      function prettifyStatValue(value, statId) {
-        switch (statId) {
-          case 'hp':
-          case 'shields':
-          case 'damage':
-          case 'healEnergy':
-            return +(value.toFixed(0));
-
-          case 'attackSpeed':
-            value = 1 / value;
-          //Intentional fall-through
-
-          case 'hpRegen':
-            value = +(value.toFixed(3));
-          //Intentional fall-through
-
-          case 'range':
-            if (Number.isInteger(value))
-              return value.toFixed(1);  //Append trailing '.0'
-        }
-
-        return value;
-      }
+      return Mustache.render(this.templates['insert-hero'], heroView);
     },
 
     /**
@@ -578,7 +466,7 @@ const HotsDialog = {
  */
 function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(['heroes', 'hotsVersion', 'statPresets'], data => {
+    chrome.storage.local.get(['heroes', 'hotsVersion'], data => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 

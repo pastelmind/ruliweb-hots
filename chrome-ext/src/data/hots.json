@@ -1,5 +1,104 @@
 {
   "hotsVersion": "35.0",
+  "statPresets": [
+    {
+      "id": "hp",
+      "name": "생명력",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png"
+    },
+    {
+      "id": "hpRegen",
+      "name": "생명력 재생",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png"
+    },
+    {
+      "id": "shields",
+      "name": "보호막",
+      "iconUrl": "http://i2.ruliweb.com/img/18/07/21/164bb97668719dc2c.png"
+    },
+    {
+      "id": "mp",
+      "name": "마나",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png"
+    },
+    {
+      "id": "mpRegen",
+      "name": "마나 재생",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png"
+    },
+    {
+      "id": "energy",
+      "name": "기력",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "energyRegen",
+      "name": "기력 재생",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "fury",
+      "name": "분노",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "brew",
+      "name": "취기",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "ammo",
+      "name": "탄환",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "healEnergy",
+      "name": "치유 에너지",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png"
+    },
+    {
+      "id": "charge",
+      "name": "충전",
+      "iconUrl": "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+      "isDisabled": true
+    },
+    {
+      "id": "chargeRegen",
+      "name": "충전 재생",
+      "iconUrl": "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+      "isDisabled": true
+    },
+    {
+      "id": "zaryaEnergy",
+      "name": "에너지",
+      "iconUrl": "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png"
+    },
+    {
+      "id": "zaryaEnergyRegen",
+      "name": "에너지 재생",
+      "iconUrl": "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png"
+    },
+    {
+      "id": "damage",
+      "name": "공격력",
+      "iconUrl": "http://i2.ruliweb.com/img/18/07/07/164748d2a3b19dc2c.png"
+    },
+    {
+      "id": "attackSpeed",
+      "name": "공격 속도",
+      "iconUrl": "http://i1.ruliweb.com/img/18/07/07/164748d2bce19dc2c.png"
+    },
+    {
+      "id": "range",
+      "name": "사거리",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png"
+    },
+    {
+      "id": "speed",
+      "name": "이동 속도",
+      "iconUrl": "http://i3.ruliweb.com/img/18/07/07/164748d2c9219dc2c.png"
+    }
+  ],
   "heroes": {
     "dva": {
       "name": "D.Va",
@@ -7,25 +106,49 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "overwatch",
-      "stats": {
-        "hp": {
-          "base": 2081,
-          "percentGrowth": 4
+      "stats": [
+        {
+          "unitName": "로봇 모드",
+          "hp": {
+            "value": 2000,
+            "levelScaling": 0.04
+          },
+          "radius": 1.25,
+          "speed": 3.7383,
+          "hpRegen": {
+            "value": 4.168,
+            "levelScaling": 0.04
+          },
+          "charge": 100,
+          "range": 3.75,
+          "period": 0.25,
+          "damage": {
+            "value": 24,
+            "levelScaling": 0.04
+          }
         },
-        "hpRegen": {
-          "base": 4.33,
-          "percentGrowth": 4
-        },
-        "charge": 100,
-        "chargeRegen": 0,
-        "attackDamage": {
-          "base": 25,
-          "percentGrowth": 4
-        },
-        "attackRange": 3.75,
-        "attackSpeed": 4,
-        "speed": 3.74
-      },
+        {
+          "unitName": "조종사 모드",
+          "hp": {
+            "value": 1109,
+            "levelScaling": 0.04
+          },
+          "radius": 0.625,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 2.5664,
+            "levelScaling": 0.04
+          },
+          "charge": 100,
+          "chargeRegen": 2.1992,
+          "range": 5.5,
+          "period": 0.25,
+          "damage": {
+            "value": 55,
+            "levelScaling": 0.04
+          }
+        }
+      ],
       "skills": [
         {
           "name": "로봇 모드 (Mech Mode)",
@@ -319,28 +442,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2142,
-          "percentGrowth": 4
+          "value": 2060,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.46,
-          "percentGrowth": 4
+          "value": 4.293,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 142,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.2,
-        "attackSpeed": 0.83,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 1.2,
+        "damage": {
+          "value": 137,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -585,28 +709,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1900,
-          "percentGrowth": 4
+          "value": 1826,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.96,
-          "percentGrowth": 4
+          "value": 3.8046,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 99,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.25,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 0.8,
+        "damage": {
+          "value": 95,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -863,12 +988,16 @@
       "role": "assassin",
       "universe": "warcraft",
       "stats": {
-        "hp": 0,
-        "hpRegen": 0,
-        "attackDamage": 0,
-        "attackRange": 0,
-        "attackSpeed": 0,
-        "speed": 0
+        "hp": {
+          "value": 2950,
+          "levelScaling": 0.045
+        },
+        "radius": 1.25,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 6.1445,
+          "levelScaling": 0.045
+        }
       },
       "skills": [
         {
@@ -1111,28 +1240,29 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1620,
-          "percentGrowth": 4
+          "value": 1620,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.375,
-          "percentGrowth": 4
+          "value": 3.375,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 44,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 44,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -1374,25 +1504,25 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1768,
-          "percentGrowth": 4
+          "value": 1700,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.68,
-          "percentGrowth": 4
+          "value": 3.543,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
-        "mpRegen": 0,
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -1627,29 +1757,46 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1960,
-          "percentGrowth": 4.5
+          "value": 1876,
+          "levelScaling": 0.045
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.09,
-          "percentGrowth": 4.5
+          "value": 3.9062,
+          "levelScaling": 0.045
         },
-        "armor": 0,
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 146,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": [
+          {
+            "value": 5.5,
+            "altName": "인간"
+          },
+          {
+            "value": 1.25,
+            "altName": "늑대인간"
+          }
+        ],
+        "period": 1,
+        "damage": [
+          {
+            "value": 140,
+            "levelScaling": 0.04,
+            "altName": "인간"
+          },
+          {
+            "value": 196,
+            "levelScaling": 0.04,
+            "altName": "늑대인간"
+          }
+        ]
       },
       "skills": [
         {
@@ -1899,17 +2046,65 @@
       "type": "근접 / 원거리",
       "role": "specialist",
       "universe": "classic",
-      "stats": {
-        "hp": 1481,
-        "hpRegen": 3.08,
-        "attackDamage": {
-          "base": 54,
-          "percentGrowth": 4
+      "stats": [
+        {
+          "unitName": "올라프",
+          "hp": {
+            "value": 1424,
+            "levelScaling": 0.04
+          },
+          "radius": 1,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 2.9648,
+            "levelScaling": 0.04
+          },
+          "range": 1.25,
+          "period": 1,
+          "damage": {
+            "value": 52,
+            "levelScaling": 0.04
+          }
         },
-        "attackRange": 1.2,
-        "attackSpeed": 1,
-        "speed": 4
-      },
+        {
+          "unitName": "밸로그",
+          "hp": {
+            "value": 1095,
+            "levelScaling": 0.04
+          },
+          "radius": 0.5625,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 2.2812,
+            "levelScaling": 0.04
+          },
+          "range": 4,
+          "period": 0.9,
+          "damage": {
+            "value": 73,
+            "levelScaling": 0.04
+          }
+        },
+        {
+          "unitName": "에릭",
+          "hp": {
+            "value": 767,
+            "levelScaling": 0.04
+          },
+          "radius": 0.5,
+          "speed": 5,
+          "hpRegen": {
+            "value": 1.5976,
+            "levelScaling": 0.04
+          },
+          "range": 6.5,
+          "period": 0.7,
+          "damage": {
+            "value": 60,
+            "levelScaling": 0.04
+          }
+        }
+      ],
       "skills": [
         {
           "name": "바이킹 비상 식량 (Viking Hoard)",
@@ -2189,28 +2384,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1562,
-          "percentGrowth": 4
+          "value": 1502,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.25,
-          "percentGrowth": 4
+          "value": 3.129,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 92,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 88,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -2452,28 +2648,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1352,
-          "percentGrowth": 4
+          "value": 1300,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.82,
-          "percentGrowth": 4
+          "value": 2.711,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 109,
-          "percentGrowth": 4
-        },
-        "attackRange": 6.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 6.5,
+        "period": 1,
+        "damage": {
+          "value": 105,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -2715,28 +2912,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 3120,
-          "percentGrowth": 4
+          "value": 3000,
+          "levelScaling": 0.04
         },
+        "radius": 1.125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 6.5,
-          "percentGrowth": 4
+          "value": 6.25,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 88,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.1,
+        "damage": {
+          "value": 85,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -3002,28 +3200,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1662,
-          "percentGrowth": 4
+          "value": 1598,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.46,
-          "percentGrowth": 4
+          "value": 3.3281,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 66,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.1,
+        "damage": {
+          "value": 63,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -3241,28 +3440,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 2531,
-          "percentGrowth": 4
+          "value": 2434,
+          "levelScaling": 0.04
         },
+        "radius": 1.125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.27,
-          "percentGrowth": 4
+          "value": 5.0703,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 104,
-          "percentGrowth": 4
-        },
-        "attackRange": 1,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 1,
+        "period": 0.9,
+        "damage": {
+          "value": 100,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -3497,28 +3697,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2251,
-          "percentGrowth": 4.5
+          "value": 2154,
+          "levelScaling": 0.045
         },
+        "radius": 1,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.69,
-          "percentGrowth": 4.5
+          "value": 4.4882,
+          "levelScaling": 0.045
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 135,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.9,
+        "damage": {
+          "value": 130,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -3749,28 +3950,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2777,
-          "percentGrowth": 4
+          "value": 2670,
+          "levelScaling": 0.04
         },
+        "radius": 1.25,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.79,
-          "percentGrowth": 4
+          "value": 5.5625,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 109,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.25,
-        "attackSpeed": 0.95,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 1.05,
+        "damage": {
+          "value": 105,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -4006,28 +4208,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2080,
-          "percentGrowth": 4
+          "value": 2000,
+          "levelScaling": 0.04
         },
+        "radius": 1.125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.34,
-          "percentGrowth": 4
+          "value": 4.168,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 178,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 0.83,
-        "speed": 4.4
+        "range": 2,
+        "period": 1.2,
+        "damage": {
+          "value": 171,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -4295,28 +4498,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2131,
-          "percentGrowth": 4
+          "value": 2049,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.44,
-          "percentGrowth": 4
+          "value": 4.2695,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 118,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8,
+        "damage": {
+          "value": 113,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -4575,28 +4779,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2567,
-          "percentGrowth": 4
+          "value": 2468,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.35,
-          "percentGrowth": 4
+          "value": 5.1406,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 113,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 0.77,
-        "speed": 4.4
+        "range": 2,
+        "period": 1.3,
+        "damage": {
+          "value": 109,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -4858,28 +5063,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1354,
-          "percentGrowth": 4
+          "value": 1450,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.82,
-          "percentGrowth": 4
+          "value": 3.0195,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 127,
-          "percentGrowth": 4
-        },
-        "attackRange": 6.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 6.5,
+        "period": 0.8,
+        "damage": {
+          "value": 92,
+          "levelScaling": 0.05
+        }
       },
       "skills": [
         {
@@ -5105,31 +5311,54 @@
       "type": "원거리",
       "role": "warrior",
       "universe": "warcraft",
-      "stats": {
-        "hp": {
-          "base": 1794,
-          "percentGrowth": 4
+      "stats": [
+        {
+          "unitName": "렉사르",
+          "hp": {
+            "value": 1725,
+            "levelScaling": 0.04
+          },
+          "radius": 0.875,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 3.5898,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 5.5,
+          "period": 1.15,
+          "damage": {
+            "value": 99,
+            "levelScaling": 0.04
+          }
         },
-        "hpRegen": {
-          "base": 3.73,
-          "percentGrowth": 4
-        },
-        "mp": {
-          "base": 500,
-          "growth": 10
-        },
-        "mpRegen": {
-          "base": 3,
-          "growth": 0.098
-        },
-        "attackDamage": {
-          "base": 103,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 0.87,
-        "speed": 4.4
-      },
+        {
+          "unitName": "미샤",
+          "hp": {
+            "value": 1762,
+            "levelScaling": 0.04
+          },
+          "radius": 0.9375,
+          "speed": 5.0582,
+          "hpRegen": {
+            "value": 3.6718,
+            "levelScaling": 0.04
+          },
+          "range": 1.5,
+          "period": 1.2,
+          "damage": {
+            "value": 62,
+            "levelScaling": 0.04
+          }
+        }
+      ],
       "skills": [
         {
           "name": "미샤, 집중해! (Misha, Focus!)",
@@ -5369,28 +5598,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1487,
-          "percentGrowth": 4
+          "value": 1430,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.1,
-          "percentGrowth": 4
+          "value": 2.9804,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 94,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 90,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -5642,28 +5872,29 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1500,
-          "percentGrowth": 4
+          "value": 1442,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.12,
-          "percentGrowth": 4
+          "value": 3,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 24,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 0.8,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1.25,
+        "damage": {
+          "value": 23,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -5908,28 +6139,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1535,
-          "percentGrowth": 4
+          "value": 1475,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.19,
-          "percentGrowth": 4
+          "value": 3.0703,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.8,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -6164,28 +6396,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1282,
-          "percentGrowth": 4
+          "value": 1232,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.66,
-          "percentGrowth": 4
+          "value": 2.5664,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 66,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 63,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -6431,28 +6664,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2102,
-          "percentGrowth": 4
+          "value": 2021,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.38,
-          "percentGrowth": 4
+          "value": 4.211,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 151,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.9,
+        "damage": {
+          "value": 145,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -6681,28 +6915,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2041,
-          "percentGrowth": 4
+          "value": 1962,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.25,
-          "percentGrowth": 4
+          "value": 4.086,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 85,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.1,
+        "damage": {
+          "value": 82,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -6941,28 +7176,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1587,
-          "percentGrowth": 4
+          "value": 1525,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.3,
-          "percentGrowth": 4
+          "value": 3.1796,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -7195,20 +7431,21 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 759,
-          "percentGrowth": 4
+          "value": 730,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 30.37,
-          "percentGrowth": 4
+          "value": 29.1992,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.2,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 0.8,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -7439,28 +7676,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1529,
-          "percentGrowth": 4.5
+          "value": 1470,
+          "levelScaling": 0.045
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.18,
-          "percentGrowth": 4.5
+          "value": 3.0625,
+          "levelScaling": 0.045
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 83,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 80,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -7710,21 +7948,22 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1531,
-          "percentGrowth": 4
+          "value": 1472,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.19,
-          "percentGrowth": 4
+          "value": 3.0703,
+          "levelScaling": 0.04
         },
-        "rogueEnergy": 100,
-        "attackDamage": {
-          "base": 86,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "energy": 100,
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 83,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -7946,28 +8185,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2876,
-          "percentGrowth": 4
+          "value": 2765,
+          "levelScaling": 0.04
         },
+        "radius": 0.8125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.99,
-          "percentGrowth": 4
+          "value": 5.7617,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 92,
-          "percentGrowth": 4
-        },
-        "attackRange": 1,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 1,
+        "period": 0.9,
+        "damage": {
+          "value": 88,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -8199,25 +8439,110 @@
       "type": "근접",
       "role": "warrior,assassin",
       "universe": "warcraft",
-      "stats": {
-        "hp": 1,
-        "hpRegen": 4.58,
-        "mp": {
-          "base": 500,
-          "growth": 10
+      "stats": [
+        {
+          "unitName": "기본",
+          "hp": {
+            "value": 2116,
+            "levelScaling": 0.04
+          },
+          "radius": 0.8125,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 4.4062,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 1.25,
+          "period": 0.8,
+          "damage": {
+            "value": 74,
+            "levelScaling": 0.04
+          }
         },
-        "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+        {
+          "unitName": "도발",
+          "hp": {
+            "value": 2750.8
+          },
+          "radius": 0.8125,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 5.6562
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 1.25,
+          "period": 0.8,
+          "damage": {
+            "value": 74,
+            "levelScaling": 0.04
+          }
         },
-        "attackDamage": {
-          "base": 1,
-          "percentGrowth": 4
+        {
+          "unitName": "거인의 강타",
+          "hp": {
+            "value": 1904.4
+          },
+          "radius": 0.8125,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 4.0039
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 1.25,
+          "period": 0.8,
+          "damage": {
+            "value": 148
+          }
         },
-        "attackRange": 1.2,
-        "attackSpeed": 1.25,
-        "speed": 4.4
-      },
+        {
+          "unitName": "분노의 쌍검",
+          "hp": {
+            "value": 2116,
+            "levelScaling": 0.04
+          },
+          "radius": 0.8125,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 4.4062,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 1.25,
+          "period": 0.4,
+          "damage": {
+            "value": 59.2
+          }
+        }
+      ],
       "skills": [
         {
           "name": "영웅의 일격 (Heroic Strike)",
@@ -8470,28 +8795,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1324,
-          "percentGrowth": 4
+          "value": 1273,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.76,
-          "percentGrowth": 4
+          "value": 2.6523,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 78,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.67,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.6,
+        "damage": {
+          "value": 75,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -8725,22 +9051,23 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2129,
-          "percentGrowth": 4
+          "value": 2047,
+          "levelScaling": 0.04
         },
+        "radius": 0.6875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.43,
-          "percentGrowth": 4
+          "value": 4.2656,
+          "levelScaling": 0.04
         },
-        "rogueEnergy": 100,
-        "rogueEnergyRegen": 10,
-        "attackDamage": {
-          "base": 82,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.2,
-        "attackSpeed": 2,
-        "speed": 4.4
+        "energy": 100,
+        "energyRegen": 10,
+        "range": 1.25,
+        "period": 0.5,
+        "damage": {
+          "value": 79,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -9012,28 +9339,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 2886,
-          "percentGrowth": 4
+          "value": 2775,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 6.01,
-          "percentGrowth": 4
+          "value": 5.7812,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 57,
-          "percentGrowth": 4
-        },
-        "attackRange": 4.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 4.5,
+        "period": 1,
+        "damage": {
+          "value": 55,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -9288,28 +9616,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1508,
-          "percentGrowth": 4
+          "value": 1450,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.14,
-          "percentGrowth": 4
+          "value": 3.0195,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 84,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 81,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -9574,20 +9903,21 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1794,
-          "percentGrowth": 4
+          "value": 1725,
+          "levelScaling": 0.04
         },
+        "radius": 0.6875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.74,
-          "percentGrowth": 4
+          "value": 3.5898,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 114,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 1.67,
-        "speed": 4.4
+        "range": 2,
+        "period": 0.6,
+        "damage": {
+          "value": 110,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -9803,21 +10133,22 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2435,
-          "percentGrowth": 4
+          "value": 2341,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.08,
-          "percentGrowth": 4
+          "value": 4.879,
+          "levelScaling": 0.04
         },
         "fury": 100,
-        "attackDamage": {
-          "base": 84,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8,
+        "damage": {
+          "value": 84,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -10043,28 +10374,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1951,
-          "percentGrowth": 4
+          "value": 1876,
+          "levelScaling": 0.04
         },
+        "radius": 0.8125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.06,
-          "percentGrowth": 4
+          "value": 3.9062,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 180,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.1,
+        "damage": {
+          "value": 173,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -10295,28 +10627,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1749,
-          "percentGrowth": 4
+          "value": 1682,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.64,
-          "percentGrowth": 4
+          "value": 3.504,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 259,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.67,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.5,
+        "damage": {
+          "value": 249,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -10575,28 +10908,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1482,
-          "percentGrowth": 4
+          "value": 1425,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.09,
-          "percentGrowth": 4
+          "value": 2.9687,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 94,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.67,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.6,
+        "damage": {
+          "value": 90,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -10848,28 +11182,29 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1598,
-          "percentGrowth": 4
+          "value": 1598,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.32,
-          "percentGrowth": 4
+          "value": 3.3281,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 30,
-          "percentGrowth": 4
-        },
-        "attackRange": 6.5,
-        "attackSpeed": 1.33,
-        "speed": 4.4
+        "range": 6.5,
+        "period": 0.75,
+        "damage": {
+          "value": 30,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -11111,28 +11446,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2184,
-          "percentGrowth": 4
+          "value": 2100,
+          "levelScaling": 0.04
         },
+        "radius": 1.25,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.34,
-          "percentGrowth": 4
+          "value": 4.375,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 95,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1,
+        "damage": {
+          "value": 91,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -11379,28 +11715,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 2569,
-          "percentGrowth": 4
+          "value": 2470,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.35,
-          "percentGrowth": 4
+          "value": 5.1445,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 115,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.2,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 1,
+        "damage": {
+          "value": 111,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -11654,20 +11991,21 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 712,
-          "percentGrowth": 4
+          "value": 685,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 1.48,
-          "percentGrowth": 4
+          "value": 1.4257,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 27,
-          "percentGrowth": 4
-        },
-        "attackRange": 1,
-        "attackSpeed": 1.43,
-        "speed": 4.4
+        "range": 1,
+        "period": 0.7,
+        "damage": {
+          "value": 26,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -11975,28 +12313,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2756,
-          "percentGrowth": 4
+          "value": 2650,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.47,
-          "percentGrowth": 4
+          "value": 5.5195,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 99,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 2,
+        "period": 1,
+        "damage": {
+          "value": 95,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -12229,24 +12568,25 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1829,
-          "percentGrowth": 4
+          "value": 1700,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.8,
-          "percentGrowth": 4
+          "value": 3.539,
+          "levelScaling": 0.04
         },
         "healEnergy": {
-          "base": 495,
-          "percentGrowth": 4
+          "value": 475,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 71,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.8,
+        "damage": {
+          "value": 68,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -12484,28 +12824,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2848,
-          "percentGrowth": 4
+          "value": 2464.2,
+          "levelScaling": 0.04
         },
+        "radius": 1.25,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.93,
-          "percentGrowth": 4
+          "value": 5.1328,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 88,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 85,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -12733,28 +13074,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1976,
-          "percentGrowth": 4
+          "value": 1900,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.11,
-          "percentGrowth": 4
+          "value": 3.957,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 146,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.2,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8332,
+        "damage": {
+          "value": 140,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -12994,31 +13336,62 @@
       "type": "원거리",
       "role": "support",
       "universe": "warcraft",
-      "stats": {
-        "hp": {
-          "base": 1766,
-          "percentGrowth": 4
+      "stats": [
+        {
+          "unitName": "알렉스트라자",
+          "hp": {
+            "value": 1698,
+            "levelScaling": 0.04
+          },
+          "radius": 0.75,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 3.539,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 5.5,
+          "period": 1,
+          "damage": {
+            "value": 73,
+            "levelScaling": 0.04
+          }
         },
-        "hpRegen": {
-          "base": 3.68,
-          "percentGrowth": 4
-        },
-        "mp": {
-          "base": 500,
-          "growth": 10
-        },
-        "mpRegen": {
-          "base": 3,
-          "growth": 0.098
-        },
-        "attackDamage": {
-          "base": 76,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
-      },
+        {
+          "unitName": "알렉스트라자",
+          "hp": {
+            "value": 2198,
+            "levelScaling": 0.04
+          },
+          "radius": 1.25,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 3.7226,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 9,
+          "period": 1.25,
+          "damage": {
+            "value": 143,
+            "levelScaling": 0.04
+          }
+        }
+      ],
       "skills": [
         {
           "name": "용의 여왕 (Dragonqueen)",
@@ -13290,28 +13663,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2809,
-          "percentGrowth": 4
+          "value": 2700,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.85,
-          "percentGrowth": 4
+          "value": 5.625,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 103,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.1,
+        "damage": {
+          "value": 99,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -13550,28 +13924,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2243,
-          "percentGrowth": 4
+          "value": 2156,
+          "levelScaling": 0.04
         },
+        "radius": 0.8125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.67,
-          "percentGrowth": 4
+          "value": 4.4921,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 82,
-          "percentGrowth": 4
-        },
-        "attackRange": 1,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 1,
+        "period": 1,
+        "damage": {
+          "value": 75,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -13816,28 +14191,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2786,
-          "percentGrowth": 4
+          "value": 2678,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.63,
-          "percentGrowth": 4
+          "value": 5.418,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 161,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 0.77,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 1.3,
+        "damage": {
+          "value": 155,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -14073,20 +14449,21 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1716,
-          "percentGrowth": 4
+          "value": 1650,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.58,
-          "percentGrowth": 4
+          "value": 3.4375,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 81,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.25,
-        "attackSpeed": 1.82,
-        "speed": 4.4
+        "range": 1.25,
+        "period": 0.55,
+        "damage": {
+          "value": 78,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -14311,28 +14688,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1638,
-          "percentGrowth": 4
+          "value": 1575,
+          "levelScaling": 0.04
         },
+        "radius": 1.1875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.41,
-          "percentGrowth": 4
+          "value": 3.2812,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 83,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.8,
+        "damage": {
+          "value": 80,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -14570,22 +14948,22 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 2384,
-          "percentGrowth": 4
+          "value": 2292,
+          "levelScaling": 0.04
         },
+        "radius": 0.9375,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.96,
-          "percentGrowth": 4
+          "value": 4.7734,
+          "levelScaling": 0.04
         },
-        "energy": 100,
-        "energyRegen": 3,
-        "attackDamage": {
-          "base": 21,
-          "percentGrowth": 4
-        },
-        "attackRange": 4.5,
-        "attackSpeed": 4,
-        "speed": 4.4
+        "zaryaEnergy": 100,
+        "range": 4.5,
+        "period": 0.25,
+        "damage": {
+          "value": 20,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -14850,28 +15228,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2267,
-          "percentGrowth": 4
+          "value": 2180,
+          "levelScaling": 0.04
         },
+        "radius": 1,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.73,
-          "percentGrowth": 4
+          "value": 4.543,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 103,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8,
+        "damage": {
+          "value": 99,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -15117,20 +15496,22 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1404,
-          "percentGrowth": 4
+          "value": 1350,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.92,
-          "percentGrowth": 4
+          "value": 2.8125,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 114,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "ammo": 4,
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 110,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -15378,28 +15759,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1687,
-          "percentGrowth": 4
+          "value": 1622,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.52,
-          "percentGrowth": 4
+          "value": 3.379,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 131,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.9,
+        "damage": {
+          "value": 126,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -15632,28 +16014,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1420,
-          "percentGrowth": 4
+          "value": 1365,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.95,
-          "percentGrowth": 4
+          "value": 2.8437,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -15896,28 +16279,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2081,
-          "percentGrowth": 4
+          "value": 2000,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.33,
-          "percentGrowth": 4
+          "value": 4.168,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 114,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.2,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8332,
+        "damage": {
+          "value": 110,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -16162,28 +16546,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1951,
-          "percentGrowth": 4
+          "value": 1875,
+          "levelScaling": 0.04
         },
+        "radius": 0.875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.53,
-          "percentGrowth": 4
+          "value": 3.9023,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 98,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.8,
+        "damage": {
+          "value": 94,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -16414,21 +16799,22 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 2572,
-          "percentGrowth": 4
+          "value": 2473,
+          "levelScaling": 0.04
         },
+        "radius": 1,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.36,
-          "percentGrowth": 4
+          "value": 5.1523,
+          "levelScaling": 0.04
         },
         "brew": 100,
-        "attackDamage": {
-          "base": 87,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 2,
+        "period": 0.9,
+        "damage": {
+          "value": 84,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -16677,20 +17063,21 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 3083,
-          "percentGrowth": 4.5
+          "value": 2950,
+          "levelScaling": 0.045
         },
+        "radius": 1.25,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 6.43,
-          "percentGrowth": 4.5
+          "value": 6.1445,
+          "levelScaling": 0.045
         },
-        "attackDamage": {
-          "base": 136,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 0.91,
-        "speed": 4.4
+        "range": 2,
+        "period": 1.1,
+        "damage": {
+          "value": 130,
+          "levelScaling": 0.045
+        }
       },
       "skills": [
         {
@@ -16920,28 +17307,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2109,
-          "percentGrowth": 4
+          "value": 2027,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.39,
-          "percentGrowth": 4
+          "value": 4.2226,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 62,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.75,
-        "attackSpeed": 2,
-        "speed": 4.4
+        "range": 1.75,
+        "period": 0.5,
+        "damage": {
+          "value": 60,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -17197,28 +17585,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 1914,
-          "percentGrowth": 4
+          "value": 1840,
+          "levelScaling": 0.04
         },
+        "radius": 0.6875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.828,
-          "percentGrowth": 4
+          "value": 3.8281,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 135,
-          "percentGrowth": 4
-        },
-        "attackRange": 4,
-        "attackSpeed": 1.33,
-        "speed": 4.4
+        "range": 4,
+        "period": 0.75,
+        "damage": {
+          "value": 130,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -17448,28 +17837,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1581,
-          "percentGrowth": 4
+          "value": 1520,
+          "levelScaling": 0.04
         },
+        "radius": 1,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.3,
-          "percentGrowth": 4
+          "value": 3.168,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 68,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.11,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.9,
+        "damage": {
+          "value": 65,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -17700,28 +18090,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1748,
-          "percentGrowth": 4
+          "value": 1680,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.64,
-          "percentGrowth": 4
+          "value": 3.5,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 125,
-          "percentGrowth": 4
-        },
-        "attackRange": 2,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 2,
+        "period": 0.8,
+        "damage": {
+          "value": 120,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -17970,28 +18361,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1503,
-          "percentGrowth": 4
+          "value": 1445,
+          "levelScaling": 0.04
         },
+        "radius": 1,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.13,
-          "percentGrowth": 4
+          "value": 3.0117,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 75,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 72,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -18239,28 +18631,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1376,
-          "percentGrowth": 4
+          "value": 1323,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.87,
-          "percentGrowth": 4
+          "value": 2.7578,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 76,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 1,
+        "damage": {
+          "value": 73,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -18496,28 +18889,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 2002,
-          "percentGrowth": 4
+          "value": 1925,
+          "levelScaling": 0.04
         },
+        "radius": 0.9375,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 4.2,
-          "percentGrowth": 4.5
+          "value": 4.0117,
+          "levelScaling": 0.045
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 50,
-          "percentGrowth": 4
-        },
-        "attackRange": 4.5,
-        "attackSpeed": 4,
-        "speed": 4.4
+        "range": 4.5,
+        "period": 0.25,
+        "damage": {
+          "value": 48,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -18777,28 +19171,29 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1339,
-          "percentGrowth": 4
+          "value": 1287,
+          "levelScaling": 0.04
         },
+        "radius": 0.9375,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.79,
-          "percentGrowth": 4
+          "value": 2.6796,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 14,
-          "percentGrowth": 4
-        },
-        "attackRange": 6.5,
-        "attackSpeed": 4,
-        "speed": 4.4
+        "range": 6.5,
+        "period": 0.25,
+        "damage": {
+          "value": 14,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -19030,21 +19425,22 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1331,
-          "percentGrowth": 4
+          "value": 1280,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.55,
-          "percentGrowth": 4
+          "value": 5.332,
+          "levelScaling": 0.04
         },
         "ammo": 20,
-        "attackDamage": {
-          "base": 28,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 8,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.125,
+        "damage": {
+          "value": 27,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -19271,28 +19667,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1571,
-          "percentGrowth": 4
+          "value": 1511,
+          "levelScaling": 0.04
         },
+        "radius": 0.625,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.28,
-          "percentGrowth": 4
+          "value": 3.1484,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 85,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.33,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.75,
+        "damage": {
+          "value": 82,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -19530,28 +19927,29 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "base": 2567,
-          "percentGrowth": 4
+          "value": 2468,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 5.35,
-          "percentGrowth": 4
+          "value": 5.1406,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 81,
-          "percentGrowth": 4
-        },
-        "attackRange": 1.5,
-        "attackSpeed": 1.25,
-        "speed": 4.4
+        "range": 1.5,
+        "period": 0.8,
+        "damage": {
+          "value": 78,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -19783,28 +20181,29 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "base": 1420,
-          "percentGrowth": 4
+          "value": 1365,
+          "levelScaling": 0.04
         },
+        "radius": 0.9375,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.95,
-          "percentGrowth": 4
+          "value": 2.8437,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 108,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1.43,
-        "speed": 4.4
+        "range": 5.5,
+        "period": 0.7,
+        "damage": {
+          "value": 104,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -20043,22 +20442,22 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1310,
-          "percentGrowth": 4
+          "value": 1260,
+          "levelScaling": 0.04
         },
+        "radius": 0.6875,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.72,
-          "percentGrowth": 4
+          "value": 2.625,
+          "levelScaling": 0.04
         },
         "mp": 600,
-        "mpRegen": 100,
-        "attackDamage": {
-          "base": 34,
-          "percentGrowth": 4
-        },
-        "attackRange": 3,
-        "attackSpeed": 1.11,
-        "speed": 4.84
+        "range": 3,
+        "period": 0.9,
+        "damage": {
+          "value": 33,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -20307,24 +20706,51 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1186,
-          "percentGrowth": 4
+          "value": 1140,
+          "levelScaling": 0.04
         },
+        "radius": 1.125,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.48,
-          "percentGrowth": 4
+          "value": 2.379,
+          "levelScaling": 0.04
         },
         "shields": {
-          "base": 790,
-          "percentGrowth": 4
+          "value": 760,
+          "levelScaling": 0.04
         },
-        "attackDamage": {
-          "base": 89,
-          "percentGrowth": 4
-        },
-        "attackRange": 5,
-        "attackSpeed": 1.85,
-        "speed": 4.4
+        "range": [
+          {
+            "value": 5,
+            "altName": "연발포"
+          },
+          {
+            "value": 6.25,
+            "altName": "위상 폭탄"
+          }
+        ],
+        "period": [
+          {
+            "value": 0.54,
+            "altName": "연발포"
+          },
+          {
+            "value": 1.35,
+            "altName": "위상 폭탄"
+          }
+        ],
+        "damage": [
+          {
+            "value": 86,
+            "levelScaling": 0.04,
+            "altName": "연발포"
+          },
+          {
+            "value": 107.5,
+            "levelScaling": 0.04,
+            "altName": "위상 폭탄"
+          }
+        ]
       },
       "skills": [
         {
@@ -20559,28 +20985,29 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "base": 1376,
-          "percentGrowth": 4
+          "value": 1323,
+          "levelScaling": 0.04
         },
+        "radius": 0.75,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 2.87,
-          "percentGrowth": 4
+          "value": 2.7578,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 180,
-          "percentGrowth": 4
-        },
-        "attackRange": 6.5,
-        "attackSpeed": 0.67,
-        "speed": 4.4
+        "range": 6.5,
+        "period": 1.5,
+        "damage": {
+          "value": 173,
+          "levelScaling": 0.04
+        }
       },
       "skills": [
         {
@@ -20822,28 +21249,46 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "base": 1789,
-          "percentGrowth": 4
+          "value": 1720,
+          "levelScaling": 0.04
         },
+        "radius": 1.25,
+        "speed": 4.3984,
         "hpRegen": {
-          "base": 3.72,
-          "percentGrowth": 4
+          "value": 3.582,
+          "levelScaling": 0.04
         },
         "mp": {
-          "base": 500,
-          "growth": 10
+          "value": 500,
+          "levelAdd": 10
         },
         "mpRegen": {
-          "base": 3,
-          "growth": 0.098
+          "value": 3,
+          "levelAdd": 0.098
         },
-        "attackDamage": {
-          "base": 146,
-          "percentGrowth": 4
-        },
-        "attackRange": 5.5,
-        "attackSpeed": 1,
-        "speed": 4.4
+        "range": [
+          {
+            "value": 5.5,
+            "altName": "전차"
+          },
+          {
+            "value": 11,
+            "altName": "공성 모드"
+          }
+        ],
+        "period": 1,
+        "damage": [
+          {
+            "value": 140,
+            "levelScaling": 0.04,
+            "altName": "전차"
+          },
+          {
+            "value": 168,
+            "levelScaling": 0.04,
+            "altName": "공성 모드"
+          }
+        ]
       },
       "skills": [
         {
