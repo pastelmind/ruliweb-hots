@@ -22,7 +22,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
   //Load pre-packaged hero data
   updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
-    .then(() => updateDataFromApi()); //Immediately attempt an update from API
+    .then(updateDataFromApi); //Immediately attempt an update from API
 
   //Clear and setup an alarm to update the ID.
   chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
@@ -75,17 +75,20 @@ async function updateDataFromUrl(url) {
 
   decorateHotsData(hotsData);
 
-  chrome.storage.local.set(hotsData, () => {
-    if (chrome.runtime.lastError)
-      throw chrome.runtime.lastError;
+  await new Promise(resolve =>
+    chrome.storage.local.set(hotsData, () => {
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
 
-    console.debug('Loaded data from', url, 'to local storage');
-  });
+      console.debug('Loaded data from', url, 'to local storage');
+      resolve();
+    })
+  );
 }
 
 /**
  * Asynchronously retrieves HotS data from the "API server" to local storage
  */
 async function updateDataFromApi() {
-  updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
+  await updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
 }
