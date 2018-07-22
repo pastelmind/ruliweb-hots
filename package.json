@@ -14,7 +14,7 @@
     "preversion": "npm run -s prebuild",
     "version": "node ./scripts/update-manifest.js && git add ./chrome-ext/src/manifest.json",
     "postversion": "npm run -s postbuild",
-    "postinstall": "npm run -s update-dep",
+    "postinstall": "npm run -s prebuild",
     "update-dep": "npm run update-dep:axios && npm run update-dep:mustache && npm run update-dep:tingle.js",
     "update-dep:axios": "cp -f ./node_modules/axios/dist/axios.min.js ./chrome-ext/src/js/axios.js",
     "update-dep:mustache": "cp -f ./node_modules/mustache/mustache.min.js ./chrome-ext/src/js/mustache.js",

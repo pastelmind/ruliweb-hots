@@ -3,8 +3,6 @@
 /**
  * Combines the contents of all files in `templates/` and stores them as a
  * browser-side script in src/js/templates.js
- *
- * TODO Add this script to npm install script
  */
 
 
