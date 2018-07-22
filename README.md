@@ -3,6 +3,13 @@
 
 [설치하러 가기](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
 
+# How to build
+1. Download a copy of this repository.
+2. Run `npm install` in the root directory.
+3. Run `npm build`.
+
+Note: All npm scripts expect a Unix-like shell environment. Windows users may need to set npm's `script-shell` configuration to Git Bash.
+
 # Organization
 * `api-server`: 히어로즈 오브 더 스톰 데이터(`hots.json`)를 다루는 데 쓰이는 여러 Node.js 스크립트를 모아놓은 디렉토리
 * `chrome-ext`: 크롬 확장 프로그램(extension)에 관련된 파일
@@ -16,7 +23,6 @@
 * `npm run build`: Package the Chrome extension source into a ZIP file which can be uploaded to the Chrome Web Store.
 * `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/js/templates.js` when anything changes.
 * `npm run crawl-namu`: Run the NamuWiki crawl script. For usage, run `npm run crawl-namu -- --help` .
-* `npm run update-dep`: Copy necessary dependencies from `node_modules/` to `chrome-ext/src/js/` . Automatically called when running `npm install` or `npm build`.
 * `npm run validate-data`: Validates `hots.json`. This script is called by `npm test`.
 
 # Dependencies
