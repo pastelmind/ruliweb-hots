@@ -8,6 +8,7 @@
 
 const assert = require('assert');
 const fs = require('fs');
+const path = require('path');
 const namu2hots = require('../src/namu2hots');
 
 
@@ -15,11 +16,11 @@ describe('namu2hots', () => {
   const ref = {};
 
   before('Loading test data files', () => {
-    ref.namuLucioArticle = fs.readFileSync('./util/tests/input/루시우.txt', 'utf8');
-    ref.namuAbathurArticle = fs.readFileSync('./util/tests/input/아바투르.txt', 'utf8');
-    ref.namuChoGallArticle = fs.readFileSync('./util/tests/input/초갈.txt', 'utf8');
+    ref.namuLucioArticle = fs.readFileSync(path.join(__dirname, 'input/루시우.txt'), 'utf8');
+    ref.namuAbathurArticle = fs.readFileSync(path.join(__dirname, 'input/아바투르.txt'), 'utf8');
+    ref.namuChoGallArticle = fs.readFileSync(path.join(__dirname, 'input/초갈.txt'), 'utf8');
     ref.heroJsonCompact = JSON.parse(
-      fs.readFileSync('./util/tests/input/heroes-compact.json', 'utf8'));
+      fs.readFileSync(path.join(__dirname, 'input/heroes-compact.json'), 'utf8'));
 
     Object.freeze(ref);
   });
