@@ -130,6 +130,10 @@
   font: 1em sans-serif;
 }
 
+.ruliweb-hots-hero-stat-table td:first-child {
+  padding: .4em .4em .4em 2em;
+}
+
 .ruliweb-hots-hero-stat-table__stat-icon {
   width: 1.2em;
   height: 1.2em;
@@ -222,10 +226,33 @@
 
 /******** Stat sections in skill/talent tables ********/
 
-.skill-stat-icon {
-  width: 1.1em;
-  height: 1.1em;
-  vertical-align: sub;
+.skill-stat-entry {
+  padding-left: 1.5em;
+}
+
+.skill-stat-entry--mana-cost {
+  color: #4be;
+  background: url(http://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png) .15em/1em no-repeat;
+}
+
+.skill-stat-entry--life-cost {
+  color: #5d2;
+  background: url(http://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png) .15em/1em no-repeat;
+}
+
+.skill-stat-entry--energy-cost {
+  color: #ee3;
+  background: url(http://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png) .15em/1em no-repeat;
+}
+
+.skill-stat-entry--cooldown {
+  color: #ddd;
+  background: url(http://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat;
+}
+
+.skill-stat-entry--extras {
+  color: #d90;
+  background: url(http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat;
 }
 
 .hots-version {

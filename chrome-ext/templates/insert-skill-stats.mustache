@@ -1,20 +1,20 @@
 {{#hasStats}}<br>
 {{#manaCost}}
-<br><img class="skill-stat-icon" src="http://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png" alt="마나" title="마나">&nbsp;<span style="color: #4be"><b>마나</b> {{manaCost}}</span>
+<br><span class="skill-stat-entry skill-stat-entry--mana-cost"><b>마나</b> {{manaCost}}</span>
 {{/manaCost}}
 {{#lifeCost}}
-<br><img class="skill-stat-icon" src="http://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png" alt="생명력" title="생명력">&nbsp;<span style="color: #5d2"><b>생명력</b> {{lifeCost}}</span>
+<br><span class="skill-stat-entry skill-stat-entry--life-cost"><b>생명력</b> {{lifeCost}}</span>
 {{/lifeCost}}
 {{#energyCost}}
-<br><img class="skill-stat-icon" src="http://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png" alt="{{energyCostName}}" title="{{energyCostName}}">&nbsp;<span style="color: #ee3"><b>{{energyCostName}}</b> {{energyCost}}</span>
+<br><span class="skill-stat-entry skill-stat-entry--energy-cost"><b>{{energyCostName}}</b> {{energyCost}}</span>
 {{/energyCost}}
 {{#cooldown}}
-<br><img class="skill-stat-icon" src="http://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png" alt="재사용 대기시간" title="재사용 대기시간">&nbsp;<span style="color: #ddd"><b>재사용 대기시간</b> {{cooldown}}초</span>
+<br><span class="skill-stat-entry skill-stat-entry--cooldown"><b>재사용 대기시간</b> {{cooldown}}초</span>
 {{/cooldown}}
 {{#rechargeCooldown}}
-<br><img class="skill-stat-icon" src="http://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png" alt="충전 대기시간" title="충전 대기시간">&nbsp;<span style="color: #ddd"><b>충전 대기시간</b> {{rechargeCooldown}}초</span>
+<br><span class="skill-stat-entry skill-stat-entry--cooldown"><b>충전 대기시간</b> {{rechargeCooldown}}초</span>
 {{/rechargeCooldown}}
 {{#extras.length}}
-<br><img class="skill-stat-icon" src="http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png" alt="기타 수치" title="기타 수치">&nbsp;<span style="color: #d90">{{#extras}}<b>{{name}}</b> {{value}} {{/extras}}</span>
+<br><span class="skill-stat-entry skill-stat-entry--extras">{{#extras}}<b>{{name}}</b> {{value}} {{/extras}}</span>
 {{/extras.length}}
 {{/hasStats}}
