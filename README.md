@@ -4,10 +4,15 @@
 [설치하러 가기](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
 
 # How to build
-1. Download a copy of this repository.
-2. Run `npm install` in the root directory.
-3. Run `npm build`.
 
+```bash
+git clone -c core.symlinks=true https://github.com/pastelmind/ruliweb-hots.git
+cd ruliweb-hots
+npm install
+npm run build
+```
+
+Note: This project uses symbolic links. Windows users may require administrator privileges.  
 Note: All npm scripts expect a Unix-like shell environment. Windows users may need to set npm's `script-shell` configuration to Git Bash.
 
 # Organization
