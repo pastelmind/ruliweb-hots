@@ -452,19 +452,8 @@ function extractWeaponInfo(weaponData, heroData) {
         weaponInfo.damage.value *= 1 + parseFloat(damageEffect.multiplicativeModifier.siegeBonus.modifier);
     }
   }
-  else {
-    //Manual fix for Fenix to compensate for bug in heroes-parser
-    if (weaponData.id === 'FenixHeroWeapon') {
-      const phaseBombWeaponDamage = jsonFindId(heroData.units, 'FenixHeroPhaseBombWeaponDamage');
-
-      weaponInfo.damage = {
-        value: phaseBombWeaponDamage.amount.value / 1.25,
-        levelScaling: phaseBombWeaponDamage.amount.levelScaling
-      };
-    }
-    else
-      return undefined;
-  }
+  else
+    return undefined;
 
   //Fix for Fenix
   if (weaponData.id === 'FenixHeroWeapon') {
