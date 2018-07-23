@@ -18,7 +18,8 @@ const minifyHtml = require('html-minifier').minify;
 const CSS_CLASSES_PRESERVED = Object.freeze({
   'ruliweb-hots-hero-table': 0,
   'ruliweb-hots-skill-table': 0,
-  'ruliweb-hots-talent-table': 0
+  'ruliweb-hots-talent-table': 0,
+  'ruliweb-hots-table': 0
 });
 
 

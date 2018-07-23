@@ -14,15 +14,29 @@ if (isInIframe()) {
     if (!(event.target && event.ctrlKey)) return;
 
     const rootElem = event.target.parentNode;
-    if (rootElem.classList.contains('ruliweb-hots-hero-table')
-      || rootElem.classList.contains('ruliweb-hots-skill-table')
-      || rootElem.classList.contains('ruliweb-hots-talent-table')
-    ) {
+    if (rootElem.classList.contains('ruliweb-hots-table')) {
       rootElem.style.transition = 'transform .2s';
       rootElem.style.transform = 'scale(0, 0)';
       setTimeout(() => rootElem.parentNode.removeChild(rootElem), 200);
     }
   });
+
+  //Fix for tables generated in <= v0.5.0
+  document.querySelectorAll('.ruliweb-hots-hero-table, .ruliweb-hots-skill-table, .ruliweb-hots-talent-table')
+    .forEach(oldTableRoot => {
+      const parentElement = oldTableRoot.parentNode;
+      if (parentElement && !(parentElement.tagName === 'BUTTON' && parentElement.classList.contains('ruliweb-hots-table'))) {
+        //Create the button element to wrap the old table with
+        const button = document.createElement('button');
+        button.className = 'ruliweb-hots-table';
+        button.disabled = true;
+        button.style.cssText = 'border:none;margin:0;padding:0;text-align:left;cursor:auto';
+
+        //Wrap the table in a button
+        parentElement.insertBefore(button, oldTableRoot)
+        button.appendChild(oldTableRoot);
+      }
+    });
 }
 
 
