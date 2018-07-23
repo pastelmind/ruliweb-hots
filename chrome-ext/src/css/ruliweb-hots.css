@@ -15,14 +15,18 @@
 
 /* Icons */
 
+.hots-hero-icon-wrapper, .hots-current-hero-icon-wrapper, .hots-skill-icon-wrapper, .hots-talent-icon-wrapper {
+  /* Wrap to size of content <img> */
+  display: inline-flex;
+}
+
+
 .hots-hero-icon, .hots-current-hero-icon, .hots-skill-icon, .hots-talent-icon {
-  box-sizing: border-box;
   width: 32px;
   height: 32px;
   object-fit: cover;
   border: 1px solid #333;
   cursor: pointer;
-  margin-right: 2px;
   transition: border .25s, filter .25s;
 }
 
@@ -38,7 +42,7 @@
   margin: 0;
   padding: 0;
   margin-top: .5em;
-  overflow: hidden;
+  clear: both;
 }
 
 .hots-dialog__section:first-child {
@@ -127,13 +131,11 @@
 /* Hero icons section */
 
 .hots-hero-icons {
-  overflow: visible;
   display: flex;
   flex-wrap: wrap;
 }
 
 .hots-hero-icon-wrapper {
-  display: inline-flex;
   margin: 2px;
 }
 
@@ -198,4 +200,8 @@
   border: 1px solid #5df;
   background: #77c;
   color: #fff;
+}
+
+.hots-dialog [role~="tooltip"]::after {
+  white-space: pre;
 }

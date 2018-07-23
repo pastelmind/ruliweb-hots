@@ -1,4 +1,8 @@
-<img class="hots-current-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}} {{roleName}})" title="{{name}} ({{type}} {{roleName}})">
+<div class="hots-current-hero-icon-wrapper" aria-label="{{name}} ({{type}} {{roleName}})" data-microtip-position="top" role="tooltip">
+  <img class="hots-current-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}} {{roleName}})">
+</div>
 {{#skills}}
-<img class="hots-skill-icon" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}" data-hero-id="{{id}}" data-skill-index="{{index}}">
+<div class="hots-skill-icon-wrapper" aria-label="{{type}} - {{name}}" data-microtip-position="top" role="tooltip">
+  <img class="hots-skill-icon" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" data-hero-id="{{id}}" data-skill-index="{{index}}">
+</div>
 {{/skills}}

@@ -1,7 +1,9 @@
 {{#talents}}
 <li class="hots-talentset__group"><span class="hots-talentset__group-title">{{talentLevel}}레벨</span>
   {{#talentGroup}}
-  <img class="hots-talent-icon" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{talentLevel}})" title="{{name}} ({{type}} - 레벨 {{talentLevel}})" data-hero-id="{{id}}" data-talent-level="{{talentLevel}}" data-talent-index="{{index}}">
+  <div class="hots-talent-icon-wrapper" aria-label="{{name}}&#xa;({{type}} - 레벨 {{talentLevel}})" data-microtip-position="top" role="tooltip">
+    <img class="hots-talent-icon" src="{{{iconUrl}}}" alt="{{name}} ({{type}} - 레벨 {{talentLevel}})" data-hero-id="{{id}}" data-talent-level="{{talentLevel}}" data-talent-index="{{index}}">
+  </div>
   {{/talentGroup}}
   <input type="button" class="hots-talentset__group-add-all" data-hero-id="{{id}}" data-talent-level="{{talentLevel}}" value="모두 넣기">
 </li>
