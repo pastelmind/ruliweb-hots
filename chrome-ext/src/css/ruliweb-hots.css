@@ -92,28 +92,29 @@
 
 /* Hero filters */
 
+.hots-hero-filters {
+  display: flex;
+}
+
 .hots-hero-filter-group {
-  border: 0;  /* Reset user agent style (<fieldset>) */
-  margin: 0;  /* Reset user agent style (<fieldset>) */
-  padding: 0; /* Reset user agent style (<fieldset>) */
+  display: flex;
   margin-right: 1em;
-  float: left;
 }
 
 .hots-hero-filter-group__description {
-  padding: 0; /* Reset user agent style (<legend>) */
   padding-right: 1em;
-  float: left;
 }
 
 .hero-filter {
-  float: left;
-  padding: 1px;
+  margin: 1px;
   margin-right: 5px;
 }
 
+label.hero-filter {
+  display: flex;
+}
+
 .hero-filter__content {
-  display: block;
   width: 20px;
   height: 20px;
   opacity: .3;
