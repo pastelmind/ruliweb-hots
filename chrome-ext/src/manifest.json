@@ -25,6 +25,7 @@
       ],
       "css": [
         "css/tingle.css",
+        "css/microtip.css",
         "css/ruliweb-hots.css"
       ],
       "js": [

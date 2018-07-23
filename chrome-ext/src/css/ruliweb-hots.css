@@ -38,7 +38,7 @@
   margin: 0;
   padding: 0;
   margin-top: .5em;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .hots-dialog__section:first-child {
@@ -126,9 +126,19 @@
 
 /* Hero icons section */
 
-.hots-hero-icon {
-  float: left;
+.hots-hero-icons {
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hots-hero-icon-wrapper {
+  display: inline-flex;
   margin: 2px;
+}
+
+.hots-hero-icon {
+  margin: 0;
 }
 
 .hots-hero-icon--excluded {

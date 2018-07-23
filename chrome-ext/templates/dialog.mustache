@@ -21,7 +21,9 @@
 
   <section class="hots-dialog__section hots-hero-icons">
     {{#heroes}}
-    <img class="hots-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}} {{roleName}})" title="{{name}} ({{type}} {{roleName}})">
+    <div class="hots-hero-icon-wrapper" aria-label="{{name}} ({{type}} {{roleName}})" data-microtip-position="top" role="tooltip">
+      <img class="hots-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}} {{roleName}})">
+    </div>
     {{/heroes}}
   </section>
   <section class="hots-dialog__section hots-skillset"></section>
