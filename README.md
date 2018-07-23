@@ -32,7 +32,6 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 
 # Dependencies
 * 크롬 확장 프로그램
-    * [axios](https://github.com/axios/axios)
     * [tingle.js](https://robinparisi.github.io/tingle/)
     * [mustache.js](https://github.com/janl/mustache.js)
 * 서버 스크립트

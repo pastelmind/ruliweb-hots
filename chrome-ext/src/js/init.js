@@ -22,7 +22,8 @@ chrome.runtime.onInstalled.addListener(() => {
 
   //Load pre-packaged hero data
   updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
-    .then(updateDataFromApi); //Immediately attempt an update from API
+    .catch(e => console.error(e))   //Report and consume error
+    .then(updateDataFromApi);       //Immediately attempt an update from API
 
   //Clear and setup an alarm to update the ID.
   chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
@@ -70,7 +71,11 @@ chrome.alarms.onAlarm.addListener(alarm => {
  * @param {string} url URL to load from
  */
 async function updateDataFromUrl(url) {
-  const hotsData = (await axios.get(url)).data;
+  const response = await fetch(url);
+  if (!response.ok)
+    throw new Error(`fetch() for ${url} failed with ${response.status} ${response.statusText}`);
+
+  const hotsData = await response.json();
   console.debug('Retrieved data from', url);
 
   decorateHotsData(hotsData);
@@ -87,7 +92,7 @@ async function updateDataFromUrl(url) {
 }
 
 /**
- * Asynchronously retrieves HotS data from the "API server" to local storage
+ * Asynchronously retrieves HotS data from the "API server" to local storage.
  */
 async function updateDataFromApi() {
   await updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
