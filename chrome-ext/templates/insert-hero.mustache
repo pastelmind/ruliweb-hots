@@ -1,46 +1,44 @@
-<button class="ruliweb-hots-table" disabled>
-  <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-hero-table">
-    <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{iconUrl}}) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
-    <div class="ruliweb-hots-hero-table__content">
-      <div class="ruliweb-hots-hero-table__header">
-        <div class="ruliweb-hots-hero-table__title">{{name}}</div>
-        <div class="ruliweb-hots-hero-table__type">{{type}} {{roleName}}</div>
-      </div>
-      <div class="ruliweb-hots-hero-table__description">
-        {{#skills}}
-        <img style="WIDTH: 48px; margin: 0 .25em" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
-        {{/skills}}{{#hotsVersion}}
-        <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
-      </div>
+<details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-hero-table">
+  <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{iconUrl}}) center/64px no-repeat" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
+  <div class="ruliweb-hots-hero-table__content">
+    <div class="ruliweb-hots-hero-table__header">
+      <div class="ruliweb-hots-hero-table__title">{{name}}</div>
+      <div class="ruliweb-hots-hero-table__type">{{type}} {{roleName}}</div>
     </div>
-    <div class="ruliweb-hots-hero-table__stats">
-      {{#units}}
-      <table class="ruliweb-hots-hero-stat-table">
-        <thead>
-          {{#unitName}}
-          <tr>
-            <th colspan="3">{{unitName}}</th>
-          </tr>
-          {{/unitName}}
-          <tr>
-            <th>능력치</th>
-            <th>1레벨 (성장률)</th>
-            <th>20레벨</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#stats}}
-          <tr>
-            <td style="background: url({{&iconUrl}}) .4em/1.3em no-repeat">{{name}}{{#altName}} ({{altName}}){{/altName}}</td>
-            {{^level1}}<td colspan="2">{{value}}</td>{{/level1}}
-            {{#percentScaling}}<td>{{level1}} (+{{percentScaling}}%)</td>{{/percentScaling}}
-            {{#levelAdd}}<td>{{level1}} (+{{levelAdd}})</td>{{/levelAdd}}
-            {{#level20}}<td>{{level20}}</td>{{/level20}}
-          </tr>
-          {{/stats}}
-        </tbody>
-      </table>
-      {{/units}}
+    <div class="ruliweb-hots-hero-table__description">
+      {{#skills}}
+      <img style="WIDTH: 48px; margin: 0 .25em" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
+      {{/skills}}{{#hotsVersion}}
+      <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>
-  </details>
-</button>
+  </div>
+  <div class="ruliweb-hots-hero-table__stats">
+    {{#units}}
+    <table class="ruliweb-hots-hero-stat-table">
+      <thead>
+        {{#unitName}}
+        <tr>
+          <th colspan="3">{{unitName}}</th>
+        </tr>
+        {{/unitName}}
+        <tr>
+          <th>능력치</th>
+          <th>1레벨 (성장률)</th>
+          <th>20레벨</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#stats}}
+        <tr>
+          <td style="background: url({{&iconUrl}}) .4em/1.3em no-repeat">{{name}}{{#altName}} ({{altName}}){{/altName}}</td>
+          {{^level1}}<td colspan="2">{{value}}</td>{{/level1}}
+          {{#percentScaling}}<td>{{level1}} (+{{percentScaling}}%)</td>{{/percentScaling}}
+          {{#levelAdd}}<td>{{level1}} (+{{levelAdd}})</td>{{/levelAdd}}
+          {{#level20}}<td>{{level20}}</td>{{/level20}}
+        </tr>
+        {{/stats}}
+      </tbody>
+    </table>
+    {{/units}}
+  </div>
+</details>

@@ -2,24 +2,23 @@
  * any <iframe>s on such pages.
  */
 
-.ruliweb-hots-table:hover {
+.ruliweb-hots-skill-table:hover,
+.ruliweb-hots-talent-table:hover,
+.ruliweb-hots-hero-table:hover
+{
   position: relative;
 }
 
-.ruliweb-hots-table:hover> :first-child::before {
+.ruliweb-hots-skill-table:hover > :first-child::before,
+.ruliweb-hots-talent-table:hover > :first-child::before,
+.ruliweb-hots-hero-table:hover > :first-child::before
+{
   position: absolute;
-  width: 30em;
   border: 1px solid #f80;
   background: #820;
   color: #ddd;
   font-size: 80%;
   padding: .5em;
-  white-space: pre-line;
-  content: "[Ctrl+클릭하여 삭제] 이 표는 항상 왼쪽으로 정렬됩니다. 다른 방향으로 정렬하려면 문단을 먼저 정렬한 뒤에 표를 넣어주세요.";
-}
-
-p .ruliweb-hots-table:hover> :first-child::before {
-  width: unset;
   white-space: nowrap;
   content: "Ctrl+클릭하여 삭제";
 }
