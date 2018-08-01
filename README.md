@@ -6,13 +6,12 @@
 # How to build
 
 ```bash
-git clone -c core.symlinks=true https://github.com/pastelmind/ruliweb-hots.git
+git clone https://github.com/pastelmind/ruliweb-hots.git
 cd ruliweb-hots
 npm install
 npm run build
 ```
 
-Note: This project uses symbolic links. Windows users may require administrator privileges.  
 Note: All npm scripts expect a Unix-like shell environment. Windows users may need to set npm's `script-shell` configuration to Git Bash.
 
 # Organization
@@ -28,6 +27,7 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 * `npm run build`: Package the Chrome extension source into a ZIP file which can be uploaded to the Chrome Web Store.
 * `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/js/templates.js` when anything changes.
 * `npm run crawl-namu`: Run the NamuWiki crawl script. For usage, run `npm run crawl-namu -- --help` .
+* `npm run update-dep`: Copy necessary dependencies from `node_modules/` to `chrome-ext/src/js/` . Automatically called when running `npm install` or `npm build`.
 * `npm run validate-data`: Validates `hots.json`. This script is called by `npm test`.
 
 # Dependencies
