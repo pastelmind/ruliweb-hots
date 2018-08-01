@@ -1301,7 +1301,7 @@
           "name": "질풍참 (Swift Strike)",
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956c8d519dc2c.png",
-          "description": "전방으로 돌진하며 일직선상의 모든 적들에게 224(+4%)의 피해를 줍니다. 적중당한 적 영웅이 2초 안에 죽으면 질풍참의 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
+          "description": "전방으로 돌진하며 일직선상의 모든 적들에게 213(+4%)의 피해를 줍니다. 적중당한 적 영웅이 2초 안에 죽으면 질풍참의 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
           "cooldown": 12,
           "manaCost": "75",
           "extras": {
@@ -3236,7 +3236,7 @@
           "name": "생명력 물약 (Healing Potion)",
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595342d719dc2c.png",
-          "description": "지면에 생명력 물약을 놓습니다. 생명력 물약을 획득한 아군 영웅은 239(+4%)의 생명력을 회복합니다. 동시에 최대 5개의 생명력 물약을 놓을 수 있습니다.",
+          "description": "지면에 생명력 물약을 놓습니다. 생명력 물약을 획득한 아군 영웅은 228(+4%)의 생명력을 회복합니다. 동시에 최대 5개의 생명력 물약을 놓을 수 있습니다.",
           "cooldown": 3,
           "manaCost": "20",
           "extras": {}
@@ -3372,7 +3372,7 @@
             "name": "고대의 축복 (Ancient Blessings)",
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459533b0a19dc2c.png",
-            "description": "케인의 수호자를 사용하면 주위 아군 영웅을 8초 동안 강화하여 일반 공격이 75(+4%)의 방사 피해를 주게 하고 피해를 준 적 영웅 하나당 110(+4%)의 생명력을 회복시키게 합니다.",
+            "description": "케인의 수호자를 사용하면 주위 아군 영웅을 8초 동안 강화하여 일반 공격이 71(+4%)의 방사 피해를 주게 하고 피해를 준 적 영웅 하나당 104(+4%)의 생명력을 회복시키게 합니다.",
             "cooldown": 30,
             "extras": {}
           }
@@ -4107,7 +4107,7 @@
             "name": "번개 숨결 (Lightning Breath)",
             "type": "R",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953b3fb19dc2c.png",
-            "description": "저지 불가 상태가 되고, 정신을 집중하며 번개를 내뿜어 4초에 걸쳐 832(+4%)의 피해를 줍니다. 번개 숨결에 적중당한 적은 2초 동안 5% 느려져 최대 50%까지 느려집니다. 번개 숨결의 방향은 마우스 커서의 위치에 따라 바뀝니다.",
+            "description": "저지 불가 상태가 되고, 정신을 집중하며 번개를 내뿜어 4초에 걸쳐 832(+4%)의 피해를 줍니다. 번개 숨결에 적중당한 적은 2초 동안 4% 느려져 최대 40%까지 느려집니다. 번개 숨결의 방향은 마우스 커서의 위치에 따라 바뀝니다.",
             "cooldown": 70,
             "manaCost": "80",
             "extras": {
@@ -5141,7 +5141,7 @@
             "name": "회심의 일격 (Ace in the Hole)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459475fee19dc2c.png",
-            "description": "기절, 감속 상태인 적 영웅에게 30%의 추가 피해를 줍니다.",
+            "description": "기절, 감속 상태인 적 영웅에게 20%의 추가 피해를 줍니다.",
             "extras": {}
           },
           {
@@ -5157,7 +5157,7 @@
             "name": "전투 반응 (Fight or Flight)",
             "type": "능력 강화 (E)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f07fb19dc2c.png",
-            "description": "아드레날린 촉진의 재사용 대기시간이 10초 감소합니다. 아드레날린 촉진을 사용하면 방어력이 4초 동안 25 증가합니다.",
+            "description": "아드레날린 촉진의 재사용 대기시간이 10초 감소합니다. 아드레날린 촉진을 사용하면 방어력이 3초 동안 25 증가합니다.",
             "extras": {}
           },
           {
@@ -5171,7 +5171,7 @@
             "name": "베히모스 전투복 (Behemoth Armor)",
             "type": "지속 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/11/164874af09d19dc2c.png",
-            "description": "최대 생명력이 250 증가합니다.\n\n퀘스트: 뜨거운 맛을 보여주지의 주 대상이 적 영웅이면 최대 생명력이 추가로 5 증가합니다.",
+            "description": "최대 생명력이 200 증가합니다.\n\n퀘스트: 뜨거운 맛을 보여주지의 주 대상이 적 영웅이면 최대 생명력이 추가로 5 증가합니다.",
             "extras": {}
           }
         ],
@@ -5187,7 +5187,7 @@
             "name": "불안정한 혼합물 (Unstable Compound)",
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/11/164874af33119dc2c.png",
-            "description": "뜨거운 맛을 보여주지의 피해 반경이 15% 증가하고, 적중한 적을 3초 동안 10% 느려지게 합니다.",
+            "description": "뜨거운 맛을 보여주지의 피해 반경이 15% 증가하고, 적중한 적을 2.5초 동안 10% 느려지게 합니다.",
             "extras": {}
           },
           {
@@ -5216,7 +5216,7 @@
             "name": "레이너 특공대 (Raynor's Raider)",
             "type": "R",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f123419dc2c.png",
-            "description": "레이너를 지원하는 밴시를 소환합니다. 밴시는 초당 100(+4%)의 피해를 주며 4초 동안 피해를 받지 않으면 초당 78(+4%)의 생명력을 회복합니다. 다시 사용하면 대상을 바꾸거나 이동시킬 수 있습니다.\n\n밴시는 45초 후에 자동으로 재생성됩니다.",
+            "description": "레이너를 지원하는 밴시를 소환합니다. 밴시는 초당 87(+4%)의 피해를 주며 4초 동안 피해를 받지 않으면 초당 78(+4%)의 생명력을 회복합니다. 다시 사용하면 대상을 바꾸거나 이동시킬 수 있습니다.\n\n밴시는 45초 후에 자동으로 재생성됩니다.",
             "cooldown": 80,
             "manaCost": "100",
             "extras": {
@@ -7250,10 +7250,10 @@
       "talents": {
         "1": [
           {
-            "name": "자연의 신속함 (Nature's Swiftness)",
+            "name": "회복 (Rejuvenation)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b95e719dc2c.png",
-            "description": "재생이 활성화된 아군 한 명당 이동 속도가 4% 증가합니다.",
+            "description": "활성화된 재생 하나당 초당 5(+4%)의 생명력을 회복합니다.",
             "extras": {}
           },
           {
@@ -7344,6 +7344,13 @@
         ],
         "13": [
           {
+            "name": "자연의 신속함 (Nature's Swiftness)",
+            "type": "능력 강화 (Q)",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b95e719dc2c.png",
+            "description": "재생이 활성화된 아군 한 명당 이동 속도가 6% 증가합니다.",
+            "extras": {}
+          },
+          {
             "name": "방해의 달빛섬광 (Hindering Moonfire)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b862419dc2c.png",
@@ -7355,14 +7362,6 @@
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b823519dc2c.png",
             "description": "정신 자극을 사용하면 자신도 50의 마나를 회복하고 일반 기술 재사용 대기시간이 5초 동안 50% 더 빨리 감소합니다.",
-            "extras": {}
-          },
-          {
-            "name": "얼음 방패 (Ice Block)",
-            "type": "사용 효과",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164594750c019dc2c.png",
-            "description": "사용하면 3초 동안 정지 및 무적 상태가 됩니다.",
-            "cooldown": 60,
             "extras": {}
           }
         ],
@@ -7600,7 +7599,7 @@
             "name": "방어 (Fish Tank)",
             "type": "지속 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ea98819dc2c.png",
-            "description": "일반 공격을 할 때마다 물리 방어력이 3초 동안 75 증가합니다.",
+            "description": "일반 공격과 일반 기술로 입힌 피해의 25%만큼 생명력을 회복합니다.",
             "extras": {}
           },
           {
@@ -9342,7 +9341,7 @@
           "value": 2775,
           "levelScaling": 0.04
         },
-        "radius": 0.875,
+        "radius": 1,
         "speed": 4.3984,
         "hpRegen": {
           "value": 5.7812,
@@ -9435,7 +9434,7 @@
             "name": "신경계 전투 자극제 (Neural Stimpack)",
             "type": "사용 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459479a8e19dc2c.png",
-            "description": "사용하면 50의 마나를 회복하고 재사용 대기시간이 5초 동안 100% 더 빨리 감소합니다.",
+            "description": "사용하면 50의 마나를 회복하고 일반 기술의 재사용 대기시간이 5초 동안 100% 더 빨리 감소합니다.",
             "cooldown": 40,
             "extras": {}
           },
@@ -11754,7 +11753,7 @@
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943ab8519dc2c.png",
           "description": "전방으로 질주하며 적들에게 59(+4%)의 피해를 주고, 돌아오며 178(+4%)의 피해를 줍니다. 칼날 질주가 적에게 적중할 때마다 1초, 적 영웅에게 적중할 때마다 2초만큼 과부하 보호막의 재사용 대기시간이 감소합니다.",
           "cooldown": 10,
-          "manaCost": "55",
+          "manaCost": "50",
           "extras": {
             "사거리": "8",
             "너비": "3"
@@ -11811,16 +11810,16 @@
         "4": [
           {
             "name": "사이오닉 시너지 (Psionic Synergy)",
-            "type": "능력 강화 (Q)",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943ab8519dc2c.png",
-            "description": "칼날 질주가 적 영웅에게 적중할 때 감소하는 과부하 보호막의 재사용 대기시간이 2초 증가합니다.",
+            "type": "능력 강화 (E)",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943b72819dc2c.png",
+            "description": "위상 분광기가 적 영웅에게 적중하면 방어력이 3초 동안 15 증가합니다.",
             "extras": {}
           },
           {
             "name": "보호막 재충전 (Shield Battery)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
-            "description": "과부하 보호막의 지속 시간이 1초 증가하고 보호막이 활성화된 동안 과부하 보호막의 재사용 대기시간이 50% 더 빨리 감소합니다.",
+            "description": "과부하 보호막의 지속 시간이 1초 증가하고 보호막이 활성화된 동안 과부하 보호막의 재사용 대기시간이 100% 더 빨리 감소합니다.",
             "extras": {}
           },
           {
@@ -11892,7 +11891,7 @@
             "name": "기사단의 열성 (Templar's Zeal)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943af6719dc2c.png",
-            "description": "생명력이 50% 미만이면 칼날 질주의 재사용 대기시간이 300% 더 빨리 감소합니다.",
+            "description": "칼날 질주의 마나 소모량이 50% 감소합니다. 과부하 보호막이 활성화될 때마다 칼날 질주의 재사용 대기시간이 5초 감소합니다.",
             "extras": {}
           },
           {
@@ -11906,49 +11905,38 @@
             "name": "중력자 소용돌이 (Graviton Vortex)",
             "type": "능력 강화 (E)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943b33f19dc2c.png",
-            "description": "위상 분광기의 재사용 대기시간이 5초 감소하고 적중한 대상 주위의 적 영웅 하나를 추가로 끌어당기고 피해를 줍니다.",
-            "extras": {
-              "추가 포획 반경": "3"
-            }
+            "description": "위상 분광기의 마나 소모량이 50% 감소합니다. 적 영웅에게 일반 공격을 하거나 칼날 질주가 적중할 때마다 위상 분광기의 재사용 대기시간이 1.25초 감소합니다.",
+            "extras": {}
           },
           {
             "name": "위상 보루 (Phase Bulwark)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
-            "description": "과부하 보호막이 활성화되면 기술 방어력이 4초 동안 50 증가하여 받는 기술 피해가 50% 감소합니다.",
+            "description": "과부하 보호막이 활성화되는 동안 기술 방어력이 50 증가합니다. 이 효과는 과부하 보호막이 만료된 후에도 2초 동안 지속됩니다.",
             "extras": {}
           }
         ],
         "16": [
           {
-            "name": "광전사 돌진 (Zealot Charge)",
-            "type": "능력 강화 (W)",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943cab919dc2c.png",
-            "description": "이연격의 돌진 거리가 100% 증가합니다.",
-            "extras": {}
-          },
-          {
             "name": "거인 학살자 (Titan Killer)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943ce9c19dc2c.png",
-            "description": "이연격으로 적 영웅을 공격하면 대상의 최대 생명력의 2%만큼 추가 피해를 줍니다.",
+            "description": "일반 공격으로 적 영웅을 공격할때마다 최대 생명력의 0.5%만큼 추가 피해를 줍니다. 이연격으로 강화된 일반 공격은 1.5%만큼 추가 피해를 줍니다.",
             "extras": {}
           },
           {
-            "name": "사이오닉 상처 (Psionic Wound)",
-            "type": "능력 강화 (W)",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943d45519dc2c.png",
-            "description": "이연격의 마지막 공격에 적중당한 적 영웅은 방어력이 2초 동안 25 감소하여 받는 피해가 25% 증가합니다.",
-            "extras": {}
-          },
-          {
-            "name": "플라스마 화상 (Plasma Burn)",
+            "name": "의지의 힘 (Force of Will)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
-            "description": "과부하 보호막이 활성화된 동안 주위 적들에게 초당 57(+4%)의 피해를 줍니다.",
-            "extras": {
-              "피해 반경": "2.5"
-            }
+            "description": "일반 기술을 사용할 때마다 과부하 보호막의 재사용 대기시간이 5초 감소합니다.",
+            "extras": {}
+          },
+          {
+            "name": "기사단의 검 (Blades of a Templar)",
+            "type": "지속 효과",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
+            "description": "공격 속도가 30% 증가합니다. 일반 공격이 대상의 이동 속도를 1.25초 동안 20% 감소시킵니다.",
+            "extras": {}
           }
         ],
         "20": [
@@ -11963,22 +11951,24 @@
             "name": "정화 완료 (Target Purified)",
             "type": "능력 강화 (R)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bb1a19dc2c.png",
-            "description": "정화 광선의 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 다시 사용됩니다.",
+            "description": "정화 광선의 속도가 15% 증가합니다. 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 다시 사용됩니다.",
             "extras": {}
           },
           {
-            "name": "의지의 힘 (Force of Will)",
+            "name": "광전사 돌진 (Zealot Charge)",
+            "type": "능력 강화 (W)",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943cab919dc2c.png",
+            "description": "이연격의 돌진 거리가 100% 증가합니다.",
+            "extras": {}
+          },
+          {
+            "name": "플라스마 화상 (Plasma Burn)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
-            "description": "일반 공격을 할 때마다 감소하는 과부하 보호막의 재사용 대기시간이 6초로 증가합니다.",
-            "extras": {}
-          },
-          {
-            "name": "시공의 칼날 (Nexus Blades)",
-            "type": "지속 효과",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
-            "description": "일반 공격이 20%의 추가 피해를 주고 대상의 이동 속도를 1초 동안 20% 감소시킵니다.",
-            "extras": {}
+            "description": "과부하 보호막이 활성화된 동안 주위 적들에게 초당 62(+4%)의 피해를 줍니다.",
+            "extras": {
+              "피해 반경": "2.5"
+            }
           }
         ]
       }
@@ -12863,7 +12853,7 @@
           "name": "파멸의 구슬 (Globe of Annihilation)",
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-          "description": "파괴의 구슬을 날려 적중 시 171(+4%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
+          "description": "파괴의 구슬을 날려 적중 시 198(+3%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
           "cooldown": 10,
           "manaCost": "60",
           "extras": {
@@ -12876,7 +12866,7 @@
           "name": "악마 전사 소환 (Summon Demon Warrior)",
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947557c19dc2c.png",
-          "description": "대상 방향으로 행진하는 악마 전사를 소환합니다. 악마 전사는 일반 공격으로 29(+4%)의 피해를 주고 주위 적들에게 초당 6(+4%)의 피해를 줍니다. 10초 동안 지속됩니다.",
+          "description": "대상 방향으로 행진하는 악마 전사를 소환합니다. 악마 전사는 일반 공격으로 31(+4%)의 피해를 주고 주위 적들에게 초당 8(+4%)의 피해를 줍니다. 10초 동안 지속됩니다.",
           "cooldown": 10,
           "manaCost": "40",
           "extras": {
@@ -12887,9 +12877,9 @@
           "name": "모두 다 불타리라 (All Shall Burn)",
           "type": "E",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942e73c19dc2c.png",
-          "description": "정신을 집중하며 죽음의 광선으로 적을 공격해 2.5초 동안 초당 141(+4%)의 피해를 줍니다. 모두 다 불타리라가 끝까지 지속되면 대상에게 283(+4%)의 추가 피해를 줍니다.\n\n정신을 집중하는 동안 이동 속도가 30% 감소합니다.",
-          "cooldown": 8,
-          "manaCost": "30",
+          "description": "정신을 집중하며 죽음의 광선으로 적을 공격해 2.5초 동안 초당 125(+4%)의 피해를 줍니다. 모두 다 불타리라가 끝까지 지속되면 대상에게 333(+4%)의 추가 피해를 줍니다.\n\n정신을 집중하는 동안 이동 속도가 30% 감소합니다.",
+          "cooldown": 6,
+          "manaCost": "40",
           "extras": {
             "사거리": "6"
           }
@@ -12915,7 +12905,7 @@
             "name": "분노 (Wrath)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/11/1648761aff019dc2c.png",
-            "description": "생명력이 75% 미만인 적 영웅에게 일반 공격을 할 때마다 파멸이 1회 중첩됩니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬이 적 영웅에게 적중한 후에 4초 내의 일반 공격이 대상 적 영웅에게 파멸 중첩만큼의 추가 피해를 줍니다.",
+            "description": "생명력이 75% 미만인 적 영웅에게 일반 공격을 할 때마다 파멸이 1회 중첩됩니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬이 적 영웅에게 적중한 후에 3초 내의 일반 공격이 대상 적 영웅에게 파멸 중첩만큼의 추가 피해를 줍니다.",
             "extras": {}
           }
         ],
@@ -12931,14 +12921,14 @@
             "name": "지옥의 갑옷 (Hellforged Armor)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/11/16487621bf419dc2c.png",
-            "description": "악마 전사와 악마 부관의 방어력이 35 증가하고 지속 시간이 4초 증가합니다.",
+            "description": "악마 전사와 악마 부관의 방어력이 30 증가하고 지속 시간이 4초 증가합니다.",
             "extras": {}
           },
           {
             "name": "파멸의 종자 (Battleborn)",
             "type": "지속 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
-            "description": "일반 공격을 할 때마다 악마 전사 소환의 재사용 대기시간이 0.5초 감소하고 악마 부관의 재사용 대기시간이 1초 감소합니다.",
+            "description": "일반 공격을 할 때마다 악마 전사 소환의 재사용 대기시간이 0.75초 감소하고 악마 부관의 재사용 대기시간이 1.5초 감소합니다.",
             "extras": {}
           }
         ],
@@ -12947,7 +12937,7 @@
             "name": "혼돈의 미학 (Art of Chaos)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-            "description": "파멸의 구슬이 2명 이상의 적 영웅에게 적중하면 마나를 30 회복합니다. 3명 이상의 적 영웅에게 적중하면 파멸이 추가로 5회 중첩됩니다.",
+            "description": "파멸의 구슬이 2명 이상의 적 영웅에게 적중하면 마나를 30 회복하고 파멸이 추가로 4회 중첩됩니다.",
             "extras": {}
           },
           {
@@ -12970,7 +12960,7 @@
             "name": "악마의 침공 (Demonic Invasion)",
             "type": "R",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942ea6f19dc2c.png",
-            "description": "적들에게 소규모 악마 보병 부대를 쏟아부어 적중할 때마다 68(+4%)의 피해를 줍니다. 악마 보병은 일반 공격으로 44(+4%)의 피해를 주고 780(+4%)의 생명력을 지니며 8초 동안 지속됩니다. 악마 보병은 죽을 때 폭발하여 주위 적들에게 68(+4%)의 피해를 줍니다.",
+            "description": "적들에게 소규모 악마 보병 부대를 쏟아부어 적중할 때마다 68(+4%)의 피해를 줍니다. 악마 보병은 일반 공격으로 44(+4%)의 피해를 주고 780(+4%)의 생명력을 지니며 10초 동안 지속됩니다. 악마 보병은 죽을 때 폭발하여 주위 적들에게 101(+4%)의 피해를 줍니다.",
             "cooldown": 90,
             "manaCost": "60",
             "extras": {
@@ -12992,7 +12982,7 @@
             "name": "난폭한 선봉대 (Brutish Vanguard)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947557c19dc2c.png",
-            "description": "악마 전사의 생명력이 25% 증가하고 주위 적들을 20% 느려지게 합니다.",
+            "description": "악마 전사와 악마 부관의 생명력이 25% 증가하고, 악마 전사가 주위 적들을 20% 느려지게 합니다.",
             "extras": {}
           },
           {
@@ -13006,7 +12996,7 @@
             "name": "지휘 계통 (Chain of Command)",
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ebc119dc2c.png",
-            "description": "악마 부관이 주위 모든 아군 돌격병, 용병, 아즈모단의 소환수의 공격력을 25% 증가시킵니다.",
+            "description": "악마 부관이 주위 모든 아군 돌격병, 용병, 아즈모단의 소환수의 공격력을 25% 증가시킵니다. 악마 부관의 악마의 강타 재사용 대기시간이 2초 감소합니다.",
             "extras": {}
           }
         ],
@@ -13022,7 +13012,7 @@
             "name": "지옥의 균열 (Hell Rift)",
             "type": "능력 강화 (E)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942e73c19dc2c.png",
-            "description": "모두 다 불타리라가 끝까지 지속되면 대상의 위치에 악마 전사가 소환되고 모든 악마 전사의 공격력이 4초 동안 100% 증가합니다.",
+            "description": "모두 다 불타리라가 끝까지 지속되면 대상의 위치에 악마 전사가 소환되고 모든 악마 전사의 공격력이 6초 동안 100% 증가합니다.",
             "extras": {}
           },
           {
@@ -13052,7 +13042,7 @@
             "name": "교만 (Pride)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-            "description": "파멸이 400회 중첩되면 파멸의 구슬의 범위가 15% 증가하고 공격력이 추가로 100 증가합니다.",
+            "description": "파멸이 400회 중첩되면 파멸의 구슬의 범위가 15% 증가하고 공격력이 추가로 125 증가합니다.",
             "extras": {}
           },
           {
@@ -13094,7 +13084,7 @@
         "range": 1.5,
         "period": 0.8332,
         "damage": {
-          "value": 140,
+          "value": 150,
           "levelScaling": 0.04
         }
       },
@@ -14281,7 +14271,7 @@
             "name": "마라아드의 통찰력 (Maraad's Insight)",
             "type": "지속 효과",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164594763c919dc2c.png",
-            "description": "일반 기술을 사용하면 다음 일반 공격으로 154(+4%)의 생명력을 회복합니다.",
+            "description": "일반 기술을 사용하면 다음 일반 공격으로 133(+4%)의 생명력을 회복합니다.",
             "extras": {}
           }
         ],
@@ -14305,7 +14295,7 @@
             "type": "사용 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459629e7219dc2c.png",
             "description": "아군 영웅의 이동 속도를 3초 동안 50% 증가시키고 대상의 모든 감속 및 이동 불가 효과를 제거합니다.\n\n<span style=\"color: #ffff66\">자신에게는 사용할 수 없습니다.</span>",
-            "cooldown": 30,
+            "cooldown": 22,
             "extras": {}
           }
         ],
@@ -14328,7 +14318,7 @@
             "name": "천상의 군마 (Divine Steed)",
             "type": "지속 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459629cd319dc2c.png",
-            "description": "탈것에 즉시 탑승할 수 있습니다. 탈것에 탑승하면 이동 속도가 80% 증가하고 3초에 걸쳐 서서히 사라집니다.",
+            "description": "탈것에 즉시 탑승할 수 있습니다. 탈것에 탑승하면 이동 속도가 60% 증가하고 3초에 걸쳐 서서히 사라집니다.",
             "extras": {}
           },
           {
@@ -14345,7 +14335,7 @@
             "type": "R",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645963babe19dc2c.png",
             "description": "3초 동안 보호막으로 자신을 감싸 모든 피해를 흡수하고 흡수한 피해의 50%만큼 생명력을 회복합니다.",
-            "cooldown": 100,
+            "cooldown": 120,
             "manaCost": "40",
             "extras": {}
           },
@@ -14389,7 +14379,7 @@
             "name": "기사단의 선고 (Templar's Verdict)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645962a00519dc2c.png",
-            "description": "정의의 망치가 적 영웅의 방어력을 4초 동안 20 감소시킵니다.",
+            "description": "정의의 망치가 적 영웅의 방어력을 4초 동안 20 감소시키고 대상 영웅의 최대 생명력의 4%에 달하는 피해를 줍니다.",
             "extras": {}
           },
           {
@@ -14403,7 +14393,7 @@
             "name": "신의 격노 (Holy Wrath)",
             "type": "지속 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594756a719dc2c.png",
-            "description": "일반 기술을 사용한 후에 다음 일반 공격이 30%의 추가 피해를 주며 대상 주위에도 피해를 줍니다.",
+            "description": "일반 기술을 사용한 후에 다음 일반 공격이 20%의 추가 피해를 주며 대상 주위에도 피해를 줍니다.",
             "extras": {}
           }
         ],
@@ -17243,7 +17233,7 @@
             "name": "쇄도의 질주 (Surging Dash)",
             "type": "능력 강화 (Q)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164594853ce19dc2c.png",
-            "description": "쇄도의 주먹을 준비하는 동안 저지불가 상태가 되고 초당 156(+4%)의 생명력을 회복합니다.",
+            "description": "쇄도의 주먹을 준비하는 동안 초당 156(+4%)의 생명력을 회복합니다.",
             "extras": {}
           },
           {
@@ -17874,7 +17864,7 @@
           "name": "불기둥 (Flamestrike)",
           "type": "Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958874019dc2c.png",
-          "description": "1초 후, 대상 지역에 333(+4%)의 피해를 줍니다.\n\n신록의 구슬을 사용하면 반경이 50% 증가합니다.",
+          "description": "1초 후, 대상 지역에 359(+4%)의 피해를 줍니다.\n\n신록의 구슬을 사용하면 반경이 50% 증가합니다.",
           "cooldown": 7,
           "manaCost": "70",
           "extras": {
@@ -17886,7 +17876,7 @@
           "name": "살아있는 폭탄 (Living Bomb)",
           "type": "W",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958934119dc2c.png",
-          "description": "3초에 걸쳐 적에게 125(+4%)의 피해를 준 다음 폭발하여 주위 모든 적에게 208(+4%)의 피해를 줍니다. 다른 영웅이 폭발에 적중당하면 살아있는 폭탄이 확산되지만, 2회 연속 확산되지는 않습니다.\n\n신록의 구슬을 사용하면 마나를 소모하지 않고, 재사용 대기시간이 발생되지 않습니다.",
+          "description": "3초에 걸쳐 적에게 125(+4%)의 피해를 준 다음 폭발하여 주위 모든 적에게 224(+4%)의 피해를 줍니다. 다른 영웅이 폭발에 적중당하면 살아있는 폭탄이 확산되지만, 2회 연속 확산되지는 않습니다.\n\n신록의 구슬을 사용하면 마나를 소모하지 않고, 재사용 대기시간이 발생되지 않습니다.",
           "cooldown": 10,
           "manaCost": "50",
           "extras": {
@@ -19438,7 +19428,7 @@
         "range": 5.5,
         "period": 0.125,
         "damage": {
-          "value": 27,
+          "value": 26,
           "levelScaling": 0.04
         }
       },
@@ -19573,7 +19563,7 @@
             "name": "양자 폭발 (Quantum Spike)",
             "type": "능력 강화 (R)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459618ca919dc2c.png",
-            "description": "펄스 폭탄이 주 대상의 최대 생명력의 8%만큼 추가 피해를 줍니다.",
+            "description": "펄스 폭탄이 주 대상의 최대 생명력의 7%만큼 추가 피해를 줍니다.",
             "extras": {}
           },
           {
@@ -20741,12 +20731,12 @@
         ],
         "damage": [
           {
-            "value": 86,
+            "value": 83,
             "levelScaling": 0.04,
             "altName": "연발포"
           },
           {
-            "value": 107.5,
+            "value": 103.75,
             "levelScaling": 0.04,
             "altName": "위상 폭탄"
           }
@@ -20810,14 +20800,14 @@
             "name": "광자 집중 (Arsenal Synergy)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 175% 증가하고 방사 피해의 범위가 50% 증가합니다.",
+            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 150% 증가하고 방사 피해의 범위가 50% 증가합니다.",
             "extras": {}
           },
           {
             "name": "기동 타격 (Mobile Offense)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "이동하면 다음 일반 공격이 영웅에게 30%의 추가 피해를 줍니다.",
+            "description": "이동하면 다음 일반 공격이 영웅에게 35%의 추가 피해를 줍니다.",
             "extras": {}
           }
         ],
@@ -21005,7 +20995,7 @@
         "range": 6.5,
         "period": 1.5,
         "damage": {
-          "value": 173,
+          "value": 188,
           "levelScaling": 0.04
         }
       },
@@ -21015,7 +21005,7 @@
           "type": "고유 능력",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957346b19dc2c.png",
           "description": "이동할 수 없는 지형이나 구조물을 뛰어넘어 반대편에 착지합니다.",
-          "cooldown": 25,
+          "cooldown": 30,
           "extras": {
             "사거리": "9"
           }
@@ -21049,13 +21039,13 @@
           "name": "음파 화살 (Sonic Arrow)",
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957480119dc2c.png",
-          "description": "음파 화살을 발사하여 8초 동안 넓은 지역의 시야를 확보합니다. 지역 내의 적들은 1초 동안 드러납니다. 음파 화살이 적에게 적중하면 172(+4%)의 피해를 주고 잠시동안 대상에 부착된 상태로 유지됩니다.",
+          "description": "음파 화살을 발사하여 5초 동안 넓은 지역의 시야를 확보합니다. 지역 내의 적들은 1초 동안 드러납니다. 음파 화살이 적에게 적중하면 172(+4%)의 피해를 주고 잠시동안 대상에 부착된 상태로 유지됩니다.",
           "cooldown": 20,
           "manaCost": "50",
           "extras": {
             "사거리": "20",
             "피해 반경": "0.5",
-            "시야 반경": "10"
+            "시야 반경": "7"
           }
         }
       ],
@@ -21232,10 +21222,10 @@
             "extras": {}
           },
           {
-            "name": "완벽한 날렵함 (Mounted Archery)",
+            "name": "완벽한 날렵함 (Perfect Agility)",
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957346b19dc2c.png",
-            "description": "선천적인 날렵함을 2회 충전할 수 있고, 재사용 대기시간이 5초 감소합니다.",
+            "description": "선천적인 날렵함을 2회 충전할 수 있고, 재사용 대기시간이 10초 감소합니다.",
             "extras": {}
           }
         ]
@@ -21421,7 +21411,7 @@
             "name": "크고 아름다운 미사일 (Blunt Force Gun)",
             "type": "R",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645960439319dc2c.png",
-            "description": "전장을 가로지르는 미사일을 발사해서 경로에 있는 적들에게 515(+3%)의 피해를 줍니다.",
+            "description": "전장을 가로지르는 미사일을 발사해서 경로에 있는 적들에게 515(+3%)의 피해를 줍니다. 구조물에는 피해를 주지 않습니다.",
             "cooldown": 70,
             "manaCost": "100",
             "extras": {
