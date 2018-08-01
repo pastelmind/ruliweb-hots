@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "35.0",
+  "hotsVersion": "35.1",
   "statPresets": [
     {
       "id": "hp",
@@ -7599,7 +7599,7 @@
             "name": "방어 (Fish Tank)",
             "type": "지속 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ea98819dc2c.png",
-            "description": "일반 공격과 일반 기술로 입힌 피해의 25%만큼 생명력을 회복합니다.",
+            "description": "일반 공격과 일반 기술로 준 피해의 25%만큼 생명력을 회복합니다.",
             "extras": {}
           },
           {
@@ -12982,7 +12982,7 @@
             "name": "난폭한 선봉대 (Brutish Vanguard)",
             "type": "능력 강화 (W)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947557c19dc2c.png",
-            "description": "악마 전사와 악마 부관의 생명력이 25% 증가하고, 악마 전사가 주위 적들을 20% 느려지게 합니다.",
+            "description": "악마 전사와 악마 부관의 생명력이 25% 증가하고 악마 전사가 주위 적들을 20% 느려지게 합니다.",
             "extras": {}
           },
           {
@@ -12996,7 +12996,7 @@
             "name": "지휘 계통 (Chain of Command)",
             "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ebc119dc2c.png",
-            "description": "악마 부관이 주위 모든 아군 돌격병, 용병, 아즈모단의 소환수의 공격력을 25% 증가시킵니다. 악마 부관의 악마의 강타 재사용 대기시간이 2초 감소합니다.",
+            "description": "악마 부관이 주위 모든 아군 돌격병, 용병, 아즈모단의 소환수의 공격력을 25% 증가시킵니다. 악마 부관의 악마의 일격의 재사용 대기시간이 2초 감소합니다.",
             "extras": {}
           }
         ],
@@ -21411,7 +21411,7 @@
             "name": "크고 아름다운 미사일 (Blunt Force Gun)",
             "type": "R",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645960439319dc2c.png",
-            "description": "전장을 가로지르는 미사일을 발사해서 경로에 있는 적들에게 515(+3%)의 피해를 줍니다. 구조물에는 피해를 주지 않습니다.",
+            "description": "전장을 가로지르는 미사일을 발사해서 경로에 있는 구조물을 제외한 적들에게 515(+3%)의 피해를 줍니다.",
             "cooldown": 70,
             "manaCost": "100",
             "extras": {
