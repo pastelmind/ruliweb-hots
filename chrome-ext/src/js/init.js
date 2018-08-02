@@ -1,5 +1,6 @@
 /**
- * Initialization script for Chrome extension
+ * Initialization script for Chrome extension.
+ * This script should be used only as a background script.
  */
 
 'use strict';
@@ -7,114 +8,92 @@
 //Global constants
 const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
 
-/**
- * Parses hero object, fixing missing values so that content scripts can use them
- * @param {object} heroData Key-value pairs of hero ID => hero data
- * @returns {object} Fixed hero data
- */
-function prepareHeroData(heroData) {
-  //Default URL for missing icons
-  const missingIconUrl = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
 
-  for (const heroId in heroData) {
-    const hero = heroData[heroId];
+//-------- main script --------//
 
-    hero.id = heroId;
-    if (!hero.iconUrl) hero.iconUrl = missingIconUrl;
+//Things that should be called only once (when installed)
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    "id": "ruli-context-menu",
+    "title": "히오스 공략툴 열기",
+    "contexts": ["frame"],
+    "documentUrlPatterns": ["about:blank"]
+  });
 
-    hero.skills.forEach(skill => {
-      if (!skill.iconUrl) skill.iconUrl = missingIconUrl;
+  //Load pre-packaged hero data
+  updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
+    .catch(e => console.error(e))   //Report and consume error
+    .then(updateDataFromApi);       //Immediately attempt an update from API
+
+  //Clear and setup an alarm to update the ID.
+  chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
+    console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
+    chrome.alarms.create(ALARM_UPDATE_DATA, {
+      delayInMinutes: 360,  //6 hours = 360 minutes
+      periodInMinutes: 360  //6 hours = 360 minutes
     });
+  });
+});
 
-    for (const talentLevel in hero.talents) {
-      const level = parseInt(talentLevel);
-      hero.talents[talentLevel].forEach(talent => {
-        if (!talent.iconUrl) talent.iconUrl = missingIconUrl;
-        talent.level = level;
-      });
-    }
+
+//Things that should be done whenever the background page loads
+//See quotes from:
+//  https://bugs.chromium.org/p/chromium/issues/detail?id=316315#c3
+//  https://stackoverflow.com/a/19915752/
+//
+//  Because the listeners themselves only exist in the context of the event
+//  page, you must use addListener each time the event page loads; only doing so
+//  at runtime.onInstalled by itself is insufficient.
+
+//Register an event listener for the right-click menu
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
+    chrome.tabs.executeScript({ code: "openHotsDialog();" });
   }
+  else
+    alert('루리웹에서만 실행할 수 있습니다.');
+});
 
-  return heroData;
-}
+//Register an event listener for the alarm.
+chrome.alarms.onAlarm.addListener(alarm => {
+  const alarmDate = new Date();
+  alarmDate.setTime(alarm.scheduledTime)
+  console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
+  if (alarm.name === ALARM_UPDATE_DATA)
+    updateDataFromApi();
+});
+
+
+//-------- Support functions --------//
 
 /**
  * Asynchronously retrieves HotS data from the given URL to local storage
  * @param {string} url URL to load from
  */
 async function updateDataFromUrl(url) {
-  const hotsData = (await axios.get(url)).data;
+  const response = await fetch(url);
+  if (!response.ok)
+    throw new Error(`fetch() for ${url} failed with ${response.status} ${response.statusText}`);
+
+  const hotsData = await response.json();
   console.debug('Retrieved data from', url);
 
-  prepareHeroData(hotsData.heroes);
-  chrome.storage.local.set(hotsData, () => {
-    if (chrome.runtime.lastError)
-      throw chrome.runtime.lastError;
+  decorateHotsData(hotsData);
 
-    console.debug('Loaded data from', url, 'to local storage');
-  });
+  await new Promise(resolve =>
+    chrome.storage.local.set(hotsData, () => {
+      if (chrome.runtime.lastError)
+        throw chrome.runtime.lastError;
+
+      console.debug('Loaded data from', url, 'to local storage');
+      resolve();
+    })
+  );
 }
 
 /**
- * Asynchronously retrieves HotS data from the "API server" to local storage
+ * Asynchronously retrieves HotS data from the "API server" to local storage.
  */
 async function updateDataFromApi() {
-  updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
-}
-
-
-//"main" code of this script, this should be called only inside an extension
-if (window.chrome && chrome.extension) {
-
-  //Things that should be called only once when installed
-  chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
-      "id": "ruli-context-menu",
-      "title": "히오스 공략툴 열기",
-      "contexts": ["frame"],
-      "documentUrlPatterns": ["about:blank"]
-    });
-
-    //Load pre-packaged hero data
-    updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
-      .then(() => updateDataFromApi()); //Immediately attempt an update from API
-
-    //Clear and setup an alarm to update the ID.
-    chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
-      console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
-      chrome.alarms.create(ALARM_UPDATE_DATA, {
-        delayInMinutes: 360,  //6 hours = 360 minutes
-        periodInMinutes: 360  //6 hours = 360 minutes
-      });
-    });
-  });
-
-
-  //Things that should be done whenever the background page loads
-  //See quotes from:
-  //  https://bugs.chromium.org/p/chromium/issues/detail?id=316315#c3
-  //  https://stackoverflow.com/a/19915752/
-  //
-  //  Because the listeners themselves only exist in the context of the event
-  //  page, you must use addListener each time the event page loads; only doing so
-  //  at runtime.onInstalled by itself is insufficient.
-
-  //Register an event listener for the right-click menu
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-      chrome.tabs.executeScript({ code: "openHotsDialog();" });
-    }
-    else
-      alert('루리웹에서만 실행할 수 있습니다.');
-  });
-
-  //Register an event listener for the alarm.
-  chrome.alarms.onAlarm.addListener(alarm => {
-    const alarmDate = new Date();
-    alarmDate.setTime(alarm.scheduledTime)
-    console.debug('Received alarm:', alarm.name, 'scheduled at', alarmDate, 'with period =', alarm.periodInMinutes);
-    if (alarm.name === ALARM_UPDATE_DATA)
-      updateDataFromApi();
-  });
-
+  await updateDataFromUrl('https://pastelmind.github.io/ruliweb-hots/hots.json');
 }

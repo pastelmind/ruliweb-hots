@@ -11,7 +11,7 @@
   ],
   "background": {
     "scripts": [
-      "js/axios.js",
+      "js/decorate-hots-data.js",
       "js/init.js"
     ],
     "persistent": false
@@ -25,6 +25,7 @@
       ],
       "css": [
         "css/tingle.css",
+        "css/microtip.css",
         "css/ruliweb-hots.css"
       ],
       "js": [

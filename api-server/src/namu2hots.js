@@ -463,6 +463,8 @@ function parseSkillTable(name, type, cells) {
  * @returns {Skill} Skill data
  */
 function parseSkill(name, type, iconCell, rawDescription) {
+  if (type === '고유 능력' || type === '고유능력')
+    type = 'D';
   const skill = { name, type, extras: {} };
 
   const iconNameMatch = /\[\[(파일:.+?)\s*(?:\|.*?)?\]\]/.exec(iconCell);
@@ -476,8 +478,13 @@ function parseSkill(name, type, iconCell, rawDescription) {
         skill.cooldown = parseFloat(extraInfo);
       else if (extraName.includes('충전 대기시간') && !skill.rechargeCooldown)
         skill.rechargeCooldown = parseFloat(extraInfo);
-      else if (extraName.includes('마나') && !skill.manaCost)
-        skill.manaCost = extraInfo.trim();
+      else if (extraName.includes('마나')) {
+        const manaCostPerSecondMatch = /초당\s*(.+)/.exec(extraInfo);
+        if (manaCostPerSecondMatch)
+          skill.manaCostPerSecond = parseFloat(manaCostPerSecondMatch[1]);
+        else
+          skill.manaCost = parseFloat(extraInfo);
+      }
       else if (!(extraName in skill.extras))
         skill.extras[extraName] = extraInfo.trim();
       else

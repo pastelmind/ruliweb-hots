@@ -117,7 +117,7 @@ const Commands = {
 if (require.main === module) {
   let cmd = null;
 
-  const defaultSaveImagesDir = path.normalize('temp/namu-images/');
+  const defaultSaveImagesDir = path.join(__dirname, '../temp/namu-images/');
 
   program.command('save-images [savedir]')
     .description(`Download and save images from NamuWiki to [savedir] (default: ${defaultSaveImagesDir})`)
@@ -128,11 +128,11 @@ if (require.main === module) {
       };
     });
 
-  const defaultSaveJsonPath = path.normalize('temp/hots.json');
+  const defaultSaveJsonPath = path.join(__dirname, '../temp/hots.json');
 
   program.command('save-json <hots_ver> [savepath]')
     .description(`Parse and save hero data (JSON) marked as <hots_ver> to [jsonfile] (default: ${defaultSaveJsonPath})`)
-    .option('-p, --hero-portraits [jsonfile]', 'Load hero portrait from [jsonfile]', path.normalize('util/data/hero-portraits.json'))
+    .option('-p, --hero-portraits [jsonfile]', 'Load hero portrait from [jsonfile]', path.join(__dirname, 'data/hero-portraits.json'))
     .option('-l, --image-url-list <listfile>', 'Replace skill/talent icon names with image URLs in <listfile>')
     .action((hotsVersion, saveJsonPath, options) => {
       cmd = {

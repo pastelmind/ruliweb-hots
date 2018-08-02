@@ -1,6 +1,7 @@
 {
   "lucio": {
     "name": "루시우",
+    "title": "",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
     "type": "원거리",
     "role": "support",
@@ -33,7 +34,7 @@
     "skills": [
       {
         "name": "벽 타기 (Wall Ride)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:lucio_wallRide.png",
         "description": "통과할 수 없는 지형이나 구조물을 따라 이동할 때 유닛을 통과할 수 있고, 이동 속도가 20% 증가합니다.\n\n이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
         "extras": {}
@@ -44,7 +45,7 @@
         "iconUrl": "파일:lucio_soundwave.png",
         "description": "일정 안의 적들에게 109(+4%)의 피해를 주고 밀쳐냅니다.",
         "cooldown": 7,
-        "manaCost": "30",
+        "manaCost": 30,
         "extras": {
           "피해 반경": "4.5",
           "중심각": "80°"
@@ -65,7 +66,7 @@
         "iconUrl": "파일:lucio_ampItUp.png",
         "description": "분위기 전환! 음악을 강화하여 3초 동안 <span style=\"color: #fff800\">치유 증폭</span> 음악의 치유량을 초당 119(+4%)로 증가시키거나, <span style=\"color: #3dff7f\">속도 증폭</span> 음악의 이동 속도 증가 효과를 45%로 증가시킵니다.",
         "cooldown": 15,
-        "manaCost": "100",
+        "manaCost": 100,
         "extras": {}
       },
       {
@@ -165,7 +166,7 @@
           "iconUrl": "파일:lucio_soundBarrier.png",
           "description": "1초 후, 자신과 주위 아군 영웅들에게 1348(+4%)의 피해를 흡수하는 보호막을 씌웁니다. 보호막은 6초에 걸쳐 빠르게 사라집니다.",
           "cooldown": 80,
-          "manaCost": "100",
+          "manaCost": 100,
           "extras": {}
         },
         {
@@ -174,7 +175,7 @@
           "iconUrl": "파일:lucio_reverseAmp.png",
           "description": "분위기 전환! 음악으로 적을 4초 동안 공격합니다. <span style=\"color: #fff800\">치유 증폭</span> 음악은 적에게 초당 108(+4%)의 피해를 주고, <span style=\"color: #3dff7f\">속도 증폭</span> 음악은 적을 45% 느려지게 합니다.\n\n지속 효과: 볼륨을 높여라!의 지속 시간이 4초로 증가합니다.",
           "cooldown": 45,
-          "manaCost": "55",
+          "manaCost": 55,
           "extras": {
             "효과 반경": "7"
           }
@@ -267,6 +268,7 @@
   },
   "abathur": {
     "name": "아바투르",
+    "title": "",
     "type": "근접",
     "role": "specialist",
     "universe": "starcraft",
@@ -290,7 +292,7 @@
     "skills": [
       {
         "name": "식충 변종 (Locust Strain)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:abathur_locustStrain.png",
         "cooldown": 15,
         "description": "15초마다 식충을 생성합니다. 식충은 가장 가까운 공격로에 합류하여 적을 공격합니다. 식충은 25초 동안 지속됩니다.",
@@ -587,6 +589,7 @@
   },
   "cho": {
     "name": "초",
+    "title": "",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "type": "근접",
     "role": "warrior",
@@ -611,7 +614,7 @@
     "skills": [
       {
         "name": "오우거의 가죽 (Ogre Hide)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:cho_ogreHide.png",
         "description": "사용하면 방어력이 25 증가하지만 갈의 공격력이 25% 감소합니다.",
         "cooldown": 5,
@@ -830,6 +833,7 @@
   },
   "gall": {
     "name": "갈",
+    "title": "",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
     "type": "원거리",
     "role": "assassin",
@@ -845,7 +849,7 @@
     "skills": [
       {
         "name": "오우거의 분노 (Ogre Rage)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:gall_ogreRage.png",
         "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n지속 효과: 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
         "cooldown": 5,

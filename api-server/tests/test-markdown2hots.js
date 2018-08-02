@@ -34,14 +34,14 @@ describe('markdown2hots', () => {
   //   assert.deepStrictEqual(heroJsonCompact, ref.heroJsonCompact);
   // });
 
-  it('should convert hero to markdown correctly', () => {
-    let markdown = '';
-    for (const heroId in ref.heroJsonCompact) {
-      const hero = new Hero(ref.heroJsonCompact[heroId]);
-      hero.id = heroId;
-      markdown += markdown2hots.heroToMarkdown(hero);
-    }
+  // it('should convert hero to markdown correctly', () => {
+  //   let markdown = '';
+  //   for (const heroId in ref.heroJsonCompact) {
+  //     const hero = new Hero(ref.heroJsonCompact[heroId]);
+  //     hero.id = heroId;
+  //     markdown += markdown2hots.heroToMarkdown(hero);
+  //   }
 
-    assert.deepStrictEqual(markdown, ref.heroMarkdown);
-  });
+  //   assert.deepStrictEqual(markdown, ref.heroMarkdown);
+  // });
 });

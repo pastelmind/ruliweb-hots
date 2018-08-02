@@ -19,12 +19,17 @@
         font-size: 15px;
       }
     }
+
+    body {
+      line-height: 150%;
+    }
   </style>
 </head>
 
 <body>
-  <script src="../src/js/axios.js"></script>
-  <script src="../src/js/mustache.js"></script>
+  <script src="../../node_modules/axios/dist/axios.min.js"></script>
+  <script src="../../node_modules/mustache/mustache.min.js"></script>
+  <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
   <script src="./js/mocks.js"></script>
   <script>
@@ -33,11 +38,7 @@
       HotsDialog.htmlGenerators.templates = await loadTemplates();
       const hotsData = (await axios.get('../../docs/hots.json')).data;
 
-      //TODO Use better preprocessing code
-      for (const heroId in hotsData.heroes) {
-        const hero = hotsData.heroes[heroId];
-        hero.id = heroId;
-      }
+      decorateHotsData(hotsData);
 
       const template = document.createElement('template');
 
@@ -63,7 +64,8 @@
       for (const heroId of heroIds)
         template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
 
-      template.content.querySelectorAll('details').forEach(detailsElement => detailsElement.open = true);
+      for (const detailsElement of template.content.querySelectorAll('details.ruliweb-hots-hero-table'))
+        detailsElement.open = true;
 
       document.body.appendChild(template.content);
 

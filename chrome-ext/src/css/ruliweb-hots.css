@@ -15,13 +15,18 @@
 
 /* Icons */
 
+.hots-hero-icon-wrapper, .hots-current-hero-icon-wrapper, .hots-skill-icon-wrapper, .hots-talent-icon-wrapper {
+  /* Wrap to size of content <img> */
+  display: inline-flex;
+}
+
+
 .hots-hero-icon, .hots-current-hero-icon, .hots-skill-icon, .hots-talent-icon {
-  box-sizing: border-box;
   width: 32px;
   height: 32px;
+  object-fit: cover;
   border: 1px solid #333;
   cursor: pointer;
-  margin-right: 2px;
   transition: border .25s, filter .25s;
 }
 
@@ -37,7 +42,7 @@
   margin: 0;
   padding: 0;
   margin-top: .5em;
-  overflow: auto;
+  clear: both;
 }
 
 .hots-dialog__section:first-child {
@@ -87,28 +92,29 @@
 
 /* Hero filters */
 
+.hots-hero-filters {
+  display: flex;
+}
+
 .hots-hero-filter-group {
-  border: 0;  /* Reset user agent style (<fieldset>) */
-  margin: 0;  /* Reset user agent style (<fieldset>) */
-  padding: 0; /* Reset user agent style (<fieldset>) */
+  display: flex;
   margin-right: 1em;
-  float: left;
 }
 
 .hots-hero-filter-group__description {
-  padding: 0; /* Reset user agent style (<legend>) */
   padding-right: 1em;
-  float: left;
 }
 
 .hero-filter {
-  float: left;
-  padding: 1px;
+  margin: 1px;
   margin-right: 5px;
 }
 
+label.hero-filter {
+  display: flex;
+}
+
 .hero-filter__content {
-  display: block;
   width: 20px;
   height: 20px;
   opacity: .3;
@@ -125,9 +131,17 @@
 
 /* Hero icons section */
 
-.hots-hero-icon {
-  float: left;
+.hots-hero-icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hots-hero-icon-wrapper {
   margin: 2px;
+}
+
+.hots-hero-icon {
+  margin: 0;
 }
 
 .hots-hero-icon--excluded {
@@ -187,4 +201,8 @@
   border: 1px solid #5df;
   background: #77c;
   color: #fff;
+}
+
+.hots-dialog [role~="tooltip"]::after {
+  white-space: pre;
 }

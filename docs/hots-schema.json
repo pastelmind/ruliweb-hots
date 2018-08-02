@@ -51,6 +51,9 @@
             "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
             "$ref": "#/definitions/trimmedString"
           },
+          "title": {
+            "$ref": "#/definitions/trimmedString"
+          },
           "iconUrl": {
             "type": "string",
             "format": "uri"
@@ -344,7 +347,7 @@
       "properties": {
         "value": {
           "type": "number",
-          "multipleOf": 0.1
+          "multipleOf": 0.05
         },
         "levelScaling": {
           "type": "number",
@@ -409,11 +412,7 @@
           "multipleOf": 0.5
         },
         "manaCost": {
-          "$comment": "TODO: Convert all strings (X per second) to numbers",
-          "type": [
-            "integer",
-            "string"
-          ],
+          "type": "integer",
           "exclusiveMinimum": 0
         },
         "manaCostPerSecond": {
@@ -447,13 +446,12 @@
         {
           "properties": {
             "type": {
-              "$comment": "TODO: Use 'D' instead of '고유 능력'",
               "enum": [
                 "Q",
                 "W",
                 "E",
                 "R",
-                "고유 능력",
+                "D",
                 "Z",
                 "1"
               ]

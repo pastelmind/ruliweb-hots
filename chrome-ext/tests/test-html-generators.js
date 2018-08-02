@@ -10,6 +10,8 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
+const decorateHotsData = require('../src/js/decorate-hots-data');
+
 //Mocks for HotsDialog
 require('./js/mocks');
 global.Mustache = require('mustache');
@@ -31,11 +33,7 @@ describe('HotsDialog.htmlGenerators', () => {
 
   before('Loading test data files', () => {
     hotsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8'));
-    for (const heroId in hotsData.heroes) {
-      const hero = hotsData.heroes[heroId];
-      hero.id = heroId;
-      hero.skills.forEach((skill, index) => skill.index = index);   //TODO use data prepare function
-    }
+    decorateHotsData(hotsData);
 
     const templateFileContent = fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
     eval(templateFileContent);
@@ -74,7 +72,7 @@ describe('HotsDialog.htmlGenerators', () => {
       let heroInfoHtml = '';
 
       for (const hero of Object.values(hotsData.heroes))
-        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion, hotsData.statPresets);
+        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
       assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));

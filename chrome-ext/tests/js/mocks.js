@@ -29,6 +29,7 @@ async function loadTemplates() {
     'dialog-talents',
     'dialog',
     'insert-hero',
+    'insert-hero-skill',
     'insert-skill-stats',
     'insert-skill',
     'insert-talent',

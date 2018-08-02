@@ -3,8 +3,6 @@
 /**
  * Combines the contents of all files in `templates/` and stores them as a
  * browser-side script in src/js/templates.js
- *
- * TODO Add this script to npm install script
  */
 
 
@@ -55,6 +53,7 @@ for (const fileName of fileNames) {
   //Minify HTML
   templates[templateName] = minifyHtml(template, {
     collapseBooleanAttributes: true,
+    ignoreCustomFragments: [/\{{2,3}.*?\}{2,3}/],
     minifyCSS: true,
     removeEmptyAttributes: true
   });
