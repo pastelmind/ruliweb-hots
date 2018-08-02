@@ -117,6 +117,7 @@
 /******** Hero table: Title section ********/
 
 .ruliweb-hots-hero-table__header {
+  width: calc(50em - 64px - 1em);
   box-sizing: border-box;
   padding: 1em;
 }
@@ -175,6 +176,7 @@
   flex-wrap: wrap;
   align-items: flex-end;
   padding: 5px 5px 0 0;
+  overflow: auto;
 }
 
 /******** Hero table: Stat section ********/

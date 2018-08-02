@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.1] - 2018-08-03
+### Fixed
+- Fixed a bug that caused hero tables to break in Firefox and Edge.
+
+
 ## [0.6.0] - 2018-08-03
 ### Added
 - Use [`ajv`](https://github.com/epoberezkin/ajv) to validate `hots.json` with a
