@@ -344,7 +344,7 @@
       "properties": {
         "value": {
           "type": "number",
-          "multipleOf": 0.1
+          "multipleOf": 0.05
         },
         "levelScaling": {
           "type": "number",
