@@ -296,6 +296,40 @@ const HotsDialog = {
      */
     generateHeroInfoTable(hero, hotsVersion) {
       const heroView = Object.create(hero);
+
+      //Set universe icon offset
+      heroView.universeIconOffset = {
+        'classic': '0%',
+        'starcraft': '25%',
+        'diablo': '50%',
+        'warcraft': '75%',
+        'overwatch': '100%'
+      }[heroView.universe];
+
+      //Generate skill groups
+      const traits = { title: '고유 능력', skills: [] };
+      const basicAbilities = { title: '일반 기술', skills: [] };
+      const heroicAbilities = { title: '궁극기', skills: [] };
+
+      heroView.skills.forEach(skill => {
+        //TODO Use skill.typeName for displayed string and skill.type for base string
+        if (skill.type === '고유 능력')
+          traits.skills.push(skill);
+        else if (skill.type === 'R')
+          heroicAbilities.skills.push(skill);
+        else
+          basicAbilities.skills.push(skill);
+      });
+
+      for (const talentLevel in heroView.talents) {
+        for (const talent of heroView.talents[talentLevel]) {
+          if (talent.type === 'R')
+            heroicAbilities.skills.push(talent);
+        }
+      }
+
+      heroView.skillGroups = [traits, basicAbilities, heroicAbilities];
+
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
 

@@ -63,6 +63,15 @@ function decorateHotsData(hotsData) {
   for (const [heroId, hero] of Object.entries(hotsData.heroes)) {
     hero.id = heroId;
 
+    //Add hero universe names
+    hero.universeName = {
+      'warcraft': '워크래프트',
+      'starcraft': '스타크래프트',
+      'diablo': '디아블로',
+      'classic': '블리자드 고전',
+      'overwatch': '오버워치'
+    }[hero.universe];
+
     //Apply default icon URL to heroes
     if (!hero.iconUrl)
       hero.iconUrl = missingIconUrl;

@@ -53,6 +53,7 @@ for (const fileName of fileNames) {
   //Minify HTML
   templates[templateName] = minifyHtml(template, {
     collapseBooleanAttributes: true,
+    ignoreCustomFragments: [/\{{2,3}.*?\}{2,3}/],
     minifyCSS: true,
     removeEmptyAttributes: true
   });

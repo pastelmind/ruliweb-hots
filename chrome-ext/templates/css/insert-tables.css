@@ -17,16 +17,19 @@
   width: 100%;
 }
 
-.ruliweb-hots-hero-table__content, .ruliweb-hots-skill-table__content, .ruliweb-hots-talent-table__content {
+.ruliweb-hots-hero-table__header, .ruliweb-hots-skill-table__content, .ruliweb-hots-talent-table__content {
   float: left;
-  display: flex;
-  flex-flow: column;
   width: 50em;
   max-width: calc(100% - 64px - 1em);
   min-height: calc(64px + 1em);
 }
 
-.ruliweb-hots-hero-table__header, .ruliweb-hots-skill-table__header, .ruliweb-hots-talent-table__header {
+.ruliweb-hots-skill-table__content, .ruliweb-hots-talent-table__content {
+  display: flex;
+  flex-flow: column;
+}
+
+.ruliweb-hots-skill-table__header, .ruliweb-hots-talent-table__header {
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;
@@ -44,14 +47,17 @@
   color: #efe;
 }
 
+
 /******** Hero table ********/
 
 .ruliweb-hots-hero-table {
-  border: 2px solid #47a;
-  background: #135;
+  border: 2px solid #426;
+  border-image: linear-gradient(#135, #426) 1;
   /* Fake equal height columns */
-  color: #ffd;
+  background: #101;
   /* Color of collapse/expand arrow */
+  color: #ffd;
+  line-height: normal;  /* Override Ruliweb's (MYPI) stylesheet */
 }
 
 .ruliweb-hots-hero-table__icon-cell {
@@ -61,40 +67,101 @@
   /* Should be entered directly in template */
 }
 
-.ruliweb-hots-hero-table__header {
-  background: #011;
-  color: #add;
+/******** Hero table: All sections ********/
+
+.ruliweb-hots-hero-table__section {
+  background: linear-gradient(#214, #102);
 }
 
-.ruliweb-hots-hero-table__title {
-  flex: 2 14em;
+.ruliweb-hots-hero-table__section:nth-child(3) {
+  clear: both;
 }
 
-.ruliweb-hots-hero-table__type {
-  flex: 1 7em;
-}
-
-.ruliweb-hots-hero-table__title, .ruliweb-hots-hero-table__type {
-  border: solid #47a;
-  border-width: 0 0 1px 1px;
-}
-
-.ruliweb-hots-hero-table__description {
-  border-left: 1px solid #47a;
-  background: #134;
-}
-
-/******** Stat sections in hero tables ********/
-
-.ruliweb-hots-hero-table__stats {
+.ruliweb-hots-hero-table__section:nth-child(n+3) {
+  box-sizing: border-box;
   width: 50em;
   max-width: 100%;
-  box-sizing: border-box;
-  clear: both;
-  border-top: 1px solid #47a;
-  padding: .5em 0 0 .5em;
-  background-color: #244;
+  border-top: 1px solid #426;
 }
+
+/******** Hero table: Title section ********/
+
+.ruliweb-hots-hero-table__header {
+  box-sizing: border-box;
+  padding: 1em;
+  display: unset; /* TODO just remove display: flex */
+}
+
+.ruliweb-hots-hero-table__hero-name-block {
+  display: flex;
+}
+
+.ruliweb-hots-hero-table__hero-universe {
+  flex: none;
+  align-self: center;
+  margin-right: .5em;
+  width: 2em; height: 2em;
+  /* Hide default text */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ruliweb-hots-hero-table__hero-name {
+  font-size: 1.5em;
+  text-shadow: 0 0 1em #09f;
+  margin: 0;  /* Override <h2> user agent style */
+}
+
+.ruliweb-hots-hero-table__hero-title {
+  font-size: 1.2em;
+  color: #6cf;
+}
+
+/******** Hero table: Skill section ********/
+
+.ruliweb-hots-hero-table__skills {
+  padding: .5em;
+}
+
+.ruliweb-hots-hero-table__skill-group {
+  display: flex;
+}
+
+.ruliweb-hots-hero-table__skill-group-title {
+  margin: 0;    /* Override <h3> user agent style */
+  flex: 0 2 5em;
+  align-self: center;
+  display: block;
+  min-width: 3em;
+  font-size: 1.2em;
+  text-shadow: 0 0 1em #09f;
+  text-align: center;
+}
+
+.ruliweb-hots-hero-table__skill-group-icons {
+  flex: 1 20em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-top: 5px;
+}
+
+.ruliweb-hots-hero-table__skill-icon {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #ccd;
+  border-image: linear-gradient(#8df, #ccd) 1;
+  margin: 0 0 5px 5px;
+}
+
+/******** Hero table: Stat section ********/
+
+.ruliweb-hots-hero-table__stats {
+  padding: .5em 0 0 .5em;
+}
+
+/******** Hero table: Hero stat table ********/
 
 .ruliweb-hots-hero-stat-table {
   display: inline-table;
@@ -122,6 +189,11 @@
   /* Apply directly on <th> to override Ruliweb's (MYPI) stylesheet */
   color: #6ce;
   font: bold 1em sans-serif;
+}
+
+.ruliweb-hots-hero-stat-table .ruliweb-hots-hero-stat-table__unit-name {
+  color: #ffd;
+  text-shadow: 0 0 1em #09f;
 }
 
 .ruliweb-hots-hero-stat-table td {
@@ -259,5 +331,5 @@
   text-align: right;
   font-size: .8em;
   color: #cca;
-  font-style: italic
+  font-style: italic;
 }

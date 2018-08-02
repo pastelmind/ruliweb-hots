@@ -102,6 +102,7 @@
   "heroes": {
     "gazlowe": {
       "name": "가즈로",
+      "title": "톱니항 두목",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png",
       "type": "근접",
       "role": "specialist",
@@ -382,6 +383,7 @@
     },
     "rexxar": {
       "name": "렉사르",
+      "title": "호드의 용사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
       "type": "원거리",
       "role": "warrior",
@@ -667,6 +669,7 @@
     },
     "fenix": {
       "name": "피닉스",
+      "title": "기사단의 귀감",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
       "type": "원거리",
       "role": "assassin",

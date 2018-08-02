@@ -1,24 +1,34 @@
 <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-hero-table">
-  <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{iconUrl}}) center/64px no-repeat" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
-  <div class="ruliweb-hots-hero-table__content">
-    <div class="ruliweb-hots-hero-table__header">
-      <div class="ruliweb-hots-hero-table__title">{{name}}</div>
-      <div class="ruliweb-hots-hero-table__type">{{type}} {{roleName}}</div>
+  <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{&iconUrl}}) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
+
+  <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__header">
+    <div class="ruliweb-hots-hero-table__hero-name-block">
+      <div class="ruliweb-hots-hero-table__hero-universe" style="background: url(http://i3.ruliweb.com/img/18/08/02/164f661194b19dc2c.png) {{universeIconOffset}} 0/cover" title="{{universeName}}">{{universeName}}</div>
+      <h2 class="ruliweb-hots-hero-table__hero-name">{{name}}</h2>
     </div>
-    <div class="ruliweb-hots-hero-table__description">
-      {{#skills}}
-      <img style="WIDTH: 48px; margin: 0 .25em" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
-      {{/skills}}{{#hotsVersion}}
-      <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
+    <div class="ruliweb-hots-hero-table__hero-title"><b>{{title}}</b></div>
+  </section>
+
+  <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__skills">
+    {{#skillGroups}}
+    <div class="ruliweb-hots-hero-table__skill-group">
+      <h3 class="ruliweb-hots-hero-table__skill-group-title">{{title}}</h3>
+      <div class="ruliweb-hots-hero-table__skill-group-icons">
+        {{#skills}}
+        <img class="ruliweb-hots-hero-table__skill-icon" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
+        {{/skills}}
+      </div>
     </div>
-  </div>
-  <div class="ruliweb-hots-hero-table__stats">
+    {{/skillGroups}}
+  </section>
+
+  <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__stats">
     {{#units}}
     <table class="ruliweb-hots-hero-stat-table">
       <thead>
         {{#unitName}}
         <tr>
-          <th colspan="3">{{unitName}}</th>
+          <th class="ruliweb-hots-hero-stat-table__unit-name" colspan="3">{{unitName}}</th>
         </tr>
         {{/unitName}}
         <tr>
@@ -40,5 +50,7 @@
       </tbody>
     </table>
     {{/units}}
-  </div>
+  </section>
+
+  {{#hotsVersion}}<footer class="hots-version">패치 {{hotsVersion}}</footer>{{/hotsVersion}}
 </details>

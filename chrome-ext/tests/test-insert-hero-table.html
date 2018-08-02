@@ -19,12 +19,16 @@
         font-size: 15px;
       }
     }
+
+    body {
+      line-height: 150%;
+    }
   </style>
 </head>
 
 <body>
-    <script src="../../node_modules/axios/dist/axios.min.js"></script>
-    <script src="../../node_modules/mustache/mustache.min.js"></script>
+  <script src="../../node_modules/axios/dist/axios.min.js"></script>
+  <script src="../../node_modules/mustache/mustache.min.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
   <script src="./js/mocks.js"></script>
@@ -60,7 +64,8 @@
       for (const heroId of heroIds)
         template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
 
-      template.content.querySelectorAll('details').forEach(detailsElement => detailsElement.open = true);
+      for (const detailsElement of template.content.querySelectorAll('details'))
+        detailsElement.open = true;
 
       document.body.appendChild(template.content);
 
