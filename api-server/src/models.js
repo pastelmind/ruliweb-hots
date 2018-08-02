@@ -129,23 +129,20 @@ exports.Hero = class {
 
 const Hero = exports.Hero;
 
-exports.Hero.roles = {
+exports.Hero.roles = Object.freeze({
   'warrior': '전사',
   'assassin': '암살자',
   'support': '지원가',
   'specialist': '전문가'
-};
+});
 
-exports.Hero.universes = {
+exports.Hero.universes = Object.freeze({
   'warcraft': '워크래프트',
   'starcraft': '스타크래프트',
   'diablo': '디아블로',
   'classic': '고전',
   'overwatch': '오버워치'
-};
-
-Object.freeze(exports.Hero.roles);
-Object.freeze(exports.Hero.universes);
+});
 
 
 /**
