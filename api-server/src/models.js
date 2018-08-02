@@ -160,6 +160,7 @@ exports.Skill = class {
     this.cooldown = o.cooldown || 0;
     this.rechargeCooldown = o.rechargeCooldown || 0;
     this.manaCost = o.manaCost || 0;
+    this.manaCostPerSecond = o.manaCostPerSecond || 0;
     this.extras = o.extras || {};
   }
 
@@ -181,6 +182,8 @@ exports.Skill = class {
       o.rechargeCooldown = this.rechargeCooldown;
     if (this.manaCost)
       o.manaCost = this.manaCost;
+    if (this.manaCostPerSecond)
+      o.manaCostPerSecond = this.manaCostPerSecond;
     o.extras = this.extras;
     return o;
   }
