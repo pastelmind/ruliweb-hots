@@ -13,10 +13,8 @@
     {{#skillGroups}}
     <div class="ruliweb-hots-hero-table__skill-group">
       <h3 class="ruliweb-hots-hero-table__skill-group-title">{{title}}</h3>
-      <div class="ruliweb-hots-hero-table__skill-group-icons">
-        {{#skills}}
-        <img class="ruliweb-hots-hero-table__skill-icon" src="{{{iconUrl}}}" alt="{{type}} - {{name}}" title="{{type}} - {{name}}">
-        {{/skills}}
+      <div class="ruliweb-hots-hero-table__skill-group-skills">
+        {{#skills}}{{> skill}}{{/skills}}
       </div>
     </div>
     {{/skillGroups}}

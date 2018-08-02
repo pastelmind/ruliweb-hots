@@ -330,10 +330,16 @@ const HotsDialog = {
 
       heroView.skillGroups = [traits, basicAbilities, heroicAbilities];
 
+      for (const skillGroup of heroView.skillGroups)
+        skillGroup.skills = skillGroup.skills.map(skill => this.generateSkillTalentView(skill));
+
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
 
-      return Mustache.render(this.templates['insert-hero'], heroView);
+      return Mustache.render(this.templates['insert-hero'], heroView, {
+        skill: this.templates['insert-hero-skill'],
+        stats: this.templates['insert-skill-stats']
+      });
     },
 
     /**

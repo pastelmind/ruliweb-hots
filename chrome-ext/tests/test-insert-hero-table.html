@@ -64,7 +64,7 @@
       for (const heroId of heroIds)
         template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
 
-      for (const detailsElement of template.content.querySelectorAll('details'))
+      for (const detailsElement of template.content.querySelectorAll('details.ruliweb-hots-hero-table'))
         detailsElement.open = true;
 
       document.body.appendChild(template.content);
