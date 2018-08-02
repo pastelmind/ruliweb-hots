@@ -153,7 +153,7 @@
       "skills": [
         {
           "name": "로봇 모드 (Mech Mode)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953eaaa19dc2c.png",
           "description": "로봇이 파괴되면 0.75초 후에 로봇에서 탈출하여 생존할 수 있습니다. 로봇은 파괴되면 적에게 영웅 처치 경험치의 50%만 줍니다.",
           "extras": {}
@@ -196,7 +196,7 @@
         },
         {
           "name": "조종사 모드 (Pilot Mode)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953f27419dc2c.png",
           "description": "일반 공격을 하면 로봇 호출의 재사용 대기시간이 0.5초 감소합니다. 조종사일 때 죽으면 적에게 영웅 처치 경험치의 50%만 줍니다.",
           "extras": {}
@@ -471,7 +471,7 @@
       "skills": [
         {
           "name": "방어력 증가 (Armor Up)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459565e3619dc2c.png",
           "description": "잃은 생명력 2%당 방어력이 1 증가합니다.",
           "extras": {}
@@ -739,7 +739,7 @@
       "skills": [
         {
           "name": "고물상 (Salvager)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png",
           "description": "파괴된 적 구조물이나 직접 설치한 잘나가! 포탑에서 고철이 떨어집니다. 고철을 획득하면 3초에 걸쳐 30의 마나를 회복하고 이 동안 기술의 재사용 대기시간이 세 배 빨리 감소합니다.\n\n고물상을 사용하면 대상 잘나가! 포탑을 해체해서 고철로 만듭니다.",
           "extras": {}
@@ -1006,7 +1006,7 @@
       "skills": [
         {
           "name": "오우거의 분노 (Ogre Rage)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530a0619dc2c.png",
           "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n지속 효과: 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
           "cooldown": 5,
@@ -1272,7 +1272,7 @@
       "skills": [
         {
           "name": "사이보그의 날렵함 (Cyber Agility)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956b37b19dc2c.png",
           "description": "사용하면 대상 위치로 도약합니다.",
           "cooldown": 15,
@@ -1533,7 +1533,7 @@
       "skills": [
         {
           "name": "생명력 전환 (Life Tap)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645957190e19dc2c.png",
           "description": "굴단은 마나를 재생할 수 없습니다.\n\n사용하면 최대 마나의 25%를 회복합니다.",
           "extras": {
@@ -1808,7 +1808,7 @@
       "skills": [
         {
           "name": "늑대인간의 저주 (Curse of the Worgen)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956d2cc19dc2c.png",
           "description": "특정 기술을 사용하여 <span style=\"color: #ffff80\">인간</span>이나 <span style=\"color: #d65cff\">늑대인간</span>으로 변신할 수 있습니다.\n\n<span style=\"color: #ffff80\">인간</span>일 때에는 원거리 일반 공격을 합니다.\n<span style=\"color: #d65cff\">늑대인간</span>일 때에는 근접 일반 공격을 하지만 일반 공격력이 40% 증가하고 방어력이 10 증가하여 받는 피해가 10% 감소합니다.",
           "extras": {}
@@ -2116,7 +2116,7 @@
       "skills": [
         {
           "name": "바이킹 비상 식량 (Viking Hoard)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645961622019dc2c.png",
           "description": "바이킹으로 재생의 구슬을 획득할 때마다 모든 바이킹의 초당 생명력 재생량이 0.5 증가합니다.",
           "extras": {}
@@ -2420,7 +2420,7 @@
       "skills": [
         {
           "name": "부두 의식 (Voodoo Ritual)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ecb0d19dc2c.png",
           "description": "일반 공격과 기술이 영웅이 아닌 적들을 중독시켜 6초에 걸쳐 69(+4%)의 추가 피해를 줍니다.\n\n퀘스트: 돌격병이 부두 의식에 중독된 상태로 죽으면 최대 생명력이 6, 최대 마나가 1 영구히 증가합니다.",
           "extras": {}
@@ -2685,7 +2685,7 @@
       "skills": [
         {
           "name": "영구 은신 (Permanent Cloak)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595ed5e719dc2c.png",
           "description": "3초 동안 전투에서 벗어나 있으면 은신 상태가 됩니다. 피해를 받거나, 공격하거나, 기술을 사용하거나, 정신을 집중하면 은신이 풀립니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.\n\n지속 효과: 은신한 동안 이동 속도가 15% 증가합니다.",
           "extras": {}
@@ -2950,7 +2950,7 @@
       "skills": [
         {
           "name": "유독 가스 (Vile Gas)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459609cb019dc2c.png",
           "description": "누더기는 피해를 받으면 가스를 방출하여 주위의 적을 중독시켜 3초에 걸쳐 71(+4%)의 피해를 줍니다.",
           "cooldown": 3,
@@ -3239,7 +3239,7 @@
       "skills": [
         {
           "name": "케인의 수호자 (Fortitude of the Faithful)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595337ef19dc2c.png",
           "description": "주위에 아군 영웅이 1명 이상 있으면 방어력이 10 증가하고 일반 기술의 재사용 대기시간이 50% 더 빨리 감소합니다.",
           "extras": {}
@@ -3480,7 +3480,7 @@
       "skills": [
         {
           "name": "정수 수집 (Essence Collection)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595395a619dc2c.png",
           "description": "영웅 처치 시 10개, 돌격병 처치 시 2개의 정수를 수집합니다. 사용하면 수집한 정수를 모두 소모하여 하나당 5초에 걸쳐 30(+4%)의 생명력을 회복합니다. 정수는 최대 50개까지 수집할 수 있습니다. 끌기나 잠복 중에도 사용할 수 있습니다.",
           "cooldown": 5,
@@ -3738,7 +3738,7 @@
       "skills": [
         {
           "name": "신선한 고기 (Fresh Meat)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459611bd119dc2c.png",
           "description": "주위에서 죽은 적들이 신선한 고기를 떨어트립니다. 돌격병은 1개, 영웅은 20개를 떨어트리며, 획득한 신선한 고기 하나당 일반 공격력이 0.5 증가합니다. 죽으면 신선한 고기를 15개 잃습니다.\n\n퀘스트: 신선한 고기를 200개 획득해야 합니다.\n보상: 일반 공격력이 추가로 125 증가하고 공격 속도가 25% 증가합니다. 또한 죽어도 고기를 잃지 않고 영웅은 10개의 고기를 떨어트리지만, 적 돌격병은 더는 신선한 고기를 떨어트리지 않습니다.",
           "extras": {}
@@ -3992,7 +3992,7 @@
       "skills": [
         {
           "name": "검은 영혼석 (Black Soulstone)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953a54719dc2c.png",
           "description": "반복 퀘스트: 영웅을 처치할 때마다 10개, 돌격병을 처치할 때마다 1개의 영혼을 획득하여 최대 100개의 영혼을 보유할 수 있습니다. 영혼 하나당 최대 생명력이 0.4% 증가합니다. 죽을 때 100개의 영혼이 있으면 5초 만에 부활하고 100개의 영혼을 잃습니다.",
           "extras": {}
@@ -4251,7 +4251,7 @@
       "skills": [
         {
           "name": "화산 심장부 (Molten Core)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595efecb19dc2c.png",
           "description": "아군 혹은 파괴된 요새나 성채에 정신을 집중하여 라그나로스의 진정한 모습으로 거듭납니다. 일시적으로 요새나 성채를 대신하게 되며, 새로운 능력을 얻고, 18초에 걸쳐 잃는 4156(+4%)의 추가 생명력을 얻습니다.\n\n화산 심장부 상태일 때 생명력이 전부 떨어지면 원래 모습으로 돌아갑니다.",
           "cooldown": 120,
@@ -4542,7 +4542,7 @@
       "skills": [
         {
           "name": "늑대 정령 (Ghost Wolf)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f1e6619dc2c.png",
           "description": "탈것을 사용하는 대신 늑대 정령으로 변신해서 이동 속도가 20% 증가합니다. 늑대 정령 형상일 때 일반 공격을 하면 대상을 향해 짧은 거리를 약진하고 75% 추가 피해를 줍니다. 피해를 주거나, 기술을 사용하거나, 정신 집중이 필요한 행동을 하면 늑대 정령 형상이 취소됩니다.",
           "extras": {
@@ -4824,7 +4824,7 @@
       "skills": [
         {
           "name": "불사, 해골 왕의 분노 (Undying, Wrath Of The Bone King)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459593c4b19dc2c.png",
           "description": "<span style=\"color: #ffff8a\">불사:</span> 죽으면 유령이 되고, 생명력을 모두 회복하면 부활합니다. 유령인 동안에는 적에게 피해를 줄 수 없습니다.\n\n<span style=\"color: #ffff8a\">해골 왕의 분노:</span> 첫 번째와 두 번째 공격이 주위에 100% 피해를 주고 세 번째 공격은 대상에게 200%의 추가 피해를 줍니다.",
           "extras": {
@@ -5109,7 +5109,7 @@
       "skills": [
         {
           "name": "뜨거운 맛을 보여주지 (Give 'Em Some Pepper)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/11/164874af33119dc2c.png",
           "description": "네 번째 일반 공격이 공격 대상 주위에도 피해를 주고 주 대상에게 125%의 추가 피해를 줍니다.",
           "extras": {}
@@ -5382,7 +5382,7 @@
       "skills": [
         {
           "name": "미샤, 집중해! (Misha, Focus!)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/08/164758eadfc19dc2c.png",
           "description": "지속 효과: 미샤의 이동 속도가 15% 증가합니다.\n\n미샤에게 특정 적을 공격하거나 특정 위치로 이동해 대기하라고 명령합니다.\n\n렉사르를 대상으로 사용하면 미샤가 렉사르에게 돌아오며 이 동안 미샤의 이동 속도가 30% 추가로  증가합니다.\n\n미샤를 대상으로 사용하면 현재 위치에 대기합니다.",
           "extras": {}
@@ -5646,7 +5646,7 @@
       "skills": [
         {
           "name": "자연의 독소 (Nature's Toxin)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b209119dc2c.png",
           "description": "일반 공격이나 공격 기술로 피해를 주면 적을 중독시켜 3초 동안 초당 32(+5%)의 피해를 줍니다. 이 효과는 다시 적용될 때마다 지속 시간이 3초 증가하여 최대 9초까지 증가합니다.",
           "extras": {}
@@ -5921,7 +5921,7 @@
       "skills": [
         {
           "name": "벽 타기 (Wall Ride)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595afd6919dc2c.png",
           "description": "통과할 수 없는 지형이나 구조물을 따라 이동할 때 유닛을 통과할 수 있고, 이동 속도가 20% 증가합니다.\n\n이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
           "extras": {}
@@ -6189,7 +6189,7 @@
       "skills": [
         {
           "name": "빠른 발 (Fast Feet)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595953a419dc2c.png",
           "description": "피해를 받으면 이동 속도가 1초 동안 10% 증가하고 일반 기술의 재사용 대기시간이 50% 더 빨리 감소합니다.",
           "extras": {}
@@ -6447,7 +6447,7 @@
       "skills": [
         {
           "name": "극대화 반응 (Critical Mass)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459596c2619dc2c.png",
           "description": "영웅을 처치하면 모든 기술의 재사용 대기시간이 즉시 초기화됩니다.",
           "extras": {}
@@ -6716,7 +6716,7 @@
       "skills": [
         {
           "name": "감시관의 도약 (Vault of the Wardens)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b6ad519dc2c.png",
           "description": "공중으로 뛰어올라 0.75초 동안 모든 적대적인 효과에 면역이 됩니다.",
           "cooldown": 13,
@@ -6968,7 +6968,7 @@
       "skills": [
         {
           "name": "사신의 징표 (Reaper's Mark)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bbf7319dc2c.png",
           "description": "일반 공격이 전방의 적들을 휩쓸어 공격하며, 구조물이 아닌 대상에게 일반 공격을 하면 대상에게 4초 동안 <span style=\"color: #00DDDD\">사신의 징표</span>를 남깁니다. 징표가 남겨진 적들은 모습이 드러나고 1초마다 최대 생명력의 1.75%에 해당하는 피해를 받습니다.",
           "extras": {}
@@ -7230,7 +7230,7 @@
       "skills": [
         {
           "name": "정신 자극 (Innervate)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b823519dc2c.png",
           "description": "대상 아군 영웅이 5초에 걸쳐 최대 마나의 20%를 회복합니다. 정신 자극의 영향을 받는 동안 대상은 일반 기술 재사용 대기시간이 50% 더 빨리 감소합니다.\n\n<span style=\"color: #ffff8a\">마나를 사용하지 않는 영웅에게는 사용할 수 없습니다.</span>",
           "cooldown": 30,
@@ -7477,7 +7477,7 @@
       "skills": [
         {
           "name": "알 놓기 (Spawn Egg)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595ec0c919dc2c.png",
           "description": "대상 위치에 멀록 알을 놓습니다. 알 주위 시야가 확보되고, 죽으면 8초 후에 알에서 부활합니다. 죽으면 적에게 영웅 처치 경험치의 25%만 줍니다.\n\n알이 파괴되면 15초 동안 자신의 모습이 적들에게 드러나고 알 놓기에 재사용 대기시간이 적용됩니다.",
           "cooldown": 15,
@@ -7731,7 +7731,7 @@
       "skills": [
         {
           "name": "까마귀 변신 (Raven Form)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595a9fca19dc2c.png",
           "description": "탈것을 타지 않는 대신 까마귀로 변신해서 이동 속도가 20% 증가합니다. 변신한 동안 지형을 넘어 이동하며 시야를 확보할 수 있고, 모든 효과에 면역이 됩니다.",
           "cooldown": 4,
@@ -7997,7 +7997,7 @@
       "skills": [
         {
           "name": "카두세우스 반응로 (Caduceus Reactor)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595aac1e19dc2c.png",
           "description": "치료 광선을 시전하는 동안 매초 최대 생명력의 2%를 회복합니다.",
           "extras": {}
@@ -8242,7 +8242,7 @@
       "skills": [
         {
           "name": "재기의 바람 (Second Wind)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595e8e3219dc2c.png",
           "description": "무라딘이 4초 동안 피해를 받지 않으면 초당 55(+4%)의 생명력을 회복합니다. 생명력이 40% 이하로 내려가면 회복하는 생명력이 초당 110(+4%) 증가합니다.",
           "extras": {}
@@ -8577,7 +8577,7 @@
       "skills": [
         {
           "name": "영웅의 일격 (Heroic Strike)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963790419dc2c.png",
           "description": "18초마다 다음 일반 공격이 130(+4%)의 추가 기술 피해를 줍니다. 일반 공격을 할 때마다 재사용 대기시간이 2초 감소합니다.",
           "cooldown": 18,
@@ -8854,7 +8854,7 @@
       "skills": [
         {
           "name": "증오 (Hatred)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963587b19dc2c.png",
           "description": "일반 공격 시 증오 1중첩을 얻으며, 최대 10회 중첩됩니다. 증오 중첩당 일반 공격력이 8% 증가하고 이동 속도가 1% 증가합니다. 6초 동안 지속됩니다.",
           "extras": {}
@@ -9105,7 +9105,7 @@
       "skills": [
         {
           "name": "소멸 (Vanish)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645963558219dc2c.png",
           "description": "발리라가 시야에서 사라지면서 은신 상태가 되고 이동 속도가 20% 증가합니다. 사용 후 1초 동안 은신 유지 상태가 되고 유닛을 통과할 수 있습니다.\n\n소멸한 동안에는 새로운 능력을 얻습니다. 은신 상태를 3초 이상 유지하면 스킬의 사거리가 5로 증가하며 대상 반대편으로 순간이동합니다.",
           "cooldown": 8,
@@ -9400,7 +9400,7 @@
       "skills": [
         {
           "name": "방화광 (Pyromania)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947aa3019dc2c.png",
           "description": "4초 동안 방어력이 25 증가하고 주위 적들에게 0.5초마다 42(+4%)의 피해를 줍니다.\n\n적 영웅에게 화염 방사가 적중할 때마다 방화광의 재사용 대기시간이 5초 감소합니다.",
           "cooldown": 90,
@@ -9678,7 +9678,7 @@
       "skills": [
         {
           "name": "위안의 안개 (Soothing Mist)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
           "description": "빛나래는 4초마다 주위 아군 영웅들의 생명력을 116(+4%) 회복시킵니다.",
           "cooldown": 4,
@@ -9958,7 +9958,7 @@
       "skills": [
         {
           "name": "파죽지세, 환영 이동술 (Advancing Strikes, Image Transmission)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f308219dc2c.png",
           "description": "<span style=\"color: #ffff8a\">파죽지세:</span> 일반 공격으로 적 영웅을 공격하면 이동 속도가 2초 동안 25% 증가합니다.\n\n<span style=\"color: #ffff8a\">환영 이동술:</span> 사용하면 대상 환영과 위치를 바꿉니다. 위치를 바꾸면서 자신과 대상 환영에게 걸린 대부분의 약화 효과를 제거합니다.",
           "cooldown": 25,
@@ -10190,7 +10190,7 @@
       "skills": [
         {
           "name": "분노 (Fury)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960620619dc2c.png",
           "description": "마나 대신 분노를 사용합니다. 분노는 피해를 주거나 받으면 생성됩니다. 일반 기술 또는 궁극기를 사용하면 이동 속도가 4초 동안 10% 증가합니다.",
           "extras": {}
@@ -10439,7 +10439,7 @@
       "skills": [
         {
           "name": "서리늑대의 회복력 (Frostwolf Resilience)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459617b8b19dc2c.png",
           "description": "기술로 피해를 주면 서리늑대의 회복력 효과가 1회 중첩됩니다. 5중첩에 도달하면 즉시 232(+4%)의 생명력을 회복합니다.",
           "extras": {}
@@ -10693,7 +10693,7 @@
       "skills": [
         {
           "name": "감염체 폭발 (Bio-Kill Switch)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960a0b219dc2c.png",
           "description": "사용하면 스투코프의 모든 감염체를 폭발시킵니다. 치유성 병원균은 대상의 생명력을 452(+4%) 회복시키고, 독성 고름은 대상에게 104(+4%)의 피해를 주고 2초 동안 70% 느려지게 합니다. 스멀거리는 팔로 정신을 집중하는 동안에도 사용할 수 있습니다.",
           "cooldown": 16,
@@ -10975,7 +10975,7 @@
       "skills": [
         {
           "name": "검은 화살 (Black Arrows)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960c9c419dc2c.png",
           "description": "일반 공격 및 기술이 돌격병과 용병을 1초 동안 기절시킵니다. 일반 공격이 구조물을 1초 동안 무력화시킵니다.",
           "extras": {}
@@ -11250,7 +11250,7 @@
       "skills": [
         {
           "name": "때까치 (Shrike)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943862219dc2c.png",
           "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.\n\n0.5초마다 때까치로 준 피해의 50%만큼 생명력을 회복합니다.",
           "extras": {}
@@ -11515,7 +11515,7 @@
       "skills": [
         {
           "name": "풍뎅이 숙주 (Scarab Host)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943a93019dc2c.png",
           "description": "기술을 시전할 때마다 자신의 위치에 딱정벌레를 생성합니다. 딱정벌레는 8초 동안 전장에 머물며 주위 적들을 공격해 21(+4%)의 피해를 줍니다.",
           "extras": {}
@@ -11785,7 +11785,7 @@
       "skills": [
         {
           "name": "과부하 보호막 (Shield Overload)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
           "description": "생명력이 75% 미만인 상태에서 피해를 받으면, 5초 동안 390(+4%)의 보호막을 얻습니다. 일반 공격을 할 때마다 과부하 보호막의 재사용 대기시간이 4초 감소합니다.",
           "cooldown": 24,
@@ -12045,7 +12045,7 @@
       "skills": [
         {
           "name": "식충 변종 (Locust Strain)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645942f53c19dc2c.png",
           "description": "15초마다 식충을 생성합니다. 식충은 가장 가까운 공격로에 합류하여 적을 공격합니다. 식충은 25초 동안 지속됩니다.",
           "cooldown": 15,
@@ -12376,7 +12376,7 @@
       "skills": [
         {
           "name": "서리한이 굶주렸다 (Frostmourne Hungers)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943e7ab19dc2c.png",
           "description": "사용하면 다음 일반 공격이 즉시 적중하여 103(+4%)의 추가 피해를 주고 30의 마나를 회복시킵니다.",
           "cooldown": 12,
@@ -12628,7 +12628,7 @@
       "skills": [
         {
           "name": "희망 불어넣기 (Bestow Hope)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942d61319dc2c.png",
           "description": "지속 효과: 영웅에게 준 피해의 40%와 영웅이 아닌 대상에게 준 피해의 10%를 치유 에너지로 저장합니다.\n\n사용하면 대상 아군 영웅에게 희망을 불어넣습니다. 대상이 주위에 있으면 대상이 준 피해 역시 치유 에너지로 저장됩니다. 동시에 1명의 영웅에게만 희망을 불어넣을 수 있습니다.\n\n최대 495(+4%)의 치유 에너지를 저장할 수 있습니다.",
           "cooldown": 1.5,
@@ -12889,7 +12889,7 @@
       "skills": [
         {
           "name": "악마 부관 (Demon Lieutenant)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ebc119dc2c.png",
           "description": "아군 용병, 돌격병, 또는 아즈모단의 악마에게 악마 부관을 소환합니다. 악마 부관은 7초마다 악마의 일격을 사용하여 적 돌격병을 즉시 처치합니다. 20초 동안 지속됩니다.\n\n모두 다 불타리라로 정신을 집중하는 동안에도 사용할 수 있습니다.",
           "cooldown": 60,
@@ -13140,7 +13140,7 @@
       "skills": [
         {
           "name": "가학성 (Sadism)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943209919dc2c.png",
           "description": "기술 공격과 자가 치유량이 적 영웅을 상대로 100% 증가합니다.\n\n반복 퀘스트: 적 영웅을 처치하면 가학성이 3% 증가하여 최대 30% 증가합니다. 적 영웅을 처치하여 증가한 가학성은 죽으면 사라집니다.",
           "extras": {}
@@ -13435,7 +13435,7 @@
       "skills": [
         {
           "name": "용의 여왕 (Dragonqueen)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943365719dc2c.png",
           "description": "1.25초 후 용으로 변신하여 생명력이 520(+4%) 증가합니다.\n\n용의 여왕이 활성화된 동안 일반 기술들이 강화되고 일반 공격이 149(+4%)의 피해를 주며 전방의 아군 영웅들의 생명력을 45(+4%) 회복시킵니다. 또한 기절, 감속, 이동 불가 효과의 지속 시간이 50% 감소합니다.\n\n15초 동안 지속됩니다.",
           "cooldown": 150,
@@ -13731,7 +13731,7 @@
       "skills": [
         {
           "name": "철갑 피부 (Iron Skin)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459583e3719dc2c.png",
           "description": "701(+4%)의 피해를 흡수하는 보호막을 얻습니다. 4초 동안 지속됩니다. 이 보호막이 지속되는 동안 저지 불가 상태가 됩니다.",
           "cooldown": 20,
@@ -13993,7 +13993,7 @@
       "skills": [
         {
           "name": "헌신, 영원한 선봉장 (Devotion, Eternal Vanguard)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459631b9719dc2c.png",
           "description": "<span style=\"color: #ffff8a\">헌신:</span> 일반 기술로 치유한 영웅의 방어력이 2초 동안 15 증가합니다. 이 기술 자체로는 효과가 중첩되지 않습니다.\n\n<span style=\"color: #ffff8a\">영원한 선봉장:</span> 죽으면 최대 8초 동안 무적 상태의 영혼이 됩니다. 이 상태에서는 빛의 섬광으로 아군을 치유할 수 있습니다.",
           "extras": {}
@@ -14261,7 +14261,7 @@
       "skills": [
         {
           "name": "신성한 목적 (Divine Purpose)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645963c05d19dc2c.png",
           "description": "사용하면 다음 일반 기술이 즉시 강화되고 마나를 소모하지 않습니다.\n\n지속 효과: 모든 일반 기술을 1.5초에 걸쳐 충전하여 강화할 수 있지만 그동안 이동 속도가 25% 감소합니다.",
           "cooldown": 8,
@@ -14512,7 +14512,7 @@
       "skills": [
         {
           "name": "배신자의 갈증 (Betrayer's Thirst)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595753af19dc2c.png",
           "description": "일반 공격으로 준 피해의 30%만큼 생명력을 회복하고 모든 기술의 재사용 대기시간이 1초 감소합니다.",
           "extras": {}
@@ -14760,7 +14760,7 @@
       "skills": [
         {
           "name": "점막 종양 (Creep Tumor)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645965005519dc2c.png",
           "description": "점막을 만드는 점막 종양을 놓습니다. 점막 위에서는 자가라의 일반 공격 사거리가 20% 증가하고 자가라와 그 소환수의 이동 속도가 20% 증가합니다. 종양은 240초 동안 지속되고 주위 지역을 드러냅니다.\n\n최대 3회 충전됩니다.",
           "rechargeCooldown": 18,
@@ -15014,7 +15014,7 @@
       "skills": [
         {
           "name": "에너지 (Energy)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459650d8019dc2c.png",
           "description": "자리야의 입자 방벽이나 방벽 씌우기가 10(+4%)의 피해를 흡수할 때마다 자리야가 1의 에너지를 충전합니다. 에너지 1당 자리야의 공격력이 2% 증가합니다. 0.5초후, 충전된 에너지는 초당 3씩 감소합니다.",
           "extras": {}
@@ -15302,7 +15302,7 @@
       "skills": [
         {
           "name": "록스타 (Rockstar)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645954278619dc2c.png",
           "description": "일반 기술 또는 궁극기를 사용한 후 방어력이 2초 동안 20 증가합니다. 이 기술 자체로는 효과가 중첩되지 않습니다.",
           "extras": {}
@@ -15564,7 +15564,7 @@
       "skills": [
         {
           "name": "완전 난장판, 지뢰 폭발 (Total Mayhem, Detonate Mine)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958835e19dc2c.png",
           "description": "<span style=\"color: #ffff8a\">완전 난장판:</span> 죽으면 0.75초 뒤 폭발하는 폭탄을 5개 떨어트려 주위 적들에게 260(+4%)의 피해를 줍니다. 구조물에는 75% 감소된 피해를 줍니다.\n\n<span style=\"color: #ffff8a\">지뢰 폭발:</span> 활성화된 충격 지뢰를 폭발시킵니다.",
           "extras": {
@@ -15835,7 +15835,7 @@
       "skills": [
         {
           "name": "영구 은신 (Permanent Cloak)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964dbb119dc2c.png",
           "description": "3초 동안 전투에서 벗어나 있으면 은신 상태가 됩니다. 피해를 받거나, 공격하거나, 기술을 사용하거나, 정신을 집중하면 은신이 풀립니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.",
           "extras": {}
@@ -16091,7 +16091,7 @@
       "skills": [
         {
           "name": "동상 (Frostbite)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595644b119dc2c.png",
           "description": "기술이 대상이 한기를 느끼게 만들어 25% 느려지게 만들고 제이나의 기술로 받는 피해를 50% 증가시킵니다. 4초 동안 지속됩니다.\n\n퀘스트: 한기를 느끼는 적 영웅들에게 15000의 기술 피해를 줘야 합니다.\n보상: 향상된 얼음 방패 기술을 얻어 제이나가 일시적으로 무적 상태가 될 수 있습니다.",
           "extras": {}
@@ -16357,7 +16357,7 @@
       "skills": [
         {
           "name": "해골 되살리기 (Raise Skeleton)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963b61019dc2c.png",
           "description": "주위에서 죽은 적 돌격병을 234(+4%)의 생명력을 가진 해골 전사로 되살립니다. 해골 전사는 일반 공격으로 22(+4%)의 피해를 주고, 15초 동안 지속됩니다. 최대 4명의 해골 전사를 동시에 부릴 수 있습니다.",
           "extras": {}
@@ -16625,7 +16625,7 @@
       "skills": [
         {
           "name": "광전사, 도끼 맛 좀 보여줄까? (Berserker, You Want Axe?)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645964e5ff19dc2c.png",
           "description": "<span style=\"color: #ffff8a\">광전사:</span> 사용하면 일반 공격력이 25% 증가하지만 공격마다 최대 생명력의 2%를 소모합니다.\n\n지속 효과: 잃은 생명력 1%당 공격 속도가 1% 증가합니다.\n\n<span style=\"color: #ffff8a\">도끼 맛 좀 보여줄까?:</span>\n\n퀘스트: 적 영웅에게 일반 공격이 5회 적중할 때마다 일반 공격력이 1 증가합니다.\n보상: 적 영웅에게 일반 공격이 75회 적중하면 일반 공격 사거리가 1.1 증가합니다.\n보상: 적 영웅에게 일반 공격이 150회 적중하면 톱날 베기가 두 바퀴 회전합니다.",
           "extras": {}
@@ -16872,7 +16872,7 @@
       "skills": [
         {
           "name": "강화주 (Fortifying Brew)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948175c19dc2c.png",
           "description": "술통을 들이켜 즉시 25의 취기를 획득합니다. 들이키는 동안 초당 30의 취기와 220(+4%)의 피해를 흡수하는 일시적인 보호막을 획득하여 최대 661(+4%)의 피해를 흡수하는 보호막을 획득합니다. 보호막은 2초 동안 유지됩니다.",
           "cooldown": 5,
@@ -17136,7 +17136,7 @@
       "skills": [
         {
           "name": "오우거의 가죽 (Ogre Hide)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645948483319dc2c.png",
           "description": "사용하면 방어력이 25 증가하지만 갈의 공격력이 25% 감소합니다.",
           "cooldown": 5,
@@ -17389,7 +17389,7 @@
       "skills": [
         {
           "name": "고유 능력 선택 (Pick Your Trait)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645959058419dc2c.png",
           "description": "특성 창에서 초월, 철권, 통찰 중 하나를 선택하십시오.",
           "extras": {}
@@ -17668,7 +17668,7 @@
       "skills": [
         {
           "name": "공격 저지 (Avoidance)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cf5719dc2c.png",
           "description": "탈것을 타지 않은 채로 이동하는 동안 물리 방어력이 40 증가하여 영웅 일반 공격으로 받는 피해가 40% 감소합니다.",
           "extras": {}
@@ -17921,7 +17921,7 @@
       "skills": [
         {
           "name": "신록의 구슬 (Verdant Spheres)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958aa7719dc2c.png",
           "description": "사용하면 다음 일반 기술이 강화됩니다.",
           "cooldown": 6,
@@ -18175,7 +18175,7 @@
       "skills": [
         {
           "name": "동화 작용 (Assimilation)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958de3819dc2c.png",
           "description": "적에게 일반 공격 및 기술로 준 피해의 10%가 보호막으로 전환됩니다. 보호막은 6초 동안 유지됩니다. 영웅에게 피해를 주면 보호막으로 전환되는 양이 두 배가 됩니다.\n\n<span style=\"color: #ffff8a\">현재 최댓값:</span> 1044(+4%)",
           "extras": {}
@@ -18447,7 +18447,7 @@
       "skills": [
         {
           "name": "차디찬 어둠의 지배자 (Master of the Cold Dark)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958cd9a19dc2c.png",
           "description": "퀘스트: 적 영웅이 얼음 회오리의 중심부나 켈투자드의 사슬에 적중당하면 파멸이 1회 중첩됩니다.\n보상: 파멸이 15회 중첩되면 모든 일반 기술의 재사용 대기시간이 2초 감소합니다.\n보상: 파멸이 30회 중첩되면 기술 위력이 75% 증가합니다.",
           "extras": {}
@@ -18718,7 +18718,7 @@
       "skills": [
         {
           "name": "시간여행자 (Timewalker)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594888c319dc2c.png",
           "description": "미래에 다녀온 크로미는 아군보다 2레벨 더 빠르게 특성을 선택할 수 있습니다!",
           "extras": {}
@@ -18977,7 +18977,7 @@
       "skills": [
         {
           "name": "미니건 (Minigun)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645962a6a319dc2c.png",
           "description": "사용하면 일반 공격으로 적 영웅을 공격할 때마다 대상의 최대 생명력의 2.5%만큼 추가 피해를 줍니다. 3초 동안 지속됩니다.",
           "cooldown": 12,
@@ -19260,7 +19260,7 @@
       "skills": [
         {
           "name": "왜곡 광선, 계시 (Distortion Beam, Oracle)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645960fc8c19dc2c.png",
           "description": "<span style=\"color: #ffff8a\">왜곡 광선:</span> 일반 공격 시 왜곡 광선으로 적을 20% 느려지게 합니다.\n\n<span style=\"color: #ffff8a\">계시:</span> 사용하면 시야 반경이 크게 증가하고 지형지물 너머 시야를 확보할 수 있으며 적 영웅을 탐지할 수 있습니다. 5초 동안 지속됩니다.",
           "cooldown": 30,
@@ -19508,7 +19508,7 @@
       "skills": [
         {
           "name": "재장전 (Reload)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645961911c19dc2c.png",
           "description": "이동하면서 일반 공격을 할 수 있지만, 일반 공격을 10회 할 때마다 0.75초 동안 재장전을 해야 합니다. 수동으로 재장전을 할 수도 있습니다.",
           "cooldown": 1,
@@ -19758,7 +19758,7 @@
       "skills": [
         {
           "name": "사냥꾼의 징표 (Hunter's Mark)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645962e49a19dc2c.png",
           "description": "대상의 방어력을 4초 동안 25 감소시켜 받는 피해를 25% 증가시키고 모습을 드러냅니다. 구조물에는 사용할 수 없습니다.",
           "cooldown": 20,
@@ -20019,7 +20019,7 @@
       "skills": [
         {
           "name": "대천사의 분노 (Archangel's Wrath)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645962bf8419dc2c.png",
           "description": "죽으면, 무적 상태가 되고 3.5초 후에 폭발하며 572(+4%)의 피해를 줍니다.",
           "extras": {
@@ -20274,7 +20274,7 @@
       "skills": [
         {
           "name": "순풍 (Tailwind)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954506119dc2c.png",
           "description": "6초 동안 피해를 받지 않으면 이동 속도가 15% 증가합니다.",
           "extras": {}
@@ -20529,7 +20529,7 @@
       "skills": [
         {
           "name": "수정탑 소환 (Warp In Pylon)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ee63f19dc2c.png",
           "description": "주위 시야를 확보하고 동력장을 생성하는 수정탑을 소환합니다. 프로비우스는 동력장 내에서만 마나를 회복할 수 있습니다.\n\n동시에 최대 2개의 수정탑을 유지할 수 있습니다.",
           "cooldown": 12,
@@ -20823,7 +20823,7 @@
       "skills": [
         {
           "name": "보호막 축전기 (Shield Capacitor)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
           "description": "790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 790(+4%)의 보호막이 재생됩니다.",
           "extras": {}
@@ -21081,7 +21081,7 @@
       "skills": [
         {
           "name": "선천적인 날렵함 (Natural Agility)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957346b19dc2c.png",
           "description": "이동할 수 없는 지형이나 구조물을 뛰어넘어 반대편에 착지합니다.",
           "cooldown": 30,
@@ -21363,7 +21363,7 @@
       "skills": [
         {
           "name": "공성 모드 (Siege Mode)",
-          "type": "고유 능력",
+          "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459604c8519dc2c.png",
           "description": "사용하면 공성 모드에 돌입합니다. 공성 모드인 동안 일반 공격력이 20% 증가하고 일반 공격 사거리가 100% 증가하며 대상 주위에 25%의 방사 피해를 줍니다.",
           "cooldown": 2,

@@ -450,13 +450,12 @@
         {
           "properties": {
             "type": {
-              "$comment": "TODO: Use 'D' instead of '고유 능력'",
               "enum": [
                 "Q",
                 "W",
                 "E",
                 "R",
-                "고유 능력",
+                "D",
                 "Z",
                 "1"
               ]

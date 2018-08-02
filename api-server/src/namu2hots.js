@@ -463,6 +463,8 @@ function parseSkillTable(name, type, cells) {
  * @returns {Skill} Skill data
  */
 function parseSkill(name, type, iconCell, rawDescription) {
+  if (type === '고유 능력' || type === '고유능력')
+    type = 'D';
   const skill = { name, type, extras: {} };
 
   const iconNameMatch = /\[\[(파일:.+?)\s*(?:\|.*?)?\]\]/.exec(iconCell);

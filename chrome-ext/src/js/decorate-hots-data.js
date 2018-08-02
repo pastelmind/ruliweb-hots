@@ -57,9 +57,6 @@ if (typeof module !== 'undefined' && module.exports) {
  * @return {HotsData} Decorated HotS data object
  */
 function decorateHotsData(hotsData) {
-  //Default URL for missing icons
-  const missingIconUrl = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
-
   for (const [heroId, hero] of Object.entries(hotsData.heroes)) {
     hero.id = heroId;
 
@@ -76,28 +73,10 @@ function decorateHotsData(hotsData) {
     if (!hero.iconUrl)
       hero.iconUrl = missingIconUrl;
 
-    hero.skills.forEach((skill, index) => {
-      //Apply default icon URL to skills
-      if (!skill.iconUrl)
-        skill.iconUrl = missingIconUrl;
-
-      //Apply skill index to each skill
-      skill.index = index;
-    });
-
-    for (const talentLevel in hero.talents) {
-      const level = parseInt(talentLevel);
-
-      hero.talents[talentLevel].forEach((talent, index) => {
-        //Apply default icon URL to talents
-        if (!talent.iconUrl)
-          talent.iconUrl = missingIconUrl;
-
-        //Assign talent index and level to each talent
-        talent.level = level;
-        talent.index = index;
-      });
-    }
+    //Decorate skills and talents
+    decorateSkillTalentArray(hero.skills);
+    for (const talentLevel in hero.talents)
+      decorateSkillTalentArray(hero.talents[talentLevel], parseInt(talentLevel));
 
     //Decorate units (i.e. collection of unit stats)
     if (Array.isArray(hero.stats))
@@ -107,6 +86,29 @@ function decorateHotsData(hotsData) {
   }
 
   return hotsData;
+
+  /**
+   * Decorates the given skill or talent.
+   * @param {Skill[]|Talent[]} skillsOrTalents Array of skills or talents
+   * @param {number=} level Talent level
+   */
+  function decorateSkillTalentArray(skillsOrTalents, level) {
+    skillsOrTalents.forEach((skill, index) => {
+      //Apply default icon URL to skills
+      if (!skill.iconUrl)
+        skill.iconUrl = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
+
+      //Apply skill/talent type name
+      skill.typeName = (skill.type === 'D' ? '고유 능력' : skill.type);
+
+      //Assign skill/talent index
+      skill.index = index;
+
+      //Assign talent level
+      if (level)
+        skill.level = level;
+    });
+  }
 
 
   /**

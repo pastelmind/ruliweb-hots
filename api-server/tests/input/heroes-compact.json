@@ -34,7 +34,7 @@
     "skills": [
       {
         "name": "벽 타기 (Wall Ride)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:lucio_wallRide.png",
         "description": "통과할 수 없는 지형이나 구조물을 따라 이동할 때 유닛을 통과할 수 있고, 이동 속도가 20% 증가합니다.\n\n이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
         "extras": {}
@@ -292,7 +292,7 @@
     "skills": [
       {
         "name": "식충 변종 (Locust Strain)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:abathur_locustStrain.png",
         "cooldown": 15,
         "description": "15초마다 식충을 생성합니다. 식충은 가장 가까운 공격로에 합류하여 적을 공격합니다. 식충은 25초 동안 지속됩니다.",
@@ -614,7 +614,7 @@
     "skills": [
       {
         "name": "오우거의 가죽 (Ogre Hide)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:cho_ogreHide.png",
         "description": "사용하면 방어력이 25 증가하지만 갈의 공격력이 25% 감소합니다.",
         "cooldown": 5,
@@ -849,7 +849,7 @@
     "skills": [
       {
         "name": "오우거의 분노 (Ogre Rage)",
-        "type": "고유 능력",
+        "type": "D",
         "iconUrl": "파일:gall_ogreRage.png",
         "description": "사용하면 갈의 공격력이 25% 증가하지만 초의 방어력이 25 감소합니다.\n\n지속 효과: 갈은 기절과 침묵에 영구적으로 면역이 됩니다.",
         "cooldown": 5,

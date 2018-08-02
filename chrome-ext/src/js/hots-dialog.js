@@ -312,8 +312,7 @@ const HotsDialog = {
       const heroicAbilities = { title: '궁극기', skills: [] };
 
       heroView.skills.forEach(skill => {
-        //TODO Use skill.typeName for displayed string and skill.type for base string
-        if (skill.type === '고유 능력')
+        if (skill.type === 'D')
           traits.skills.push(skill);
         else if (skill.type === 'R')
           heroicAbilities.skills.push(skill);
