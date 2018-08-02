@@ -15,6 +15,7 @@
 exports.Hero = class {
   constructor(o = {}) {
     this.name = o.name || '';
+    this.title = o.title || '';
     this.iconUrl = o.iconUrl || '';
     this.id = o.id || '';
     this.type = o.type || '';
@@ -67,6 +68,7 @@ exports.Hero = class {
   compact() {
     const o = {};
     o.name = this.name;
+    o.title = this.title;
     if (this.iconUrl)
       o.iconUrl = this.iconUrl;
     // o.id = this.id; // ID string is assumed to be available from the parent object's key.

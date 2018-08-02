@@ -102,6 +102,7 @@
   "heroes": {
     "dva": {
       "name": "D.Va",
+      "title": "MEKA 조종사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc223a4f19dc2c.png",
       "type": "원거리",
       "role": "warrior",
@@ -436,6 +437,7 @@
     },
     "garrosh": {
       "name": "가로쉬",
+      "title": "헬스크림의 아들",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1f0419dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -703,6 +705,7 @@
     },
     "gazlowe": {
       "name": "가즈로",
+      "title": "톱니항 두목",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png",
       "type": "근접",
       "role": "specialist",
@@ -983,6 +986,7 @@
     },
     "gall": {
       "name": "갈",
+      "title": "황혼의 망치단 족장",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -1234,6 +1238,7 @@
     },
     "genji": {
       "name": "겐지",
+      "title": "사이보그 닌자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227acf19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -1498,6 +1503,7 @@
     },
     "guldan": {
       "name": "굴단",
+      "title": "어둠의 화신",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc227d4919dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -1751,6 +1757,7 @@
     },
     "greymane": {
       "name": "그레이메인",
+      "title": "늑대인간의 지도자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227c8e19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -2042,6 +2049,7 @@
     },
     "the-lost-vikings": {
       "name": "길 잃은 바이킹",
+      "title": "답 없는 삼형제",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23302619dc2c.png",
       "type": "근접 / 원거리",
       "role": "specialist",
@@ -2378,6 +2386,7 @@
     },
     "nazeebo": {
       "name": "나지보",
+      "title": "이교도 부두술사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23088119dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -2642,6 +2651,7 @@
     },
     "nova": {
       "name": "노바",
+      "title": "자치령 유령",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23093d19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -2906,6 +2916,7 @@
     },
     "stitches": {
       "name": "누더기",
+      "title": "어둠골의 공포",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e223819dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -3194,6 +3205,7 @@
     },
     "deckard": {
       "name": "데커드",
+      "title": "마지막 호라드림",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22398819dc2c.png",
       "type": "근접",
       "role": "support",
@@ -3434,6 +3446,7 @@
     },
     "dehaka": {
       "name": "데하카",
+      "title": "원시 무리 우두머리",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1d8c19dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -3691,6 +3704,7 @@
     },
     "the-butcher": {
       "name": "도살자",
+      "title": "고기 해체자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc232f6f19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -3944,6 +3958,7 @@
     },
     "diablo": {
       "name": "디아블로",
+      "title": "공포의 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1e4519dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -4202,6 +4217,7 @@
     },
     "ragnaros": {
       "name": "라그나로스",
+      "title": "불의 군주",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc230abb19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -4492,6 +4508,7 @@
     },
     "rehgar": {
       "name": "레가르",
+      "title": "대지 고리회 주술사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230c2b19dc2c.png",
       "type": "근접",
       "role": "support",
@@ -4773,6 +4790,7 @@
     },
     "leoric": {
       "name": "레오릭",
+      "title": "해골 왕",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1fd219dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -5057,6 +5075,7 @@
     },
     "raynor": {
       "name": "레이너",
+      "title": "반란군 사령관",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230b7619dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -5307,6 +5326,7 @@
     },
     "rexxar": {
       "name": "렉사르",
+      "title": "호드의 용사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
       "type": "원거리",
       "role": "warrior",
@@ -5592,6 +5612,7 @@
     },
     "lunara": {
       "name": "루나라",
+      "title": "세나리우스의 첫 번째 딸",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22d94b19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -5866,6 +5887,7 @@
     },
     "lucio": {
       "name": "루시우",
+      "title": "자유의 투사 DJ",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -6133,6 +6155,7 @@
     },
     "li-li": {
       "name": "리 리",
+      "title": "세계 유랑자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a97519dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -6390,6 +6413,7 @@
     },
     "li-ming": {
       "name": "리밍",
+      "title": "반항적인 마법사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22aa2519dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -6658,6 +6682,7 @@
     },
     "maiev": {
       "name": "마이에브",
+      "title": "감시관",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22da0319dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -6909,6 +6934,7 @@
     },
     "malthael": {
       "name": "말티엘",
+      "title": "죽음의 화신",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -7170,6 +7196,7 @@
     },
     "malfurion": {
       "name": "말퓨리온",
+      "title": "대드루이드",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dabd19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -7424,6 +7451,7 @@
     },
     "murky": {
       "name": "머키",
+      "title": "아기 멀록",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230db119dc2c.png",
       "type": "근접",
       "role": "specialist",
@@ -7669,6 +7697,7 @@
     },
     "medivh": {
       "name": "메디브",
+      "title": "최후의 수호자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dc3619dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -7941,6 +7970,7 @@
     },
     "lt-morales": {
       "name": "모랄레스 중위",
+      "title": "전투 의무관",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22dd9d19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -8178,6 +8208,7 @@
     },
     "muradin": {
       "name": "무라딘",
+      "title": "산왕",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e209419dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -8434,6 +8465,7 @@
     },
     "varian": {
       "name": "바리안",
+      "title": "얼라이언스의 국왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23818119dc2c.png",
       "type": "근접",
       "role": "warrior,assassin",
@@ -8788,6 +8820,7 @@
     },
     "valla": {
       "name": "발라",
+      "title": "악마사냥꾼",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23546119dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -9044,6 +9077,7 @@
     },
     "valeera": {
       "name": "발리라",
+      "title": "무관의 그림자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2353a119dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -9332,6 +9366,7 @@
     },
     "blaze": {
       "name": "블레이즈",
+      "title": "노련한 화염방사병",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e1ccf19dc2c.png",
       "type": "원거리",
       "role": "warrior",
@@ -9609,6 +9644,7 @@
     },
     "brightwing": {
       "name": "빛나래",
+      "title": "요정용",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2234ce19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -9896,6 +9932,7 @@
     },
     "samuro": {
       "name": "사무로",
+      "title": "검귀",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2330de19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -10126,6 +10163,7 @@
     },
     "sonya": {
       "name": "소냐",
+      "title": "떠도는 야만용사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23324d19dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -10367,6 +10405,7 @@
     },
     "thrall": {
       "name": "스랄",
+      "title": "호드의 대족장",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc23552519dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -10620,6 +10659,7 @@
     },
     "stukov": {
       "name": "스투코프",
+      "title": "감염된 제독",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23332019dc2c.png",
       "type": "근접",
       "role": "support",
@@ -10901,6 +10941,7 @@
     },
     "sylvanas": {
       "name": "실바나스",
+      "title": "밴시 여왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2333df19dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -11175,6 +11216,7 @@
     },
     "ana": {
       "name": "아나",
+      "title": "노련한 저격수",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -11439,6 +11481,7 @@
     },
     "anubarak": {
       "name": "아눕아락",
+      "title": "배신자 왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f8f419dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -11708,6 +11751,7 @@
     },
     "artanis": {
       "name": "아르타니스",
+      "title": "댈람의 신관",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f3ad19dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -11975,6 +12019,7 @@
     },
     "abathur": {
       "name": "아바투르",
+      "title": "진화 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f60119dc2c.png",
       "type": "근접",
       "role": "specialist",
@@ -12297,6 +12342,7 @@
     },
     "arthas": {
       "name": "아서스",
+      "title": "리치 왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac4df19dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -12552,6 +12598,7 @@
     },
     "auriel": {
       "name": "아우리엘",
+      "title": "희망의 대천사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f47c19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -12808,6 +12855,7 @@
     },
     "azmodan": {
       "name": "아즈모단",
+      "title": "죄악의 군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f54519dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -13058,6 +13106,7 @@
     },
     "alarak": {
       "name": "알라라크",
+      "title": "탈다림의 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f6bc19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -13322,6 +13371,7 @@
     },
     "alexstrasza": {
       "name": "알렉스트라자",
+      "title": "생명의 어머니",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f78419dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -13647,6 +13697,7 @@
     },
     "johanna": {
       "name": "요한나",
+      "title": "자카룸의 성전사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a5d219dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -13908,6 +13959,7 @@
     },
     "uther": {
       "name": "우서",
+      "title": "빛의 수호자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2352d919dc2c.png",
       "type": "근접",
       "role": "support",
@@ -14175,6 +14227,7 @@
     },
     "yrel": {
       "name": "이렐",
+      "title": "희망의 빛",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237dd219dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -14433,6 +14486,7 @@
     },
     "illidan": {
       "name": "일리단",
+      "title": "배신자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22aae919dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -14672,6 +14726,7 @@
     },
     "zagara": {
       "name": "자가라",
+      "title": "군단의 무리어미",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc237e8c19dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -14932,6 +14987,7 @@
     },
     "zarya": {
       "name": "자리야",
+      "title": "러시아의 수호자",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237f4419dc2c.png",
       "type": "원거리",
       "role": "warrior",
@@ -15212,6 +15268,7 @@
     },
     "etc": {
       "name": "정예 타우렌 족장",
+      "title": "록의 신",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2233b019dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -15480,6 +15537,7 @@
     },
     "junkrat": {
       "name": "정크랫",
+      "title": "쓰레기촌 폭파 전문가",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a68719dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -15743,6 +15801,7 @@
     },
     "zeratul": {
       "name": "제라툴",
+      "title": "암흑 정무관",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237ffa19dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -15998,6 +16057,7 @@
     },
     "jaina": {
       "name": "제이나",
+      "title": "대마법사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/13/163f62ac5c319dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -16263,6 +16323,7 @@
     },
     "xul": {
       "name": "줄",
+      "title": "수수께끼의 강령술사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237d0619dc2c.png",
       "type": "근접",
       "role": "specialist",
@@ -16530,6 +16591,7 @@
     },
     "zuljin": {
       "name": "줄진",
+      "title": "아마니의 전쟁군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2380c119dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -16783,6 +16845,7 @@
     },
     "chen": {
       "name": "첸",
+      "title": "전설의 양조사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22375019dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -17047,6 +17110,7 @@
     },
     "cho": {
       "name": "초",
+      "title": "황혼의 망치단 족장",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -17291,6 +17355,7 @@
     },
     "kharazim": {
       "name": "카라짐",
+      "title": "베라다니의 수도사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a8c319dc2c.png",
       "type": "근접",
       "role": "support",
@@ -17569,6 +17634,7 @@
     },
     "cassia": {
       "name": "카시아",
+      "title": "아마존 여군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22369b19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -17821,6 +17887,7 @@
     },
     "kaelthas": {
       "name": "캘타스",
+      "title": "태양왕",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a73f19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -18074,6 +18141,7 @@
     },
     "kerrigan": {
       "name": "케리건",
+      "title": "칼날 여왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac69419dc2c.png",
       "type": "근접",
       "role": "assassin",
@@ -18345,6 +18413,7 @@
     },
     "kelthuzad": {
       "name": "켈투자드",
+      "title": "낙스라마스의 고위 리치",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a80d19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -18615,6 +18684,7 @@
     },
     "chromie": {
       "name": "크로미",
+      "title": "시간의 수호자",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2238c619dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -18873,6 +18943,7 @@
     },
     "tychus": {
       "name": "타이커스",
+      "title": "악명 높은 범죄자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23509019dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -19155,6 +19226,7 @@
     },
     "tassadar": {
       "name": "태사다르",
+      "title": "기사단의 구원자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc232eb319dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -19409,6 +19481,7 @@
     },
     "tracer": {
       "name": "트레이서",
+      "title": "오버워치 요원",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc234fd619dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -19651,6 +19724,7 @@
     },
     "tyrande": {
       "name": "티란데",
+      "title": "엘룬의 대여사제",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23521c19dc2c.png",
       "type": "원거리",
       "role": "support",
@@ -19911,6 +19985,7 @@
     },
     "tyrael": {
       "name": "티리엘",
+      "title": "정의의 대천사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png",
       "type": "근접",
       "role": "warrior",
@@ -20165,6 +20240,7 @@
     },
     "falstad": {
       "name": "폴스타트",
+      "title": "와일드해머 영주",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227ebe19dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -20426,6 +20502,7 @@
     },
     "probius": {
       "name": "프로비우스",
+      "title": "호기심 많은 탐사정",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230a0119dc2c.png",
       "type": "원거리",
       "role": "specialist",
@@ -20690,6 +20767,7 @@
     },
     "fenix": {
       "name": "피닉스",
+      "title": "기사단의 귀감",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -20969,6 +21047,7 @@
     },
     "hanzo": {
       "name": "한조",
+      "title": "일급 암살자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227e0619dc2c.png",
       "type": "원거리",
       "role": "assassin",
@@ -21233,6 +21312,7 @@
     },
     "sgt-hammer": {
       "name": "해머 상사",
+      "title": "공성 전차 전차장",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23319819dc2c.png",
       "type": "원거리",
       "role": "specialist",

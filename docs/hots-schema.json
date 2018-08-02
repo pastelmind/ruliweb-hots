@@ -51,6 +51,9 @@
             "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
             "$ref": "#/definitions/trimmedString"
           },
+          "title": {
+            "$ref": "#/definitions/trimmedString"
+          },
           "iconUrl": {
             "type": "string",
             "format": "uri"

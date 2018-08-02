@@ -14,6 +14,8 @@ const path = require('path');
 const util = require('util');
 const program = require('commander');
 
+const { Hero } = require('./src/models');
+
 
 const readFileAsync = util.promisify(fs.readFile);
 const readdirAsync = util.promisify(fs.readdir);
@@ -72,8 +74,10 @@ if (process.argv.length <= 2 || !program.dataDir) {
       const heroData = JSON.parse(heroDataSource);
       const hero = heroArray.find(hero => hero.name === heroData.name);
 
-      if (hero)
+      if (hero) {
+        hero.title = heroData.title;
         hero.stats = extractAllHeroUnitStats(heroData);
+      }
       else
         console.warn('Cannot find hero with name:', heroData.name, '(skipped)');
     }
@@ -88,6 +92,13 @@ if (process.argv.length <= 2 || !program.dataDir) {
   gallStats.hpRegen = choStats.hpRegen;
   gallStats.radius = choStats.radius;
   gallStats.speed = choStats.speed;
+
+  //Prepare to compact HotsData
+  for (const heroId in hotsData.heroes) {
+    const hero = hotsData.heroes[heroId] = new Hero(hotsData.heroes[heroId]);
+    hero.id = heroId;
+  }
+  hotsData.heroes = Hero.compact(hotsData.heroes);
 
   program.outputJson = path.resolve(program.outputJson);
   await writeFileAsync(program.outputJson, JSON.stringify(hotsData, null, 2));
