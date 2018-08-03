@@ -1,7 +1,9 @@
 # ruliweb-hots
+
 루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 확장 프로그램
 
 [설치하러 가기](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
+
 
 # How to build
 
@@ -15,7 +17,9 @@ npm run build
 Note: This project uses hard links to keep data files and dependencies in sync.  
 Note: All npm scripts expect a Unix-like shell environment. Windows users may need to set npm's `script-shell` configuration to Git Bash.
 
+
 # Organization
+
 * `api-server`: 히어로즈 오브 더 스톰 데이터(`hots.json`)를 다루는 데 쓰이는 여러 Node.js 스크립트를 모아놓은 디렉토리
 * `chrome-ext`: 크롬 확장 프로그램(extension)에 관련된 파일
     * `src`: 확장 프로그램 소스
@@ -24,14 +28,18 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 * `scripts`: 프로젝트를 관리하는 데 필요한 여러 Node.js 스크립트를 모아놓은 디렉토리
 * `docs`: GitHub Pages를 사용하기 위해 만든 디렉토리 (설명서 아님!)
 
+
 # npm Scripts
+
 * `npm run build`: Package the Chrome extension source into a ZIP file which can be uploaded to the Chrome Web Store.
 * `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/js/templates.js` when anything changes.
 * `npm run crawl-namu`: Run the NamuWiki crawl script. For usage, run `npm run crawl-namu -- --help` .
 * `npm run create-hard-links`: Creates hard links between project files. Hard links are used to track dependencies in `./node_modules/`, as well as keep multiple copies of `hots.json` in sync. This script is automatically called when running `npm install`.
 * `npm run validate-data`: Validates `hots.json`. This script is called by `npm test`.
 
+
 # Dependencies
+
 * 크롬 확장 프로그램
     * [tingle.js](https://robinparisi.github.io/tingle/)
     * [mustache.js](https://github.com/janl/mustache.js)
@@ -41,7 +49,9 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
     * PowerShell (ZIP 파일 생성용)
     * 자세한 것은 [package.json](package.json) 참조
 
+
 # Development Guidelines
+
 1. 공략툴은 사용법을 배우기 쉽고 편리해야 합니다.
 2. 공략툴로 생성한 모든 HTML은 누구나 쉽게 보고 이용할 수 있어야 합니다.
     1. 주요 웹 브라우저의 최신 버전에서 동일하게 동작해야 합니다.
