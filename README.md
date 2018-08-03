@@ -40,3 +40,11 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
     * [axios](https://github.com/axios/axios)
     * PowerShell (ZIP 파일 생성용)
     * 자세한 것은 [package.json](package.json) 참조
+
+# Development Guidelines
+1. 공략툴은 사용법을 배우기 쉽고 편리해야 합니다.
+2. 공략툴로 생성한 모든 HTML은 누구나 쉽게 보고 이용할 수 있어야 합니다.
+    1. 주요 웹 브라우저의 최신 버전에서 동일하게 동작해야 합니다.
+        * Internet Explorer, Edge는 `<details>`, `<summary>` 요소를 지원하지 않습니다. 두 태그는 공략툴의 핵심 기능인 **표 접기/펴기**에 필수적이므로, 이 문제에 대하여 별다른 조치를 취하지 않을 예정입니다.
+    2. 모바일 환경을 PC보다 우선 배려해야 합니다.
+        * 많은 사람들은 스마트폰, 태블릿 등을 통해 루리웹을 비롯한 여러 웹 사이트에 접속합니다. 따라서 작은 화면에 친화적이지 못한 HTML/CSS 코드를 생성하면 많은 사용자에게 불편을 끼칠 수 있습니다.
