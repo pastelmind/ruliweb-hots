@@ -22,25 +22,8 @@ const readdirAsync = util.promisify(fs.readdir);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
-//Compatibility code for Node v8.11
-//TODO Erase when upgraded to Node v10
-(() => {
-  if (parseInt(process.version.match(/\d+/)[0]) >= 10) return;
-  const { AssertionError } = require('assert');
-
-  const oldAssert = console.assert;
-  console.assert = (value, message, ...args) => {
-    try {
-      oldAssert(value, message, ...args);
-    }
-    catch (e) {
-      if (e instanceof AssertionError)
-        console.error(e.stack);
-      else
-        throw e;
-    }
-  };
-})();
+//Compatibility code for Node v8
+require('./src/console-assert-no-throw');
 
 
 const DEFAULT_JSON_PATH = path.join(__dirname, '../docs/hots.json');
