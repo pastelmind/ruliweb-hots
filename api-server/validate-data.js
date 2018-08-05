@@ -11,6 +11,9 @@ const path = require('path');
 const Ajv = require('ajv');
 
 
+//-------- Main code --------//
+
+
 const hotsDataSchemaPath = path.join(__dirname, '../docs/hots-schema.json');
 const hotsDataSchema = JSON.parse(fs.readFileSync(hotsDataSchemaPath, 'utf8'));
 console.log('Loaded schema from', hotsDataSchemaPath);
@@ -28,13 +31,12 @@ if (!ajv.validate(hotsDataSchema, hotsData)) {
 
 console.log('Passed schema validation');
 
-//Check if hotsData.heroes is properly ordered by hero name
-Object.values(hotsData.heroes).reduce((heroA, heroB) => {
-  if (heroA.name > heroB.name)
-    throw new Error(`Heroes are not sorted: ${heroA.name} should be after ${heroB.name}`);
+//Check if hotsData.heroes and hotsData.ptrHeroes are properly ordered by hero name
+if (!isHeroCollectionSortedByName(hotsData.heroes))
+  throw new Error(`hotsData.heroes is not sorted`);
 
-  return heroB; //To continue iteration
-});
+if (!isHeroCollectionSortedByName(hotsData.ptrHeroes || {}))
+  throw new Error(`hotsData.ptrHeroes is not sorted`);
 
 //Check for duplicate stat presets
 const statPresets = {};
@@ -45,3 +47,26 @@ for (const preset of hotsData.statPresets) {
 }
 
 console.log('Passed data validation');
+
+
+//-------- Support functions --------//
+
+/**
+ * Tests if a collection of heroes is sorted by hero name
+ * @param {Object<string, any>} heroes Mapping of hero ID to hero object
+ * @return {boolean}
+ */
+function isHeroCollectionSortedByName(heroes) {
+  let heroA = null;
+
+  for (const heroB of Object.values(heroes)) {
+    if (heroA && heroA.name.localeCompare(heroB.name, 'en') > 0) {
+      console.error(`Unsorted heroes found: ${heroA.name} should be after ${heroB.name}`);
+      return false;
+    }
+
+    heroA = heroB;
+  }
+
+  return true;
+}
