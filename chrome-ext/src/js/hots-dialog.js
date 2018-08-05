@@ -31,7 +31,9 @@
  * Collection of HotS data loaded from hots.json
  * @typedef {Object} HotsData
  * @prop {Object<string, Hero>} heroes Hero ID => hero data
+ * @prop {Object<string, Hero>} ptrHeroes Hero ID => hero data
  * @prop {string} hotsVersion HotS version
+ * @prop {string} hotsPtrVersion HotS PTR version
  */
 
 
@@ -44,6 +46,9 @@ const HotsDialog = {
 
   /** @type {HtmlStringInjector} */
   injectHtml: null,
+
+  /** @type {Hero} */
+  selectedHero: null,
 
   heroFilters: {
     'universe': {
@@ -92,7 +97,7 @@ const HotsDialog = {
   buildDialogContent(hotsData) {
     //Generate dialog
     const dialogFragment = this.util.createDocumentFragmentFromHtml(document,
-      this.htmlGenerators.generateDialogContent(this.heroFilters, hotsData.heroes));
+      this.htmlGenerators.generateDialogContent(this.heroFilters, hotsData.heroes, hotsData.ptrHeroes));
 
     //Retrieve each dialog section
     const optionsSection = dialogFragment.querySelector('.hots-dialog-options');
@@ -103,6 +108,7 @@ const HotsDialog = {
 
     //Retrieve individual elements and element groups
     const addVersionCheckbox = optionsSection.querySelector('#hots-dialog-option-add-version');
+    const usePtrCheckbox = optionsSection.querySelector('#hots-dialog-option-use-ptr');
     const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
     const heroFilterCheckboxes = heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
 
@@ -115,7 +121,22 @@ const HotsDialog = {
     //Add click handler for hero icons
     heroIconsSection.addEventListener('click', event => {
       if (!(event.target && event.target.classList.contains('hots-hero-icon'))) return;
-      const hero = hotsData.heroes[event.target.dataset.heroId];
+      const heroId = event.target.dataset.heroId;   //data-hero-id
+
+      const hero = this.selectedHero = this.getHeroDataById(heroId, usePtrCheckbox.checked);
+      console.assert(hero, `Cannot find hero with ID: ${heroId}`);
+
+      skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
+      talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
+    });
+
+    //Add click handler for "Use PTR" checkbox
+    usePtrCheckbox.addEventListener('change', event => {
+      if (!this.selectedHero) return;
+
+      const heroId = this.selectedHero.id;
+      const hero = this.selectedHero = this.getHeroDataById(heroId, usePtrCheckbox.checked);
+      console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
       skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
       talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
@@ -127,16 +148,23 @@ const HotsDialog = {
       const iconElem = event.target;
 
       if (iconElem.classList.contains('hots-current-hero-icon')) {
-        const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
+        const heroId = iconElem.dataset.heroId; //data-hero-id
+        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
+        const hero = this.getHeroDataById(heroId, isPtr);
 
-        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
+        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
+
         this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version));
       }
       else if (event.target.classList.contains('hots-skill-icon')) {
-        const hero = hotsData.heroes[iconElem.dataset.heroId];  //data-hero-id
+        const heroId = iconElem.dataset.heroId; //data-hero-id
+        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
+        const hero = this.getHeroDataById(heroId, isPtr);
+
         const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
 
-        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
+        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
+
         this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
       }
     });
@@ -147,18 +175,26 @@ const HotsDialog = {
       const iconElem = event.target;
 
       if (iconElem.classList.contains('hots-talent-icon')) {
-        const hero = hotsData.heroes[iconElem.dataset.heroId];          //data-hero-id
+        const heroId = iconElem.dataset.heroId; //data-hero-id
+        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
+        const hero = this.getHeroDataById(heroId, isPtr);
+
         const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
         const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
 
-        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
+        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
+
         this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
       }
       else if (iconElem.classList.contains('hots-talentset__group-add-all')) {
-        const hero = hotsData.heroes[iconElem.dataset.heroId];          //data-hero-id
+        const heroId = iconElem.dataset.heroId; //data-hero-id
+        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
+        const hero = this.getHeroDataById(heroId, isPtr);
+
         const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
 
-        const version = addVersionCheckbox.checked ? hotsData.hotsVersion : '';
+        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
+
         this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
       }
     });
@@ -212,6 +248,29 @@ const HotsDialog = {
     }
   },
 
+  /**
+   * Get the hero data from the hero's ID. Searches for the hero ID first in the
+   * live data, then in the PTR data.
+   * @param {string} heroId Hero ID string
+   * @param {boolean} preferPtr If truthy, use the PTR data first.
+   * @return {Hero} Selected hero object
+   */
+  getHeroDataById(heroId, preferPtr = false) {
+    if (preferPtr)
+      return this.data.ptrHeroes[heroId] || this.data.heroes[heroId];
+    else
+      return this.data.heroes[heroId] || this.data.ptrHeroes[heroId];
+  },
+
+  /**
+   * Retrieve the Heroes of the Storm version string for the dataset.
+   * @param {boolean} isPtr If truthy, return the PTR version string instead.
+   * @return {string} HotS version string
+   */
+  getHotsVersion(isPtr = false) {
+    return isPtr ? this.data.hotsPtrVersion : this.data.hotsVersion;
+  },
+
   /** Collection of methods that generate HTML source strings from templates */
   htmlGenerators: {
     /**
@@ -225,9 +284,10 @@ const HotsDialog = {
      * Generates the HTML source of the main dialog.
      * @param {Object<string, {name: string, filters: Object<string, string>}>} heroFilterGroups A collection of hero filter groups
      * @param {Object<string, Hero>} heroes Hero ID => hero data
+     * @param {Object<string, Hero>} ptrHeroes Hero ID => hero data
      * @return {string} HTML source
      */
-    generateDialogContent(heroFilterGroups, heroes) {
+    generateDialogContent(heroFilterGroups, heroes, ptrHeroes) {
       //Prepare filter groups
       const filterGroups = [];
       for (const heroFilterGroupId in heroFilterGroups) {
@@ -247,15 +307,20 @@ const HotsDialog = {
       }
 
       //Create hero array
-      const heroesArray = [];
-      for (const heroId in heroes) {
-        const hero = heroes[heroId];
+      const heroesArray = Object.values(heroes);
 
+      //Load hero(es) available only in the PTR
+      for (const ptrHeroId in ptrHeroes) {
+        if (!(ptrHeroId in heroes))
+          heroesArray.push(ptrHeroes[ptrHeroId]);
+      }
+
+      //Set roleName
+      //TODO Move this logic to decorateHotsData()
+      for (const hero of heroesArray) {
         for (const roleId in heroFilterGroups.role.filters)
           if (hero.role.includes(roleId))
             hero.roleName = (hero.roleName ? hero.roleName + ' / ' : '') + heroFilterGroups.role.filters[roleId];
-
-        heroesArray.push(hero);
       }
 
       //Sort heroes by name
@@ -285,7 +350,7 @@ const HotsDialog = {
         ([talentLevel, talentGroup]) => ({ talentLevel, talentGroup })
       );
 
-      return Mustache.render(this.templates['dialog-talents'], { talents, id: hero.id });
+      return Mustache.render(this.templates['dialog-talents'], { talents, id: hero.id, isPtr: hero.isPtr });
     },
 
     /**
@@ -505,7 +570,7 @@ const HotsDialog = {
  */
 function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(['heroes', 'hotsVersion'], data => {
+    chrome.storage.local.get(['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'], data => {
       if (chrome.runtime.lastError)
         throw chrome.runtime.lastError;
 

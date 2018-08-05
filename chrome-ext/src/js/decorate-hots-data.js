@@ -57,7 +57,20 @@ if (typeof module !== 'undefined' && module.exports) {
  * @return {HotsData} Decorated HotS data object
  */
 function decorateHotsData(hotsData) {
-  for (const [heroId, hero] of Object.entries(hotsData.heroes)) {
+  const MISSING_ICON_URL = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
+
+  //Set PTR version string
+  if (hotsData.hotsPtrVersion)
+    hotsData.hotsPtrVersion += ' (PTR)';
+
+  //Mark PTR data
+  hotsData.ptrHeroes = hotsData.ptrHeroes || {};
+  for (const ptrHero of Object.values(hotsData.ptrHeroes))
+    ptrHero.isPtr = true;
+
+  const allHeroes = [...Object.entries(hotsData.heroes), ...Object.entries(hotsData.ptrHeroes)];
+
+  for (const [heroId, hero] of allHeroes) {
     hero.id = heroId;
 
     //Add hero universe names
@@ -71,7 +84,7 @@ function decorateHotsData(hotsData) {
 
     //Apply default icon URL to heroes
     if (!hero.iconUrl)
-      hero.iconUrl = missingIconUrl;
+      hero.iconUrl = MISSING_ICON_URL;
 
     //Decorate skills and talents
     decorateSkillTalentArray(hero.skills);
@@ -96,7 +109,7 @@ function decorateHotsData(hotsData) {
     skillsOrTalents.forEach((skill, index) => {
       //Apply default icon URL to skills
       if (!skill.iconUrl)
-        skill.iconUrl = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
+        skill.iconUrl = MISSING_ICON_URL;
 
       //Apply skill/talent type name
       skill.typeName = (skill.type === 'D' ? '고유 능력' : skill.type);
