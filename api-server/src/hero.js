@@ -25,8 +25,13 @@ const Hero = module.exports = class Hero {
     this.skills = (o.skills || []).map(skill => new Skill(skill));
 
     this.talents = {};
-    for (const talentLevel in o.talents)
-      this.talents[talentLevel] = o.talents[talentLevel].map(talent => new Talent(talent));
+    for (const talentLevel in o.talents) {
+      this.talents[talentLevel] = o.talents[talentLevel].map(talent => {
+        talent = new Talent(talent);
+        talent.level = talentLevel;
+        return talent;
+      });
+    }
 
     /**
      * Helper function that clones a unit (i.e. collection of stats)
@@ -87,29 +92,32 @@ const Hero = module.exports = class Hero {
   }
 
   /**
-   * Produce a compact, minimal JSON
+   * Produce a compact, minimal JSON representation
    */
-  compact() {
-    const o = {};
-    o.name = this.name;
-    o.title = this.title;
-    if (this.iconUrl)
-      o.iconUrl = this.iconUrl;
-    // o.id = this.id; // ID string is assumed to be available from the parent object's key.
-    o.type = this.type;
-    o.role = this.role;
-    o.universe = this.universe;
-    o.stats = this.stats;
-    o.skills = this.skills.map(skill => skill.compact());
-    o.talents = {};
+  toJSON() {
+    const o = {
+      name: this.name,
+      title: this.title,
+      iconUrl: this.iconUrl || undefined,
+      id: this.id,
+      type: this.type,
+      role: this.role,
+      universe: this.universe,
+      stats: this.stats,
+      skills: this.skills,
+      talents: {}
+    };
+
+    //Ensure that talents are ordered by level
+    //(may not be necessary in V8, see https://stackoverflow.com/a/280861/9943202)
     for (const talentLevel of Object.keys(this.talents).sort((a, b) => a - b))
-      o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.compact());
+      o.talents[talentLevel] = this.talents[talentLevel];
 
     return o;
   }
 
   /**
-   * Produces a compacted version from a collection of Heroes.
+   * Produces a compacted collection from a collection of Heroes.
    * @param {Object.<string, Hero>} heroes Assumed to be hero ID => Hero mapping
    * @return {Object.<string, Object>} Compacted JSON
    */
@@ -117,9 +125,20 @@ const Hero = module.exports = class Hero {
     const heroesCompact = {};
 
     //Sort by hero name in ascending order
-    Object.values(heroes)
-      .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'))
-      .forEach(hero => heroesCompact[hero.id] = hero.compact());
+    const heroArray = Object.values(heroes)
+      .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
+
+    for (const hero of heroArray) {
+      heroesCompact[hero.id] = hero.toJSON();
+
+      //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
+      delete heroesCompact[hero.id].id;
+
+      //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
+      for (const talentLevel in hero.talents)
+        for (const talent of hero.talents[talentLevel])
+          delete talent.level;
+    }
 
     return heroesCompact;
   }

@@ -20,7 +20,7 @@ describe('Hero', () => {
   let heroes;
 
   before('Loading test data files', () => {
-    heroJsonCompact = JSON.parse(fs.readFileSync(path.join(__dirname, 'input/heroes-compact.json'), 'utf8'));
+    heroJsonCompact = JSON.parse(fs.readFileSync(path.join(__dirname, 'input/heroes.json'), 'utf8'));
   });
 
   it('should load JSON correctly', () => {

@@ -19,26 +19,20 @@ module.exports = class Skill {
   }
 
   /**
-   * Produce a compact, minimal JSON
+   * Produce a compact, minimal JSON representation
    */
-  compact() {
-    const o = {};
-    o.name = this.name;
-    o.type = this.type;
-    if (this.iconUrl)
-      o.iconUrl = this.iconUrl;
-    if (this.level)
-      o.level = this.level;
-    o.description = this.description;
-    if (this.cooldown)
-      o.cooldown = this.cooldown;
-    if (this.rechargeCooldown)
-      o.rechargeCooldown = this.rechargeCooldown;
-    if (this.manaCost)
-      o.manaCost = this.manaCost;
-    if (this.manaCostPerSecond)
-      o.manaCostPerSecond = this.manaCostPerSecond;
-    o.extras = this.extras;
-    return o;
+  toJSON() {
+    return {
+      name: this.name,
+      type: this.type,
+      iconUrl: this.iconUrl || undefined,
+      level: this.level || undefined,
+      description: this.description,
+      cooldown: this.cooldown || undefined,
+      rechargeCooldown: this.rechargeCooldown || undefined,
+      manaCost: this.manaCost || undefined,
+      manaCostPerSecond: this.manaCostPerSecond || undefined,
+      extras: this.extras
+    };
   }
 };
