@@ -8,6 +8,7 @@ const util = require('util');
 const axios = require('axios');
 const program = require('commander');
 const namu2hots = require('./src/namu2hots');
+const HotsData = require('./src/hots-data');
 const Hero = require('./src/hero');
 const CachedUrlHasher = require('./src/cached-url-hasher');
 const HeroTransformers = require('./src/hero-transformers');
@@ -195,8 +196,8 @@ async function mainAsync(cmd) {
 
   //Save hero JSON
   if (cmd.type === Commands.SAVE_JSON) {
-    const outputJson = { hotsVersion: cmd.hotsVersion, heroes: Hero.compact(heroes) };
-    fs.writeFileSync(cmd.saveJsonPath, JSON.stringify(outputJson, null, 2));
+    const outputData = new HotsData({ hotsVersion: cmd.hotsVersion, heroes });
+    fs.writeFileSync(cmd.saveJsonPath, outputData.stringify());
     console.log('Hero data saved to', cmd.saveJsonPath);
   }
 

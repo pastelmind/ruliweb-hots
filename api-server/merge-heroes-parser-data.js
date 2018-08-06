@@ -14,6 +14,7 @@ const path = require('path');
 const util = require('util');
 const program = require('commander');
 
+const HotsData = require('./src/hots-data');
 const Hero = require('./src/hero');
 
 
@@ -46,7 +47,7 @@ if (process.argv.length <= 2 || !program.dataDir) {
 
   program.inputJson = path.resolve(program.inputJson);
   const hotsDataInput = await readFileAsync(program.inputJson, 'utf8');
-  const hotsData = JSON.parse(hotsDataInput);
+  const hotsData = new HotsData(hotsDataInput);
   const heroArray = Object.values(hotsData.heroes);
 
   const dataFiles = await readdirAsync(program.dataDir);
@@ -76,15 +77,8 @@ if (process.argv.length <= 2 || !program.dataDir) {
   gallStats.radius = choStats.radius;
   gallStats.speed = choStats.speed;
 
-  //Prepare to compact HotsData
-  for (const heroId in hotsData.heroes) {
-    const hero = hotsData.heroes[heroId] = new Hero(hotsData.heroes[heroId]);
-    hero.id = heroId;
-  }
-  hotsData.heroes = Hero.compact(hotsData.heroes);
-
   program.outputJson = path.resolve(program.outputJson);
-  await writeFileAsync(program.outputJson, JSON.stringify(hotsData, null, 2));
+  await writeFileAsync(program.outputJson, hotsData.stringify());
   console.log('HotS data saved to', program.outputJson);
 
 })();

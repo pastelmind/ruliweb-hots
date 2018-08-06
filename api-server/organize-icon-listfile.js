@@ -12,6 +12,7 @@ const util = require('util');
 
 const program = require('commander');
 
+const HotsData = require('./src/hots-data');
 const Hero = require('./src/hero');
 const extractImageUrlsFromHtml = require('./src/extract-img-from-html');
 
@@ -44,8 +45,8 @@ if (process.argv.length <= 2 || !program.inputList) {
 
 (async () => {
   const hotsDataInput = await readFileAsync(program.hotsData, 'utf8');
-  const hotsData = JSON.parse(hotsDataInput);
-  const skillIconSources = compileSkillIconUsage(hotsData.heroes);
+  const hotsData = new HotsData(hotsDataInput);
+  const skillIconSources = compileSkillIconUsage(hotsData);
 
   const inputListFileContent = await readFileAsync(program.inputList, 'utf8');
   const currentIconUrlsToAltText = extractImageUrlsFromHtml(inputListFileContent);
@@ -81,16 +82,15 @@ if (process.argv.length <= 2 || !program.inputList) {
 
 /**
  * Extracts skill and talent icons used by each hero.
- * @param {Object<string, Hero>} heroes Mapping of hero ID => hero data
+ * @param {HotsData} hotsData
  * @return {Map<string, Set<string>} Mapping of icon URL => Names of heroes that use the icon
  */
-function compileSkillIconUsage(heroes) {
+function compileSkillIconUsage(hotsData) {
   const skillIconSources = new Map;
+  /** @type {Hero[]} */
+  const heroes = [...Object.values(hotsData.heroes), ...Object.values(hotsData.ptrHeroes)];
 
-  for (const [heroId, heroData] of Object.entries(heroes)) {
-    heroData.id = heroId;
-    const hero = new Hero(heroData);
-
+  for (const hero of heroes) {
     for (const skill of hero) {
       const iconUrl = skill.iconUrl;
       console.assert(iconUrl, `Missing icon URL for ${hero.id}`);

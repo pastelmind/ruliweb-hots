@@ -10,7 +10,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const namu2hots = require('../src/namu2hots');
-const Hero = require('../src/hero');
+const { unpackHeroes } = require('../src/hots-data');
 
 
 describe('namu2hots', () => {
@@ -20,13 +20,8 @@ describe('namu2hots', () => {
     ref.namuLucioArticle = fs.readFileSync(path.join(__dirname, 'input/루시우.txt'), 'utf8');
     ref.namuAbathurArticle = fs.readFileSync(path.join(__dirname, 'input/아바투르.txt'), 'utf8');
     ref.namuChoGallArticle = fs.readFileSync(path.join(__dirname, 'input/초갈.txt'), 'utf8');
-    ref.heroes = JSON.parse(
-      fs.readFileSync(path.join(__dirname, 'input/heroes.json'), 'utf8'));
-    for (const heroId in ref.heroes) {
-      const hero = new Hero(ref.heroes[heroId]);
-      hero.id = heroId;
-      ref.heroes[heroId] = hero;
-    }
+    ref.heroes = unpackHeroes(JSON.parse(
+      fs.readFileSync(path.join(__dirname, 'input/heroes.json'), 'utf8')));
 
     Object.freeze(ref);
   });

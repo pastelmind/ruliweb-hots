@@ -10,7 +10,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const Hero = require('../src/hero');
+const { unpackHeroes } = require('../src/hots-data');
 const Skill = require('../src/skill');
 const Talent = require('../src/talent');
 
@@ -24,9 +24,7 @@ describe('Hero', () => {
   });
 
   it('should load JSON correctly', () => {
-    heroes = {};
-    for (const heroId in heroJsonCompact)
-      heroes[heroId] = new Hero(heroJsonCompact[heroId]);
+    heroes = unpackHeroes(heroJsonCompact);
   });
 
   it('should provide an iterator for each skill/talent', () => {

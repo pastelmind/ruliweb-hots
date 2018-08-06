@@ -4,13 +4,12 @@
 const Skill = require('./skill');
 const Talent = require('./talent');
 
-/***/ //TODO Remove this once VS Code fixes [issue #55877](https://github.com/Microsoft/vscode/issues/55877)
 /**
  * Represents a Heroes of the Storm hero.
  * This class can be iterated with `for...of` to retrieve each skill and talent.
  * @implements {Iterable<Skill|Talent>}
  */
-const Hero = module.exports = class Hero {
+module.exports = class Hero {
   constructor(o = {}) {
     this.name = o.name || '';
     this.title = o.title || '';
@@ -104,43 +103,16 @@ const Hero = module.exports = class Hero {
       role: this.role,
       universe: this.universe,
       stats: this.stats,
-      skills: this.skills,
+      skills: this.skills.map(skill => skill.toJSON()),
       talents: {}
     };
 
     //Ensure that talents are ordered by level
     //(may not be necessary in V8, see https://stackoverflow.com/a/280861/9943202)
     for (const talentLevel of Object.keys(this.talents).sort((a, b) => a - b))
-      o.talents[talentLevel] = this.talents[talentLevel];
+      o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.toJSON());
 
     return o;
-  }
-
-  /**
-   * Produces a compacted collection from a collection of Heroes.
-   * @param {Object.<string, Hero>} heroes Assumed to be hero ID => Hero mapping
-   * @return {Object.<string, Object>} Compacted JSON
-   */
-  static compact(heroes) {
-    const heroesCompact = {};
-
-    //Sort by hero name in ascending order
-    const heroArray = Object.values(heroes)
-      .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
-
-    for (const hero of heroArray) {
-      heroesCompact[hero.id] = hero.toJSON();
-
-      //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
-      delete heroesCompact[hero.id].id;
-
-      //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
-      for (const talentLevel in hero.talents)
-        for (const talent of hero.talents[talentLevel])
-          delete talent.level;
-    }
-
-    return heroesCompact;
   }
 
   /**
@@ -171,6 +143,9 @@ const Hero = module.exports = class Hero {
     return '';
   }
 };
+
+
+const Hero = module.exports;
 
 Hero.roles = Object.freeze({
   'warrior': '전사',
