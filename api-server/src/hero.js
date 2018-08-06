@@ -19,11 +19,37 @@ const Hero = module.exports = class Hero {
     this.type = o.type || '';
     this.role = o.role || '';
     this.universe = o.universe || '';
-    this.stats = o.stats || {};
+
+    this.stats = Array.isArray(o.stats) ? o.stats.map(cloneUnit) : cloneUnit(o.stats);
+
     this.skills = (o.skills || []).map(skill => new Skill(skill));
+
     this.talents = {};
     for (const talentLevel in o.talents)
       this.talents[talentLevel] = o.talents[talentLevel].map(talent => new Talent(talent));
+
+    /**
+     * Helper function that clones a unit (i.e. collection of stats)
+     * @param {Object<string, number|Object>} unit Collection of stat ID => stat value or object
+     * @return {Object<string, number|Object>} Cloned unit
+     */
+    function cloneUnit(unit) {
+      const unitClone = {};
+      for (const statId in unit) {
+        const stat = unit[statId];
+        unitClone[statId] = Array.isArray(stat) ? stat.map(cloneStat) : cloneStat(stat);
+      }
+      return unitClone;
+    }
+
+    /**
+     * Helper function that clones a stat
+     * @param {number | Object<string, number>} stat
+     * @return {number | Object<string, number>} Cloned stat
+     */
+    function cloneStat(stat) {
+      return typeof stat === 'object' && stat ? Object.assign({}, stat) : stat;
+    }
   }
 
   /**
