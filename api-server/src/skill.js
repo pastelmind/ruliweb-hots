@@ -15,7 +15,7 @@ module.exports = class Skill {
     this.rechargeCooldown = o.rechargeCooldown || 0;
     this.manaCost = o.manaCost || 0;
     this.manaCostPerSecond = o.manaCostPerSecond || 0;
-    this.extras = o.extras || {};
+    this.extras = Object.assign({}, o.extras);
   }
 
   /**
