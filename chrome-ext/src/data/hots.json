@@ -202,25 +202,6 @@
           "extras": {}
         },
         {
-          "name": "약진 (Torpedo Dash)",
-          "type": "Q",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954002f19dc2c.png",
-          "description": "유닛 충돌을 무시하고 대상 위치로 약진합니다.",
-          "cooldown": 12,
-          "extras": {}
-        },
-        {
-          "name": "충격 파동 (Concussive Pulse)",
-          "type": "W",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953db0a19dc2c.png",
-          "description": "부채꼴 범위의 적들에게 147(+4%)의 피해를 주고 밀쳐냅니다.",
-          "cooldown": 7,
-          "extras": {
-            "피해 반경": "6",
-            "중심각": "60°"
-          }
-        },
-        {
           "name": "로봇 호출 (Call Mech)",
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953d72f19dc2c.png",
@@ -2122,47 +2103,32 @@
           "extras": {}
         },
         {
-          "name": "돌아야 이긴다! (Spin to Win!)",
-          "type": "Q",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459615a4619dc2c.png",
-          "description": "사용하면 각 바이킹이 주위 적들에게 101(+4%)의 피해를 줍니다.",
-          "cooldown": 10,
+          "name": "올라프 선택 (Select Olaf)",
+          "type": "1",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645961527c19dc2c.png",
+          "description": "올라프는 우클릭으로 적에게 돌진해서 대상의 이동 속도를 3초 동안 30% 감소시킬 수 있습니다. 8초에 한 번씩만 발동합니다.\n\n올라프는 4초 동안 전투에서 벗어나면 생명력 재생량이 증가합니다.",
           "extras": {
-            "피해 반경": "2"
+            "돌진 사거리": "5",
+            "생명력 재생": "초당 5%"
           }
         },
         {
-          "name": "바이킹의 힘! (Norse Force!)",
-          "type": "Q",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459614ea019dc2c.png",
-          "description": "현재 살아 있는 바이킹의 수에 따라 모든 바이킹이 114(+4%)에서 229(+4%)의 보호막을 얻습니다. 4초 동안 지속됩니다.",
-          "cooldown": 30,
-          "extras": {}
-        },
-        {
-          "name": "펄쩍! (Jump!)",
-          "type": "W",
-          "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596144a119dc2c.png",
-          "description": "모든 바이킹이 1.5초 동안 무적 상태가 되고 적들의 머리 위로 지나갈 수 있습니다.",
-          "cooldown": 30,
-          "extras": {}
-        },
-        {
-          "name": "바이킹 공격단 (Nordic Attack Squad)",
-          "type": "W",
-          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459475fee19dc2c.png",
-          "description": "사용하면 5초 동안 모든 바이킹의 일반 공격이 대상 적 영웅 최대 생명력의 1%만큼 추가 피해를 줍니다.",
-          "cooldown": 30,
-          "extras": {}
-        },
-        {
-          "name": "바이킹 매수 (Viking Bribery)",
-          "type": "E",
-          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459489e1819dc2c.png",
-          "description": "주위에서 적 돌격병이나 고용된 용병이 죽으면 바이킹 매수 중첩이 쌓입니다. 40중첩을 대상 용병에게 사용하면, 용병이 즉시 매수됩니다. 우두머리에게는 적용되지 않습니다. 최대 200회 중첩됩니다. 매수만으로 용병 캠프를 점령하면 그 캠프의 재생성 대기시간이 50% 감소합니다.",
+          "name": "벨로그 선택 (Select Baleog)",
+          "type": "2",
+          "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
+          "description": "벨로그의 일반 공격은 공격 대상 뒤에 있는 적들에게 50%의 방사 피해를 줍니다.",
           "extras": {
-            "매수 사거리": "6"
+            "피해 반경": "5",
+            "중심각": "65°"
           }
+        },
+        {
+          "name": "에릭 선택 (Select Erik)",
+          "type": "3",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596138ea19dc2c.png",
+          "description": "에릭은 다른 바이킹보다 이동 속도가 빠르고 일반 공격 사거리가 깁니다.",
+          "cooldown": 30,
+          "extras": {}
         },
         {
           "name": "달려라 달려! (Go Go Go!)",
