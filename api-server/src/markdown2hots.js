@@ -6,7 +6,9 @@
 
 'use strict';
 
-const { Hero, Skill, Talent } = require('./models.js');
+const Hero = require('./hero');
+const Skill = require('./skill');
+const Talent = require('./talent');
 
 module.exports = {
   /**

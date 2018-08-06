@@ -11,7 +11,7 @@ const assert = require('assert');
 const axios = require('axios');
 const entities = new require('html-entities').AllHtmlEntities;
 
-const { Hero } = require('./models');
+const Hero = require('./hero');
 
 module.exports = {
   /**

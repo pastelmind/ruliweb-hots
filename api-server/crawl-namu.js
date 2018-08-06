@@ -8,7 +8,7 @@ const util = require('util');
 const axios = require('axios');
 const program = require('commander');
 const namu2hots = require('./src/namu2hots');
-const { Hero } = require('./src/models');
+const Hero = require('./src/hero');
 const CachedUrlHasher = require('./src/cached-url-hasher');
 const HeroTransformers = require('./src/hero-transformers');
 

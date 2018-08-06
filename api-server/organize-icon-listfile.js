@@ -12,7 +12,7 @@ const util = require('util');
 
 const program = require('commander');
 
-const { Hero } = require('./src/models');
+const Hero = require('./src/hero');
 const extractImageUrlsFromHtml = require('./src/extract-img-from-html');
 
 

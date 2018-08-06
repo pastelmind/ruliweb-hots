@@ -7,17 +7,17 @@
 
 /**
  * A collection of data that represents a skill.
- * @typedef {import("../../../api-server/src/models").Skill} Skill
+ * @typedef {import("../../../api-server/src/skill")} Skill
  */
 
 /**
  * A collection of data that represents a talent.
- * @typedef {import("../../../api-server/src/models").Talent} Talent
+ * @typedef {import("../../../api-server/src/talent")} Talent
  */
 
 /**
  * A collection of data that represents a hero.
- * @typedef {import("../../../api-server/src/models").Hero} Hero
+ * @typedef {import("../../../api-server/src/hero")} Hero
  */
 
 /**

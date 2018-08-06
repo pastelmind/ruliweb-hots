@@ -8,7 +8,9 @@
 'use strict';
 
 const assert = require('assert');
-const { Hero, Skill, Talent } = require('./models');
+const Hero = require('./hero');
+const Skill = require('./skill');
+const Talent = require('./talent');
 
 module.exports = {
   /**

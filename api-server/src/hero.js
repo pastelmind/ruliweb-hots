@@ -1,18 +1,16 @@
 #!/usr/bin/env node
-
-/**
- * Defines the model classes (Hero, Skill, Talent) for use in other scripts
- * @module models
- */
-
 'use strict';
 
+const Skill = require('./skill');
+const Talent = require('./talent');
+
+/***/ //TODO Remove this once VS Code fixes [issue #55877](https://github.com/Microsoft/vscode/issues/55877)
 /**
  * Represents a Heroes of the Storm hero.
  * This class can be iterated with `for...of` to retrieve each skill and talent.
  * @implements {Iterable<Skill|Talent>}
  */
-exports.Hero = class {
+const Hero = module.exports = class Hero {
   constructor(o = {}) {
     this.name = o.name || '';
     this.title = o.title || '';
@@ -129,82 +127,17 @@ exports.Hero = class {
   }
 };
 
-const Hero = exports.Hero;
-
-exports.Hero.roles = Object.freeze({
+Hero.roles = Object.freeze({
   'warrior': '전사',
   'assassin': '암살자',
   'support': '지원가',
   'specialist': '전문가'
 });
 
-exports.Hero.universes = Object.freeze({
+Hero.universes = Object.freeze({
   'warcraft': '워크래프트',
   'starcraft': '스타크래프트',
   'diablo': '디아블로',
   'classic': '고전',
   'overwatch': '오버워치'
 });
-
-
-/**
- * Represents a hero's skill in Heroes of the Storm.
- */
-exports.Skill = class {
-  constructor(o = {}) {
-    this.name = o.name || '';
-    this.iconUrl = o.iconUrl || '';
-    this.type = o.type || '';
-    this.level = o.level || 0;
-    this.description = o.description || '';
-    this.cooldown = o.cooldown || 0;
-    this.rechargeCooldown = o.rechargeCooldown || 0;
-    this.manaCost = o.manaCost || 0;
-    this.manaCostPerSecond = o.manaCostPerSecond || 0;
-    this.extras = o.extras || {};
-  }
-
-  /**
-   * Produce a compact, minimal JSON
-   */
-  compact() {
-    const o = {};
-    o.name = this.name;
-    o.type = this.type;
-    if (this.iconUrl)
-      o.iconUrl = this.iconUrl;
-    if (this.level)
-      o.level = this.level;
-    o.description = this.description;
-    if (this.cooldown)
-      o.cooldown = this.cooldown;
-    if (this.rechargeCooldown)
-      o.rechargeCooldown = this.rechargeCooldown;
-    if (this.manaCost)
-      o.manaCost = this.manaCost;
-    if (this.manaCostPerSecond)
-      o.manaCostPerSecond = this.manaCostPerSecond;
-    o.extras = this.extras;
-    return o;
-  }
-};
-
-const Skill = exports.Skill;
-
-
-/**
- * Represents a hero's talent in Heroes of the Storm.
- */
-exports.Talent = class extends exports.Skill {
-  /**
-   * Produce a compact, minimal JSON
-   */
-  compact() {
-    const o = super.compact();
-    // Talent level information is assumed to be present in the Hero class.
-    delete o.level;
-    return o;
-  }
-};
-
-const Talent = exports.Talent;

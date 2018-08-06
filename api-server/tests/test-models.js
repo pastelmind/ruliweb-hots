@@ -10,7 +10,9 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const { Hero, Skill, Talent } = require('../src/models');
+const Hero = require('../src/hero');
+const Skill = require('../src/skill');
+const Talent = require('../src/talent');
 
 
 describe('Hero', () => {

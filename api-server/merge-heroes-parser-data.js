@@ -14,7 +14,7 @@ const path = require('path');
 const util = require('util');
 const program = require('commander');
 
-const { Hero } = require('./src/models');
+const Hero = require('./src/hero');
 
 
 const readFileAsync = util.promisify(fs.readFile);
