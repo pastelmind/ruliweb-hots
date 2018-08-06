@@ -102,7 +102,7 @@ const Hero = module.exports = class Hero {
     o.stats = this.stats;
     o.skills = this.skills.map(skill => skill.compact());
     o.talents = {};
-    for (const talentLevel of Object.keys(this.talents).sort())
+    for (const talentLevel of Object.keys(this.talents).sort((a, b) => a - b))
       o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.compact());
 
     return o;
