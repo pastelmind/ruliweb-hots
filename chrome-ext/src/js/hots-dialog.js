@@ -561,14 +561,9 @@ const HotsDialog = {
      * @return {DocumentFragment} DocumentFragment object
      */
     createDocumentFragmentFromHtml(document, html) {
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = html;
-
-      const docFragment = document.createDocumentFragment();
-      while (tempDiv.firstChild)
-        docFragment.appendChild(tempDiv.firstChild);
-
-      return docFragment;
+      const templateElement = document.createElement('template');
+      templateElement.innerHTML = html;
+      return templateElement.content;
     }
   }
 };
