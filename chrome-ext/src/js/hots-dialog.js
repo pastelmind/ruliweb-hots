@@ -6,21 +6,6 @@
 'use strict';
 
 /**
- * A collection of data that represents a skill.
- * @typedef {import("../../../api-server/src/skill")} Skill
- */
-
-/**
- * A collection of data that represents a talent.
- * @typedef {import("../../../api-server/src/talent")} Talent
- */
-
-/**
- * A collection of data that represents a hero.
- * @typedef {import("../../../api-server/src/hero")} Hero
- */
-
-/**
  * A callback that injects the given HTML string into a desired position.
  * @callback HtmlStringInjector
  * @param {string} html
@@ -29,11 +14,7 @@
 
 /**
  * Collection of HotS data loaded from hots.json
- * @typedef {Object} HotsData
- * @prop {Object<string, Hero>} heroes Hero ID => hero data
- * @prop {Object<string, Hero>} ptrHeroes Hero ID => hero data
- * @prop {string} hotsVersion HotS version
- * @prop {string} hotsPtrVersion HotS PTR version
+ * @typedef {import("../../../api-server/src/hots-data")} HotsData
  */
 
 
