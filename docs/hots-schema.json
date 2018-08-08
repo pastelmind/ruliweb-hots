@@ -4,7 +4,12 @@
   "type": "object",
   "properties": {
     "hotsVersion": {
-      "description": "Heroes of the Storm patch version on which the current dataset is based",
+      "description": "Heroes of the Storm live server patch version",
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d+){1,2}$"
+    },
+    "hotsPtrVersion": {
+      "description": "Heroes of the Storm PTR patch version",
       "type": "string",
       "pattern": "^\\d+(\\.\\d+){1,2}$"
     },
@@ -42,124 +47,140 @@
       "propertyNames": {
         "pattern": "^[a-z\\-\\.]+$"
       },
-      "minProperties": 80,
-      "maxProperties": 80,
+      "minProperties": 81,
+      "maxProperties": 81,
       "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
-            "$ref": "#/definitions/trimmedString"
-          },
-          "title": {
-            "$ref": "#/definitions/trimmedString"
-          },
-          "iconUrl": {
-            "type": "string",
-            "format": "uri"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "근접",
-              "원거리",
-              "근접 / 원거리"
-            ]
-          },
-          "role": {
-            "type": "string",
-            "pattern": "^(warrior|assassin|support|specialist)(,(warrior|assassin|support|specialist))*$"
-          },
-          "universe": {
-            "type": "string",
-            "enum": [
-              "warcraft",
-              "starcraft",
-              "diablo",
-              "classic",
-              "overwatch"
-            ]
-          },
-          "stats": {
-            "description": "Collection of the hero's units (unit === collection of stats)",
-            "type": [
-              "object",
-              "array"
-            ],
-            "oneOf": [
-              {
-                "allOf": [
-                  {
-                    "$ref": "#/definitions/unit"
-                  },
-                  {
-                    "not": {
-                      "required": [
-                        "unitName"
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": "array",
-                "items": {
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/unit"
-                    },
-                    {
-                      "required": [
-                        "unitName"
-                      ]
-                    }
-                  ]
-                },
-                "minItems": 2,
-                "maxItems": 4
-              }
-            ]
-          },
-          "skills": {
-            "description": "Collection of a hero's basic skills (available at level 0)",
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/skill"
-            },
-            "minItems": 1
-          },
-          "talents": {
-            "description": "Collection of a hero's talents grouped by unlock level",
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^([1-9]|1\\d|20)$"
-            },
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/talent"
-              },
-              "minItems": 1
-            }
-          }
-        },
-        "required": [
-          "name",
-          "type",
-          "role",
-          "universe",
-          "stats",
-          "skills",
-          "talents"
-        ]
+        "$ref": "#/definitions/hero"
+      }
+    },
+    "ptrHeroes": {
+      "description": "Collection of hero data",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z\\-\\.]+$"
+      },
+      "maxProperties": 81,
+      "additionalProperties": {
+        "$ref": "#/definitions/hero"
       }
     }
   },
   "required": [
     "hotsVersion",
+    "statPresets",
     "heroes"
   ],
   "definitions": {
+    "hero": {
+      "description": "Represents a hero object",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
+          "$ref": "#/definitions/trimmedString"
+        },
+        "title": {
+          "$ref": "#/definitions/trimmedString"
+        },
+        "iconUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "근접",
+            "원거리",
+            "근접 / 원거리"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "pattern": "^(warrior|assassin|support|specialist)(,(warrior|assassin|support|specialist))*$"
+        },
+        "universe": {
+          "type": "string",
+          "enum": [
+            "warcraft",
+            "starcraft",
+            "diablo",
+            "classic",
+            "overwatch"
+          ]
+        },
+        "stats": {
+          "description": "Collection of the hero's units (unit === collection of stats)",
+          "type": [
+            "object",
+            "array"
+          ],
+          "oneOf": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/unit"
+                },
+                {
+                  "not": {
+                    "required": [
+                      "unitName"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/unit"
+                  },
+                  {
+                    "required": [
+                      "unitName"
+                    ]
+                  }
+                ]
+              },
+              "minItems": 2,
+              "maxItems": 4
+            }
+          ]
+        },
+        "skills": {
+          "description": "Collection of a hero's basic skills (available at level 0)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/skill"
+          },
+          "minItems": 1
+        },
+        "talents": {
+          "description": "Collection of a hero's talents grouped by unlock level",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^([1-9]|1\\d|20)$"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/talent"
+            },
+            "minItems": 1
+          }
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "role",
+        "universe",
+        "stats",
+        "skills",
+        "talents"
+      ]
+    },
     "unit": {
       "description": "Represents a unit, which is a collection of stats",
       "type": "object",
@@ -181,7 +202,8 @@
               "type": "number",
               "multipleOf": 0.005
             }
-          }
+          },
+          "additionalProperties": false
         },
         "mp": {
           "oneOf": [
@@ -196,7 +218,8 @@
                   "type": "integer",
                   "exclusiveMinimum": 0
                 }
-              }
+              },
+              "additionalProperties": false
             },
             {
               "type": "integer",
@@ -215,7 +238,8 @@
               "type": "number",
               "multipleOf": 0.001
             }
-          }
+          },
+          "additionalProperties": false
         },
         "chargeRegen": {
           "type": "number",
@@ -230,18 +254,7 @@
             {
               "type": "array",
               "items": {
-                "allOf": [
-                  {
-                    "$ref": "#/definitions/scalingDecimalStat"
-                  },
-                  {
-                    "properties": {
-                      "altName": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                ]
+                "$ref": "#/definitions/scalingDecimalStat"
               },
               "minItems": 2,
               "maxItems": 2
@@ -345,6 +358,9 @@
     "scalingDecimalStat": {
       "type": "object",
       "properties": {
+        "altName": {
+          "type": "string"
+        },
         "value": {
           "type": "number",
           "multipleOf": 0.05
@@ -353,7 +369,8 @@
           "type": "number",
           "multipleOf": 0.005
         }
-      }
+      },
+      "additionalProperties": false
     },
     "scalingIntegerStat": {
       "type": "object",
@@ -366,7 +383,8 @@
           "type": "number",
           "multipleOf": 0.005
         }
-      }
+      },
+      "additionalProperties": false
     },
     "talent": {
       "description": "Represents a talent",
@@ -453,7 +471,9 @@
                 "R",
                 "D",
                 "Z",
-                "1"
+                "1",
+                "2",
+                "3"
               ]
             }
           }
