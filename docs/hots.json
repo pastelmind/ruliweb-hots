@@ -3290,7 +3290,7 @@
           },
           {
             "name": "사파이어 (Sapphire)",
-            "type": "사용 효과 (W)",
+            "type": "사용 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953687019dc2c.png",
             "description": "사용하면 다음 호라드림의 함의 감속 효과가 30% 증가합니다.\n\n한 번에 하나의 보석만 활성화할 수 있습니다.",
             "cooldown": 30,
@@ -3314,7 +3314,7 @@
           },
           {
             "name": "루비 (Ruby)",
-            "type": "사용 효과 (W)",
+            "type": "사용 효과",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953649c19dc2c.png",
             "description": "사용하면 다음 호라드림의 함이 적중한 적 영웅들에게서 하급 생명력 물약 3개가 생성됩니다. 하급 생명력 물약은 10초 동안 지속되며 이를 획득한 아군 영웅은 213(+4%)의 생명력을 회복합니다.\n\n한 번에 하나의 보석만 활성화할 수 있습니다.",
             "cooldown": 30,
@@ -3338,7 +3338,7 @@
           },
           {
             "name": "에메랄드 (Emerald)",
-            "type": "사용 효과 (W)",
+            "type": "사용 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953340a19dc2c.png",
             "description": "사용하면 다음 호라드림의 함이 적중한 적 영웅들이 받는 치유량이 4초 동안 75% 감소됩니다.\n\n한 번에 하나의 보석만 활성화할 수 있습니다.",
             "cooldown": 30,
@@ -4739,7 +4739,7 @@
           },
           {
             "name": "늑대의 굶주림 (Hunger of the Wolf)",
-            "type": "지속 능력 강화 (Z)",
+            "type": "능력 강화 (Z)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f1e6619dc2c.png",
             "description": "늑대 정령일 때 적 영웅을 공격하면 대상의 최대 생명력의 5%만큼 추가 피해를 주고, 자신의 최대 생명력 5%를 회복합니다.",
             "extras": {}
@@ -5709,7 +5709,7 @@
           },
           {
             "name": "폴짝 폴짝 (Hippity Hop)",
-            "type": "능력 강화 (z)",
+            "type": "능력 강화 (Z)",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b14fa19dc2c.png",
             "description": "5초 동안 일반 공격하거나 피해를 입지 않으면 드리아드의 날렵함의 이동 속도 증가 효과가 10% 증가합니다.",
             "extras": {}
@@ -10880,7 +10880,7 @@
         "16": [
           {
             "name": "우월종 (Superstrain)",
-            "type": "능력 강화(Q)",
+            "type": "능력 강화 (Q)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960a85819dc2c.png",
             "description": "치유성 병원균을 지닌 아군이 기절하거나 이동 불가 상태가 되면 즉시 260(+4%)의 생명력을 회복합니다.",
             "extras": {}
@@ -14331,7 +14331,7 @@
           },
           {
             "name": "나루의 선물 (Gift of the Naru)",
-            "type": "능력 강화(고유 능력)",
+            "type": "능력 강화 (고유 능력)",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645963c05d19dc2c.png",
             "description": "신성한 목적이 자신을 제외한 생명력이 가장 낮은 아군 영웅의 생명력을 286(+4%) 회복시킵니다.",
             "extras": {}
@@ -19344,7 +19344,7 @@
         "7": [
           {
             "name": "사이오닉 투영 (Psionic Projection)",
-            "type": "능력 강화 (Q, W)",
+            "type": "지속 효과",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594302cd19dc2c.png",
             "description": "플라스마 보호막과 사이오닉 폭풍의 사거리가 40% 증가합니다.",
             "extras": {}
