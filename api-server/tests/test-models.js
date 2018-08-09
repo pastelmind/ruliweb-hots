@@ -17,6 +17,7 @@ const Talent = require('../src/talent');
 
 describe('Hero', () => {
   let heroJsonCompact;
+  /** @type {{ [heroId: string]: import("../src/hero") }} */
   let heroes;
 
   before('Loading test data files', () => {
@@ -28,26 +29,15 @@ describe('Hero', () => {
   });
 
   it('should provide an iterator for each skill/talent', () => {
-    for (const heroId in heroes) {
-      let skillCount = 0, talentCount = 0;
+    for (const hero of Object.values(heroes)) {
+      const skillCount = hero.skills.length;
+      const talentCount = [...hero.allTalents()].length;
 
-      for (const skillOrTalent of heroes[heroId]) {
-        if (skillOrTalent instanceof Talent)  //Check this first, since Talent inherits from Skill
-          ++talentCount;
-        else if (skillOrTalent instanceof Skill)
-          ++skillCount;
-        else
-          assert.fail('Unexpected value returned: ' + util.inspect(skillOrTalent, { colors: true }));
-      }
+      const rawHeroData = heroJsonCompact[hero.id];
+      assert.equal(skillCount, rawHeroData.skills.length, hero.id + ': # of parsed skills is different');
 
-      const rawHeroData = heroJsonCompact[heroId];
-      assert.equal(skillCount, rawHeroData.skills.length, heroId + ': # of parsed skills is different');
-
-      let expectedTalentCount = 0;
-      for (const talentLevel in rawHeroData.talents)
-        expectedTalentCount += rawHeroData.talents[talentLevel].length;
-
-      assert.equal(talentCount, expectedTalentCount, heroId + ': # of parsed talents is different');
+      const expectedTalentCount = Object.values(rawHeroData.talents).map(arr => arr.length).reduce((a, b) => a + b);
+      assert.equal(talentCount, expectedTalentCount, hero.id + ': # of parsed talents is different');
     }
   });
 });

@@ -6,8 +6,6 @@ const Talent = require('./talent');
 
 /**
  * Represents a Heroes of the Storm hero.
- * This class can be iterated with `for...of` to retrieve each skill and talent.
- * @implements {Iterable<Skill|Talent>}
  */
 module.exports = class Hero {
   constructor(o = {}) {
@@ -80,14 +78,20 @@ module.exports = class Hero {
 
   /**
    * Iterate through each skill and talent of this hero.
+   * @return {IterableIterator<Skill | Talent>}
    */
-  *[Symbol.iterator]() {
-    for (const skill of this.skills)
-      yield skill;
+  *allSkillsAndTalents() {
+    yield* this.skills;
+    yield* this.allTalents();
+  }
 
+  /**
+   * Iterate through each talent of this hero, ordered by level.
+   * @return {IterableIterator<Talent>}
+   */
+  *allTalents() {
     for (const talentLevel in this.talents)
-      for (const talent of this.talents[talentLevel])
-        yield talent;
+      yield* this.talents[talentLevel];
   }
 
   /**

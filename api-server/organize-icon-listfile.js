@@ -89,7 +89,7 @@ function compileSkillIconUsage(hotsData) {
   const skillIconSources = new Map;
 
   for (const hero of hotsData.allHeroes()) {
-    for (const skill of hero) {
+    for (const skill of hero.allSkillsAndTalents()) {
       const iconUrl = skill.iconUrl;
       console.assert(iconUrl, `Missing icon URL for ${hero.id}`);
 

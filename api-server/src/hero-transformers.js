@@ -36,7 +36,7 @@ module.exports = {
         crawledArticles[hero.articleName] = true;
       }
 
-      for (const skillOrTalent of hero) {
+      for (const skillOrTalent of hero.allSkillsAndTalents()) {
         const namuImageName = skillOrTalent.iconUrl;
         assert(namuImageName in namuImageNameToNamuUrl, skillOrTalent.iconUrl + ' is not associated with any known image URL');
         skillOrTalent.namuIconUrl = namuImageNameToNamuUrl[namuImageName];
@@ -57,7 +57,7 @@ module.exports = {
     const savedNamuImages = {};
 
     return async hero => {
-      for (const skillOrTalent of hero) {
+      for (const skillOrTalent of hero.allSkillsAndTalents()) {
         const namuImageName = skillOrTalent.iconUrl;
         if (namuImageName in savedNamuImages) //Already downloaded
           continue;
@@ -105,7 +105,7 @@ module.exports = {
     const unusedUrls = new Set(Object.values(hashToUrl));
 
     return async hero => {
-      for (const skillOrTalent of hero) {
+      for (const skillOrTalent of hero.allSkillsAndTalents()) {
         const hash = skillOrTalent.iconHash;
 
         if (hash in hashToUrl)
