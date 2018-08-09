@@ -87,10 +87,8 @@ if (process.argv.length <= 2 || !program.inputList) {
  */
 function compileSkillIconUsage(hotsData) {
   const skillIconSources = new Map;
-  /** @type {Hero[]} */
-  const heroes = [...Object.values(hotsData.heroes), ...Object.values(hotsData.ptrHeroes)];
 
-  for (const hero of heroes) {
+  for (const hero of hotsData.allHeroes()) {
     for (const skill of hero) {
       const iconUrl = skill.iconUrl;
       console.assert(iconUrl, `Missing icon URL for ${hero.id}`);

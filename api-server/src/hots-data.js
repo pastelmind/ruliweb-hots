@@ -78,6 +78,14 @@ module.exports = class HotsData {
   }
 
   /**
+   * Returns an array of all heroes in `this.heroes` and `this.ptrHeroes`.
+   * @return {Hero[]} Array of all heroes.
+   */
+  allHeroes() {
+    return [...Object.values(this.heroes), ...Object.values(this.ptrHeroes)];
+  }
+
+  /**
    * Unpack a collection of Hero objects
    * @param {Object<string, *>} source Mapping of hero ID => (packed/unpacked) hero object
    * @return {Object<string, Hero>} Mapping of hero ID => Hero object
