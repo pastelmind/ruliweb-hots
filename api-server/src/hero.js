@@ -5,9 +5,57 @@ const Skill = require('./skill');
 const Talent = require('./talent');
 
 /**
+ * Represents a stat that grows with level.
+ * @typedef {Object} GrowingStat
+ * @prop {number} value
+ * @prop {number=} levelAdd
+ * @prop {number=} levelScaling
+ */
+
+/**
+ * Represents a collection of stats.
+ * @typedef {Object} Unit
+ * @prop {string=} unitName Alternate name of the unit
+ * @prop {GrowingStat} hp
+ * @prop {GrowingStat} hpRegen
+ * @prop {number | GrowingStat=} mp
+ * @prop {GrowingStat=} mpRegen
+ * @prop {number=} charge
+ * @prop {number=} energy
+ * @prop {number=} fury
+ * @prop {GrowingStat=} healEnergy
+ * @prop {number=} zaryaEnergy
+ * @prop {number=} ammo
+ * @prop {number=} brew
+ * @prop {GrowingStat=} shields
+ * @prop {number} radius
+ * @prop {number} speed
+ * @prop {GrowingStat | GrowingStat[]=} damage
+ * @prop {number | number[]=} range
+ * @prop {number | number[]=} period
+ */
+
+0;
+
+/**
  * Represents a Heroes of the Storm hero.
  */
 module.exports = class Hero {
+  /**
+   * Create a new Hero object.
+   * @param {Object} o
+   * @param {string=} o.name
+   * @param {string=} o.title
+   * @param {string=} o.iconUrl
+   * @param {string=} o.id
+   * @param {string=} o.type
+   * @param {string=} o.role
+   * @param {string=} o.universe
+   * @param { Unit | Unit[] } o.stats
+   * @param {Skill[]} o.skills
+   * @param {{ [level: number]: Talent[] }=} o.talents
+   * @param {Object<string, string|number>} o.extras
+   */
   constructor(o = {}) {
     this.name = o.name || '';
     this.title = o.title || '';
@@ -32,8 +80,8 @@ module.exports = class Hero {
 
     /**
      * Helper function that clones a unit (i.e. collection of stats)
-     * @param {Object<string, number|Object>} unit Collection of stat ID => stat value or object
-     * @return {Object<string, number|Object>} Cloned unit
+     * @param {Unit} unit Collection of stat ID => stat value or object
+     * @return {Unit} Cloned unit
      */
     function cloneUnit(unit) {
       const unitClone = {};
@@ -46,8 +94,8 @@ module.exports = class Hero {
 
     /**
      * Helper function that clones a stat
-     * @param {number | Object<string, number>} stat
-     * @return {number | Object<string, number>} Cloned stat
+     * @param {number | GrowingStat} stat
+     * @return {number | GrowingStat} Cloned stat
      */
     function cloneStat(stat) {
       return typeof stat === 'object' && stat ? Object.assign({}, stat) : stat;

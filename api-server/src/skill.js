@@ -5,6 +5,20 @@
  * Represents a hero's skill in Heroes of the Storm.
  */
 module.exports = class Skill {
+  /**
+   * Create a new Skill object.
+   * @param {Object} o
+   * @param {string=} o.name
+   * @param {string=} o.iconUrl
+   * @param {string=} o.type
+   * @param {number=} o.level
+   * @param {string=} o.description
+   * @param {number=} o.cooldown
+   * @param {number=} o.rechargeCooldown
+   * @param {number=} o.manaCost
+   * @param {number=} o.manaCostPerSecond
+   * @param {Object<string, string|number>} o.extras
+   */
   constructor(o = {}) {
     this.name = o.name || '';
     this.iconUrl = o.iconUrl || '';
