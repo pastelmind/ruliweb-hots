@@ -6,4 +6,24 @@ const Skill = require('./skill');
 /**
  * Represents a hero's talent in Heroes of the Storm.
  */
-module.exports = class Talent extends Skill {};
+module.exports = class Talent extends Skill {
+  /**
+   * Create a new Talent object.
+   * @param {Talent} o
+   */
+  constructor(o = {}) {
+    super(o);
+
+    /** @type {string} */
+    this.upgradeFor = o.upgradeFor || '';
+  }
+
+  /**
+   * Produce a compact, minimal JSON representation
+   */
+  toJSON() {
+    return Object.assign(super.toJSON(), {
+      upgradeFor: this.upgradeFor || undefined
+    });
+  }
+};

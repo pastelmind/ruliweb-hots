@@ -117,7 +117,15 @@ function decorateHotsData(hotsData) {
         skill.iconUrl = MISSING_ICON_URL;
 
       //Apply skill/talent type name
-      skill.typeName = (skill.type === 'D' ? '고유 능력' : skill.type);
+      if (skill.upgradeFor)
+        skill.typeName = `능력 강화 (${skill.upgradeFor.replace(/D/g, '고유 능력')})`;
+      else {
+        skill.typeName = {
+          'passive': '지속 효과',
+          'active': '사용 효과',
+          'D': '고유 능력'
+        }[skill.type] || skill.type;
+      }
 
       //Assign skill/talent index
       skill.index = index;

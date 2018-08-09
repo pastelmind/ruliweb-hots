@@ -394,7 +394,37 @@
           "$ref": "#/definitions/trimmedString"
         },
         "type": {
-          "$ref": "#/definitions/trimmedString"
+          "enum": [
+            "Q",
+            "W",
+            "E",
+            "R",
+            "D",
+            "Z",
+            "1",
+            "2",
+            "3",
+            "passive",
+            "active"
+          ]
+        },
+        "upgradeFor": {
+          "enum": [
+            "Q",
+            "W",
+            "E",
+            "R",
+            "D",
+            "Z",
+            "1",
+            "B",
+            "D - Q",
+            "D - W",
+            "D - E",
+            "Q - Q",
+            "Q - W",
+            "Q - E"
+          ]
         },
         "iconUrl": {
           "type": "string",
@@ -462,19 +492,21 @@
           "$ref": "#/definitions/talent"
         },
         {
-          "properties": {
-            "type": {
-              "enum": [
-                "Q",
-                "W",
-                "E",
-                "R",
-                "D",
-                "Z",
-                "1",
-                "2",
-                "3"
-              ]
+          "not": {
+            "required": [
+              "upgradeFor"
+            ]
+          }
+        },
+        {
+          "not": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "passive",
+                  "active"
+                ]
+              }
             }
           }
         }
