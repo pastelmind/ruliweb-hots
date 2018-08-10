@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
 
+  <link rel="stylesheet" type="text/css" href="../templates/css/insert-tables.css" />
   <link rel="stylesheet" href="../src/css/tingle.css">
   <link rel="stylesheet" href="../src/css/ruliweb-hots.css">
 
@@ -173,10 +174,12 @@
   <script src="../../node_modules/mustache/mustache.min.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
-  <script src="../src/js/templates.js"></script>
   <script src="./js/mocks.js"></script>
   <script>
     (async () => {
+      //Load templates directly from files
+      HotsDialog.htmlGenerators.templates = await loadTemplates();
+
       //Load hero data for testing
       const hotsData = (await axios.get('./data/hots.json')).data;
       decorateHotsData(hotsData);

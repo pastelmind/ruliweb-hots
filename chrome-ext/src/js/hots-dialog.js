@@ -409,9 +409,10 @@ const HotsDialog = {
 
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
+      heroView.isForHeroTable = true;
 
       return Mustache.render(this.templates['insert-hero'], heroView, {
-        skill: this.templates['insert-hero-skill'],
+        skill: this.templates['insert-skill'],
         stats: this.templates['insert-skill-stats']
       });
     },
@@ -437,9 +438,12 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateTalentInfoTable(talent, hotsVersion) {
+      const talentView = this.generateSkillTalentView(talent, hotsVersion);
+      talentView.isTalent = true;
+
       return Mustache.render(
-        this.templates['insert-talent'],
-        this.generateSkillTalentView(talent, hotsVersion),
+        this.templates['insert-skill'],
+        talentView,
         { stats: this.templates['insert-skill-stats'] }
       );
     },

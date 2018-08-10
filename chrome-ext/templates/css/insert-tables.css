@@ -8,75 +8,19 @@
   font-family: sans-serif;
 }
 
-.ruliweb-hots-hero-table__icon-cell,
-.ruliweb-hots-hero-skill-table__icon-cell,
-.ruliweb-hots-skill-table__icon-cell,
-.ruliweb-hots-talent-table__icon-cell
-{
+.ruliweb-hots-hero-table__icon-cell, .ruliweb-hots-skill-table__icon-cell {
   float: left;
-  padding: .5em;
 }
 
-.ruliweb-hots-hero-table__icon,
-.ruliweb-hots-hero-skill-table__icon,
-.ruliweb-hots-skill-table__icon,
-.ruliweb-hots-talent-table__icon
-{
+.ruliweb-hots-hero-table__icon, .ruliweb-hots-skill-table__icon {
   width: 100%;
 }
 
-.ruliweb-hots-hero-table__header,
-.ruliweb-hots-hero-skill-table__content,
-.ruliweb-hots-skill-table__content,
-.ruliweb-hots-talent-table__content
-{
+.ruliweb-hots-hero-table__header, .ruliweb-hots-skill-table__content {
   float: left;
   width: 50em;
   max-width: calc(100% - 64px - 1em);
-  min-height: calc(64px + 1em);
 }
-
-.ruliweb-hots-hero-skill-table__content,
-.ruliweb-hots-skill-table__content,
-.ruliweb-hots-talent-table__content
-{
-  display: flex;
-  flex-flow: column;
-}
-
-.ruliweb-hots-hero-skill-table__header,
-.ruliweb-hots-skill-table__header,
-.ruliweb-hots-talent-table__header
-{
-  display: flex;
-  flex-wrap: wrap;
-  font-weight: bold;
-  text-align: center;
-}
-
-.ruliweb-hots-hero-table__title,
-.ruliweb-hots-hero-table__type,
-.ruliweb-hots-hero-skill-table__title,
-.ruliweb-hots-hero-skill-table__type,
-.ruliweb-hots-skill-table__title,
-.ruliweb-hots-skill-table__type,
-.ruliweb-hots-talent-table__title,
-.ruliweb-hots-talent-table__type
-{
-  padding: .5em;
-}
-
-.ruliweb-hots-hero-table__description,
-.ruliweb-hots-hero-skill-table__description,
-.ruliweb-hots-skill-table__description,
-.ruliweb-hots-talent-table__description
-{
-  flex: 1;
-  padding: .5em;
-  text-align: left;
-  color: #efe;
-}
-
 
 /******** Hero table ********/
 
@@ -87,12 +31,14 @@
   background: #101;
   /* Color of collapse/expand arrow */
   color: #ffd;
-  line-height: normal;  /* Override Ruliweb's (MYPI) stylesheet */
+  line-height: normal;
+  /* Override Ruliweb's (MYPI) stylesheet */
 }
 
 .ruliweb-hots-hero-table__icon-cell {
   width: 64px;
   height: 64px;
+  padding: .5em;
   /* background: center/cover no-repeat content-box; */
   /* Should be entered directly in template */
 }
@@ -118,6 +64,7 @@
 
 .ruliweb-hots-hero-table__header {
   width: calc(50em - 64px - 1em);
+  min-height: calc(64px + 1em);
   box-sizing: border-box;
   padding: 1em;
 }
@@ -130,7 +77,8 @@
   flex: none;
   align-self: center;
   margin-right: .5em;
-  width: 2em; height: 2em;
+  width: 2em;
+  height: 2em;
   /* Hide default text */
   text-indent: 100%;
   white-space: nowrap;
@@ -140,7 +88,8 @@
 .ruliweb-hots-hero-table__hero-name {
   font-size: 1.5em;
   text-shadow: 0 0 1em #09f;
-  margin: 0;  /* Override <h2> user agent style */
+  margin: 0;
+  /* Override <h2> user agent style */
 }
 
 .ruliweb-hots-hero-table__hero-title {
@@ -159,7 +108,8 @@
 }
 
 .ruliweb-hots-hero-table__skill-group-title {
-  margin: 0;    /* Override <h3> user agent style */
+  margin: 0;
+  /* Override <h3> user agent style */
   flex: 0 2 5em;
   align-self: center;
   display: block;
@@ -171,7 +121,8 @@
 
 .ruliweb-hots-hero-table__skill-group-skills {
   flex: 1 30em;
-  width: 5em;   /* Use a small width value to force child skill tables to shrink to hero table size */
+  width: 5em;
+  /* Use a small width value to force child skill tables to shrink to hero table size */
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -236,132 +187,70 @@
   vertical-align: sub;
 }
 
-/******** Skill table (inside hero table) ********/
+/******** Skill/Talent table ********/
+
+.ruliweb-hots-skill-table, .ruliweb-hots-hero-skill-table, .ruliweb-hots-talent-table {
+  border: 2px solid #85d;
+  padding: .5em;
+  background: linear-gradient(#214, #102);
+  color: #6cf;  /* Color of skill name and collapse/expand arrow */
+}
 
 .ruliweb-hots-hero-skill-table {
-  border: 2px solid #ccd;
+  margin: 0 0 5px 5px;
   border-image: linear-gradient(#8df, #ccd) 1;
-  background: #418;
-  margin: 0 0 5px 5px;  /* Fake equal height columns */
-  color: #fdf;        /* Color of collapse/expand arrow */
 }
 
-.ruliweb-hots-hero-skill-table__icon-cell {
-  width: 48px;
-  height: 48px;
-  /* background: center/cover no-repeat content-box; */
-  /* Should be entered directly in template */
-}
-
-.ruliweb-hots-hero-skill-table__content {
-  max-width: calc(100% - 48px - 1em);
-}
-
-.ruliweb-hots-hero-skill-table__header {
-  background: #103;
-  color: #fbf;
-}
-
-.ruliweb-hots-hero-skill-table__title {
-  flex: 3 15em;
-}
-
-.ruliweb-hots-hero-skill-table__type {
-  flex: 1 6em;
-}
-
-.ruliweb-hots-hero-skill-table__title, .ruliweb-hots-hero-skill-table__type {
-  border: solid #85d;
-  border-width: 0 0 1px 1px;
-}
-
-.ruliweb-hots-hero-skill-table__description {
-  border-left: 1px solid #85d;
-  background: #214;
-}
-
-/******** Skill table ********/
-
-.ruliweb-hots-skill-table {
-  border: 2px solid #85d;
-  background: #418;
-  /* Fake equal height columns */
-  color: #fdf;
-  /* Color of collapse/expand arrow */
+.ruliweb-hots-talent-table {
+  border: 2px solid #55d;
+  background: linear-gradient(#118, #003);
+  color: #bef;  /* Color of talent name and collapse/expand arrow */
 }
 
 .ruliweb-hots-skill-table__icon-cell {
   width: 64px;
   height: 64px;
-  /* background: center/cover no-repeat content-box; */
   /* Should be entered directly in template */
+  /* background: url({{&iconUrl}}) center/cover; */
 }
 
-.ruliweb-hots-skill-table__header {
-  background: #103;
-  color: #fbf;
-}
-
-.ruliweb-hots-skill-table__title {
-  flex: 3 15em;
-}
-
-.ruliweb-hots-skill-table__type {
-  flex: 1 6em;
-}
-
-.ruliweb-hots-skill-table__title, .ruliweb-hots-skill-table__type {
-  border: solid #85d;
-  border-width: 0 0 1px 1px;
-}
-
-.ruliweb-hots-skill-table__description {
-  border-left: 1px solid #85d;
-  background: #214;
-}
-
-/******** Talent table ********/
-
-.ruliweb-hots-talent-table {
-  border: 2px solid #55d;
-  background: #118;
-  /* Fake equal height columns */
-  color: #bef;
-  /* Color of collapse/expand arrow */
-}
-
-.ruliweb-hots-talent-table__icon-cell {
+.ruliweb-hots-skill-table__icon-cell--small-icon {
   width: 48px;
   height: 48px;
-  /* background: center/cover no-repeat content-box; */
-  /* Should be entered directly in template */
 }
 
-.ruliweb-hots-talent-table__content {
+.ruliweb-hots-skill-table__content {
+  padding-left: 1em;
+}
+
+.ruliweb-hots-skill-table__content--small-icon {
   max-width: calc(100% - 48px - 1em);
 }
 
-.ruliweb-hots-talent-table__header {
-  background: #003;
-  color: #6ce;
+.ruliweb-hots-skill-table__header {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.ruliweb-hots-talent-table__title {
-  flex: 2 14em;
+.ruliweb-hots-skill-table__title-box {
+  flex: 3 15em;
 }
 
-.ruliweb-hots-talent-table__type {
-  flex: 1 7em;
+.ruliweb-hots-skill-table__title {
+  font-size: 1.1em;
 }
 
-.ruliweb-hots-talent-table__title, .ruliweb-hots-talent-table__type {
-  border: solid #55d;
-  border-width: 0 0 1px 1px;
+.ruliweb-hots-skill-table__type {
+  flex: 1 5em;
+  text-align: right;
 }
 
-.ruliweb-hots-talent-table__description {
-  border-left: 1px solid #55d;
-  background: #114;
+.ruliweb-hots-skill-table__title-box, .ruliweb-hots-skill-table__type {
+  padding-bottom: .5em;
+}
+
+.ruliweb-hots-skill-table__description {
+  color: #bcc;
 }
 
 /******** Stat sections in skill/talent tables ********/
@@ -400,4 +289,38 @@
   font-size: .8em;
   color: #cca;
   font-style: italic;
+}
+
+/******** Skill/Talent Type Labels ********/
+
+.ruliweb-hots-skill-type-label {
+  display: inline-block;
+  border: .1em solid #87d;
+  border-radius: .3em;
+  padding: .2em .4em;
+  white-space: nowrap;
+  color: #87d;
+}
+
+.ruliweb-hots-skill-type-label--heroic {
+  border: .1em solid #da7;
+  color: #da7;
+}
+
+.ruliweb-hots-skill-type-label--passive {
+  border: .1em solid #6ba;
+  color: #6ba;
+}
+
+.ruliweb-hots-skill-type-label--active {
+  border: .1em solid #d7a;
+  color: #d7a;
+}
+
+.ruliweb-hots-skill-type-label__upgrade-arrow {
+  height: 1.5em;
+  /* Set margin-top to an arbitrary large negative value to ensure that the
+   * image does not cause the parent box to to grow in height. */
+  margin: -1em -.2em 0 -.7em;
+  vertical-align: bottom;
 }

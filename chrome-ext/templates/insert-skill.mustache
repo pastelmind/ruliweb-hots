@@ -1,13 +1,58 @@
+{{#isTalent}}
+<details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-talent-table">
+  <summary class="ruliweb-hots-skill-table__icon-cell ruliweb-hots-skill-table__icon-cell--small-icon" style="background: url({{&iconUrl}}) center/cover"
+    title="[클릭하여 접기/펼치기] {{name}} ({{typeNameLong}} - 레벨 {{level}})"></summary>
+  <div class="ruliweb-hots-skill-table__content ruliweb-hots-skill-table__content--small-icon">
+{{/isTalent}}
+{{^isTalent}}
+{{#isForHeroTable}}
+<details class="ruliweb-hots-hero-skill-table">
+  <summary class="ruliweb-hots-skill-table__icon-cell ruliweb-hots-skill-table__icon-cell--small-icon" style="background: url({{&iconUrl}}) center/cover"
+    title="[클릭하여 접기/펼치기] {{typeName}} - {{name}}"></summary>
+  <div class="ruliweb-hots-skill-table__content ruliweb-hots-skill-table__content--small-icon">
+{{/isForHeroTable}}
+{{^isForHeroTable}}
 <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-skill-table">
-  <summary class="ruliweb-hots-skill-table__icon-cell" style="background: url({{iconUrl}}) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] {{typeName}} - {{name}}"></summary>
+  <summary class="ruliweb-hots-skill-table__icon-cell" style="background: url({{&iconUrl}}) center/cover"
+    title="[클릭하여 접기/펼치기] {{typeName}} - {{name}}"></summary>
   <div class="ruliweb-hots-skill-table__content">
+{{/isForHeroTable}}
+{{/isTalent}}
     <div class="ruliweb-hots-skill-table__header">
-      <div class="ruliweb-hots-skill-table__title">{{name}}</div>
-      <div class="ruliweb-hots-skill-table__type">{{typeName}}</div>
+      <div class="ruliweb-hots-skill-table__title-box"><b class="ruliweb-hots-skill-table__title">{{name}}</b></div>
+      <div class="ruliweb-hots-skill-table__type">
+        {{#isTypeClassBasic}}  <b class="ruliweb-hots-skill-type-label">{{/isTypeClassBasic}}
+        {{#isTypeClassHeroic}} <b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--heroic"> {{/isTypeClassHeroic}}
+        {{#isTypeClassPassive}}<b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--passive">{{/isTypeClassPassive}}
+        {{#isTypeClassActive}} <b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--active"> {{/isTypeClassActive}}
+          {{#upgradeFor}}
+            {{#isTypeClassBasic}}  <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i1.ruliweb.com/img/18/08/07/1651405095119dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassBasic}}
+            {{#isTypeClassHeroic}} <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i2.ruliweb.com/img/18/08/07/1651405069c19dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassHeroic}}
+            {{#isTypeClassPassive}}<img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i1.ruliweb.com/img/18/08/07/1651405088419dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassPassive}}
+            {{#isTypeClassActive}} <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i3.ruliweb.com/img/18/08/11/165246b734f19dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassActive}}
+          {{/upgradeFor}}
+          {{typeName}}
+        {{#isTypeClassBasic}}  </b>{{/isTypeClassBasic}}
+        {{#isTypeClassHeroic}} </b>{{/isTypeClassHeroic}}
+        {{#isTypeClassPassive}}</b>{{/isTypeClassPassive}}
+        {{#isTypeClassActive}} </b>{{/isTypeClassActive}}
+      </div>
     </div>
     <div class="ruliweb-hots-skill-table__description">
       {{{description}}}{{> stats}}{{#hotsVersion}}
       <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
     </div>
+{{#isTalent}}
   </div>
 </details>
+{{/isTalent}}
+{{^isTalent}}
+{{#isForHeroTable}}
+  </div>
+</details>
+{{/isForHeroTable}}
+{{^isForHeroTable}}
+  </div>
+</details>
+{{/isForHeroTable}}
+{{/isTalent}}

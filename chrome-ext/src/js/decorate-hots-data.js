@@ -103,11 +103,18 @@ function decorateHotsData(hotsData) {
 
   return hotsData;
 
+  //TODO improve this (use array spread operators)
   /**
    * Decorates all skills and talents of the given hero.
    * @param {Hero} hero Hero object
    */
   function decorateSkillsAndTalents(hero) {
+    const SKILL_TYPE_NAMES = Object.freeze({
+      'passive': '지속 효과',
+      'active': '사용 효과',
+      'D': '고유 능력'
+    });
+
     const skillsOrTalents = [...hero.skills];
 
     //Assign skill index
@@ -130,15 +137,22 @@ function decorateHotsData(hotsData) {
         skill.iconUrl = MISSING_ICON_URL;
 
       //Apply skill/talent type name
-      if (skill.upgradeFor)
-        skill.typeName = `능력 강화 (${skill.upgradeFor.replace(/D/g, '고유 능력')})`;
-      else {
-        skill.typeName = {
-          'passive': '지속 효과',
-          'active': '사용 효과',
-          'D': '고유 능력'
-        }[skill.type] || skill.type;
+      if (skill.upgradeFor) {
+        skill.typeName = SKILL_TYPE_NAMES[skill.upgradeFor] || skill.upgradeFor;
+        skill.typeNameLong = `능력 강화 (${skill.typeName})`;
       }
+      else
+        skill.typeNameLong = skill.typeName = SKILL_TYPE_NAMES[skill.type] || skill.type;
+
+      //Set flags for skill/talent type classes
+      if (skill.type === 'R' || skill.upgradeFor === 'R')
+        skill.isTypeClassHeroic = true;
+      else if ((skill.type === 'passive' && !skill.upgradeFor) || skill.upgradeFor === 'passive')
+        skill.isTypeClassPassive = true;
+      else if ((skill.type === 'active' && !skill.upgradeFor) || skill.upgradeFor === 'active')
+        skill.isTypeClassActive = true;
+      else
+        skill.isTypeClassBasic = true;
     }
   }
 
