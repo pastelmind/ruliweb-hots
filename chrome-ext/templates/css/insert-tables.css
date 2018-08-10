@@ -284,11 +284,16 @@
   background: url(http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat;
 }
 
+/******** Heroes of the Storm Patch Version Section ********/
+
 .hots-version {
   text-align: right;
   font-size: .8em;
   color: #cca;
-  font-style: italic;
+}
+
+.hots-version--right-pad {
+  padding-right: 1em;
 }
 
 /******** Skill/Talent Type Labels ********/

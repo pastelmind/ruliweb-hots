@@ -39,9 +39,9 @@
       </div>
     </div>
     <div class="ruliweb-hots-skill-table__description">
-      {{{description}}}{{> stats}}{{#hotsVersion}}
-      <div class="hots-version">패치 {{hotsVersion}}</div>{{/hotsVersion}}
+      {{{description}}}{{> stats}}
     </div>
+    {{#hotsVersion}}<footer class="hots-version"><i>패치 {{hotsVersion}}</i></footer>{{/hotsVersion}}
 {{#isTalent}}
   </div>
 </details>
