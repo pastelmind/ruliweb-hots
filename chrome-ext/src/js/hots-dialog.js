@@ -130,17 +130,26 @@ const HotsDialog = {
       talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
     });
 
-    //Add click handler for "Use PTR" checkbox
-    usePtrCheckbox.addEventListener('change', event => {
-      if (!this.selectedHero) return;
+    //Check if PTR data is available
+    if (hotsData.ptrHeroes && Object.keys(hotsData.ptrHeroes).length) {
+      //Add click handler for "Use PTR" checkbox
+      usePtrCheckbox.addEventListener('change', event => {
+        if (!this.selectedHero) return;
 
-      const heroId = this.selectedHero.id;
-      const hero = this.selectedHero = this.getHeroDataById(heroId, usePtrCheckbox.checked);
-      console.assert(hero, `Cannot find hero with ID: ${heroId}`);
+        const heroId = this.selectedHero.id;
+        const hero = this.selectedHero = this.getHeroDataById(heroId, usePtrCheckbox.checked);
+        console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-      skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
-      talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
-    });
+        skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
+        talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
+      });
+    }
+    else {
+      //Disable "Use PTR" checkbox
+      usePtrCheckbox.checked = false;
+      usePtrCheckbox.disabled = true;
+      usePtrCheckbox.closest('.hots-dialog-option').setAttribute('aria-label', 'PTR 서버 패치 정보가 없습니다');
+    }
 
     //Add event handlers for selected hero icon and skill icons
     skillsetSection.addEventListener('click', event => {
