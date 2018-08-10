@@ -92,9 +92,7 @@ function decorateHotsData(hotsData) {
       hero.iconUrl = MISSING_ICON_URL;
 
     //Decorate skills and talents
-    decorateSkillTalentArray(hero.skills);
-    for (const talentLevel in hero.talents)
-      decorateSkillTalentArray(hero.talents[talentLevel], parseInt(talentLevel));
+    decorateSkillsAndTalents(hero);
 
     //Decorate units (i.e. collection of unit stats)
     if (Array.isArray(hero.stats))
@@ -106,12 +104,27 @@ function decorateHotsData(hotsData) {
   return hotsData;
 
   /**
-   * Decorates the given skill or talent.
-   * @param {Skill[]|Talent[]} skillsOrTalents Array of skills or talents
-   * @param {number=} level Talent level
+   * Decorates all skills and talents of the given hero.
+   * @param {Hero} hero Hero object
    */
-  function decorateSkillTalentArray(skillsOrTalents, level) {
-    skillsOrTalents.forEach((skill, index) => {
+  function decorateSkillsAndTalents(hero) {
+    const skillsOrTalents = [...hero.skills];
+
+    //Assign skill index
+    hero.skills.forEach((skill, index) => skill.index = index);
+
+    for (const talentLevel in hero.talents) {
+      hero.talents[talentLevel].forEach((talent, index) => {
+        skillsOrTalents.push(talent);
+
+        //Assign talent level and index
+        talent.level = talentLevel;
+        talent.index = index;
+      });
+    }
+
+    //Decorate all skills and talents
+    for (const skill of skillsOrTalents) {
       //Apply default icon URL to skills
       if (!skill.iconUrl)
         skill.iconUrl = MISSING_ICON_URL;
@@ -126,14 +139,7 @@ function decorateHotsData(hotsData) {
           'D': '고유 능력'
         }[skill.type] || skill.type;
       }
-
-      //Assign skill/talent index
-      skill.index = index;
-
-      //Assign talent level
-      if (level)
-        skill.level = level;
-    });
+    }
   }
 
 
