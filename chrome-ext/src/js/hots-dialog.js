@@ -115,7 +115,13 @@ const HotsDialog = {
     //Add click handler for hero filters
     for (const checkbox of heroFilterCheckboxes) {
       checkbox.addEventListener('change', () =>
-        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, hotsData.heroes, hotsData.ptrHeroes));
+        this.updateHeroIcons(
+          heroIconElems,
+          heroFilterCheckboxes,
+          hotsData.heroes,
+          hotsData.ptrHeroes,
+          usePtrCheckbox.checked
+        ));
     }
 
     //Add click handler for hero icons
@@ -134,6 +140,14 @@ const HotsDialog = {
     if (hotsData.ptrHeroes && Object.keys(hotsData.ptrHeroes).length) {
       //Add click handler for "Use PTR" checkbox
       usePtrCheckbox.addEventListener('change', event => {
+        this.updateHeroIcons(
+          heroIconElems,
+          heroFilterCheckboxes,
+          hotsData.heroes,
+          hotsData.ptrHeroes,
+          usePtrCheckbox.checked
+        );
+
         if (!this.selectedHero) return;
 
         const heroId = this.selectedHero.id;
@@ -217,8 +231,9 @@ const HotsDialog = {
    * @param {Iterable<HTMLInputElement>} heroFilterCheckboxes Array of checkbox <input> elements
    * @param {{ [heroId: string]: Hero }} heroes All heroes in the live server
    * @param {{ [heroId: string]: Hero }} ptrHeroes New or changed heroes in the PTR
+   * @param {boolean} selectPtrOnly If truthy, only highlight heroes that are new or changed in the PTR
    */
-  updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes, ptrHeroes) {
+  updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes, ptrHeroes, selectPtrOnly) {
     //Generate a collection of active filters
     const activeFilters = {};
 
@@ -233,11 +248,14 @@ const HotsDialog = {
     for (const heroIconElem of heroIconElems) {
       const { heroId, isPtr } = heroIconElem.dataset; //data-hero-id, data-is-ptr
       const hero = (isPtr ? ptrHeroes : heroes)[heroId];
-      heroIconElem.classList.toggle('hots-hero-icon--excluded', !testHero(hero, activeFilters));
+      heroIconElem.classList.toggle('hots-hero-icon--excluded', !testHero(hero, activeFilters, selectPtrOnly));
     }
 
     //Helper function
-    function testHero(hero, activeFilters) {
+    function testHero(hero, activeFilters, selectPtrOnly) {
+      if (selectPtrOnly && !(hero.hasPtrChanges || hero.isPtr))
+        return false;
+
       for (const filterType in activeFilters) {
         const filterSet = activeFilters[filterType];
         const heroAttribute = hero[filterType];
