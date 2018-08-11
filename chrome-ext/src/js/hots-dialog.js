@@ -115,7 +115,7 @@ const HotsDialog = {
     //Add click handler for hero filters
     for (const checkbox of heroFilterCheckboxes) {
       checkbox.addEventListener('change', () =>
-        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, hotsData.heroes));
+        this.updateHeroIcons(heroIconElems, heroFilterCheckboxes, hotsData.heroes, hotsData.ptrHeroes));
     }
 
     //Add click handler for hero icons
@@ -215,9 +215,10 @@ const HotsDialog = {
    * Updates the hero icons, filtered by `heroFilterCheckboxes`.
    * @param {Iterable<Element>} heroIconElems Array of hero icon elements
    * @param {Iterable<HTMLInputElement>} heroFilterCheckboxes Array of checkbox <input> elements
-   * @param {Object.<string, Object>} heroes key => value pairs of hero ID => hero data
+   * @param {{ [heroId: string]: Hero }} heroes All heroes in the live server
+   * @param {{ [heroId: string]: Hero }} ptrHeroes New or changed heroes in the PTR
    */
-  updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes) {
+  updateHeroIcons(heroIconElems, heroFilterCheckboxes, heroes, ptrHeroes) {
     //Generate a collection of active filters
     const activeFilters = {};
 
@@ -230,7 +231,8 @@ const HotsDialog = {
 
     //Toggle CSS class of each hero icon
     for (const heroIconElem of heroIconElems) {
-      const hero = heroes[heroIconElem.dataset.heroId]; //data-hero-id
+      const { heroId, isPtr } = heroIconElem.dataset; //data-hero-id, data-is-ptr
+      const hero = (isPtr ? ptrHeroes : heroes)[heroId];
       heroIconElem.classList.toggle('hots-hero-icon--excluded', !testHero(hero, activeFilters));
     }
 
