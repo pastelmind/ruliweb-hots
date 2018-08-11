@@ -65,8 +65,13 @@ function decorateHotsData(hotsData) {
 
   //Mark PTR data
   hotsData.ptrHeroes = hotsData.ptrHeroes || {};
-  for (const ptrHero of Object.values(hotsData.ptrHeroes))
+  for (const ptrHeroId in hotsData.ptrHeroes) {
+    const ptrHero = hotsData.ptrHeroes[ptrHeroId];
     ptrHero.isPtr = true;
+
+    if (ptrHeroId in hotsData.heroes)
+      hotsData.heroes[ptrHeroId].hasPtrChanges = true;
+  }
 
   const allHeroes = [...Object.entries(hotsData.heroes), ...Object.entries(hotsData.ptrHeroes)];
 

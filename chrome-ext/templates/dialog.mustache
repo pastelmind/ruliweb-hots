@@ -25,8 +25,11 @@
 
   <section class="hots-dialog__section hots-hero-icons">
     {{#heroes}}
-    <div class="hots-hero-icon-wrapper" aria-label="{{name}} ({{type}} {{roleName}})" data-microtip-position="top" role="tooltip">
+    <div class="hots-hero-icon-wrapper" data-microtip-position="top" role="tooltip"
+      aria-label="{{name}} ({{type}} {{roleName}}){{#hasPtrChanges}}&#xA;이 영웅은 PTR에서 변경되었습니다{{/hasPtrChanges}}{{#isPtr}}&#xA;이 영웅은 PTR에 추가되었습니다{{/isPtr}}">
       <img class="hots-hero-icon" src="{{{iconUrl}}}" data-hero-id="{{id}}" alt="{{name}} ({{type}} {{roleName}})">
+      {{#hasPtrChanges}}<span class="hots-hero-icon-badge hots-hero-icon-badge--ptr-changes">PTR</span>{{/hasPtrChanges}}
+      {{#isPtr}}        <span class="hots-hero-icon-badge hots-hero-icon-badge--new">NEW</span>        {{/isPtr}}
     </div>
     {{/heroes}}
   </section>

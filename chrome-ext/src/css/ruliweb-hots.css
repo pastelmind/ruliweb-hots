@@ -148,6 +148,26 @@ label.hero-filter {
   opacity: .2;
 }
 
+.hots-hero-icon-badge {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif; /* Extra-bold fonts */
+  font-size: 70%;
+  text-shadow: #fff 0 0 1px;
+  pointer-events: none;
+}
+
+.hots-hero-icon-badge--ptr-changes {
+  color: #04f;
+  content: "PTR";
+}
+
+.hots-hero-icon-badge--new {
+  color: #f00;
+  content: "NEW";
+}
+
 /* Skillset section */
 
 .hots-skillset {
