@@ -5377,7 +5377,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953ad1b19dc2c.png",
             "description": "암흑의 돌진 또는 압도로 적 영웅을 기절시키면 3초에 걸쳐 최대 생명력의 12%를 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "Q / E"
           },
           {
             "name": {
@@ -5521,7 +5522,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953ad1b19dc2c.png",
             "description": "암흑의 돌진 또는 압도로 적 영웅을 기절시키면 공격 속도가 7초 동안 50% 증가하여 최대 100% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "Q / E"
           },
           {
             "name": {
@@ -6939,7 +6941,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/11/164874af16919dc2c.png",
             "description": "격려가 활성화된 동안 일반 공격으로 감소하는 아드레날린 촉진의 재사용 대기시간이 200% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "W / E"
           },
           {
             "name": {
@@ -7004,7 +7007,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/11/1648761ad6a19dc2c.png",
             "description": "천공 탄환의 재사용 대기시간이 3초 감소합니다. 격려가 활성화된 동안 천공 탄환의 감속 효과가 20% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "Q / W"
           },
           {
             "name": {
@@ -9064,7 +9068,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b4f7019dc2c.png",
             "description": "그림자 목줄로 적 영웅에게 목줄을 채울 때마다 복수의 영혼의 재사용 대기시간이 2.5초 감소합니다.",
             "extras": {},
-            "upgradeFor": "W"
+            "upgradeFor": "W / E"
           },
           {
             "name": {
@@ -9240,7 +9244,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b6eb619dc2c.png",
             "description": "복수의 영혼이 적중한 적 영웅 하나당 다음 칼날 부채가 적 영웅의 최대 생명력의 1.5%만큼 추가 피해를 줍니다.",
             "extras": {},
-            "upgradeFor": "E"
+            "upgradeFor": "Q / E"
           },
           {
             "name": {
@@ -9814,7 +9818,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595ba43b19dc2c.png",
             "description": "달빛섬광이 적 영웅에게 적중할 때마다 활성화된 모든 재생의 지속 시간이 1초 증가합니다.",
             "extras": {},
-            "upgradeFor": "W"
+            "upgradeFor": "Q / W"
           },
           {
             "name": {
@@ -9924,7 +9928,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595ba43b19dc2c.png",
             "description": "달빛섬광의 범위가 25% 증가하고 재생의 지속 시간이 3초 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "Q / W"
           },
           {
             "name": {
@@ -9934,7 +9939,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b91f319dc2c.png",
             "description": "재생이 활성화된 아군 한 명당 달빛섬광의 치유량이 15% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "Q / W"
           }
         ],
         "20": [
@@ -27151,7 +27157,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645962cd4c19dc2c.png",
             "description": "강타가 적중한 적 영웅 하나당 정의의 재사용 대기시간이 1초 감소합니다. 정의로 보호막을 부여한 아군 영웅 하나당 다음 강타의 공격력이 25% 증가합니다.",
             "extras": {},
-            "upgradeFor": "W"
+            "upgradeFor": "W / E"
           }
         ],
         "16": [
@@ -29156,7 +29162,7 @@
               "en": "Clemency",
               "ko": "관용"
             },
-            "type": "passive",
+            "type": "active",
             "iconUrl": "http://i3.ruliweb.com/img/18/08/05/16507ed974519dc2c.png",
             "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 386(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 3초 감소합니다.",
             "extras": {},

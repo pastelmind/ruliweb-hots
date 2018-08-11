@@ -436,7 +436,10 @@
             "Q - W",
             "Q - E",
             "passive",
-            "active"
+            "active",
+            "Q / W",
+            "Q / E",
+            "W / E"
           ]
         },
         "iconUrl": {
