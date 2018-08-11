@@ -1,0 +1,18 @@
+/* Simulate Ruliweb environment */
+
+@media (min-width: 801px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+body {
+  font-family: 돋움, dotum, sans-serif;
+  line-height: 150%;
+}
