@@ -391,7 +391,16 @@
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "#/definitions/trimmedString"
+          "type": "object",
+          "properties": {
+            "ko": {
+              "$ref": "#/definitions/trimmedString"
+            },
+            "en": {
+              "$ref": "#/definitions/trimmedString"
+            }
+          },
+          "additionalProperties": false
         },
         "type": {
           "$comment": "If upgradeFor is present, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4). Otherwise, this specifies the type of skill (unlocked)",

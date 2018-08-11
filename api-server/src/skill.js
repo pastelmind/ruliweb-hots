@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+const KoEnString = require('./ko-en-string');
+
 /**
  * Represents a hero's skill in Heroes of the Storm.
  */
@@ -8,7 +10,7 @@ module.exports = class Skill {
   /**
    * Create a new Skill object.
    * @param {Object} o
-   * @param {string=} o.name
+   * @param {string | KoEnString=} o.name
    * @param {string=} o.iconUrl
    * @param {string=} o.type
    * @param {number=} o.level
@@ -20,7 +22,7 @@ module.exports = class Skill {
    * @param {Object<string, string|number>} o.extras
    */
   constructor(o = {}) {
-    this.name = o.name || '';
+    this.name = new KoEnString(o.name || '');
     this.iconUrl = o.iconUrl || '';
     this.type = o.type || '';
     this.level = o.level || 0;

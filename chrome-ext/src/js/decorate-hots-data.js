@@ -126,6 +126,10 @@ function decorateHotsData(hotsData) {
 
     //Decorate all skills and talents
     for (const skill of skillsOrTalents) {
+      //Use Korean name only
+      if (skill.name.ko)
+        skill.name = skill.name.ko;
+
       //Apply default icon URL to skills
       if (!skill.iconUrl)
         skill.iconUrl = MISSING_ICON_URL;
