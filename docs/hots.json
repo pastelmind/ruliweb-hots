@@ -11192,7 +11192,7 @@
               "ko": "육중한 충격"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595e85a519dc2c.png",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595aa49d19dc2c.png",
             "description": "드워프 도약이 적을 0.75초 동안 80% 느려지게 합니다.",
             "extras": {},
             "upgradeFor": "E"
@@ -14432,6 +14432,17 @@
           },
           {
             "name": {
+              "en": "Low Blow",
+              "ko": "탐식"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b2ad19dc2c.png",
+            "description": "스멀거리는 팔이 생명력이 30% 미만인 대상에게 100%의 추가 피해를 줍니다.",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
               "en": "Poppin' Pustules",
               "ko": "터지는 고름"
             },
@@ -14442,17 +14453,6 @@
               "피해 반경": "3.75"
             },
             "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Low Blow",
-              "ko": "탐식"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b2ad19dc2c.png",
-            "description": "스멀거리는 팔이 생명력이 30% 미만인 대상에게 100%의 추가 피해를 줍니다.",
-            "extras": {},
-            "upgradeFor": "E"
           }
         ],
         "4": [
@@ -14579,7 +14579,7 @@
               "ko": "왼쪽이가 굶주렸다"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b64a19dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b2ad19dc2c.png",
             "description": "스멀거리는 팔의 사거리가 20% 증가합니다. 스멀거리는 팔이 적 영웅들에게 15회 이상 피해를 주면 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
             "extras": {},
             "upgradeFor": "E"
