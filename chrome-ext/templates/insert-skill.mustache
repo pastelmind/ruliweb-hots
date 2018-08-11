@@ -19,7 +19,10 @@
 {{/isForHeroTable}}
 {{/isTalent}}
     <div class="ruliweb-hots-skill-table__header">
-      <div class="ruliweb-hots-skill-table__title-box"><b class="ruliweb-hots-skill-table__title">{{name}}</b></div>
+      <div class="ruliweb-hots-skill-table__title-box">
+        <b class="ruliweb-hots-skill-table__title">{{name}}</b>
+        {{^isForHeroTable}}<br><small>{{heroName}}{{#isTalent}} - 레벨 {{level}}{{/isTalent}}</small>{{/isForHeroTable}}
+      </div>
       <div class="ruliweb-hots-skill-table__type">
         {{#isTypeClassBasic}}  <b class="ruliweb-hots-skill-type-label">{{/isTypeClassBasic}}
         {{#isTypeClassHeroic}} <b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--heroic"> {{/isTypeClassHeroic}}

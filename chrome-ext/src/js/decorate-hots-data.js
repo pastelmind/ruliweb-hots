@@ -130,6 +130,9 @@ function decorateHotsData(hotsData) {
       if (skill.name.ko)
         skill.name = skill.name.ko;
 
+      //Store hero name
+      skill.heroName = hero.name;
+
       //Apply default icon URL to skills
       if (!skill.iconUrl)
         skill.iconUrl = MISSING_ICON_URL;
