@@ -109,12 +109,6 @@ function decorateHotsData(hotsData) {
    * @param {Hero} hero Hero object
    */
   function decorateSkillsAndTalents(hero) {
-    const SKILL_TYPE_NAMES = Object.freeze({
-      'passive': '지속 효과',
-      'active': '사용 효과',
-      'D': '고유 능력'
-    });
-
     const skillsOrTalents = [...hero.skills];
 
     //Assign skill index
@@ -138,11 +132,11 @@ function decorateHotsData(hotsData) {
 
       //Apply skill/talent type name
       if (skill.upgradeFor) {
-        skill.typeName = SKILL_TYPE_NAMES[skill.upgradeFor] || skill.upgradeFor;
+        skill.typeName = generateSkillTypeName(skill.upgradeFor);
         skill.typeNameLong = `능력 강화 (${skill.typeName})`;
       }
       else
-        skill.typeNameLong = skill.typeName = SKILL_TYPE_NAMES[skill.type] || skill.type;
+        skill.typeNameLong = skill.typeName = generateSkillTypeName(skill.type);
 
       //Set flags for skill/talent type classes
       if (skill.type === 'R' || skill.upgradeFor === 'R')
@@ -153,6 +147,13 @@ function decorateHotsData(hotsData) {
         skill.isTypeClassActive = true;
       else
         skill.isTypeClassBasic = true;
+    }
+
+
+    function generateSkillTypeName(skillType) {
+      return skillType.replace(/passive/g, '지속 효과')
+        .replace(/active/g, '사용 효과')
+        .replace(/D/g, '고유 능력');
     }
   }
 
