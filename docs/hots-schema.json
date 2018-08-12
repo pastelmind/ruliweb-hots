@@ -465,6 +465,9 @@
             }
           ]
         },
+        "shortDescription": {
+          "$ref": "#/definitions/trimmedString"
+        },
         "cooldown": {
           "type": "number",
           "exclusiveMinimum": 0,
@@ -497,7 +500,8 @@
         "name",
         "type",
         "iconUrl",
-        "description"
+        "description",
+        "shortDescription"
       ],
       "additionalProperties": false
     },

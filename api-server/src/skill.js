@@ -15,6 +15,7 @@ module.exports = class Skill {
    * @param {string=} o.type
    * @param {number=} o.level
    * @param {string=} o.description
+   * @param {string=} o.shortDescription
    * @param {number=} o.cooldown
    * @param {number=} o.rechargeCooldown
    * @param {number=} o.manaCost
@@ -27,6 +28,7 @@ module.exports = class Skill {
     this.type = o.type || '';
     this.level = o.level || 0;
     this.description = o.description || '';
+    this.shortDescription = o.shortDescription || '';
     this.cooldown = o.cooldown || 0;
     this.rechargeCooldown = o.rechargeCooldown || 0;
     this.manaCost = o.manaCost || 0;
@@ -44,6 +46,7 @@ module.exports = class Skill {
       iconUrl: this.iconUrl || undefined,
       level: this.level || undefined,
       description: this.description,
+      shortDescription: this.shortDescription,
       cooldown: this.cooldown || undefined,
       rechargeCooldown: this.rechargeCooldown || undefined,
       manaCost: this.manaCost || undefined,

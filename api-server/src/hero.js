@@ -69,6 +69,7 @@ module.exports = class Hero {
 
     this.skills = (o.skills || []).map(skill => new Skill(skill));
 
+    /** @type {{ [talentLevel: number]: Talent[] }} */
     this.talents = {};
     for (const talentLevel in o.talents) {
       this.talents[talentLevel] = o.talents[talentLevel].map(talent => {
