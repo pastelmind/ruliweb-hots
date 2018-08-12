@@ -9,7 +9,6 @@ const fs = require('fs');
 const path = require('path');
 
 const Ajv = require('ajv');
-const HotsData = require('./src/hots-data');
 
 
 //-------- Main code --------//
@@ -48,19 +47,6 @@ for (const preset of hotsDataJson.statPresets) {
     throw new Error(`Duplicate stat preset ID found: ${preset.id}`);
   statPresets[preset.id] = preset;
 }
-
-
-const hotsData = new HotsData(hotsDataJson);
-
-
-//Check talent types
-for (const hero of hotsData.allHeroes()) {
-  for (const talent of hero.allTalents()) {
-    if (talent.upgradeFor && !(talent.type === 'passive' || talent.type === 'active'))
-      throw new Error(`Talent ${talent.name}: type must be passive or active (found: type = ${talent.type}, upgradeFor = ${talent.upgradeFor})`);
-  }
-}
-
 
 console.log('Passed data validation');
 

@@ -241,7 +241,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953eaaa19dc2c.png",
             "description": "피해를 받을 때마다 이동 속도가 1.5초 동안 2% 증가하여 최대 30% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "4": [
@@ -349,14 +350,16 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953eaaa19dc2c.png",
             "description": "로봇이 파괴되는 대신 6초 동안 218(+4%)의 피해를 흡수하는 보호막을 획득합니다.\n\n15초에 한 번씩만 발동합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "용해식 장갑 (Ablative Armor)",
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953eea419dc2c.png",
             "description": "로봇의 최대 생명력의 4% 이하에 해당하는 모든 피해가 50% 감소합니다.\n\n이 효과는 자폭 충전율을 감소시키지 않습니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "16": [
@@ -375,21 +378,24 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953f27419dc2c.png",
             "description": "조종사 모드일 때 일반 공격력이 50% 증가하고 영웅을 처치하면 로봇 호출의 재사용 대기시간이 즉시 초기화 됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "나노섬유 전투복 (Nanoweave Suit)",
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953f65119dc2c.png",
             "description": "로봇에서 탈출한 후 4초 동안 방어력이 50 증가합니다. 일반 공격으로 감소하는 로봇 호출의 재사용 대기시간이 50% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "제압 사격 (Suppressing Fire)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953fa4c19dc2c.png",
             "description": "조종사 모드일 때 일반 공격의 사거리가 20% 증가하고 적을 2.5초 동안 20% 느려지게 합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -578,7 +584,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956695c19dc2c.png",
             "description": "들이치기에 적중당한 적이 받는 치유량이 4초 동안 50% 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           },
           {
             "name": "폭군 (Oppressor)",
@@ -643,7 +650,7 @@
           },
           {
             "name": "방어력 상승 (Double Up)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459565e3619dc2c.png",
             "description": "방어력 증가를 사용하여 방어력 증가 효과를 3초 동안 100% 증가시킬 수 있습니다.",
             "cooldown": 40,
@@ -707,7 +714,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956695c19dc2c.png",
             "description": "들이치기의 충전 횟수가 1회 증가하고 고유 능력으로 증가한 방어력이 25 이상이면 재사용 대기시간이 100% 더 빨리 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           }
         ]
       }
@@ -1268,7 +1276,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530a0619dc2c.png",
             "description": "영웅 처치 시 오우거의 분노로 얻는 공격력이 영구히 2% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "정신착란증 (Psychotic Break)",
@@ -1652,7 +1661,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645957058d19dc2c.png",
             "description": "생명력 흡수의 시전 사거리가 25% 증가합니다.\n\n퀘스트: 재생의 구슬의 회복량이 50% 증가합니다.\n보상: 재생의 구슬을 20개 이상 획득하면 일반 기술의 마나 소모량이 영구히 20 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "W"
           },
           {
             "name": "메아리치는 부패 (Echoed Corruption)",
@@ -1685,7 +1695,7 @@
             "type": "active",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956f5f219dc2c.png",
             "description": "적 돌격병을 즉시 처치하고 380(+4%)의 생명력을 회복합니다. 최대 2회 충전됩니다.",
-            "cooldown": 30,
+            "rechargeCooldown": 30,
             "extras": {
               "사거리": "5.5"
             }
@@ -2003,7 +2013,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956d2cc19dc2c.png",
             "description": "<span style=\"color: #ffff80\">인간</span>일 때 일반 공격의 사거리가 1.1 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "폭탄주 (Incendiary Elixir)",
@@ -2018,7 +2029,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956d6ad19dc2c.png",
             "description": "퀘스트: 적 영웅에게 일반 공격이 6회 적중할 때마다 일반 공격력이 1% 증가하여 최대 30% 증가합니다. 늑대인간 형상일 때의 일반 공격은 3회로 진행됩니다. 죽으면 중첩의 절반을 잃습니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "10": [
@@ -2092,7 +2104,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956d6ad19dc2c.png",
             "description": "<span style=\"color: #d65cff\">늑대인간</span>일 때 적 영웅을 일반 공격할 때마다 대상의 최대 생명력의 3%만큼 추가 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -2120,7 +2133,8 @@
             "extras": {
               "피해 반경": "5",
               "중심각": "65°"
-            }
+            },
+            "upgradeFor": "D"
           },
           {
             "name": "송곳니와 발톱 (Tooth and Claw)",
@@ -2129,7 +2143,8 @@
             "description": "<span style=\"color: #d65cff\">늑대인간</span>일 때 일반 공격이 주위에 100%의 방사 피해를 줍니다.",
             "extras": {
               "피해 반경": "3.75",
-              "중심각": "190°"
+              "중심각": "190°",
+              "upgradeFor": "D"
             }
           }
         ]
@@ -2253,21 +2268,24 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645961527c19dc2c.png",
             "description": "5초마다, 올라프의 물리 방어력이 75 증가하여 다음 일반 공격으로 받는 피해가 75% 감소합니다. 최대 2회 충전됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "잠입 액션 (Spy Games)",
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596138ea19dc2c.png",
             "description": "에릭이 3초 동안 가만히 서 있으면 은신 상태가 되고 시야 반경이 75% 증가합니다. 은신 효과는 움직인 후에도 3초 동안 유지됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "폭발성 공격 (Explosive Attacks)",
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
             "description": "밸로그가 영웅이 아닌 대상에게 주는 방사 피해가 100%로 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "바이킹 매수 (Viking Bribery)",
@@ -2285,21 +2303,24 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
             "description": "밸로그가 일반 공격 및 방사 피해의 20%만큼 생명력을 회복합니다. 영웅에게 피해를 주면 치유량이 두 배가 됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "날쌘돌이 에릭 (Erik the Swift)",
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596138ea19dc2c.png",
             "description": "에릭의 기본 이동 속도가 영구히 10% 증가하고, 이동하는 동안 초당 35(+4%)의 생명력을 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "파괴 공작! (It's a Sabotage!)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459613cd819dc2c.png",
             "description": "에릭의 일반 공격이 구조물에 불을 붙여 10초에 걸쳐 175(+4%)의 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "용병의 왕 (Mercenary Lord)",
@@ -2317,7 +2338,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
             "description": "밸로그의 일반 공격이 공격 속도를 8% 증가시킵니다. 최대 5회 중첩됩니다. 3초 동안 공격하지 않으면 중첩이 빠른 속도로 사라집니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "돌아야 이긴다! (Spin to Win!)",
@@ -2373,7 +2395,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645961527c19dc2c.png",
             "description": "올라프가 주위 적들에게 매초 35(+4%)의 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "펄쩍! (Jump!)",
@@ -2398,7 +2421,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645961527c19dc2c.png",
             "description": "올라프가 적에게 돌진하면 적이 1초 동안 기절합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "passive"
           },
           {
             "name": "참으면 손해 (Impatience is a Virtue)",
@@ -3509,7 +3533,7 @@
           },
           {
             "name": "고대의 축복 (Ancient Blessings)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459533b0a19dc2c.png",
             "description": "케인의 수호자를 사용하면 주위 아군 영웅을 8초 동안 강화하여 일반 공격이 71(+4%)의 방사 피해를 주게 하고 피해를 준 적 영웅 하나당 104(+4%)의 생명력을 회복시키게 합니다.",
             "cooldown": 30,
@@ -3997,7 +4021,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459611bd119dc2c.png",
             "description": "주위에서 적 돌격병이 죽을 때마다 최대 생명력의 5%를 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "고기 방패 (Meat Shield)",
@@ -5282,7 +5307,8 @@
             "description": "주위 적들에게 초당 42(+4%)의 피해를 줍니다. 절망의 손아귀가 활성화된 동안에는 이 효과의 공격력과 범위가 100% 증가합니다.",
             "extras": {
               "피해 반경": "2.5 (기본) / 5 (강화)"
-            }
+            },
+            "upgradeFor": "W"
           },
           {
             "name": "죽은 왕의 수의 (Shroud of the Dead King)",
@@ -5513,7 +5539,7 @@
           },
           {
             "name": "현상금 사냥꾼 (Bounty Hunter)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/11/164874af33119dc2c.png",
             "description": "뜨거운 맛을 보여주지의 대상이 적 영웅이면 대상의 최대 생명력의 3%만큼 추가 피해를 주고 방어력이 3초 동안 10 증가합니다.\n\n뜨거운 맛을 보여주지를 사용하여 다음 일반 공격에 발동시킬 수 있습니다.",
             "cooldown": 40,
@@ -5948,7 +5974,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b209119dc2c.png",
             "description": "자연의 독소가 지속 시간 동안 적을 드러냅니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "폴짝 폴짝 (Hippity Hop)",
@@ -5973,14 +6000,16 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b247f19dc2c.png",
             "description": "적에게 자연의 독소가 적용된 동안 초당 9(+4%)의 생명력을 회복합니다. 적 영웅에게 자연의 독소가 3회 중첩된 동안 이 효과의 초당 치유량이 추가로 20(+4%) 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "약육강식 (Nature's Culling)",
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b209119dc2c.png",
             "description": "자연의 독소가 영웅이 아닌 대상에게 125%의 추가 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -6102,7 +6131,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b209119dc2c.png",
             "description": "자연의 독소가 감속, 이동 불가, 기절 상태의 영웅에게 60%의 추가 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -6127,11 +6157,12 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595b209119dc2c.png",
             "description": "자연의 독소가 3회 중첩되면 40%의 추가 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "뜀박질 (Galloping Gait)",
-            "type": "active",
+            "type": "Z",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b14fa19dc2c.png",
             "description": "사용하면 드리아드의 날렵함의 이동 속도 증가량이 6초 동안 80%로 증가합니다.",
             "cooldown": 30,
@@ -6550,7 +6581,7 @@
           },
           {
             "name": "안전 질주 (Safety Sprint)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595953a419dc2c.png",
             "description": "사용하면 빠른 발이 3초 동안 활성화되고 이동 속도 증가 효과가 30%로 증가합니다.\n\n지속 효과: 빠른 발의 이동 속도 증가 효과가 15%로 증가합니다.",
             "cooldown": 30,
@@ -6697,7 +6728,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595953a419dc2c.png",
             "description": "빠른 발이 활성화된 동안 1초마다 방어력이 8 증가하여 최대 30 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }
@@ -6835,7 +6867,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459596c2619dc2c.png",
             "description": "영웅을 처치하면 잃은 생명력의 30%를 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -7374,7 +7407,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bbf7319dc2c.png",
             "description": "퀘스트: 적 영웅에게 <span style=\"color: #00DDDD\">사신의 징표</span>를 총 180초 동안 남겨야 합니다.\n보상: <span style=\"color: #00DDDD\">사신의 징표</span>의 지속 시간이 영구히 2초 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -7443,7 +7477,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bbf7319dc2c.png",
             "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 남겨진 적 영웅 하나당 물리 방어력이 10 증가하여 최대 30 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "저지할 수 없는 죽음 (Inevitable End)",
@@ -7484,7 +7519,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bbf7319dc2c.png",
             "description": "<span style=\"color: #00DDDD\">사신의 징표</span>가 4초 이상 지속된 대상에게는 <span style=\"color: #00DDDD\">사신의 징표</span>의 피해량이 80% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -8154,7 +8190,8 @@
             "type": "active",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bfdf919dc2c.png",
             "description": "두 차원문의 위치를 모두 지정할 수 있고 까마귀 형상 중에도 차원문을 시전할 수 있습니다.\n\n<span style=\"color: #ffff8a\">고유 능력을 사용하면 아직 연결되지 않은 차원문을 취소할 수 있습니다.</span>",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "E"
           }
         ],
         "4": [
@@ -9131,7 +9168,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596384bf19dc2c.png",
             "description": "영웅의 일격에 적중당한 영웅은 받는 치유량이 4초 동안 40% 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "분쇄의 투척 (Shattering Throw)",
@@ -9206,14 +9244,16 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459639cdf19dc2c.png",
             "description": "분노의 쌍검의 공격 속도 증가량이 15%, 일반 공격 시 이동 속도 증가량이 10% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "R"
           },
           {
             "name": "얼라이언스에 영광을 (Glory of the Alliance)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645963751919dc2c.png",
             "description": "깃발이 주위 아군 영웅의 생명력 재생량 및 받는 치유 효과를 50% 증가시킵니다. 깃발의 재사용 대기시간이 20초 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           },
           {
             "name": "사기의 외침 (Demoralizing Shout)",
@@ -10251,7 +10291,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
             "description": "일반 기술을 사용할 때마다 위안의 안개의 재사용 대기시간이 0.5초 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "위상 보호막 (Phase Shield)",
@@ -10385,7 +10426,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
             "description": "위안의 안개로 다른 영웅을 치유하면 6초 동안 위안의 안개 치유 효과가 25% 증가합니다. 최대 3회 중첩됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "폭풍 보호막 (Storm Shield)",
@@ -10508,7 +10550,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f308219dc2c.png",
             "description": "파죽지세가 활성화된 동안 자신과 환영의 물리 방어력이 30 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -10609,7 +10652,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f308219dc2c.png",
             "description": "파죽지세가 활성화된 동안 일반 공격을 할 때마다 공격 속도가 10% 증가하여 최대 40% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -10642,7 +10686,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f308219dc2c.png",
             "description": "파죽지세의 이동 속도 증가량이 15% 증가하고, 지속 시간이 2초 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }
@@ -11026,7 +11071,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459617b8b19dc2c.png",
             "description": "서리늑대의 회복력이 발동하면 15의 마나를 회복하고 일반 기술의 재사용 대기시간이 0.5초 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -11091,7 +11137,7 @@
           },
           {
             "name": "서리늑대의 은총 (Frostwolf's Grace)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459617b8b19dc2c.png",
             "description": "사용하면 서리늑대의 회복력에 150%에 해당하는 생명력을 즉시 회복할 수 있습니다.",
             "cooldown": 15,
@@ -11609,7 +11655,8 @@
             "description": "돌격병이 검은 화살의 영향을 받는 상태로 죽으면 폭발하여, 주위 적들에게 121(+4%)의 피해를 줍니다. 영웅과 구조물에게는 피해를 주지 않습니다.",
             "extras": {
               "피해 반경": "2"
-            }
+            },
+            "upgradeFor": "D"
           },
           {
             "name": "빙의 (Possession)",
@@ -11702,7 +11749,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960c9c419dc2c.png",
             "description": "검은 화살이 영웅에게도 적용되어, 지속 시간 동안 이동 속도를 6% 감소시킵니다. 최대 5회 중첩됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "냉혹 (Remorseless)",
@@ -12027,7 +12075,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943609819dc2c.png",
             "description": "정조준의 일반 공격 사거리 증가량이 2에서 4로 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           }
         ]
       }
@@ -12271,7 +12320,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943a93019dc2c.png",
             "description": "적 영웅에게 일반 공격이 3회 적중할 때마다 딱정벌레를 생성합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -12433,14 +12483,16 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
             "description": "과부하 보호막의 지속 시간이 1초 증가하고 보호막이 활성화된 동안 과부하 보호막의 재사용 대기시간이 100% 더 빨리 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "보호막 쇄도 (Shield Surge)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943c2e619dc2c.png",
             "description": "생명력이 25% 미만이면 과부하 보호막의 보호막이 75% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -12532,7 +12584,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
             "description": "과부하 보호막이 활성화되는 동안 기술 방어력이 50 증가합니다. 이 효과는 과부하 보호막이 만료된 후에도 2초 동안 지속됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "16": [
@@ -12549,7 +12602,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
             "description": "일반 기술을 사용할 때마다 과부하 보호막의 재사용 대기시간이 5초 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "기사단의 검 (Blades of a Templar)",
@@ -12591,7 +12645,8 @@
             "description": "과부하 보호막이 활성화된 동안 주위 적들에게 초당 62(+4%)의 피해를 줍니다.",
             "extras": {
               "피해 반경": "2.5"
-            }
+            },
+            "upgradeFor": "D"
           }
         ]
       }
@@ -13879,7 +13934,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943209919dc2c.png",
             "description": "2초 안에 적 영웅에게 기술 공격이 3회 적중하면 80(+4%)의 추가 피해를 줍니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -13939,14 +13995,16 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943209919dc2c.png",
             "description": "영웅에게 일반 공격을 하면 가학성이 4초 동안 7% 증가하여 최대 35% 증가합니다. 적 영웅에게 일반 공격을 하면 지속 시간이 갱신됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "순수한 악의 (Pure Malice)",
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943222219dc2c.png",
             "description": "아군 영웅이 죽으면 가학성이 10% 증가하여 최대 40% 증가합니다.\n\n이 증가량은 죽으면 사라집니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "라크쉬르 의식 (Rite of Rak’Shir)",
@@ -13954,7 +14012,8 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943239f19dc2c.png",
             "description": "사용하면 적 영웅에게 300초 동안 표식을 남깁니다.\n\n표식이 남겨진 영웅에게 불화의 일격이 적중하면 가학성이 3% 증가합니다. 표식이 남겨진 영웅을 처치하면 가학성이 5% 증가하고 라크쉬르 의식의 재사용 대기시간이 10초로 감소합니다.\n\n이 증가량은 죽으면 사라집니다.",
             "cooldown": 300,
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "16": [
@@ -13985,7 +14044,7 @@
         "20": [
           {
             "name": "반격 (Counter-Strike)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943077119dc2c.png",
             "description": "1초 동안 보호 및 저지 불가 상태가 되고 대상 지역을 향해 정신을 집중합니다. 이후 적 영웅에게 피해를 받으면 286(+4%)의 피해를 주는 충격파를 발산합니다.\n\n<span style=\"color: #ffff8a\">이 기술은 고유 능력 버튼으로 사용할 수 있습니다.</span>",
             "cooldown": 30,
@@ -13997,7 +14056,7 @@
           },
           {
             "name": "치명적인 돌진 (Deadly Charge)",
-            "type": "active",
+            "type": "D",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459430f4619dc2c.png",
             "description": "정신을 집중한 후, 전방으로 돌진하며 경로 상의 적들에게 208(+4%)의 피해를 줍니다. 돌진 거리는 정신을 집중한 시간에 비례하며, 최대 1.6초까지 정신을 집중하여 증가시킬 수 있습니다.\n\n정신을 집중하는 동안 이동하면 비용이 소모되지 않은 채로 정신 집중이 취소됩니다. 피해를 받으면 정신 집중이 취소됩니다.\n\n<span style=\"color: #ffff8a\">이 기술은 고유 능력 버튼으로 사용할 수 있습니다.</span>",
             "cooldown": 45,
@@ -14798,7 +14857,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459631b9719dc2c.png",
             "description": "기절, 침묵, 이동 불가 상태인 영웅을 치유하면 헌신의 방어력 증가 효과가 15에서 50으로 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "보호의 손길 (Hand of Protection)",
@@ -14910,14 +14970,16 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459631b9719dc2c.png",
             "description": "영원한 선봉장이 만료되면 영혼이 있던 자리에서 최대 생명력의 50%를 지닌 채 되살아납니다.\n\n이 효과는 180초에 한 번씩만 발동합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "신의 가호 (Divine Protection)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459631f7719dc2c.png",
             "description": "헌신이 최대 2회 중첩되고 중첩될 때마다 지속 시간이 갱신됩니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }
@@ -15815,7 +15877,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459650d8019dc2c.png",
             "description": "재생의 구슬을 획득할 때마다 20의 에너지를 충전합니다.\n\n퀘스트: 에너지가 50 이상인 상태를 총 150초 동안 유지해야 합니다.\n보상: 최대 에너지가 20 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "4": [
@@ -15884,7 +15947,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459650d8019dc2c.png",
             "description": "자리야의 보호막이 피해를 흡수하여 충전되는 에너지가 15% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "10": [
@@ -15933,7 +15997,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459650d8019dc2c.png",
             "description": "에너지가 75 이상이면 방어력이 20 증가하여 받는 피해가 20% 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "고통은 잠시뿐 (Pain is Temporary)",
@@ -15976,7 +16041,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459650d8019dc2c.png",
             "description": "에너지가 75 이상이면 자리야의 기술 재사용 대기시간이 25% 더 빨리 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "20": [
@@ -17122,7 +17188,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595644b119dc2c.png",
             "description": "동상의 한기 효과가 2회 중첩되어 대상을 최대 40% 느려지게 합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }
@@ -17220,7 +17287,8 @@
             "description": "뼈 갑옷의 지속 시간이 만료되면 폭발하여 주위 적 영웅들에게 대상의 최대 생명력의 12%만큼 피해를 줍니다.",
             "extras": {
               "피해 반경": "3.75"
-            }
+            },
+            "upgradeFor": "active"
           },
           {
             "name": "족쇄 (Shackler)",
@@ -17229,14 +17297,16 @@
             "description": "뼈 갑옷이 활성화된 동안 주위 적들이 1초 동안 35% 느려집니다. 감속, 이동 불가, 기절 상태인 적 영웅에게 일반 공격이 적중하면 뼈 갑옷의 재사용 대기시간이 2초 감소합니다.",
             "extras": {
               "효과 반경": "3"
-            }
+            },
+            "upgradeFor": "active"
           },
           {
             "name": "그림자 (Shade)",
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645963a4af19dc2c.png",
             "description": "뼈 갑옷이 활성화된 동안 적의 일반 공격을 모두 회피하지만, 뼈 갑옷의 재사용 대기시간이 20초 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           }
         ],
         "4": [
@@ -17287,7 +17357,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963b61019dc2c.png",
             "description": "해골 전사가 일반 공격을 할 때마다 최대 생명력의 0.5%와 최대 마나의 0.2%를 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "10": [
@@ -17357,7 +17428,8 @@
             "description": "해골 전사가 죽으면 폭발하여 좁은 지역에 57(+4%)의 피해를 줍니다. 영웅이 아닌 대상에게는 100%의 추가 피해를 줍니다.",
             "extras": {
               "피해 반경": "1.5"
-            }
+            },
+            "upgradeFor": "D"
           },
           {
             "name": "뼈 창 (Bone Spear)",
@@ -17401,7 +17473,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963b61019dc2c.png",
             "description": "해골 전사가 일반 공격을 할 때마다 궁극기의 재사용 대기시간이 1% 감소합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }
@@ -17504,7 +17577,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645964e5ff19dc2c.png",
             "description": "줄진의 생명력이 75% 미만이면 기술 위력이 10% 증가합니다. 생명력이 50% 미만이면 일반 공격력이 20% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "해골사냥꾼 (Headhunter)",
@@ -17536,7 +17610,8 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964e49b19dc2c.png",
             "description": "아마니의 분노의 재사용 대기시간이 10초 감소하고 아마니의 분노로 생명력을 재생하는 동안 방어력이 10 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "active"
           }
         ],
         "7": [
@@ -18288,7 +18363,7 @@
         "1": [
           {
             "name": "초월 (Transcendence)",
-            "type": "passive",
+            "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645959190319dc2c.png",
             "description": "3번째 일반 공격마다 생명력이 가장 낮은 주위 아군 영웅의 생명력을 108(+4%) 회복시키고 이동 속도가 2초 동안 25% 증가합니다.",
             "extras": {
@@ -18297,14 +18372,14 @@
           },
           {
             "name": "철권 (Iron Fists)",
-            "type": "passive",
+            "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595901a719dc2c.png",
             "description": "3번째 일반 공격마다 110%의 추가 피해를 주고 이동 속도가 2초 동안 25% 증가합니다.",
             "extras": {}
           },
           {
             "name": "통찰 (Insight)",
-            "type": "passive",
+            "type": "D",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958fdb019dc2c.png",
             "description": "퀘스트: 3번째 일반 공격마다 15(+4%)의 마나를 회복하고 통찰 1중첩을 획득하며 이동 속도가 2초 동안 25% 증가합니다.\n보상: 통찰을 100중첩 이상 획득하면 3번째 일반 공격마다 기본 기술의 재사용 대기시간이 1.75초 감소합니다.",
             "extras": {}
@@ -18630,7 +18705,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cf5719dc2c.png",
             "description": "공격 저지가 활성화된 동안 초당 5의 생명력을 회복합니다.\n\n퀘스트: 공격 저지로 일반 공격을 5회 저지할 때마다 초당 회복하는 생명력이 1 증가합니다.\n보상: 일반 공격을 75회 저지하면 최대 생명력이 10% 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -18647,7 +18723,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cf5719dc2c.png",
             "description": "공격 저지가 활성화된 동안 이동 속도가 0.5초마다 4% 증가하여 최대 20% 증가합니다. 이 효과는 이동을 멈추거나 기술을 사용하면 사라집니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "번뜩이는 빛 (Surge of Light)",
@@ -18990,7 +19067,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958934119dc2c.png",
             "description": "불기둥이 중심부에 제일 가깝고 살아있는 폭탄의 영향을 받고 있지 않는 적 영웅 한명에게 살아있는 폭탄을 적용합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "W"
           },
           {
             "name": "구슬 복제 (Twin Spheres)",
@@ -21104,7 +21182,8 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645962dcca19dc2c.png",
             "description": "강타가 적에게 적중하면 다음 4초 동안 일반 공격으로 준 피해의 50%만큼 생명력을 회복합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "E"
           }
         ],
         "7": [
@@ -21476,7 +21555,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954506119dc2c.png",
             "description": "순풍의 활성화 대기시간이 6초에서 3초로 감소하고, 이동 속도 증가량이 15%에서 25%로 증가합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           },
           {
             "name": "비행의 여운 (Afterburner)",
@@ -22098,7 +22178,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "죽음에 이르는 피해를 받으면 보호막 충전기의 보호막이 832(+4%) 재생됩니다. 이 효과는 120초에 한 번씩만 발동합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }

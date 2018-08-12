@@ -394,6 +394,7 @@
           "$ref": "#/definitions/trimmedString"
         },
         "type": {
+          "$comment": "If upgradeFor is present, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4). Otherwise, this specifies the type of skill (unlocked)",
           "enum": [
             "Q",
             "W",
@@ -409,6 +410,7 @@
           ]
         },
         "upgradeFor": {
+          "$comment": "Represents the ability upgraded by this talent",
           "enum": [
             "Q",
             "W",
@@ -423,7 +425,9 @@
             "D - E",
             "Q - Q",
             "Q - W",
-            "Q - E"
+            "Q - E",
+            "passive",
+            "active"
           ]
         },
         "iconUrl": {
