@@ -581,8 +581,8 @@
         },
         {
           "name": {
-            "en": "Mend pet",
-            "ko": "야수 치유"
+            "en": "Mend Pet",
+            "ko": "야수 치료"
           },
           "type": "E",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f27fe19dc2c.png",
@@ -899,12 +899,12 @@
         ],
         "damage": [
           {
-            "value": 86,
+            "value": 83,
             "levelScaling": 0.04,
             "altName": "연발포"
           },
           {
-            "value": 107.5,
+            "value": 103.75,
             "levelScaling": 0.04,
             "altName": "위상 폭탄"
           }
@@ -953,7 +953,7 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해 및 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
+          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
           "extras": {}
         },
         {
@@ -990,18 +990,18 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 175% 증가하고 방사 피해의 범위가 50% 증가합니다.",
+            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 150% 증가하고 방사 피해의 범위가 50% 증가합니다.",
             "extras": {},
             "upgradeFor": "W"
           },
           {
             "name": {
               "en": "Mobile Offense",
-              "ko": "기동 타격"
+              "ko": "기동타격"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "이동하면 다음 일반 공격이 영웅에게 30%의 추가 피해를 줍니다.",
+            "description": "이동하면 다음 일반 공격이 영웅에게 35%의 추가 피해를 줍니다.",
             "extras": {},
             "upgradeFor": "W"
           }
@@ -1228,7 +1228,8 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "죽음에 이르는 피해를 받으면 보호막 충전기의 보호막이 832(+4%) 재생됩니다. 이 효과는 120초에 한 번씩만 발동합니다.",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "D"
           }
         ]
       }

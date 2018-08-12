@@ -109,7 +109,7 @@
       "universe": "overwatch",
       "stats": [
         {
-          "unitName": "로봇 모드",
+          "unitName": "메카 모드",
           "hp": {
             "value": 2000,
             "levelScaling": 0.04
@@ -154,11 +154,11 @@
         {
           "name": {
             "en": "Mech Mode",
-            "ko": "로봇 모드"
+            "ko": "메카 모드"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953eaaa19dc2c.png",
-          "description": "로봇이 파괴되면 0.75초 후에 로봇에서 탈출하여 생존할 수 있습니다. 로봇은 파괴되면 적에게 영웅 처치 경험치의 50%만 줍니다.",
+          "description": "메카가 파괴되면 0.75초 후에 메카에서 탈출하여 생존할 수 있습니다. 메카는 파괴되면 적에게 영웅 처치 경험치의 50%만 줍니다.",
           "extras": {}
         },
         {
@@ -179,7 +179,7 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953dee419dc2c.png",
-          "description": "3초 동안 대상 위치에 방어 매트릭스를 전개하여 매트릭스 내부에 있는 적 영웅이 주는 피해를 75% 감소시킵니다. 사용 중에 움직일 수 있지만 방향을 바꿀 수 없습니다.\n\n방어 매트릭스 내부에 있는 적들이 로봇을 공격해도 자폭 충전율은 동일합니다.",
+          "description": "3초 동안 대상 위치에 방어 매트릭스를 전개하여 매트릭스 내부에 있는 적 영웅이 주는 피해를 75% 감소시킵니다. 사용 중에 움직일 수 있지만 방향을 바꿀 수 없습니다.\n\n방어 매트릭스 내부에 있는 적들이 메카를 공격해도 자폭 충전율은 동일합니다.",
           "cooldown": 10,
           "extras": {
             "사거리": "7",
@@ -193,7 +193,7 @@
           },
           "type": "E",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953fc4419dc2c.png",
-          "description": "로봇에서 탈출하며 4초 후에 폭발하도록 설정합니다. 넓은 지역 안의 적들에게 최소 416(+4%)에서 최대 1248(+4%)의 피해를 줍니다. 피해량은 대상이 중심부에 가까울수록 증가합니다. 구조물에는 50%의 피해를 줍니다.\n\n2초 동안 일반 공격을 할 때마다 1% 충전되고, 로봇의 최대 생명력의 100%에 해당하는 받은 피해당 30% 충전됩니다.",
+          "description": "메카에서 탈출하며 4초 후에 폭발하도록 설정합니다. 넓은 지역 안의 적들에게 최소 416(+4%)에서 최대 1248(+4%)의 피해를 줍니다. 피해량은 대상이 중심부에 가까울수록 증가합니다. 구조물에는 50%의 피해를 줍니다.\n\n2초 동안 일반 공격을 할 때마다 1% 충전되고, 메카의 최대 생명력의 100%에 해당하는 받은 피해당 30% 충전됩니다.",
           "extras": {
             "피해 반경": "4 / 7 / 10",
             "피해량": "1248 (+4%) / 832 (+4%) / 416 (+4%)"
@@ -201,12 +201,12 @@
         },
         {
           "name": {
-            "en": "MEKAout",
-            "ko": "MEKA 조종"
+            "en": "Mechanized Walker",
+            "ko": "메카"
           },
           "type": "Z",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/08/164758ead3c19dc2c.png",
-          "description": "로봇에 탑승한 동안 이동하면서 일반 공격을 할 수 있지만 그동안 이동 속도가 15% 감소합니다.",
+          "description": "메카에 탑승한 동안 이동 속도가 15% 감소하지만 이동 중에 일반 공격을 할 수 있습니다.",
           "extras": {}
         },
         {
@@ -216,17 +216,17 @@
           },
           "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953f27419dc2c.png",
-          "description": "일반 공격을 하면 로봇 호출의 재사용 대기시간이 0.5초 감소합니다. 조종사일 때 죽으면 적에게 영웅 처치 경험치의 50%만 줍니다.",
+          "description": "일반 공격을 하면 메카 호출의 재사용 대기시간이 0.5초 감소합니다. 조종사일 때 죽으면 적에게 영웅 처치 경험치의 50%만 줍니다.",
           "extras": {}
         },
         {
           "name": {
             "en": "Call Mech",
-            "ko": "로봇 호출"
+            "ko": "메카 호출"
           },
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953d72f19dc2c.png",
-          "description": "로봇을 호출하여 탑승하고 로봇 모드로 전환합니다.\n\n일반 공격을 하면 로봇 호출의 재사용 대기시간이 0.5초 감소합니다.",
+          "description": "메카를 호출하여 탑승하고 메카 모드로 전환합니다.\n\n일반 공격을 하면 메카 호출의 재사용 대기시간이 0.5초 감소합니다.",
           "cooldown": 45,
           "extras": {}
         }
@@ -328,7 +328,7 @@
           {
             "name": {
               "en": "Coming Through",
-              "ko": "지나갑니다!"
+              "ko": "지나갑니다"
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953c78719dc2c.png",
@@ -354,7 +354,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953e2d819dc2c.png",
-            "description": "로봇 모드일 때 적 영웅을 일반 공격할 때마다 재사용 대기시간이 0.25초 감소합니다.",
+            "description": "메카 모드일 때 적 영웅을 일반 공격할 때마다 재사용 대기시간이 0.25초 감소합니다.",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -365,7 +365,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953fc4419dc2c.png",
-            "description": "자폭 준비 시간이 3초 증가하지만 자폭의 공격력도 70% 증가합니다.\n\n로봇 호출은 이전과 동일하게 4초 후에 할 수 있습니다.",
+            "description": "자폭 준비 시간이 3초 증가하지만 자폭의 공격력도 70% 증가합니다.\n\n메카 호출은 이전과 동일하게 4초 후에 할 수 있습니다.",
             "extras": {},
             "upgradeFor": "E"
           }
@@ -378,7 +378,7 @@
             },
             "type": "R",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953d33c19dc2c.png",
-            "description": "로봇이 저지 불가 상태가 되고 0.5초마다 발을 구르면서 적들에게 60(+4%)의 피해를 주고 40% 느려지게 합니다. 4초 동안 지속됩니다.\n\n로봇 모드일 때에만 사용할 수 있습니다.",
+            "description": "메카가 저지 불가 상태가 되고 0.5초마다 발을 구르면서 적들에게 60(+4%)의 피해를 주고 40% 느려지게 합니다. 4초 동안 지속됩니다.\n\n메카 모드일 때에만 사용할 수 있습니다.",
             "cooldown": 90,
             "extras": {
               "피해 반경": "5"
@@ -391,7 +391,7 @@
             },
             "type": "R",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953c3a919dc2c.png",
-            "description": "일직선상의 모든 적들에게 260(+4%)의 피해를 줍니다. 적중한 적 영웅 하나당 로봇 호출의 재사용 대기시간이 8초 감소합니다.\n\n조종사 모드일 때에만 사용할 수 있습니다.",
+            "description": "일직선상의 모든 적들에게 260(+4%)의 피해를 줍니다. 적중한 적 영웅 하나당 메카 호출의 재사용 대기시간이 8초 감소합니다.\n\n조종사 모드일 때에만 사용할 수 있습니다.",
             "cooldown": 4,
             "extras": {
               "사거리": "15",
@@ -407,7 +407,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953d72f19dc2c.png",
-            "description": "로봇의 최대 생명력이 20% 증가하지만 로봇 호출의 재사용 대기시간이 15초 증가합니다.\n\n이 효과는 자폭 충전율을 감소시키지 않습니다.",
+            "description": "메카의 최대 생명력이 20% 증가하지만 메카 호출의 재사용 대기시간이 15초 증가합니다.\n\n이 효과는 자폭 충전율을 감소시키지 않습니다.",
             "extras": {},
             "upgradeFor": "E"
           },
@@ -418,7 +418,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953eaaa19dc2c.png",
-            "description": "로봇이 파괴되는 대신 6초 동안 218(+4%)의 피해를 흡수하는 보호막을 획득합니다.\n\n15초에 한 번씩만 발동합니다.",
+            "description": "메카가 파괴되는 대신 6초 동안 218(+4%)의 피해를 흡수하는 보호막을 획득합니다.\n\n15초에 한 번씩만 발동합니다.",
             "extras": {},
             "upgradeFor": "D"
           },
@@ -429,7 +429,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953eea419dc2c.png",
-            "description": "로봇의 최대 생명력의 4% 이하에 해당하는 모든 피해가 50% 감소합니다.\n\n이 효과는 자폭 충전율을 감소시키지 않습니다.",
+            "description": "메카의 최대 생명력의 4% 이하에 해당하는 모든 피해가 50% 감소합니다.\n\n이 효과는 자폭 충전율을 감소시키지 않습니다.",
             "extras": {},
             "upgradeFor": "D"
           }
@@ -455,7 +455,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645953f27419dc2c.png",
-            "description": "조종사 모드일 때 일반 공격력이 50% 증가하고 영웅을 처치하면 로봇 호출의 재사용 대기시간이 즉시 초기화 됩니다.",
+            "description": "조종사 모드일 때 일반 공격력이 50% 증가하고 영웅을 처치하면 메카 호출의 재사용 대기시간이 즉시 초기화 됩니다.",
             "extras": {},
             "upgradeFor": "D"
           },
@@ -466,7 +466,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953f65119dc2c.png",
-            "description": "로봇에서 탈출한 후 4초 동안 방어력이 50 증가합니다. 일반 공격으로 감소하는 로봇 호출의 재사용 대기시간이 50% 증가합니다.",
+            "description": "메카에서 탈출한 후 4초 동안 방어력이 50 증가합니다. 일반 공격으로 감소하는 메카 호출의 재사용 대기시간이 50% 증가합니다.",
             "extras": {},
             "upgradeFor": "D"
           },
@@ -523,7 +523,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953d72f19dc2c.png",
-            "description": "로봇 호출 후 즉시 탑승할 수 있고 호출 위치를 선택할 수 있습니다. 로봇이 호출될 때 대상 위치에 210(+4%)의 피해를 줍니다.",
+            "description": "메카 호출 후 즉시 탑승할 수 있고 호출 위치를 선택할 수 있습니다. 메카가 호출될 때 대상 위치에 210(+4%)의 피해를 줍니다.",
             "extras": {
               "사거리": "6",
               "피해 반경": "3.25"
@@ -2264,7 +2264,7 @@
           {
             "name": {
               "en": "Rampant Hellfire",
-              "ko": "타오르는 불길"
+              "ko": "타오르는 지옥불"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645957096d19dc2c.png",
@@ -2396,7 +2396,7 @@
         {
           "name": {
             "en": "Gilnean Cocktail",
-            "ko": "인간: 길니안 독주"
+            "ko": "길니안 독주"
           },
           "type": "Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956e26019dc2c.png",
@@ -2412,7 +2412,7 @@
         {
           "name": {
             "en": "Razor Swipe",
-            "ko": "늑대인간: 잔혹한 할퀴기"
+            "ko": "잔혹한 할퀴기"
           },
           "type": "Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956f20319dc2c.png",
@@ -2439,7 +2439,7 @@
         {
           "name": {
             "en": "Darkflight",
-            "ko": "인간: 암흑질주"
+            "ko": "암흑질주"
           },
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956da9819dc2c.png",
@@ -2453,7 +2453,7 @@
         {
           "name": {
             "en": "Disengage",
-            "ko": "늑대인간: 철수"
+            "ko": "철수"
           },
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956de7719dc2c.png",
@@ -2816,11 +2816,11 @@
         {
           "name": {
             "en": "Select Baleog",
-            "ko": "벨로그 선택"
+            "ko": "밸로그 선택"
           },
           "type": "2",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
-          "description": "벨로그의 일반 공격은 공격 대상 뒤에 있는 적들에게 50%의 방사 피해를 줍니다.",
+          "description": "밸로그의 일반 공격은 공격 대상 뒤에 있는 적들에게 50%의 방사 피해를 줍니다.",
           "extras": {
             "피해 반경": "5",
             "중심각": "65°"
@@ -6429,8 +6429,8 @@
       "skills": [
         {
           "name": {
-            "en": "Undying, Wrath Of The Bone King",
-            "ko": "불사, 해골 왕의 분노"
+            "en": "Undying",
+            "ko": "불사"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459593c4b19dc2c.png",
@@ -7037,7 +7037,7 @@
           {
             "name": {
               "en": "Paint Them Red",
-              "ko": "벌집으로 만들어주지"
+              "ko": "벌집으로 만들어 주지"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f0e0c19dc2c.png",
@@ -7086,7 +7086,7 @@
           {
             "name": {
               "en": "Dusk Wings",
-              "ko": "그늘 날개"
+              "ko": "그늘날개"
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f123419dc2c.png",
@@ -7216,8 +7216,8 @@
         },
         {
           "name": {
-            "en": "Mend pet",
-            "ko": "야수 치유"
+            "en": "Mend Pet",
+            "ko": "야수 치료"
           },
           "type": "E",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f27fe19dc2c.png",
@@ -9746,18 +9746,18 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595b95e719dc2c.png",
-            "description": "활성화된 재생 하나당 초당 5(+4%)의 생명력을 회복합니다.",
+            "description": "활성화된 재생 하나당 초당 생명력 재생량이 100% 증가합니다.",
             "extras": {},
             "upgradeFor": "Q"
           },
           {
             "name": {
               "en": "Celestial Alignment",
-              "ko": "천체의 조율"
+              "ko": "천체의 정렬"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b862419dc2c.png",
-            "description": "달빛섬광이 대상을 드러내는 시간이 1초 증가합니다. 달빛섬광으로 드러낸 적 영웅에게 일반 공격을 하면 75%의 추가 피해를 줍니다.",
+            "description": "달빛섬광이 적을 드러내는 시간이 1초 증가합니다. 달빛섬광으로 드러난 적 영웅에게 일반 공격을 할 때마다 75%의 추가 피해를 줍니다.",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -9768,7 +9768,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595b823519dc2c.png",
-            "description": "재생이 활성화된 아군 한 명당 정신 자극의 재사용 대기시간이 25% 더 빨리 감소합니다.",
+            "description": "활성화된 재생 하나당 정신 자극의 재사용 대기시간이 25% 더 빨리 감소합니다.",
             "extras": {},
             "upgradeFor": "D"
           }
@@ -10365,7 +10365,7 @@
         {
           "name": {
             "en": "Raven Form",
-            "ko": "까마귀 변신"
+            "ko": "까마귀 형상"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595a9fca19dc2c.png",
@@ -11324,7 +11324,7 @@
           {
             "name": {
               "en": "Unstoppable Force",
-              "ko": "멈출 수 없는 힘"
+              "ko": "막을 수 없는 힘"
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595aa30b19dc2c.png",
@@ -12796,7 +12796,7 @@
           {
             "name": {
               "en": "Flamethrower",
-              "ko": "화염 방사기"
+              "ko": "화염방사기"
             },
             "type": "Q",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459478ecc19dc2c.png",
@@ -13344,12 +13344,12 @@
       "skills": [
         {
           "name": {
-            "en": "Advancing Strikes, Image Transmission",
-            "ko": "파죽지세, 환영 이동술"
+            "en": "Image Transmission",
+            "ko": "환영 이동술"
           },
           "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f308219dc2c.png",
-          "description": "<span style=\"color: #ffff8a\">파죽지세:</span> 일반 공격으로 적 영웅을 공격하면 이동 속도가 2초 동안 25% 증가합니다.\n\n<span style=\"color: #ffff8a\">환영 이동술:</span> 사용하면 대상 환영과 위치를 바꿉니다. 위치를 바꾸면서 자신과 대상 환영에게 걸린 대부분의 약화 효과를 제거합니다.",
+          "description": "<span style=\"color: #ffff8a\">환영 이동술:</span> 사용하면 대상 환영과 위치를 바꿉니다. 위치를 바꾸면서 자신과 대상 환영에게 걸린 대부분의 약화 효과를 제거합니다.\n\n<span style=\"color: #ffff8a\">파죽지세:</span> 일반 공격으로 적 영웅을 공격하면 이동 속도가 2초 동안 25% 증가합니다.",
           "cooldown": 25,
           "extras": {}
         },
@@ -14505,11 +14505,11 @@
           {
             "name": {
               "en": "Growing Infestation",
-              "ko": "퍼저가는 감염"
+              "ko": "퍼져가는 감염"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b2ad19dc2c.png",
-            "description": "스멀거리는 팔의 범위가 2.5초에 걸쳐 50% 증가하지만 최대 지속 시간이 4초로 감소합니다.",
+            "description": "스멀거리는 팔의 범위가 2.5초에 걸쳐 50% 증가하지만 4초 이상 유지할 수 없습니다.",
             "extras": {},
             "upgradeFor": "E"
           },
@@ -16326,7 +16326,7 @@
           {
             "name": {
               "en": "Ballistospores",
-              "ko": "탄도 포자"
+              "ko": "탄도포자"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942fe5119dc2c.png",
@@ -16568,7 +16568,7 @@
           {
             "name": {
               "en": "Hivemind",
-              "ko": "군체 의식"
+              "ko": "군체의식"
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942fb6a19dc2c.png",
@@ -19956,7 +19956,7 @@
           {
             "name": {
               "en": "Serrated Spines",
-              "ko": "톱니가시뼈"
+              "ko": "톱니 가시뼈"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459475fee19dc2c.png",
@@ -20595,7 +20595,7 @@
         {
           "name": {
             "en": "Face Melt",
-            "ko": "고막 터뜨리기"
+            "ko": "고막 터트리기"
           },
           "type": "W",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459540bd519dc2c.png",
@@ -20923,8 +20923,8 @@
       "skills": [
         {
           "name": {
-            "en": "Total Mayhem, Detonate Mine",
-            "ko": "완전 난장판, 지뢰 폭발"
+            "en": "Total Mayhem",
+            "ko": "완전 난장판"
           },
           "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958835e19dc2c.png",
@@ -21109,7 +21109,7 @@
             },
             "type": "Q",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958682319dc2c.jpg",
-            "description": "사용하면 죽이는 타이어가 뛰어오릅니다. 지형과 구조물을 넘을 수 있습니다.",
+            "description": "사용하면 죽이는 타이어가 점프해서 지형 및 구조물을 건너뛸 수 있습니다.",
             "cooldown": 2,
             "extras": {
               "이동 거리": "6"
@@ -22357,8 +22357,8 @@
       "skills": [
         {
           "name": {
-            "en": "Berserker, You Want Axe?",
-            "ko": "광전사, 도끼 맛 좀 보여줄까?"
+            "en": "Berserker",
+            "ko": "광전사"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645964e5ff19dc2c.png",
@@ -24895,7 +24895,7 @@
           {
             "name": {
               "en": "Barbed Chains",
-              "ko": "가시 돋힌 사슬"
+              "ko": "가시 돋친 사슬"
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958b24619dc2c.png",
@@ -25170,8 +25170,8 @@
       "skills": [
         {
           "name": {
-            "en": "Timewalker, Bronze Talons",
-            "ko": "시간여행자, 청동 발톱"
+            "en": "Timewalker",
+            "ko": "시간여행자"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594888c319dc2c.png",
@@ -25902,12 +25902,12 @@
       "skills": [
         {
           "name": {
-            "en": "Distortion Beam, Oracle",
-            "ko": "왜곡 광선, 계시"
+            "en": "Oracle",
+            "ko": "계시"
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645960fc8c19dc2c.png",
-          "description": "<span style=\"color: #ffff8a\">왜곡 광선:</span> 일반 공격 시 왜곡 광선으로 적을 20% 느려지게 합니다.\n\n<span style=\"color: #ffff8a\">계시:</span> 사용하면 시야 반경이 크게 증가하고 지형지물 너머 시야를 확보할 수 있으며 적 영웅을 탐지할 수 있습니다. 5초 동안 지속됩니다.",
+          "description": "<span style=\"color: #ffff8a\">계시:</span> 사용하면 시야 반경이 크게 증가하고 지형지물 너머 시야를 확보할 수 있으며 적 영웅을 탐지할 수 있습니다. 5초 동안 지속됩니다.\n\n<span style=\"color: #ffff8a\">왜곡 광선:</span> 일반 공격 시 왜곡 광선으로 적을 20% 느려지게 합니다.",
           "cooldown": 30,
           "extras": {
             "시야 반경": "20"
@@ -28059,7 +28059,7 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해 및 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
+          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
           "extras": {}
         },
         {
@@ -28103,7 +28103,7 @@
           {
             "name": {
               "en": "Mobile Offense",
-              "ko": "기동 타격"
+              "ko": "기동타격"
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
