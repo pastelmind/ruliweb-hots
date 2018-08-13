@@ -330,14 +330,6 @@ const HotsDialog = {
           heroesArray.push(ptrHeroes[ptrHeroId]);
       }
 
-      //Set roleName
-      //TODO Move this logic to decorateHotsData()
-      for (const hero of heroesArray) {
-        for (const roleId in heroFilterGroups.role.filters)
-          if (hero.role.includes(roleId))
-            hero.roleName = (hero.roleName ? hero.roleName + ' / ' : '') + heroFilterGroups.role.filters[roleId];
-      }
-
       //Sort heroes by name
       heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
 

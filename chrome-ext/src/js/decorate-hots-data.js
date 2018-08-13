@@ -57,6 +57,12 @@ if (typeof module !== 'undefined' && module.exports) {
  * @return {HotsData} Decorated HotS data object
  */
 function decorateHotsData(hotsData) {
+  const ROLE_NAMES = Object.freeze({
+    'warrior': '전사',
+    'assassin': '암살자',
+    'support': '지원가',
+    'specialist': '전문가'
+  });
   const MISSING_ICON_URL = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
 
   //Set PTR version string
@@ -77,6 +83,12 @@ function decorateHotsData(hotsData) {
 
   for (const [heroId, hero] of allHeroes) {
     hero.id = heroId;
+
+    //Add hero role names
+    hero.roleName = '';
+    for (const roleId in ROLE_NAMES)
+      if (hero.role.includes(roleId))
+        hero.roleName += (hero.roleName ? ' / ' : '') + ROLE_NAMES[roleId];
 
     //Add hero universe names
     hero.universeName = {
