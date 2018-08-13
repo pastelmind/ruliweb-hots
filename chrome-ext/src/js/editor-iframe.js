@@ -23,6 +23,30 @@ if (isInIframe()) {
       setTimeout(() => rootElem.parentNode.removeChild(rootElem), 200);
     }
   });
+
+  //Prevent user from inadvertently setting "text-align: center" on the <body>
+  //element. This should prevent the illusory center-alignment of <details>
+  //elements inserted by HotsDialog
+  const bodyStyleRemover = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'attributes'
+        && mutation.attributeName === 'style'
+        && mutation.target.nodeName === 'BODY'
+      ) {
+        /** @type {HTMLBodyElement} */
+        const body = mutation.target;
+        body.style.textAlign = '';
+        return; //Mission accomplished, don't process any more mutations
+      }
+    }
+  });
+
+  //Observe mutations on <html> element and its descendants (see comments above)
+  bodyStyleRemover.observe(document.body.parentNode, {
+    attributes: true,
+    attributeFilter: ['style'],
+    subtree: true
+  });
 }
 
 
