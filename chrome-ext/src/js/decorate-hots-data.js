@@ -154,6 +154,9 @@ function decorateHotsData(hotsData) {
         skill.isTypeClassActive = true;
       else
         skill.isTypeClassBasic = true;
+
+      //Convert short description text to HTML
+      skill.shortDescription = skill.shortDescription.replace(/\r?\n/g, '<br>');
     }
 
 

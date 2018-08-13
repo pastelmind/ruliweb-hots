@@ -71,8 +71,10 @@ describe('HotsDialog.htmlGenerators', () => {
     it('generates hero info table correctly', () => {
       let heroInfoHtml = '';
 
-      for (const hero of Object.values(hotsData.heroes))
-        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion);
+      for (const hero of Object.values(hotsData.heroes)) {
+        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion)
+          + HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion, true);
+      }
 
       // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
       assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));

@@ -42,7 +42,8 @@
       </div>
     </div>
     <div class="ruliweb-hots-skill-table__description">
-      {{{description}}}{{> stats}}
+      {{#isSimpleSkillTable}}{{{shortDescription}}}{{/isSimpleSkillTable}}
+      {{^isSimpleSkillTable}}{{{description}}}{{> stats}}{{/isSimpleSkillTable}}
     </div>
     {{#hotsVersion}}<footer class="hots-version"><i>패치 {{hotsVersion}}</i></footer>{{/hotsVersion}}
 {{#isTalent}}

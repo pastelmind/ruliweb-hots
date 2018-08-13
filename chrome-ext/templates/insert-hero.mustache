@@ -20,6 +20,7 @@
     {{/skillGroups}}
   </section>
 
+  {{^isSimpleHeroTable}}
   <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__stats">
     {{#units}}
     <table class="ruliweb-hots-hero-stat-table">
@@ -49,6 +50,7 @@
     </table>
     {{/units}}
   </section>
+  {{/isSimpleHeroTable}}
 
   {{#hotsVersion}}<footer class="hots-version hots-version--right-pad"><i>패치 {{hotsVersion}}</i></footer>{{/hotsVersion}}
 </details>

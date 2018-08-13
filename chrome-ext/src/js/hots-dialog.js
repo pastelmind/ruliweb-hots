@@ -90,6 +90,9 @@ const HotsDialog = {
     //Retrieve individual elements and element groups
     const addVersionCheckbox = optionsSection.querySelector('#hots-dialog-option-add-version');
     const usePtrCheckbox = optionsSection.querySelector('#hots-dialog-option-use-ptr');
+    /** @type {HTMLInputElement} */
+    const useSimpleHeroTableCheckbox = optionsSection.querySelector('#hots-dialog-option-simple-hero-table');
+
     const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
     const heroFilterCheckboxes = heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
 
@@ -158,7 +161,7 @@ const HotsDialog = {
 
         const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
 
-        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version));
+        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked));
       }
       else if (event.target.classList.contains('hots-skill-icon')) {
         const heroId = iconElem.dataset.heroId; //data-hero-id
@@ -367,9 +370,10 @@ const HotsDialog = {
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {string=} hotsVersion (optional) HotS version string to display
+     * @param {boolean} isSimpleTable If truthy, generate a simplified table
      * @return {string} HTML source
      */
-    generateHeroInfoTable(hero, hotsVersion) {
+    generateHeroInfoTable(hero, hotsVersion, isSimpleTable) {
       const heroView = Object.create(hero);
 
       //Set universe icon offset
@@ -410,6 +414,7 @@ const HotsDialog = {
       heroView.hotsVersion = hotsVersion;
       heroView.appVersion = chrome.runtime.getManifest().version;
       heroView.isForHeroTable = true;
+      heroView.isSimpleHeroTable = heroView.isSimpleSkillTable = !!isSimpleTable;
 
       return Mustache.render(this.templates['insert-hero'], heroView, {
         skill: this.templates['insert-skill'],
