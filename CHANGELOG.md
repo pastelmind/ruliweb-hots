@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.7.0] - 2018-08-13
 ### Added
+- Added option to create "simple" hero tables, which use fewer HTML characters.
+  Simple Hero Tables provide short skill descriptions and do not contain hero
+  stat information.
 - Support for PTR patch information (new heroes and changes to existing heroes).
 - (Server) Added [`HotsData` class](api-server/src/hots-data.js) for quickly
   loading and saving `hots.json`.
