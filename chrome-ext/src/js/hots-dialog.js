@@ -17,6 +17,10 @@
  * @typedef {import("../../../api-server/src/hots-data")} HotsData
  */
 
+/**
+ * @typedef {import("../../../api-server/src/hero")} Hero
+ */
+
 
 const HotsDialog = {
   /**
@@ -88,12 +92,15 @@ const HotsDialog = {
     const talentsetSection = dialogFragment.querySelector('.hots-talentset');
 
     //Retrieve individual elements and element groups
+    /** @type {HTMLInputElement} */
     const addVersionCheckbox = optionsSection.querySelector('#hots-dialog-option-add-version');
+    /** @type {HTMLInputElement} */
     const usePtrCheckbox = optionsSection.querySelector('#hots-dialog-option-use-ptr');
     /** @type {HTMLInputElement} */
     const useSimpleHeroTableCheckbox = optionsSection.querySelector('#hots-dialog-option-simple-hero-table');
 
     const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
+    /** @type {NodeListOf<HTMLInputElement>} */
     const heroFilterCheckboxes = heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
 
     //Add click handler for hero filters
@@ -152,57 +159,52 @@ const HotsDialog = {
     //Add event handlers for selected hero icon and skill icons
     skillsetSection.addEventListener('click', event => {
       if (!(event.target)) return;
-      const iconElem = event.target;
 
-      if (iconElem.classList.contains('hots-current-hero-icon')) {
-        const heroId = iconElem.dataset.heroId; //data-hero-id
-        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
-        const hero = this.getHeroDataById(heroId, isPtr);
+      const isHeroIcon = event.target.classList.contains('hots-current-hero-icon');
+      const isSkillIcon = event.target.classList.contains('hots-skill-icon');
 
+      if (isHeroIcon || isSkillIcon) {
+        //data-hero-id, data-is-ptr, data-skill-index
+        const { heroId, isPtr, skillIndex } = event.target.dataset;
         const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
 
-        this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked));
-      }
-      else if (event.target.classList.contains('hots-skill-icon')) {
-        const heroId = iconElem.dataset.heroId; //data-hero-id
-        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
         const hero = this.getHeroDataById(heroId, isPtr);
 
-        const skill = hero.skills[iconElem.dataset.skillIndex]; //data-skill-index
+        if (isHeroIcon) {
+          this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked));
+        }
+        else {  //isSkillIcon
+          const skill = hero.skills[skillIndex];
 
-        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
-
-        this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
+          this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
+        }
       }
     });
 
     //Add event handlers for talent icons
     talentsetSection.addEventListener('click', event => {
       if (!(event.target)) return;
-      const iconElem = event.target;
 
-      if (iconElem.classList.contains('hots-talent-icon')) {
-        const heroId = iconElem.dataset.heroId; //data-hero-id
-        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
-        const hero = this.getHeroDataById(heroId, isPtr);
+      const isTalentIcon = event.target.classList.contains('hots-talent-icon');
+      const isTalentGroupButton = event.target.classList.contains('hots-talentset__group-add-all');
 
-        const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
-        const talent = talentGroup[iconElem.dataset.talentIndex];       //data-talent-index
-
+      if (isTalentIcon || isTalentGroupButton) {
+        //data-hero-id, data-is-ptr, data-talent-level, data-talent-index
+        const { heroId, isPtr, talentLevel, talentIndex } = event.target.dataset;
         const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
 
-        this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
-      }
-      else if (iconElem.classList.contains('hots-talentset__group-add-all')) {
-        const heroId = iconElem.dataset.heroId; //data-hero-id
-        const isPtr = iconElem.dataset.isPtr;   //data-is-ptr
         const hero = this.getHeroDataById(heroId, isPtr);
 
-        const talentGroup = hero.talents[iconElem.dataset.talentLevel]; //data-talent-level
+        const talentGroup = hero.talents[talentLevel];
 
-        const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
+        if (isTalentIcon) {
+          const talent = talentGroup[talentIndex];
 
-        this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
+          this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
+        }
+        else {  //isTalentGroupButton
+          this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
+        }
       }
     });
 
