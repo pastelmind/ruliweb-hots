@@ -47,7 +47,7 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 * 서버 스크립트
     * [Node.js](https://nodejs.org/)
     * [axios](https://github.com/axios/axios)
-    * PowerShell (ZIP 파일 생성용)
+    * [yazl](https://github.com/thejoshwolfe/yazl)
     * 자세한 것은 [package.json](package.json) 참조
 
 
