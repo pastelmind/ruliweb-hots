@@ -41,7 +41,8 @@
     "microtip": "^0.2.2",
     "mocha": "^5.2.0",
     "mustache": "^2.3.0",
-    "tingle.js": "^0.13.2"
+    "tingle.js": "^0.13.2",
+    "yazl": "^2.4.3"
   },
   "devDependencies": {
     "commander": "^2.16.0",
