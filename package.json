@@ -15,10 +15,11 @@
     "version": "node ./scripts/update-manifest.js && git add ./chrome-ext/src/manifest.json",
     "postversion": "npm run -s postbuild",
     "postinstall": "npm run -s create-hard-links && npm run -s prebuild",
-    "create-hard-links": "npm run -s create-hard-links:hots.json && npm run -s create-hard-links:mustache && npm run -s create-hard-links:tingle.js",
+    "create-hard-links": "npm run -s create-hard-links:hots.json && npm run -s create-hard-links:mustache && npm run -s create-hard-links:tingle.js && npm run -s create-hard-links:microtip",
     "create-hard-links:hots.json": "ln -f ./docs/hots.json ./chrome-ext/src/data/hots.json",
     "create-hard-links:mustache": "ln -f ./node_modules/mustache/mustache.min.js ./chrome-ext/src/js/mustache.js",
     "create-hard-links:tingle.js": "ln -f ./node_modules/tingle.js/dist/tingle.min.js ./chrome-ext/src/js/tingle.js && ln -f ./node_modules/tingle.js/dist/tingle.min.css ./chrome-ext/src/css/tingle.css",
+    "create-hard-links:microtip": "ln -f ./node_modules/microtip/microtip.min.css ./chrome-ext/src/css/microtip.css",
     "validate-data": "node ./api-server/validate-data.js"
   },
   "repository": {
