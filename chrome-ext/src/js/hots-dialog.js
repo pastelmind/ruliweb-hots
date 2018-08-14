@@ -66,7 +66,16 @@ const HotsDialog = {
     this.injectHtml = injector;
 
     if (!this.dialog) {
-      this.dialog = new tingle.modal({ cssClass: ['hots-dialog-container'] });
+      this.dialog = new tingle.modal({
+        cssClass: ['hots-dialog-container'],
+        onClose: () => {
+          //Circumvent a bug in Firefox where closing and immediately re-opening
+          //the dialog causes its contents to be selected.
+          const selection = window.getSelection();
+          if (selection)
+            selection.collapseToEnd();
+        }
+      });
 
       this.dialog.setContent(this.buildDialogContent(this.data));
     }
