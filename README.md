@@ -1,8 +1,9 @@
 # ruliweb-hots
 
-루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 확장 프로그램
+루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 / 파이어폭스 확장 프로그램입니다.
 
-[설치하러 가기](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
+* [크롬 확장 프로그램 설치](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
+* [파이어폭스 확장 프로그램 설치](https://addons.mozilla.org/ko/firefox/addon/루리웹-히어로즈-오브-더-스톰-공략툴/) (베타)
 
 
 # How to build
@@ -40,7 +41,7 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 
 # Dependencies
 
-* 크롬 확장 프로그램
+* 웹 브라우저 확장 프로그램
     * [tingle.js](https://robinparisi.github.io/tingle/)
     * [mustache.js](https://github.com/janl/mustache.js)
     * [microtip](https://github.com/ghosh/microtip/)
