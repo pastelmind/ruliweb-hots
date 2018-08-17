@@ -5,16 +5,17 @@
 'use strict';
 
 
-//For testing in Node.js
-if (typeof module !== 'undefined' && module.exports)
-  var chrome = global.chrome = {};
+if (typeof chrome === 'undefined') {
+  var chrome = {};
 
-
-if (typeof chrome !== undefined) {
-  chrome.runtime = chrome.runtime || {};
-  chrome.runtime.getURL = url => '../src/' + url;
-  chrome.runtime.getManifest = () => ({ version: "app version string" });
+  //For testing in Node.js
+  if (typeof module !== 'undefined' && module.exports)
+    global.chrome = chrome;
 }
+
+chrome.runtime = chrome.runtime || {};
+chrome.runtime.getURL = url => '../src/' + url;
+chrome.runtime.getManifest = () => ({ version: "app version string" });
 
 
 /**
