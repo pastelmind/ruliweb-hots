@@ -8,8 +8,8 @@
 /**
  * A callback that injects the given HTML string into a desired position.
  * @callback HtmlStringInjector
- * @param {string} html
- * @return {void}
+ * @param {string} html HTML string to inject
+ * @return {Element[]} Elements injected by the callback
  */
 
 /**
@@ -179,14 +179,13 @@ const HotsDialog = {
 
         const hero = this.getHeroDataById(heroId, isPtr);
 
-        if (isHeroIcon) {
-          this.injectHtml(this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked));
-        }
-        else {  //isSkillIcon
-          const skill = hero.skills[skillIndex];
+        let html;
+        if (isHeroIcon)
+          html = this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked);
+        else    //isSkillIcon
+          html = this.htmlGenerators.generateSkillInfoTable(hero.skills[skillIndex], version);
 
-          this.injectHtml(this.htmlGenerators.generateSkillInfoTable(skill, version));
-        }
+        this.injectHtmlInEditor(html, event.target);
       }
     });
 
@@ -206,16 +205,16 @@ const HotsDialog = {
 
         const talentGroup = hero.talents[talentLevel];
 
-        if (isTalentIcon) {
-          const talent = talentGroup[talentIndex];
+        //TODO De-duplicate code
+        let html;
+        if (isTalentIcon)
+          html = this.htmlGenerators.generateTalentInfoTable(talentGroup[talentIndex], version);
+        else    //isTalentGroupButton
+          html = this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version);
 
-          this.injectHtml(this.htmlGenerators.generateTalentInfoTable(talent, version));
+        this.injectHtmlInEditor(html, event.target);
         }
-        else {  //isTalentGroupButton
-          this.injectHtml(this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version));
-        }
-      }
-    });
+        });
 
     return dialogFragment;
   },
@@ -293,6 +292,19 @@ const HotsDialog = {
    */
   getHotsVersion(isPtr = false) {
     return isPtr ? this.data.hotsPtrVersion : this.data.hotsVersion;
+  },
+
+  /**
+   * Injects the given HTML string into the WYSIWYG editor, at the selection
+   * which was saved when the dialog was launched.
+   * @param {string} html HTML string
+   * @param {Element} eventTarget Element that was triggered by the user
+   */
+  injectHtmlInEditor(html, eventTarget) {
+    const injectedElements = this.injectHtml(html);
+    const { left: endX, top: endY } = this.util.getOffsetToViewport(injectedElements[0]);
+
+    this.util.animateFlyingBox(eventTarget, endX, endY);
   },
 
   /** Collection of methods that generate HTML source strings from templates */
@@ -531,11 +543,17 @@ const HotsDialog = {
         //Add padding to help editing
         html += '&nbsp;';
 
+        //Build DOM nodes from HTML string
         const docFragment = this.createDocumentFragmentFromHtml(selectedWindow.document, html);
+        const injectedElements = [...docFragment.children];
+
+        //Inject HTML into page
         range.insertNode(docFragment);
 
         //Deselect inserted HTML
         selectedWindow.getSelection().collapse(range.endContainer, range.endOffset);
+
+        return injectedElements;
       };
 
       /**
@@ -576,6 +594,72 @@ const HotsDialog = {
       const templateElement = document.createElement('template');
       templateElement.innerHTML = html;
       return templateElement.content;
+    },
+
+
+    /**
+     * Creates an animated flying box that initially covers an element, and
+     * flies to the target coordinates while minimizing to a single point.
+     * @param {Element} startElem Element that the flying box starts at
+     * @param {number} endX Final X position of the flying box, relative to the viewport
+     * @param {number} endY Final Y position of the flying box, relative to the viewport
+     */
+    animateFlyingBox(startElem, endX, endY) {
+      const startRect = startElem.getBoundingClientRect();
+      const flyingBox = document.createElement('div');
+      flyingBox.appendChild(startElem.cloneNode());
+
+      Object.assign(flyingBox.style, {
+        position: 'fixed',
+        width: startRect.width + 'px',
+        height: startRect.height + 'px',
+        left: startRect.left + 'px',
+        top: startRect.top + 'px',
+        zIndex: 9999,           //Appear over all elements (tingle.js uses z-index === 1000)
+        pointerEvents: 'none'   //Prevent accidental clicks on flying box from triggering event listeners
+      });
+
+      document.body.appendChild(flyingBox);
+
+      const computedStyle = window.getComputedStyle(flyingBox);
+      (function startFlyingAnimation() {
+        //Wait until the browser has computed the initial styles (required for Firefox)
+        //See https://stackoverflow.com/q/20747591 for more info
+        if (computedStyle.position !== flyingBox.style.position)
+          setTimeout(startFlyingAnimation, 5);
+        else {
+          Object.assign(flyingBox.style, {
+            transition: '1s',
+            transform: 'scale(0)',
+            left: endX + 'px',
+            top: endY + 'px'
+          });
+
+          setTimeout(() => flyingBox.remove(), 1000);
+        }
+      })();
+    },
+
+
+    /**
+     * Computes the given element's offset relative to the viewport, taking into
+     * account offsets of containing <iframe> elements.
+     * @param {Element} element DOM element
+     * @return {{ left: number, top: number }} Offset of `element` relative to the viewport, measured in pixels
+     */
+    getOffsetToViewport(element) {
+      let { left, top } = element.getBoundingClientRect();
+
+      //Add offset of containing <iframe>s
+      let { frameElement } = element.ownerDocument.defaultView;
+      while (frameElement) {
+        const { left: frameLeft, top: frameTop } = frameElement.getBoundingClientRect();
+        left += frameLeft;
+        top += frameTop;
+        ({ frameElement } = frameElement.ownerDocument.defaultView);
+      }
+
+      return { left, top };
     }
   }
 };
