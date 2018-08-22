@@ -105,7 +105,7 @@ const HotsDialog = {
    */
   buildDialogContent(hotsData) {
     //Generate dialog
-    const dialogFragment = this.util.createDocumentFragmentFromHtml(document,
+    const dialogFragment = this.util.createDocumentFragmentFromHtml(
       this.htmlGenerators.generateDialogContent(this.heroFilters, hotsData.heroes, hotsData.ptrHeroes));
 
     //Retrieve each dialog section
@@ -334,7 +334,7 @@ const HotsDialog = {
     //Add padding to help editing
     html += '&nbsp;';
 
-    const docFragment = this.util.createDocumentFragmentFromHtml(document, html);
+    const docFragment = this.util.createDocumentFragmentFromHtml(html);
     const firstInjectedElement = docFragment.children[0];
 
     this.docFragmentInjectorCallback(docFragment);
@@ -593,6 +593,7 @@ const HotsDialog = {
           range.deleteContents();
 
         //Inject HTML into page
+        selectedWindow.document.adoptNode(fragment)
         range.insertNode(fragment);
 
         //Deselect inserted HTML
@@ -629,11 +630,14 @@ const HotsDialog = {
 
     /**
      * Creates a DocumentFragment filled with the given HTML.
-     * @param {Document} document Base document
+     * Note that the fragment returned has `ownerDocument` set to the global
+     * `document` object. Use `document.adoptNode()` or `document.importNode()`
+     * to insert the fragment into another document.
+     * @see https://www.w3.org/DOM/faq.html#ownerdoc
      * @param {string} html HTML source
-     * @return {DocumentFragment} DocumentFragment object
+     * @return {DocumentFragment} Fragment containing HTML nodes
      */
-    createDocumentFragmentFromHtml(document, html) {
+    createDocumentFragmentFromHtml(html) {
       const templateElement = document.createElement('template');
       templateElement.innerHTML = html;
       return templateElement.content;
