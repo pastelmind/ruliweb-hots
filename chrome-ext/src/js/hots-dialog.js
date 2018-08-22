@@ -6,13 +6,6 @@
 'use strict';
 
 /**
- * A callback that injects the given HTML string into a desired position.
- * @callback HtmlStringInjector
- * @param {string} html HTML string to inject
- * @return {Element[]} Elements injected by the callback
- */
-
-/**
  * Collection of HotS data loaded from hots.json
  * @typedef {import("../../../api/src/hots-data")} HotsData
  */
@@ -29,8 +22,8 @@ const HotsDialog = {
    */
   data: null,
 
-  /** @type {HtmlStringInjector} */
-  injectHtml: null,
+  /** @type {(fragment: DocumentFragment) => void} */
+  docFragmentInjectorCallback: null,
 
   /** @type {Hero} */
   selectedHero: null,
@@ -70,11 +63,11 @@ const HotsDialog = {
 
   /**
    * Launch the hero/skill/talent selection dialog
-   * @param {HtmlStringInjector} injector Callback that injects the given HTML fragment into the appropriate position
+   * @param {(node: DocumentFragment) => void} docFragmentInjectorCallback Callback that accepts a DocumentFragment containing the generated table
    */
-  launchDialog(injector) {
+  launchDialog(docFragmentInjectorCallback) {
     //Snapshot currently selected area
-    this.injectHtml = injector;
+    this.docFragmentInjectorCallback = docFragmentInjectorCallback;
 
     if (!this.dialog) {
       this.dialog = new tingle.modal({
@@ -248,8 +241,8 @@ const HotsDialog = {
           html = this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, iconSize, version);
 
         this.injectHtmlInEditor(html, event.target);
-        }
-        });
+      }
+    });
 
     return dialogFragment;
   },
@@ -338,8 +331,15 @@ const HotsDialog = {
    * @param {Element} eventTarget Element that was triggered by the user
    */
   injectHtmlInEditor(html, eventTarget) {
-    const injectedElements = this.injectHtml(html);
-    const { left: endX, top: endY } = this.util.getOffsetToViewport(injectedElements[0]);
+    //Add padding to help editing
+    html += '&nbsp;';
+
+    const docFragment = this.util.createDocumentFragmentFromHtml(document, html);
+    const firstInjectedElement = docFragment.children[0];
+
+    this.docFragmentInjectorCallback(docFragment);
+
+    const { left: endX, top: endY } = this.util.getOffsetToViewport(firstInjectedElement);
 
     this.util.animateFlyingBox(eventTarget, endX, endY);
   },
@@ -576,10 +576,10 @@ const HotsDialog = {
     },
 
     /**
-     * Captures the currently selected position in a child frame of the current
-     * window, and returns a callback that can inject HTML to it
-     * @return {HtmlStringInjector} A callback that injects a valid HTML string
-     * into the currently selected frame.
+     * Captures WYSIWYG editor's <iframe> and returns a callback that can inject
+     * a DOM Node in it.
+     * @return {(fragment: DocumentFragment) => void} A callback that injects the given DocumentFragment into the
+     * WYSIWYG editor.
      */
     getHtmlInjectorAtSelectedPosition() {
       const selectedWindow = HotsDialog.util.getSelectedChildWindow();
@@ -587,26 +587,16 @@ const HotsDialog = {
       if (!selectedWindow)
         throw new Error('선택된 프레임을 찾을 수 없습니다.');
 
-      return html => {
+      return fragment => {
         const range = getSelectedRange(selectedWindow);
         if (!range.collapsed)
           range.deleteContents();
-        // splitAncestorElements(range);
-
-        //Add padding to help editing
-        html += '&nbsp;';
-
-        //Build DOM nodes from HTML string
-        const docFragment = this.createDocumentFragmentFromHtml(selectedWindow.document, html);
-        const injectedElements = [...docFragment.children];
 
         //Inject HTML into page
-        range.insertNode(docFragment);
+        range.insertNode(fragment);
 
         //Deselect inserted HTML
         selectedWindow.getSelection().collapse(range.endContainer, range.endOffset);
-
-        return injectedElements;
       };
 
       /**
@@ -733,7 +723,7 @@ function openHotsDialog() {
     });
   }
   else
-    HotsDialog.launchDialog(HotsDialog.util.getHtmlInjectorAtSelectedPosition());
+    HotsDialog.launchDialog(HotsDialog.util.getEditorDocumentFragmentInjector());
 }
 
 

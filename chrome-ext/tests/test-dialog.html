@@ -30,12 +30,7 @@
       decorateHotsData(HotsDialog.data);
       const heroes = HotsDialog.data.heroes;
 
-      HotsDialog.launchDialog(htmlFragment => {
-        const docFragment = HotsDialog.util.createDocumentFragmentFromHtml(document, htmlFragment);
-        const injectedElements = [...docFragment.children];
-        document.body.appendChild(docFragment);
-        return injectedElements;
-      });
+      HotsDialog.launchDialog(fragment => document.body.appendChild(fragment));
     })();
 
   </script>
