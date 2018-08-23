@@ -6,12 +6,26 @@
     "hotsVersion": {
       "description": "Heroes of the Storm live server patch version",
       "type": "string",
-      "pattern": "^\\d+(\\.\\d+){1,2}$"
+      "oneOf": [
+        {
+          "pattern": "^\\d+(\\.\\d+){1,2}$"
+        },
+        {
+          "const": "HotS version (test data)"
+        }
+      ]
     },
     "hotsPtrVersion": {
       "description": "Heroes of the Storm PTR patch version",
       "type": "string",
-      "pattern": "^\\d+(\\.\\d+){1,2}$"
+      "oneOf": [
+        {
+          "pattern": "^\\d+(\\.\\d+){1,2}$"
+        },
+        {
+          "const": "HotS version (test data)"
+        }
+      ]
     },
     "statPresets": {
       "type": "array",
@@ -47,8 +61,7 @@
       "propertyNames": {
         "pattern": "^\\w+$"
       },
-      "minProperties": 81,
-      "maxProperties": 81,
+      "minProperties": 1,
       "additionalProperties": {
         "$ref": "#/definitions/hero"
       }
@@ -59,7 +72,6 @@
       "propertyNames": {
         "pattern": "^\\w+$"
       },
-      "maxProperties": 81,
       "additionalProperties": {
         "$ref": "#/definitions/hero"
       }
