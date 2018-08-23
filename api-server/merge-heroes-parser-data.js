@@ -15,7 +15,6 @@ const util = require('util');
 const program = require('commander');
 
 const HotsData = require('./src/hots-data');
-const Hero = require('./src/hero');
 
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -26,6 +25,8 @@ const writeFileAsync = util.promisify(fs.writeFile);
 //Compatibility code for Node v8
 require('./src/console-assert-no-throw');
 
+
+//-------- Main code --------//
 
 const DEFAULT_JSON_PATH = path.join(__dirname, '../docs/hots.json');
 
@@ -82,6 +83,8 @@ if (process.argv.length <= 2 || !program.dataDir) {
 
 })();
 
+
+//-------- Support functions --------//
 
 /**
  * Extracts Hero unit stats from the given hero data.
@@ -296,7 +299,6 @@ function extractUnitStats(unitData, heroData) {
   }
 }
 
-
 /**
  * Mapping of Hero ID => resource ID
  */
@@ -449,7 +451,6 @@ function extractWeaponInfo(weaponData, heroData) {
   return weaponInfo;
 }
 
-
 /**
  * Recursively searches for a damage effect object related to basic attacks.
  * @param {Object} effect Root effect object
@@ -485,6 +486,8 @@ function getDamageEffect(effect) {
 }
 
 
+//-------- Utility functions --------//
+
 /**
  * Recursively searches through the given JSON object, and returns the first
  * non-null object whose `id` property matches the given value.
@@ -496,7 +499,6 @@ function getDamageEffect(effect) {
 function jsonFindId(json, id) {
   return jsonFind(json, obj => obj && obj.id === id);
 }
-
 
 /**
  * Recursively searches through the given JSON object, and returns the first
