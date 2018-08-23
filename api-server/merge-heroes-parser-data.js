@@ -242,7 +242,7 @@ function extractUnitStats(unitData, heroData) {
 
   stats.speed = +(stats.speed.toFixed(4));
 
-  Object.assign(stats, extractResourceInfo(unitData));
+  Object.assign(stats, extractResourceInfo(unitData, heroData.id));
 
   if (unitData.shieldsMax) {
     stats.shields = {
@@ -298,6 +298,21 @@ function extractUnitStats(unitData, heroData) {
 
 
 /**
+ * Mapping of Hero ID => resource ID
+ */
+const HERO_RESOURCE_IDS = Object.freeze({
+  DVa: 'charge',
+  Medic: 'energy',
+  Valeera: 'energy',
+  Barbarian: 'fury',
+  Auriel: 'healEnergy',
+  Zarya: 'zaryaEnergy',
+  Junkrat: 'ammo',
+  Tracer: 'ammo',
+  Chen: 'brew'
+});
+
+/**
  * @typedef {Object} UnitResourceInfo
  * @property {ScalingStat =} mp
  * @property {ScalingStat =} mpRegen
@@ -313,10 +328,10 @@ function extractUnitStats(unitData, heroData) {
 /**
  * Extracts unit resource information from the given unit data.
  * @param {Object} unitData Data of a single unit
- * @param {Object} heroData Hero data that owns the unit data.
+ * @param {string} heroId ID of hero that owns the unit
  * @return {UnitResourceInfo} Unit resource information
  */
-function extractResourceInfo(unitData) {
+function extractResourceInfo(unitData, heroId) {
   const resourceInfo = {};
 
   if (unitData.energyMax) {
@@ -331,26 +346,9 @@ function extractResourceInfo(unitData) {
         resourceInfo.mpRegen = { value: unitData.energyRegenRate, levelAdd: 0.098 };
       }
     } else {
-      let resourceId = null;
-
-      switch (unitData.id) {
-        case 'HeroDVaPilot': case 'HeroDVaMech':
-          resourceId = 'charge'; break;
-        case 'HeroMedic': case 'HeroValeera':
-          resourceId = 'energy'; break;
-        case 'HeroBarbarian':
-          resourceId = 'fury'; break;
-        case 'HeroAuriel':
-          resourceId = 'healEnergy'; break;
-        case 'HeroZarya':
-          resourceId = 'zaryaEnergy'; break;
-        case 'HeroJunkrat': case 'HeroTracer':
-          resourceId = 'ammo'; break;
-        case 'HeroChen':
-          resourceId = 'brew'; break;
-        default:
-          console.warn(`Unknown resource type for ${unitData.id}: ${unitData.energyMax}`);
-      }
+      const resourceId = HERO_RESOURCE_IDS[heroId];
+      if (!resourceId)
+        console.warn(`Unknown resource type for ${unitData.id}: ${unitData.energyMax}`);
 
       resourceInfo[resourceId] = unitData.energyMax;
       if (unitData.energyRegenRate)
