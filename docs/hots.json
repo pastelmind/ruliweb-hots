@@ -12226,12 +12226,14 @@
         {
           "unitName": "도발",
           "hp": {
-            "value": 2750.8
+            "value": 2750.8,
+            "levelScaling": 0.04
           },
           "radius": 0.8125,
           "speed": 4.3984,
           "hpRegen": {
-            "value": 5.6562
+            "value": 5.6562,
+            "levelScaling": 0.04
           },
           "mp": {
             "value": 500,
@@ -12251,12 +12253,14 @@
         {
           "unitName": "거인의 강타",
           "hp": {
-            "value": 1904.4
+            "value": 1904.4,
+            "levelScaling": 0.04
           },
           "radius": 0.8125,
           "speed": 4.3984,
           "hpRegen": {
-            "value": 4.0039
+            "value": 4.0039,
+            "levelScaling": 0.04
           },
           "mp": {
             "value": 500,
@@ -12269,7 +12273,8 @@
           "range": 1.25,
           "period": 0.8,
           "damage": {
-            "value": 148
+            "value": 148,
+            "levelScaling": 0.04
           }
         },
         {
@@ -12295,7 +12300,8 @@
           "range": 1.25,
           "period": 0.4,
           "damage": {
-            "value": 59.2
+            "value": 59.2,
+            "levelScaling": 0.04
           }
         }
       ],

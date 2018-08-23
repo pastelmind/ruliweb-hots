@@ -108,27 +108,21 @@ function extractAllHeroUnitStats(heroData) {
       const colossusSmashMods = jsonFindId(heroData, 'VarianColossusSmashHeroModifications');
       const twinBladesMods = jsonFindId(heroData, 'VarianTwinBladesOfFuryHeroModifications');
 
-      const varianTaunt = Object.assign({}, unit);
+      const varianTaunt = simpleClone(unit);
       varianTaunt.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTaunt').name);
-      varianTaunt.hp = Object.create(unit.hp);
-      varianTaunt.hpRegen = Object.create(unit.hpRegen);
       varianTaunt.hp.value *= 1 + parseFloat(tauntMods.modification.vitalMaxFraction.life.value);
       varianTaunt.hpRegen.value += parseFloat(getLifeRegenModification(tauntMods));
       unitStats.set(unitData.id + 'Taunt', varianTaunt);
 
-      const varianColossusSmash = Object.assign({}, unit);
+      const varianColossusSmash = simpleClone(unit);
       varianColossusSmash.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianColossusSmash').name);
-      varianColossusSmash.damage = Object.create(unit.damage);
-      varianColossusSmash.hp = Object.create(unit.hp);
-      varianColossusSmash.hpRegen = Object.create(unit.hpRegen);
       varianColossusSmash.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianColossusSmashWeapon.modifier);
       varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashMods.modification.vitalMaxFraction.life.value);
       varianColossusSmash.hpRegen.value += parseFloat(getLifeRegenModification(colossusSmashMods));
       unitStats.set(unitData.id + 'ColossusSmash', varianColossusSmash);
 
-      const varianTwinBlades = Object.assign({}, unit);
+      const varianTwinBlades = simpleClone(unit);
       varianTwinBlades.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name);
-      varianTwinBlades.damage = Object.create(unit.damage);
       varianTwinBlades.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianTwinBladesOfFuryWeapon.modifier);
       varianTwinBlades.period /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
       unitStats.set(unitData.id + 'TwinBlades', varianTwinBlades);
@@ -551,4 +545,13 @@ function getLifeRegenModification(mod) {
  */
 function toKoreanString(stringObj) {
   return typeof stringObj === 'string' ? stringObj : stringObj.kokr;
+}
+
+/**
+ * Simple clone
+ * @param {*} o JSON-compatible object
+ * @return {*} Clone of `o`
+ */
+function simpleClone(o) {
+  return JSON.parse(JSON.stringify(o));
 }

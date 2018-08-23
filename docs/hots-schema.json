@@ -215,7 +215,11 @@
               "multipleOf": 0.005
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "levelScaling"
+          ]
         },
         "mp": {
           "oneOf": [
@@ -231,7 +235,11 @@
                   "exclusiveMinimum": 0
                 }
               },
-              "additionalProperties": false
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "levelAdd"
+              ]
             },
             {
               "type": "integer",
@@ -251,7 +259,11 @@
               "multipleOf": 0.001
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "levelAdd"
+          ]
         },
         "chargeRegen": {
           "type": "number",
@@ -382,7 +394,11 @@
           "multipleOf": 0.005
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "levelScaling"
+      ]
     },
     "scalingIntegerStat": {
       "type": "object",
@@ -396,7 +412,11 @@
           "multipleOf": 0.005
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "levelScaling"
+      ]
     },
     "talent": {
       "description": "Represents a talent",
