@@ -51,7 +51,7 @@ describe('HotsDialog.htmlGenerators', () => {
 
     it('generates skill icons correctly', () => {
       const skillIconsHtml =
-        HotsDialog.htmlGenerators.generateSkillIcons(hotsData.heroes.gazlowe);
+        HotsDialog.htmlGenerators.generateSkillIcons(hotsData.heroes.Tinker);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml);
       assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
@@ -59,7 +59,7 @@ describe('HotsDialog.htmlGenerators', () => {
 
     it('generates talent list correctly', () => {
       const talentIconsHtml =
-        HotsDialog.htmlGenerators.generateTalentList(hotsData.heroes.gazlowe);
+        HotsDialog.htmlGenerators.generateTalentList(hotsData.heroes.Tinker);
 
       // fs.writeFileSync(path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml);
       assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));

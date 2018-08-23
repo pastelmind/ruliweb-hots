@@ -17,7 +17,7 @@
   <script src="../src/js/hots-dialog.js"></script>
   <script src="./js/mocks.js"></script>
   <script>
-    (async () => {
+    (async function main() {
 
       HotsDialog.htmlGenerators.templates = await loadTemplates();
       const hotsData = (await axios.get('../../docs/hots.json')).data;
@@ -27,26 +27,30 @@
       const template = document.createElement('template');
 
       const heroIds = [
-        'cho',
-        'gall',
-        'fenix',
-        'sgt-hammer',
-        'greymane',
-        'probius',
-        'guldan',
-        'dva',
-        'zarya',
-        'valeera',
-        'lt-morales',
-        'auriel',
-        'tracer',
-        'junkrat',
-        'rexxar',
-        'the-lost-vikings'
+        'Cho',
+        'Gall',
+        'Fenix',
+        'SgtHammer',
+        'Greymane',
+        'Probius',
+        'Guldan',
+        'DVa',
+        'Zarya',
+        'Valeera',
+        'Medic',
+        'Auriel',
+        'Tracer',
+        'Junkrat',
+        'Rexxar',
+        'LostVikings'
       ];
 
-      for (const heroId of heroIds)
-        template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
+      for (const heroId of heroIds) {
+        if (heroId in hotsData.heroes)
+          template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], undefined, hotsData.statPresets);
+        else
+          console.error('Cannot find hero ID:', heroId);
+      }
 
       for (const detailsElement of template.content.querySelectorAll('details.ruliweb-hots-hero-table'))
         detailsElement.open = true;

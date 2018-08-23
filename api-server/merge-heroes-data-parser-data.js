@@ -67,9 +67,9 @@ if (process.argv.length <= 2 || !program.dataJson) {
  * @param {Object} heroJson
  */
 function mergeHeroData(hotsData, heroJson) {
-  const hero = hotsData.allHeroes().find(hero => hero.name === heroJson.name);
+  const hero = hotsData.heroes[heroJson.cHeroId];
   if (!hero) {
-    console.warn('Cannot find hero with name:', heroJson.name);
+    console.warn('Cannot find hero with ID:', heroJson.cHeroId);
     return;
   }
 

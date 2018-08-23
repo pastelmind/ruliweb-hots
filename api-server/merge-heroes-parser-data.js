@@ -48,7 +48,6 @@ if (process.argv.length <= 2 || !program.dataDir) {
   program.inputJson = path.resolve(program.inputJson);
   const hotsDataInput = await readFileAsync(program.inputJson, 'utf8');
   const hotsData = new HotsData(hotsDataInput);
-  const heroArray = Object.values(hotsData.heroes);
 
   const dataFiles = await readdirAsync(program.dataDir);
 
@@ -56,14 +55,14 @@ if (process.argv.length <= 2 || !program.dataDir) {
     try {
       const heroDataSource = await readFileAsync(path.join(program.dataDir, dataFile), 'utf8');
       const heroData = JSON.parse(heroDataSource);
-      const hero = heroArray.find(hero => hero.name === heroData.name);
+      const hero = hotsData.heroes[heroData.id];
 
       if (hero) {
         hero.title = heroData.title;
         hero.stats = extractAllHeroUnitStats(heroData);
       }
       else
-        console.warn('Cannot find hero with name:', heroData.name, '(skipped)');
+        console.warn('Cannot find hero with ID:', heroData.id, '(skipped)');
     }
     catch (e) {
       console.error(e); //Report and consume error
@@ -71,7 +70,7 @@ if (process.argv.length <= 2 || !program.dataDir) {
   }
 
   //Fix for Cho'Gall
-  const gallStats = hotsData.heroes.gall.stats, choStats = hotsData.heroes.cho.stats;
+  const gallStats = hotsData.heroes.Gall.stats, choStats = hotsData.heroes.Cho.stats;
   gallStats.hp = choStats.hp;
   gallStats.hpRegen = choStats.hpRegen;
   gallStats.radius = choStats.radius;

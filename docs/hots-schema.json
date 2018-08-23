@@ -45,7 +45,7 @@
       "description": "Collection of hero data",
       "type": "object",
       "propertyNames": {
-        "pattern": "^[a-z\\-\\.]+$"
+        "pattern": "^\\w+$"
       },
       "minProperties": 81,
       "maxProperties": 81,
@@ -57,7 +57,7 @@
       "description": "Collection of hero data",
       "type": "object",
       "propertyNames": {
-        "pattern": "^[a-z\\-\\.]+$"
+        "pattern": "^\\w+$"
       },
       "maxProperties": 81,
       "additionalProperties": {

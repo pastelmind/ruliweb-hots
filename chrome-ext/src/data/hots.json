@@ -100,7 +100,7 @@
     }
   ],
   "heroes": {
-    "dva": {
+    "DVa": {
       "name": "D.Va",
       "title": "MEKA 조종사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc223a4f19dc2c.png",
@@ -565,7 +565,7 @@
         ]
       }
     },
-    "garrosh": {
+    "Garrosh": {
       "name": "가로쉬",
       "title": "헬스크림의 아들",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1f0419dc2c.png",
@@ -952,7 +952,7 @@
         ]
       }
     },
-    "gazlowe": {
+    "Tinker": {
       "name": "가즈로",
       "title": "톱니항 두목",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png",
@@ -1363,7 +1363,7 @@
         ]
       }
     },
-    "gall": {
+    "Gall": {
       "name": "갈",
       "title": "황혼의 망치단 족장",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
@@ -1741,7 +1741,7 @@
         ]
       }
     },
-    "genji": {
+    "Genji": {
       "name": "겐지",
       "title": "사이보그 닌자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227acf19dc2c.png",
@@ -2128,7 +2128,7 @@
         ]
       }
     },
-    "guldan": {
+    "Guldan": {
       "name": "굴단",
       "title": "어둠의 화신",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc227d4919dc2c.png",
@@ -2496,7 +2496,7 @@
         ]
       }
     },
-    "greymane": {
+    "Greymane": {
       "name": "그레이메인",
       "title": "늑대인간의 지도자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227c8e19dc2c.png",
@@ -2914,7 +2914,7 @@
         ]
       }
     },
-    "the-lost-vikings": {
+    "LostVikings": {
       "name": "길 잃은 바이킹",
       "title": "답 없는 삼형제",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23302619dc2c.png",
@@ -3368,7 +3368,7 @@
         ]
       }
     },
-    "nazeebo": {
+    "WitchDoctor": {
       "name": "나지보",
       "title": "이교도 부두술사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23088119dc2c.png",
@@ -3747,7 +3747,7 @@
         ]
       }
     },
-    "nova": {
+    "Nova": {
       "name": "노바",
       "title": "자치령 유령",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23093d19dc2c.png",
@@ -4131,7 +4131,7 @@
         ]
       }
     },
-    "stitches": {
+    "Stitches": {
       "name": "누더기",
       "title": "어둠골의 공포",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e223819dc2c.png",
@@ -4550,7 +4550,7 @@
         ]
       }
     },
-    "deckard": {
+    "Deckard": {
       "name": "데커드",
       "title": "마지막 호라드림",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22398819dc2c.png",
@@ -4906,7 +4906,7 @@
         ]
       }
     },
-    "dehaka": {
+    "Dehaka": {
       "name": "데하카",
       "title": "원시 무리 우두머리",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1d8c19dc2c.png",
@@ -5287,7 +5287,7 @@
         ]
       }
     },
-    "the-butcher": {
+    "Butcher": {
       "name": "도살자",
       "title": "고기 해체자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc232f6f19dc2c.png",
@@ -5654,7 +5654,7 @@
         ]
       }
     },
-    "diablo": {
+    "Diablo": {
       "name": "디아블로",
       "title": "공포의 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e1e4519dc2c.png",
@@ -6026,7 +6026,7 @@
         ]
       }
     },
-    "ragnaros": {
+    "Ragnaros": {
       "name": "라그나로스",
       "title": "불의 군주",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc230abb19dc2c.png",
@@ -6444,7 +6444,7 @@
         ]
       }
     },
-    "rehgar": {
+    "Rehgar": {
       "name": "레가르",
       "title": "대지 고리회 주술사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230c2b19dc2c.png",
@@ -6850,7 +6850,7 @@
         ]
       }
     },
-    "leoric": {
+    "Leoric": {
       "name": "레오릭",
       "title": "해골 왕",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc0e1fd219dc2c.png",
@@ -7263,7 +7263,7 @@
         ]
       }
     },
-    "raynor": {
+    "Raynor": {
       "name": "레이너",
       "title": "반란군 사령관",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc230b7619dc2c.png",
@@ -7628,7 +7628,7 @@
         ]
       }
     },
-    "rexxar": {
+    "Rexxar": {
       "name": "렉사르",
       "title": "호드의 용사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
@@ -8026,7 +8026,7 @@
         ]
       }
     },
-    "lunara": {
+    "Dryad": {
       "name": "루나라",
       "title": "세나리우스의 첫 번째 딸",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22d94b19dc2c.png",
@@ -8432,7 +8432,7 @@
         ]
       }
     },
-    "lucio": {
+    "Lucio": {
       "name": "루시우",
       "title": "자유의 투사 DJ",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
@@ -8831,7 +8831,7 @@
         ]
       }
     },
-    "li-li": {
+    "LiLi": {
       "name": "리 리",
       "title": "세계 유랑자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a97519dc2c.png",
@@ -9206,7 +9206,7 @@
         ]
       }
     },
-    "li-ming": {
+    "Wizard": {
       "name": "리밍",
       "title": "반항적인 마법사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22aa2519dc2c.png",
@@ -9598,7 +9598,7 @@
         ]
       }
     },
-    "maiev": {
+    "Maiev": {
       "name": "마이에브",
       "title": "감시관",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22da0319dc2c.png",
@@ -9959,7 +9959,7 @@
         ]
       }
     },
-    "malthael": {
+    "Malthael": {
       "name": "말티엘",
       "title": "죽음의 화신",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22db7e19dc2c.png",
@@ -10339,7 +10339,7 @@
         ]
       }
     },
-    "malfurion": {
+    "Malfurion": {
       "name": "말퓨리온",
       "title": "대드루이드",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dabd19dc2c.png",
@@ -10712,7 +10712,7 @@
         ]
       }
     },
-    "murky": {
+    "Murky": {
       "name": "머키",
       "title": "아기 멀록",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230db119dc2c.png",
@@ -11072,7 +11072,7 @@
         ]
       }
     },
-    "medivh": {
+    "Medivh": {
       "name": "메디브",
       "title": "최후의 수호자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22dc3619dc2c.png",
@@ -11466,7 +11466,7 @@
         ]
       }
     },
-    "lt-morales": {
+    "Medic": {
       "name": "모랄레스 중위",
       "title": "전투 의무관",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22dd9d19dc2c.png",
@@ -11819,7 +11819,7 @@
         ]
       }
     },
-    "muradin": {
+    "Muradin": {
       "name": "무라딘",
       "title": "산왕",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc0e209419dc2c.png",
@@ -12188,7 +12188,7 @@
         ]
       }
     },
-    "varian": {
+    "Varian": {
       "name": "바리안",
       "title": "얼라이언스의 국왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23818119dc2c.png",
@@ -12658,7 +12658,7 @@
         ]
       }
     },
-    "valla": {
+    "DemonHunter": {
       "name": "발라",
       "title": "악마사냥꾼",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23546119dc2c.png",
@@ -13031,7 +13031,7 @@
         ]
       }
     },
-    "valeera": {
+    "Valeera": {
       "name": "발리라",
       "title": "무관의 그림자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2353a119dc2c.png",
@@ -13456,7 +13456,7 @@
         ]
       }
     },
-    "blaze": {
+    "Firebat": {
       "name": "블레이즈",
       "title": "노련한 화염방사병",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e1ccf19dc2c.png",
@@ -13856,7 +13856,7 @@
         ]
       }
     },
-    "brightwing": {
+    "FaerieDragon": {
       "name": "빛나래",
       "title": "요정용",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2234ce19dc2c.png",
@@ -14272,7 +14272,7 @@
         ]
       }
     },
-    "samuro": {
+    "Samuro": {
       "name": "사무로",
       "title": "검귀",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2330de19dc2c.png",
@@ -14622,7 +14622,7 @@
         ]
       }
     },
-    "sonya": {
+    "Barbarian": {
       "name": "소냐",
       "title": "떠도는 야만용사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23324d19dc2c.png",
@@ -14977,7 +14977,7 @@
         ]
       }
     },
-    "thrall": {
+    "Thrall": {
       "name": "스랄",
       "title": "호드의 대족장",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc23552519dc2c.png",
@@ -15345,7 +15345,7 @@
         ]
       }
     },
-    "stukov": {
+    "Stukov": {
       "name": "스투코프",
       "title": "감염된 제독",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23332019dc2c.png",
@@ -15748,7 +15748,7 @@
         ]
       }
     },
-    "sylvanas": {
+    "Sylvanas": {
       "name": "실바나스",
       "title": "밴시 여왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2333df19dc2c.png",
@@ -16145,7 +16145,7 @@
         ]
       }
     },
-    "ana": {
+    "Ana": {
       "name": "아나",
       "title": "노련한 저격수",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png",
@@ -16531,7 +16531,7 @@
         ]
       }
     },
-    "anubarak": {
+    "Anubarak": {
       "name": "아눕아락",
       "title": "배신자 왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f8f419dc2c.png",
@@ -16919,7 +16919,7 @@
         ]
       }
     },
-    "artanis": {
+    "Artanis": {
       "name": "아르타니스",
       "title": "댈람의 신관",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f3ad19dc2c.png",
@@ -17313,7 +17313,7 @@
         ]
       }
     },
-    "abathur": {
+    "Abathur": {
       "name": "아바투르",
       "title": "진화 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f60119dc2c.png",
@@ -17789,7 +17789,7 @@
         ]
       }
     },
-    "arthas": {
+    "Arthas": {
       "name": "아서스",
       "title": "리치 왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac4df19dc2c.png",
@@ -18159,7 +18159,7 @@
         ]
       }
     },
-    "auriel": {
+    "Auriel": {
       "name": "아우리엘",
       "title": "희망의 대천사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f47c19dc2c.png",
@@ -18538,7 +18538,7 @@
         ]
       }
     },
-    "azmodan": {
+    "Azmodan": {
       "name": "아즈모단",
       "title": "죄악의 군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc21f54519dc2c.png",
@@ -18906,7 +18906,7 @@
         ]
       }
     },
-    "alarak": {
+    "Alarak": {
       "name": "알라라크",
       "title": "탈다림의 군주",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f6bc19dc2c.png",
@@ -19286,7 +19286,7 @@
         ]
       }
     },
-    "alexstrasza": {
+    "Alexstrasza": {
       "name": "알렉스트라자",
       "title": "생명의 어머니",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc21f78419dc2c.png",
@@ -19738,7 +19738,7 @@
         ]
       }
     },
-    "johanna": {
+    "Crusader": {
       "name": "요한나",
       "title": "자카룸의 성전사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a5d219dc2c.png",
@@ -20111,7 +20111,7 @@
         ]
       }
     },
-    "uther": {
+    "Uther": {
       "name": "우서",
       "title": "빛의 수호자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc2352d919dc2c.png",
@@ -20498,7 +20498,7 @@
         ]
       }
     },
-    "yrel": {
+    "Yrel": {
       "name": "이렐",
       "title": "희망의 빛",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237dd219dc2c.png",
@@ -20872,7 +20872,7 @@
         ]
       }
     },
-    "illidan": {
+    "Illidan": {
       "name": "일리단",
       "title": "배신자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22aae919dc2c.png",
@@ -21226,7 +21226,7 @@
         ]
       }
     },
-    "zagara": {
+    "Zagara": {
       "name": "자가라",
       "title": "군단의 무리어미",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc237e8c19dc2c.png",
@@ -21595,7 +21595,7 @@
         ]
       }
     },
-    "zarya": {
+    "Zarya": {
       "name": "자리야",
       "title": "러시아의 수호자",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237f4419dc2c.png",
@@ -22015,7 +22015,7 @@
         ]
       }
     },
-    "etc": {
+    "L90ETC": {
       "name": "정예 타우렌 족장",
       "title": "록의 신",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2233b019dc2c.png",
@@ -22402,7 +22402,7 @@
         ]
       }
     },
-    "junkrat": {
+    "Junkrat": {
       "name": "정크랫",
       "title": "쓰레기촌 폭파 전문가",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a68719dc2c.png",
@@ -22788,7 +22788,7 @@
         ]
       }
     },
-    "zeratul": {
+    "Zeratul": {
       "name": "제라툴",
       "title": "암흑 정무관",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc237ffa19dc2c.png",
@@ -23160,7 +23160,7 @@
         ]
       }
     },
-    "jaina": {
+    "Jaina": {
       "name": "제이나",
       "title": "대마법사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/13/163f62ac5c319dc2c.png",
@@ -23544,7 +23544,7 @@
         ]
       }
     },
-    "xul": {
+    "Necromancer": {
       "name": "줄",
       "title": "수수께끼의 강령술사",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc237d0619dc2c.png",
@@ -23933,7 +23933,7 @@
         ]
       }
     },
-    "zuljin": {
+    "Zuljin": {
       "name": "줄진",
       "title": "아마니의 전쟁군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2380c119dc2c.png",
@@ -24300,7 +24300,7 @@
         ]
       }
     },
-    "chen": {
+    "Chen": {
       "name": "첸",
       "title": "전설의 양조사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22375019dc2c.png",
@@ -24689,7 +24689,7 @@
         ]
       }
     },
-    "cho": {
+    "Cho": {
       "name": "초",
       "title": "황혼의 망치단 족장",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
@@ -25048,7 +25048,7 @@
         ]
       }
     },
-    "kharazim": {
+    "Monk": {
       "name": "카라짐",
       "title": "베라다니의 수도사",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a8c319dc2c.png",
@@ -25446,7 +25446,7 @@
         ]
       }
     },
-    "cassia": {
+    "Amazon": {
       "name": "카시아",
       "title": "아마존 여군주",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22369b19dc2c.png",
@@ -25809,7 +25809,7 @@
         ]
       }
     },
-    "kaelthas": {
+    "Kaelthas": {
       "name": "캘타스",
       "title": "태양왕",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc22a73f19dc2c.png",
@@ -26181,7 +26181,7 @@
         ]
       }
     },
-    "kerrigan": {
+    "Kerrigan": {
       "name": "케리건",
       "title": "칼날 여왕",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/13/163f62ac69419dc2c.png",
@@ -26567,7 +26567,7 @@
         ]
       }
     },
-    "kelthuzad": {
+    "KelThuzad": {
       "name": "켈투자드",
       "title": "낙스라마스의 고위 리치",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22a80d19dc2c.png",
@@ -26962,7 +26962,7 @@
         ]
       }
     },
-    "chromie": {
+    "Chromie": {
       "name": "크로미",
       "title": "시간의 수호자",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc2238c619dc2c.png",
@@ -27336,7 +27336,7 @@
         ]
       }
     },
-    "tychus": {
+    "Tychus": {
       "name": "타이커스",
       "title": "악명 높은 범죄자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23509019dc2c.png",
@@ -27747,7 +27747,7 @@
         ]
       }
     },
-    "tassadar": {
+    "Tassadar": {
       "name": "태사다르",
       "title": "기사단의 구원자",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc232eb319dc2c.png",
@@ -28115,7 +28115,7 @@
         ]
       }
     },
-    "tracer": {
+    "Tracer": {
       "name": "트레이서",
       "title": "오버워치 요원",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc234fd619dc2c.png",
@@ -28478,7 +28478,7 @@
         ]
       }
     },
-    "tyrande": {
+    "Tyrande": {
       "name": "티란데",
       "title": "엘룬의 대여사제",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc23521c19dc2c.png",
@@ -28853,7 +28853,7 @@
         ]
       }
     },
-    "tyrael": {
+    "Tyrael": {
       "name": "티리엘",
       "title": "정의의 대천사",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23515919dc2c.png",
@@ -29224,7 +29224,7 @@
         ]
       }
     },
-    "falstad": {
+    "Falstad": {
       "name": "폴스타트",
       "title": "와일드해머 영주",
       "iconUrl": "http://i1.ruliweb.com/img/18/06/14/163fc227ebe19dc2c.png",
@@ -29604,7 +29604,7 @@
         ]
       }
     },
-    "probius": {
+    "Probius": {
       "name": "프로비우스",
       "title": "호기심 많은 탐사정",
       "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc230a0119dc2c.png",
@@ -29996,7 +29996,7 @@
         ]
       }
     },
-    "fenix": {
+    "Fenix": {
       "name": "피닉스",
       "title": "기사단의 귀감",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
@@ -30402,7 +30402,7 @@
         ]
       }
     },
-    "hanzo": {
+    "Hanzo": {
       "name": "한조",
       "title": "일급 암살자",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227e0619dc2c.png",
@@ -30779,7 +30779,7 @@
         ]
       }
     },
-    "sgt-hammer": {
+    "SgtHammer": {
       "name": "해머 상사",
       "title": "공성 전차 전차장",
       "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc23319819dc2c.png",
@@ -31179,7 +31179,7 @@
         ]
       }
     },
-    "whitemane": {
+    "Whitemane": {
       "name": "화이트메인",
       "title": "종교재판관",
       "iconUrl": "http://i1.ruliweb.com/img/18/08/05/16509b66db419dc2c.png",
