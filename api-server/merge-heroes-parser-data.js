@@ -58,7 +58,7 @@ if (process.argv.length <= 2 || !program.dataDir) {
       const hero = hotsData.heroes[heroData.id];
 
       if (hero) {
-        hero.title = heroData.title;
+        hero.title = toKoreanString(heroData.title);
         hero.stats = extractAllHeroUnitStats(heroData);
       }
       else
@@ -109,25 +109,25 @@ function extractAllHeroUnitStats(heroData) {
       const twinBladesMods = jsonFindId(heroData, 'VarianTwinBladesOfFuryHeroModifications');
 
       const varianTaunt = Object.assign({}, unit);
-      varianTaunt.unitName = jsonFindId(heroData.abilities, 'VarianTaunt').name;
+      varianTaunt.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTaunt').name);
       varianTaunt.hp = Object.create(unit.hp);
       varianTaunt.hpRegen = Object.create(unit.hpRegen);
       varianTaunt.hp.value *= 1 + parseFloat(tauntMods.modification.vitalMaxFraction.life.value);
-      varianTaunt.hpRegen.value += parseFloat(tauntMods.modification.vitalRegen.life.value);
+      varianTaunt.hpRegen.value += parseFloat(getLifeRegenModification(tauntMods));
       unitStats.set(unitData.id + 'Taunt', varianTaunt);
 
       const varianColossusSmash = Object.assign({}, unit);
-      varianColossusSmash.unitName = jsonFindId(heroData.abilities, 'VarianColossusSmash').name;
+      varianColossusSmash.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianColossusSmash').name);
       varianColossusSmash.damage = Object.create(unit.damage);
       varianColossusSmash.hp = Object.create(unit.hp);
       varianColossusSmash.hpRegen = Object.create(unit.hpRegen);
       varianColossusSmash.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianColossusSmashWeapon.modifier);
       varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashMods.modification.vitalMaxFraction.life.value);
-      varianColossusSmash.hpRegen.value += parseFloat(colossusSmashMods.modification.vitalRegen.life.value);
+      varianColossusSmash.hpRegen.value += parseFloat(getLifeRegenModification(colossusSmashMods));
       unitStats.set(unitData.id + 'ColossusSmash', varianColossusSmash);
 
       const varianTwinBlades = Object.assign({}, unit);
-      varianTwinBlades.unitName = jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name;
+      varianTwinBlades.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name);
       varianTwinBlades.damage = Object.create(unit.damage);
       varianTwinBlades.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianTwinBladesOfFuryWeapon.modifier);
       varianTwinBlades.period /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
@@ -145,7 +145,7 @@ function extractAllHeroUnitStats(heroData) {
     const mech = unitStats.get('HeroDVaMech');
     const pilot = unitStats.get('HeroDVaPilot');
 
-    mech.unitName = '로봇 모드';
+    mech.unitName = jsonFindId(heroData.abilities, 'DVaMechMechMode').name.kokr;
     pilot.unitName = '조종사 모드';
 
     return [mech, pilot];
@@ -218,7 +218,7 @@ function extractUnitStats(unitData, heroData) {
   if (!(unitData && typeof unitData === 'object')) return undefined;
 
   const stats = {
-    unitName: unitData.name,
+    unitName: toKoreanString(unitData.name),
     hp: {
       value: unitData.lifeMax.value,
       levelScaling: unitData.lifeMax.levelScaling
@@ -530,4 +530,25 @@ function jsonFind(json, callback, key = undefined) {
   }
 
   return undefined;
+}
+
+/**
+ * Extracts the life regen modification value from the given behavior object.
+ * @param {{ modification: * }} mod Behavior object
+ * @return {number} Life regen modification value
+ */
+function getLifeRegenModification(mod) {
+  if (mod.modification.vitalRegen)
+    return mod.modification.vitalRegen.life.value;
+  else
+    return mod.modification.vitalRegenModification.life;
+}
+
+/**
+ * Extracts KR string from plain strings and multi-locale string objects.
+ * @param {string | { kokr: string }} stringObj Plain string or multi-locale string object
+ * @return {string} Korean string
+ */
+function toKoreanString(stringObj) {
+  return typeof stringObj === 'string' ? stringObj : stringObj.kokr;
 }
