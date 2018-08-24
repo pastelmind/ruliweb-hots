@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "36.0",
+  "hotsVersion": "36.2",
   "statPresets": [
     {
       "id": "hp",
@@ -4786,7 +4786,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953782019dc2c.png",
-            "description": "지면에 놓은 생명력 물약이 2초 후에 특급 생명력 물약으로 커지고 치유량이 75% 증가합니다.",
+            "description": "지면에 놓은 생명력 물약이 2초 후에 특급 생명력 물약으로 커지고 치유량이 80% 증가합니다.",
             "shortDescription": "일정 시간 후 획득 시 치유량 증가",
             "extras": {},
             "upgradeFor": "Q"
@@ -4798,7 +4798,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459534aa519dc2c.png",
-            "description": "생명력 물약을 획득하면 치유량의 30%만큼 주위 아군들의 생명력을 회복시킵니다.",
+            "description": "생명력 물약을 획득하면 치유량의 35%만큼 주위 아군들의 생명력을 회복시킵니다.",
             "shortDescription": "생명력 물약 획득시 주위 아군 영웅도 치유",
             "extras": {},
             "upgradeFor": "Q"
@@ -4810,7 +4810,7 @@
             },
             "type": "D",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459533b0a19dc2c.png",
-            "description": "케인의 수호자를 사용하면 주위 아군 영웅을 8초 동안 강화하여 일반 공격이 71(+4%)의 방사 피해를 주게 하고 피해를 준 적 영웅 하나당 104(+4%)의 생명력을 회복시키게 합니다.",
+            "description": "케인의 수호자를 사용하면 주위 아군 영웅을 8초 동안 강화하여 일반 공격이 64(+4%)의 방사 피해를 주게 하고 피해를 준 적 영웅 하나당 94(+4%)의 생명력을 회복시키게 합니다.",
             "shortDescription": "케인의 수호자 사용 시 아군 공격 강화",
             "cooldown": 30,
             "extras": {},
@@ -4886,7 +4886,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595342d719dc2c.png",
-            "description": "획득한 생명력 물약이 6초 후에 재생성됩니다.",
+            "description": "획득한 생명력 물약이 8초 후에 재생성됩니다.",
             "shortDescription": "획득한 생명력 물약이 일정 시간 후 재생성",
             "extras": {},
             "upgradeFor": "Q"
@@ -4948,7 +4948,7 @@
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595395a619dc2c.png",
           "description": "영웅 처치 시 10개, 돌격병 처치 시 2개의 정수를 수집합니다. 사용하면 수집한 정수를 모두 소모하여 하나당 5초에 걸쳐 30(+4%)의 생명력을 회복합니다. 정수는 최대 50개까지 수집할 수 있습니다. 끌기나 잠복 중에도 사용할 수 있습니다.",
-          "shortDescription": "적 영웅과 돌격병 처치 시 정수 수집 및 정수를 소모하여 지속 치유",
+          "shortDescription": "적의 정수를 수집하고 소모하여 생명력 회복",
           "cooldown": 5,
           "extras": {}
         },
@@ -7292,8 +7292,8 @@
         "range": 6.5,
         "period": 0.8,
         "damage": {
-          "value": 92,
-          "levelScaling": 0.05
+          "value": 103,
+          "levelScaling": 0.04
         }
       },
       "skills": [
@@ -7374,7 +7374,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459475fee19dc2c.png",
-            "description": "기절, 감속 상태인 적 영웅에게 20%의 추가 피해를 줍니다.",
+            "description": "기절, 감속 상태인 적 영웅에게 15%의 추가 피해를 줍니다.",
             "shortDescription": "무력화된 영웅들에게 추가 피해",
             "extras": {}
           },
@@ -7530,7 +7530,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/11/164874af23f19dc2c.png",
-            "description": "이동 속도가 10% 증가합니다. 탈것의 이동 속도 또한 동일하게 증가합니다. 격려의 이동 속도 증가 효과가 10% 증가합니다.",
+            "description": "이동 속도가 8% 증가합니다. 탈것의 이동 속도 또한 동일하게 증가합니다. 격려의 이동 속도 증가 효과가 10% 증가합니다.",
             "shortDescription": "이동 속도 증가 및 격려 강화",
             "extras": {},
             "upgradeFor": "W"
@@ -7544,7 +7544,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f0e0c19dc2c.png",
-            "description": "천공 탄환의 공격력이 50% 증가하고 적 영웅에게 준 피해의 100%만큼 생명력을 회복합니다.",
+            "description": "천공 탄환의 공격력이 50% 증가하고 적 영웅에게 준 피해의 90%만큼 생명력을 회복합니다.",
             "shortDescription": "천공 탄환 공격력 증가 및 생명력 회복",
             "extras": {},
             "upgradeFor": "Q"
@@ -9084,7 +9084,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645959441b19dc2c.png",
-            "description": "실명의 바람의 지속 시간이 1초 증가하고 일반 공격이 실명한 대상에게 75%의 추가 피해를 줍니다.",
+            "description": "실명의 바람의 지속 시간이 0.75초 증가하고 일반 공격이 실명한 대상에게 75%의 추가 피해를 줍니다.",
             "shortDescription": "실명의 바람 지속 시간 증가",
             "extras": {},
             "upgradeFor": "E"
@@ -9184,7 +9184,7 @@
             },
             "type": "active",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595964ae19dc2c.png",
-            "description": "사용하면 주위 아군 영웅들의 생명력을 178(+4%) 회복시킵니다. 일반 공격을 하거나 운룡이 공격할 때마다 운무사의 재사용 대기시간이 1초 감소합니다.",
+            "description": "사용하면 주위 아군 영웅들의 생명력을 155(+4%) 회복시킵니다. 일반 공격을 하거나 운룡이 공격할 때마다 운무사의 재사용 대기시간이 1초 감소합니다.",
             "shortDescription": "사용 시 주위 아군 영웅 치유",
             "cooldown": 30,
             "extras": {
@@ -14752,7 +14752,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596071a919dc2c.png",
-            "description": "대지 강타의 방사 피해 효과의 범위가 66% 증가하고 방사 피해가 주 대상에게 주는 피해의 75%로 증가합니다.",
+            "description": "대지 강타의 방사 피해 효과의 범위가 66% 증가하고 방사 피해가 주 대상에게 주는 피해의 100%로 증가합니다.",
             "shortDescription": "대지 강타 방사 피해 증가",
             "extras": {},
             "upgradeFor": "W"
@@ -14896,8 +14896,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596071a919dc2c.png",
-            "description": "대지 강타가 대상 적 영웅의 최대 생명력의 2%만큼 추가 피해를 줍니다.",
-            "shortDescription": "대지 강타가 추가 피해",
+            "description": "일반 공격과 대지 강타가 대상 적 영웅의 최대 생명력의 1.25%만큼 추가 피해를 줍니다.",
+            "shortDescription": "일반 공격 및 대지 강타가 추가 피해",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -15354,13 +15354,13 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "value": 1682,
+          "value": 1765,
           "levelScaling": 0.04
         },
         "radius": 0.75,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 3.504,
+          "value": 3.6757,
           "levelScaling": 0.04
         },
         "mp": {
@@ -15374,7 +15374,7 @@
         "range": 1.5,
         "period": 1.5,
         "damage": {
-          "value": 249,
+          "value": 261,
           "levelScaling": 0.04
         }
       },
@@ -15526,7 +15526,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960a0b219dc2c.png",
-            "description": "치유성 병원균을 3개 이상 폭발시키면 감염체 폭발의 치유량이 25% 증가합니다.",
+            "description": "치유성 병원균을 3개 이상 폭발시키면 감염체 폭발의 치유량이 30% 증가합니다.",
             "shortDescription": "감염체 폭발 치유량 증가",
             "extras": {},
             "upgradeFor": "D"
@@ -17059,7 +17059,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943b72819dc2c.png",
-            "description": "위상 분광기가 적 영웅에게 적중하면 방어력이 3초 동안 15 증가합니다.",
+            "description": "위상 분광기가 적 영웅에게 적중하면 방어력이 3초 동안 20 증가합니다.",
             "shortDescription": "위상 분광기가 방어력을 증가시킴",
             "extras": {},
             "upgradeFor": "E"
@@ -17303,7 +17303,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943bf0119dc2c.png",
-            "description": "과부하 보호막이 활성화된 동안 주위 적들에게 초당 62(+4%)의 피해를 줍니다.",
+            "description": "과부하 보호막이 활성화된 동안 주위 적들에게 초당 73(+4%)의 피해를 줍니다.",
             "shortDescription": "과부하 보호막이 주위 적들에게 피해를 줌",
             "extras": {
               "피해 반경": "2.5"
@@ -18643,7 +18643,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-            "description": "파멸의 구슬이 적 돌격병에게 적중한 후에 파멸이 중첩될 수 있는 시간이 1.5초에서 3초로 증가합니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬의 사거리가 33% 증가하고 적 돌격병 및 용병에게 주는 피해가 20% 증가합니다.",
+            "description": "파멸의 구슬이 적 돌격병에게 적중한 후에 파멸이 중첩될 수 있는 시간이 1.5초에서 3초로 증가합니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬의 사거리가 33% 증가하고 영웅이 아닌 적에게 주는 피해가 20% 증가합니다.",
             "shortDescription": "퀘스트: 파멸의 구슬이 영웅이 아닌 대상에게 추가 피해",
             "extras": {},
             "upgradeFor": "Q"
@@ -18667,7 +18667,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/11/1648761aff019dc2c.png",
-            "description": "생명력이 75% 미만인 적 영웅에게 일반 공격을 할 때마다 파멸이 1회 중첩됩니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬이 적 영웅에게 적중한 후에 3초 내의 일반 공격이 대상 적 영웅에게 파멸 중첩만큼의 추가 피해를 줍니다.",
+            "description": "생명력이 75% 미만인 적 영웅에게 일반 공격을 할 때마다 파멸이 1회 중첩됩니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬이 적 영웅에게 적중한 후에 3초 내의 일반 공격이 대상 적 영웅에게 파멸 중첩의 75%만큼의 추가 피해를 줍니다.",
             "shortDescription": "퀘스트: 일반 공격 시 파멸 중첩",
             "extras": {},
             "upgradeFor": "Q"
@@ -18693,7 +18693,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/11/16487621bf419dc2c.png",
-            "description": "악마 전사와 악마 부관의 방어력이 30 증가하고 지속 시간이 4초 증가합니다.",
+            "description": "악마 전사와 악마 부관의 방어력이 25 증가하고 지속 시간이 4초 증가합니다.",
             "shortDescription": "악마 전사 방어력 및 지속 시간 증가",
             "extras": {},
             "upgradeFor": "W"
@@ -18824,7 +18824,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-            "description": "파멸의 구슬이 적 영웅에게 최대 생명력의 5%만큼 추가 피해를 줍니다.",
+            "description": "파멸의 구슬이 적 영웅에게 최대 생명력의 4%만큼 추가 피해를 줍니다.",
             "shortDescription": "파멸의 구슬로 영웅에게 주는 피해 증가",
             "extras": {},
             "upgradeFor": "Q"
@@ -18836,7 +18836,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942e73c19dc2c.png",
-            "description": "모두 다 불타리라가 끝까지 지속되면 대상의 위치에 악마 전사가 소환되고 모든 악마 전사의 공격력이 6초 동안 100% 증가합니다.",
+            "description": "모두 다 불타리라가 끝까지 지속되면 대상의 위치에 악마 전사가 소환되고 모든 악마 전사의 공격력이 5초 동안 100% 증가합니다.",
             "shortDescription": "모두 다 불타리라가 악마 전사 소환 및 악마 전사 강화",
             "extras": {},
             "upgradeFor": "E"
@@ -26608,9 +26608,25 @@
           },
           "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958cd9a19dc2c.png",
-          "description": "퀘스트: 적 영웅이 얼음 회오리의 중심부나 켈투자드의 사슬에 적중당하면 파멸이 1회 중첩됩니다.\n보상: 파멸이 15회 중첩되면 모든 일반 기술의 재사용 대기시간이 2초 감소합니다.\n보상: 파멸이 30회 중첩되면 기술 위력이 75% 증가합니다.",
+          "description": "퀘스트: 적 영웅이 얼음 회오리의 중심부나 켈투자드의 사슬에 적중당하면 어둠이 1회 중첩됩니다.\n보상: 어둠이 15회 중첩되면 혹한의 쐐기를 사용할 수 있게 됩니다.\n보상: 어둠이 30회 중첩되면 기술 위력이 75% 증가합니다.",
           "shortDescription": "적 방해 시 기술 강화",
           "extras": {}
+        },
+        {
+          "name": {
+            "en": "Glacial Spike",
+            "ko": "혹한의 쐐기"
+          },
+          "type": "1",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
+          "description": "사용하면 4초 후에 폭발하여 주위 적들에게 61(+2.5%)의 피해를 주는 쐐기를 소환합니다. 쐐기는 켈투자드의 사슬에 영향을 받을 수 있습니다.",
+          "shortDescription": "잠시 후 폭발하며 피해를 주는 쐐기 소환",
+          "cooldown": 30,
+          "extras": {
+            "사거리": "8",
+            "피해 반경": "3",
+            "쐐기 반경": "1.5"
+          }
         },
         {
           "name": {
@@ -26619,9 +26635,9 @@
           },
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958be8319dc2c.png",
-          "description": "0.5초 후, 부정한 구체를 내보내 처음 적중한 적과 그 주위의 적에게 154(+2.5%)의 피해를 주고 2초 동안 0.5초마다 72(+2.5%)의 피해를 주는 웅덩이를 남깁니다.",
+          "description": "0.5초 후, 부정한 구체를 내보내 처음 적중한 적과 그 주위의 적에게 154(+2.5%)의 피해를 주고 2초 동안 0.5초마다 84(+2.5%)의 피해를 주는 웅덩이를 남깁니다.",
           "shortDescription": "피해를 주고 지속적으로 피해를 주는 웅덩이 생성",
-          "cooldown": 6,
+          "cooldown": 5,
           "manaCost": 20,
           "extras": {
             "사거리": "11.75",
@@ -26637,9 +26653,9 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958c5d719dc2c.png",
-          "description": "1초 후에 폭발하는 얼음 회오리를 생성하여 대상 지역의 적에게 217(+2.5%)의 피해를 주고 2.5초 동안 35% 느려지게 합니다. 중심부에 있는 적들은 1초 동안 이동 불가 상태가 됩니다.",
+          "description": "1초 후에 폭발하는 얼음 회오리를 생성하여 대상 지역의 적에게 185(+2.5%)의 피해를 주고 2.5초 동안 35% 느려지게 합니다. 중심부에 있는 적들은 1초 동안 이동 불가 상태가 됩니다.",
           "shortDescription": "적에게 피해를 주고 무력화",
-          "cooldown": 10,
+          "cooldown": 8,
           "manaCost": 50,
           "extras": {
             "사거리": "9",
@@ -26653,9 +26669,9 @@
           },
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958b24619dc2c.png",
-          "description": "사슬을 내던져 처음 적중한 적 영웅 또는 구조물에게 99(+2.5%)의 피해를 줍니다. 사슬이 적중한 후 4초 내에 다시 사용하면 대상으로부터 새로운 사슬을 다른 적에게 내던져 두 대상이 서로에게 끌려가게 만들고 0.5초 동안 기절시킬 수 있습니다.",
-          "shortDescription": "적들이 서로 끌어당기게 만듦",
-          "cooldown": 12,
+          "description": "사슬을 내던져 처음 적중한 적 영웅에게 99(+2.5%)의 피해를 줍니다. 사슬이 적중한 후 3초 내에 다시 사용하면 대상으로부터 새로운 사슬을 다른 적에게 내던져 두 대상이 서로에게 끌려가게 만들고 0.5초 동안 기절시킬 수 있습니다.",
+          "shortDescription": "적 영웅들이 서로 끌어당기게 만듦",
+          "cooldown": 10,
           "manaCost": 50,
           "extras": {
             "사거리": "10.25",
@@ -26684,7 +26700,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958c5d719dc2c.png",
-            "description": "얼음 회오리가 중심부에 있는 적에게 50%의 추가 피해를 줍니다. 파멸이 30회 중첩되면 얼음 회오리의 이동 불가 효과의 지속 시간이 0.5초 증가합니다.",
+            "description": "얼음 회오리가 중심부에 있는 적에게 75%의 추가 피해를 줍니다. 파멸이 30회 중첩되면 얼음 회오리의 이동 불가 효과의 지속 시간이 0.5초 증가합니다.",
             "shortDescription": "얼음 회오리 중심부 공격력 및 이동 불가 효과 지속 시간 증가",
             "extras": {},
             "upgradeFor": "W"
@@ -26710,7 +26726,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958b24619dc2c.png",
-            "description": "켈투자드의 사슬로 적 영웅을 끌어당기면 125(+4%)의 피해를 흡수하는 보호막을 영구히 획득합니다. 이 보호막은 최대 2회 중첩됩니다.\n\n추가로 켈투자드의 사슬이 보호막에 277(+2.5%)의 추가 피해를 줍니다.",
+            "description": "켈투자드의 사슬로 적 영웅을 끌어당기면 133(+4%)의 피해를 흡수하는 보호막을 영구히 획득합니다. 이 보호막은 최대 2회 중첩됩니다.\n\n추가로 켈투자드의 사슬이 보호막에 277(+2.5%)의 추가 피해를 줍니다.",
             "shortDescription": "사슬이 보호막 부여 및 보호막에 추가 피해",
             "extras": {},
             "upgradeFor": "E"
@@ -26749,26 +26765,22 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958be8319dc2c.png",
-            "description": "적 영웅이 죽음과 부패 웅덩이에 피해를 받을 때마다 4초 동안 죽음과 부패의 지속 피해로 받는 피해가 25% 증가합니다. 이 효과는 최대 6회 중첩됩니다.",
+            "description": "적 영웅이 죽음과 부패 웅덩이에 피해를 받을 때마다 4초 동안 죽음과 부패의 지속 피해로 받는 피해가 20% 증가합니다. 이 효과는 최대 6회 중첩됩니다.",
             "shortDescription": "죽음과 부패 공격력 증가",
             "extras": {},
             "upgradeFor": "Q"
           },
           {
             "name": {
-              "en": "Glacial Spike",
-              "ko": "혹한의 쐐기"
+              "en": "Ice Cold",
+              "ko": "얼음처럼 차갑게"
             },
             "type": "active",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
-            "description": "사용하면 4초 후에 폭발하여 주위 적들에게 61(+2.5%)의 피해를 주는 쐐기를 소환합니다. 쐐기는 켈투자드의 사슬에 영향을 받을 수 있습니다.",
-            "shortDescription": "잠시 후 폭발하며 피해를 주는 쐐기 소환",
-            "cooldown": 30,
-            "extras": {
-              "사거리": "8",
-              "피해 반경": "3",
-              "쐐기 반경": "1.5"
-            }
+            "description": "혹한의 쐐기의 재사용 대기시간이 5초 감소하고 공격력이 250% 증가합니다.",
+            "shortDescription": "혹한의 쐐기 재사용 대기시간 감소",
+            "extras": {},
+            "upgradeFor": "active"
           },
           {
             "name": {
@@ -26792,13 +26804,13 @@
             },
             "type": "R",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c20419dc2c.png",
-            "description": "적 영웅에게 얼음 유성을 내보냅니다. 유성이 대상에게 적중하면 102(+2.5%)의 피해를 주고 대상 주위 적들에게 282(+2.5%)의 피해를 줍니다. 냉기 작렬에 적중당한 적들은 1.5초 동안 이동 불가 상태가 됩니다.",
+            "description": "적 영웅에게 얼음 유성을 내보냅니다. 유성이 대상에게 적중하면 118(+2.5%)의 피해를 주고 대상 주위 적들에게 282(+2.5%)의 피해를 줍니다. 냉기 작렬에 적중당한 적들은 1.5초 동안 이동 불가 상태가 됩니다.",
             "shortDescription": "대상과 주위 적들에게 피해를 주고 이동 불가 상태도 만듦",
             "cooldown": 70,
             "manaCost": 60,
             "extras": {
               "사거리": "14",
-              "너비": "5.5"
+              "피해 반경": "5.5"
             }
           },
           {
@@ -26808,10 +26820,10 @@
             },
             "type": "R",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958d96019dc2c.png",
-            "description": "전장 아무 곳에 1.5초 후에 폭발하는 균열을 소환하여 대상 지역 안의 적 영웅들에게 410(+2.5%)의 피해를 줍니다.",
+            "description": "전장 아무 곳에 1.5초 후에 폭발하는 균열을 소환하여 대상 지역 안의 적 영웅들에게 369(+2.5%)의 피해를 줍니다.",
             "shortDescription": "대상 지역에 큰 피해",
-            "cooldown": 20,
-            "manaCost": 60,
+            "cooldown": 16,
+            "manaCost": 45,
             "extras": {
               "사거리": "∞",
               "피해 반경": "2.25"
@@ -26826,8 +26838,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958c5d719dc2c.png",
-            "description": "얼음 회오리의 감속 효과의 지속 시간이 2초 증가합니다.",
-            "shortDescription": "얼음 회오리 감속 효과 지속 시간 증가",
+            "description": "얼음 회오리의 감속 효과가 10% 증가합니다. 얼음 회오리로 느려진 적에게 피해를 줄 때마다 감속 효과의 지속 시간이 0.5초 증가합니다.",
+            "shortDescription": "얼음 회오리 감속 효과 및 지속 시간 증가",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -26845,12 +26857,12 @@
           },
           {
             "name": {
-              "en": "Chain-Link",
+              "en": "Chain Link",
               "ko": "연쇄 사슬"
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958b62d19dc2c.png",
-            "description": "켈투자드의 사슬로 2명의 영웅을 끌어당기면 재사용 대기시간이 4초 감소하고 마나를 돌려받습니다.",
+            "description": "켈투자드의 사슬로 영웅을 끌어당기면 재사용 대기시간이 5초 감소하고 마나를 돌려받습니다.",
             "shortDescription": "사슬로 두 영웅을 끌어당기면 재사용 대기시간 감소",
             "extras": {},
             "upgradeFor": "E"
@@ -26864,7 +26876,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958be8319dc2c.png",
-            "description": "죽음과 부패의 폭발이 적 영웅에게 적중하면 재사용 대기시간이 1.25초 감소합니다.",
+            "description": "죽음과 부패의 폭발이 적 영웅에게 적중하면 재사용 대기시간이 1.5초 감소합니다.",
             "shortDescription": "죽음과 부패 재사용 대기시간 감소",
             "extras": {},
             "upgradeFor": "Q"
@@ -26876,8 +26888,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958c5d719dc2c.png",
-            "description": "얼음 회오리의 중심부에 적이 적중하면 대상에게 자신이 주는 모든 피해가 4초 동안 56(+2.5%)의 추가 피해를 줍니다.",
-            "shortDescription": "얼음 회오리가 적들이 추가 피해를 받게 함",
+            "description": "이동 불가 상태가 된 적에게 자신이 주는 모든 피해가 56(+2.5%)의 추가 피해를 줍니다.",
+            "shortDescription": "이동 불가 상태인 적에게 추가 피해",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -26991,7 +27003,7 @@
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594888c319dc2c.png",
-          "description": "<span style=\"color: #ffff8a\">시간여행자:</span> 미래에 다녀온 크로미는 아군보다 2레벨 더 빠르게 특성을 선택할 수 있습니다!\n\n<span style=\"color: #ffff8a\">청동 발톱:</span> 일반 기술이 적 영웅에게 적중하면 다음 일반 공격이 100%의 추가 피해를 줍니다.",
+          "description": "<span style=\"color: #ffff8a\">시간여행자:</span> 미래에 다녀온 크로미는 아군보다 2레벨 더 빠르게 특성을 선택할 수 있습니다!\n\n<span style=\"color: #ffff8a\">청동 발톱:</span> 일반 기술이 적 영웅에게 적중하면 다음 일반 공격이 125%의 추가 피해를 줍니다.",
           "shortDescription": "특성을 더 빨리 습득",
           "extras": {}
         },
@@ -27002,7 +27014,7 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645948715a19dc2c.png",
-          "description": "1초 후, 모래를 발사하여 처음 적중한 적 영웅에게 312(+4%)의 피해를 줍니다.\n\n퀘스트: 모래 강타가 적 영웅에게 50회 적중해야 합니다. 연속해서 적중하면 퀘스트가 2회 진행됩니다.\n보상: 모래 강타가 적 영웅에게 50회 적중하면 모래 강타를 시전할 때 그 자리에 환영이 남습니다. 모래 강타를 다시 시전하면 환영 또한 특성이 적용되지 않은 모래 강타를 사용하여 40%의 피해를 줍니다.",
+          "description": "1초 후, 모래를 발사하여 처음 적중한 적 영웅에게 328(+4%)의 피해를 줍니다.\n\n퀘스트: 모래 강타가 적 영웅에게 50회 적중해야 합니다. 연속해서 적중하면 퀘스트가 2회 진행됩니다.\n보상: 모래 강타가 적 영웅에게 50회 적중하면 모래 강타를 시전할 때 그 자리에 환영이 남습니다. 모래 강타를 다시 시전하면 환영 또한 특성이 적용되지 않은 모래 강타를 사용하여 40%의 피해를 줍니다.",
           "shortDescription": "긴 사거리를 가진 모래를 발사하여 피해를 입힘",
           "cooldown": 2.5,
           "manaCost": 15,
@@ -27018,7 +27030,7 @@
           },
           "type": "W",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948601e19dc2c.png",
-          "description": "공중에 용 형상의 모래를 쏘아올립니다. 1.5초 후, 대상 위치에 374(+4%)의 피해를 줍니다. 적에게는 모래가 쏟아질 위치가 0.5초 후에 표시됩니다.",
+          "description": "공중에 용 형상의 모래를 쏘아올립니다. 1.5초 후, 대상 위치에 406(+4%)의 피해를 줍니다. 적에게는 모래가 쏟아질 위치가 0.5초 후에 표시됩니다.",
           "shortDescription": "대상 지역에 피해를 줌",
           "cooldown": 9,
           "manaCost": 50,
@@ -27353,7 +27365,7 @@
         "range": 4.5,
         "period": 0.25,
         "damage": {
-          "value": 48,
+          "value": 50,
           "levelScaling": 0.04
         }
       },
@@ -27663,7 +27675,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645962aa9919dc2c.png",
-            "description": "포화가 적의 이동 속도를 20% 감소시킵니다.",
+            "description": "포화가 적의 이동 속도를 30% 감소시킵니다.",
             "shortDescription": "포화가 대상들을 느려지게 함",
             "extras": {},
             "upgradeFor": "Q"
@@ -31270,7 +31282,7 @@
             },
             "type": "active",
             "iconUrl": "http://i3.ruliweb.com/img/18/08/05/16507ed974519dc2c.png",
-            "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 386(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 3초 감소합니다.",
+            "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 386(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "심문으로 아군 치유",
             "extras": {},
             "upgradeFor": "W"
@@ -31308,7 +31320,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc81119dc2c.png",
-            "description": "절박한 기도의 마나 소모량이 30 감소합니다.\n\n<span style=\"color: #e8908c\">절박함</span>이 3회 중첩되면 5초 동안 260(+4%)의 피해를 흡수하는 보호막을 획득합니다.",
+            "description": "절박한 기도의 마나 소모량이 15 감소합니다.\n\n<span style=\"color: #e8908c\">절박함</span>이 3회 중첩되면 5초 동안 260(+4%)의 피해를 흡수하는 보호막을 획득합니다.",
             "shortDescription": "절박한 기도 마나 소모량 감소",
             "extras": {},
             "upgradeFor": "Q"
@@ -31320,7 +31332,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc3f219dc2c.png",
-            "description": "심문을 사용하면 <span style=\"color: #e8908c\">절박함</span> 중첩을 모두 제거하고 제거한 중첩당 마나를 60 회복합니다.",
+            "description": "심문을 사용하면 <span style=\"color: #e8908c\">절박함</span> 중첩을 모두 제거하고 제거한 중첩당 마나를 75 회복합니다.",
             "shortDescription": "심문 사용 시 절박함 제거 및 마나 회복",
             "extras": {},
             "upgradeFor": "W"
@@ -31332,7 +31344,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc4c419dc2c.png",
-            "description": "이글거리는 채찍의 첫 번째 타격이 적중한 영웅 하나당 10의 마나를 회복하고 두 번째 타격이 적중한 영웅 하나당 30의 마나를 회복합니다.",
+            "description": "이글거리는 채찍의 첫 번째 타격이 적중한 영웅 하나당 10의 마나를 회복하고 두 번째 타격이 적중한 영웅 하나당 25의 마나를 회복합니다.",
             "shortDescription": "이글거리는 채찍 적중 시 마나 회복",
             "extras": {},
             "upgradeFor": "E"
@@ -31448,7 +31460,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc81119dc2c.png",
-            "description": "<span style=\"color: #e8908c\">절박함</span>이 3회 중첩될 때 <span style=\"color: #e9eca9\">열의</span>가 부여된 모든 아군의 생명력을 208(+4%) 회복시킵니다.",
+            "description": "<span style=\"color: #e8908c\">절박함</span>이 3회 중첩될 때 <span style=\"color: #e9eca9\">열의</span>가 부여된 모든 아군의 생명력을 182(+4%) 회복시킵니다.",
             "shortDescription": "절박함 중첩 시 열의가 부여된 아군 치유",
             "extras": {},
             "upgradeFor": "Q"
@@ -31498,7 +31510,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc66e19dc2c.png",
-            "description": "성스러운 징벌이 50%의 추가 피해를 주고 처음 적중할 때 적들을 중심부로 끌어당깁니다.",
+            "description": "성스러운 징벌이 30%의 추가 피해를 주고 처음 적중할 때 적들을 중심부로 끌어당깁니다.",
             "shortDescription": "성스러운 징벌이 적들을 끌어당김",
             "extras": {},
             "upgradeFor": "R"
