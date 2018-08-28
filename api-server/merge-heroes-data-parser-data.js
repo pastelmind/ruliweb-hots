@@ -14,6 +14,14 @@ const program = require('commander');
 
 const HotsData = require('./src/hots-data');
 
+/**
+ * @typedef {import('./src/skill')} Skill
+ */
+
+/**
+ * @typedef {import('./src/talent')} Talent
+ */
+
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -76,26 +84,16 @@ function mergeHeroData(hotsData, heroJson) {
   for (const skill of hero.skills) {
     const skillData = findSkillData(heroJson, skill);
 
-    if (skillData) {
-      //Extract short description
-      if (skillData.shortTooltip)
-        skill.shortDescription = parseTooltip(skillData.shortTooltip);
-      else
-        console.warn(`${skillData.name} is missing a short tooltip`);
-    }
+    if (skillData)
+      mergeSkillData(skill, skillData);
     else
       console.warn('Cannot find skill data matching', skill.name.ko);
   }
 
   for (const talent of hero.allTalents()) {
     const talentData = findTalentData(heroJson, talent);
-    if (talentData) {
-      //Extract short description
-      if (talentData.shortTooltip)
-        talent.shortDescription = parseTooltip(talentData.shortTooltip);
-      else
-        console.warn(`${talentData.name} is missing a short tooltip`);
-    }
+    if (talentData)
+      mergeSkillData(talent, talentData);
     else
       console.warn('Cannot find talent data matching', talent.name.ko);
   }
@@ -185,15 +183,73 @@ function findTalentData(heroJson, talent) {
   return undefined;
 }
 
+
+/**
+ * Merge data from `skillData` into the given Skill object.
+ * @param {Skill} skill Skill object
+ * @param {*} skillData Skill data object
+ */
+function mergeSkillData(skill, skillData) {
+  //Extract description
+  if (skillData.fullTooltip)
+    skill.description = parseTooltip(skillData.fullTooltip);
+  else
+    console.warn(`${skillData.name} is missing a full tooltip`);
+
+  //Extract short description
+  if (skillData.shortTooltip)
+    skill.shortDescription = parseShortDescription(skillData.shortTooltip);
+  else
+    console.warn(`${skillData.name} is missing a short tooltip`);
+}
+
+
+/**
+ * Mapping of color names in `<c val="">` tags to their colors.
+ */
+const COLOR_CODES = {
+  TooltipNumbers: 'bfd4fd',
+  StandardTooltipHeader: 'ffffff',
+  TooltipQuest: 'e4b800',
+  AbilityPassive: '00ff90',
+  ColorViolet: 'd65cff',
+  ColorCreamYellow: 'ffff80',
+  MalthaelTrait: '00dfdf',
+  GlowColorRed: 'ff5858',
+  WhitemaneDesperation: 'ff8b8b',
+  WhitemaneZeal: 'fff5c2',
+};
+
+
 /**
  * Parse tooltip text, removing game data tags.
  * @param {string} tooltip
  */
 function parseTooltip(tooltip) {
   return tooltip
-    .replace(/<c val=".*?">/g, '')
-    .replace(/<\/c>/g, '')
-    .replace(/<n\/>/g, '\n')
-    .replace(/<img.*?\/>/g, '')
+    .replace(/(\d+)~~(.+?)~~/gi, (match, base, levelScaling) =>
+      `${Math.round(base * (1 + (+levelScaling)))}(+${levelScaling * 100}%)`  //Set scaling numbers to level 1-values
+    )
+    .replace(/<c val="#(?:TooltipNumbers|TooltipQuest)">(.*?)<\/c>/gi, '$1')   //Remove #TooltipNumbers styling
+    .replace(/<c val="#AbilityPassive">(지속 효과:)<\/c>/gi, '$1')             //Remove #AbilityPassive for generic passive descriptions
+    .replace(/<[cs] val="(.*?)">/gi, (match, colorName) =>
+      `<span style="color:#${COLOR_CODES[colorName.replace(/#/gi, '')] || colorName.toLowerCase()}">`
+    )
+    .replace(/<\/[cs]>/gi, '</span>')
+    .replace(/(\d(?:\(\+.*?%\))?)<lang rule="jongsung">(.*?),(.*?)<\/lang>/gi, (match, digitPart, eul, rul) =>
+      digitPart + ('2459'.includes(digitPart.charAt(0)) ? rul : eul)
+    )
+    .replace(/\s*<\/?n\/?>\s*/gi, '\n')
+    .replace(/<img.*?\/>/gi, '')
+    .replace(/\n+(\n보상:)/gi, '$1') //Fix Blizzard's newline errors
     .trim();
+}
+
+
+/**
+ * Parse short description text, removing game data tags.
+ * @param {string} tooltip
+ */
+function parseShortDescription(tooltip) {
+  return parseTooltip(tooltip).replace(/<.*?>/g, '');
 }
