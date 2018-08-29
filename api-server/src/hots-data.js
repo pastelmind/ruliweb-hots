@@ -19,7 +19,7 @@ module.exports = class HotsData {
     /** @type {string} */
     this.hotsVersion = hotsData.hotsVersion;
     /** @type {string} */
-    this.hotsPtrVersion = hotsData.hotsPtrVersion;
+    this.hotsPtrVersion = hotsData.hotsPtrVersion || undefined;
     this.statPresets = hotsData.statPresets;
     this.heroes = HotsData.unpackHeroes(hotsData.heroes);
     this.ptrHeroes = HotsData.unpackHeroes(hotsData.ptrHeroes);
@@ -31,43 +31,11 @@ module.exports = class HotsData {
   toJSON() {
     return {
       hotsVersion: this.hotsVersion,
-      hotsPtrVersion: this.hotsPtrVersion,
+      hotsPtrVersion: this.hotsPtrVersion || undefined, //Omit PTR version if it is falsy
       statPresets: this.statPresets,
-      heroes: packHeroes(this.heroes),
-      ptrHeroes: packHeroes(this.ptrHeroes)
+      heroes: HotsData.packHeroes(this.heroes),
+      ptrHeroes: HotsData.packHeroes(this.ptrHeroes)
     };
-
-    /**
-     * (Helper function) Pack a collection of Hero objects.
-     * @param {Object<string, Hero>} heroes Mapping of hero ID => Hero object
-     * @return {Object<string, *>} Mapping of hero ID => packed Hero object
-     */
-    function packHeroes(heroes) {
-      /** @type {Hero[]} */
-      const heroesArray = Object.values(heroes);
-
-      if (!heroesArray.length)
-        return undefined;
-
-      //Sort by hero name in ascending order
-      heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
-
-      const packedHeroes = {};
-
-      for (const hero of heroesArray) {
-        const heroJson = packedHeroes[hero.id] = hero.toJSON();
-
-        //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
-        delete heroJson.id;
-
-        //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
-        for (const talentLevel in heroJson.talents)
-          for (const talent of heroJson.talents[talentLevel])
-            delete talent.level;
-      }
-
-      return packedHeroes;
-    }
   }
 
   /**
@@ -86,7 +54,8 @@ module.exports = class HotsData {
   }
 
   /**
-   * Unpack a collection of Hero objects
+   * Unpack a collection of Hero objects from `source`.
+   * If `source` does not contain any hero data, returns an empty object.
    * @param {Object<string, *>} source Mapping of hero ID => (packed/unpacked) hero object
    * @return {Object<string, Hero>} Mapping of hero ID => Hero object
    */
@@ -97,5 +66,38 @@ module.exports = class HotsData {
       hero.id = heroId;
     }
     return dest;
+  }
+
+  /**
+   * Pack a collection of Hero objects into a JSON representation.
+   * If `heroes` is empty, returns `undefined`.
+   * @param {Object<string, Hero>} heroes Mapping of hero ID => Hero object
+   * @return {Object<string, *>} Mapping of hero ID => packed Hero object
+   */
+  static packHeroes(heroes) {
+    /** @type {Hero[]} */
+    const heroesArray = Object.values(heroes);
+
+    if (!heroesArray.length)
+      return undefined;
+
+    //Sort by hero name in ascending order
+    heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
+
+    const packedHeroes = {};
+
+    for (const hero of heroesArray) {
+      const heroJson = packedHeroes[hero.id] = hero.toJSON();
+
+      //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
+      delete heroJson.id;
+
+      //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
+      for (const talentLevel in heroJson.talents)
+        for (const talent of heroJson.talents[talentLevel])
+          delete talent.level;
+    }
+
+    return packedHeroes;
   }
 };
