@@ -1,46 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 
+const HeroStats = require('./hero-stats');
 const Skill = require('./skill');
 const Talent = require('./talent');
 
 /**
- * Represents a stat that grows with level.
- * @typedef {Object} GrowingStat
- * @prop {number} value
- * @prop {number=} levelAdd
- * @prop {number=} levelScaling
- */
-
-/**
- * Represents a collection of stats.
- * @typedef {Object} Unit
- * @prop {string=} unitName Alternate name of the unit
- * @prop {GrowingStat} hp
- * @prop {GrowingStat} hpRegen
- * @prop {number | GrowingStat=} mp
- * @prop {GrowingStat=} mpRegen
- * @prop {number=} charge
- * @prop {number=} energy
- * @prop {number=} fury
- * @prop {GrowingStat=} healEnergy
- * @prop {number=} zaryaEnergy
- * @prop {number=} ammo
- * @prop {number=} brew
- * @prop {GrowingStat=} shields
- * @prop {number} radius
- * @prop {number} speed
- * @prop {GrowingStat | GrowingStat[]=} damage
- * @prop {number | number[]=} range
- * @prop {number | number[]=} period
- */
-
-0;
-
-/**
  * Represents a Heroes of the Storm hero.
  */
-module.exports = class Hero {
+const Hero = module.exports = class Hero {
   /**
    * Create a new Hero object.
    * @param {Object} o
@@ -51,7 +19,7 @@ module.exports = class Hero {
    * @param {string=} o.type
    * @param {string=} o.role
    * @param {string=} o.universe
-   * @param { Unit | Unit[] } o.stats
+   * @param {HeroStats | HeroStats[]} o.stats
    * @param {Skill[]} o.skills
    * @param {{ [level: number]: Talent[] }=} o.talents
    * @param {Object<string, string|number>} o.extras
@@ -65,7 +33,7 @@ module.exports = class Hero {
     this.role = o.role || '';
     this.universe = o.universe || '';
 
-    this.stats = Array.isArray(o.stats) ? o.stats.map(cloneUnit) : cloneUnit(o.stats);
+    this.stats = Array.isArray(o.stats) ? o.stats.map(unitStats => new HeroStats(unitStats)) : new HeroStats(o.stats);
 
     this.skills = (o.skills || []).map(skill => new Skill(skill));
 
@@ -77,29 +45,6 @@ module.exports = class Hero {
         talent.level = talentLevel;
         return talent;
       });
-    }
-
-    /**
-     * Helper function that clones a unit (i.e. collection of stats)
-     * @param {Unit} unit Collection of stat ID => stat value or object
-     * @return {Unit} Cloned unit
-     */
-    function cloneUnit(unit) {
-      const unitClone = {};
-      for (const statId in unit) {
-        const stat = unit[statId];
-        unitClone[statId] = Array.isArray(stat) ? stat.map(cloneStat) : cloneStat(stat);
-      }
-      return unitClone;
-    }
-
-    /**
-     * Helper function that clones a stat
-     * @param {number | GrowingStat} stat
-     * @return {number | GrowingStat} Cloned stat
-     */
-    function cloneStat(stat) {
-      return typeof stat === 'object' && stat ? Object.assign({}, stat) : stat;
     }
   }
 
@@ -156,14 +101,14 @@ module.exports = class Hero {
       role: this.role,
       universe: this.universe,
       stats: this.stats,
-      skills: this.skills.map(skill => skill.toJSON()),
+      skills: this.skills,
       talents: {}
     };
 
     //Ensure that talents are ordered by level
     //(may not be necessary in V8, see https://stackoverflow.com/a/280861/9943202)
     for (const talentLevel of Object.keys(this.talents).sort((a, b) => a - b))
-      o.talents[talentLevel] = this.talents[talentLevel].map(talent => talent.toJSON());
+      o.talents[talentLevel] = this.talents[talentLevel];
 
     return o;
   }
@@ -198,19 +143,17 @@ module.exports = class Hero {
 };
 
 
-const Hero = module.exports;
-
-Hero.roles = Object.freeze({
+Hero.roles = {
   'warrior': '전사',
   'assassin': '암살자',
   'support': '지원가',
   'specialist': '전문가'
-});
+};
 
-Hero.universes = Object.freeze({
+Hero.universes = {
   'warcraft': '워크래프트',
   'starcraft': '스타크래프트',
   'diablo': '디아블로',
   'classic': '고전',
   'overwatch': '오버워치'
-});
+};

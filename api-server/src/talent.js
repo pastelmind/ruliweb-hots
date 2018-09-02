@@ -21,8 +21,8 @@ module.exports = class Talent extends Skill {
   /**
    * Produce a compact, minimal JSON representation
    */
-  toJSON() {
-    return Object.assign(super.toJSON(), {
+  toJSON(...args) {
+    return Object.assign(super.toJSON(...args), {
       upgradeFor: this.upgradeFor || undefined
     });
   }

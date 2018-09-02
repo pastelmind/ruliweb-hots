@@ -15,6 +15,9 @@ const util = require('util');
 const program = require('commander');
 
 const HotsData = require('./src/hots-data');
+const Hero = require('./src/hero');
+const HeroStats = require('./src/hero-stats');
+const mergeHotsData = require('./src/merge-hots-data');
 
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -24,6 +27,10 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 //Compatibility code for Node v8
 require('./src/console-assert-no-throw');
+
+/**
+ * @typedef {import('./src/scaling-stat')} ScalingStat
+ */
 
 
 //-------- Main code --------//
@@ -45,25 +52,19 @@ if (process.argv.length <= 2 || !program.dataDir) {
 
 
 (async () => {
-
-  program.inputJson = path.resolve(program.inputJson);
-  const hotsDataInput = await readFileAsync(program.inputJson, 'utf8');
-  const hotsData = new HotsData(hotsDataInput);
-
   const dataFiles = await readdirAsync(program.dataDir);
 
+  const heroes = {};
   for (const dataFile of dataFiles) {
     try {
       const heroDataSource = await readFileAsync(path.join(program.dataDir, dataFile), 'utf8');
       const heroData = JSON.parse(heroDataSource);
-      const hero = hotsData.heroes[heroData.id];
-
-      if (hero) {
-        hero.title = toKoreanString(heroData.title);
-        hero.stats = extractAllHeroUnitStats(heroData);
-      }
-      else
-        console.warn('Cannot find hero with ID:', heroData.id, '(skipped)');
+      heroes[heroData.id] = new Hero({
+        id: heroData.id,
+        name: toKoreanString(heroData.name),
+        title: toKoreanString(heroData.title),
+        stats: extractAllHeroUnitStats(heroData),
+      });
     }
     catch (e) {
       console.error(e); //Report and consume error
@@ -71,11 +72,19 @@ if (process.argv.length <= 2 || !program.dataDir) {
   }
 
   //Fix for Cho'Gall
-  const gallStats = hotsData.heroes.Gall.stats, choStats = hotsData.heroes.Cho.stats;
-  gallStats.hp = choStats.hp;
-  gallStats.hpRegen = choStats.hpRegen;
-  gallStats.radius = choStats.radius;
-  gallStats.speed = choStats.speed;
+  const { Cho, Gall } = heroes;
+  if (Cho && Gall) {
+    Gall.stats.hp = Cho.stats.hp;
+    Gall.stats.hpRegen = Cho.stats.hpRegen;
+    Gall.stats.radius = Cho.stats.radius;
+    Gall.stats.speed = Cho.stats.speed;
+  }
+
+  program.inputJson = path.resolve(program.inputJson);
+  const hotsDataInput = await readFileAsync(program.inputJson, 'utf8');
+  const hotsData = new HotsData(hotsDataInput);
+
+  mergeHotsData(hotsData, { heroes });
 
   program.outputJson = path.resolve(program.outputJson);
   await writeFileAsync(program.outputJson, hotsData.stringify());
@@ -89,7 +98,7 @@ if (process.argv.length <= 2 || !program.dataDir) {
 /**
  * Extracts Hero unit stats from the given hero data.
  * @param {Object} heroData
- * @return {UnitStatInfo | UnitStatInfo[]} Stat info of a single unit, or an array of unit stat infos
+ * @return {HeroStats | HeroStats[]} Stat info of a single unit, or an array of unit stat infos
  */
 function extractAllHeroUnitStats(heroData) {
   const unitStats = new Map;
@@ -111,23 +120,23 @@ function extractAllHeroUnitStats(heroData) {
       const colossusSmashMods = jsonFindId(heroData, 'VarianColossusSmashHeroModifications');
       const twinBladesMods = jsonFindId(heroData, 'VarianTwinBladesOfFuryHeroModifications');
 
-      const varianTaunt = simpleClone(unit);
+      const varianTaunt = new HeroStats(unit);
       varianTaunt.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTaunt').name);
       varianTaunt.hp.value *= 1 + parseFloat(tauntMods.modification.vitalMaxFraction.life.value);
       varianTaunt.hpRegen.value += parseFloat(getLifeRegenModification(tauntMods));
       unitStats.set(unitData.id + 'Taunt', varianTaunt);
 
-      const varianColossusSmash = simpleClone(unit);
+      const varianColossusSmash = new HeroStats(unit);
       varianColossusSmash.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianColossusSmash').name);
       varianColossusSmash.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianColossusSmashWeapon.modifier);
       varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashMods.modification.vitalMaxFraction.life.value);
       varianColossusSmash.hpRegen.value += parseFloat(getLifeRegenModification(colossusSmashMods));
       unitStats.set(unitData.id + 'ColossusSmash', varianColossusSmash);
 
-      const varianTwinBlades = simpleClone(unit);
+      const varianTwinBlades = new HeroStats(unit);
       varianTwinBlades.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name);
       varianTwinBlades.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianTwinBladesOfFuryWeapon.modifier);
-      varianTwinBlades.period /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
+      varianTwinBlades.period.value /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
       unitStats.set(unitData.id + 'TwinBlades', varianTwinBlades);
     }
     //Fix for Rexxar: Manually add Misha's stats
@@ -150,11 +159,14 @@ function extractAllHeroUnitStats(heroData) {
   if (heroData.id === 'LostVikings')
     return [unitStats.get('HeroOlaf'), unitStats.get('HeroBaleog'), unitStats.get('HeroErik')];
 
-  //Fix for Chen: Remove Earth, Wind, and Fire
-  if (heroData.id === 'Chen') {
-    const chen = unitStats.get('HeroChen');
-    unitStats.clear();
-    unitStats.set('HeroChen', chen);
+  //Remove non-hero units of Abathur, Chen, Ragnaros, Medivh, and Lt. Morales
+  for (const heroUnitId of ['HeroAbathur', 'HeroChen', 'HeroRagnaros', 'HeroMedivh', 'HeroMedic']) {
+    const heroUnit = unitStats.get(heroUnitId);
+    if (heroUnit) {
+      unitStats.clear();
+      unitStats.set(heroUnitId, heroUnit);
+      break;
+    }
   }
 
   //Unit count assertions
@@ -180,56 +192,23 @@ function extractAllHeroUnitStats(heroData) {
 }
 
 /**
- * @typedef {{ value: number, levelScaling: number }} ScalingStat
- */
-
-/**
- * @typedef {Object} UnitStatInfo
- * @property {string} unitName
- * @property {ScalingStat} hp
- * @property {ScalingStat =} hpRegen
- * @property {ScalingStat =} mp
- * @property {ScalingStat =} mpRegen
- * @property {number =} charge
- * @property {number =} energy
- * @property {number =} fury
- * @property {ScalingStat =} healEnergy
- * @property {number =} zaryaEnergy
- * @property {number =} ammo
- * @property {number =} brew
- * @property {ScalingStat =} shields
- * @property {number} radius
- * @property {number} speed
- * @property {ScalingStat | ScalingStat[] =} damage
- * @property {number | number[] =} range
- * @property {number | number[] =} period
- */
-
-/**
  * Extracts unit stat information from the given unit data.
  * @param {Object} unitData Data of a single unit
  * @param {Object} heroData Hero data that owns the unit data.
- * @return {UnitStatInfo} Unit stat information
+ * @return {HeroStats} Unit stat information
  */
 function extractUnitStats(unitData, heroData) {
-  if (!(unitData && typeof unitData === 'object')) return undefined;
+  if (!(unitData && typeof unitData === 'object'))
+    return undefined;
 
+  /** @type {Partial<HeroStats>} */
   const stats = {
     unitName: toKoreanString(unitData.name),
-    hp: {
-      value: unitData.lifeMax.value,
-      levelScaling: unitData.lifeMax.levelScaling
-    },
+    hp: unitData.lifeMax,
+    hpRegen: unitData.lifeRegenRate,
     radius: unitData.radius,
-    speed: unitData.speed
+    speed: unitData.speed,
   };
-
-  if (unitData.lifeRegenRate) {
-    stats.hpRegen = {
-      value: unitData.lifeRegenRate.value,
-      levelScaling: unitData.lifeRegenRate.levelScaling
-    };
-  }
 
   //Fix for Alexstrasza's Dragon form
   if (unitData.id === 'HeroAlexstraszaDragon')
@@ -254,49 +233,9 @@ function extractUnitStats(unitData, heroData) {
     };
   }
 
-  const weapons = extractWeaponInfo(unitData.weapon, heroData);
-  if (weapons) {
-    if (Array.isArray(weapons)) {
-      console.assert(weapons.length === 2, `Invalid number of weapons found (${weapons.length}), expected 2`);
-      const weapon1 = weapons[0], weapon2 = weapons[1];
+  Object.assign(stats, extractWeaponInfo(unitData.weapon, heroData));
 
-      const ALTERNATE_WEAPON_NAMES = Object.freeze({
-        'Greymane': Object.freeze(['인간', '늑대인간']),
-        'Fenix': Object.freeze(['연발포', '위상 폭탄']),
-        'SgtHammer': Object.freeze(['전차', '공성 모드']),
-      });
-
-      const altWeaponNames = ALTERNATE_WEAPON_NAMES[heroData.id];
-      console.assert(altWeaponNames, 'Unexpected hero with multiple weapons:', heroData.id);
-
-      if (weapon1.damage.value !== weapon2.damage.value || weapon1.damage.levelScaling !== weapon2.damage.levelScaling)
-        combineWeaponStats(weapon1, weapon2, 'damage', altWeaponNames);
-
-      if (weapon1.range !== weapon2.range)
-        combineWeaponStats(weapon1, weapon2, 'range', altWeaponNames);
-
-      if (weapon1.period !== weapon2.period)
-        combineWeaponStats(weapon1, weapon2, 'period', altWeaponNames);
-
-      Object.assign(stats, weapon1);
-    }
-    else
-      Object.assign(stats, weapons);
-  }
-
-  return stats;
-
-  function combineWeaponStats(weapon1, weapon2, statName, alternateNames) {
-    if (!weapon1[statName] || typeof weapon1[statName] !== 'object')
-      weapon1[statName] = { value: weapon1[statName] };
-    if (!weapon2[statName] || typeof weapon2[statName] !== 'object')
-      weapon2[statName] = { value: weapon2[statName] };
-
-    weapon1[statName].altName = alternateNames[0];
-    weapon2[statName].altName = alternateNames[1];
-
-    weapon1[statName] = [weapon1[statName], weapon2[statName]];
-  }
+  return new HeroStats(stats);
 }
 
 /**
@@ -314,26 +253,15 @@ const HERO_RESOURCE_IDS = Object.freeze({
   Chen: 'brew'
 });
 
-/**
- * @typedef {Object} UnitResourceInfo
- * @property {ScalingStat =} mp
- * @property {ScalingStat =} mpRegen
- * @property {number =} charge
- * @property {number =} energy
- * @property {number =} fury
- * @property {ScalingStat =} healEnergy
- * @property {number =} zaryaEnergy
- * @property {number =} ammo
- * @property {number =} brew
- */
 
 /**
  * Extracts unit resource information from the given unit data.
  * @param {Object} unitData Data of a single unit
  * @param {string} heroId ID of hero that owns the unit
- * @return {UnitResourceInfo} Unit resource information
+ * @return {Partial<HeroStats>} Unit resource information
  */
 function extractResourceInfo(unitData, heroId) {
+  /** @type {Partial<HeroStats>} */
   const resourceInfo = {};
 
   if (unitData.energyMax) {
@@ -365,7 +293,7 @@ function extractResourceInfo(unitData, heroId) {
  * A set of weapon IDs that are always selected when multiple weapons are found.
  * Values are not used and have no meaning.
  */
-const WEAPON_IDS_RESOLVE_MULTIPLE = Object.freeze({
+const WEAPON_IDS_RESOLVE_MULTIPLE = {
   'HeroGreymaneRangedWeapon': 0,
   'HeroGreymaneWorgenWeapon': 0,
   'HeroBaleogBow': 0,
@@ -380,21 +308,15 @@ const WEAPON_IDS_RESOLVE_MULTIPLE = Object.freeze({
   'AmazonHeroWeaponRanged': 0,
   'ChenFireHeroWeapon': 0,
   'ChenStormHeroWeapon': 0,
-  'ChenEarthHeroWeapon': 0
-});
-
-/**
- * @typedef {Object} WeaponInfo
- * @property {number} range Attack range
- * @property {number} period Attack period (inverse of attack speed)
- * @property {ScalingStat} damage Attack damage
- */
+  'ChenEarthHeroWeapon': 0,
+  'HeroNova': 0,
+};
 
 /**
  * Extracts weapon information from JSON weapon data.
  * @param {*} weaponData unitData.weapon value produced by heroes-parser
  * @param {Object} heroData Data object of the hero that owns the weapon
- * @return {WeaponInfo|WeaponInfo[]} Weapon info, or an array of weapon info
+ * @return {Partial<HeroStats>} Object containing weapon information
  */
 function extractWeaponInfo(weaponData, heroData) {
   if (!(weaponData && typeof weaponData === 'object')) return undefined;
@@ -402,50 +324,69 @@ function extractWeaponInfo(weaponData, heroData) {
   if (Array.isArray(weaponData)) {
     if (weaponData.find(w => w.id in WEAPON_IDS_RESOLVE_MULTIPLE))
       weaponData = weaponData.filter(w => w.id in WEAPON_IDS_RESOLVE_MULTIPLE);
-
-    const weapons = weaponData.map(weapon => extractWeaponInfo(weapon, heroData)).filter(w => w);
-    return weapons.length <= 1 ? weapons[0] : weapons;
-  }
-
-  if (weaponData.link && typeof weaponData.link === 'object')
-    return extractWeaponInfo(weaponData.link, heroData);
-
-  if (!(weaponData.range && weaponData.period))
-    return undefined;
-
-  console.assert(weaponData.range, `${weaponData.id}: Missing weaponData.range`);
-  console.assert(weaponData.period, `${weaponData.id}: Missing weaponData.period`);
-
-  const weaponInfo = { range: weaponData.range, period: weaponData.period };
-
-  const damageEffect = getDamageEffect(weaponData.effects);
-  if (damageEffect && damageEffect.amount) {
-    console.assert(Number.isInteger(damageEffect.amount.levelScaling * 200), `${damageEffect.amount.levelScaling} is not a multiple of 0.005`);
-
-    weaponInfo.damage = {
-      value: damageEffect.amount.value,
-      levelScaling: damageEffect.amount.levelScaling
-    };
-
-    //Fix for Sgt. Hammer
-    if (damageEffect.multiplicativeModifier) {
-      if (damageEffect.multiplicativeModifier.siegeBonus)
-        weaponInfo.damage.value *= 1 + parseFloat(damageEffect.multiplicativeModifier.siegeBonus.modifier);
-    }
   }
   else
-    return undefined;
+    weaponData = [weaponData];
 
-  //Fix for Fenix
-  if (weaponData.id === 'FenixHeroWeapon') {
-    const repeaterCannonBehavior = jsonFindId(heroData.abilities, 'FenixRepeaterCannonBehavior');
+  const weaponInfo = { range: [], period: [], damage: [] };
 
-    weaponInfo.period /= 1 + repeaterCannonBehavior.modification.additiveAttackSpeedFactor;
+  for (let weapon of weaponData) {
+    if (weapon.link && typeof weapon.link === 'object')
+      weapon = weapon.link;
+
+    //Extract weapon range and attack period
+    let { range, period } = weapon;
+
+    //A valid weapon entry must have either a range or period
+    if (!range && !period)
+      continue;
+
+    console.assert(range, `${heroData.id}: Missing ${weapon.id}.range`);
+    console.assert(period, `${heroData.id}: Missing ${weapon.id}.period`);
+
+    //Fix for Fenix
+    if (weapon.id === 'FenixHeroWeapon') {
+      const repeaterCannonBehavior = jsonFindId(heroData.abilities, 'FenixRepeaterCannonBehavior');
+      period /= 1 + repeaterCannonBehavior.modification.additiveAttackSpeedFactor;
+    }
+    else if (weapon.id === 'FenixPhaseBombWeapon') {
+      const phaseBombBehavior = jsonFindId(heroData.abilities, 'FenixPhaseBombBehavior');
+      range += phaseBombBehavior.modification.weaponRange;
+    }
+
+    if (range && !weaponInfo.range.find(r => r.value === range))
+      weaponInfo.range.push({ value: range });
+    if (period && !weaponInfo.period.find(p => p.value === period))
+      weaponInfo.period.push({ value: period });
+
+    //Extract weapon damage
+    const damageEffect = getDamageEffect(weapon.effects);
+    if (damageEffect && damageEffect.amount) {
+      let { value, levelScaling } = damageEffect.amount;
+
+      //Fix for Sgt. Hammer
+      if (damageEffect.multiplicativeModifier && damageEffect.multiplicativeModifier.siegeBonus)
+        value *= 1 + parseFloat(damageEffect.multiplicativeModifier.siegeBonus.modifier);
+
+      if (!weaponInfo.damage.find(d => d.value === value && d.levelScaling === levelScaling))
+        weaponInfo.damage.push({ value, levelScaling });
+    }
   }
-  else if (weaponData.id === 'FenixPhaseBombWeapon') {
-    const phaseBombBehavior = jsonFindId(heroData.abilities, 'FenixPhaseBombBehavior');
 
-    weaponInfo.range += phaseBombBehavior.modification.weaponRange;
+  //Set alternate weapon names
+  const ALTERNATE_WEAPON_NAMES = {
+    'Greymane': ['인간', '늑대인간'],
+    'Fenix': ['연발포', '위상 폭탄'],
+    'SgtHammer': ['전차', '공성 모드'],
+  };
+  const altWeaponNames = ALTERNATE_WEAPON_NAMES[heroData.id];
+  for (const [statId, statArray] of Object.entries(weaponInfo)) {
+    if (statArray.length > 1 && altWeaponNames)
+      statArray.forEach((s, index) => s.altName = altWeaponNames[index]);
+    else {
+      //Pick the first stat in each stat array
+      weaponInfo[statId] = statArray[0];
+    }
   }
 
   return weaponInfo;
@@ -478,7 +419,8 @@ function getDamageEffect(effect) {
   for (const propName in SEARCH_PROPS) {
     if (effect[propName]) {
       const damageEffect = getDamageEffect(effect[propName]);
-      if (damageEffect) return damageEffect;
+      if (damageEffect)
+        return damageEffect;
     }
   }
 
@@ -545,13 +487,4 @@ function getLifeRegenModification(mod) {
  */
 function toKoreanString(stringObj) {
   return typeof stringObj === 'string' ? stringObj : stringObj.kokr;
-}
-
-/**
- * Simple clone
- * @param {*} o JSON-compatible object
- * @return {*} Clone of `o`
- */
-function simpleClone(o) {
-  return JSON.parse(JSON.stringify(o));
 }

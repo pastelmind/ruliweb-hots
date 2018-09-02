@@ -10,11 +10,11 @@ module.exports = class KoEnString {
    * @param {string | KoEnString} o
    */
   constructor(o = '') {
-    if (o && typeof o === 'object' && 'en' in o && 'ko' in o) {
+    if (o && typeof o === 'object' && ('en' in o || 'ko' in o)) {
       /** @type {string} */
-      this.en = o.en;
+      this.en = o.en || '';
       /** @type {string} */
-      this.ko = o.ko;
+      this.ko = o.ko || '';
     }
     else {
       o += '';
