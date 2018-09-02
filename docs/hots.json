@@ -754,6 +754,17 @@
           },
           {
             "name": {
+              "en": "Oppressor",
+              "ko": "폭군"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
+            "description": "일반 공격이 적 영웅의 기술 위력을 2.5초 동안 40% 감소시킵니다.",
+            "shortDescription": "일반 공격이 기술 위력을 감소시킴",
+            "extras": {}
+          },
+          {
+            "name": {
               "en": "Brute Force",
               "ko": "압살"
             },
@@ -763,17 +774,6 @@
             "shortDescription": "들이치기가 받는 치유량을 감소시킴",
             "extras": {},
             "upgradeFor": "active"
-          },
-          {
-            "name": {
-              "en": "Oppressor",
-              "ko": "폭군"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
-            "description": "일반 공격이 적 영웅의 기술 위력을 2.5초 동안 40% 감소시킵니다.",
-            "shortDescription": "일반 공격이 기술 위력을 감소시킴",
-            "extras": {}
           },
           {
             "name": {
@@ -5936,18 +5936,6 @@
         "16": [
           {
             "name": {
-              "en": "Debilitating Flames",
-              "ko": "쇠약의 불길"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953b02b19dc2c.png",
-            "description": "화염 발구르기에 적중당한 적 영웅이 4초 동안 5% 느려져 최대 50% 느려집니다. 쇠약의 불길로 25% 이상 느려진 적은 공격력이 50% 감소합니다.",
-            "shortDescription": "화염 발구르기가 적 영웅 약화",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
               "en": "Domination",
               "ko": "지배"
             },
@@ -5957,6 +5945,18 @@
             "shortDescription": "압도 사용 시 암흑의 돌진 재사용 대기시간 초기화",
             "extras": {},
             "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Debilitating Flames",
+              "ko": "쇠약의 불길"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953b02b19dc2c.png",
+            "description": "화염 발구르기에 적중당한 적 영웅이 4초 동안 5% 느려져 최대 50% 느려집니다. 쇠약의 불길로 25% 이상 느려진 적은 공격력이 50% 감소합니다.",
+            "shortDescription": "화염 발구르기가 적 영웅 약화",
+            "extras": {},
+            "upgradeFor": "W"
           },
           {
             "name": {
@@ -10959,17 +10959,6 @@
           },
           {
             "name": {
-              "en": "Fish Tank",
-              "ko": "방어"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ea98819dc2c.png",
-            "description": "일반 공격과 일반 기술로 준 피해의 25%만큼 생명력을 회복합니다.",
-            "shortDescription": "일반 공격 및 일반 기술로 생명력 회복",
-            "extras": {}
-          },
-          {
-            "name": {
               "en": "Egg Shell",
               "ko": "알껍질"
             },
@@ -10979,6 +10968,17 @@
             "shortDescription": "알에서 부활 시 보호막 획득",
             "extras": {},
             "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Fish Tank",
+              "ko": "방어"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595ea98819dc2c.png",
+            "description": "일반 공격과 일반 기술로 준 피해의 25%만큼 생명력을 회복합니다.",
+            "shortDescription": "일반 공격 및 일반 기술로 생명력 회복",
+            "extras": {}
           }
         ],
         "16": [
@@ -26779,18 +26779,6 @@
           },
           {
             "name": {
-              "en": "Ice Cold",
-              "ko": "얼음처럼 차갑게"
-            },
-            "type": "active",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
-            "description": "혹한의 쐐기의 재사용 대기시간이 5초 감소하고 공격력이 250% 증가합니다.",
-            "shortDescription": "혹한의 쐐기 재사용 대기시간 감소",
-            "extras": {},
-            "upgradeFor": "active"
-          },
-          {
-            "name": {
               "en": "Chilling Touch",
               "ko": "싸늘한 손길"
             },
@@ -26801,6 +26789,18 @@
             "extras": {
               "피해 반경": "3"
             }
+          },
+          {
+            "name": {
+              "en": "Ice Cold",
+              "ko": "얼음처럼 차갑게"
+            },
+            "type": "active",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
+            "description": "혹한의 쐐기의 재사용 대기시간이 5초 감소하고 공격력이 250% 증가합니다.",
+            "shortDescription": "혹한의 쐐기 재사용 대기시간 감소",
+            "extras": {},
+            "upgradeFor": "active"
           }
         ],
         "10": [
