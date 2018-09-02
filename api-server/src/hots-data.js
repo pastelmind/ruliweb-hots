@@ -93,12 +93,14 @@ module.exports = class HotsData {
       delete heroJson.id;
 
       //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
-      for (const talentLevel in heroJson.talents)
+      for (const talentLevel in heroJson.talents) {
         for (const talent of heroJson.talents[talentLevel]) {
           if (!talent)
-            console.error(`${hero.id}.talents.${talentLevel} has ${heroJson.talents[talentLevel]}`);
-          delete talent.level;
+            console.error(`${hero.id}: Talent at ${talentLevel} [${heroJson.talents[talentLevel]}]`);
+          else
+            delete talent.level;
         }
+      }
     }
 
     return packedHeroes;

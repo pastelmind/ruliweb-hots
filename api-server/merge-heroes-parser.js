@@ -17,6 +17,8 @@ const program = require('commander');
 const HotsData = require('./src/hots-data');
 const Hero = require('./src/hero');
 const HeroStats = require('./src/hero-stats');
+const Talent = require('./src/talent');
+const KoEnString = require('./src/ko-en-string');
 const mergeHotsData = require('./src/merge-hots-data');
 
 
@@ -59,12 +61,7 @@ if (process.argv.length <= 2 || !program.dataDir) {
     try {
       const heroDataSource = await readFileAsync(path.join(program.dataDir, dataFile), 'utf8');
       const heroData = JSON.parse(heroDataSource);
-      heroes[heroData.id] = new Hero({
-        id: heroData.id,
-        name: toKoreanString(heroData.name),
-        title: toKoreanString(heroData.title),
-        stats: extractAllHeroUnitStats(heroData),
-      });
+      heroes[heroData.id] = parseHero(heroData);
     }
     catch (e) {
       console.error(e); //Report and consume error
@@ -96,6 +93,41 @@ if (process.argv.length <= 2 || !program.dataDir) {
 //-------- Support functions --------//
 
 /**
+ * Parses Hero data from the given JSON object.
+ * @param {Object} heroData Hero data
+ * @return {Hero} Hero object
+ */
+function parseHero(heroData) {
+  const hero = new Hero({
+    id: heroData.id,
+    name: toKoEnString(heroData.name).ko,
+    title: toKoEnString(heroData.title).ko,
+    stats: extractAllHeroUnitStats(heroData),
+    talents: parseAllTalents(heroData),
+  });
+
+  switch (hero.id) {
+    case 'LostVikings': //Longboat Raid! => Mortar
+      insertSubAbilitiesAfterTalent(hero, heroData, '바이킹의 습격!', '박격포');
+      break;
+    case 'Firebat':     //Bunker Drop => Flamethrower
+      insertSubAbilitiesAfterTalent(hero, heroData, '벙커 투하', '화염방사기');
+      break;
+    case 'Junkrat':     //RIP-Tire => Jump!
+      insertSubAbilitiesAfterTalent(hero, heroData, '죽이는 타이어', '점프!');
+      break;
+    case 'Chen':        //Storm, Earth, Fire => Storm / Earth / Fire
+      insertSubAbilitiesAfterTalent(hero, heroData, '폭풍, 대지, 불', '폭풍', '대지', '불');
+      break;
+    case 'Tychus':      //Commandeer Odin => Annihilate / Ragnarok Missiles / Thrusters
+      insertSubAbilitiesAfterTalent(hero, heroData, '오딘 출격', '몰살', '라그나로크 미사일', '추진기 가동');
+      break;
+  }
+
+  return hero;
+}
+
+/**
  * Extracts Hero unit stats from the given hero data.
  * @param {Object} heroData
  * @return {HeroStats | HeroStats[]} Stat info of a single unit, or an array of unit stat infos
@@ -121,20 +153,20 @@ function extractAllHeroUnitStats(heroData) {
       const twinBladesMods = jsonFindId(heroData, 'VarianTwinBladesOfFuryHeroModifications');
 
       const varianTaunt = new HeroStats(unit);
-      varianTaunt.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTaunt').name);
+      varianTaunt.unitName = toKoEnString(jsonFindId(heroData.abilities, 'VarianTaunt').name).ko;
       varianTaunt.hp.value *= 1 + parseFloat(tauntMods.modification.vitalMaxFraction.life.value);
       varianTaunt.hpRegen.value += parseFloat(getLifeRegenModification(tauntMods));
       unitStats.set(unitData.id + 'Taunt', varianTaunt);
 
       const varianColossusSmash = new HeroStats(unit);
-      varianColossusSmash.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianColossusSmash').name);
+      varianColossusSmash.unitName = toKoEnString(jsonFindId(heroData.abilities, 'VarianColossusSmash').name).ko;
       varianColossusSmash.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianColossusSmashWeapon.modifier);
       varianColossusSmash.hp.value *= 1 + parseFloat(colossusSmashMods.modification.vitalMaxFraction.life.value);
       varianColossusSmash.hpRegen.value += parseFloat(getLifeRegenModification(colossusSmashMods));
       unitStats.set(unitData.id + 'ColossusSmash', varianColossusSmash);
 
       const varianTwinBlades = new HeroStats(unit);
-      varianTwinBlades.unitName = toKoreanString(jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name);
+      varianTwinBlades.unitName = toKoEnString(jsonFindId(heroData.abilities, 'VarianTwinBladesofFury').name).ko;
       varianTwinBlades.damage.value *= 1 + parseFloat(varianWeaponDamageBase.multiplicativeModifier.varianTwinBladesOfFuryWeapon.modifier);
       varianTwinBlades.period.value /= 1 + parseFloat(twinBladesMods.modification.unifiedAttackSpeedFactor);
       unitStats.set(unitData.id + 'TwinBlades', varianTwinBlades);
@@ -203,7 +235,7 @@ function extractUnitStats(unitData, heroData) {
 
   /** @type {Partial<HeroStats>} */
   const stats = {
-    unitName: toKoreanString(unitData.name),
+    unitName: toKoEnString(unitData.name).ko,
     hp: unitData.lifeMax,
     hpRegen: unitData.lifeRegenRate,
     radius: unitData.radius,
@@ -428,6 +460,55 @@ function getDamageEffect(effect) {
 }
 
 
+/**
+ * Parses all talents from the given hero data.
+ * @param {Object} heroData JSON object that represents a hero
+ * @return {{ [talentLevel: number]: Talent[] }} Collection of Talents, keyed by talent level
+ */
+function parseAllTalents(heroData) {
+  const talents = {};
+
+  for (const [talentLevel, talentDataArray] of Object.entries(heroData.talents))
+    talents[+talentLevel] = talentDataArray.map(parseTalentData);
+
+  return talents;
+}
+
+
+/**
+ * Parses a Talent object from the given data.
+ * @param {Object} talentData JSON object that represents a talent
+ * @return {Talent} Talent object
+ */
+function parseTalentData(talentData) {
+  return { name: toKoEnString(talentData.button.name) };
+}
+
+
+/**
+ * Finds a talent by `talentName` in `hero`, and inserts the given subabilities
+ * after it as talents.
+ * @param {Hero} hero Hero
+ * @param {Object} heroData JSON object that represents a hero
+ * @param {string} talentName Name of talent to search for
+ * @param  {...string} subAbilityNames Names of subabilities to insert
+ */
+function insertSubAbilitiesAfterTalent(hero, heroData, talentName, ...subAbilityNames) {
+  for (const talentArray of Object.values(hero.talents)) {
+    const talentIndex = talentArray.findIndex(talent => talent.name.ko === talentName);
+    if (talentIndex !== -1) {
+      const subAbilities = subAbilityNames.map(name => {
+        const abilityData = jsonFind(heroData, o => o && o.button && o.button.name && o.button.name.kokr === name);
+        return new Talent(abilityData ? parseTalentData(abilityData) : { name: { ko: name } });
+      });
+
+      talentArray.splice(talentIndex + 1, 0, ...subAbilities);
+      return;
+    }
+  }
+}
+
+
 //-------- Utility functions --------//
 
 /**
@@ -481,10 +562,13 @@ function getLifeRegenModification(mod) {
 }
 
 /**
- * Extracts KR string from plain strings and multi-locale string objects.
- * @param {string | { kokr: string }} stringObj Plain string or multi-locale string object
+ * Extracts a KR/En string from plain strings and multi-locale string objects.
+ * @param {string | { kokr: string, enus: string }} str Plain string or multi-locale string object
  * @return {string} Korean string
  */
-function toKoreanString(stringObj) {
-  return typeof stringObj === 'string' ? stringObj : stringObj.kokr;
+function toKoEnString(str) {
+  return new KoEnString(typeof str === 'string' ? str.trim() : {
+    ko: str.kokr.trim(),
+    en: str.enus.trim().replace(/’/g, "'"),
+  });
 }

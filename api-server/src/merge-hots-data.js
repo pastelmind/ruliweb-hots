@@ -181,6 +181,9 @@ function mergeHeroStats(target, source) {
  * @return {Skill} Merged Skill object
  */
 function mergeSkill(target, source) {
+  //Merge skill and talent names
+  mergeProperties(target.name, source.name, { ko: 0, en: 0 });
+
   return mergeProperties(target, source, {
     description: 0,
     shortDescription: 0,
