@@ -705,7 +705,7 @@
         "4": [
           {
             "name": {
-              "en": "In for the Kill",
+              "en": "In For the Kill",
               "ko": "살상의 기회"
             },
             "type": "passive",
@@ -1216,7 +1216,7 @@
           },
           {
             "name": {
-              "en": "Grav-o-bomb 3000",
+              "en": "Grav-O-Bomb 3000",
               "ko": "중력폭탄 3000"
             },
             "type": "R",
@@ -1571,7 +1571,7 @@
           },
           {
             "name": {
-              "en": "Dark Descent",
+              "en": "Ogre Rampage",
               "ko": "날뛰는 오우거"
             },
             "type": "passive",
@@ -1841,7 +1841,7 @@
         "1": [
           {
             "name": {
-              "en": "Swift as the wind",
+              "en": "Swift as the Wind",
               "ko": "바람처럼 빠르게"
             },
             "type": "passive",
@@ -1932,7 +1932,7 @@
           },
           {
             "name": {
-              "en": "Perfect Defence",
+              "en": "Perfect Defense",
               "ko": "완벽한 응수"
             },
             "type": "passive",
@@ -2663,7 +2663,7 @@
           },
           {
             "name": {
-              "en": "Visciousness",
+              "en": "Viciousness",
               "ko": "포악함"
             },
             "type": "passive",
@@ -2753,7 +2753,7 @@
         "10": [
           {
             "name": {
-              "en": "Go For the Throat",
+              "en": "Go for the Throat",
               "ko": "숨통을 노려라"
             },
             "type": "R",
@@ -3152,7 +3152,7 @@
         "7": [
           {
             "name": {
-              "en": "Baelog the Fierce",
+              "en": "Baleog the Fierce",
               "ko": "용맹한 밸로그"
             },
             "type": "passive",
@@ -3164,7 +3164,7 @@
           },
           {
             "name": {
-              "en": "Spin to Win!",
+              "en": "Spin To Win!",
               "ko": "돌아야 이긴다!"
             },
             "type": "Q",
@@ -3271,7 +3271,7 @@
         "16": [
           {
             "name": {
-              "en": "Large and in Charge",
+              "en": "Large and In Charge",
               "ko": "힘세고 강한 돌격"
             },
             "type": "passive",
@@ -3283,7 +3283,7 @@
           },
           {
             "name": {
-              "en": "Impatience is a Virtue",
+              "en": "Impatience Is a Virtue",
               "ko": "참으면 손해"
             },
             "type": "passive",
@@ -5512,7 +5512,7 @@
           },
           {
             "name": {
-              "en": "Lamb for the Slaughter",
+              "en": "Lamb to the Slaughter",
               "ko": "도살장의 어린 양"
             },
             "type": "R",
@@ -6319,7 +6319,7 @@
         "13": [
           {
             "name": {
-              "en": "Cauterized Wounds",
+              "en": "Cauterize Wounds",
               "ko": "상처 소작"
             },
             "type": "passive",
@@ -7370,7 +7370,7 @@
           },
           {
             "name": {
-              "en": "Ace in the Hole",
+              "en": "Ace In The Hole",
               "ko": "회심의 일격"
             },
             "type": "passive",
@@ -7431,7 +7431,7 @@
         "7": [
           {
             "name": {
-              "en": "Fuel the Rush",
+              "en": "Fuel The Rush",
               "ko": "촉진 가속화"
             },
             "type": "passive",
@@ -7552,7 +7552,7 @@
           },
           {
             "name": {
-              "en": "Give Me More",
+              "en": "Give Me More!",
               "ko": "조금만 더!"
             },
             "type": "passive",
@@ -7593,7 +7593,7 @@
           },
           {
             "name": {
-              "en": "Dusk Wings",
+              "en": "Dusk Wing",
               "ko": "그늘날개"
             },
             "type": "passive",
@@ -7797,7 +7797,7 @@
           },
           {
             "name": {
-              "en": "Hunter Gatherer",
+              "en": "Hunter-Gatherer",
               "ko": "수집 사냥꾼"
             },
             "type": "passive",
@@ -9118,7 +9118,7 @@
         "16": [
           {
             "name": {
-              "en": "Two for One",
+              "en": "Two For One",
               "ko": "한 번에 두 잔"
             },
             "type": "passive",
@@ -9142,7 +9142,7 @@
           },
           {
             "name": {
-              "en": "Blessings of Yu'lon",
+              "en": "Blessings Of Yu'lon",
               "ko": "위론의 축복"
             },
             "type": "passive",
@@ -10068,7 +10068,7 @@
           },
           {
             "name": {
-              "en": "On A Pale Horse",
+              "en": "On a Pale Horse",
               "ko": "창백한 말"
             },
             "type": "passive",
@@ -11034,7 +11034,7 @@
           },
           {
             "name": {
-              "en": "...And a Shark Too!",
+              "en": "... And a Shark Too!",
               "ko": "문어 친구 상어"
             },
             "type": "passive",
@@ -11400,7 +11400,7 @@
         "20": [
           {
             "name": {
-              "en": "Glyph of Poly Bomb",
+              "en": "Glyph Of Poly Bomb",
               "ko": "변이 폭탄의 문양"
             },
             "type": "passive",
@@ -12638,7 +12638,7 @@
           },
           {
             "name": {
-              "en": "Glory of the Alliance",
+              "en": "Glory to the Alliance",
               "ko": "얼라이언스에 영광을"
             },
             "type": "passive",
@@ -12990,7 +12990,7 @@
         "20": [
           {
             "name": {
-              "en": "Vengeance",
+              "en": "Death Siphon",
               "ko": "죽음 착취"
             },
             "type": "passive",
@@ -14408,7 +14408,7 @@
           },
           {
             "name": {
-              "en": "Gone with the Wind",
+              "en": "One With The Wind",
               "ko": "바람과 하나되어"
             },
             "type": "passive",
@@ -14580,7 +14580,7 @@
         "20": [
           {
             "name": {
-              "en": "Dance of Death",
+              "en": "Dance Of Death",
               "ko": "죽음의 춤"
             },
             "type": "passive",
@@ -14741,7 +14741,7 @@
           },
           {
             "name": {
-              "en": "Tough as Nails",
+              "en": "Tough As Nails",
               "ko": "철갑못"
             },
             "type": "passive",
@@ -14778,7 +14778,7 @@
           },
           {
             "name": {
-              "en": "Shot of Fury",
+              "en": "Shot Of Fury",
               "ko": "분노 공급"
             },
             "type": "active",
@@ -15226,7 +15226,7 @@
         "13": [
           {
             "name": {
-              "en": "Grace of Wind",
+              "en": "Grace Of Air",
               "ko": "바람의 은총"
             },
             "type": "passive",
@@ -17546,7 +17546,7 @@
         "7": [
           {
             "name": {
-              "en": "Needle Spines",
+              "en": "Needlespine",
               "ko": "바늘가시"
             },
             "type": "passive",
@@ -17633,7 +17633,7 @@
         "13": [
           {
             "name": {
-              "en": "Assult Strain",
+              "en": "Assault Strain",
               "ko": "강습충 변종"
             },
             "type": "passive",
@@ -17677,7 +17677,7 @@
           },
           {
             "name": {
-              "en": "Soma Transferance",
+              "en": "Soma Transference",
               "ko": "세포체 전이"
             },
             "type": "passive",
@@ -18361,7 +18361,7 @@
           },
           {
             "name": {
-              "en": "Emphatic Hope",
+              "en": "Empathic Link",
               "ko": "감정 이입"
             },
             "type": "passive",
@@ -19543,7 +19543,7 @@
         "7": [
           {
             "name": {
-              "en": "Life Blossom",
+              "en": "Lifeblossom",
               "ko": "생명꽃"
             },
             "type": "passive",
@@ -19567,7 +19567,7 @@
           },
           {
             "name": {
-              "en": "Inner Flame",
+              "en": "Fire Within",
               "ko": "내면의 불길"
             },
             "type": "passive",
@@ -19706,7 +19706,7 @@
           },
           {
             "name": {
-              "en": "Ruby Wings",
+              "en": "On Ruby Wings",
               "ko": "루비 날개"
             },
             "type": "passive",
@@ -20103,7 +20103,7 @@
           },
           {
             "name": {
-              "en": "Blinded by the Light",
+              "en": "Blinded By The Light",
               "ko": "눈부신 보호막"
             },
             "type": "active",
@@ -20652,7 +20652,7 @@
           },
           {
             "name": {
-              "en": "Gift of the Naru",
+              "en": "Gift of the Naaru",
               "ko": "나루의 선물"
             },
             "type": "passive",
@@ -22565,7 +22565,7 @@
           },
           {
             "name": {
-              "en": "Gotta Trap ‘Em All!",
+              "en": "Gotta Trap 'Em All!",
               "ko": "전부 잡아버리겠어!"
             },
             "type": "passive",
@@ -22718,7 +22718,7 @@
           },
           {
             "name": {
-              "en": "Endless Nodes",
+              "en": "Endless Nades",
               "ko": "폭발의 희열"
             },
             "type": "passive",
@@ -23016,7 +23016,7 @@
         "10": [
           {
             "name": {
-              "en": "Might of the Nerazim",
+              "en": "Might Of The Nerazim",
               "ko": "네라짐의 힘"
             },
             "type": "R",
@@ -24160,7 +24160,7 @@
         "10": [
           {
             "name": {
-              "en": "Taz'dingo",
+              "en": "Taz'dingo!",
               "ko": "타즈딩고!"
             },
             "type": "R",
@@ -25005,7 +25005,7 @@
         "20": [
           {
             "name": {
-              "en": "C'thun's Gift",
+              "en": "C'Thun's Gift",
               "ko": "크툰의 선물"
             },
             "type": "passive",
@@ -25615,7 +25615,7 @@
           },
           {
             "name": {
-              "en": "Plate of the Whales",
+              "en": "Plate of the Whale",
               "ko": "고래의 판갑"
             },
             "type": "passive",
@@ -26151,7 +26151,7 @@
           },
           {
             "name": {
-              "en": "Presence of Mind",
+              "en": "Presence Of Mind",
               "ko": "냉정"
             },
             "type": "passive",
@@ -26864,7 +26864,7 @@
           },
           {
             "name": {
-              "en": "Chain Link",
+              "en": "Chain-Link",
               "ko": "연쇄 사슬"
             },
             "type": "passive",
@@ -27092,7 +27092,7 @@
           },
           {
             "name": {
-              "en": "Timewalker's Persuit",
+              "en": "Timewalker's Pursuit",
               "ko": "시간여행자의 집념"
             },
             "type": "active",
@@ -27528,7 +27528,7 @@
           },
           {
             "name": {
-              "en": "Concussive Grenade",
+              "en": "Concussion Grenade",
               "ko": "충격파 수류탄"
             },
             "type": "passive",
@@ -27936,7 +27936,7 @@
           },
           {
             "name": {
-              "en": "Resonance",
+              "en": "Resonation",
               "ko": "공명"
             },
             "type": "passive",
@@ -28663,7 +28663,7 @@
         "7": [
           {
             "name": {
-              "en": "Huntress's Fury",
+              "en": "Huntress' Fury",
               "ko": "여사냥꾼의 분노"
             },
             "type": "passive",
@@ -28688,7 +28688,7 @@
           },
           {
             "name": {
-              "en": "Trushot Aura",
+              "en": "Trueshot Aura",
               "ko": "정조준 오라"
             },
             "type": "active",
@@ -29107,7 +29107,7 @@
         "13": [
           {
             "name": {
-              "en": "Blade of Justice",
+              "en": "Sword of Justice",
               "ko": "정의의 칼날"
             },
             "type": "passive",
@@ -29440,7 +29440,7 @@
           },
           {
             "name": {
-              "en": "Charged up",
+              "en": "Charged Up",
               "ko": "충전 완료"
             },
             "type": "passive",
@@ -29537,7 +29537,7 @@
           },
           {
             "name": {
-              "en": "Aerie Gust",
+              "en": "Aerie Gusts",
               "ko": "봉우리의 돌풍"
             },
             "type": "passive",
@@ -31173,7 +31173,7 @@
           },
           {
             "name": {
-              "en": "Ultraa Capacitors",
+              "en": "Ultra Capacitors",
               "ko": "초고용량 축전기"
             },
             "type": "passive",
@@ -31512,7 +31512,7 @@
           },
           {
             "name": {
-              "en": "Judgement Day",
+              "en": "Judgment Day",
               "ko": "심판의 날"
             },
             "type": "passive",
