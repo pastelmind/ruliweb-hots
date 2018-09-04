@@ -1,7 +1,7 @@
 /* Dialog (tingle.js) */
 
 .hots-dialog-container .tingle-modal-box {
-  max-width: 465px;
+  max-width: 515px;
   background-color: #112;
   border-radius: 10px;
   color: #ccc;
@@ -25,7 +25,7 @@
   width: 32px;
   height: 32px;
   object-fit: cover;
-  border: 1px solid #333;
+  border: 1px solid #111;
   cursor: pointer;
   transition: border .25s, filter .25s;
 }
@@ -145,10 +145,6 @@ label.hero-filter {
 .hots-hero-icons {
   display: flex;
   flex-wrap: wrap;
-}
-
-.hots-hero-icon-wrapper {
-  margin: 2px;
 }
 
 .hots-hero-icon {
