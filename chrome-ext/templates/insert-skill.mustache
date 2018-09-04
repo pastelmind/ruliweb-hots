@@ -19,23 +19,20 @@
         <b class="ruliweb-hots-skill-table__title">{{name}}</b>
         {{^isForHeroTable}}<br><small>{{heroName}}{{#isTalent}} - 레벨 {{level}}{{/isTalent}}</small>{{/isForHeroTable}}
       </div>
-      <div class="ruliweb-hots-skill-table__type">
-        {{#isTypeClassBasic}}  <b class="ruliweb-hots-skill-type-label">{{/isTypeClassBasic}}
-        {{#isTypeClassHeroic}} <b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--heroic"> {{/isTypeClassHeroic}}
-        {{#isTypeClassPassive}}<b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--passive">{{/isTypeClassPassive}}
-        {{#isTypeClassActive}} <b class="ruliweb-hots-skill-type-label ruliweb-hots-skill-type-label--active"> {{/isTypeClassActive}}
-          {{#upgradeFor}}
-            {{#isTypeClassBasic}}  <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i1.ruliweb.com/img/18/08/07/1651405095119dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassBasic}}
-            {{#isTypeClassHeroic}} <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i2.ruliweb.com/img/18/08/07/1651405069c19dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassHeroic}}
-            {{#isTypeClassPassive}}<img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i1.ruliweb.com/img/18/08/07/1651405088419dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassPassive}}
-            {{#isTypeClassActive}} <img class="ruliweb-hots-skill-type-label__upgrade-arrow" src="http://i3.ruliweb.com/img/18/08/11/165246b734f19dc2c.png" alt="능력 강화" title="능력 강화">{{/isTypeClassActive}}
-          {{/upgradeFor}}
-          {{typeName}}
-        {{#isTypeClassBasic}}  </b>{{/isTypeClassBasic}}
-        {{#isTypeClassHeroic}} </b>{{/isTypeClassHeroic}}
-        {{#isTypeClassPassive}}</b>{{/isTypeClassPassive}}
-        {{#isTypeClassActive}} </b>{{/isTypeClassActive}}
-      </div>
+      {{#isTypeClassBasic}}  <div class="ruliweb-hots-skill-table__type">                                        {{/isTypeClassBasic}}
+      {{#isTypeClassHeroic}} <div class="ruliweb-hots-skill-table__type ruliweb-hots-skill-table__type--heroic"> {{/isTypeClassHeroic}}
+      {{#isTypeClassPassive}}<div class="ruliweb-hots-skill-table__type ruliweb-hots-skill-table__type--passive">{{/isTypeClassPassive}}
+      {{#isTypeClassActive}} <div class="ruliweb-hots-skill-table__type ruliweb-hots-skill-table__type--active"> {{/isTypeClassActive}}
+        {{#upgradeFor}}
+        <img class="ruliweb-hots-skill-type-label__upgrade-arrow" alt="능력 강화" title="능력 강화"
+          src="{{#isTypeClassBasic}}http://i1.ruliweb.com/img/18/08/07/1651405095119dc2c.png{{/isTypeClassBasic}}{{#isTypeClassHeroic}}http://i2.ruliweb.com/img/18/08/07/1651405069c19dc2c.png{{/isTypeClassHeroic}}{{#isTypeClassPassive}}http://i1.ruliweb.com/img/18/08/07/1651405088419dc2c.png{{/isTypeClassPassive}}{{#isTypeClassActive}}http://i3.ruliweb.com/img/18/08/11/165246b734f19dc2c.png{{/isTypeClassActive}}"
+          >
+        {{/upgradeFor}}
+        <b class="ruliweb-hots-skill-type-label">{{typeName}}</b>
+      {{#isTypeClassBasic}}  </div>{{/isTypeClassBasic}}
+      {{#isTypeClassHeroic}} </div>{{/isTypeClassHeroic}}
+      {{#isTypeClassPassive}}</div>{{/isTypeClassPassive}}
+      {{#isTypeClassActive}} </div>{{/isTypeClassActive}}
     </div>
     <div class="ruliweb-hots-skill-table__description">
       {{#isSimpleSkillTable}}{{{shortDescription}}}{{/isSimpleSkillTable}}

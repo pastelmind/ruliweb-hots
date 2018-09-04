@@ -220,11 +220,13 @@
 
 .ruliweb-hots-skill-table__header {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: .5em;
 }
 
 .ruliweb-hots-skill-table__title-box {
-  flex: 3 15em;
+  flex: auto;
+  padding-right: .5em;
 }
 
 .ruliweb-hots-skill-table__title {
@@ -232,12 +234,27 @@
 }
 
 .ruliweb-hots-skill-table__type {
-  flex: 1 5em;
-  text-align: right;
+  flex: 0 9 auto;
+  border: .1em solid #87d;
+  border-radius: .3em;
+  padding: .2em .4em;
+  word-break: keep-all;
+  color: #87d;
 }
 
-.ruliweb-hots-skill-table__title-box, .ruliweb-hots-skill-table__type {
-  padding-bottom: .5em;
+.ruliweb-hots-skill-table__type--heroic {
+  border: .1em solid #da7;
+  color: #da7;
+}
+
+.ruliweb-hots-skill-table__type--passive {
+  border: .1em solid #6ba;
+  color: #6ba;
+}
+
+.ruliweb-hots-skill-table__type--active {
+  border: .1em solid #d7a;
+  color: #d7a;
 }
 
 .ruliweb-hots-skill-table__description {
@@ -291,26 +308,6 @@
 
 .ruliweb-hots-skill-type-label {
   display: inline-block;
-  border: .1em solid #87d;
-  border-radius: .3em;
-  padding: .2em .4em;
-  white-space: nowrap;
-  color: #87d;
-}
-
-.ruliweb-hots-skill-type-label--heroic {
-  border: .1em solid #da7;
-  color: #da7;
-}
-
-.ruliweb-hots-skill-type-label--passive {
-  border: .1em solid #6ba;
-  color: #6ba;
-}
-
-.ruliweb-hots-skill-type-label--active {
-  border: .1em solid #d7a;
-  color: #d7a;
 }
 
 .ruliweb-hots-skill-type-label__upgrade-arrow {
