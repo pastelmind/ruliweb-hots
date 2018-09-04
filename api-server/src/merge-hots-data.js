@@ -53,6 +53,16 @@ module.exports = function mergeHotsData(target, source) {
  * @param {Hero} source Hero data to merge from
  */
 function mergeHero(target, source) {
+  //Merge properties
+  mergeProperties(target, source, {
+    id: 0,
+    name: 0,
+    title: 0,
+    type: 0,
+    role: 0,
+    universe: 0,
+  });
+
   //Merge hero stats
   if (Array.isArray(source.stats)) {
     target.stats = source.stats.map((sourceUnitStats, sourceUnitIndex) =>
