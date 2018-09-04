@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added option to choose the size of hero, skill, and talent table icons.
 
 ### Changes
+- Updated data with Heroes of the Storm v2.37.0 patch information.
 - Hero, skill, and talent icons have fixed-size padding (4px).
 - (Server) Heroes of the Storm data is no longer parsed from NamuWiki, but is
   extracted directly from the game data files.
