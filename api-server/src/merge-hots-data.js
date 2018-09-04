@@ -122,13 +122,14 @@ function mergeHero(target, source) {
             console.warn(`Talent position mismatch: ${sourceTalent.name} was expected in [${sourceTalentLevel}][${sourceTalentIndex}], but found in [${targetTalentLevel}][${targetTalentIndex}]`);
             targetTalent = targetTalentArray[targetTalentIndex];
           }
-          else {
-            console.warn(`Talent not found: ${sourceTalent.name} in [${sourceTalentLevel}][${sourceTalentIndex}]`);
-            return;
-          }
+          else
+            console.warn(`Talent not found: ${sourceTalent.name} in [${sourceTalentLevel}][${sourceTalentIndex}], creating new talent...`);
         }
 
-        mergeSkill(targetTalent, sourceTalent);
+        if (targetTalent)
+          mergeSkill(targetTalent, sourceTalent);
+        else
+          targetTalent = sourceTalent;
 
         //Move talent to new position specified by source
         newTalentArray[sourceTalentIndex] = targetTalent;
