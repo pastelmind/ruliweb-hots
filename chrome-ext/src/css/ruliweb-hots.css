@@ -69,12 +69,15 @@
 
 .hots-dialog-option {
   padding: 0 .5em 0;
-  border-radius: 3px;
-  cursor: pointer;
   color: #aaa;
 }
 
-.hots-dialog-option:hover {
+.hots-dialog-option--checkbox {
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.hots-dialog-option--checkbox:hover {
   background-color: #334;
 }
 
@@ -88,6 +91,14 @@
 
 .hots-dialog-option input[type=checkbox]:checked+.hots-dialog-option__description {
   color: #eee;
+}
+
+.hots-dialog-option-group {
+  margin: .5em 0;
+}
+
+.hots-dialog-option input[type=range] {
+  height: 1em;
 }
 
 /* Hero filters */

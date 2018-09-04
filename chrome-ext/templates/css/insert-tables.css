@@ -10,6 +10,8 @@
 
 .ruliweb-hots-hero-table__icon-cell, .ruliweb-hots-skill-table__icon-cell {
   float: left;
+  /* Should be entered directly in template */
+  /* width: {{iconSize}}px; height: {{iconSize}}px; */
 }
 
 .ruliweb-hots-hero-table__icon, .ruliweb-hots-skill-table__icon {
@@ -19,7 +21,8 @@
 .ruliweb-hots-hero-table__header, .ruliweb-hots-skill-table__content {
   float: left;
   width: 50em;
-  max-width: calc(100% - 64px - 8px);
+  /* Should be entered directly in template */
+  /* max-width: calc(100% - {{iconSize}}px - 8px); */
 }
 
 /******** Hero table ********/
@@ -36,11 +39,9 @@
 }
 
 .ruliweb-hots-hero-table__icon-cell {
-  width: 64px;
-  height: 64px;
   padding: 4px;
-  /* background: center/cover no-repeat content-box; */
   /* Should be entered directly in template */
+  /* background: url({{&iconUrl}}) center/cover no-repeat content-box; */
 }
 
 /******** Hero table: All sections ********/
@@ -63,8 +64,9 @@
 /******** Hero table: Title section ********/
 
 .ruliweb-hots-hero-table__header {
-  width: calc(50em - 64px - 8px);
-  min-height: calc(64px + 8px);
+  /* Should be entered directly in template */
+  /* width: calc(50em - {{iconSize}}px - 8px); */
+  /* min-height: calc({{iconSize}}px + 8px); */
   box-sizing: border-box;
   padding: 1em;
 }
@@ -207,24 +209,13 @@
   color: #bef;  /* Color of talent name and collapse/expand arrow */
 }
 
-.ruliweb-hots-skill-table__icon-cell {
-  width: 64px;
-  height: 64px;
+/* .ruliweb-hots-skill-table__icon-cell { */
   /* Should be entered directly in template */
   /* background: url({{&iconUrl}}) center/cover; */
-}
-
-.ruliweb-hots-skill-table__icon-cell--small-icon {
-  width: 48px;
-  height: 48px;
-}
+/* } */
 
 .ruliweb-hots-skill-table__content {
   padding-left: 8px;
-}
-
-.ruliweb-hots-skill-table__content--small-icon {
-  max-width: calc(100% - 48px - 8px);
 }
 
 .ruliweb-hots-skill-table__header {

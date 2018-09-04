@@ -107,6 +107,10 @@ const HotsDialog = {
     const usePtrCheckbox = optionsSection.querySelector('#hots-dialog-option-use-ptr');
     /** @type {HTMLInputElement} */
     const useSimpleHeroTableCheckbox = optionsSection.querySelector('#hots-dialog-option-simple-hero-table');
+    /** @type {HTMLInputElement} */
+    const iconSizeRange = optionsSection.querySelector('#hots-dialog-option-icon-size');
+    /** @type {HTMLOutputElement} */
+    const iconSizeOutput = optionsSection.querySelector(`output[for=${iconSizeRange.id}]`);
 
     const heroIconElems = heroIconsSection.querySelectorAll('.hots-hero-icon');
     /** @type {NodeListOf<HTMLInputElement>} */
@@ -123,6 +127,13 @@ const HotsDialog = {
           usePtrCheckbox.checked
         ));
     }
+
+    //Add change handler for icon size input
+    iconSizeRange.addEventListener('input', event => {
+      const iconSize = event.target.value;
+      iconSizeOutput.textContent = `${iconSize}\xD7${iconSize}px`;
+    });
+    iconSizeRange.dispatchEvent(new Event('input'));
 
     //Add click handler for hero icons
     heroIconsSection.addEventListener('click', event => {
@@ -178,12 +189,13 @@ const HotsDialog = {
         const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
 
         const hero = this.getHeroDataById(heroId, isPtr);
+        const iconSize = iconSizeRange.value;
 
         let html;
         if (isHeroIcon)
-          html = this.htmlGenerators.generateHeroInfoTable(hero, version, useSimpleHeroTableCheckbox.checked);
+          html = this.htmlGenerators.generateHeroInfoTable(hero, iconSize, iconSize, version, useSimpleHeroTableCheckbox.checked);
         else    //isSkillIcon
-          html = this.htmlGenerators.generateSkillInfoTable(hero.skills[skillIndex], version);
+          html = this.htmlGenerators.generateSkillInfoTable(hero.skills[skillIndex], iconSize, version);
 
         this.injectHtmlInEditor(html, event.target);
       }
@@ -202,15 +214,16 @@ const HotsDialog = {
         const version = addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
 
         const hero = this.getHeroDataById(heroId, isPtr);
+        const iconSize = iconSizeRange.value;
 
         const talentGroup = hero.talents[talentLevel];
 
         //TODO De-duplicate code
         let html;
         if (isTalentIcon)
-          html = this.htmlGenerators.generateTalentInfoTable(talentGroup[talentIndex], version);
+          html = this.htmlGenerators.generateTalentInfoTable(talentGroup[talentIndex], iconSize, version);
         else    //isTalentGroupButton
-          html = this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, version);
+          html = this.htmlGenerators.generateTalentGroupInfoTable(talentGroup, iconSize, version);
 
         this.injectHtmlInEditor(html, event.target);
         }
@@ -384,11 +397,13 @@ const HotsDialog = {
     /**
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
+     * @param {number=} iconSize Hero icon size in pixels (default: 64)
+     * @param {number=} skillIconSize Skill i size in pixels (default: 48)
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @param {boolean} isSimpleTable If truthy, generate a simplified table
      * @return {string} HTML source
      */
-    generateHeroInfoTable(hero, hotsVersion, isSimpleTable) {
+    generateHeroInfoTable(hero, iconSize = 64, skillIconSize = 48, hotsVersion, isSimpleTable) {
       const heroView = Object.create(hero);
 
       //Set universe icon offset
@@ -424,9 +439,10 @@ const HotsDialog = {
       heroView.skillGroups = [traits, basicAbilities, heroicAbilities];
 
       for (const skillGroup of heroView.skillGroups)
-        skillGroup.skills = skillGroup.skills.map(skill => this.generateSkillTalentView(skill));
+        skillGroup.skills = skillGroup.skills.map(skill => this.generateSkillTalentView(skill, skillIconSize));
 
       heroView.hotsVersion = hotsVersion;
+      heroView.iconSize = iconSize;
       heroView.appVersion = chrome.runtime.getManifest().version;
       heroView.isForHeroTable = true;
       heroView.isSimpleHeroTable = heroView.isSimpleSkillTable = !!isSimpleTable;
@@ -440,13 +456,14 @@ const HotsDialog = {
     /**
      * Generates a table of skill information to be injected into a page.
      * @param {Skill} skill Skill data
+     * @param {number=} iconSize Icon size in pixels (default: 64)
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateSkillInfoTable(skill, hotsVersion) {
+    generateSkillInfoTable(skill, iconSize = 64, hotsVersion) {
       return Mustache.render(
         this.templates['insert-skill'],
-        this.generateSkillTalentView(skill, hotsVersion),
+        this.generateSkillTalentView(skill, iconSize, hotsVersion),
         { stats: this.templates['insert-skill-stats'] }
       );
     },
@@ -454,11 +471,12 @@ const HotsDialog = {
     /**
      * Generates a table of talent information to be injected into a page.
      * @param {Talent} talent Talent data
+     * @param {number=} iconSize Icon size in pixels (default: 48)
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateTalentInfoTable(talent, hotsVersion) {
-      const talentView = this.generateSkillTalentView(talent, hotsVersion);
+    generateTalentInfoTable(talent, iconSize = 48, hotsVersion) {
+      const talentView = this.generateSkillTalentView(talent, iconSize, hotsVersion);
       talentView.isTalent = true;
 
       return Mustache.render(
@@ -471,11 +489,12 @@ const HotsDialog = {
     /**
      * Generates a row of talent tables from a talent group.
      * @param {Talent[]} talentGroup Talent group
+     * @param {number=} iconSize Icon size in pixels (default: 48)
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateTalentGroupInfoTable(talentGroup, hotsVersion) {
-      return talentGroup.map(talent => this.generateTalentInfoTable(talent, hotsVersion)).join('&nbsp;');
+    generateTalentGroupInfoTable(talentGroup, iconSize = 48, hotsVersion) {
+      return talentGroup.map(talent => this.generateTalentInfoTable(talent, iconSize, hotsVersion)).join('&nbsp;');
     },
 
     /**
@@ -483,11 +502,13 @@ const HotsDialog = {
      * This is an internal method called by other generator methods.
      * @package
      * @param {Skill | Talent} skill Skill or Talent object
+     * @param {number=} iconSize Icon size in pixels (default: 48)
      * @param {string=} hotsVersion (optional) HotS version string
      */
-    generateSkillTalentView(skill, hotsVersion) {
+    generateSkillTalentView(skill, iconSize = 48, hotsVersion) {
       const view = Object.create(skill);
       view.hotsVersion = hotsVersion;
+      view.iconSize = iconSize;
       view.hasStats = !!(skill.cooldown || skill.rechargeCooldown || skill.manaCost);
       view.appVersion = chrome.runtime.getManifest().version;
 

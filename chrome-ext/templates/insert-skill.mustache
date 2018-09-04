@@ -1,23 +1,19 @@
 {{#isTalent}}
 <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-talent-table">
-  <summary class="ruliweb-hots-skill-table__icon-cell ruliweb-hots-skill-table__icon-cell--small-icon" style="background: url({{&iconUrl}}) center/cover"
-    title="[클릭하여 접기/펼치기] {{name}} ({{typeNameLong}} - 레벨 {{level}})"></summary>
-  <div class="ruliweb-hots-skill-table__content ruliweb-hots-skill-table__content--small-icon">
 {{/isTalent}}
 {{^isTalent}}
 {{#isForHeroTable}}
 <details class="ruliweb-hots-hero-skill-table">
-  <summary class="ruliweb-hots-skill-table__icon-cell ruliweb-hots-skill-table__icon-cell--small-icon" style="background: url({{&iconUrl}}) center/cover"
-    title="[클릭하여 접기/펼치기] {{typeName}} - {{name}}"></summary>
-  <div class="ruliweb-hots-skill-table__content ruliweb-hots-skill-table__content--small-icon">
 {{/isForHeroTable}}
 {{^isForHeroTable}}
 <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-skill-table">
-  <summary class="ruliweb-hots-skill-table__icon-cell" style="background: url({{&iconUrl}}) center/cover"
-    title="[클릭하여 접기/펼치기] {{typeName}} - {{name}}"></summary>
-  <div class="ruliweb-hots-skill-table__content">
 {{/isForHeroTable}}
 {{/isTalent}}
+  <summary class="ruliweb-hots-skill-table__icon-cell"
+    style="width: {{iconSize}}px; height: {{iconSize}}px; background: url({{&iconUrl}}) center/cover"
+    title="[클릭하여 접기/펼치기] {{#isTalent}}{{name}} ({{typeNameLong}} - 레벨 {{level}}){{/isTalent}}{{^isTalent}}{{typeName}} - {{name}}{{/isTalent}}"
+    ></summary>
+  <div class="ruliweb-hots-skill-table__content" style="max-width: calc(100% - {{iconSize}}px - 8px)">
     <div class="ruliweb-hots-skill-table__header">
       <div class="ruliweb-hots-skill-table__title-box">
         <b class="ruliweb-hots-skill-table__title">{{name}}</b>
@@ -46,17 +42,15 @@
       {{^isSimpleSkillTable}}{{{description}}}{{> stats}}{{/isSimpleSkillTable}}
     </div>
     {{#hotsVersion}}<footer class="hots-version"><i>패치 {{hotsVersion}}</i></footer>{{/hotsVersion}}
-{{#isTalent}}
   </div>
+{{#isTalent}}
 </details>
 {{/isTalent}}
 {{^isTalent}}
 {{#isForHeroTable}}
-  </div>
 </details>
 {{/isForHeroTable}}
 {{^isForHeroTable}}
-  </div>
 </details>
 {{/isForHeroTable}}
 {{/isTalent}}

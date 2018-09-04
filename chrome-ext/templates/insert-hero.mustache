@@ -1,7 +1,11 @@
 <details data-ruliweb-hots-version="{{appVersion}}" class="ruliweb-hots-hero-table">
-  <summary class="ruliweb-hots-hero-table__icon-cell" style="background: url({{&iconUrl}}) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"></summary>
+  <summary class="ruliweb-hots-hero-table__icon-cell"
+    style="width: {{iconSize}}px; height: {{iconSize}}px; background: url({{&iconUrl}}) center/cover no-repeat content-box"
+    title="[클릭하여 접기/펼치기] {{name}} - {{type}} {{roleName}}"
+    ></summary>
 
-  <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__header">
+  <section class="ruliweb-hots-hero-table__section ruliweb-hots-hero-table__header"
+    style="width: calc(50em - {{iconSize}}px - 8px); max-width: calc(100% - {{iconSize}}px - 8px); min-height: calc({{iconSize}}px + 8px)">
     <div class="ruliweb-hots-hero-table__hero-name-block">
       <div class="ruliweb-hots-hero-table__hero-universe" style="background: url(http://i3.ruliweb.com/img/18/08/02/164f661194b19dc2c.png) {{universeIconOffset}} 0/cover" title="{{universeName}}">{{universeName}}</div>
       <h2 class="ruliweb-hots-hero-table__hero-name">{{name}}</h2>

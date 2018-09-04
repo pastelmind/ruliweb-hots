@@ -72,8 +72,8 @@ describe('HotsDialog.htmlGenerators', () => {
       let heroInfoHtml = '';
 
       for (const hero of Object.values(hotsData.heroes)) {
-        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion)
-          + HotsDialog.htmlGenerators.generateHeroInfoTable(hero, hotsData.hotsVersion, true);
+        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero,  64, 48, hotsData.hotsVersion)
+          + HotsDialog.htmlGenerators.generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true);
       }
 
       // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
@@ -85,8 +85,8 @@ describe('HotsDialog.htmlGenerators', () => {
 
       for (const hero of Object.values(hotsData.heroes)) {
         for (const skill of hero.skills) {
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill);
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, '34.3');
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, 64);
+          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, 64, '34.3');
         }
       }
 
@@ -100,8 +100,8 @@ describe('HotsDialog.htmlGenerators', () => {
       for (const hero of Object.values(hotsData.heroes)) {
         for (const talentLevel in hero.talents) {
           for (const talent of hero.talents[talentLevel]) {
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent);
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, '34.3');
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, 48);
+            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, 48, '34.3');
           }
         }
       }
