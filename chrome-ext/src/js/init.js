@@ -44,8 +44,8 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
     console.debug('Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.');
     chrome.alarms.create(ALARM_UPDATE_DATA, {
-      delayInMinutes: 360,  //6 hours = 360 minutes
-      periodInMinutes: 360  //6 hours = 360 minutes
+      delayInMinutes: 180,  //3 hours = 180 minutes
+      periodInMinutes: 180  //3 hours = 180 minutes
     });
   });
 });
