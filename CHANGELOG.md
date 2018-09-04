@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Hero, skill, and talent icons have fixed-size padding (4px).
 - (Server) Heroes of the Storm data is no longer parsed from NamuWiki, but is
   extracted directly from the game data files.
+- (Server) Renamed npm script `create-hard-links` to `link-dep`
 
 
 ## [0.7.0] - 2018-08-13
