@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+
+## [0.8.0] - 2018-09-05
 ### Added
 - Preliminary support for Mozilla Firefox (version >= 52.0).
 - Added option to choose the size of hero, skill, and talent table icons.
