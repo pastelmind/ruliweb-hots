@@ -2189,7 +2189,7 @@
         },
         {
           "name": {
-            "en": "Life Drain",
+            "en": "Drain Life",
             "ko": "생명력 흡수"
           },
           "type": "W",
@@ -4623,7 +4623,7 @@
         },
         {
           "name": {
-            "en": "Scroll of Sealing",
+            "en": "Scroll Of Sealing",
             "ko": "결계의 두루마리"
           },
           "type": "E",
@@ -12225,7 +12225,7 @@
         },
         {
           "name": {
-            "en": "Stormbolt",
+            "en": "Storm Bolt",
             "ko": "폭풍강타"
           },
           "type": "Q",
@@ -12241,7 +12241,7 @@
         },
         {
           "name": {
-            "en": "Thunderclap",
+            "en": "Thunder Clap",
             "ko": "천둥벼락"
           },
           "type": "W",
@@ -27029,7 +27029,7 @@
         },
         {
           "name": {
-            "en": "Chains of Kel'thuzad",
+            "en": "Chains of Kel'Thuzad",
             "ko": "켈투자드의 사슬"
           },
           "type": "E",

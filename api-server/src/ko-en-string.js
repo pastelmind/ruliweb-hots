@@ -35,4 +35,14 @@ module.exports = class KoEnString {
       return this.ko;
     return `${this.ko} (${this.en})`;
   }
+
+  /**
+   * Tests if `str` is equal to this value.
+   * @param {KoEnString | string} str String to compare
+   */
+  equals(str) {
+    if (!(str instanceof KoEnString))
+      str = new KoEnString(str);
+    return this.ko === str.ko && this.en === str.en;
+  }
 };
