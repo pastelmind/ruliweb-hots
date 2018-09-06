@@ -28,10 +28,12 @@ const targetZipStream = fs.createWriteStream(targetZipPath);
 (async () => {
   for (const filePath of await allFiles(sourceDirPath)) {
     const pathInZip = path.relative(sourceDirPath, filePath).replace(/\\/g, '/');
-    const fileContents = await readFileAsync(filePath);
     extensionZip.addFile(filePath, pathInZip);
-    // extensionZip.file(pathInZip, fileContents);
   }
+
+  //Add docs/hots.json as data/hots.json
+  const hotsJsonPath = path.join(__dirname, '../docs/hots.json');
+  extensionZip.addFile(hotsJsonPath, 'data/hots.json');
 
   extensionZip.end();
 

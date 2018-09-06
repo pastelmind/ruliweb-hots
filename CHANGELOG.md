@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+### Changes
+- `docs/hots.json` is directly added to the ZIP file during the build process,
+  instead of maintaining a copy at `chrome-ext/src/data/hots.json`.
 
 
 ## [0.8.0] - 2018-09-05
