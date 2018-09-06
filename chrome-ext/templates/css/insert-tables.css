@@ -316,4 +316,6 @@
    * image does not cause the parent box to to grow in height. */
   margin: -1em -.2em 0 -.7em;
   vertical-align: bottom;
+  /* Override Ruliweb CSS to prevent image from shrinking */
+  max-width: none;
 }
