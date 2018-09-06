@@ -9141,7 +9141,7 @@
           },
           {
             "name": {
-              "en": "Blessings Of Yu'lon",
+              "en": "Blessings Of Yu’lon",
               "ko": "위론의 축복"
             },
             "type": "passive",
@@ -11181,7 +11181,7 @@
           },
           {
             "name": {
-              "en": "Raven's Intellect",
+              "en": "Raven’s Intellect",
               "ko": "까마귀의 지능"
             },
             "type": "passive",
@@ -14974,7 +14974,7 @@
           },
           {
             "name": {
-              "en": "Blademaster's Pursuit",
+              "en": "Blademaster’s Pursuit",
               "ko": "검귀의 집념"
             },
             "type": "passive",
@@ -23490,7 +23490,7 @@
           },
           {
             "name": {
-              "en": "Gift of the Xel'Naga",
+              "en": "Gift of the Xel’Naga",
               "ko": "젤나가의 선물"
             },
             "type": "passive",
@@ -27390,7 +27390,7 @@
         },
         {
           "name": {
-            "en": "Dragon's Breath",
+            "en": "Dragon’s Breath",
             "ko": "용의 숨결"
           },
           "type": "W",
@@ -27517,7 +27517,7 @@
           },
           {
             "name": {
-              "en": "Dragon's Eye",
+              "en": "Dragon’s Eye",
               "ko": "용의 눈"
             },
             "type": "passive",

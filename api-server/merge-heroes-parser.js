@@ -569,6 +569,6 @@ function getLifeRegenModification(mod) {
 function toKoEnString(str) {
   return new KoEnString(typeof str === 'string' ? str.trim() : {
     ko: str.kokr.trim(),
-    en: str.enus.trim().replace(/’/g, "'"),
+    en: str.enus.trim(),
   });
 }

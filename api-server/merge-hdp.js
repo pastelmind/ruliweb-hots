@@ -367,7 +367,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
       heroDataKo.talents[talentLevelName].forEach((talentKr, index) => {
         talentKr.name = new KoEnString({
           ko: talentKr.name.trim(),
-          en: heroDataEn.talents[talentLevelName][index].name.trim().replace(/’/g, "'"),
+          en: heroDataEn.talents[talentLevelName][index].name.trim(),
         });
       });
     }
@@ -384,7 +384,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
       abilityGroupKo[abilityType].forEach((abilityKr, index) => {
         abilityKr.name = new KoEnString({
           ko: abilityKr.name.trim(),
-          en: abilityGroupEn[abilityType][index].name.trim().replace(/’/g, "'"),
+          en: abilityGroupEn[abilityType][index].name.trim(),
         });
       });
     }
