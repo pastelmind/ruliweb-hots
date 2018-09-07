@@ -20,6 +20,7 @@ const HeroStats = require('./src/hero-stats');
 const Talent = require('./src/talent');
 const KoEnString = require('./src/ko-en-string');
 const mergeHotsData = require('./src/merge-hots-data');
+const jsonFind = require('./src/json-find');
 
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -523,31 +524,6 @@ function jsonFindId(json, id) {
   return jsonFind(json, obj => obj && obj.id === id);
 }
 
-/**
- * Recursively searches through the given JSON object, and returns the first
- * value for which `callback` evaluates to true.
- * JSON equivalent (not really) of Array.prototype.find()
- * @param {*} json
- * @param {(value: *, key: number|string) => *} callback
- * @return {*} Matched object or `undefined`
- */
-function jsonFind(json, callback, key = undefined) {
-  if (callback(json, key)) return json;
-
-  let result;
-  if (json && typeof json === 'object') {
-    if (Array.isArray(json)) {
-      for (let i = 0; i < json.length; ++i)
-        if (result = jsonFind(json[i], callback, i)) return result;
-    }
-    else {
-      for (const objKey in json)
-        if (result = jsonFind(json[objKey], callback, objKey)) return result;
-    }
-  }
-
-  return undefined;
-}
 
 /**
  * Extracts the life regen modification value from the given behavior object.

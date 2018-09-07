@@ -6078,7 +6078,7 @@
             "en": "Molten Swing",
             "ko": "타오르는 휩쓸기"
           },
-          "type": "Q",
+          "type": "D - Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f004b19dc2c.png",
           "description": "설퍼라스를 휘둘러 적들에게 167(+4%)의 피해를 주고 1초 동안 기절시킵니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "주위 적들에게 피해를 주고 기절시킴",
@@ -6093,7 +6093,7 @@
             "en": "Meteor Shower",
             "ko": "유성우"
           },
-          "type": "W",
+          "type": "D - W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595efd0e19dc2c.png",
           "description": "끌어서 사용\n대상 위치에 대상 방향으로 떨어지는 3개의 유성을 소환합니다. 각 유성은 적에게 157(+4%)의 피해를 주고 2초 동안 25% 느려지게 합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "유성을 일렬로 소환",
@@ -6108,7 +6108,7 @@
             "en": "Explosive Rune",
             "ko": "폭발의 룬"
           },
-          "type": "E",
+          "type": "D - E",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595efa6b19dc2c.png",
           "description": "1.5초 후에 폭발하여 구조물이 아닌 적에게 296(+4%)의 피해를 주는 룬을 소환합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "일정 시간 후 넓은 지역에 폭발을 일으킴",
@@ -6902,7 +6902,7 @@
             "en": "Ghastly Swing",
             "ko": "섬뜩한 휩쓸기"
           },
-          "type": "Q",
+          "type": "D - Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645959347019dc2c.png",
           "description": "적들의 이동 속도를 2.5초 동안 40% 감소시킵니다.",
           "shortDescription": "적들을 느려지게 함",
@@ -6917,7 +6917,7 @@
             "en": "Drain Essence",
             "ko": "착취의 손아귀"
           },
-          "type": "W",
+          "type": "D - W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595920db19dc2c.png",
           "description": "적 영웅의 영혼을 움켜쥐어, 대상과 가까이 있는 동안 4초에 걸쳐 최대 생명력의 10%까지 생명력을 회복합니다.",
           "shortDescription": "적 영웅 가까이 머무르는 동안 생명력 회복",
@@ -13444,7 +13444,7 @@
             "en": "Ambush",
             "ko": "매복"
           },
-          "type": "Q",
+          "type": "D - Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596336f419dc2c.png",
           "description": "대상을 급습하여 135(+4%)의 피해를 주고 방어력을 5초 동안 10 감소시킵니다.\n\n<span style=\"color:#ff5858\">연계 점수를 1점 획득합니다.</span>\n\n<span style=\"color:#d65cff\">비은신: 사악한 일격</span>\n전방으로 질주하여 적에게 피해를 줍니다.",
           "shortDescription": "대상에게 피해를 주고 방어력을 감소시킴",
@@ -13459,7 +13459,7 @@
             "en": "Cheap Shot",
             "ko": "비열한 습격"
           },
-          "type": "W",
+          "type": "D - W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459633ea219dc2c.png",
           "description": "적에게 31(+4%)의 피해를 주고 0.75초 동안 기절시키며 지속 시간이 만료되면 대상이 2초 동안 실명합니다.\n\n<span style=\"color:#ff5858\">연계 점수를 1점 획득합니다.</span>\n\n<span style=\"color:#d65cff\">비은신: 폭풍의 칼날</span>\n주위 적들에게 피해를 줍니다.",
           "shortDescription": "적을 기절, 실명시키고 피해를 줌",
@@ -13474,7 +13474,7 @@
             "en": "Garrote",
             "ko": "목조르기"
           },
-          "type": "E",
+          "type": "D - E",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459634f1419dc2c.png",
           "description": "적의 목을 졸라 즉시 21(+4%)의 피해를 주고 2.5초 동안 침묵시키며 7초에 걸쳐 146(+4%)의 추가 피해를 줍니다.\n\n<span style=\"color:#ff5858\">연계 점수를 1점 획득합니다.</span>\n\n<span style=\"color:#d65cff\">비은신: 절개</span>\n연계 점수를 소모하여 큰 피해를 줍니다.",
           "shortDescription": "적에게 지속 피해를 줌",
@@ -17737,7 +17737,7 @@
             "en": "Stab",
             "ko": "찌르기"
           },
-          "type": "Q",
+          "type": "Q - Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942f9e819dc2c.png",
           "description": "대상 지역을 향해 가시를 발사하여 처음 적중한 적에게 124(+4%)의 피해를 줍니다.",
           "shortDescription": "처음 적중한 적에게 피해를 주는 가시 발사",
@@ -17752,7 +17752,7 @@
             "en": "Spike Burst",
             "ko": "가시 난사"
           },
-          "type": "W",
+          "type": "Q - W",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942f83519dc2c.png",
           "description": "주위 적들에게 125(+4%)의 피해를 줍니다.",
           "shortDescription": "주위 적들에게 피해를 줌",
@@ -17766,7 +17766,7 @@
             "en": "Carapace",
             "ko": "갑피"
           },
-          "type": "E",
+          "type": "Q - E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942f0b419dc2c.png",
           "description": "지원하는 아군에게 163(+4%)의 피해를 흡수하는 보호막을 부여합니다. 8초 동안 지속됩니다.",
           "shortDescription": "아군에게 보호막 부여",
@@ -27927,7 +27927,7 @@
               "en": "Annihilate",
               "ko": "몰살"
             },
-            "type": "Q",
+            "type": "R - Q",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596040a719dc2c.png",
             "description": "오딘의 포를 일직선상으로 발사해 경로에 있는 모든 대상에게 204(+4%)의 피해를 줍니다.",
             "shortDescription": "일직전상에 피해",
@@ -27942,7 +27942,7 @@
               "en": "Ragnarok Missiles",
               "ko": "라그나로크 미사일"
             },
-            "type": "W",
+            "type": "R - W",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645962adc719dc2c.png",
             "description": "대상 지역에 미사일 다발을 발사해 적들에게 137(+4%)의 피해를 주고 이동 속도를 2초 동안 30% 감소시킵니다.",
             "shortDescription": "대상 지역에 미사일 다발 발사",
@@ -27957,7 +27957,7 @@
               "en": "Thrusters",
               "ko": "추진기 가동"
             },
-            "type": "E",
+            "type": "R - E",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645962bb9819dc2c.png",
             "description": "대상 방향으로 질주합니다.",
             "shortDescription": "대상 방향으로 질주",

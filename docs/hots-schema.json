@@ -443,6 +443,15 @@
             "R",
             "D",
             "Z",
+            "D - Q",
+            "D - W",
+            "D - E",
+            "Q - Q",
+            "Q - W",
+            "Q - E",
+            "R - Q",
+            "R - W",
+            "R - E",
             "passive",
             "active"
           ]
