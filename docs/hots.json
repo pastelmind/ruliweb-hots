@@ -1018,7 +1018,7 @@
             "en": "Focus Turrets!",
             "ko": "집중 포화!"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png",
           "description": "주위의 잘나가! 포탑들이 대상을 집중 공격하게 만듭니다.",
           "shortDescription": "포탑에게 대상 공격 지시",
@@ -1455,7 +1455,7 @@
             "en": "Eye of Kilrogg",
             "ko": "킬로그의 눈"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953085f19dc2c.png",
           "description": "대상 위치에 눈을 소환하여 45초 동안 주위 넓은 지역의 시야를 확보합니다. 눈은 2회의 일반 공격을 받으면 파괴됩니다. 최대 2회 충전됩니다.",
           "shortDescription": "시야를 밝혀주는 눈 소환",
@@ -2997,7 +2997,7 @@
             "en": "Select Olaf",
             "ko": "올라프 선택"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645961527c19dc2c.png",
           "description": "올라프는 우클릭으로 적에게 돌진해서 대상의 이동 속도를 3초 동안 30% 감소시킬 수 있습니다. 8초에 한 번씩만 발동합니다.\n\n올라프는 4초 동안 전투에서 벗어나면 생명력 재생량이 증가합니다.",
           "shortDescription": "올라프는 생명력이 매우 많고 빠르게 재생되며, 돌진하여 적을 느려지게 함",
@@ -3011,7 +3011,7 @@
             "en": "Select Baleog",
             "ko": "밸로그 선택"
           },
-          "type": "2",
+          "type": "active",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164596134fd19dc2c.png",
           "description": "밸로그의 일반 공격은 공격 대상 뒤에 있는 적들에게 50%의 방사 피해를 줍니다.",
           "shortDescription": "밸로그는 공격 대상 뒤에 있는 적들에게 방사 피해를 줌",
@@ -3025,7 +3025,7 @@
             "en": "Select Erik",
             "ko": "에릭 선택"
           },
-          "type": "3",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596138ea19dc2c.png",
           "description": "에릭은 다른 바이킹보다 이동 속도가 빠르고 일반 공격 사거리가 깁니다.",
           "shortDescription": "에릭은 다른 바이킹보다 이동 속도가 빠르고 공격 사거리가 김",
@@ -3843,7 +3843,7 @@
             "en": "Ghost Protocol",
             "ko": "유령 프로토콜"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595ed5e719dc2c.png",
           "description": "사용하면 즉시 은신 상태가 되고 자신의 위치에 홀로그램 분신을 생성합니다. 사용 후 0.5초 동안은 은신 유지 상태가 됩니다.",
           "shortDescription": "즉시 은신 및 자신의 위치에 홀로그램 분신 생성",
@@ -4198,7 +4198,7 @@
             "en": "Helping Hand",
             "ko": "도움의 손길"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960911b19dc2c.png",
           "description": "갈고리를 던져 처음 적중한 아군 또는 적을 자신에게 끌어당깁니다. 적에게 적중하면 대상을 일시적으로 기절시키고 95(+4%)의 피해를 줍니다. 아군에게 적중하면 재사용 대기시간이 50% 감소합니다.",
           "shortDescription": "처음 적중한 대상을 자신에게 끌어당김",
@@ -23249,7 +23249,7 @@
             "en": "Vorpal Blade",
             "ko": "날카로운 칼날"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645964e2ed19dc2c.png",
           "description": "공격한 후 3초 안에 사용하면 마지막으로 공격한, 구조물이 아닌 대상에게 순간이동합니다. 지속 시간인 3초 동안 대상이 드러납니다.",
           "shortDescription": "마지막으로 공격한 적에게 순간이동",
@@ -24005,7 +24005,7 @@
             "en": "Bone Armor",
             "ko": "뼈 갑옷"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645963a4af19dc2c.png",
           "description": "사용하면 3초 동안 최대 생명력의 25%에 해당하는 보호막을 얻습니다.",
           "shortDescription": "사용 시 보호막 획득",
@@ -24393,7 +24393,7 @@
             "en": "Amani Rage",
             "ko": "아마니의 분노"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964e49b19dc2c.png",
           "description": "사용하면 현재 생명력의 50%를 잃고, 잃은 생명력을 10초에 걸쳐 회복합니다.",
           "shortDescription": "사용 시 생명력 감소 후 시간에 걸쳐 회복",

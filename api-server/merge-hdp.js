@@ -179,9 +179,13 @@ function parseAllSkillsData(heroData) {
   }
 
   for (const heroUnitData of heroData.HeroUnits || []) {
-    for (const heroUnit of Object.values(heroUnitData))
-      for (const abilityArray of Object.values(heroUnit.abilities || {}))
+    for (const heroUnit of Object.values(heroUnitData)) {
+      //Exclude heroics attached to hero units (Alextrasza's Cleansing Flame)
+      const { heroic, ...abilities } = heroUnit.abilities || {};
+
+      for (const abilityArray of Object.values(abilities))
         skillDataArray.push(...abilityArray);
+    }
   }
 
   return skillDataArray.map(parseSkillData);
@@ -245,7 +249,22 @@ function relocateSubAbilitiesAfterTalent(hero, talentName, ...subAbilityNames) {
  * @return {Skill} Skill object containing the extracted data
  */
 function parseSkillData(skillData) {
-  return Object.assign(new Skill(), extractSkillTalentInfo(skillData));
+  const skill = Object.assign(new Skill(), extractSkillTalentInfo(skillData));
+
+  skill.type = {
+    Trait: 'D',
+    Heroic: 'R',
+    Active: 'active',
+  }[skillData.abilityType] || skillData.abilityType;
+
+  switch (skillData.nameId) {
+    case 'LucioCrossfade':  //Fix for Crossfade
+      skill.type = 'W'; break;
+    case 'TracerBlink':     //Fix for Blink
+      skill.type = 'Q'; break;
+  }
+
+  return skill;
 }
 
 

@@ -12,6 +12,10 @@ const HotsData = require('./hots-data');
  */
 
 /**
+ * @typedef {import('./talent')} Talent
+ */
+
+/**
  * @typedef {import('./ko-en-string')} KoEnString
  */
 
@@ -127,7 +131,7 @@ function mergeHero(target, source) {
         }
 
         if (targetTalent)
-          mergeSkill(targetTalent, sourceTalent);
+          mergeTalent(targetTalent, sourceTalent);
         else
           targetTalent = sourceTalent;
 
@@ -196,12 +200,26 @@ function mergeSkill(target, source) {
   mergeProperties(target.name, source.name, { ko: 0, en: 0 });
 
   return mergeProperties(target, source, {
+    type: 0,
     description: 0,
     shortDescription: 0,
     cooldown: 0,
     rechargeCooldown: 0,
     manaCost: 0,
     manaCostPerSecond: 0,
+  });
+}
+
+
+/**
+ * Merges data from the source Talent object into the target Talent object.
+ * @param {Talent} target Talent object to merge into
+ * @param {Talent} source Talent object to merge from
+ * @return {Talent} Merged Talent object
+ */
+function mergeTalent(target, source) {
+  return mergeProperties(mergeSkill(target, source), source, {
+    upgradeFor: 0,
   });
 }
 
