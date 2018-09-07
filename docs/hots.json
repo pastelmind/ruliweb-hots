@@ -723,7 +723,8 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956656b19dc2c.png",
             "description": "적 영웅에게 일반 공격을 할 때마다 피의 갈증의 재사용 대기시간이 2초 감소합니다.",
             "shortDescription": "일반 공격 시 피의 갈증 재사용 대기시간 감소",
-            "extras": {}
+            "extras": {},
+            "upgradeFor": "W"
           },
           {
             "name": {
@@ -2316,11 +2317,11 @@
               "ko": "피로의 저주"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956f9cf19dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645957058d19dc2c.png",
             "description": "부패가 적용된 적에게 생명력 흡수가 50%의 추가 피해를 주고 대상의 이동 속도를 25% 감소시킵니다.",
             "shortDescription": "부패가 생명력 흡수 강화",
             "extras": {},
-            "upgradeFor": "E"
+            "upgradeFor": "W"
           },
           {
             "name": {
@@ -2907,9 +2908,9 @@
             "shortDescription": "늑대인간일 때 일반 공격 시 방사 피해",
             "extras": {
               "피해 반경": "3.75",
-              "중심각": "190°",
-              "upgradeFor": "D"
-            }
+              "중심각": "190°"
+            },
+            "upgradeFor": "D"
           }
         ]
       }
@@ -5043,7 +5044,7 @@
             "description": "수풀추적자의 이동 속도 증가 효과가 수풀에서 나온 후 5초 동안 지속됩니다.\n\n반복 퀘스트: 정수를 50개 수집할 때마다 수풀추적자의 이동 속도 증가 효과가 영구히 2% 증가하여 최대 20% 증가합니다.",
             "shortDescription": "퀘스트: 정수 수집 시 수풀추적자 이동 속도 증가 효과 증가",
             "extras": {},
-            "upgradeFor": "D"
+            "upgradeFor": "Z"
           }
         ],
         "4": [
@@ -7553,11 +7554,11 @@
               "ko": "조금만 더!"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f07fb19dc2c.png",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/11/164874af16919dc2c.png",
             "description": "아드레날린 촉진의 치유량이 50% 증가합니다. 격려가 활성화된 동안 일반 공격 사거리가 1 증가합니다.",
             "shortDescription": "아드레날린 촉진 및 격려 강화",
             "extras": {},
-            "upgradeFor": "E"
+            "upgradeFor": "W / E"
           },
           {
             "name": {
@@ -13224,7 +13225,7 @@
             "description": "도약의 일반 공격력 증가량이 증오 중첩당 6%에서 14%로 증가합니다. 이 공격으로 적을 처치하면 도약의 재사용 대기시간이 즉시 초기화되고 소모한 마나를 돌려받습니다.",
             "shortDescription": "도약의 일반 공격력 증가량 증가",
             "extras": {},
-            "upgradeFor": "D"
+            "upgradeFor": "E"
           },
           {
             "name": {
@@ -13236,7 +13237,7 @@
             "description": "도약을 사용하면 굶주린 화살의 재사용 대기시간이 초기화됩니다.",
             "shortDescription": "도약 시 굶주린 화살 즉시 재사용 가능",
             "extras": {},
-            "upgradeFor": "D"
+            "upgradeFor": "E"
           }
         ],
         "10": [
@@ -24091,7 +24092,7 @@
             "description": "뼈 감옥이 완성되면 해골 전사를 2명 소환합니다. 이 효과는 자신이 최대로 부릴 수 있는 해골 전사의 수에 영향을 받지 않습니다.\n\n퀘스트: 적 돌격병을 해골 전사로 80회 되살려야 합니다.\n보상: 해골 전사가 뼈 감옥의 대상에게 공격을 집중하는 동안 해골 전사의 이동 속도와 공격 속도가 40% 증가합니다.",
             "shortDescription": "퀘스트: 뼈 감옥이 해골 전사 생성",
             "extras": {},
-            "upgradeFor": "E"
+            "upgradeFor": "D"
           }
         ],
         "7": [
@@ -27153,7 +27154,7 @@
               "en": "Ice Cold",
               "ko": "얼음처럼 차갑게"
             },
-            "type": "active",
+            "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
             "description": "혹한의 쐐기의 재사용 대기시간이 5초 감소하고 공격력이 250% 증가합니다.",
             "shortDescription": "혹한의 쐐기 재사용 대기시간 감소",
@@ -27252,11 +27253,10 @@
               "ko": "갈망의 한기"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958c5d719dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964dcfc19dc2c.png",
             "description": "이동 불가 상태가 된 적에게 자신이 주는 모든 피해가 56(+2.5%)의 추가 피해를 줍니다.",
             "shortDescription": "이동 불가 상태인 적에게 추가 피해",
-            "extras": {},
-            "upgradeFor": "W"
+            "extras": {}
           },
           {
             "name": {
