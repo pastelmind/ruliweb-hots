@@ -87,7 +87,7 @@ if (!program.jsonEn) {
   }
 
   program.mergeJson = path.resolve(program.mergeJson);
-  console.log('Reading input JSON from', program.jsonKr);
+  console.log('Reading input JSON from', program.mergeJson);
   const hotsData = new HotsData(await readFileAsync(program.mergeJson, 'utf8'));
 
   console.log('Merging data...')
