@@ -166,7 +166,7 @@
             "en": "Focus Turrets!",
             "ko": "집중 포화!"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png",
           "description": "주위의 잘나가! 포탑들이 대상을 집중 공격하게 만듭니다.",
           "shortDescription": "포탑에게 대상 공격 지시",

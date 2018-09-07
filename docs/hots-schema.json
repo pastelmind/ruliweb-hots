@@ -443,9 +443,6 @@
             "R",
             "D",
             "Z",
-            "1",
-            "2",
-            "3",
             "passive",
             "active"
           ]
@@ -554,10 +551,7 @@
           "not": {
             "properties": {
               "type": {
-                "enum": [
-                  "passive",
-                  "active"
-                ]
+                "const": "passive"
               }
             }
           }

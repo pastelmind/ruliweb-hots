@@ -23575,7 +23575,7 @@
             "en": "Improved Ice Block",
             "ko": "향상된 얼음 방패"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956492619dc2c.png",
           "description": "사용하면 2.5초 동안 정지 및 무적 상태가 됩니다. 이 효과가 만료될 때 주위에 있는 적들은 한기를 느낍니다.\n\n<span style=\"color: #ffff8a\">퀘스트를 진행해야 사용할 수 있습니다.</span>",
           "shortDescription": "무적 및 주위 적들이 한기를 느낌",
@@ -26982,7 +26982,7 @@
             "en": "Glacial Spike",
             "ko": "혹한의 쐐기"
           },
-          "type": "1",
+          "type": "active",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958c9c419dc2c.png",
           "description": "사용하면 4초 후에 폭발하여 주위 적들에게 61(+2.5%)의 피해를 주는 쐐기를 소환합니다. 쐐기는 켈투자드의 사슬에 영향을 받을 수 있습니다.",
           "shortDescription": "잠시 후 폭발하며 피해를 주는 쐐기 소환",
