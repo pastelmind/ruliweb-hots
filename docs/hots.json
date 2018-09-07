@@ -1503,7 +1503,7 @@
             "description": "킬로그의 눈의 재사용 대기시간이 15초 감소하고 사거리가 33% 증가합니다.",
             "shortDescription": "킬로그의 눈 재사용 대기시간 감소",
             "extras": {},
-            "upgradeFor": "1"
+            "upgradeFor": "active"
           }
         ],
         "4": [
@@ -23369,7 +23369,7 @@
             "description": "날카로운 칼날을 최대 2회 충전해서 사용할 수 있습니다. 날카로운 칼날을 사용하여 적에게 순간이동하면 6초 이내의 다음 일반 공격이 40%의 추가 피해를 줍니다.",
             "shortDescription": "날카로운 칼날 2회 충전 가능",
             "extras": {},
-            "upgradeFor": "1"
+            "upgradeFor": "active"
           }
         ],
         "10": [
