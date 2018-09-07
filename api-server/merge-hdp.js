@@ -81,7 +81,9 @@ if (!program.jsonEn) {
   const heroes = {};
   for (const heroDataName in jsonKr) {
     console.log('Parsing entry:', heroDataName);
+    console.group();
     heroes[heroDataName] = parseHeroData(jsonKr[heroDataName]);
+    console.groupEnd();
   }
 
   program.mergeJson = path.resolve(program.mergeJson);
