@@ -198,6 +198,10 @@ function mergeSkill(target, source) {
   return mergeProperties(target, source, {
     description: 0,
     shortDescription: 0,
+    cooldown: 0,
+    rechargeCooldown: 0,
+    manaCost: 0,
+    manaCostPerSecond: 0,
   });
 }
 

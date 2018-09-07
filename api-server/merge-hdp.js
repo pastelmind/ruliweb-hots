@@ -243,7 +243,7 @@ function relocateSubAbilitiesAfterTalent(hero, talentName, ...subAbilityNames) {
  * @return {Skill} Skill object containing the extracted data
  */
 function parseSkillData(skillData) {
-  return new Skill(extractSkillTalentInfo(skillData));
+  return Object.assign(new Skill(), extractSkillTalentInfo(skillData));
 }
 
 
@@ -253,16 +253,17 @@ function parseSkillData(skillData) {
  * @return {Talent} Talent object containing the extracted data
  */
 function parseTalentData(talentData) {
-  return new Talent(extractSkillTalentInfo(talentData));
+  return Object.assign(new Talent(), extractSkillTalentInfo(talentData));
 }
 
 
 /**
  * Extracts skill/talent information from a skill or talent JSON object.
  * @param {*} skillTalentData JSON object that represents skill or talent data.
- * @return {Object} Object containing the extracted skill or talent information.
+ * @return {Partial<Skill>} Object containing the extracted skill or talent information.
  */
 function extractSkillTalentInfo(skillTalentData) {
+  /** @type {Partial<Skill>} */
   const skillTalentInfo = {};
 
   //Extract name
@@ -282,6 +283,9 @@ function extractSkillTalentInfo(skillTalentData) {
     skillTalentInfo.shortDescription = parseShortDescription(skillTalentData.shortTooltip);
   else
     console.warn(`${skillTalentData.name} is missing a short tooltip`);
+
+  //Extract cooldown
+  Object.assign(skillTalentInfo, extractCooldownInfo(skillTalentData));
 
   return skillTalentInfo;
 }
@@ -307,6 +311,7 @@ const COLOR_CODES = {
 /**
  * Parse tooltip text, removing game data tags.
  * @param {string} tooltip
+ * @return {string} Parsed description
  */
 function parseTooltip(tooltip) {
   return tooltip
@@ -332,9 +337,52 @@ function parseTooltip(tooltip) {
 /**
  * Parse short description text, removing game data tags.
  * @param {string} tooltip
+ * @return {string} Parsed short description
  */
 function parseShortDescription(tooltip) {
   return parseTooltip(tooltip).replace(/<.*?>/g, '');
+}
+
+
+/**
+ * Extracts cooldown information from a skill or talent JSON object.
+ * @param {*} skillTalentData JSON object that represents skill or talent data.
+ * @return {Partial<Skill>} Parsed cooldown information. If the skill/talent has no cooldown data, returns undefined.
+ */
+function extractCooldownInfo(skillTalentData) {
+  let cooldown = null, rechargeCooldown = null;
+
+  if (skillTalentData.cooldownTooltip) {
+    const cooldownMatch = /(?:재사용|충전)\s*대기시간:\s*(.*?)초/.exec(skillTalentData.cooldownTooltip);
+    if (!cooldownMatch)
+      throw new Error('Cooldown pattern mismatch:', skillTalentData.cooldownTooltip);
+
+    const cooldownValue = parseFloat(cooldownMatch[1]);
+    const { charges } = skillTalentData;
+
+    //Test charges.countUse to exclude Dehaka's Essense Collection
+    if (charges && charges.countMax > 1 && charges.countUse === 1)
+      rechargeCooldown = cooldownValue;
+    else
+      cooldown = cooldownValue;
+
+    switch (skillTalentData.nameId) {
+      case 'DVaPilotCallMechMEKAfall':  //Fix for MEKAfall
+      case 'ThrallSpiritShield':        //Fix for Spirit Shield
+        cooldown = null;
+    }
+  }
+  else {
+    switch (skillTalentData.nameId) {
+      case 'WizardArchonPurePower':     //Fix for Archon: Pure Power
+        cooldown = 10; break;
+
+      case 'CrusaderBlindedByTheLight': //Fix for Blinded By The Light
+        cooldown = 45; break;
+    }
+  }
+
+  return { cooldown, rechargeCooldown };
 }
 
 

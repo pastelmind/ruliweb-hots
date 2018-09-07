@@ -399,7 +399,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953d33c19dc2c.png",
             "description": "메카가 저지 불가 상태가 되고 0.5초마다 발을 구르면서 적들에게 62(+4%)의 피해를 주고 40% 느려지게 합니다. 4초 동안 지속됩니다.\n\n메카 모드일 때에만 사용할 수 있습니다.",
             "shortDescription": "저지 불가 상태가 되고 주위 적 영웅들을 느려지게 함",
-            "cooldown": 90,
+            "cooldown": 100,
             "extras": {
               "피해 반경": "5"
             }
@@ -1798,7 +1798,7 @@
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956c75719dc2c.png",
           "description": "수리검 3개를 흩뿌려 각각 처음 적중한 적에게 68(+4%)의 피해를 줍니다.\n\n최대 3회 충전되고 한 번에 모두 충전됩니다.",
           "shortDescription": "전방에 수리검을 흩뿌림",
-          "cooldown": 12,
+          "rechargeCooldown": 12,
           "manaCost": 20,
           "extras": {
             "사거리": "11"
@@ -3029,7 +3029,6 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164596138ea19dc2c.png",
           "description": "에릭은 다른 바이킹보다 이동 속도가 빠르고 일반 공격 사거리가 깁니다.",
           "shortDescription": "에릭은 다른 바이킹보다 이동 속도가 빠르고 공격 사거리가 김",
-          "cooldown": 30,
           "extras": {}
         },
         {
@@ -4174,7 +4173,6 @@
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459609cb019dc2c.png",
           "description": "누더기는 피해를 받으면 가스를 방출하며 주위의 적을 중독시켜 3초에 걸쳐 71(+4%)의 피해를 줍니다.",
           "shortDescription": "공격 받으면 주위 적에게 지속 피해",
-          "cooldown": 3,
           "extras": {
             "피해 반경": "2.25"
           }
@@ -7317,7 +7315,7 @@
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f0e0c19dc2c.png",
           "description": "적중한 모든 적에게 229(+4%)의 피해를 주고 밀쳐내며 2초 동안 20% 느려지게 합니다. 가까운 적들은 더욱 멀리 밀쳐냅니다.",
           "shortDescription": "일직선상의 적들에게 피해를 주고 밀쳐내며 느려지게 함",
-          "cooldown": 12,
+          "cooldown": 10,
           "manaCost": 50,
           "extras": {
             "사거리": "10",
@@ -7491,7 +7489,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f123419dc2c.png",
             "description": "레이너를 지원하는 밴시를 소환합니다. 밴시는 초당 87(+4%)의 피해를 주며 4초 동안 피해를 받지 않으면 초당 78(+4%)의 생명력을 회복합니다. 다시 사용하면 대상을 바꾸거나 이동시킬 수 있습니다.\n\n밴시는 45초 후에 자동으로 재생성됩니다.",
             "shortDescription": "호위 밴시 소환",
-            "cooldown": 80,
+            "cooldown": 45,
             "manaCost": 100,
             "extras": {
               "사거리": "9.25"
@@ -11115,7 +11113,6 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595a9fca19dc2c.png",
           "description": "탈것을 타지 않는 대신 까마귀로 변신해서 이동 속도가 20% 증가합니다. 변신한 동안 지형을 넘어 이동하며 시야를 확보할 수 있고, 모든 효과에 면역이 됩니다.",
           "shortDescription": "까마귀로 변신",
-          "cooldown": 4,
           "extras": {}
         },
         {
@@ -11294,7 +11291,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bfa0f19dc2c.png",
             "description": "적 영웅을 변이시켜 2초 동안 침묵시키고 공격하지 못하게 합니다. 지속 시간이 만료되면 변이 폭탄이 대상 주위에 있는 적 영웅들에게 확산됩니다.",
             "shortDescription": "적 영웅을 변이시킨 후 확산",
-            "cooldown": 45,
+            "cooldown": 40,
             "manaCost": 70,
             "extras": {
               "사거리": "7",
@@ -11458,7 +11455,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bf24519dc2c.png",
             "description": "대상 아군 영웅을 20초 동안 은신시킵니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.\n\n최대 2회 충전됩니다.",
             "shortDescription": "아군 영웅을 은신시킴",
-            "cooldown": 10,
+            "rechargeCooldown": 10,
             "extras": {
               "사거리": "9"
             }
@@ -11520,6 +11517,7 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/08/29/16581993f5619dc2c.png",
           "description": "0.75초 후에 대상 방향으로 날아가는 해골을 소환합니다. 해골은 적들에게 132(+4%)의 피해를 주고 적 영웅을 2초 동안 25% 느려지게 합니다.",
           "shortDescription": "일정 시간 후 일직선상의 적들에게 피해",
+          "cooldown": 8,
           "extras": {}
         },
         {
@@ -11531,6 +11529,7 @@
           "iconUrl": "http://i1.ruliweb.com/img/18/08/29/1658199434b19dc2c.png",
           "description": "주위에 번개의 고리가 2.5초 동안 나타납니다. 고리에 닿은 적은 0.25초마다 50(+4%)의 피해를 입습니다.\n\n번개 회오리가 적 영웅에게 적중할 때마다 번개 회오리의 공격력이 4% 증가하여 최대 40% 증가합니다.",
           "shortDescription": "주위 적들에게 점차 증가하는 피해",
+          "cooldown": 14,
           "extras": {}
         },
         {
@@ -11542,6 +11541,7 @@
           "iconUrl": "http://i3.ruliweb.com/img/18/08/29/165819944d919dc2c.png",
           "description": "대상 위치로 순간이동해, 주위 적들에게 81(+4%)의 피해를 주고 원래 위치에 메피스토의 그림자를 남깁니다.\n\n2.5초 후, 그림자의 위치로 다시 순간이동합니다.",
           "shortDescription": "대상 위치로 순간이동한 뒤 일정 시간 후 되돌아옴",
+          "cooldown": 18,
           "extras": {}
         }
       ],
@@ -11682,6 +11682,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/08/29/1658199401d19dc2c.png",
             "description": "2.5초 동안 정신을 집중하여 모든 적 영웅을 드러냅니다. 정신 집중이 끝나면 모든 적 영웅에게 371(+4%)의 피해를 주고 2.5초 동안 40% 느려지게 합니다.",
             "shortDescription": "모든 적 영웅에게 피해를 주고 느려지게 함",
+            "cooldown": 120,
             "extras": {}
           },
           {
@@ -11693,6 +11694,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/08/29/165819941be19dc2c.png",
             "description": "1초 후, 사악한 영혼들을 내보내 처음 적중한 적 영웅을 2초 동안 이동 불가 상태로 만들고 지속 시간에 걸쳐 166(+4%)의 피해를 줍니다.\n\n증오의 족쇄는 처음 적중한 대상으로부터 점점 퍼져 나가, 주위의 적 영웅들을 추가로 이동 불가 상태로 만들고 피해를 줍니다.",
             "shortDescription": "적 영웅을 이동 불가 상태로 만드는 영혼 방출",
+            "cooldown": 80,
             "extras": {}
           }
         ],
@@ -12702,7 +12704,7 @@
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164596388b719dc2c.png",
           "description": "모든 일반 공격을 무기로 막아, 일반 공격으로 받는 피해가 1.25초 동안 100% 감소합니다.\n\n최대 2회 충전됩니다.",
           "shortDescription": "짧은 시간 동안 일반 공격 방어",
-          "cooldown": 10,
+          "rechargeCooldown": 10,
           "manaCost": 20,
           "extras": {}
         },
@@ -14264,7 +14266,6 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
           "description": "4초마다 주위 아군 영웅들의 생명력을 116(+4%) 회복시킵니다.",
           "shortDescription": "지속적으로 주위 아군 영웅들을 치유",
-          "cooldown": 4,
           "extras": {
             "치유 반경": "7"
           }
@@ -15182,7 +15183,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530ced19dc2c.png",
             "description": "사용하면 최대 생명력의 10%를 회복합니다. 최대 2회 충전할 수 있습니다. 소용돌이 중에도 사용할 수 있습니다.\n\n<span style=\"color:#00ff90\">지속 효과: </span>용병에게 주는 피해가 25% 증가합니다.",
             "shortDescription": "용병에게 추가 피해 및 사용 시 생명력 회복",
-            "cooldown": 30,
+            "rechargeCooldown": 30,
             "extras": {}
           }
         ],
@@ -16639,7 +16640,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459436c2819dc2c.png",
             "description": "퀘스트: 적 영웅에게 독극물 5중첩을 달성해야 합니다.\n보상: 최대 중첩을 12회 달성하면 신속 재장전을 사용할 수 있게 되어, 사용하면 즉시 치유탄을 3회 충전할 수 있습니다.",
             "shortDescription": "퀘스트: 독극물 강화",
-            "cooldown": 40,
             "extras": {}
           }
         ],
@@ -16677,6 +16677,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943645e19dc2c.png",
             "description": "사용하면 사거리가 275% 증가한 생체 수류탄을 던질 수 있지만 낙하하는 데 3초의 시간이 소요됩니다.\n\n지속 효과: 생체 수류탄의 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "사용 시 생체 수류탄 사거리 증가",
+            "cooldown": 12,
             "extras": {},
             "upgradeFor": "W"
           }
@@ -18146,7 +18147,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645942f3d419dc2c.png",
             "description": "사용하면 주기적으로 식충을 생성하는 둥지를 만듭니다. 식충 둥지는 동시에 하나만 활성화할 수 있습니다.",
             "shortDescription": "식충 둥지 생성",
-            "cooldown": 60,
+            "cooldown": 45,
             "extras": {
               "사거리": "6"
             }
@@ -20468,7 +20469,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645953301719dc2c.png",
             "description": "사용하면 주위 아군 영웅에게 3초 동안 각각의 최대 생명력의 25%에 해당하는 보호막을 부여합니다.\n\n눈부신 방패가 적 영웅에게 적중할 때마다 이 기술의 재사용 대기시간이 8초 감소합니다.",
             "shortDescription": "사용 시 주위 아군에게 보호막 부여",
-            "cooldown": 60,
+            "cooldown": 45,
             "extras": {
               "효과 반경": "8"
             }
@@ -21534,7 +21535,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595776d419dc2c.png",
             "description": "휩쓸기가 적 영웅에게 5회 적중하면, 아지노스의 쌍날검을 사용하여 일반 공격력을 8초 동안 75% 증가시킬 수 있습니다.",
             "shortDescription": "사용 시 일반 공격력 증가",
-            "cooldown": 8,
             "extras": {}
           }
         ],
@@ -24352,7 +24352,7 @@
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964e91e19dc2c.png",
           "description": "도끼를 던져 처음 적중한 2명의 적에게 130(+4%)의 피해를 주고 6초 동안 표식을 남깁니다. 표식이 남겨진 적은 줄진의 다음 3회의 일반 공격에 50%의 추가 피해를 받습니다.",
           "shortDescription": "도끼를 던져 피해를 주고 대상에게 표식을 남겨 일반 공격 시 추가 피해를 줌",
-          "cooldown": 6,
+          "cooldown": 8,
           "manaCost": 50,
           "extras": {
             "사거리": "9.78",
@@ -25467,7 +25467,7 @@
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645959096c19dc2c.png",
           "description": "아군이나 적 유닛에게 질주합니다. 적에게 질주하면 즉시 일반 공격을 합니다.\n\n최대 2회 충전됩니다.",
           "shortDescription": "아군이나 적에게 질주",
-          "cooldown": 12,
+          "rechargeCooldown": 12,
           "manaCost": 30,
           "extras": {
             "사거리": "9.25"
@@ -25580,7 +25580,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645958e81a19dc2c.png",
             "description": "대상 위치에 공기의 벗을 소환하여 주위 넓은 지역을 드러내고 시야를 확보합니다. 공기의 벗은 78(+4%)의 생명력을 가지고 40초 동안 지속되며 공기의 벗을 대상으로 찬란한 질주를 사용할 수 있습니다.\n\n최대 2회 충전됩니다.",
             "shortDescription": "대상 지역을 드러내는 공기의 벗 소환",
-            "cooldown": 20,
+            "rechargeCooldown": 20,
             "extras": {
               "사거리": "9",
               "시야 반경": "8"
@@ -28900,7 +28900,7 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962e88019dc2c.png",
           "description": "아군의 생명력을 286(+4%) 회복시킵니다.\n\n최대 2회 충전되고 한 번에 모두 충전됩니다.\n\n지속 효과: 일반 공격을 할 때마다 이 기술의 재사용 대기시간이 1.5초 감소합니다.\n지속 효과: 기술 공격이 적 영웅에게 적중할 때마다 이 기술의 재사용 대기시간이 1.5초 감소합니다.",
           "shortDescription": "아군 영웅 치유",
-          "cooldown": 15,
+          "rechargeCooldown": 15,
           "manaCost": 10,
           "extras": {
             "사거리": "9"
@@ -29070,7 +29070,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645963048c19dc2c.png",
             "description": "모든 아군 영웅을 10초 동안 은신 상태로 만들고 생명력을 10초에 걸쳐 416(+4%) 회복시킵니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.",
             "shortDescription": "모든 아군 치유 및 은신",
-            "cooldown": 60,
+            "cooldown": 80,
             "manaCost": 75,
             "extras": {}
           },
@@ -31649,6 +31649,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/08/05/16507ed974519dc2c.png",
             "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 386(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "심문으로 아군 치유",
+            "cooldown": 11,
             "extras": {},
             "upgradeFor": "W"
           },
