@@ -114,6 +114,8 @@ function mergeHero(target, source) {
         //If the corresponding target talent is not in the same level and index,
         //search for the target talent.
         if (!(targetTalent && isEqualInOneLocale(targetTalent.name, sourceTalent.name))) {
+          targetTalent = undefined; //Unset targetTalent (in case of name mismatch)
+
           let targetTalentIndex = -1, targetTalentLevel, targetTalentArray;
           for ([targetTalentLevel, targetTalentArray] of Object.entries(oldTalents)) {
             targetTalentIndex = targetTalentArray.findIndex(talent => isEqualInOneLocale(talent.name, sourceTalent.name));
