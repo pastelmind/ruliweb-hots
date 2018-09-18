@@ -323,26 +323,12 @@ function extractResourceInfo(unitData, heroId) {
 }
 
 /**
- * A set of weapon IDs that are always selected when multiple weapons are found.
- * Values are not used and have no meaning.
+ * Keys are IDs of heroes that have multiple weapons. Values are arrays of weapon names.
  */
-const WEAPON_IDS_RESOLVE_MULTIPLE = {
-  'HeroGreymaneRangedWeapon': 0,
-  'HeroGreymaneWorgenWeapon': 0,
-  'HeroBaleogBow': 0,
-  'HeroDehaka': 0,
-  'RexxarRangedWeapon': 0,
-  'DryadHeroRangedWeapon': 0,
-  'StukovHeroWeapon': 0,
-  'HeroArtanis': 0,
-  'NecromancerHeroWeapon': 0,
-  'HeroZeratul': 0,
-  'ChoHeroWeapon': 0,
-  'AmazonHeroWeaponRanged': 0,
-  'ChenFireHeroWeapon': 0,
-  'ChenStormHeroWeapon': 0,
-  'ChenEarthHeroWeapon': 0,
-  'HeroNova': 0,
+const MULTI_WEAPON_HEROES = {
+  Greymane: ['인간', '늑대인간'],
+  Fenix: ['연발포', '위상 폭탄'],
+  SgtHammer: ['전차', '공성 모드'],
 };
 
 /**
@@ -354,19 +340,28 @@ const WEAPON_IDS_RESOLVE_MULTIPLE = {
 function extractWeaponInfo(weaponData, heroData) {
   if (!(weaponData && typeof weaponData === 'object')) return undefined;
 
-  if (Array.isArray(weaponData)) {
-    if (weaponData.find(w => w.id in WEAPON_IDS_RESOLVE_MULTIPLE))
-      weaponData = weaponData.filter(w => w.id in WEAPON_IDS_RESOLVE_MULTIPLE);
+  let weaponArray = (Array.isArray(weaponData) ? weaponData : [weaponData]);
+
+  weaponArray = weaponArray.map(w => (w.link && typeof w.link === 'object') ? w.link : w);
+
+  if (weaponArray.length > 1) {
+    //Remove blacklisted weapon IDs
+    weaponArray = weaponArray.filter(w => !(w.id in {
+      HeroGreymaneMeleeWeapon: 0,                   //Greymane
+      DryadHeroRangedWeaponStarwoodSpearMastery: 0, //Lunara
+      StukovSpineLauncherAttackWeapon: 0,           //Stukov
+      ChoLongRangeHeroWeaponCthunsGift: 0,          //Cho
+    }));
+
+    //Extract the weapon with the longest range
+    //Exclude heroes with 2 weapons
+    if (!(heroData.id in MULTI_WEAPON_HEROES))
+      weaponArray = [weaponArray.reduce((w1, w2) => (w1.range || 0) > (w2.range || 0) ? w1 : w2)];
   }
-  else
-    weaponData = [weaponData];
 
   const weaponInfo = { range: [], period: [], damage: [] };
 
-  for (let weapon of weaponData) {
-    if (weapon.link && typeof weapon.link === 'object')
-      weapon = weapon.link;
-
+  for (let weapon of weaponArray) {
     //Extract weapon range and attack period
     let { range, period } = weapon;
 
@@ -407,12 +402,7 @@ function extractWeaponInfo(weaponData, heroData) {
   }
 
   //Set alternate weapon names
-  const ALTERNATE_WEAPON_NAMES = {
-    'Greymane': ['인간', '늑대인간'],
-    'Fenix': ['연발포', '위상 폭탄'],
-    'SgtHammer': ['전차', '공성 모드'],
-  };
-  const altWeaponNames = ALTERNATE_WEAPON_NAMES[heroData.id];
+  const altWeaponNames = MULTI_WEAPON_HEROES[heroData.id];
   for (const [statId, statArray] of Object.entries(weaponInfo)) {
     if (statArray.length > 1 && altWeaponNames)
       statArray.forEach((s, index) => s.altName = altWeaponNames[index]);
