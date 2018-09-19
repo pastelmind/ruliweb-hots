@@ -34257,7 +34257,7 @@
             "ko": "위안의 안개"
           },
           "type": "D",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
+          "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302e1c19dc2c.png",
           "description": "사용하면 주위 아군 영웅들의 기절, 감속, 침묵, 이동 불가 효과를 제거합니다.\n\n지속 효과: 4초마다 주위 아군 영웅들의 생명력을 104(+4%) 회복시킵니다.",
           "shortDescription": "주위 아군 영웅 무력화 효과 제거",
           "cooldown": 120,
@@ -34399,7 +34399,7 @@
               "ko": "마법 침샘"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
             "description": "일반 공격 사러기라 1.1 증가합니다. 일반 공격이 적 영웅에게 적중할 때마다 위안의 안개의 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "일반 공격 시 위안의 안개 재사용 대기시간 감소",
             "extras": {},
@@ -34439,7 +34439,7 @@
               "ko": "회생의 안개"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947cb6f19dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302e1c19dc2c.png",
             "description": "위안의 안개로 아군 영웅의 무력화 효과를 제거하면 대상 아군의 생명력을 208(+4%) 회복시킵니다.",
             "shortDescription": "위안의 안개 사용 시 치유",
             "extras": {},
@@ -34497,7 +34497,7 @@
               "ko": "안전 가루"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947bda719dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302c9119dc2c.png",
             "description": "요정 가루의 지속 시간이 1초 증가합니다. 요정 가루를 얻은 아군에게는 자신의 모든 치유량이 25% 증가합니다.",
             "shortDescription": "요정 가루가 치유량을 증가시킴",
             "extras": {},
@@ -34509,7 +34509,7 @@
               "ko": "요정의 힘"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947bda719dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302d5c19dc2c.png",
             "description": "요정 가루의 재사용 대기시간이 3초 감소하고 기술 방어력을 추가로 25 증가시킵니다.",
             "shortDescription": "요정 가루 재사용 대기시간 감소 및 기술 방어력 증가량 증가",
             "extras": {},
@@ -34535,7 +34535,7 @@
               "ko": "약화 변이"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947c79419dc2c.png",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645947c5aa19dc2c.png",
             "description": "변이가 대상의 방어력을 25 감소시켜 받는 피해를 25% 증가시킵니다.",
             "shortDescription": "변이가 방어력을 감소시킴",
             "extras": {},
@@ -34547,6 +34547,7 @@
               "ko": "위상 회피"
             },
             "type": "active",
+            "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302ee719dc2c.png",
             "description": "사용하면 0.75초 동안 정지 상태가 됩니다.",
             "shortDescription": "사용 시 정지",
             "cooldown": 20,
@@ -36396,6 +36397,7 @@
               "ko": "번데기"
             },
             "type": "active",
+            "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef2e11fd19dc2c.png",
             "description": "사용하면 생명력이 572(+4%)인 번데기로 자신을 5초 동안 감쌉니다. 번데기 내부에 있는 동안 매초 최대 생명력의 5%를 회복합니다.\n\n적은 고치를 공격하여 효과를 일찍 끝낼 수 있습니다.",
             "shortDescription": "사용 시 정지 및 생명력 회복",
             "cooldown": 90,
