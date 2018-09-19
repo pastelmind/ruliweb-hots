@@ -332,6 +332,9 @@ function extractSkillTalentInfo(skillTalentData) {
   //Extract cooldown
   Object.assign(skillTalentInfo, extractCooldownInfo(skillTalentData));
 
+  //Extract resource cost (mana, energy, etc.)
+  Object.assign(skillTalentInfo, extractResourceCostInfo(skillTalentData));
+
   return skillTalentInfo;
 }
 
@@ -428,6 +431,39 @@ function extractCooldownInfo(skillTalentData) {
   }
 
   return { cooldown, rechargeCooldown };
+}
+
+
+/**
+ * Extracts resource cost information from a skill or talent JSON object.
+ * @param {*} skillTalentData JSON object that represents skill or talent data.
+ * @return {Partial<Skill>} Parsed resource cost information.
+ */
+function extractResourceCostInfo(skillTalentData) {
+  let manaCost = null, manaCostPerSecond = null;
+  const extras = {};
+  const { energyTooltip } = skillTalentData;
+
+  if (energyTooltip) {
+    const resourceMatch = /^\s*(.+?)\s*:\s*(초당)?\s*(\d+?)\s*$/.exec(energyTooltip.replace(/<.*?>/g, ''));
+
+    if (resourceMatch) {
+      const [, resourceName, perSecondString, resourceCostAmount] = resourceMatch;
+
+      if (resourceName === '마나') {
+        if (perSecondString)
+          manaCostPerSecond = +resourceCostAmount;
+        else
+          manaCost = +resourceCostAmount;
+      }
+      else
+        extras[resourceName] = (perSecondString ? perSecondString + ' ' : '') + resourceCostAmount;
+    }
+    else
+      console.warn(`${skillTalentData.nameId}: Unrecognizable energyTooltip -`, util.inspect(energyTooltip));
+  }
+
+  return { manaCost, manaCostPerSecond, extras };
 }
 
 

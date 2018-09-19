@@ -201,6 +201,9 @@ function mergeSkill(target, source) {
   //Merge skill and talent names
   mergeProperties(target.name, source.name, { ko: 0, en: 0 });
 
+  //Merge extras
+  mergeProperties(target.extras, source.extras, source.extras)
+
   return mergeProperties(target, source, {
     type: 0,
     description: 0,
