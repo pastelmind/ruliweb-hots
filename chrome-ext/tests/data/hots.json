@@ -100,6 +100,810 @@
     }
   ],
   "heroes": {
+    "Fenix": {
+      "name": "피닉스",
+      "title": "기사단의 귀감",
+      "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
+      "type": "원거리",
+      "role": "assassin",
+      "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "value": 1140,
+          "levelScaling": 0.04
+        },
+        "radius": 1.125,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 2.379,
+          "levelScaling": 0.04
+        },
+        "shields": {
+          "value": 760,
+          "levelScaling": 0.04
+        },
+        "range": [
+          {
+            "value": 5,
+            "altName": "연발포"
+          },
+          {
+            "value": 6.25,
+            "altName": "위상 폭탄"
+          }
+        ],
+        "period": [
+          {
+            "value": 0.54,
+            "altName": "연발포"
+          },
+          {
+            "value": 1.35,
+            "altName": "위상 폭탄"
+          }
+        ],
+        "damage": [
+          {
+            "value": 83,
+            "levelScaling": 0.04,
+            "altName": "연발포"
+          },
+          {
+            "value": 103.75,
+            "levelScaling": 0.04,
+            "altName": "위상 폭탄"
+          }
+        ]
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Shield Capacitor",
+            "ko": "보호막 축전기"
+          },
+          "type": "D",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
+          "description": "790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 79(+4%)의 보호막이 재생됩니다.",
+          "shortDescription": "비전투 시 재생되는 보호막 영구히 획득",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Plasma Cutter",
+            "ko": "플라스마 절단기"
+          },
+          "type": "Q",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
+          "description": "대상 위치에 광선을 발사합니다. 광선은 피닉스를 중심으로 주위를 원형으로 두 번 돌며 적에게 140(+4%)의 피해를 주고 4초 동안 25% 느려지게 합니다.",
+          "shortDescription": "주위를 원형으로 도는 광선을 발사하여 적에게 피해를 주고 느려지게 함",
+          "cooldown": 12,
+          "extras": {
+            "회전 반경": "1.5 ~ 6",
+            "너비": "0.7",
+            "회전 시간": "1.5초"
+          }
+        },
+        {
+          "name": {
+            "en": "Weapon Mode: Repeater Cannon",
+            "ko": "무기 모드: 연발포"
+          },
+          "type": "W",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+          "description": "공격 속도가 150% 증가합니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.",
+          "shortDescription": "공격 속도 증가",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Weapon Mode: Phase Bomb",
+            "ko": "무기 모드: 위상 폭탄"
+          },
+          "type": "W",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
+          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
+          "shortDescription": "일반 공격력 및 일반 공격 사거리 증가, 일반 공격 시 방사 피해",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Warp",
+            "ko": "차원이동"
+          },
+          "type": "E",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
+          "description": "대상 위치로 순간이동합니다. 0.5초 후에 이동하며, 이동 후 0.75초 후에 도착합니다.",
+          "shortDescription": "대상 위치로 순간이동",
+          "cooldown": 17,
+          "extras": {
+            "사거리": "9"
+          }
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Advanced Targeting",
+              "ko": "향상된 조준"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
+            "description": "퀘스트: 플라스마 절단기가 적 영웅에게 적중할 때마다 일반 공격력이 0.5 증가하여 최대 60 증가합니다.\n보상: 플라스마 절단기가 적 영웅에게 30회 이상 적중하면 플라스마 절단기가 1회 더 회전합니다.",
+            "shortDescription": "퀘스트: 플라스마 절단기 추가 회전",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Arsenal Synergy",
+              "ko": "광자 집중"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
+            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 150% 증가하고 방사 피해의 범위가 50% 증가합니다.",
+            "shortDescription": "연발포가 위상 폭탄 강화",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Mobile Offense",
+              "ko": "기동타격"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+            "description": "이동하면 다음 일반 공격이 35%의 추가 피해를 줍니다.",
+            "shortDescription": "이동 시 일반 공격 강화",
+            "extras": {},
+            "upgradeFor": "W"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Target Acquired",
+              "ko": "목표 확인"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+            "description": "느려진 적 영웅을 연발포로 일반 공격하면 이동 속도가 4초 동안 10% 증가하여 최대 40% 증가합니다.",
+            "shortDescription": "연발포가 이동 속도를 증가시킴",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Inhibiting Energy",
+              "ko": "에너지 억제"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
+            "description": "위상 폭탄이 활성화된 동안 플라스마 절단기로 느려진 적 영웅에게 일반 공격을 하면 주위 모든 적들을 4초 동안 35% 느려지게 합니다.",
+            "shortDescription": "위상 폭탄이 적을 느려지게 함",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Warp Conduit",
+              "ko": "차원로"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
+            "description": "적 영웅을 처치하면 차원이동의 재사용 대기시간이 초기화됩니다.",
+            "shortDescription": "적 영웅 처치 시 차원이동 재사용 대기시간 초기화",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Emergency Protocol",
+              "ko": "긴급 프로토콜"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
+            "description": "보호막 축전기의 보호막이 파괴되면 이동 속도가 5초 동안 25% 증가합니다.",
+            "shortDescription": "보호막이 파괴되면 이동 속도 증가",
+            "extras": {},
+            "upgradeFor": "D"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Combat Advantage",
+              "ko": "전술적 이점"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
+            "description": "플라스마 절단기가 느려진 대상에게 35%의 추가 피해를 줍니다.",
+            "shortDescription": "플라스마 절단기가 느려진 대상에게 추가 피해",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Warp Warfare",
+              "ko": "전술적 차원이동"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
+            "description": "차원이동을 마친 후 연발포의 공격 속도가 4초 동안 175% 증가합니다.",
+            "shortDescription": "차원이동 후 공격 속도 증가",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Divert Power: Weapons",
+              "ko": "동력 전환: 무기"
+            },
+            "type": "active",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+            "description": "사용하면 보호막 축전기의 보호막을 모두 소모합니다. 소모한 보호막에 비례하여 일반 공격력이 5초 동안 최대 80% 증가합니다.",
+            "shortDescription": "사용 시 보호막을 잃지만 일반 공격력 증가",
+            "cooldown": 20,
+            "extras": {}
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Purification Salvo",
+              "ko": "정화 개시"
+            },
+            "type": "R",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459545c1319dc2c.png",
+            "description": "1.5초 동안 정신을 집중하여 전방에 호를 그리듯 적 영웅을 포착합니다. 정신 집중을 마치면 포착한 적 영웅들에게 각각 5발의 유도탄을 발사해 각각 89(+4%)의 피해를 줍니다. 느려진 대상에게는 50%의 추가 피해를 줍니다.",
+            "shortDescription": "목표 포착 후 유도탄 포화",
+            "cooldown": 75,
+            "extras": {
+              "포착 반경": "13.25",
+              "중심각": "180°"
+            }
+          },
+          {
+            "name": {
+              "en": "Planet Cracker",
+              "ko": "행성 분열기"
+            },
+            "type": "R",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645954544319dc2c.png",
+            "description": "0.5초 후, 전장을 가로지르는 광선을 발사하여 구조물이 아닌 적에게 4초 동안 0.25초마다 116(+4%)의 피해를 줍니다.",
+            "shortDescription": "전장을 가로지르는 광선 발사",
+            "cooldown": 100,
+            "extras": {
+              "사거리": "∞",
+              "너비": "2"
+            }
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Adanium Shell",
+              "ko": "아다늄 장갑"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
+            "description": "차원이동을 마친 후 방어력이 4초 동안 50 증가합니다.",
+            "shortDescription": "차원이동 시 방어력 증가",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Dampening Field",
+              "ko": "감쇠장"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
+            "description": "보호막 축전기의 보호막이 지속되는 동안 기술 방어력이 20 증가합니다.",
+            "shortDescription": "보호막 축전기가 기술 방어력을 증가시킴",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Rapid Recharge",
+              "ko": "신속 재충전"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595463e119dc2c.png",
+            "description": "생명력을 회복할 때마다 회복량의 60%만큼 보호막 축전기의 보호막이 재생됩니다.",
+            "shortDescription": "생명력 회복 시 보호막 재생",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Auxiliary Shields",
+              "ko": "보조 보호막"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595467f219dc2c.png",
+            "description": "최대 생명력이 10% 감소하지만 보호막 축전기의 보호막이 20% 증가합니다. 일반 공격을 하면 준 피해의 10%만큼 보호막이 재생됩니다.",
+            "shortDescription": "일반 공격 시 보호막 획득",
+            "extras": {},
+            "upgradeFor": "D"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Offensive Cadence",
+              "ko": "맹공"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+            "description": "연발포가 적 영웅에게 3회 적중할 때마다 대상의 최대 생명력의 6%만큼 추가 피해를 줍니다.",
+            "shortDescription": "연발포 연속 공격 시 일반 공격 강화",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Photonic Weaponry",
+              "ko": "광자 무기"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
+            "description": "보호막 축전기의 보호막이 지속되는 동안 공격력이 15% 증가합니다.",
+            "shortDescription": "보호막 축전기가 공격력을 증가시킴",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Arsenal Overcharge",
+              "ko": "무기 과충전"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
+            "description": "일반 공격을 할 때마다 기술의 재사용 대기시간이 0.5초 감소합니다.",
+            "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소",
+            "extras": {}
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Secondary Fire",
+              "ko": "후속 공격"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
+            "description": "플라스마 절단기가 적 영웅에게 적중하면 0.5초 후에 대상 영웅에게 정화 개시 유도탄을 발사하여 89(+4%)의 피해를 줍니다. 느려진 대상에게는 50%의 추가 피해를 줍니다.",
+            "shortDescription": "적 영웅 적중 시 정화 개시 유도탄 발사",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Singularity Charge",
+              "ko": "특이점 장전"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
+            "description": "연발포의 공격 속도가 100% 증가하고 위상 폭탄의 사거리가 1.25 증가합니다.",
+            "shortDescription": "무기 모드 강화",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Unconquered Spirit",
+              "ko": "굴하지 않는 정신"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
+            "description": "죽음에 이르는 피해를 받으면 보호막 충전기의 보호막이 832(+4%) 재생됩니다. 이 효과는 120초에 한 번씩만 발동합니다.",
+            "shortDescription": "치명적인 피해를 받으면 보호막 축전기 충전",
+            "extras": {},
+            "upgradeFor": "D"
+          }
+        ]
+      }
+    },
+    "Rexxar": {
+      "name": "렉사르",
+      "title": "호드의 용사",
+      "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
+      "type": "원거리",
+      "role": "warrior",
+      "universe": "warcraft",
+      "stats": [
+        {
+          "unitName": "렉사르",
+          "hp": {
+            "value": 1725,
+            "levelScaling": 0.04
+          },
+          "radius": 0.875,
+          "speed": 4.3984,
+          "hpRegen": {
+            "value": 3.5898,
+            "levelScaling": 0.04
+          },
+          "mp": {
+            "value": 500,
+            "levelAdd": 10
+          },
+          "mpRegen": {
+            "value": 3,
+            "levelAdd": 0.098
+          },
+          "range": 5.5,
+          "period": 1.15,
+          "damage": {
+            "value": 99,
+            "levelScaling": 0.04
+          }
+        },
+        {
+          "unitName": "미샤",
+          "hp": {
+            "value": 1762,
+            "levelScaling": 0.04
+          },
+          "radius": 0.9375,
+          "speed": 5.0582,
+          "hpRegen": {
+            "value": 3.6718,
+            "levelScaling": 0.04
+          },
+          "range": 1.5,
+          "period": 1.2,
+          "damage": {
+            "value": 62,
+            "levelScaling": 0.04
+          }
+        }
+      ],
+      "skills": [
+        {
+          "name": {
+            "en": "Misha, Focus!",
+            "ko": "미샤, 집중해!"
+          },
+          "type": "D",
+          "iconUrl": "http://i1.ruliweb.com/img/18/07/08/164758eadfc19dc2c.png",
+          "description": "지속 효과: 미샤의 이동 속도가 15% 증가합니다.\n\n미샤에게 특정 적을 공격하거나 특정 위치로 이동해 대기하라고 명령합니다.\n\n렉사르를 대상으로 사용하면 미샤가 렉사르에게 돌아오며 이 동안 미샤의 이동 속도가 30% 추가로 증가합니다.\n\n미샤를 대상으로 사용하면 현재 위치에 대기합니다.",
+          "shortDescription": "미샤에게 이동하거나 공격하라고 명령",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Spirit Swoop",
+            "ko": "기백 날리기"
+          },
+          "type": "Q",
+          "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
+          "description": "일직선상의 적들에게 147(+4%)의 피해를 주고, 2초 동안 30% 느려지게 합니다.",
+          "shortDescription": "매를 날려 적들에게 피해를 주고 느려지게 함",
+          "cooldown": 7,
+          "manaCost": 40,
+          "extras": {
+            "사거리": "9.7",
+            "너비": "1.25"
+          }
+        },
+        {
+          "name": {
+            "en": "Misha, Charge!",
+            "ko": "미샤, 돌진!"
+          },
+          "type": "W",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
+          "description": "미샤가 일직선상으로 돌진해서 적들에게 61(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.",
+          "shortDescription": "미샤에게 돌진 명령을 내려 적들에게 피해를 주고 기절시킴",
+          "cooldown": 10,
+          "manaCost": 45,
+          "extras": {
+            "사거리": "7.5",
+            "너비": "2.5"
+          }
+        },
+        {
+          "name": {
+            "en": "Mend Pet",
+            "ko": "야수 치료"
+          },
+          "type": "E",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f27fe19dc2c.png",
+          "description": "미샤의 생명력을 5초에 걸쳐 743(+4%) 회복시킵니다.",
+          "shortDescription": "미샤 지속 치유",
+          "cooldown": 10,
+          "manaCost": 55,
+          "extras": {}
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Easy Prey",
+              "ko": "쉬운 사냥감"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
+            "description": "미샤가 돌격병과 용병에게 주는 피해가 150% 증가하고, 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
+            "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Bird of Prey",
+              "ko": "맹금"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
+            "description": "기백 날리기가 돌격병에게 150%의 추가 피해를 줍니다.",
+            "shortDescription": "기백 날리기가 돌격병에게 주는 피해 증가",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Flare",
+              "ko": "섬광탄"
+            },
+            "type": "active",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f266519dc2c.png",
+            "description": "대상 위치에 섬광탄을 발사해 20초 동안 주위를 드러냅니다.",
+            "shortDescription": "대상 지역을 드러냄",
+            "cooldown": 20,
+            "extras": {
+              "사거리": "15",
+              "시야 반경": "8"
+            }
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Hungry Bear",
+              "ko": "굶주린 곰"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
+            "description": "미샤가 일반 공격으로 최대 생명력의 4.5%를 회복합니다.",
+            "shortDescription": "미샤 일반 공격 시 자신 치유",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Hunter Gatherer",
+              "ko": "수집 사냥꾼"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530fdd19dc2c.png",
+            "description": "퀘스트: 재생의 구슬을 획득할 때마다 렉사르의 초당 생명력 재생량이 1.25 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 20개 이상 획득하면 렉사르와 미샤의 방어력이 10 증가합니다.",
+            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Grizzled Fortitude",
+              "ko": "추적자의 인내"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948925919dc2c.png",
+            "description": "7초마다 렉사르와 미샤의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다. 렉사르 또는 미샤가 일반 공격을 할 때마다 각자의 재사용 대기시간이 감소합니다.",
+            "shortDescription": "주기적으로 물리 방어력 증가",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Animal Husbandry",
+              "ko": "생존 일지"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f21aa19dc2c.png",
+            "description": "렉사르가 살아 있는 1초마다 렉사르와 미샤의 최대 생명력이 2 증가합니다. 렉사르가 죽으면 이 증가량은 사라집니다.",
+            "shortDescription": "오래 살아 있을수록 최대 생명력 증가",
+            "extras": {}
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Aspect of the Beast",
+              "ko": "야수의 상"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
+            "description": "미샤의 일반 공격이 미샤, 돌진!의 재사용 대기시간을 1.25초 감소시킵니다.",
+            "shortDescription": "미샤 일반 공격 시 미샤, 돌진! 재사용 대기시간 감소",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Crippling Talons",
+              "ko": "마비의 발톱"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
+            "description": "기백 날리기의 감속 효과가 50%로 증가하고 지속 시간이 3초로 증가합니다.",
+            "shortDescription": "기백 날리기 감속 효과 및 지속 시간 증가",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Taking Flight",
+              "ko": "날렵한 비행"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2d9719dc2c.png",
+            "description": "기백 날리기의 사거리가 20% 증가합니다. 기백 날리기가 적 영웅에게 적중하면 소모한 마나를 돌려받고 재사용 대기시간이 2초 감소합니다.",
+            "shortDescription": "기백 날리기 사거리 증가 및 마나 반환",
+            "extras": {},
+            "upgradeFor": "Q"
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Bestial Wrath",
+              "ko": "야수의 격노"
+            },
+            "type": "R",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png",
+            "description": "미샤의 일반 공격력이 12초 동안 150% 증가합니다.",
+            "shortDescription": "미샤 일반 공격력 증가",
+            "cooldown": 50,
+            "manaCost": 75,
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Unleash the Boars",
+              "ko": "멧돼지를 풀어라"
+            },
+            "type": "R",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2f3319dc2c.png",
+            "description": "모든 적 영웅을 추적하는 멧돼지 무리를 일정 방향으로 풀어 114(+4%)의 피해를 주고, 모습이 드러나게 하며, 5초 동안 40% 느려지게 합니다.",
+            "shortDescription": "멧돼지 무리를 풀어 적 영웅들 사냥",
+            "cooldown": 60,
+            "manaCost": 75,
+            "extras": {
+              "사거리": "25",
+              "중심각": "50°"
+            }
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Wildfire Bear",
+              "ko": "야생불곰"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948a1fd19dc2c.png",
+            "description": "미샤가 주위 적들에게 초당 29(+4%)의 피해를 줍니다.",
+            "shortDescription": "미샤가 주위 적들에게 피해",
+            "extras": {
+              "피해 반경": "2.5"
+            }
+          },
+          {
+            "name": {
+              "en": "Aspect of the Hawk",
+              "ko": "매의 상"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
+            "description": "기백 날리기가 적 영웅에게 적중하면 공격 속도가 3초 동안 125% 증가합니다. 미샤가 일반 공격을 할 때마다 이 효과의 지속 시간이 0.75초 증가합니다.",
+            "shortDescription": "기백 날리기가 공격 속도를 증가시킴",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Dire Beast",
+              "ko": "광포한 야수"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
+            "description": "렉사르와 미샤가 일반 공격을 할 때마다 다음 미샤, 돌진!의 공격력이 40% 증가하여 최대 400% 증가합니다.",
+            "shortDescription": "일반 공격 시 미샤, 돌진! 공격력 증가",
+            "extras": {},
+            "upgradeFor": "W"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Thrill of the Hunt",
+              "ko": "사냥의 희열"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
+            "description": "렉사르의 일반 공격이 렉사르와 미샤의 이동 속도를 2초 동안 25% 증가시킵니다.",
+            "shortDescription": "일반 공격 시 이동 속도 증가",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Primal Intimidation",
+              "ko": "야성의 위압감"
+            },
+            "type": "active",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530b9219dc2c.png",
+            "description": "사용하면 렉사르와 미샤 주위 적 영웅과 소환수가 2.5초 동안 공격 속도가 50%, 이동 속도가 20% 감소합니다.\n\n지속 효과: 렉사르나 미샤를 공격하는 적 영웅과 소환수의 공격 속도가 2.5초 동안 20% 감소합니다.",
+            "shortDescription": "사용 시 적 공격 및 이동 속도 감소",
+            "cooldown": 20,
+            "extras": {
+              "효과 반경": "5"
+            }
+          },
+          {
+            "name": {
+              "en": "Feign Death",
+              "ko": "죽은척하기"
+            },
+            "type": "active",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f24cf19dc2c.png",
+            "description": "죽은 흉내를 내서 5초 동안 무적 상태가 되고 대상으로 지정되지 않습니다. 지속 시간 동안 미샤를 조종합니다.",
+            "shortDescription": "무적 상태가 되고 미샤 조종",
+            "cooldown": 35,
+            "extras": {}
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Spirit Bond",
+              "ko": "정신의 결속"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png",
+            "description": "야수의 격노의 지속 시간이 50% 증가하고 이 동안 미샤가 일반 공격으로 준 피해의 50%만큼 렉사르의 생명력이 회복됩니다.",
+            "shortDescription": "미샤 일반 공격 시 렉사르 치유",
+            "extras": {},
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Kill Command",
+              "ko": "살상 명령"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2f3319dc2c.png",
+            "description": "멧돼지를 풀어라의 공격력이 50% 증가하고 대상들을 1.5초 동안 이동 불가 상태로 만듭니다.",
+            "shortDescription": "멧돼지를 풀어라 공격력 증가 및 대상 이동 불가",
+            "extras": {},
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Frenzy of Kalimdor",
+              "ko": "칼림도어의 광란"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
+            "description": "렉사르의 일반 공격력이 10% 증가하고, 미샤의 일반 공격이 대상을 1.25초 동안 20% 느려지게 합니다.",
+            "shortDescription": "렉사르 일반 공격력 증가 및 미샤 일반 공격 시 대상 감속",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Hardened Skin",
+              "ko": "강화 가죽"
+            },
+            "type": "active",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459474e1719dc2c.png",
+            "description": "사용하면 렉사르와 미샤의 방어력이 4초 동안 75 증가하여 받는 피해가 75% 감소합니다.",
+            "shortDescription": "렉사르와 미샤 방어력 대폭 증가",
+            "cooldown": 60,
+            "extras": {}
+          }
+        ]
+      }
+    },
     "Tinker": {
       "name": "가즈로",
       "title": "톱니항 두목",
@@ -507,810 +1311,6 @@
             "shortDescription": "사용 시 고철 생성",
             "cooldown": 60,
             "extras": {}
-          }
-        ]
-      }
-    },
-    "Rexxar": {
-      "name": "렉사르",
-      "title": "호드의 용사",
-      "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png",
-      "type": "원거리",
-      "role": "warrior",
-      "universe": "warcraft",
-      "stats": [
-        {
-          "unitName": "렉사르",
-          "hp": {
-            "value": 1725,
-            "levelScaling": 0.04
-          },
-          "radius": 0.875,
-          "speed": 4.3984,
-          "hpRegen": {
-            "value": 3.5898,
-            "levelScaling": 0.04
-          },
-          "mp": {
-            "value": 500,
-            "levelAdd": 10
-          },
-          "mpRegen": {
-            "value": 3,
-            "levelAdd": 0.098
-          },
-          "range": 5.5,
-          "period": 1.15,
-          "damage": {
-            "value": 99,
-            "levelScaling": 0.04
-          }
-        },
-        {
-          "unitName": "미샤",
-          "hp": {
-            "value": 1762,
-            "levelScaling": 0.04
-          },
-          "radius": 0.9375,
-          "speed": 5.0582,
-          "hpRegen": {
-            "value": 3.6718,
-            "levelScaling": 0.04
-          },
-          "range": 1.5,
-          "period": 1.2,
-          "damage": {
-            "value": 62,
-            "levelScaling": 0.04
-          }
-        }
-      ],
-      "skills": [
-        {
-          "name": {
-            "en": "Misha, Focus!",
-            "ko": "미샤, 집중해!"
-          },
-          "type": "D",
-          "iconUrl": "http://i1.ruliweb.com/img/18/07/08/164758eadfc19dc2c.png",
-          "description": "지속 효과: 미샤의 이동 속도가 15% 증가합니다.\n\n미샤에게 특정 적을 공격하거나 특정 위치로 이동해 대기하라고 명령합니다.\n\n렉사르를 대상으로 사용하면 미샤가 렉사르에게 돌아오며 이 동안 미샤의 이동 속도가 30% 추가로 증가합니다.\n\n미샤를 대상으로 사용하면 현재 위치에 대기합니다.",
-          "shortDescription": "미샤에게 이동하거나 공격하라고 명령",
-          "extras": {}
-        },
-        {
-          "name": {
-            "en": "Spirit Swoop",
-            "ko": "기백 날리기"
-          },
-          "type": "Q",
-          "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
-          "description": "일직선상의 적들에게 147(+4%)의 피해를 주고, 2초 동안 30% 느려지게 합니다.",
-          "shortDescription": "매를 날려 적들에게 피해를 주고 느려지게 함",
-          "cooldown": 7,
-          "manaCost": 40,
-          "extras": {
-            "사거리": "9.7",
-            "너비": "1.25"
-          }
-        },
-        {
-          "name": {
-            "en": "Misha, Charge!",
-            "ko": "미샤, 돌진!"
-          },
-          "type": "W",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
-          "description": "미샤가 일직선상으로 돌진해서 적들에게 61(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.",
-          "shortDescription": "미샤에게 돌진 명령을 내려 적들에게 피해를 주고 기절시킴",
-          "cooldown": 10,
-          "manaCost": 45,
-          "extras": {
-            "사거리": "7.5",
-            "너비": "2.5"
-          }
-        },
-        {
-          "name": {
-            "en": "Mend Pet",
-            "ko": "야수 치료"
-          },
-          "type": "E",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f27fe19dc2c.png",
-          "description": "미샤의 생명력을 5초에 걸쳐 743(+4%) 회복시킵니다.",
-          "shortDescription": "미샤 지속 치유",
-          "cooldown": 10,
-          "manaCost": 55,
-          "extras": {}
-        }
-      ],
-      "talents": {
-        "1": [
-          {
-            "name": {
-              "en": "Easy Prey",
-              "ko": "쉬운 사냥감"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
-            "description": "미샤가 돌격병과 용병에게 주는 피해가 150% 증가하고, 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
-            "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Bird of Prey",
-              "ko": "맹금"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
-            "description": "기백 날리기가 돌격병에게 150%의 추가 피해를 줍니다.",
-            "shortDescription": "기백 날리기가 돌격병에게 주는 피해 증가",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Flare",
-              "ko": "섬광탄"
-            },
-            "type": "active",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f266519dc2c.png",
-            "description": "대상 위치에 섬광탄을 발사해 20초 동안 주위를 드러냅니다.",
-            "shortDescription": "대상 지역을 드러냄",
-            "cooldown": 20,
-            "extras": {
-              "사거리": "15",
-              "시야 반경": "8"
-            }
-          }
-        ],
-        "4": [
-          {
-            "name": {
-              "en": "Hungry Bear",
-              "ko": "굶주린 곰"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
-            "description": "미샤가 일반 공격으로 최대 생명력의 4.5%를 회복합니다.",
-            "shortDescription": "미샤 일반 공격 시 자신 치유",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Hunter Gatherer",
-              "ko": "수집 사냥꾼"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530fdd19dc2c.png",
-            "description": "퀘스트: 재생의 구슬을 획득할 때마다 렉사르의 초당 생명력 재생량이 1.25 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 20개 이상 획득하면 렉사르와 미샤의 방어력이 10 증가합니다.",
-            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Grizzled Fortitude",
-              "ko": "추적자의 인내"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948925919dc2c.png",
-            "description": "7초마다 렉사르와 미샤의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다. 렉사르 또는 미샤가 일반 공격을 할 때마다 각자의 재사용 대기시간이 감소합니다.",
-            "shortDescription": "주기적으로 물리 방어력 증가",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Animal Husbandry",
-              "ko": "생존 일지"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f21aa19dc2c.png",
-            "description": "렉사르가 살아 있는 1초마다 렉사르와 미샤의 최대 생명력이 2 증가합니다. 렉사르가 죽으면 이 증가량은 사라집니다.",
-            "shortDescription": "오래 살아 있을수록 최대 생명력 증가",
-            "extras": {}
-          }
-        ],
-        "7": [
-          {
-            "name": {
-              "en": "Aspect of the Beast",
-              "ko": "야수의 상"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
-            "description": "미샤의 일반 공격이 미샤, 돌진!의 재사용 대기시간을 1.25초 감소시킵니다.",
-            "shortDescription": "미샤 일반 공격 시 미샤, 돌진! 재사용 대기시간 감소",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Crippling Talons",
-              "ko": "마비의 발톱"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
-            "description": "기백 날리기의 감속 효과가 50%로 증가하고 지속 시간이 3초로 증가합니다.",
-            "shortDescription": "기백 날리기 감속 효과 및 지속 시간 증가",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Taking Flight",
-              "ko": "날렵한 비행"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2d9719dc2c.png",
-            "description": "기백 날리기의 사거리가 20% 증가합니다. 기백 날리기가 적 영웅에게 적중하면 소모한 마나를 돌려받고 재사용 대기시간이 2초 감소합니다.",
-            "shortDescription": "기백 날리기 사거리 증가 및 마나 반환",
-            "extras": {},
-            "upgradeFor": "Q"
-          }
-        ],
-        "10": [
-          {
-            "name": {
-              "en": "Bestial Wrath",
-              "ko": "야수의 격노"
-            },
-            "type": "R",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png",
-            "description": "미샤의 일반 공격력이 12초 동안 150% 증가합니다.",
-            "shortDescription": "미샤 일반 공격력 증가",
-            "cooldown": 50,
-            "manaCost": 75,
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Unleash the Boars",
-              "ko": "멧돼지를 풀어라"
-            },
-            "type": "R",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2f3319dc2c.png",
-            "description": "모든 적 영웅을 추적하는 멧돼지 무리를 일정 방향으로 풀어 114(+4%)의 피해를 주고, 모습이 드러나게 하며, 5초 동안 40% 느려지게 합니다.",
-            "shortDescription": "멧돼지 무리를 풀어 적 영웅들 사냥",
-            "cooldown": 60,
-            "manaCost": 75,
-            "extras": {
-              "사거리": "25",
-              "중심각": "50°"
-            }
-          }
-        ],
-        "13": [
-          {
-            "name": {
-              "en": "Wildfire Bear",
-              "ko": "야생불곰"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948a1fd19dc2c.png",
-            "description": "미샤가 주위 적들에게 초당 29(+4%)의 피해를 줍니다.",
-            "shortDescription": "미샤가 주위 적들에게 피해",
-            "extras": {
-              "피해 반경": "2.5"
-            }
-          },
-          {
-            "name": {
-              "en": "Aspect of the Hawk",
-              "ko": "매의 상"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
-            "description": "기백 날리기가 적 영웅에게 적중하면 공격 속도가 3초 동안 125% 증가합니다. 미샤가 일반 공격을 할 때마다 이 효과의 지속 시간이 0.75초 증가합니다.",
-            "shortDescription": "기백 날리기가 공격 속도를 증가시킴",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Dire Beast",
-              "ko": "광포한 야수"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
-            "description": "렉사르와 미샤가 일반 공격을 할 때마다 다음 미샤, 돌진!의 공격력이 40% 증가하여 최대 400% 증가합니다.",
-            "shortDescription": "일반 공격 시 미샤, 돌진! 공격력 증가",
-            "extras": {},
-            "upgradeFor": "W"
-          }
-        ],
-        "16": [
-          {
-            "name": {
-              "en": "Thrill of the Hunt",
-              "ko": "사냥의 희열"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
-            "description": "렉사르의 일반 공격이 렉사르와 미샤의 이동 속도를 2초 동안 25% 증가시킵니다.",
-            "shortDescription": "일반 공격 시 이동 속도 증가",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Primal Intimidation",
-              "ko": "야성의 위압감"
-            },
-            "type": "active",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530b9219dc2c.png",
-            "description": "사용하면 렉사르와 미샤 주위 적 영웅과 소환수가 2.5초 동안 공격 속도가 50%, 이동 속도가 20% 감소합니다.\n\n지속 효과: 렉사르나 미샤를 공격하는 적 영웅과 소환수의 공격 속도가 2.5초 동안 20% 감소합니다.",
-            "shortDescription": "사용 시 적 공격 및 이동 속도 감소",
-            "cooldown": 20,
-            "extras": {
-              "효과 반경": "5"
-            }
-          },
-          {
-            "name": {
-              "en": "Feign Death",
-              "ko": "죽은척하기"
-            },
-            "type": "active",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f24cf19dc2c.png",
-            "description": "죽은 흉내를 내서 5초 동안 무적 상태가 되고 대상으로 지정되지 않습니다. 지속 시간 동안 미샤를 조종합니다.",
-            "shortDescription": "무적 상태가 되고 미샤 조종",
-            "cooldown": 35,
-            "extras": {}
-          }
-        ],
-        "20": [
-          {
-            "name": {
-              "en": "Spirit Bond",
-              "ko": "정신의 결속"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png",
-            "description": "야수의 격노의 지속 시간이 50% 증가하고 이 동안 미샤가 일반 공격으로 준 피해의 50%만큼 렉사르의 생명력이 회복됩니다.",
-            "shortDescription": "미샤 일반 공격 시 렉사르 치유",
-            "extras": {},
-            "upgradeFor": "R"
-          },
-          {
-            "name": {
-              "en": "Kill Command",
-              "ko": "살상 명령"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2f3319dc2c.png",
-            "description": "멧돼지를 풀어라의 공격력이 50% 증가하고 대상들을 1.5초 동안 이동 불가 상태로 만듭니다.",
-            "shortDescription": "멧돼지를 풀어라 공격력 증가 및 대상 이동 불가",
-            "extras": {},
-            "upgradeFor": "R"
-          },
-          {
-            "name": {
-              "en": "Frenzy of Kalimdor",
-              "ko": "칼림도어의 광란"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
-            "description": "렉사르의 일반 공격력이 10% 증가하고, 미샤의 일반 공격이 대상을 1.25초 동안 20% 느려지게 합니다.",
-            "shortDescription": "렉사르 일반 공격력 증가 및 미샤 일반 공격 시 대상 감속",
-            "extras": {}
-          },
-          {
-            "name": {
-              "en": "Hardened Skin",
-              "ko": "강화 가죽"
-            },
-            "type": "active",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459474e1719dc2c.png",
-            "description": "사용하면 렉사르와 미샤의 방어력이 4초 동안 75 증가하여 받는 피해가 75% 감소합니다.",
-            "shortDescription": "렉사르와 미샤 방어력 대폭 증가",
-            "cooldown": 60,
-            "extras": {}
-          }
-        ]
-      }
-    },
-    "Fenix": {
-      "name": "피닉스",
-      "title": "기사단의 귀감",
-      "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png",
-      "type": "원거리",
-      "role": "assassin",
-      "universe": "starcraft",
-      "stats": {
-        "hp": {
-          "value": 1140,
-          "levelScaling": 0.04
-        },
-        "radius": 1.125,
-        "speed": 4.3984,
-        "hpRegen": {
-          "value": 2.379,
-          "levelScaling": 0.04
-        },
-        "shields": {
-          "value": 760,
-          "levelScaling": 0.04
-        },
-        "range": [
-          {
-            "value": 5,
-            "altName": "연발포"
-          },
-          {
-            "value": 6.25,
-            "altName": "위상 폭탄"
-          }
-        ],
-        "period": [
-          {
-            "value": 0.54,
-            "altName": "연발포"
-          },
-          {
-            "value": 1.35,
-            "altName": "위상 폭탄"
-          }
-        ],
-        "damage": [
-          {
-            "value": 83,
-            "levelScaling": 0.04,
-            "altName": "연발포"
-          },
-          {
-            "value": 103.75,
-            "levelScaling": 0.04,
-            "altName": "위상 폭탄"
-          }
-        ]
-      },
-      "skills": [
-        {
-          "name": {
-            "en": "Shield Capacitor",
-            "ko": "보호막 축전기"
-          },
-          "type": "D",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
-          "description": "790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 79(+4%)의 보호막이 재생됩니다.",
-          "shortDescription": "비전투 시 재생되는 보호막 영구히 획득",
-          "extras": {}
-        },
-        {
-          "name": {
-            "en": "Plasma Cutter",
-            "ko": "플라스마 절단기"
-          },
-          "type": "Q",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
-          "description": "대상 위치에 광선을 발사합니다. 광선은 피닉스를 중심으로 주위를 원형으로 두 번 돌며 적에게 140(+4%)의 피해를 주고 4초 동안 25% 느려지게 합니다.",
-          "shortDescription": "주위를 원형으로 도는 광선을 발사하여 적에게 피해를 주고 느려지게 함",
-          "cooldown": 12,
-          "extras": {
-            "회전 반경": "1.5 ~ 6",
-            "너비": "0.7",
-            "회전 시간": "1.5초"
-          }
-        },
-        {
-          "name": {
-            "en": "Weapon Mode: Repeater Cannon",
-            "ko": "무기 모드: 연발포"
-          },
-          "type": "W",
-          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-          "description": "공격 속도가 150% 증가합니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.",
-          "shortDescription": "공격 속도 증가",
-          "extras": {}
-        },
-        {
-          "name": {
-            "en": "Weapon Mode: Phase Bomb",
-            "ko": "무기 모드: 위상 폭탄"
-          },
-          "type": "W",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-          "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
-          "shortDescription": "일반 공격력 및 일반 공격 사거리 증가, 일반 공격 시 방사 피해",
-          "extras": {}
-        },
-        {
-          "name": {
-            "en": "Warp",
-            "ko": "차원이동"
-          },
-          "type": "E",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
-          "description": "대상 위치로 순간이동합니다. 0.5초 후에 이동하며, 이동 후 0.75초 후에 도착합니다.",
-          "shortDescription": "대상 위치로 순간이동",
-          "cooldown": 17,
-          "extras": {
-            "사거리": "9"
-          }
-        }
-      ],
-      "talents": {
-        "1": [
-          {
-            "name": {
-              "en": "Advanced Targeting",
-              "ko": "향상된 조준"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
-            "description": "퀘스트: 플라스마 절단기가 적 영웅에게 적중할 때마다 일반 공격력이 0.5 증가하여 최대 60 증가합니다.\n보상: 플라스마 절단기가 적 영웅에게 30회 이상 적중하면 플라스마 절단기가 1회 더 회전합니다.",
-            "shortDescription": "퀘스트: 플라스마 절단기 추가 회전",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Arsenal Synergy",
-              "ko": "광자 집중"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-            "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 150% 증가하고 방사 피해의 범위가 50% 증가합니다.",
-            "shortDescription": "연발포가 위상 폭탄 강화",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Mobile Offense",
-              "ko": "기동타격"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "이동하면 다음 일반 공격이 35%의 추가 피해를 줍니다.",
-            "shortDescription": "이동 시 일반 공격 강화",
-            "extras": {},
-            "upgradeFor": "W"
-          }
-        ],
-        "4": [
-          {
-            "name": {
-              "en": "Target Acquired",
-              "ko": "목표 확인"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "느려진 적 영웅을 연발포로 일반 공격하면 이동 속도가 4초 동안 10% 증가하여 최대 40% 증가합니다.",
-            "shortDescription": "연발포가 이동 속도를 증가시킴",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Inhibiting Energy",
-              "ko": "에너지 억제"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
-            "description": "위상 폭탄이 활성화된 동안 플라스마 절단기로 느려진 적 영웅에게 일반 공격을 하면 주위 모든 적들을 4초 동안 35% 느려지게 합니다.",
-            "shortDescription": "위상 폭탄이 적을 느려지게 함",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Warp Conduit",
-              "ko": "차원로"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
-            "description": "적 영웅을 처치하면 차원이동의 재사용 대기시간이 초기화됩니다.",
-            "shortDescription": "적 영웅 처치 시 차원이동 재사용 대기시간 초기화",
-            "extras": {},
-            "upgradeFor": "E"
-          },
-          {
-            "name": {
-              "en": "Emergency Protocol",
-              "ko": "긴급 프로토콜"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
-            "description": "보호막 축전기의 보호막이 파괴되면 이동 속도가 5초 동안 25% 증가합니다.",
-            "shortDescription": "보호막이 파괴되면 이동 속도 증가",
-            "extras": {},
-            "upgradeFor": "D"
-          }
-        ],
-        "7": [
-          {
-            "name": {
-              "en": "Combat Advantage",
-              "ko": "전술적 이점"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
-            "description": "플라스마 절단기가 느려진 대상에게 35%의 추가 피해를 줍니다.",
-            "shortDescription": "플라스마 절단기가 느려진 대상에게 추가 피해",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Warp Warfare",
-              "ko": "전술적 차원이동"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
-            "description": "차원이동을 마친 후 연발포의 공격 속도가 4초 동안 175% 증가합니다.",
-            "shortDescription": "차원이동 후 공격 속도 증가",
-            "extras": {},
-            "upgradeFor": "E"
-          },
-          {
-            "name": {
-              "en": "Divert Power: Weapons",
-              "ko": "동력 전환: 무기"
-            },
-            "type": "active",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "사용하면 보호막 축전기의 보호막을 모두 소모합니다. 소모한 보호막에 비례하여 일반 공격력이 5초 동안 최대 80% 증가합니다.",
-            "shortDescription": "사용 시 보호막을 잃지만 일반 공격력 증가",
-            "cooldown": 20,
-            "extras": {}
-          }
-        ],
-        "10": [
-          {
-            "name": {
-              "en": "Purification Salvo",
-              "ko": "정화 개시"
-            },
-            "type": "R",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459545c1319dc2c.png",
-            "description": "1.5초 동안 정신을 집중하여 전방에 호를 그리듯 적 영웅을 포착합니다. 정신 집중을 마치면 포착한 적 영웅들에게 각각 5발의 유도탄을 발사해 각각 89(+4%)의 피해를 줍니다. 느려진 대상에게는 50%의 추가 피해를 줍니다.",
-            "shortDescription": "목표 포착 후 유도탄 포화",
-            "cooldown": 75,
-            "extras": {
-              "포착 반경": "13.25",
-              "중심각": "180°"
-            }
-          },
-          {
-            "name": {
-              "en": "Planet Cracker",
-              "ko": "행성 분열기"
-            },
-            "type": "R",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645954544319dc2c.png",
-            "description": "0.5초 후, 전장을 가로지르는 광선을 발사하여 구조물이 아닌 적에게 4초 동안 0.25초마다 116(+4%)의 피해를 줍니다.",
-            "shortDescription": "전장을 가로지르는 광선 발사",
-            "cooldown": 100,
-            "extras": {
-              "사거리": "∞",
-              "너비": "2"
-            }
-          }
-        ],
-        "13": [
-          {
-            "name": {
-              "en": "Adanium Shell",
-              "ko": "아다늄 장갑"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
-            "description": "차원이동을 마친 후 방어력이 4초 동안 50 증가합니다.",
-            "shortDescription": "차원이동 시 방어력 증가",
-            "extras": {},
-            "upgradeFor": "E"
-          },
-          {
-            "name": {
-              "en": "Dampening Field",
-              "ko": "감쇠장"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
-            "description": "보호막 축전기의 보호막이 지속되는 동안 기술 방어력이 20 증가합니다.",
-            "shortDescription": "보호막 축전기가 기술 방어력을 증가시킴",
-            "extras": {},
-            "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Rapid Recharge",
-              "ko": "신속 재충전"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595463e119dc2c.png",
-            "description": "생명력을 회복할 때마다 회복량의 60%만큼 보호막 축전기의 보호막이 재생됩니다.",
-            "shortDescription": "생명력 회복 시 보호막 재생",
-            "extras": {},
-            "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Auxiliary Shields",
-              "ko": "보조 보호막"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595467f219dc2c.png",
-            "description": "최대 생명력이 10% 감소하지만 보호막 축전기의 보호막이 20% 증가합니다. 일반 공격을 하면 준 피해의 10%만큼 보호막이 재생됩니다.",
-            "shortDescription": "일반 공격 시 보호막 획득",
-            "extras": {},
-            "upgradeFor": "D"
-          }
-        ],
-        "16": [
-          {
-            "name": {
-              "en": "Offensive Cadence",
-              "ko": "맹공"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "연발포가 적 영웅에게 3회 적중할 때마다 대상의 최대 생명력의 6%만큼 추가 피해를 줍니다.",
-            "shortDescription": "연발포 연속 공격 시 일반 공격 강화",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Photonic Weaponry",
-              "ko": "광자 무기"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
-            "description": "보호막 축전기의 보호막이 지속되는 동안 공격력이 15% 증가합니다.",
-            "shortDescription": "보호막 축전기가 공격력을 증가시킴",
-            "extras": {},
-            "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Arsenal Overcharge",
-              "ko": "무기 과충전"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
-            "description": "일반 공격을 할 때마다 기술의 재사용 대기시간이 0.5초 감소합니다.",
-            "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소",
-            "extras": {}
-          }
-        ],
-        "20": [
-          {
-            "name": {
-              "en": "Secondary Fire",
-              "ko": "후속 공격"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
-            "description": "플라스마 절단기가 적 영웅에게 적중하면 0.5초 후에 대상 영웅에게 정화 개시 유도탄을 발사하여 89(+4%)의 피해를 줍니다. 느려진 대상에게는 50%의 추가 피해를 줍니다.",
-            "shortDescription": "적 영웅 적중 시 정화 개시 유도탄 발사",
-            "extras": {},
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Singularity Charge",
-              "ko": "특이점 장전"
-            },
-            "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
-            "description": "연발포의 공격 속도가 100% 증가하고 위상 폭탄의 사거리가 1.25 증가합니다.",
-            "shortDescription": "무기 모드 강화",
-            "extras": {},
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Unconquered Spirit",
-              "ko": "굴하지 않는 정신"
-            },
-            "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
-            "description": "죽음에 이르는 피해를 받으면 보호막 충전기의 보호막이 832(+4%) 재생됩니다. 이 효과는 120초에 한 번씩만 발동합니다.",
-            "shortDescription": "치명적인 피해를 받으면 보호막 축전기 충전",
-            "extras": {},
-            "upgradeFor": "D"
           }
         ]
       }

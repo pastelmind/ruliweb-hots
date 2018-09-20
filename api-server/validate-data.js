@@ -46,11 +46,11 @@ class HotsJsonValidator {
       throw this.schemaValidator.errors;
     }
 
-    //Check if hotsData.heroes and hotsData.ptrHeroes are properly ordered by hero name
-    if (!isHeroCollectionSortedByName(hotsDataJson.heroes))
+    //Check if hotsData.heroes and hotsData.ptrHeroes are properly sorted by hero ID
+    if (!isObjectSortedByKey(hotsDataJson.heroes))
       throw new Error(`hotsData.heroes is not sorted`);
 
-    if (!isHeroCollectionSortedByName(hotsDataJson.ptrHeroes || {}))
+    if (!isObjectSortedByKey(hotsDataJson.ptrHeroes || {}))
       throw new Error(`hotsData.ptrHeroes is not sorted`);
 
     //Check for duplicate stat presets
@@ -119,20 +119,20 @@ for (const hotsDataPath of HOTS_JSON_PATHS) {
 //-------- Support functions --------//
 
 /**
- * Tests if a collection of heroes is sorted by hero name
- * @param {Object<string, any>} heroes Mapping of hero ID to hero object
+ * Tests if an object's keys are sorted
+ * @param {Object<string, any>} obj Object
  * @return {boolean}
  */
-function isHeroCollectionSortedByName(heroes) {
-  let heroA = null;
+function isObjectSortedByKey(obj) {
+  let prevKey = null;
 
-  for (const heroB of Object.values(heroes)) {
-    if (heroA && heroA.name.localeCompare(heroB.name, 'en') > 0) {
-      console.error(`Unsorted heroes found: ${heroA.name} should be after ${heroB.name}`);
+  for (const key of Object.keys(obj)) {
+    if (prevKey !== null && prevKey > key) {
+      console.error(`Unsorted key found: ${prevKey} should be after ${key}`);
       return false;
     }
 
-    heroA = heroB;
+    prevKey = key;
   }
 
   return true;

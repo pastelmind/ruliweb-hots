@@ -78,16 +78,17 @@ module.exports = class HotsData {
     /** @type {Hero[]} */
     const heroesArray = Object.values(heroes);
 
-    if (!heroesArray.length)
-      return undefined;
+    //Sort hero by ID in ascending order
+    const heroIds = Object.keys(heroes).sort();
 
-    //Sort by hero name in ascending order
-    heroesArray.sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'));
+    //Collection is empty
+    if (!heroIds.length)
+      return undefined;
 
     const packedHeroes = {};
 
-    for (const hero of heroesArray) {
-      const heroJson = packedHeroes[hero.id] = hero.toJSON();
+    for (const heroId of heroIds) {
+      const heroJson = packedHeroes[heroId] = heroes[heroId].toJSON();
 
       //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
       delete heroJson.id;
