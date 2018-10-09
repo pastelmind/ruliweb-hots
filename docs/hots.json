@@ -14467,7 +14467,7 @@
           "manaCost": 20,
           "extras": {
             "사거리": "6",
-            "충전 수": "2"
+            "충전 횟수": "2"
           }
         },
         {
@@ -32349,7 +32349,10 @@
           "shortDescription": "수 차례 할퀴며 전진하여 피해를 줌",
           "cooldown": 8,
           "manaCost": 50,
-          "extras": {}
+          "extras": {
+            "피해 범위": "길이 2.125 × 너비 1.425 (1, 2타) / 길이 3 × 너비 2.5 (3타)",
+            "이동 거리": "3.25 (1, 2타) / 4.0625 (3타)"
+          }
         },
         {
           "name": {
@@ -32362,7 +32365,9 @@
           "shortDescription": "주위에 피해를 주며 방어력 증가",
           "cooldown": 8,
           "manaCost": 30,
-          "extras": {}
+          "extras": {
+            "피해 반경": "3.5"
+          }
         },
         {
           "name": {
@@ -32375,7 +32380,10 @@
           "shortDescription": "이동 속도 증가 및 적을 수면 상태로 만듦",
           "cooldown": 16,
           "manaCost": 70,
-          "extras": {}
+          "extras": {
+            "효과 반경": "1.3",
+            "중심각": "205°"
+          }
         }
       ],
       "talents": {
@@ -32389,7 +32397,9 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
             "description": "괴저 기운이 적 영웅에게 적중하면 물리 방어력이 50 증가합니다. 이 효과는 여러 번 충전될 수 있습니다.\n\n날개 방패가 충전되지 않은 상태면 6초 후에 1회 충전됩니다.",
             "shortDescription": "괴저 기운으로 물리 방어력 증가",
-            "extras": {},
+            "extras": {
+              "최대 충전 횟수": "10"
+            },
             "upgradeFor": "W"
           },
           {
@@ -32401,7 +32411,9 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfd0b19dc2c.png",
             "description": "자신과 주위 아군 영웅들이 준 물리 피해의 10%만큼 공격자가 생명력을 회복합니다.",
             "shortDescription": "흡혈의 손길 강화 및 아군에게도 영향",
-            "extras": {},
+            "extras": {
+              "효과 반경": "8"
+            },
             "upgradeFor": "D"
           },
           {
@@ -32451,7 +32463,9 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf99f19dc2c.png",
             "description": "괴저 기운이 만료되면 다시 폭발하며 52(+4%)의 피해를 줍니다. 적 영웅에게 적중하면 방어력이 1초 동안 25 증가합니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
             "shortDescription": "괴저 기운 만료 시 폭발",
-            "extras": {},
+            "extras": {
+              "피해 반경": "3.5"
+            },
             "upgradeFor": "W"
           }
         ],
@@ -32489,7 +32503,9 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
             "description": "밤의 질주가 만료되면 주위 적들에게 4초 동안 초당 31(+4%)의 피해를 줍니다. 적 영웅에게 일반 공격을 하면 이 효과가 갱신됩니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
             "shortDescription": "밤의 질주 시전 후 적에게 주기적으로 피해를 줌",
-            "extras": {},
+            "extras": {
+              "피해 반경": "3.25"
+            },
             "upgradeFor": "E"
           },
           {
@@ -32516,7 +32532,9 @@
             "shortDescription": "박쥐 떼로 흩어져 주위 적들에게 피해",
             "cooldown": 80,
             "manaCost": 70,
-            "extras": {}
+            "extras": {
+              "피해 반경": "4"
+            }
           },
           {
             "name": {
@@ -32529,7 +32547,10 @@
             "shortDescription": "정신 집중 후 적 영웅과 생명력 교환",
             "cooldown": 80,
             "manaCost": 70,
-            "extras": {}
+            "extras": {
+              "사거리": "3.75",
+              "최대 거리": "6.75"
+            }
           }
         ],
         "13": [
@@ -32580,7 +32601,10 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
             "description": "괴저 기운을 사용하면 전방에 박쥐 떼를 내보내 88(+4%)의 피해를 줍니다.",
             "shortDescription": "괴저 기운으로 박쥐 떼를 내보냄",
-            "extras": {},
+            "extras": {
+              "피해 반경": "6.5",
+              "중심각": "90°"
+            },
             "upgradeFor": "W"
           },
           {
@@ -32619,7 +32643,9 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcff7119dc2c.png",
             "description": "흡혈박쥐 떼가 만료되면 박쥐들이 주위 적 영웅들을 추적하여 137(+4%)의 피해를 주고 2.5초 동안 수면 상태로 만듭니다.",
             "shortDescription": "흡혈박쥐 떼 만료 후 적 영웅을 수면 상태로 만듦",
-            "extras": {},
+            "extras": {
+              "효과 반경": "8"
+            },
             "upgradeFor": "R"
           },
           {
@@ -32631,7 +32657,9 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfead19dc2c.png",
             "description": "부정한 전환의 대상 주위에 있는 적 영웅들에게 3초에 걸쳐 전달된 생명력의 75%만큼 피해를 줍니다.\n\n흡혈의 손길 효과는 발동하지 않습니다.",
             "shortDescription": "암흑의 격변이 대상 주위 영웅에게 피해를 줌",
-            "extras": {},
+            "extras": {
+              "피해 반경": "3.5"
+            },
             "upgradeFor": "R"
           },
           {
@@ -32655,7 +32683,9 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
             "description": "밤의 질주로 수면 상태가 된 영웅의 시야가 크게 감소합니다. 이 효과는 수면 상태가 만료된 후에도 2초 동안 유지됩니다.",
             "shortDescription": "밤의 질주가 적의 시야를 감소시킴",
-            "extras": {},
+            "extras": {
+              "시야 반경": "2"
+            },
             "upgradeFor": "E"
           }
         ]
