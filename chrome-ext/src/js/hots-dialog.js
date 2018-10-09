@@ -14,11 +14,11 @@
 
 /**
  * Collection of HotS data loaded from hots.json
- * @typedef {import("../../../api-server/src/hots-data")} HotsData
+ * @typedef {import("../../../api/src/hots-data")} HotsData
  */
 
 /**
- * @typedef {import("../../../api-server/src/hero")} Hero
+ * @typedef {import("../../../api/src/hero")} Hero
  */
 
 

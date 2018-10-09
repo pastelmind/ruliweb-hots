@@ -21,7 +21,7 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 
 # Organization
 
-* `api-server`: 히어로즈 오브 더 스톰 데이터(`hots.json`)를 다루는 데 쓰이는 여러 Node.js 스크립트를 모아놓은 디렉토리
+* `api`: 히어로즈 오브 더 스톰 데이터(`hots.json`)를 다루는 데 쓰이는 여러 Node.js 스크립트를 모아놓은 디렉토리
 * `chrome-ext`: 크롬 확장 프로그램(extension)에 관련된 파일
     * `src`: 확장 프로그램 소스
     * `tests`: 확장 프로그램 테스트 관련 파일
