@@ -1,5 +1,6 @@
 {
-  "hotsVersion": "38.1",
+  "hotsVersion": "38.2",
+  "hotsPtrVersion": "39.0",
   "statPresets": [
     {
       "id": "hp",
@@ -1042,8 +1043,8 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459432d3819dc2c.png",
-          "description": "자신의 현재 생명력의 20%만큼 아군의 생명력을 회복시킵니다.",
-          "shortDescription": "아군 치유",
+          "description": "자신의 현재 생명력의 20%만큼 아군 영웅의 생명력을 회복시킵니다.",
+          "shortDescription": "아군 영웅 치유",
           "cooldown": 3,
           "extras": {
             "사거리": "10.5"
@@ -1087,8 +1088,8 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594345ff19dc2c.png",
-          "description": "자신의 현재 생명력의 15%를 희생하여 희생한 양의 150%만큼 아군의 생명력을 회복시킵니다.\n\n<span style=\"color:#d65cff\">용의 여왕: 생명의 숨결</span>\n재사용 대기시간이 대폭 감소하고 자신의 생명력을 희생하지 않습니다.",
-          "shortDescription": "생명력을 희생하여 아군 치유",
+          "description": "자신의 현재 생명력의 15%를 희생하여 희생한 양의 150%만큼 아군 영웅의 생명력을 회복시킵니다.\n\n<span style=\"color:#d65cff\">용의 여왕: 생명의 숨결</span>\n재사용 대기시간이 대폭 감소하고 자신의 생명력을 희생하지 않습니다.",
+          "shortDescription": "생명력을 희생하여 아군 영웅 치유",
           "cooldown": 7,
           "extras": {
             "사거리": "7"
@@ -1460,7 +1461,7 @@
           },
           "type": "Q",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947f08219dc2c.png",
-          "description": "번개의 힘이 깃든 투창을 던져 처음 적중한 적에게 183(+4.5%)의 피해를 줍니다. 적중한 투창은 두 갈래로 갈라지며 경로 상의 적들에게 183(+4.5%)의 피해를 줍니다.",
+          "description": "번개의 힘이 깃든 투창을 던져 처음 적중한 적에게 182(+4%)의 피해를 줍니다. 적중한 투창은 두 갈래로 갈라지며 경로 상의 적들에게 182(+4%)의 피해를 줍니다.",
           "shortDescription": "적중 시 갈라지는 번개 투창 투척",
           "cooldown": 4,
           "manaCost": 30,
@@ -1613,7 +1614,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947d33419dc2c.png",
-            "description": "공격 저지로 총 520(+4%)의 피해를 저지하면 공격 저지를 사용하여 주위 적들에게 234(+4%)의 피해를 줄 수 있습니다.",
+            "description": "공격 저지로 총 520(+4%)의 피해를 저지하면 공격 저지를 사용하여 주위 적들에게 218(+4%)의 피해를 줄 수 있습니다.",
             "shortDescription": "사용 시 피해를 줌",
             "extras": {
               "피해 반경": "5.5"
@@ -1925,6 +1926,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943609819dc2c.png",
             "description": "때까치를 사용하여 시야 반경을 100% 증가시키고 일반 공격 사거리를 2 증가시킬 수 있지만 이동 속도가 20% 감소합니다. 취소할 때까지 유지할 수 있습니다.",
             "shortDescription": "때까치 사용 시 시야 및 사거리 증가",
+            "cooldown": 3,
             "extras": {},
             "upgradeFor": "D"
           },
@@ -3744,7 +3746,7 @@
           },
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645942ed5d19dc2c.png",
-          "description": "파괴의 구슬을 날려 198(+3%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
+          "description": "파괴의 구슬을 날려 190(+3%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
           "shortDescription": "긴 사거리를 가진 파괴의 구슬을 던져 광역 피해를 줌",
           "cooldown": 10,
           "manaCost": 60,
@@ -3893,7 +3895,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645942e73c19dc2c.png",
-            "description": "모두 다 불타리라의 마지막 피해가 대상 주위에도 피해를 주고, 적중한 적 영웅 하나당 파멸이 2회 중첩됩니다.",
+            "description": "모두 다 불타리라의 마지막 피해가 대상 주위에도 피해를 주고, 적중한 적 영웅 하나당 파멸이 3회 중첩됩니다.",
             "shortDescription": "모두 다 불타리라가 폭발함",
             "extras": {},
             "upgradeFor": "E"
@@ -8050,7 +8052,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
-            "description": "일반 공격으로 적에게 피해를 줄 때마다 일반 기술의 재사용 대기시간이 0.75초 감소합니다.",
+            "description": "일반 공격으로 적에게 피해를 줄 때마다 일반 기술의 재사용 대기시간이 1초 감소합니다.",
             "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소",
             "extras": {}
           }
@@ -8081,7 +8083,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645953b3fb19dc2c.png",
             "description": "0.5초 후, 저지 불가 상태가 되고 최대 4초 동안 정신을 집중하며 번개를 내뿜어 전방의 적들에게 0.25초마다 52(+4%)의 피해를 줍니다. 번개 숨결에 적중당한 적은 2초 동안 4% 느려져 최대 40%까지 느려집니다.\n\n번개 숨결의 방향은 마우스 커서의 위치에 따라 바뀝니다.",
             "shortDescription": "전방의 적들에게 피해를 주고 느려지게 함",
-            "cooldown": 70,
+            "cooldown": 90,
             "manaCost": 80,
             "extras": {
               "사거리": "12",
@@ -8668,9 +8670,9 @@
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302e1c19dc2c.png",
-          "description": "사용하면 주위 아군 영웅들의 기절, 감속, 침묵, 이동 불가 효과를 제거합니다.\n\n지속 효과: 4초마다 주위 아군 영웅들의 생명력을 104(+4%) 회복시킵니다.",
+          "description": "사용하면 주위 아군 영웅들의 기절, 감속, 침묵, 이동 불가 효과를 제거합니다.\n\n지속 효과: 4초마다 주위 아군 영웅들의 생명력을 109(+4%) 회복시킵니다.",
           "shortDescription": "주위 아군 영웅 무력화 효과 제거",
-          "cooldown": 120,
+          "cooldown": 100,
           "extras": {
             "효과 반경": "7"
           }
@@ -8714,7 +8716,7 @@
           "type": "E",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645947bda719dc2c.png",
           "description": "3초 동안 대상의 이동 속도를 20% 증가시키고 기술 방어력을 25 증가시켜 기술 공격으로 받는 피해를 25% 감소시킵니다.",
-          "shortDescription": "아군의 이동 속도 및 기술 방어력을 증가시킴",
+          "shortDescription": "아군 영웅의 이동 속도 및 기술 방어력을 증가시킴",
           "cooldown": 10,
           "manaCost": 60,
           "extras": {
@@ -8850,7 +8852,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/09/19/165ef302e1c19dc2c.png",
-            "description": "위안의 안개로 아군 영웅의 무력화 효과를 제거하면 대상 아군의 생명력을 208(+4%) 회복시킵니다.",
+            "description": "위안의 안개로 아군 영웅의 무력화 효과를 제거하면 대상 아군의 생명력을 260(+4%) 회복시킵니다.",
             "shortDescription": "위안의 안개 사용 시 치유",
             "extras": {},
             "upgradeFor": "D"
@@ -12095,8 +12097,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645957190e19dc2c.png",
-            "description": "생명력 전환을 사용하면 다음 기술의 기술 위력이 25% 증가합니다.",
-            "shortDescription": "생명력 전환 사용 시 기술 위력 증가",
+            "description": "생명력 전환을 사용하면 다음 기술의 공격력과 치유량이 25% 증가합니다.",
+            "shortDescription": "생명력 전환 사용 시 공격력 증가",
             "extras": {},
             "upgradeFor": "D"
           }
@@ -13057,18 +13059,6 @@
         "7": [
           {
             "name": {
-              "en": "Ice Floes",
-              "ko": "얼음발"
-            },
-            "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957811d19dc2c.png",
-            "description": "냉기 돌풍의 너비가 100% 증가하고, 적중한 적 영웅 하나당 재사용 대기시간이 2.5초 감소하여 최대 5초 감소합니다.",
-            "shortDescription": "냉기 돌품 범위 증가 및 재사용 대기시간 감소",
-            "extras": {},
-            "upgradeFor": "E"
-          },
-          {
-            "name": {
               "en": "Ice Lance",
               "ko": "얼음창"
             },
@@ -13078,6 +13068,18 @@
             "shortDescription": "한기를 느끼는 대상 적중 시 얼음 화살 재사용 대기시간 감소",
             "extras": {},
             "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Ice Floes",
+              "ko": "얼음발"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645957811d19dc2c.png",
+            "description": "냉기 돌풍의 너비가 100% 증가하고, 적중한 적 영웅 하나당 재사용 대기시간이 2.5초 감소하여 최대 5초 감소합니다.",
+            "shortDescription": "냉기 돌품 범위 증가 및 재사용 대기시간 감소",
+            "extras": {},
+            "upgradeFor": "E"
           },
           {
             "name": {
@@ -13277,7 +13279,7 @@
         "range": 5.5,
         "period": 1,
         "damage": {
-          "value": 110,
+          "value": 116,
           "levelScaling": 0.04
         }
       },
@@ -13324,7 +13326,7 @@
           "shortDescription": "폭파 가능한 지뢰 설치",
           "cooldown": 16,
           "extras": {
-            "사거리": "10",
+            "사거리": "10.5",
             "피해 반경": "0.75 / 1.75 / 2.5",
             "밀치는 거리": "8 / 11 / 14"
           }
@@ -14416,13 +14418,13 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "value": 1680,
+          "value": 1764,
           "levelScaling": 0.04
         },
         "radius": 0.75,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 3.5,
+          "value": 3.6757,
           "levelScaling": 0.04
         },
         "mp": {
@@ -14448,7 +14450,7 @@
           },
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958de3819dc2c.png",
-          "description": "적에게 일반 공격 및 기술로 준 피해의 15%가 보호막으로 전환됩니다. 보호막은 6초 동안 유지됩니다. 영웅에게 피해를 주면 보호막으로 전환되는 양이 두 배가 됩니다.\n\n<span style=\"color:#ffff8a\">현재 최댓값: </span>1044(+4%)",
+          "description": "적에게 일반 공격 및 기술로 준 피해의 10%가 보호막으로 전환됩니다. 보호막은 6초 동안 유지됩니다. 영웅에게 피해를 주면 보호막으로 전환되는 양이 두 배가 됩니다.\n\n<span style=\"color:#ffff8a\">현재 최댓값: </span>1044(+4%)",
           "shortDescription": "적에게 피해를 주면 일시적으로 보호막 획득",
           "extras": {}
         },
@@ -14535,7 +14537,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594756a719dc2c.png",
-            "description": "일반 공격으로 얻는 동화 작용 보호막이 10% 증가합니다. 강습을 사용한 후 3초 이내의 다음 2회의 일반 공격이 대상 주위에 100%의 방사 피해를 줍니다.",
+            "description": "일반 공격으로 얻는 동화 작용 보호막이 10% 증가합니다. 강습을 사용한 후 3초 이내의 다음 일반 공격이 대상 주위에 100%의 방사 피해를 줍니다.",
             "shortDescription": "일반 공격 시 주위 방사 피해 및 동화 작용 보호막 추가 획득",
             "extras": {
               "피해 반경": "2.5"
@@ -14550,7 +14552,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958e37919dc2c.png",
-            "description": "퀘스트: 강습이 적중한 적을 1.5초 안에 처치하면 강습의 공격력이 최대 50 증가합니다.\n\n하수인을 처치하면 공격력이 0.5 증가하고 영웅을 처치하면 공격력이 5 증가합니다.\n보상: 강습의 공격력이 50 증가하면 강습의 공격력이 추가로 50 증가합니다.",
+            "description": "퀘스트: 강습이 적중한 적을 1.5초 안에 처치하면 강습의 공격력이 최대 50 증가합니다.\n\n돌격병을 처치하면 공격력이 0.5 증가하고 영웅을 처치하면 공격력이 5 증가합니다.\n보상: 강습의 공격력이 50 증가하면 강습의 공격력이 추가로 50 증가합니다.",
             "shortDescription": "퀘스트: 강습으로 적 처치 시 공격력 증가",
             "extras": {},
             "upgradeFor": "Q"
@@ -14562,7 +14564,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958e04019dc2c.png",
-            "description": "적을 공격할 때마다 10초 이내의 다음 칼날 관통의 공격력이 15% 증가하여 최대 150% 증가합니다.",
+            "description": "적을 공격할 때마다 10초 이내의 다음 칼날 관통의 공격력이 10% 증가하여 최대 100% 증가합니다.",
             "shortDescription": "적 공격 시 다음 칼날 관통 공격력 증가",
             "extras": {},
             "upgradeFor": "W"
@@ -14590,7 +14592,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958e37919dc2c.png",
-            "description": "원시 손아귀가 적 영웅에게 적중하면 강습의 재사용 대기시간이 4초 감소합니다.",
+            "description": "원시 손아귀가 적 영웅에게 적중하면 강습의 재사용 대기시간이 6초 감소합니다.",
             "shortDescription": "원시 손아귀 적중 시 강습 재사용 대기시간 감소",
             "extras": {},
             "upgradeFor": "Q"
@@ -14671,7 +14673,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958de3819dc2c.png",
-            "description": "동화 작용으로 얻는 보호막이 추가로 15% 증가하지만 동화 작용의 지속 시간이 3초 감소합니다.",
+            "description": "동화 작용으로 얻는 보호막이 추가로 10% 증가하지만 동화 작용의 지속 시간이 3초 감소합니다.",
             "shortDescription": "동화 작용 보호막이 증가하지만 지속 시간 감소",
             "extras": {},
             "upgradeFor": "D"
@@ -14709,7 +14711,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645958e04019dc2c.png",
-            "description": "칼날 관통이 적중한 적에게 자신이 주는 모든 피해가 5초 동안 78(+4%)의 추가 피해를 줍니다. 최대 6회의 공격에 적용됩니다.",
+            "description": "칼날 관통이 적중한 적에게 자신이 주는 모든 피해가 5초 동안 73(+4%)의 추가 피해를 줍니다. 최대 6회의 공격에 적용됩니다.",
             "shortDescription": "칼날 관통 적중 시 추가 피해 가능",
             "extras": {},
             "upgradeFor": "W"
@@ -14735,7 +14737,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645958df3119dc2c.png",
-            "description": "혼돈의 폭풍이 적 영웅에게 적중할 때마다 지속 시간이 0.125초 증가합니다.",
+            "description": "혼돈의 폭풍이 적 영웅에게 적중할 때마다 지속 시간이 0.1875초 증가합니다.",
             "shortDescription": "적 영웅 적중 시 지속 시간 증가",
             "extras": {},
             "upgradeFor": "R"
@@ -15592,13 +15594,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 1475,
+          "value": 1534,
           "levelScaling": 0.04
         },
         "radius": 0.625,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 3.0703,
+          "value": 3.1953,
           "levelScaling": 0.04
         },
         "mp": {
@@ -15652,7 +15654,7 @@
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459594fcf19dc2c.png",
           "description": "아군 영웅에게 운룡을 소환합니다. 운룡은 1초마다 주위 적을 공격하여 27(+4%)의 피해를 주고 대상 아군의 생명력을 21(+4%) 회복시킵니다. 8초 동안 지속됩니다.",
           "shortDescription": "운룡을 소환해 아군 지원",
-          "cooldown": 12,
+          "cooldown": 10,
           "manaCost": 35,
           "extras": {
             "사거리": "8",
@@ -15803,7 +15805,7 @@
             },
             "type": "R",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645959614819dc2c.png",
-            "description": "최대 6초 동안 정신을 집중합니다. 0.25초마다 주위에서 가장 많은 피해를 받은 아군 영웅의 생명력을 73(+4%) 회복시키고 1,000잔 돌리기의 재사용 대기시간이 2초 증가하여 최대 50초 증가합니다.",
+            "description": "최대 6초 동안 정신을 집중합니다. 0.25초마다 주위에서 가장 많은 피해를 받은 아군 영웅의 생명력을 69(+4%) 회복시키고 1,000잔 돌리기의 재사용 대기시간이 2초 증가하여 최대 50초 증가합니다.",
             "shortDescription": "주위 아군들 빠르게 치유",
             "cooldown": 20,
             "manaCost": 80,
@@ -17933,13 +17935,13 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "value": 1472,
+          "value": 1545,
           "levelScaling": 0.04
         },
         "radius": 0.875,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 3.0703,
+          "value": 3.2187,
           "levelScaling": 0.04
         },
         "energy": 100,
@@ -17969,7 +17971,7 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595ab38719dc2c.png",
-          "description": "대상 아군에게 치료 광선을 발사하여 가까이 머물러 있는 동안 초당  179(+4%)의 생명력을 회복시킵니다. 치료 광선을 2초 동안 시전하지 않으면 초당 6의 기력을 회복합니다.\n\n다시 사용하면 대상을 바꿀 수 있고, 자신에게 사용하면 정신 집중이 취소됩니다.",
+          "description": "대상 아군 영웅 또는 돌격병에게 치료 광선을 발사하여 가까이 머물러 있는 동안 초당  179(+4%)의 생명력을 회복시킵니다. 치료 광선을 2초 동안 시전하지 않으면 초당 6의 기력을 회복합니다.\n\n다시 사용하면 대상을 바꿀 수 있고, 자신에게 사용하면 정신 집중이 취소됩니다.",
           "shortDescription": "아군 지속 치유",
           "extras": {
             "기력": "초당 6",
@@ -17983,9 +17985,9 @@
           },
           "type": "W",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595abb0319dc2c.png",
-          "description": "대상 아군 영웅의 방어력을 3초 동안 25 증가시킵니다.",
+          "description": "대상 아군 영웅의 방어력을 3초 동안 30 증가시킵니다.",
           "shortDescription": "대상의 방어력을 증가시킴",
-          "cooldown": 12,
+          "cooldown": 10,
           "extras": {
             "사거리": "8.5"
           }
@@ -17997,7 +17999,7 @@
           },
           "type": "E",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595aaf3f19dc2c.png",
-          "description": "수동으로 폭발시킬 수 있는 수류탄을 발사하여 적들에게 206(+4%)의 피해를 주고 밀쳐냅니다.",
+          "description": "수동으로 폭발시킬 수 있는 수류탄을 발사하여 적들에게 216(+4%)의 피해를 주고 밀쳐냅니다.",
           "shortDescription": "적에게 피해를 주고 밀쳐냄",
           "cooldown": 12,
           "extras": {
@@ -18091,7 +18093,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595abb0319dc2c.png",
-            "description": "보호기가 대상의 감속 효과를 제거합니다. 감속 효과를 제거하면 보호기의 재사용 대기시간이 4초 감소합니다.",
+            "description": "보호기가 대상의 감속 효과를 제거합니다. 감속 효과를 제거하면 보호기의 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "보호기가 감속 효과 제거",
             "extras": {},
             "upgradeFor": "W"
@@ -18103,8 +18105,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595abee219dc2c.png",
-            "description": "대상이 기절한 동안 보호기가 증가시키는 방어력이 추가로 25 증가하고 지속 시간이 유지됩니다.",
-            "shortDescription": "대상 기절 시 방어력 및 지속 시간 증가",
+            "description": "대상이 이동 불가 상태이거나 기절한 동안 보호기가 증가시키는 방어력이 추가로 25 증가하고 지속 시간이 유지됩니다.",
+            "shortDescription": "대상 이동 불가 및 기절 시 방어력 및 지속 시간 증가",
             "extras": {},
             "upgradeFor": "W"
           },
@@ -18159,7 +18161,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595aaf3f19dc2c.png",
-            "description": "변위 수류탄이 2초에 걸쳐 83(+4%)의 추가 피해를 줍니다. 보호막에는 416(+4%)의 추가 피해를 줍니다.",
+            "description": "변위 수류탄이 2초에 걸쳐 100(+4%)의 추가 피해를 줍니다. 보호막에는 416(+4%)의 추가 피해를 줍니다.",
             "shortDescription": "변위 수류탄이 보호막에 추가 피해",
             "extras": {},
             "upgradeFor": "E"
@@ -18349,7 +18351,7 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595be68e19dc2c.png",
           "description": "아군 영웅을 모든 피해로부터 1.5초 동안 보호합니다. 지속 시간이 만료되면 흡수한 피해의 20%만큼 대상의 생명력을 회복시킵니다.",
           "shortDescription": "아군 영웅을 모든 피해로부터 보호",
-          "cooldown": 8,
+          "cooldown": 9,
           "manaCost": 60,
           "extras": {
             "사거리": "13"
@@ -18419,7 +18421,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bfdf919dc2c.png",
-            "description": "차원문을 처음 사용하는 아군의 방어력을 4초 동안 25 증가시켜 받는 피해를 25% 감소시킵니다.",
+            "description": "차원문을 처음 사용하는 아군의 방어력을 4초 동안 30 증가시켜 받는 피해를 30% 감소시킵니다.",
             "shortDescription": "차원문을 사용한 아군의 방어력을 증가시킴",
             "extras": {},
             "upgradeFor": "E"
@@ -18485,7 +18487,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595bee6819dc2c.png",
-            "description": "한 번의 의지 투영으로 279(+4%) 이상의 피해를 흡수하면 기술 위력이 15초 동안 25% 증가합니다. 최대 2회 중첩됩니다.",
+            "description": "한 번의 의지 투영으로 279(+4%) 이상의 피해를 흡수하면 기술 위력이 15초 동안 30% 증가합니다. 최대 2회 중첩됩니다.",
             "shortDescription": "의지 투영이 기술 위력을 증가시킴",
             "extras": {},
             "upgradeFor": "W"
@@ -18547,7 +18549,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595bea6c19dc2c.png",
-            "description": "의지 투영으로 279(+4%) 이상의 피해를 흡수하면 재사용 대기시간이 3초 감소합니다.",
+            "description": "의지 투영으로 279(+4%) 이상의 피해를 흡수하면 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "피해 흡수 시 의지 투영 재사용 대기시간 감소",
             "extras": {},
             "upgradeFor": "W"
@@ -18799,7 +18801,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/08/29/165819944d919dc2c.png",
-            "description": "메피스토의 그림자가 활성화된 동안 기술 위력이 20% 증가합니다. 메피스토의 그림자가 사라진 후에도 2.5초 동안 유지됩니다.",
+            "description": "메피스토의 그림자가 활성화된 동안 기술 위력이 15% 증가합니다. 메피스토의 그림자가 사라진 후에도 2.5초 동안 유지됩니다.",
             "shortDescription": "메피스토의 그림자가 기술 위력을 증가시킴",
             "extras": {},
             "upgradeFor": "E"
@@ -18825,7 +18827,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/08/29/16581993f5619dc2c.png",
-            "description": "섬뜩한 해골로 적 영웅에게 준 피해의 50%만큼 생명력을 회복합니다.",
+            "description": "섬뜩한 해골로 적 영웅에게 준 피해의 60%만큼 생명력을 회복합니다.",
             "shortDescription": "섬뜩한 해골로 생명력 회복",
             "extras": {},
             "upgradeFor": "Q"
@@ -18837,7 +18839,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/08/29/1658199434b19dc2c.png",
-            "description": "번개 회오리의 지속 시간이 만료되면 번개 회오리로 적 영웅에게 준 피해의 40%에 해당하는 보호막을 얻습니다. 7초 동안 지속됩니다.",
+            "description": "번개 회오리의 지속 시간이 만료되면 번개 회오리로 적 영웅에게 준 피해의 40%에 해당하는 보호막을 얻습니다. 5초 동안 지속됩니다.",
             "shortDescription": "번개 회오리가 보호막 부여",
             "extras": {},
             "upgradeFor": "W"
@@ -18849,7 +18851,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/08/29/1658199427f19dc2c.png",
-            "description": "재생의 구슬의 지속 시간이 60% 증가합니다. 재생의 구슬로 생명력을 회복할 때마다 증오의 군주가 발동하여 일반 기술의 재사용 대기시간이 0.5초 감소합니다.",
+            "description": "재생의 구슬의 지속 시간이 100% 증가합니다. 재생의 구슬로 생명력을 회복할 때마다 증오의 군주가 발동하여 일반 기술의 재사용 대기시간이 0.5초 감소합니다.",
             "shortDescription": "재생의 구슬로 증오의 군주 발동",
             "extras": {},
             "upgradeFor": "D"
@@ -18918,7 +18920,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/08/29/165819941be19dc2c.png",
             "description": "1초 후, 사악한 영혼들을 내보내 처음 적중한 적 영웅을 2.5초 동안 이동 불가 상태로 만들고 지속 시간에 걸쳐 260(+4%)의 피해를 줍니다.\n\n증오의 족쇄는 처음 적중한 대상으로부터 점점 퍼져 나가, 주위의 적 영웅들을 추가로 이동 불가 상태로 만들고 피해를 줍니다.",
             "shortDescription": "적 영웅을 이동 불가 상태로 만드는 영혼 방출",
-            "cooldown": 80,
+            "cooldown": 60,
             "manaCost": 60,
             "extras": {
               "사거리": "12",
@@ -19197,7 +19199,7 @@
             },
             "type": "active",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645959152b19dc2c.png",
-            "description": "대상 위치에 영혼의 벗을 소환하여 넓은 범위 안에 있는 아군을 매초 최대 생명력의 2%만큼 치유합니다. 영혼의 벗은 156(+4%)의 생명력을 가지고 10초 동안 지속됩니다. 영혼의 벗을 대상으로 찬란한 질주를 사용할 수 있습니다.",
+            "description": "대상 위치에 영혼의 벗을 소환하여 넓은 범위 안에 있는 아군 영웅들을 매초 최대 생명력의 2%만큼 치유합니다. 영혼의 벗은 156(+4%)의 생명력을 가지고 10초 동안 지속됩니다. 영혼의 벗을 대상으로 찬란한 질주를 사용할 수 있습니다.",
             "shortDescription": "일정 범위 내 아군을 치유하는 영혼의 벗 소환",
             "cooldown": 45,
             "extras": {
@@ -22315,7 +22317,7 @@
             },
             "type": "active",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459474f4219dc2c.png",
-            "description": "사용하면 치유의 토템을 지면에 놓습니다. 토템은 10초 동안, 일정 범위 안에 있는 아군을 매초 최대 생명력의 2%만큼 치유합니다.",
+            "description": "사용하면 치유의 토템을 지면에 놓습니다. 토템은 10초 동안, 일정 범위 안에 있는 아군 영웅들을 매초 최대 생명력의 2%만큼 치유합니다.",
             "shortDescription": "사용 시 일정 범위 내 아군을 치유하는 토템 설치",
             "cooldown": 30,
             "extras": {
@@ -22420,7 +22422,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f1fe419dc2c.png",
-            "description": "번개 보호막이 3초 동안 대상의 최대 생명력의 12%에 해당하는 보호막을 부여합니다.",
+            "description": "번개 보호막이 3초 동안 아군 영웅의 최대 생명력의 12%에 해당하는 보호막을 부여합니다.",
             "shortDescription": "번개 보호막이 보호막 부여",
             "extras": {},
             "upgradeFor": "W"
@@ -22726,7 +22728,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948925919dc2c.png",
-            "description": "7초마다 렉사르와 미샤의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다. 렉사르 또는 미샤가 일반 공격을 할 때마다 각자의 재사용 대기시간이 감소합니다.",
+            "description": "6초마다 렉사르와 미샤의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다. 렉사르 또는 미샤가 일반 공격을 할 때마다 각자의 재사용 대기시간이 감소합니다.",
             "shortDescription": "주기적으로 물리 방어력 증가",
             "extras": {}
           },
@@ -22762,7 +22764,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
-            "description": "기백 날리기의 감속 효과가 50%로 증가하고 지속 시간이 3초로 증가합니다.",
+            "description": "기백 날리기의 감속 효과가 50%로 증가하고 지속 시간이  3.5초로 증가합니다.",
             "shortDescription": "기백 날리기 감속 효과 및 지속 시간 증가",
             "extras": {},
             "upgradeFor": "Q"
@@ -24391,7 +24393,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960b2ad19dc2c.png",
-            "description": "스멀거리는 팔의 사거리가 20% 증가합니다. 스멀거리는 팔이 적 영웅들에게 15회 이상 피해를 주면 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
+            "description": "스멀거리는 팔의 사거리가 20% 증가합니다. 스멀거리는 팔이 적 영웅들에게 12회 이상 피해를 주면 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
             "shortDescription": "스멀거리는 팔 마나 반환 가능",
             "extras": {},
             "upgradeFor": "E"
@@ -24963,8 +24965,8 @@
           },
           "type": "Q",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645961007a19dc2c.png",
-          "description": "아군에게 4초 동안 473(+4%)의 피해를 흡수하는 보호막을 부여합니다. 대상이 아군 영웅이면 그 영웅은 보호막이 지속되는 동안 일반 공격으로 준 피해의 40%만큼 생명력을 회복합니다.",
-          "shortDescription": "아군 또는 자신에게 일시적으로 보호막 부여",
+          "description": "아군 영웅, 돌격병, 구조물에게 4초 동안 473(+4%)의 피해를 흡수하는 보호막을 부여합니다. 대상이 아군 영웅이면 그 영웅은 보호막이 지속되는 동안 일반 공격으로 준 피해의 40%만큼 생명력을 회복합니다.",
+          "shortDescription": "아군에게 일시적으로 보호막 부여",
           "cooldown": 8,
           "manaCost": 50,
           "extras": {
@@ -26899,7 +26901,7 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962d12019dc2c.png",
-          "description": "4초 동안 349(+4%)의 피해를 흡수하는 보호막을 획득합니다. 주위 아군들에게는 보호막의 40%에 해당하는 보호막을 부여합니다.",
+          "description": "4초 동안 349(+4%)의 피해를 흡수하는 보호막을 획득합니다. 주위 아군 영웅과 돌격병에게는 보호막의 40%에 해당하는 보호막을 부여합니다.",
           "shortDescription": "일시적으로 보호막 획득",
           "cooldown": 9,
           "manaCost": 45,
@@ -27255,7 +27257,7 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962e88019dc2c.png",
-          "description": "아군의 생명력을 276(+4%) 회복시킵니다. 적에게 피해를 줄 때마다 엘룬의 빛의 재사용 대기시간이 1.5초 감소합니다.\n\n최대2회 충전되고 한 번에 모두 충전됩니다.",
+          "description": "아군 영웅의 생명력을 276(+4%) 회복시킵니다. 적에게 피해를 줄 때마다 엘룬의 빛의 재사용 대기시간이 1.5초 감소합니다.\n\n최대2회 충전되고 한 번에 모두 충전됩니다.",
           "shortDescription": "아군 영웅 치유",
           "rechargeCooldown": 15,
           "manaCost": 15,
@@ -27329,7 +27331,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962f05919dc2c.png",
-            "description": "엘룬의 빛이 대상의 기술 방어력을 3초 동안 15 증가시킵니다. 이 효과는 최대 2회 중첩됩니다.",
+            "description": "엘룬의 빛이 대상의 기술 방어력을 3초 동안 10 증가시킵니다. 이 효과는 최대 2회 중첩됩니다.",
             "shortDescription": "엘룬의 빛이 기술 방어력을 증가시킴",
             "extras": {},
             "upgradeFor": "Q"
@@ -27358,7 +27360,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645962f8e519dc2c.png",
-            "description": "달빛 화살의 사거리가 40% 증가합니다.\n\n퀘스트: 달빛 화살이 적 영웅에게 적중할 때마다 달빛 화살의 공격력이 5% 증가하여 최대 100% 증가합니다.",
+            "description": "달빛 화살의 사거리가 30 증가합니다.\n\n퀘스트: 달빛 화살이 적 영웅에게 적중할 때마다 달빛 화살의 공격력이 5% 증가하여 최대 100% 증가합니다.",
             "shortDescription": "퀘스트: 달빛 화살 사거리 및 공격력 증가",
             "extras": {},
             "upgradeFor": "E"
@@ -27428,7 +27430,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645963048c19dc2c.png",
             "description": "모든 아군 영웅을 10초 동안 은신 상태로 만들고 생명력을 10초에 걸쳐 395(+4%) 회복시킵니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.",
             "shortDescription": "모든 아군 치유 및 은신",
-            "cooldown": 80,
+            "cooldown": 90,
             "manaCost": 75,
             "extras": {}
           },
@@ -27457,7 +27459,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962e88019dc2c.png",
-            "description": "이동 속도가 10% 증가합니다. 엘룬의 빛이 대상의 이동 속도를 3초 동안 15% 증가시킵니다.",
+            "description": "이동 속도가 5% 증가합니다. 엘룬의 빛이 대상의 이동 속도를 3초 동안 15% 증가시킵니다.",
             "shortDescription": "엘룬의 빛이 대상의 이동 속도를 증가시킴",
             "extras": {},
             "upgradeFor": "Q"
@@ -27642,8 +27644,8 @@
           },
           "type": "Q",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459632f0b19dc2c.png",
-          "description": "대상 아군의 생명력을 376(+4%) 회복시킵니다. 자신 외의 다른 대상에게 사용하면 자신 또한 188(+4%)의 생명력을 회복합니다.",
-          "shortDescription": "아군 및 자신 치유",
+          "description": "대상 아군 영웅의 생명력을 376(+4%) 회복시킵니다. 자신 외의 다른 대상에게 사용하면 자신 또한 188(+4%)의 생명력을 회복합니다.",
+          "shortDescription": "아군 영웅 및 자신 치유",
           "cooldown": 12,
           "manaCost": 90,
           "extras": {
@@ -27657,7 +27659,7 @@
           },
           "type": "W",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164596332fa19dc2c.png",
-          "description": "일직선상의 모든 아군들의 생명력을 184(+4%) 회복시키고, 적들에게 184(+4%)의 피해를 줍니다.",
+          "description": "일직선상의 모든 아군 영웅과 돌격병의 생명력을 184(+4%) 회복시키고, 적들에게 184(+4%)의 피해를 줍니다.",
           "shortDescription": "일직선상으로 아군을 치유하고 적에게 피해를 줌",
           "cooldown": 12,
           "manaCost": 70,
@@ -28873,13 +28875,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 1434,
+          "value": 1400,
           "levelScaling": 0.04
         },
         "radius": 0.625,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 2.9882,
+          "value": 2.9218,
           "levelScaling": 0.04
         },
         "mp": {
@@ -28928,7 +28930,7 @@
           },
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc3f219dc2c.png",
-          "description": "정신을 집중하며 적 영웅에게 3초 동안 0.5초마다 55(+4%)의 피해를 주고 30% 느려지게 합니다.",
+          "description": "정신을 집중하며 적 영웅에게 3초 동안 0.5초마다 52(+4%)의 피해를 주고 30% 느려지게 합니다.",
           "shortDescription": "적 영웅에게 피해를 주고 느려지게 함",
           "cooldown": 14,
           "extras": {}
@@ -28940,7 +28942,7 @@
           },
           "type": "E",
           "iconUrl": "http://i2.ruliweb.com/img/18/08/05/16507efc4c419dc2c.png",
-          "description": "0.5초 후, 일직선상의 적들을 강타하여 85(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
+          "description": "0.5초 후, 일직선상의 적들을 강타하여 81(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
           "shortDescription": "일직선상의 적들에게 피해",
           "cooldown": 6,
           "extras": {}
@@ -28967,7 +28969,7 @@
             },
             "type": "active",
             "iconUrl": "http://i3.ruliweb.com/img/18/08/05/16507ed974519dc2c.png",
-            "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 386(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 4초 감소합니다.",
+            "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 364(+4%)의 생명력을 회복시킵니다.\n\n지속 효과: 심문의 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "심문으로 아군 치유",
             "cooldown": 10,
             "extras": {},
@@ -29980,8 +29982,8 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595aa7bf19dc2c.png",
-            "description": "서로 다른 기술을 사용할 때마다 기술 위력이 5% 증가하여 최대 20% 증가합니다. 같은 기술을 연속으로 사용하면 효과가 사라집니다.",
-            "shortDescription": "기술 번갈아 사용 시 기술 위력 증가",
+            "description": "서로 다른 기술을 사용할 때마다 다음 기술의 공격력이 5% 증가하여 최대 20% 증가합니다. 기술을 모두 사용하기 전에 이미 사용한 기술을 사용하면 효과가 사라집니다.",
+            "shortDescription": "기술 번갈아 사용 시 공격력 증가",
             "extras": {}
           },
           {
@@ -30139,7 +30141,7 @@
             },
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645963bc5219dc2c.png",
-            "description": "착지 후에 주위 아군 영웅들의 방어력을 5초 동안 35 증가시킵니다.",
+            "description": "착지 후에 주위 아군 영웅들의 방어력을 4초 동안 25 증가시킵니다.",
             "shortDescription": "응징의 격노가 아군의 방어력을 증가시킴",
             "extras": {},
             "upgradeFor": "E"
@@ -31895,6 +31897,764 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645964eda019dc2c.png",
             "description": "재생에 정신 집중이 필요하지 않고 피해를 받아도 중단되지 않습니다.",
             "shortDescription": "재생 방해 불가",
+            "extras": {},
+            "upgradeFor": "E"
+          }
+        ]
+      }
+    }
+  },
+  "ptrHeroes": {
+    "Ana": {
+      "name": "아나",
+      "title": "노련한 저격수",
+      "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png",
+      "type": "원거리",
+      "role": "support",
+      "universe": "overwatch",
+      "stats": {
+        "hp": {
+          "value": 1598,
+          "levelScaling": 0.04
+        },
+        "radius": 0.625,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 3.3281,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 6.5,
+        "period": 0.75,
+        "damage": {
+          "value": 30,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Shrike",
+            "ko": "때까치"
+          },
+          "type": "D",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943862219dc2c.png",
+          "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.\n\n0.5초마다 때까치로 준 피해의 50%만큼 생명력을 회복합니다.",
+          "shortDescription": "일반 공격 시 지속 피해 및 지속 치유",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Healing Dart",
+            "ko": "치유탄"
+          },
+          "type": "Q",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943740419dc2c.png",
+          "description": "생체탄을 발사하여 처음 적중한 아군 영웅의 생명력을 224(+4%) 회복시킵니다. 이미 생명력이 가득찬 영웅에게는 영향을 주지 않습니다.",
+          "shortDescription": "아군을 치유하는 치유탄 발사",
+          "cooldown": 2,
+          "manaCost": 10,
+          "extras": {
+            "사거리": "12.75",
+            "너비": "1"
+          }
+        },
+        {
+          "name": {
+            "en": "Biotic Grenade",
+            "ko": "생체 수류탄"
+          },
+          "type": "W",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943645e19dc2c.png",
+          "description": "대상 위치로 수류탄을 던져 수류탄이 적중한 아군 영웅의 생명력을 173(+4%) 회복시키고 4초 동안 아나로부터 받는 치유량을 25% 증가시킵니다. 수류탄이 적중한 적 영웅에게는 62(+4%)의 피해를 주고 2초 동안 받는 치유량을 100% 감소시킵니다.",
+          "shortDescription": "아군을 치유하고 적의 받는 치유량을 감소시키는 수류탄 투척",
+          "cooldown": 16,
+          "manaCost": 50,
+          "extras": {
+            "사거리": "15",
+            "효과 반경": "2.25"
+          }
+        },
+        {
+          "name": {
+            "en": "Sleep Dart",
+            "ko": "수면총"
+          },
+          "type": "E",
+          "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164594389f019dc2c.png",
+          "description": "수면총을 발사하여 처음 적중한 적 영웅을 수면 상태로 만들어 3초 동안 기절시킵니다. 대상이 0.5초 이후에 피해를 받으면 수면 효과가 즉시 종료됩니다.\n\n<span style=\"color:#ffff8a\">탑승물에는 사용할 수 없습니다.</span>",
+          "shortDescription": "적을 수면 상태로 만드는 다트 발사",
+          "cooldown": 14,
+          "manaCost": 50,
+          "extras": {
+            "사거리": "11.75",
+            "너비": "0.5"
+          }
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Grenade Calibration",
+              "ko": "투여량 조절"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943645e19dc2c.png",
+            "description": "퀘스트: 생체 수류탄이 적 영웅에게 적중해야 합니다.\n보상: 생체 수류탄이 적 영웅에게 10회 적중하면 적중한 아군 및 적 영웅 하나당 공격력이 75% 증가합니다.\n보상: 생체 수류탄이 적 영웅에게 20회 적중하면 지속 시간이 4초에서 12초로 증가하고 치유 효과의 반경이 100% 증가하며 받은 치유량 증가 효과가 모든 치유 효과에 적용됩니다.",
+            "shortDescription": "퀘스트: 생체 수류탄 강화",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Piercing Darts",
+              "ko": "관통 다트"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164594389f019dc2c.png",
+            "description": "퀘스트: 수면총이 적 영웅에게 적중해야 합니다.\n보상: 수면총이 적 영웅에게 10회 적중하면 수면총이 최대 2명의 적 영웅에게 적중하고 사거리가 25% 증가합니다.\n보상: 수면총이 적 영웅에게 20회 적중하면 치유탄이 최대 2명의 아군 영웅에게 적중하고 사거리가 25% 증가합니다.",
+            "shortDescription": "퀘스트: 수면총 및 치유탄 강화",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Detachable Box Magazine",
+              "ko": "휴대용 탄창 상자"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459436c2819dc2c.png",
+            "description": "퀘스트: 적 영웅에게 독극물 5중첩을 달성해야 합니다.\n보상: 최대 중첩을 12회 달성하면 신속 재장전을 사용할 수 있게 되어, 사용하면 즉시 치유탄을 3회 충전할 수 있습니다.",
+            "shortDescription": "퀘스트: 독극물 강화",
+            "extras": {}
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Overdose",
+              "ko": "과다 복용"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164594389f019dc2c.png",
+            "description": "수면총이 적 영웅에게 적중하면 독극물을 3회 중첩시킵니다.",
+            "shortDescription": "수면총이 독극물 투여",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Aim Down Sights",
+              "ko": "정조준"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943609819dc2c.png",
+            "description": "때까치를 사용하여 시야 반경을 100% 증가시키고 일반 공격 사거리를 2 증가시킬 수 있지만 이동 속도가 20% 감소합니다. 취소할 때까지 유지할 수 있습니다.",
+            "shortDescription": "때까치 사용 시 시야 및 사거리 증가",
+            "cooldown": 3,
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Air Strike",
+              "ko": "공습 수류탄"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943645e19dc2c.png",
+            "description": "사용하면 사거리가 275% 증가한 생체 수류탄을 던질 수 있지만 낙하하는 데 3초의 시간이 소요됩니다.\n\n지속 효과: 생체 수류탄의 재사용 대기시간이 4초 감소합니다.",
+            "shortDescription": "사용 시 생체 수류탄 사거리 증가",
+            "cooldown": 12,
+            "manaCost": 50,
+            "extras": {},
+            "upgradeFor": "W"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Temporary Blindness",
+              "ko": "실명 다트"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164594389f019dc2c.png",
+            "description": "수면총의 효과가 만료되면 대상이 2초 동안 실명합니다.",
+            "shortDescription": "수면총이 대상을 실명하게 함",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Mind-Numbing Agent",
+              "ko": "정신 마취 독극물"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943862219dc2c.png",
+            "description": "독극물 중첩당 적 영웅의 기술 위력이 10% 감소합니다.",
+            "shortDescription": "독극물이 기술 위력을 감소시킴",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Debilitating Dart",
+              "ko": "쇠약의 다트"
+            },
+            "type": "active",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943684119dc2c.png",
+            "description": "사용하면 다트를 발사하여 처음 적중한 적 영웅의 공격력과 이동 속도를 3초 동안 50% 감소시킵니다.",
+            "shortDescription": "공격력 및 이동 속도를 감소시키는 다트 발사",
+            "cooldown": 20,
+            "extras": {
+              "사거리": "11.38",
+              "너비": "0.5"
+            }
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Nano Boost",
+              "ko": "나노 강화제"
+            },
+            "type": "R",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459437fc119dc2c.png",
+            "description": "아군 영웅을 강화하여 즉시 200의 마나를 회복시킵니다. 8초 동안 대상의 기술 위력이 30% 증가하고 일반 기술의 재사용 대기시간이 150% 더 빨리 감소합니다.\n\n<span style=\"color:#ffff8a\">자신에게는 사용할 수 없습니다.</span>",
+            "shortDescription": "아군의 기술 위력을 증가시키고 재사용 대기시간을 감소시킴",
+            "cooldown": 70,
+            "manaCost": 60,
+            "extras": {
+              "사거리": "8"
+            }
+          },
+          {
+            "name": {
+              "en": "Eye of Horus",
+              "ko": "호루스의 눈"
+            },
+            "type": "R",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943701719dc2c.png",
+            "description": "저격용 조준경을 활성화하여 사거리가 무한인 6발의 특수 탄환을 발사할 수 있습니다. 탄환은 처음 적중하는 아군 영웅의 생명력을 296(+4%) 회복시키거나 적 영웅 또는 구조물에 173(+4%)의 피해를 줍니다. 구조물에는 50% 감소한 피해를 줍니다.\n\n호루스의 눈이 활성화된 동안에는 이동할 수 없습니다.",
+            "shortDescription": "사거리가 무한인 탄환을 발사하여 치유 또는 피해를 줌",
+            "cooldown": 45,
+            "manaCost": 45,
+            "extras": {
+              "사거리": "∞",
+              "너비": "1"
+            }
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Speed Serum",
+              "ko": "증속 혈청"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943740419dc2c.png",
+            "description": "치유탄이 이동 속도를 2초 동안 25% 증가시킵니다.",
+            "shortDescription": "치유탄이 이동 속도를 증가시킴",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Purifying Darts",
+              "ko": "정화탄"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594377e119dc2c.png",
+            "description": "치유탄이 대상의 이동 불가 및 감속 효과를 제거합니다. 효과를 제거하면 해당 치유탄의 치유량이 20% 증가합니다.",
+            "shortDescription": "치유탄이 이동 불가 및 감속 효과 제거",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Smelling Salts",
+              "ko": "자극제"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459437bcf19dc2c.png",
+            "description": "치유탄이 대상의 기절 효과를 제거합니다. 효과를 제거하면 대상의 방어력을 2초 동안 50 증가시킵니다.",
+            "shortDescription": "치유탄이 기절 효과 제거",
+            "extras": {},
+            "upgradeFor": "Q"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Sharpshooter",
+              "ko": "명사수"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943740419dc2c.png",
+            "description": "치유탄이 아군 영웅을 치유할 때마다 치유량이 5% 증가하여 최대 50% 증가합니다. 이 효과는 치유탄이 아군 영웅에게 적중하지 않으면 사라집니다.",
+            "shortDescription": "연속 적중 시 치유탄 강화",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Concentrated Doses",
+              "ko": "집중 투여"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594377e119dc2c.png",
+            "description": "적 영웅에게 활성화된 독극물 중첩 하나당 치유탄의 치유량이 10% 증가합니다.",
+            "shortDescription": "독극물이 치유탄 강화",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Contact Healing",
+              "ko": "폭발적인 치유"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943645e19dc2c.png",
+            "description": "생체 수류탄이 적중한 아군 및 적 영웅 하나당 치유량이 30% 증가합니다.",
+            "shortDescription": "생체 수류탄이 여러 영웅 적중 시 치유량 증가",
+            "extras": {},
+            "upgradeFor": "W"
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Nano Infusion",
+              "ko": "나노 재구성"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459437fc119dc2c.png",
+            "description": "나노 강화제의 대상이 준 기술 피해의 50%만큼 대상이 생명력을 회복합니다.",
+            "shortDescription": "대상이 준 기술 피해로 대상 생명력 회복",
+            "extras": {},
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Ballistic Advantage",
+              "ko": "탄도학적 우위"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943701719dc2c.png",
+            "description": "호루스의 눈 탄환이 영웅에게 적중하면 폭발하여 주위 아군 영웅들의 생명력을 312(+4%) 회복시키고 주위 적 영웅들에게 156(+4%)의 피해를 줍니다.",
+            "shortDescription": "호루스의 눈 탄환이 폭발",
+            "extras": {
+              "효과 반경": "2.5"
+            },
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Somnolent Doses",
+              "ko": "마취 독극물"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943862219dc2c.png",
+            "description": "적 영웅에게 독극물을 5회 중첩시키면 대상이 2초 동안 수면 상태가 됩니다.",
+            "shortDescription": "독극물 최대 중첩 시 수면",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Dynamic Shooting",
+              "ko": "무차별 사격"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947779119dc2c.png",
+            "description": "4초 동안 일반 공격이 공격 속도를 10% 증가시켜 최대 100% 증가합니다.",
+            "shortDescription": "일반 공격 시 공격 속도 증가",
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Custom Optics",
+              "ko": "광학 조준경"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943609819dc2c.png",
+            "description": "정조준의 일반 공격 사거리 증가량이 2에서 4로 증가합니다.",
+            "shortDescription": "정조준 사거리 증가량 증가",
+            "extras": {},
+            "upgradeFor": "active"
+          }
+        ]
+      }
+    },
+    "MalGanis": {
+      "name": "말가니스",
+      "title": "나스레짐 군주",
+      "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656ecba4219dc2c.png",
+      "type": "근접",
+      "role": "warrior",
+      "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "value": 2700,
+          "levelScaling": 0.04
+        },
+        "radius": 0.875,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 5.625,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 1.3,
+        "period": 1.1,
+        "damage": {
+          "value": 105,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Vampiric Touch",
+            "ko": "흡혈의 손길"
+          },
+          "type": "D",
+          "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfd0b19dc2c.png",
+          "description": "적 영웅에게 준 피해의 45%만큼, 영웅이 아닌 대상에게 준 피해의 15%만큼 생명력을 회복합니다.",
+          "shortDescription": "적 공격 시 생명력 회복",
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Fel Claws",
+            "ko": "지옥 발톱"
+          },
+          "type": "Q",
+          "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dd023519dc2c.png",
+          "description": "대상 방향으로 거칠게 할퀴며 나아가 적들에게 75(+4%)의 피해를 줍니다.\n\n다시 사용해서 최대 2번 더 공격할 수 있습니다. 세 번째 공격은 적들을 0.75초 동안 기절시킵니다.",
+          "shortDescription": "수 차례 할퀴며 전진하여 피해를 줌",
+          "cooldown": 8,
+          "manaCost": 50,
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Necrotic Embrace",
+            "ko": "괴저 기운"
+          },
+          "type": "W",
+          "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
+          "description": "대기를 더렵혀 주위 적들에게 114(+4%)의 피해를 주고, 방어력이 3초 동안 25 증가합니다.",
+          "shortDescription": "주위에 피해를 주며 방어력 증가",
+          "cooldown": 8,
+          "manaCost": 30,
+          "extras": {}
+        },
+        {
+          "name": {
+            "en": "Night Rush",
+            "ko": "밤의 질주"
+          },
+          "type": "E",
+          "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
+          "description": "0.75초 후, 이동 속도가 2초 동안 50% 증가합니다. 활성화된 동안 적 영웅을 통과하며 이동할 수 있고 통과한 적 영웅들을 2.5초 동안 수면 상태로 만듭니다.",
+          "shortDescription": "이동 속도 증가 및 적을 수면 상태로 만듦",
+          "cooldown": 16,
+          "manaCost": 70,
+          "extras": {}
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Winged Guard",
+              "ko": "날개 방패"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
+            "description": "괴저 기운이 적 영웅에게 적중하면 물리 방어력이 50 증가합니다. 이 효과는 여러 번 충전될 수 있습니다.\n\n날개 방패가 충전되지 않은 상태면 6초 후에 1회 충전됩니다.",
+            "shortDescription": "괴저 기운으로 물리 방어력 증가",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Vampiric Aura",
+              "ko": "흡혈의 오라"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfd0b19dc2c.png",
+            "description": "자신과 주위 아군 영웅들이 준 물리 피해의 10%만큼 공격자가 생명력을 회복합니다.",
+            "shortDescription": "흡혈의 손길 강화 및 아군에게도 영향",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Time to Feed",
+              "ko": "만찬의 시간"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcfddf19dc2c.png",
+            "description": "주위 적 영웅에게 피해를 주면 50(+4%)의 생명력을 회복합니다. 이 효과는 같은 적 영웅에게 6초에 한 번씩만 발동합니다.",
+            "shortDescription": "적 영웅 처음 공격 시 생명력 회복",
+            "extras": {},
+            "upgradeFor": "D"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Fueled by Torment",
+              "ko": "고통을 즐겨라"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
+            "description": "괴저 기운이 활성화된 동안 피해를 받으면 12(+4%)의 생명력을 회복하고 흡혈의 손길로 회복하는 생명력이 추가로 15% 증가합니다.",
+            "shortDescription": "괴저 기운 중 피해를 받으면 생명력 회복",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Might of Sargeras",
+              "ko": "살게라스의 힘"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcf8b519dc2c.png",
+            "description": "괴저 기운의 방어력이 50으로 증가하지만, 지속 시간이 2초로 감소합니다.",
+            "shortDescription": "괴저 기운의 방어력 증가 효과가 증가하지만 지속 시간 감소",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Echo of Doom",
+              "ko": "파멸의 메아리"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf99f19dc2c.png",
+            "description": "괴저 기운이 만료되면 다시 폭발하며 52(+4%)의 피해를 줍니다. 적 영웅에게 적중하면 방어력이 1초 동안 25 증가합니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
+            "shortDescription": "괴저 기운 만료 시 폭발",
+            "extras": {},
+            "upgradeFor": "W"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Black Claws",
+              "ko": "검은 발톱"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dd023519dc2c.png",
+            "description": "지옥 발톱으로 적 영웅을 공격하면 다음 일반 공격이 45%의 추가 피해를 줍니다.",
+            "shortDescription": "적 영웅에게 지옥 발톱 적중 시 일반 공격력 증가",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Will of Tichondrius",
+              "ko": "티콘드리우스의 의지"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dd031319dc2c.png",
+            "description": "지옥 발톱의 세 번째 공격이 적 영웅의 최대 생명력의 4%를 흡수합니다.",
+            "shortDescription": "지옥 발톱으로 생명력 흡수",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Spreading Plague",
+              "ko": "퍼져나가는 역병"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
+            "description": "밤의 질주가 만료되면 주위 적들에게 4초 동안 초당 31(+4%)의 피해를 줍니다. 적 영웅에게 일반 공격을 하면 이 효과가 갱신됩니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
+            "shortDescription": "밤의 질주 시전 후 적에게 주기적으로 피해를 줌",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Nightmare Fuel",
+              "ko": "악몽의 원천"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcfa7e19dc2c.png",
+            "description": "수풀에서, 그리고 수풀에서 나온 후 4초 동안 일반 공격력이 30% 증가합니다. 수면 상태인 대상에게는 일반 공격력이 125% 증가합니다.",
+            "shortDescription": "일반 공격 시 추가 피해 가능",
+            "extras": {}
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Carrion Swarm",
+              "ko": "흡혈박쥐 떼"
+            },
+            "type": "R",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcff7119dc2c.png",
+            "description": "1초 후, 박쥐 떼로 흩어져 무적 상태가 되고 적들에게 3초 동안 초당 137(+4%)의 피해를 줍니다.\n\n흡혈박쥐 떼는 적 영웅들에게 준 피해의 100%만큼 흡혈의 손길로 생명력을 회복시킵니다.",
+            "shortDescription": "박쥐 떼로 흩어져 주위 적들에게 피해",
+            "cooldown": 80,
+            "manaCost": 70,
+            "extras": {}
+          },
+          {
+            "name": {
+              "en": "Dark Conversion",
+              "ko": "부정한 전환"
+            },
+            "type": "R",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfead19dc2c.png",
+            "description": "0.75초 동안 적 영웅에게 정신을 집중한 후 3초에 걸쳐 남은 생명력 비율을 대상과 교환합니다.",
+            "shortDescription": "정신 집중 후 적 영웅과 생명력 교환",
+            "cooldown": 80,
+            "manaCost": 70,
+            "extras": {}
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Deep Sleep",
+              "ko": "깊은 잠"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
+            "description": "밤의 질주의 수면 효과의 지속 시간이 0.75초 증가하고 이동 속도 증가량이 10% 증가합니다.",
+            "shortDescription": "밤의 질주 수면 지속 시간 증가",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "The Night Beckons",
+              "ko": "밤이 손짓한다"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfc3419dc2c.png",
+            "description": "밤의 질주의 수면 효과가 만료되면 대상을 2.5초 동안 30%느려지게 합니다.",
+            "shortDescription": "밤의 질주가 적을 느려지게 함",
+            "extras": {},
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Blood Rush",
+              "ko": "핏빛 약진"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfd0b19dc2c.png",
+            "description": "생명력을 회복하면 이동 속도가 8초 동안 1% 증가하여 최대 15% 증가합니다.",
+            "shortDescription": "생명력 회복 시 이동 속도 증가",
+            "extras": {},
+            "upgradeFor": "D"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Plague Bats",
+              "ko": "역병 박쥐"
+            },
+            "type": "passive",
+            "iconUrl": "http://i3.ruliweb.com/img/18/10/09/16656dcf7e819dc2c.png",
+            "description": "괴저 기운을 사용하면 전방에 박쥐 떼를 내보내 88(+4%)의 피해를 줍니다.",
+            "shortDescription": "괴저 기운으로 박쥐 떼를 내보냄",
+            "extras": {},
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Frenzied Assault",
+              "ko": "광란의 공격"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfd0b19dc2c.png",
+            "description": "남은 생명력 비율이 자신보다 높은 영웅에게 일반 공격을 하면 3초 동안 공격 속도가 40% 증가하고 물리 공격력이 10% 증가합니다.",
+            "shortDescription": "생명력이 더 높은 영웅 일반 공격 시 공격 속도 증가",
+            "extras": {},
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Blind as a Bat",
+              "ko": "눈먼 공포"
+            },
+            "type": "active",
+            "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dd015e19dc2c.png",
+            "description": "사용하면 무아지경에 빠져 지옥 발톱의 재사용 대기시간과 마나 소모량이 없어지지만, 모든 시야를 잃습니다. 6초 동안 지속됩니다.",
+            "shortDescription": "지옥 발톱의 재사용 대기시간이 없어지지만 모든 시야 상실",
+            "cooldown": 80,
+            "extras": {},
+            "upgradeFor": "Q"
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Seeker Swarm",
+              "ko": "추적하는 박쥐떼"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcff7119dc2c.png",
+            "description": "흡혈박쥐 떼가 만료되면 박쥐들이 주위 적 영웅들을 추적하여 137(+4%)의 피해를 주고 2.5초 동안 수면 상태로 만듭니다.",
+            "shortDescription": "흡혈박쥐 떼 만료 후 적 영웅을 수면 상태로 만듦",
+            "extras": {},
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Wrath of Nathreza",
+              "ko": "나스레자의 분노"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dcfead19dc2c.png",
+            "description": "부정한 전환의 대상 주위에 있는 적 영웅들에게 3초에 걸쳐 전달된 생명력의 75%만큼 피해를 줍니다.\n\n흡혈의 손길 효과는 발동하지 않습니다.",
+            "shortDescription": "암흑의 격변이 대상 주위 영웅에게 피해를 줌",
+            "extras": {},
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Vanquish the Weak",
+              "ko": "나약한 자는 처단한다"
+            },
+            "type": "passive",
+            "iconUrl": "http://i1.ruliweb.com/img/18/10/09/16656dd023519dc2c.png",
+            "description": "지옥 발톱과 일반 공격이 대상을 1.5초 동안 15% 느려지게 합니다. 느려진 영웅에게 피해를 주면 흡혈의 손길로 회복하는 생명력이 추가로 10% 증가합니다.",
+            "shortDescription": "지옥 발톱과 일반 공격이 대상을 느려지게 함",
+            "extras": {},
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Alone in the Dark",
+              "ko": "어둠 속에 너 홀로"
+            },
+            "type": "passive",
+            "iconUrl": "http://i2.ruliweb.com/img/18/10/09/16656dcfb5319dc2c.png",
+            "description": "밤의 질주로 수면 상태가 된 영웅의 시야가 크게 감소합니다. 이 효과는 수면 상태가 만료된 후에도 2초 동안 유지됩니다.",
+            "shortDescription": "밤의 질주가 적의 시야를 감소시킴",
             "extras": {},
             "upgradeFor": "E"
           }
