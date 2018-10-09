@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+
+## [0.8.1] - 2018-10-10
 ### Changed
+- Updated data with Heroes of the Storm v2.38.2 + PTR v2.39.0 patch information.
 - `docs/hots.json` is directly added to the ZIP file during the build process,
   instead of maintaining a copy at `chrome-ext/src/data/hots.json`.
 - `api-server/` renamed to `api/`
