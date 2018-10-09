@@ -194,7 +194,7 @@
 .ruliweb-hots-skill-table, .ruliweb-hots-hero-skill-table, .ruliweb-hots-talent-table {
   border: 2px solid #85d;
   padding: 4px;
-  background: linear-gradient(#214, #102);
+  background: linear-gradient(#214, #102) 0;  /* Set background-position to 0 to fix white border bug in Chrome */
   color: #6cf;  /* Color of skill name and collapse/expand arrow */
 }
 
@@ -205,7 +205,7 @@
 
 .ruliweb-hots-talent-table {
   border: 2px solid #55d;
-  background: linear-gradient(#118, #003);
+  background: linear-gradient(#118, #003) 0;  /* Set background-position to 0 to fix white border bug in Chrome */
   color: #bef;  /* Color of talent name and collapse/expand arrow */
 }
 

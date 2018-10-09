@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Talent upgrade arrow images are no longer shrunk to weird dimensions in
   Ruliweb boards (on PC).
+- Skill/talent tables do not have white edges inside borders in Google Chrome.
+  (Issue #37)
 
 
 ## [0.8.0] - 2018-09-05
