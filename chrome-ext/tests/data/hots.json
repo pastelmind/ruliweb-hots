@@ -164,8 +164,7 @@
           "type": "D",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
           "description": "790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 79(+4%)의 보호막이 재생됩니다.",
-          "shortDescription": "비전투 시 재생되는 보호막 영구히 획득",
-          "extras": {}
+          "shortDescription": "비전투 시 재생되는 보호막 영구히 획득"
         },
         {
           "name": {
@@ -191,8 +190,7 @@
           "type": "W",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
           "description": "공격 속도가 150% 증가합니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.",
-          "shortDescription": "공격 속도 증가",
-          "extras": {}
+          "shortDescription": "공격 속도 증가"
         },
         {
           "name": {
@@ -202,8 +200,7 @@
           "type": "W",
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
           "description": "일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.\n\n사용하면 <span style=\"color: #00ff90\">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.",
-          "shortDescription": "일반 공격력 및 일반 공격 사거리 증가, 일반 공격 시 방사 피해",
-          "extras": {}
+          "shortDescription": "일반 공격력 및 일반 공격 사거리 증가, 일반 공격 시 방사 피해"
         },
         {
           "name": {
@@ -231,7 +228,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
             "description": "퀘스트: 플라스마 절단기가 적 영웅에게 적중할 때마다 일반 공격력이 0.5 증가하여 최대 60 증가합니다.\n보상: 플라스마 절단기가 적 영웅에게 30회 이상 적중하면 플라스마 절단기가 1회 더 회전합니다.",
             "shortDescription": "퀘스트: 플라스마 절단기 추가 회전",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -243,7 +239,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
             "description": "연발포로 적 영웅에게 피해를 3회 주면 다음 위상 폭탄의 공격력이 150% 증가하고 방사 피해의 범위가 50% 증가합니다.",
             "shortDescription": "연발포가 위상 폭탄 강화",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -255,7 +250,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
             "description": "이동하면 다음 일반 공격이 35%의 추가 피해를 줍니다.",
             "shortDescription": "이동 시 일반 공격 강화",
-            "extras": {},
             "upgradeFor": "W"
           }
         ],
@@ -269,7 +263,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
             "description": "느려진 적 영웅을 연발포로 일반 공격하면 이동 속도가 4초 동안 10% 증가하여 최대 40% 증가합니다.",
             "shortDescription": "연발포가 이동 속도를 증가시킴",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -281,7 +274,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png",
             "description": "위상 폭탄이 활성화된 동안 플라스마 절단기로 느려진 적 영웅에게 일반 공격을 하면 주위 모든 적들을 4초 동안 35% 느려지게 합니다.",
             "shortDescription": "위상 폭탄이 적을 느려지게 함",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -293,7 +285,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
             "description": "적 영웅을 처치하면 차원이동의 재사용 대기시간이 초기화됩니다.",
             "shortDescription": "적 영웅 처치 시 차원이동 재사용 대기시간 초기화",
-            "extras": {},
             "upgradeFor": "E"
           },
           {
@@ -305,7 +296,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "보호막 축전기의 보호막이 파괴되면 이동 속도가 5초 동안 25% 증가합니다.",
             "shortDescription": "보호막이 파괴되면 이동 속도 증가",
-            "extras": {},
             "upgradeFor": "D"
           }
         ],
@@ -319,7 +309,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
             "description": "플라스마 절단기가 느려진 대상에게 35%의 추가 피해를 줍니다.",
             "shortDescription": "플라스마 절단기가 느려진 대상에게 추가 피해",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -331,7 +320,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
             "description": "차원이동을 마친 후 연발포의 공격 속도가 4초 동안 175% 증가합니다.",
             "shortDescription": "차원이동 후 공격 속도 증가",
-            "extras": {},
             "upgradeFor": "E"
           },
           {
@@ -343,8 +331,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
             "description": "사용하면 보호막 축전기의 보호막을 모두 소모합니다. 소모한 보호막에 비례하여 일반 공격력이 5초 동안 최대 80% 증가합니다.",
             "shortDescription": "사용 시 보호막을 잃지만 일반 공격력 증가",
-            "cooldown": 20,
-            "extras": {}
+            "cooldown": 20
           }
         ],
         "10": [
@@ -389,7 +376,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png",
             "description": "차원이동을 마친 후 방어력이 4초 동안 50 증가합니다.",
             "shortDescription": "차원이동 시 방어력 증가",
-            "extras": {},
             "upgradeFor": "E"
           },
           {
@@ -401,7 +387,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "보호막 축전기의 보호막이 지속되는 동안 기술 방어력이 20 증가합니다.",
             "shortDescription": "보호막 축전기가 기술 방어력을 증가시킴",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -413,7 +398,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595463e119dc2c.png",
             "description": "생명력을 회복할 때마다 회복량의 60%만큼 보호막 축전기의 보호막이 재생됩니다.",
             "shortDescription": "생명력 회복 시 보호막 재생",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -425,7 +409,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595467f219dc2c.png",
             "description": "최대 생명력이 10% 감소하지만 보호막 축전기의 보호막이 20% 증가합니다. 일반 공격을 하면 준 피해의 10%만큼 보호막이 재생됩니다.",
             "shortDescription": "일반 공격 시 보호막 획득",
-            "extras": {},
             "upgradeFor": "D"
           }
         ],
@@ -439,7 +422,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
             "description": "연발포가 적 영웅에게 3회 적중할 때마다 대상의 최대 생명력의 6%만큼 추가 피해를 줍니다.",
             "shortDescription": "연발포 연속 공격 시 일반 공격 강화",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -451,7 +433,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "보호막 축전기의 보호막이 지속되는 동안 공격력이 15% 증가합니다.",
             "shortDescription": "보호막 축전기가 공격력을 증가시킴",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -462,8 +443,7 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459475bf219dc2c.png",
             "description": "일반 공격을 할 때마다 기술의 재사용 대기시간이 0.5초 감소합니다.",
-            "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소",
-            "extras": {}
+            "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소"
           }
         ],
         "20": [
@@ -476,7 +456,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png",
             "description": "플라스마 절단기가 적 영웅에게 적중하면 0.5초 후에 대상 영웅에게 정화 개시 유도탄을 발사하여 89(+4%)의 피해를 줍니다. 느려진 대상에게는 50%의 추가 피해를 줍니다.",
             "shortDescription": "적 영웅 적중 시 정화 개시 유도탄 발사",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -488,7 +467,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png",
             "description": "연발포의 공격 속도가 100% 증가하고 위상 폭탄의 사거리가 1.25 증가합니다.",
             "shortDescription": "무기 모드 강화",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -500,7 +478,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png",
             "description": "죽음에 이르는 피해를 받으면 보호막 충전기의 보호막이 832(+4%) 재생됩니다. 이 효과는 120초에 한 번씩만 발동합니다.",
             "shortDescription": "치명적인 피해를 받으면 보호막 축전기 충전",
-            "extras": {},
             "upgradeFor": "D"
           }
         ]
@@ -570,8 +547,7 @@
           "type": "D",
           "iconUrl": "http://i1.ruliweb.com/img/18/07/08/164758eadfc19dc2c.png",
           "description": "지속 효과: 미샤의 이동 속도가 15% 증가합니다.\n\n미샤에게 특정 적을 공격하거나 특정 위치로 이동해 대기하라고 명령합니다.\n\n렉사르를 대상으로 사용하면 미샤가 렉사르에게 돌아오며 이 동안 미샤의 이동 속도가 30% 추가로 증가합니다.\n\n미샤를 대상으로 사용하면 현재 위치에 대기합니다.",
-          "shortDescription": "미샤에게 이동하거나 공격하라고 명령",
-          "extras": {}
+          "shortDescription": "미샤에게 이동하거나 공격하라고 명령"
         },
         {
           "name": {
@@ -615,8 +591,7 @@
           "description": "미샤의 생명력을 5초에 걸쳐 743(+4%) 회복시킵니다.",
           "shortDescription": "미샤 지속 치유",
           "cooldown": 10,
-          "manaCost": 55,
-          "extras": {}
+          "manaCost": 55
         }
       ],
       "talents": {
@@ -629,8 +604,7 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
             "description": "미샤가 돌격병과 용병에게 주는 피해가 150% 증가하고, 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
-            "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐",
-            "extras": {}
+            "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐"
           },
           {
             "name": {
@@ -641,7 +615,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
             "description": "기백 날리기가 돌격병에게 150%의 추가 피해를 줍니다.",
             "shortDescription": "기백 날리기가 돌격병에게 주는 피해 증가",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -669,8 +642,7 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
             "description": "미샤가 일반 공격으로 최대 생명력의 4.5%를 회복합니다.",
-            "shortDescription": "미샤 일반 공격 시 자신 치유",
-            "extras": {}
+            "shortDescription": "미샤 일반 공격 시 자신 치유"
           },
           {
             "name": {
@@ -680,8 +652,7 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530fdd19dc2c.png",
             "description": "퀘스트: 재생의 구슬을 획득할 때마다 렉사르의 초당 생명력 재생량이 1.25 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 20개 이상 획득하면 렉사르와 미샤의 방어력이 10 증가합니다.",
-            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가",
-            "extras": {}
+            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가"
           },
           {
             "name": {
@@ -691,8 +662,7 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645948925919dc2c.png",
             "description": "7초마다 렉사르와 미샤의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다. 렉사르 또는 미샤가 일반 공격을 할 때마다 각자의 재사용 대기시간이 감소합니다.",
-            "shortDescription": "주기적으로 물리 방어력 증가",
-            "extras": {}
+            "shortDescription": "주기적으로 물리 방어력 증가"
           },
           {
             "name": {
@@ -702,8 +672,7 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f21aa19dc2c.png",
             "description": "렉사르가 살아 있는 1초마다 렉사르와 미샤의 최대 생명력이 2 증가합니다. 렉사르가 죽으면 이 증가량은 사라집니다.",
-            "shortDescription": "오래 살아 있을수록 최대 생명력 증가",
-            "extras": {}
+            "shortDescription": "오래 살아 있을수록 최대 생명력 증가"
           }
         ],
         "7": [
@@ -716,7 +685,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
             "description": "미샤의 일반 공격이 미샤, 돌진!의 재사용 대기시간을 1.25초 감소시킵니다.",
             "shortDescription": "미샤 일반 공격 시 미샤, 돌진! 재사용 대기시간 감소",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -728,7 +696,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
             "description": "기백 날리기의 감속 효과가 50%로 증가하고 지속 시간이 3초로 증가합니다.",
             "shortDescription": "기백 날리기 감속 효과 및 지속 시간 증가",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -740,7 +707,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2d9719dc2c.png",
             "description": "기백 날리기의 사거리가 20% 증가합니다. 기백 날리기가 적 영웅에게 적중하면 소모한 마나를 돌려받고 재사용 대기시간이 2초 감소합니다.",
             "shortDescription": "기백 날리기 사거리 증가 및 마나 반환",
-            "extras": {},
             "upgradeFor": "Q"
           }
         ],
@@ -755,8 +721,7 @@
             "description": "미샤의 일반 공격력이 12초 동안 150% 증가합니다.",
             "shortDescription": "미샤 일반 공격력 증가",
             "cooldown": 50,
-            "manaCost": 75,
-            "extras": {}
+            "manaCost": 75
           },
           {
             "name": {
@@ -798,7 +763,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f2c2019dc2c.png",
             "description": "기백 날리기가 적 영웅에게 적중하면 공격 속도가 3초 동안 125% 증가합니다. 미샤가 일반 공격을 할 때마다 이 효과의 지속 시간이 0.75초 증가합니다.",
             "shortDescription": "기백 날리기가 공격 속도를 증가시킴",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -810,7 +774,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png",
             "description": "렉사르와 미샤가 일반 공격을 할 때마다 다음 미샤, 돌진!의 공격력이 40% 증가하여 최대 400% 증가합니다.",
             "shortDescription": "일반 공격 시 미샤, 돌진! 공격력 증가",
-            "extras": {},
             "upgradeFor": "W"
           }
         ],
@@ -823,8 +786,7 @@
             "type": "passive",
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png",
             "description": "렉사르의 일반 공격이 렉사르와 미샤의 이동 속도를 2초 동안 25% 증가시킵니다.",
-            "shortDescription": "일반 공격 시 이동 속도 증가",
-            "extras": {}
+            "shortDescription": "일반 공격 시 이동 속도 증가"
           },
           {
             "name": {
@@ -849,8 +811,7 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164595f24cf19dc2c.png",
             "description": "죽은 흉내를 내서 5초 동안 무적 상태가 되고 대상으로 지정되지 않습니다. 지속 시간 동안 미샤를 조종합니다.",
             "shortDescription": "무적 상태가 되고 미샤 조종",
-            "cooldown": 35,
-            "extras": {}
+            "cooldown": 35
           }
         ],
         "20": [
@@ -863,7 +824,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png",
             "description": "야수의 격노의 지속 시간이 50% 증가하고 이 동안 미샤가 일반 공격으로 준 피해의 50%만큼 렉사르의 생명력이 회복됩니다.",
             "shortDescription": "미샤 일반 공격 시 렉사르 치유",
-            "extras": {},
             "upgradeFor": "R"
           },
           {
@@ -875,7 +835,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595f2f3319dc2c.png",
             "description": "멧돼지를 풀어라의 공격력이 50% 증가하고 대상들을 1.5초 동안 이동 불가 상태로 만듭니다.",
             "shortDescription": "멧돼지를 풀어라 공격력 증가 및 대상 이동 불가",
-            "extras": {},
             "upgradeFor": "R"
           },
           {
@@ -886,8 +845,7 @@
             "type": "passive",
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645947736619dc2c.png",
             "description": "렉사르의 일반 공격력이 10% 증가하고, 미샤의 일반 공격이 대상을 1.25초 동안 20% 느려지게 합니다.",
-            "shortDescription": "렉사르 일반 공격력 증가 및 미샤 일반 공격 시 대상 감속",
-            "extras": {}
+            "shortDescription": "렉사르 일반 공격력 증가 및 미샤 일반 공격 시 대상 감속"
           },
           {
             "name": {
@@ -898,8 +856,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459474e1719dc2c.png",
             "description": "사용하면 렉사르와 미샤의 방어력이 4초 동안 75 증가하여 받는 피해가 75% 감소합니다.",
             "shortDescription": "렉사르와 미샤 방어력 대폭 증가",
-            "cooldown": 60,
-            "extras": {}
+            "cooldown": 60
           }
         ]
       }
@@ -946,8 +903,7 @@
           "type": "D",
           "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png",
           "description": "파괴된 적 구조물이나 직접 설치한 잘나가! 포탑에서 고철이 떨어집니다. 고철을 획득하면 3초에 걸쳐 30의 마나를 회복하고 이 동안 기술의 재사용 대기시간이 세 배 빨리 감소합니다.\n\n고물상을 사용하면 대상 잘나가! 포탑을 해체해서 고철로 만듭니다.",
-          "shortDescription": "포탑과 적 구조물에서 고철이 떨어져, 획득 시 마나 회복 및 재사용 대기시간 감소",
-          "extras": {}
+          "shortDescription": "포탑과 적 구조물에서 고철이 떨어져, 획득 시 마나 회복 및 재사용 대기시간 감소"
         },
         {
           "name": {
@@ -974,8 +930,7 @@
           "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png",
           "description": "주위의 잘나가! 포탑들이 대상을 집중 공격하게 만듭니다.",
           "shortDescription": "포탑에게 대상 공격 지시",
-          "cooldown": 1,
-          "extras": {}
+          "cooldown": 1
         },
         {
           "name": {
@@ -1021,7 +976,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png",
             "description": "터진다늄 폭탄의 공격력이 폭발에 적중당한 대상 하나당 10% 증가하여 최대 100% 증가합니다.",
             "shortDescription": "터진다늄 폭탄 공격력 증가",
-            "extras": {},
             "upgradeFor": "E"
           },
           {
@@ -1033,7 +987,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png",
             "description": "고철을 획득할 때 회복되는 마나가 100% 증가합니다.",
             "shortDescription": "고물상 마나 회복량 증가",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -1045,7 +998,6 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956abae19dc2c.png",
             "description": "고철을 수집하면 3초 동안 모든 기술의 재사용 대기시간이 네 배 빨리 감소합니다.",
             "shortDescription": "고물상 재사용 대기시간 감소량 증가",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -1056,8 +1008,7 @@
             "type": "passive",
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/16459530fdd19dc2c.png",
             "description": "퀘스트: 재생의 구슬을 획득하면 초당 생명력 재생량이 1 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 25개 이상 획득하면 초당 생명력 재생량이 추가로 15 증가합니다.",
-            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가",
-            "extras": {}
+            "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가"
           }
         ],
         "4": [
@@ -1070,7 +1021,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a00919dc2c.png",
             "description": "퀘스트: 일반 공격을 할 때마다 현재 설치된 잘나가! 포탑의 지속 시간이 1.5초 증가합니다.\n보상: 포탑의 지속 시간을 총 600초 이상 증가시키면 잘나가! 포탑의 충전 대기시간이 3초 감소합니다.",
             "shortDescription": "퀘스트: 일반 공격 시 잘나가! 포탑 지속 시간 증가",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -1082,7 +1032,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png",
             "description": "터진다늄 폭탄의 재사용 대기시간이 2초 감소하고, 적 영웅에게 적중하면 잘나가! 포탑이 2회 충전됩니다.",
             "shortDescription": "터진다늄 폭탄 재사용 대기시간 감소 및 잘나가! 포탑 충전",
-            "extras": {},
             "upgradeFor": "E"
           },
           {
@@ -1094,7 +1043,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956a7cb19dc2c.png",
             "description": "주위에서 죽은 적 돌격병이 15% 확률로 고철을 떨어트립니다.",
             "shortDescription": "적 돌격병이 일정 확률로 고철을 떨어트림",
-            "extras": {},
             "upgradeFor": "D"
           },
           {
@@ -1136,7 +1084,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a40719dc2c.png",
             "description": "잘나가! 포탑의 공격이 적을 2초 동안 20% 느려지게 합니다.",
             "shortDescription": "잘나가! 포탑이 적들을 느려지게 함",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -1148,7 +1095,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956889519dc2c.png",
             "description": "죽이는 레이저가 두 배 빨리 충전되고 마나 소모량이 30 감소합니다.",
             "shortDescription": "죽이는 레이저 충전 속도 증가",
-            "extras": {},
             "upgradeFor": "W"
           }
         ],
@@ -1162,8 +1108,7 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459569c9519dc2c.png",
             "description": "사용하면 4초 동안 방어력이 30 증가하고 이동 속도가 30% 증가합니다.\n\n지속 효과: 일반 공격이 100%의 추가 피해를 줍니다.",
             "shortDescription": "일반 공격력, 방어력, 이동 속도 증가",
-            "cooldown": 60,
-            "extras": {}
+            "cooldown": 60
           },
           {
             "name": {
@@ -1192,7 +1137,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956889519dc2c.png",
             "description": "죽이는 레이저가 3초 동안 영웅을 50% 느려지게 하고 영웅이 아닌 대상을 기절시킵니다.",
             "shortDescription": "죽이는 레이저가 적 무력화",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -1204,7 +1148,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459568c7519dc2c.png",
             "description": "죽이는 레이저를 1초 더 충전해서 공격력을 추가로 100% 증가시킬 수 있습니다.",
             "shortDescription": "죽이는 레이저 공격력 증가",
-            "extras": {},
             "upgradeFor": "W"
           },
           {
@@ -1216,7 +1159,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png",
             "description": "터진다늄 폭탄의 폭발 반경이 30% 증가합니다. 기절하거나 이동 불가 상태가 되면 발 아래 터진다늄 폭탄을 떨어트립니다.\n\n이 효과는 10초의 재사용 대기시간을 갖습니다.",
             "shortDescription": "기절 또는 이동 불가 시 터진다늄 폭탄 시전",
-            "extras": {},
             "upgradeFor": "E"
           }
         ],
@@ -1230,7 +1172,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645956a00919dc2c.png",
             "description": "잘나가! 포탑 최대 충전 횟수가 2에서 3으로 증가합니다.",
             "shortDescription": "잘나가! 포탑 충전 개수 증가",
-            "extras": {},
             "upgradeFor": "Q"
           },
           {
@@ -1256,7 +1197,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png",
             "description": "터진다늄 폭탄을 2회 충전해서 사용할 수 있습니다.",
             "shortDescription": "터진다늄 폭탄 2회 충전 가능",
-            "extras": {},
             "upgradeFor": "E"
           }
         ],
@@ -1270,7 +1210,6 @@
             "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459569c9519dc2c.png",
             "description": "일반 공격이 100%의 추가 피해를 줍니다.\n\n지속 효과: 방어력이 25 증가합니다.",
             "shortDescription": "일반 공격력 및 방어력 증가",
-            "extras": {},
             "upgradeFor": "R"
           },
           {
@@ -1282,7 +1221,6 @@
             "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645956906119dc2c.png",
             "description": "중력폭탄 3000의 반경이 25% 증가하고 공격력이 50% 증가합니다.",
             "shortDescription": "중력폭탄 반경 및 공격력 증가",
-            "extras": {},
             "upgradeFor": "R"
           },
           {
@@ -1309,8 +1247,7 @@
             "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645956944819dc2c.png",
             "description": "사용하면 5초에 걸쳐 주위에 5개의 고철을 생성합니다.",
             "shortDescription": "사용 시 고철 생성",
-            "cooldown": 60,
-            "extras": {}
+            "cooldown": 60
           }
         ]
       }

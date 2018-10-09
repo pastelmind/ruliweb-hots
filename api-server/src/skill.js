@@ -51,7 +51,7 @@ module.exports = class Skill {
       rechargeCooldown: this.rechargeCooldown || undefined,
       manaCost: this.manaCost || undefined,
       manaCostPerSecond: this.manaCostPerSecond || undefined,
-      extras: this.extras
+      extras: Object.keys(this.extras).length ? this.extras : undefined
     };
   }
 };
