@@ -448,7 +448,8 @@ function extractResourceCostInfo(skillTalentData) {
     const resourceMatch = /^\s*(.+?)\s*:\s*(초당)?\s*(\d+?)\s*$/.exec(energyTooltip.replace(/<.*?>/g, ''));
 
     if (resourceMatch) {
-      const [, resourceName, perSecondString, resourceCostAmount] = resourceMatch;
+      const [, resourceName, perSecondString, resourceCostAmountStr] = resourceMatch;
+      const resourceCostAmount = +resourceCostAmountStr;
 
       if (resourceName === '마나') {
         if (perSecondString)
@@ -457,7 +458,7 @@ function extractResourceCostInfo(skillTalentData) {
           manaCost = +resourceCostAmount;
       }
       else
-        extras[resourceName] = (perSecondString ? perSecondString + ' ' : '') + resourceCostAmount;
+        extras[resourceName] = (perSecondString ? perSecondString + ' ' : 0) + resourceCostAmount;
     }
     else
       console.warn(`${skillTalentData.nameId}: Unrecognizable energyTooltip -`, util.inspect(energyTooltip));

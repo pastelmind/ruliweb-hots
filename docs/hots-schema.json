@@ -526,7 +526,14 @@
         "extras": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/trimmedString"
+            "oneOf": [
+              {
+                "$ref": "#/definitions/trimmedString"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
           "propertyNames": {
             "$ref": "#/definitions/trimmedString"
