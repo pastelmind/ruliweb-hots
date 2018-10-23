@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+## Fixed
+- Newline characters (LF) in Skill short descriptions are properly rendered in
+  dialog tooltips.
 
 
 ## [0.8.1] - 2018-10-10

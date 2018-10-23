@@ -168,7 +168,7 @@ function decorateHotsData(hotsData) {
         skill.isTypeClassBasic = true;
 
       //Convert short description text to tooltip-attr & HTML format
-      skill.tooltipDescription = skill.shortDescription.replace(/\r?\n/g, '&#xA;');
+      skill.tooltipDescription = skill.shortDescription;
       skill.shortDescription = skill.shortDescription.replace(/\r?\n/g, '<br>');
     }
 
