@@ -244,8 +244,10 @@ function extractUnitStats(unitData, heroData) {
   };
 
   //Fix for Alexstrasza's Dragon form
-  if (unitData.id === 'HeroAlexstraszaDragon')
+  if (unitData.id === 'HeroAlexstraszaDragon') {
     stats.hp.value = jsonFindId(heroData, 'HeroAlexstrasza').lifeMax.value + 500;
+    stats.unitName = jsonFind(heroData, o => o && o.id === 'AlexstraszaDragonqueen' && typeof o.name === 'string').name;
+  }
 
   //Fix for D.Va's mech
   if (unitData.id === 'HeroDVaMech')
