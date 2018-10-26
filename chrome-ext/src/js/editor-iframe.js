@@ -45,7 +45,50 @@ if (isInIframe()) {
   bodyStyleRemover.observe(document.body.parentNode, {
     attributes: true,
     attributeFilter: ['style'],
-    subtree: true
+    subtree: true,
+  });
+
+  //When a user injects a <details> inside a <p>, replace <p> with a <div> to
+  //allow aligning <details> tags.
+  const pToDivReplacer = new MutationObserver(() => {
+    for (const detailsTag of document.querySelectorAll('p details:first-of-type')) {
+      //Find ancestor <p> of <details>
+      let ancestorP = detailsTag.parentElement;
+      while (ancestorP && ancestorP.tagName !== 'P')
+        ancestorP = ancestorP.parentElement;
+
+      if (!ancestorP) {
+        console.error('Cannot find ancestor <p> of', detailsTag);
+        continue;
+      }
+
+      //Remember the position of <p>, so that we can insert <div> later
+      const parentOfP = ancestorP.parentNode;
+      const nextSiblingOfP = ancestorP.nextSibling;
+
+      //Remove <p> to prevent triggering a reflow for each child node transfer
+      parentOfP.removeChild(ancestorP);
+
+      //Create <div> to replace <p>
+      const div = document.createElement('div');
+
+      //Copy all attributes of <p> to <div>
+      for (const attribute of ancestorP.attributes)
+        div.setAttribute(attribute.name, attribute.value);
+
+      //Move all child nodes of <p> to <div>
+      while (ancestorP.firstChild)
+        div.appendChild(ancestorP.firstChild);
+
+      //Insert <div> into the former position of <p>
+      parentOfP.insertBefore(div, nextSiblingOfP);
+    }
+  });
+
+  //Observe mutations on <html> element and its descendants (see comments above)
+  pToDivReplacer.observe(document.body.parentNode, {
+    childList: true,
+    subtree: true,
   });
 }
 
