@@ -6,9 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+
+## [0.8.2] - 2018-10-27
 ### Added
 - Experimental support for aligning injected tables: In the WYSIWYG editor,
   replace `<p>`s containing injected tables (`<detailed>`) with `<div>`s.
+
+### Changed
+- Updated data with Heroes of the Storm v2.39.0 patch information.
 
 ## Fixed
 - Newline characters (LF) in Skill short descriptions are properly rendered in
