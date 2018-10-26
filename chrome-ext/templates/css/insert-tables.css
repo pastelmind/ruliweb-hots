@@ -6,6 +6,7 @@
   /* Contain within bounds */
   box-sizing: border-box;
   font-family: sans-serif;
+  text-align: initial;
 }
 
 .ruliweb-hots-hero-table__icon-cell, .ruliweb-hots-skill-table__icon-cell {
