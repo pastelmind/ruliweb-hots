@@ -10,7 +10,6 @@
     "build:templates": "node ./chrome-ext/build-templates.js",
     "build:zip": "node ./chrome-ext/build-zip.js",
     "watch": "watch 'npm run -s build:templates' ./chrome-ext/templates/ --wait=3 --interval=1 &",
-    "crawl-namu": "node ./api/crawl-namu.js",
     "preversion": "npm run -s prebuild",
     "version": "node ./scripts/update-manifest.js && git add ./chrome-ext/src/manifest.json",
     "postversion": "npm run -s postbuild",
