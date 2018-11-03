@@ -11,6 +11,7 @@ module.exports = class Skill {
    * Create a new Skill object.
    * @param {Object} o
    * @param {string | KoEnString=} o.name
+   * @param {string=} o.icon
    * @param {string=} o.iconUrl
    * @param {string=} o.type
    * @param {number=} o.level
@@ -24,6 +25,7 @@ module.exports = class Skill {
    */
   constructor(o = {}) {
     this.name = new KoEnString(o.name || '');
+    this.icon = o.icon || '';
     this.iconUrl = o.iconUrl || '';
     this.type = o.type || '';
     this.level = o.level || 0;
@@ -43,6 +45,7 @@ module.exports = class Skill {
     return {
       name: this.name,
       type: this.type,
+      icon: this.icon || undefined,
       iconUrl: this.iconUrl || undefined,
       level: this.level || undefined,
       description: this.description,

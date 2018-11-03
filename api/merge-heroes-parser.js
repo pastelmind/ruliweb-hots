@@ -103,6 +103,10 @@ function parseHero(heroData) {
     id: heroData.id,
     name: toKoEnString(heroData.name).ko,
     title: toKoEnString(heroData.title).ko,
+    icon: extractIconId(
+      [heroData.portrait, heroData.leaderboardImage, heroData.collectionIcon]
+        .find(iconPath => iconPath.includes('targetportrait'))
+    ),
     stats: extractAllHeroUnitStats(heroData),
     talents: parseAllTalents(heroData),
   });
@@ -127,6 +131,19 @@ function parseHero(heroData) {
 
   return hero;
 }
+
+
+/**
+ * Extracts the icon ID from a file path inside a CASC.
+ * If the given path is invalid, returns an empty string.
+ * @param {string} fileInCascPath Path to the file inside the CASC.
+ * @return {string} Hero's portrait icon ID
+ */
+function extractIconId(fileInCascPath) {
+  const match = /([^\\\/]+?)(?:\.\w+)?$/.exec(fileInCascPath);
+  return match ? match[1] : '';
+}
+
 
 /**
  * Extracts Hero unit stats from the given hero data.
@@ -474,7 +491,10 @@ function parseAllTalents(heroData) {
  * @return {Talent} Talent object
  */
 function parseTalentData(talentData) {
-  return { name: toKoEnString(talentData.button.name) };
+  return {
+    name: toKoEnString(talentData.button.name),
+    icon: extractIconId(talentData.button.icon),
+  };
 }
 
 

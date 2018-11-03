@@ -14,6 +14,7 @@ const Hero = module.exports = class Hero {
    * @param {Object} o
    * @param {string=} o.name
    * @param {string=} o.title
+   * @param {string=} o.icon
    * @param {string=} o.iconUrl
    * @param {string=} o.id
    * @param {string=} o.type
@@ -27,6 +28,7 @@ const Hero = module.exports = class Hero {
   constructor(o = {}) {
     this.name = o.name || '';
     this.title = o.title || '';
+    this.icon = o.icon || '';
     this.iconUrl = o.iconUrl || '';
     this.id = o.id || '';
     this.type = o.type || '';
@@ -95,6 +97,7 @@ const Hero = module.exports = class Hero {
     const o = {
       name: this.name,
       title: this.title,
+      icon: this.icon || undefined,
       iconUrl: this.iconUrl || undefined,
       id: this.id,
       type: this.type,

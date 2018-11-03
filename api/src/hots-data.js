@@ -23,19 +23,27 @@ module.exports = class HotsData {
     this.statPresets = hotsData.statPresets;
     this.heroes = HotsData.unpackHeroes(hotsData.heroes);
     this.ptrHeroes = HotsData.unpackHeroes(hotsData.ptrHeroes);
+    this.iconUrls = Object.assign({}, hotsData.iconUrls);
   }
 
   /**
    * Produce a compact, minimal JSON representation
    */
   toJSON() {
-    return {
+    const o = {
       hotsVersion: this.hotsVersion,
       hotsPtrVersion: this.hotsPtrVersion || undefined, //Omit PTR version if it is falsy
       statPresets: this.statPresets,
       heroes: HotsData.packHeroes(this.heroes),
-      ptrHeroes: HotsData.packHeroes(this.ptrHeroes)
+      ptrHeroes: HotsData.packHeroes(this.ptrHeroes),
+      iconUrls: {},
     };
+
+    //Sort icon URLs by key (icon ID)
+    for (const icon of Object.keys(this.iconUrls).sort())
+      o.iconUrls[icon] = this.iconUrls[icon];
+
+    return o;
   }
 
   /**

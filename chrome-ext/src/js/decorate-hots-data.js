@@ -99,9 +99,9 @@ function decorateHotsData(hotsData) {
       'overwatch': '오버워치'
     }[hero.universe];
 
-    //Apply default icon URL to heroes
-    if (!hero.iconUrl)
-      hero.iconUrl = MISSING_ICON_URL;
+    //Convert hero icon ID to URL
+    hero.iconUrl = hotsData.iconUrls[hero.icon] || MISSING_ICON_URL;
+    delete hero.icon;
 
     //Decorate skills and talents
     decorateSkillsAndTalents(hero);
@@ -112,6 +112,9 @@ function decorateHotsData(hotsData) {
     else
       hero.units = createDecoratedUnit(hero.stats);
   }
+
+  //Remove iconUrls after assigning them to each hero, skill, and talent.
+  delete hotsData.iconUrls;
 
   return hotsData;
 
@@ -145,9 +148,9 @@ function decorateHotsData(hotsData) {
       //Store hero name
       skill.heroName = hero.name;
 
-      //Apply default icon URL to skills
-      if (!skill.iconUrl)
-        skill.iconUrl = MISSING_ICON_URL;
+      //Convert skill/talent ID to URL
+      skill.iconUrl = hotsData.iconUrls[skill.icon] || MISSING_ICON_URL;
+      delete skill.icon;
 
       //Apply skill/talent type name
       if (skill.upgradeFor) {

@@ -75,12 +75,24 @@
       "additionalProperties": {
         "$ref": "#/definitions/hero"
       }
+    },
+    "iconUrls": {
+      "description": "Mapping of icon ID => icon URL",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      },
+      "propertyNames": {
+        "$ref": "#/definitions/iconId"
+      }
     }
   },
   "required": [
     "hotsVersion",
     "statPresets",
-    "heroes"
+    "heroes",
+    "iconUrls"
   ],
   "definitions": {
     "hero": {
@@ -94,9 +106,8 @@
         "title": {
           "$ref": "#/definitions/trimmedString"
         },
-        "iconUrl": {
-          "type": "string",
-          "format": "uri"
+        "icon": {
+          "$ref": "#/definitions/iconId"
         },
         "type": {
           "type": "string",
@@ -186,6 +197,7 @@
       "required": [
         "name",
         "type",
+        "icon",
         "role",
         "universe",
         "stats",
@@ -479,9 +491,8 @@
             "W / E"
           ]
         },
-        "iconUrl": {
-          "type": "string",
-          "format": "uri"
+        "icon": {
+          "$ref": "#/definitions/iconId"
         },
         "description": {
           "allOf": [
@@ -543,7 +554,7 @@
       "required": [
         "name",
         "type",
-        "iconUrl",
+        "icon",
         "description",
         "shortDescription"
       ],
@@ -577,6 +588,10 @@
       "type": "string",
       "minLength": 1,
       "pattern": "^\\S([^]*\\S)?$"
+    },
+    "iconId": {
+      "type": "string",
+      "pattern": "^[\\w'\\-]+$"
     }
   }
 }

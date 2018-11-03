@@ -62,6 +62,7 @@ function mergeHero(target, source) {
     id: 0,
     name: 0,
     title: 0,
+    icon: 0,
     type: 0,
     role: 0,
     universe: 0,
@@ -206,6 +207,7 @@ function mergeSkill(target, source) {
 
   return mergeProperties(target, source, {
     type: 0,
+    icon: 0,
     description: 0,
     shortDescription: 0,
     cooldown: 0,

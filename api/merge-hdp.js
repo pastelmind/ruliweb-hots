@@ -111,7 +111,8 @@ if (!program.jsonEn) {
 function parseHeroData(heroData) {
   const hero = new Hero({
     id: heroData.cHeroId,
-    name: heroData.name
+    name: heroData.name,
+    icon: extractIconId(heroData.portraits.target),
   });
 
   hero.stats = undefined;
@@ -316,6 +317,12 @@ function extractSkillTalentInfo(skillTalentData) {
     skillTalentInfo.name = new KoEnString(skillTalentData.name);
   else
     console.warn(`${skillTalentData.nameId} is missing a name`);
+
+  //Extract icon
+  if (skillTalentData.icon)
+    skillTalentInfo.icon = extractIconId(skillTalentData.icon);
+  else
+    console.warn(`${skillTalentData.nameId} is missing an icon`);
 
   //Extract description
   if (skillTalentData.fullTooltip)
@@ -534,4 +541,15 @@ function convertAbilityType(abilityType) {
     Active: 'active',
     Passive: 'passive',
   }[abilityType] || abilityType;
+}
+
+
+/**
+ * Extracts the icon ID from the icon file name.
+ * If the given file name is invalid, returns an empty string.
+ * @param {string} fileName Name of the icon file.
+ * @return {string} Icon ID
+ */
+function extractIconId(fileName) {
+  return fileName.replace(/\.\w+$/, '').toLowerCase();
 }

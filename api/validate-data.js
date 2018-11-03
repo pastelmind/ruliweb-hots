@@ -11,6 +11,8 @@ const path = require('path');
 
 const Ajv = require('ajv');
 
+const HotsData = require('./src/hots-data');
+
 
 /**
  * Class that validates `hots.json` files.
@@ -73,6 +75,21 @@ class HotsJsonValidator {
       const ptrHeroCount = Object.keys(hotsDataJson.ptrHeroes).length;
       if (ptrHeroCount > KNOWN_HERO_COUNT)
         console.warn(`Warning: PTR Hero count is ${ptrHeroCount}, expected at most ${KNOWN_HERO_COUNT}`);
+    }
+
+    //Check if hotsData.iconUrls is sorted by key
+    if (!isObjectSortedByKey(hotsDataJson.iconUrls))
+      throw new Error(`hotsData.iconUrls is not sorted`);
+
+    //Check if no hero, skill, or talent is missing an icon
+    const hotsData = new HotsData(hotsDataJson);
+    for (const hero of hotsData.allHeroes()) {
+      if (!(hero.icon in hotsData.iconUrls))
+        console.warn('Warning: Missing hero icon for', hero.name);
+
+      for (const skill of hero.allSkillsAndTalents())
+        if (!(skill.icon in hotsData.iconUrls))
+          console.warn('Warning: Missing icon for', skill.name, 'in', hero.name);
     }
   }
 }
