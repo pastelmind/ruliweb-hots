@@ -105,11 +105,13 @@
 
 .hots-hero-filters {
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -.5em;
 }
 
 .hots-hero-filter-group {
   display: flex;
-  margin-right: 1em;
+  margin: 0 1em .5em 0;
 }
 
 .hots-hero-filter-group__description {

@@ -19,6 +19,7 @@ const Hero = module.exports = class Hero {
    * @param {string=} o.id
    * @param {string=} o.type
    * @param {string=} o.role
+   * @param {string=} o.newRole
    * @param {string=} o.universe
    * @param {HeroStats | HeroStats[]} o.stats
    * @param {Skill[]} o.skills
@@ -33,6 +34,7 @@ const Hero = module.exports = class Hero {
     this.id = o.id || '';
     this.type = o.type || '';
     this.role = o.role || '';
+    this.newRole = o.newRole || '';
     this.universe = o.universe || '';
 
     this.stats = Array.isArray(o.stats) ? o.stats.map(unitStats => new HeroStats(unitStats)) : new HeroStats(o.stats);
@@ -102,6 +104,7 @@ const Hero = module.exports = class Hero {
       id: this.id,
       type: this.type,
       role: this.role,
+      newRole: this.newRole,
       universe: this.universe,
       stats: this.stats,
       skills: this.skills,

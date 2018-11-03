@@ -54,7 +54,18 @@ const HotsDialog = {
         'support': '지원가',
         'specialist': '전문가'
       }
-    }
+    },
+    newRole: {
+      name: '역할군 (신규)',
+      filters: {
+        tank: 'Tank',
+        bruiser: 'Bruiser',
+        healer: 'Healer',
+        support: 'Support',
+        melee_assassin: 'Melee Assassin',
+        ranged_assassin: 'Ranged Assassin',
+      },
+    },
   },
 
   /**

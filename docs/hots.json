@@ -106,6 +106,7 @@
       "icon": "ui_targetportrait_hero_abathur",
       "type": "근접",
       "role": "specialist",
+      "newRole": "support",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -563,6 +564,7 @@
       "icon": "ui_targetportrait_hero_alarak",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -926,6 +928,7 @@
       "icon": "ui_targetportrait_hero_alexstrasza",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": [
         {
@@ -1362,6 +1365,7 @@
       "icon": "ui_targetportrait_hero_d2amazonf",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -1709,6 +1713,7 @@
       "icon": "ui_targetportrait_hero_ana",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -2078,6 +2083,7 @@
       "icon": "ui_targetportrait_hero_anubarak",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -2450,6 +2456,7 @@
       "icon": "ui_targetportrait_hero_artanis",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -2823,6 +2830,7 @@
       "icon": "ui_targetportrait_hero_arthas",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -3174,6 +3182,7 @@
       "icon": "ui_targetportrait_hero_auriel",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -3534,6 +3543,7 @@
       "icon": "ui_targetportrait_hero_azmodan",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -3882,6 +3892,7 @@
       "icon": "ui_targetportrait_hero_barbarian",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -4216,6 +4227,7 @@
       "icon": "ui_targetportrait_hero_butcher",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -4565,6 +4577,7 @@
       "icon": "ui_targetportrait_hero_chen",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -4934,6 +4947,7 @@
       "icon": "ui_targetportrait_hero_cho",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -5275,6 +5289,7 @@
       "icon": "ui_targetportrait_hero_chromie",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -5630,6 +5645,7 @@
       "icon": "ui_targetportrait_hero_johanna",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -5986,6 +6002,7 @@
       "icon": "ui_targetportrait_hero_dva",
       "type": "원거리",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "overwatch",
       "stats": [
         {
@@ -6425,6 +6442,7 @@
       "icon": "ui_targetportrait_hero_deckard",
       "type": "근접",
       "role": "support",
+      "newRole": "healer",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -6756,6 +6774,7 @@
       "icon": "ui_targetportrait_hero_dehaka",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -7116,6 +7135,7 @@
       "icon": "ui_targetportrait_hero_demonhunter",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -7471,6 +7491,7 @@
       "icon": "ui_targetportrait_hero_diablo",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -7825,6 +7846,7 @@
       "icon": "ui_targetportrait_hero_lunara",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -8209,6 +8231,7 @@
       "icon": "ui_targetportrait_hero_faeriedragon",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -8582,6 +8605,7 @@
       "icon": "ui_targetportrait_hero_falstad",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -8943,6 +8967,7 @@
       "icon": "ui_targetportrait_hero_fenix",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -9326,6 +9351,7 @@
       "icon": "ui_targetportrait_hero_firebat",
       "type": "원거리",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -9706,6 +9732,7 @@
       "icon": "ui_targetportrait_hero_gall",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -10064,6 +10091,7 @@
       "icon": "ui_targetportrait_hero_garrosh",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -10433,6 +10461,7 @@
       "icon": "ui_targetportrait_hero_genji",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -10802,6 +10831,7 @@
       "icon": "ui_targetportrait_hero_genngreymane",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -11201,6 +11231,7 @@
       "icon": "ui_targetportrait_hero_guldan",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -11551,6 +11582,7 @@
       "icon": "ui_targetportrait_hero_hanzo",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -11912,6 +11944,7 @@
       "icon": "ui_targetportrait_hero_illidan",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -12246,6 +12279,7 @@
       "icon": "ui_targetportrait_hero_jaina",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -12611,6 +12645,7 @@
       "icon": "ui_targetportrait_hero_junkrat",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -12980,6 +13015,7 @@
       "icon": "ui_targetportrait_hero_kaelthas",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -13332,6 +13368,7 @@
       "icon": "ui_targetportrait_hero_kelthuzad",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -13710,6 +13747,7 @@
       "icon": "ui_targetportrait_hero_kerrigan",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -14070,6 +14108,7 @@
       "icon": "ui_targetportrait_hero_l90etc",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -14441,6 +14480,7 @@
       "icon": "ui_targetportrait_hero_leoric",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -14835,6 +14875,7 @@
       "icon": "ui_targetportrait_hero_lili",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -15193,6 +15234,7 @@
       "icon": "ui_targetportrait_hero_lostvikings",
       "type": "근접 / 원거리",
       "role": "specialist",
+      "newRole": "support",
       "universe": "classic",
       "stats": [
         {
@@ -15623,6 +15665,7 @@
       "icon": "ui_targetportrait_hero_lucio",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -15988,6 +16031,7 @@
       "icon": "ui_targetportrait_hero_maiev",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -16333,6 +16377,7 @@
       "icon": "ui_targetportrait_hero_malganis",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -16719,6 +16764,7 @@
       "icon": "ui_targetportrait_hero_malfurion",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -17074,6 +17120,7 @@
       "icon": "ui_targetportrait_hero_malthael",
       "type": "근접",
       "role": "assassin",
+      "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -17434,6 +17481,7 @@
       "icon": "ui_targetportrait_hero_medic",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -17770,6 +17818,7 @@
       "icon": "ui_targetportrait_hero_medivh",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "support",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -18150,6 +18199,7 @@
       "icon": "ui_targetportrait_hero_mephisto",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -18521,6 +18571,7 @@
       "icon": "ui_targetportrait_hero_monk",
       "type": "근접",
       "role": "support",
+      "newRole": "healer",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -18902,6 +18953,7 @@
       "icon": "ui_targetportrait_hero_muradin",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -19253,6 +19305,7 @@
       "icon": "ui_targetportrait_hero_murky",
       "type": "근접",
       "role": "specialist",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -19596,6 +19649,7 @@
       "icon": "ui_targetportrait_hero_necromancer",
       "type": "근접",
       "role": "specialist",
+      "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -19969,6 +20023,7 @@
       "icon": "ui_targetportrait_hero_nova",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -20335,6 +20390,7 @@
       "icon": "ui_targetportrait_hero_orphea",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "classic",
       "stats": {
         "hp": {
@@ -20669,6 +20725,7 @@
       "icon": "ui_targetportrait_hero_probius",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -21041,6 +21098,7 @@
       "icon": "ui_targetportrait_hero_ragnaros",
       "type": "근접",
       "role": "assassin",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -21441,6 +21499,7 @@
       "icon": "ui_targetportrait_hero_raynor",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -21785,6 +21844,7 @@
       "icon": "ui_targetportrait_hero_rehgar",
       "type": "근접",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -22174,6 +22234,7 @@
       "icon": "ui_targetportrait_hero_rexxar",
       "type": "원거리",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
         {
@@ -22552,6 +22613,7 @@
       "icon": "ui_targetportrait_hero_samuro",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -22880,6 +22942,7 @@
       "icon": "ui_targetportrait_hero_sgthammer",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -23259,6 +23322,7 @@
       "icon": "ui_targetportrait_hero_stitches",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -23656,6 +23720,7 @@
       "icon": "ui_targetportrait_hero_stukov",
       "type": "근접",
       "role": "support",
+      "newRole": "healer",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -24040,6 +24105,7 @@
       "icon": "ui_targetportrait_hero_sylvanas",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -24420,6 +24486,7 @@
       "icon": "ui_targetportrait_hero_tassadar",
       "type": "원거리",
       "role": "support",
+      "newRole": "support",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -24770,6 +24837,7 @@
       "icon": "ui_targetportrait_hero_thrall",
       "type": "근접",
       "role": "assassin",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -25119,6 +25187,7 @@
       "icon": "ui_targetportrait_hero_gazlowe",
       "type": "근접",
       "role": "specialist",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -25510,6 +25579,7 @@
       "icon": "ui_targetportrait_hero_tracer",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -25852,6 +25922,7 @@
       "icon": "ui_targetportrait_hero_tychus",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -26243,6 +26314,7 @@
       "icon": "ui_targetportrait_hero_tyrael",
       "type": "근접",
       "role": "warrior",
+      "newRole": "tank",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -26596,6 +26668,7 @@
       "icon": "ui_targetportrait_hero_tyrande",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -26956,6 +27029,7 @@
       "icon": "ui_targetportrait_hero_uther",
       "type": "근접",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -27327,6 +27401,7 @@
       "icon": "ui_targetportrait_hero_valeera",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -27729,6 +27804,7 @@
       "icon": "ui_targetportrait_hero_varian",
       "type": "근접",
       "role": "warrior,assassin",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
         {
@@ -28189,6 +28265,7 @@
       "icon": "ui_targetportrait_hero_whitemane",
       "type": "원거리",
       "role": "support",
+      "newRole": "healer",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -28527,6 +28604,7 @@
       "icon": "ui_targetportrait_hero_witchdoctor",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -28890,6 +28968,7 @@
       "icon": "ui_targetportrait_hero_wizard",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
         "hp": {
@@ -29261,6 +29340,7 @@
       "icon": "ui_targetportrait_hero_yrel",
       "type": "근접",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -29613,6 +29693,7 @@
       "icon": "ui_targetportrait_hero_zagara",
       "type": "원거리",
       "role": "specialist",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -29968,6 +30049,7 @@
       "icon": "ui_targetportrait_hero_zarya",
       "type": "원거리",
       "role": "warrior",
+      "newRole": "support",
       "universe": "overwatch",
       "stats": {
         "hp": {
@@ -30366,6 +30448,7 @@
       "icon": "ui_targetportrait_hero_zeratul",
       "type": "근접",
       "role": "assassin",
+      "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -30716,6 +30799,7 @@
       "icon": "ui_targetportrait_hero_zuljin",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {

@@ -106,6 +106,7 @@
       "icon": "ui_targetportrait_hero_fenix",
       "type": "원거리",
       "role": "assassin",
+      "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
         "hp": {
@@ -489,6 +490,7 @@
       "icon": "ui_targetportrait_hero_rexxar",
       "type": "원거리",
       "role": "warrior",
+      "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
         {
@@ -867,6 +869,7 @@
       "icon": "ui_targetportrait_hero_gazlowe",
       "type": "근접",
       "role": "specialist",
+      "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
         "hp": {

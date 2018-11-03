@@ -121,6 +121,16 @@
           "type": "string",
           "pattern": "^(warrior|assassin|support|specialist)(,(warrior|assassin|support|specialist))*$"
         },
+        "newRole": {
+          "enum": [
+            "tank",
+            "bruiser",
+            "healer",
+            "support",
+            "melee_assassin",
+            "ranged_assassin"
+          ]
+        },
         "universe": {
           "type": "string",
           "enum": [
@@ -199,6 +209,7 @@
         "type",
         "icon",
         "role",
+        "newRole",
         "universe",
         "stats",
         "skills",
