@@ -2579,7 +2579,7 @@
               "ko": "사이오닉 시너지"
             },
             "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645943b72819dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943b33f19dc2c.png",
             "description": "위상 분광기가 적 영웅에게 적중하면 방어력이 3초 동안 20 증가합니다.",
             "shortDescription": "위상 분광기가 방어력을 증가시킴",
             "upgradeFor": "E"
@@ -2693,7 +2693,7 @@
               "ko": "기사단의 열성"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645943af6719dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943ab8519dc2c.png",
             "description": "칼날 질주의 마나 소모량이 50에서 25로 감소합니다. 과부하 보호막이 활성화될 때마다 칼날 질주의 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "칼날 질주 재사용 대기시간 감소",
             "upgradeFor": "Q"
@@ -2739,7 +2739,7 @@
               "ko": "거인 학살자"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943ce9c19dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645943cab919dc2c.png",
             "description": "일반 공격으로 적 영웅을 공격할 때마다 대상의 최대 생명력의  0.5%만큼 추가 피해를 줍니다. 이연격으로 강화된 일반 공격은 1.5%만큼 추가 피해를 줍니다.",
             "shortDescription": "일반 공격이 영웅에게 주는 피해 증가",
             "upgradeFor": "W"
@@ -5064,7 +5064,7 @@
               "ko": "역행의 룬"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459484ff319dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/16459484c1019dc2c.png",
             "description": "룬 폭탄이 되돌아오며 경로 상의 적들에게 피해를 줍니다.",
             "shortDescription": "룬 폭탄이 되돌아옴",
             "upgradeFor": "E"
@@ -5410,7 +5410,7 @@
               "ko": "용족의 발톱"
             },
             "type": "passive",
-            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164594888c319dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645948715a19dc2c.png",
             "description": "청동 발톱의 공격력이 추가로 100% 증가합니다. 모래 강타가 적 영웅에게 적중하면 청동 발톱이 다음 2회의 일반 공격에 적용됩니다.",
             "shortDescription": "일반 공격 추가 강화",
             "upgradeFor": "D"
@@ -15683,7 +15683,7 @@
             "ko": "분위기 전환!"
           },
           "type": "W",
-          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595ae60019dc2c.png",
+          "iconUrl": "http://i2.ruliweb.com/img/18/07/02/164595ae20a19dc2c.png",
           "description": "자신과 주위 아군에게 두 가지 곡 중 하나를 들려줍니다.\n\n<span style=\"color:#fff800\">치유 증폭</span>: 자신과 주위 아군 영웅들의 생명력을 초당 17(+4%) 회복시킵니다.\n\n<span style=\"color:#3dff7f\">속도 증폭</span>: 자신과 주위 아군 영웅들의 이동 속도가 20% 증가합니다.",
           "shortDescription": "치유 증폭 또는 속도 증폭 음악을 틈",
           "extras": {
@@ -23680,7 +23680,7 @@
               "ko": "건강한 숙주"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645960aa9919dc2c.png",
+            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645960a85819dc2c.png",
             "description": "대상의 생명력이 60% 이상이면 치유성 병원균의 주기적인 치유량이 30% 증가합니다.",
             "shortDescription": "대상의 생명력이 높으면 치유성 병원균 치유량 증가",
             "upgradeFor": "Q"
@@ -26515,7 +26515,7 @@
               "ko": "냉혹한 달빛"
             },
             "type": "passive",
-            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/164596300b019dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/1645962fcba19dc2c.png",
             "description": "파수가 처음 적중한 대상의 이동 속도를 40% 감소시키고 공격력을 40% 감소시킵니다. 4초 동안 지속됩니다.",
             "shortDescription": "파수가 대상의 이동 속도 및 공격력 감소",
             "upgradeFor": "W"
@@ -26910,7 +26910,7 @@
               "ko": "빛의 봉화"
             },
             "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645963103c19dc2c.png",
+            "iconUrl": "http://i2.ruliweb.com/img/18/07/02/16459632f0b19dc2c.png",
             "description": "생명력이 50% 미만이면 성스러운 빛으로 다른 아군을 치유할 때 자신이 회복하는 생명력이 200% 증가합니다.",
             "shortDescription": "성스러운 빛 자가 치유량 증가",
             "upgradeFor": "Q"
@@ -30617,7 +30617,7 @@
               "ko": "발목 긋기"
             },
             "type": "passive",
-            "iconUrl": "http://i1.ruliweb.com/img/18/07/02/1645964f47e19dc2c.png",
+            "iconUrl": "http://i3.ruliweb.com/img/18/07/02/1645964f2d819dc2c.png",
             "description": "톱날 베기의 감속 효과가 10% 증가합니다.",
             "shortDescription": "톱날 베기 감속 효과 증가",
             "upgradeFor": "W"
