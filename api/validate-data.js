@@ -81,16 +81,36 @@ class HotsJsonValidator {
     if (!isObjectSortedByKey(hotsDataJson.iconUrls))
       throw new Error(`hotsData.iconUrls is not sorted`);
 
+    //Check if no two icon IDs point to the same URL
+    const iconUrlsToIds = {};
+    for (const [iconId, url] of Object.entries(hotsDataJson.iconUrls)) {
+      if (url in iconUrlsToIds)
+        console.warn('Duplicate icon URL: Both', iconUrlsToIds[url], 'and', iconId, 'point to', url);
+      else
+        iconUrlsToIds[url] = iconId;
+    }
+
     //Check if no hero, skill, or talent is missing an icon
+    //Also check if any icons are unused
     const hotsData = new HotsData(hotsDataJson);
+    const unusedIcons = new Set(Object.keys(hotsData.iconUrls));
+
     for (const hero of hotsData.allHeroes()) {
-      if (!(hero.icon in hotsData.iconUrls))
+      if (hero.icon in hotsData.iconUrls)
+        unusedIcons.delete(hero.icon);
+      else
         console.warn('Warning: Missing hero icon for', hero.name);
 
-      for (const skill of hero.allSkillsAndTalents())
-        if (!(skill.icon in hotsData.iconUrls))
+      for (const skill of hero.allSkillsAndTalents()) {
+        if (skill.icon in hotsData.iconUrls)
+          unusedIcons.delete(skill.icon);
+        else
           console.warn('Warning: Missing icon for', skill.name, 'in', hero.name);
+      }
     }
+
+    if (unusedIcons.size)
+      console.warn('Warning:', unusedIcons.size, 'unused icon(s) found');
   }
 }
 
@@ -122,11 +142,15 @@ for (const hotsDataPath of HOTS_JSON_PATHS) {
   const hotsDataJson = JSON.parse(fs.readFileSync(hotsDataPath, 'utf8'));
   console.log('Loaded HotS data from', hotsDataPath);
 
+  console.group();
+
   try {
     hotsJsonValidator.validate(hotsDataJson);
+    console.groupEnd();
     console.log('Passed data validation');
   }
   catch (error) {
+    console.groupEnd();
     console.error('Failed validation for', hotsDataPath);
     throw error;
   }

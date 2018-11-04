@@ -23,6 +23,7 @@ module.exports = class HotsData {
     this.statPresets = hotsData.statPresets;
     this.heroes = HotsData.unpackHeroes(hotsData.heroes);
     this.ptrHeroes = HotsData.unpackHeroes(hotsData.ptrHeroes);
+    /** @type {{ [iconId: string]: string }} */
     this.iconUrls = Object.assign({}, hotsData.iconUrls);
   }
 
