@@ -63,7 +63,7 @@ class HotsJsonValidator {
       statPresetIdsFound[preset.id] = preset;
     }
 
-    const KNOWN_HERO_COUNT = 83;
+    const KNOWN_HERO_COUNT = 84;
 
     //Warn if # of heroes is different than the expected value
     const heroCount = Object.keys(hotsDataJson.heroes).length;

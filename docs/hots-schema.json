@@ -8,7 +8,7 @@
       "type": "string",
       "oneOf": [
         {
-          "pattern": "^\\d+(\\.\\d+){1,2}$"
+          "pattern": "^\\d+(\\.\\d+){1,3}$"
         },
         {
           "const": "HotS version (test data)"
@@ -20,7 +20,7 @@
       "type": "string",
       "oneOf": [
         {
-          "pattern": "^\\d+(\\.\\d+){1,2}$"
+          "pattern": "^\\d+(\\.\\d+){1,3}$"
         },
         {
           "const": "HotS version (test data)"
