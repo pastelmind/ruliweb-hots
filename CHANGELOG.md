@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.9.0] - 2018-11-14
+### Added
+- Experimental support for new roles. Icons will be fixed in a future update.
+
+### Changed
+- Updated data with Heroes of the Storm v2.40.0.70200 patch information.
+
+
 ## [0.8.2] - 2018-10-27
 ### Added
 - Experimental support for aligning injected tables: In the WYSIWYG editor,
