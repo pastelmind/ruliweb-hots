@@ -285,7 +285,9 @@ const HotsDialog = {
 
         //Keep this hero if there is a filter that matches him/her/it/them.
         for (const filter of activeFilters[filterType])
-          if (heroAttribute.includes(filter))
+          //Hardcoded workaround for Orphea
+          //TODO remove if Blizzard ever adds a stylized Nexus universe icon
+          if (heroAttribute.includes(filter) || (heroAttribute === 'nexus' && filter === 'classic'))
             isMatched = true;
 
         if (!isMatched) return false;
@@ -419,11 +421,12 @@ const HotsDialog = {
 
       //Set universe icon offset
       heroView.universeIconOffset = {
-        'classic': '0%',
-        'starcraft': '25%',
-        'diablo': '50%',
-        'warcraft': '75%',
-        'overwatch': '100%'
+        classic: '0%',
+        starcraft: '20%',
+        diablo: '40%',
+        warcraft: '60%',
+        overwatch: '80%',
+        nexus: '100%',
       }[heroView.universe];
 
       //Generate skill groups

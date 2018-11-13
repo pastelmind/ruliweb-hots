@@ -20391,7 +20391,7 @@
       "type": "원거리",
       "role": "assassin",
       "newRole": "ranged_assassin",
-      "universe": "classic",
+      "universe": "nexus",
       "stats": {
         "hp": {
           "value": 1662,
