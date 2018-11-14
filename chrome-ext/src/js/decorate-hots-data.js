@@ -46,6 +46,92 @@ if (typeof module !== 'undefined' && module.exports) {
 
 
 /**
+ * Collection of stat presets
+ * @type {{ [id: string]: StatPreset }}
+ */
+const StatPresets = {
+  hp: {
+    name: "생명력",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png",
+  },
+  hpRegen: {
+    name: "생명력 재생",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png",
+  },
+  shields: {
+    name: "보호막",
+    iconUrl: "http://i2.ruliweb.com/img/18/07/21/164bb97668719dc2c.png",
+  },
+  mp: {
+    name: "마나",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png",
+  },
+  mpRegen: {
+    name: "마나 재생",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png",
+  },
+  energy: {
+    name: "기력",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  energyRegen: {
+    name: "기력 재생",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  fury: {
+    name: "분노",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  brew: {
+    name: "취기",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  ammo: {
+    name: "탄환",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  healEnergy: {
+    name: "치유 에너지",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
+  },
+  charge: {
+    name: "충전",
+    iconUrl: "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+    isDisabled: true,
+  },
+  chargeRegen: {
+    name: "충전 재생",
+    iconUrl: "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+    isDisabled: true,
+  },
+  zaryaEnergy: {
+    name: "에너지",
+    iconUrl: "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+  },
+  zaryaEnergyRegen: {
+    name: "에너지 재생",
+    iconUrl: "http://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
+  },
+  damage: {
+    name: "공격력",
+    iconUrl: "http://i2.ruliweb.com/img/18/07/07/164748d2a3b19dc2c.png",
+  },
+  attackSpeed: {
+    name: "공격 속도",
+    iconUrl: "http://i1.ruliweb.com/img/18/07/07/164748d2bce19dc2c.png",
+  },
+  range: {
+    name: "사거리",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png",
+  },
+  speed: {
+    name: "이동 속도",
+    iconUrl: "http://i3.ruliweb.com/img/18/07/07/164748d2c9219dc2c.png",
+  },
+};
+
+
+/**
  * Decorates the raw HotsData object for the extension to use.
  *
  * Actions:
@@ -193,7 +279,8 @@ function decorateHotsData(hotsData) {
   function createDecoratedUnit(stats) {
     const unit = { unitName: stats.unitName, stats: [] };
 
-    for (const preset of hotsData.statPresets) {
+    for (const [presetId, preset] of Object.entries(StatPresets)) {
+      preset.id = presetId;
       const stat = createDecoratedStat(stats[preset.id === 'attackSpeed' ? 'period' : preset.id], preset);
 
       if (!stat)

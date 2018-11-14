@@ -20,7 +20,6 @@ module.exports = class HotsData {
     this.hotsVersion = hotsData.hotsVersion;
     /** @type {string} */
     this.hotsPtrVersion = hotsData.hotsPtrVersion || undefined;
-    this.statPresets = hotsData.statPresets;
     this.heroes = HotsData.unpackHeroes(hotsData.heroes);
     this.ptrHeroes = HotsData.unpackHeroes(hotsData.ptrHeroes);
     /** @type {{ [iconId: string]: string }} */
@@ -34,7 +33,6 @@ module.exports = class HotsData {
     const o = {
       hotsVersion: this.hotsVersion,
       hotsPtrVersion: this.hotsPtrVersion || undefined, //Omit PTR version if it is falsy
-      statPresets: this.statPresets,
       heroes: HotsData.packHeroes(this.heroes),
       ptrHeroes: HotsData.packHeroes(this.ptrHeroes),
       iconUrls: {},

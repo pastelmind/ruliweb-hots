@@ -27,34 +27,6 @@
         }
       ]
     },
-    "statPresets": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^\\w+$"
-          },
-          "name": {
-            "type": "string"
-          },
-          "iconUrl": {
-            "type": "string",
-            "format": "uri"
-          },
-          "isDisabled": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "iconUrl"
-        ],
-        "additionalProperties": false
-      }
-    },
     "heroes": {
       "description": "Collection of hero data",
       "type": "object",
@@ -90,7 +62,6 @@
   },
   "required": [
     "hotsVersion",
-    "statPresets",
     "heroes",
     "iconUrls"
   ],

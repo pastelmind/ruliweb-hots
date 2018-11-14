@@ -55,14 +55,6 @@ class HotsJsonValidator {
     if (!isObjectSortedByKey(hotsDataJson.ptrHeroes || {}))
       throw new Error(`hotsData.ptrHeroes is not sorted`);
 
-    //Check for duplicate stat presets
-    const statPresetIdsFound = {};
-    for (const preset of hotsDataJson.statPresets) {
-      if (preset.id in statPresetIdsFound)
-        throw new Error(`Duplicate stat preset ID found: ${preset.id}`);
-      statPresetIdsFound[preset.id] = preset;
-    }
-
     const KNOWN_HERO_COUNT = 84;
 
     //Warn if # of heroes is different than the expected value
