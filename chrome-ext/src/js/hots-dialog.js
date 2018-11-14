@@ -79,13 +79,24 @@ const HotsDialog = {
     if (!this.dialog) {
       this.dialog = new tingle.modal({
         cssClass: ['hots-dialog-container'],
-        onClose: () => {
+        onOpen() {
+          //Temporarily deactivate PToDivReplacer in editor-iframe.js
+          const frameWindow = HotsDialog.util.getSelectedChildWindow();
+          if (frameWindow && frameWindow.pToDivReplacer)
+            frameWindow.pToDivReplacer.deactivate();
+        },
+        onClose() {
+          //Reactivate PToDivReplacer in editor-iframe.js
+          const frameWindow = HotsDialog.util.getSelectedChildWindow();
+          if (frameWindow && frameWindow.pToDivReplacer)
+            frameWindow.pToDivReplacer.activate();
+
           //Circumvent a bug in Firefox where closing and immediately re-opening
           //the dialog causes its contents to be selected.
           const selection = window.getSelection();
           if (selection)
             selection.collapseToEnd();
-        }
+        },
       });
 
       this.dialog.setContent(this.buildDialogContent(this.data));
@@ -555,6 +566,14 @@ const HotsDialog = {
 
   /** Collection of utility functions */
   util: {
+    /**
+     * Returns the window object of the currently selected child frame. If none
+     * can be found, returns `undefined`.
+     * @return {Window} Window object of the currently selected child frame.
+     */
+    getSelectedChildWindow() {
+      return Array.from(window).find(childWindow => childWindow.getSelection().rangeCount);
+    },
 
     /**
      * Captures the currently selected position in a child frame of the current
@@ -563,8 +582,7 @@ const HotsDialog = {
      * into the currently selected frame.
      */
     getHtmlInjectorAtSelectedPosition() {
-      const selectedWindow = Array.from(window)
-        .find(childWindow => childWindow.getSelection().rangeCount);
+      const selectedWindow = HotsDialog.util.getSelectedChildWindow();
 
       if (!selectedWindow)
         throw new Error('선택된 프레임을 찾을 수 없습니다.');

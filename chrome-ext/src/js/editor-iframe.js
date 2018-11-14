@@ -4,6 +4,58 @@
  * any <iframe>s on such pages.
  */
 
+
+//Attached to window so as to allow access from hots-dialog.js
+window.pToDivReplacer = {
+  /**
+   * When a user injects a <details> inside a <p>, replace <p> with a <div> to
+   * allow aligning <details> tags.
+   */
+  ancestorPofDetailsObserver: new MutationObserver(replaceAncestorPsWithDivs),
+
+  /**
+   * Boolean that indicates whether the PToDivReplacer is active.
+   * @private
+   */
+  isActive: false,
+
+  /**
+   * Activates the PToDivReplacer, watching for DOM changes and performing
+   * <p>-to-<div> replacement for <p>s containing <details>.
+   */
+  activate() {
+    if (this.isActive) {
+      console.debug('PToDivReplacer is already active');
+      return;
+    }
+
+    replaceAncestorPsWithDivs();
+
+    this.ancestorPofDetailsObserver.observe(document.body.parentNode, {
+      childList: true,
+      subtree: true,
+    });
+
+    this.isActive = true;
+  },
+
+  /**
+   * Deactivates PToDivReplacer so that DOM changes won't trigger a <p>-to-<div>
+   * replacement.
+   */
+  deactivate() {
+    if (!this.isActive) {
+      console.debug('PToDivReplacer is already inactive');
+      return;
+    }
+
+    this.ancestorPofDetailsObserver.disconnect();
+
+    this.isActive = false;
+  },
+};
+
+
 if (isInIframe()) {
   //Delete hero/skill/talent tables when Ctrl + clicked
   //Note: The editor normally prevents click events from going through,
@@ -48,48 +100,8 @@ if (isInIframe()) {
     subtree: true,
   });
 
-  //When a user injects a <details> inside a <p>, replace <p> with a <div> to
-  //allow aligning <details> tags.
-  const pToDivReplacer = new MutationObserver(() => {
-    for (const detailsTag of document.querySelectorAll('p details:first-of-type')) {
-      //Find ancestor <p> of <details>
-      let ancestorP = detailsTag.parentElement;
-      while (ancestorP && ancestorP.tagName !== 'P')
-        ancestorP = ancestorP.parentElement;
 
-      if (!ancestorP) {
-        console.error('Cannot find ancestor <p> of', detailsTag);
-        continue;
-      }
-
-      //Remember the position of <p>, so that we can insert <div> later
-      const parentOfP = ancestorP.parentNode;
-      const nextSiblingOfP = ancestorP.nextSibling;
-
-      //Remove <p> to prevent triggering a reflow for each child node transfer
-      parentOfP.removeChild(ancestorP);
-
-      //Create <div> to replace <p>
-      const div = document.createElement('div');
-
-      //Copy all attributes of <p> to <div>
-      for (const attribute of ancestorP.attributes)
-        div.setAttribute(attribute.name, attribute.value);
-
-      //Move all child nodes of <p> to <div>
-      while (ancestorP.firstChild)
-        div.appendChild(ancestorP.firstChild);
-
-      //Insert <div> into the former position of <p>
-      parentOfP.insertBefore(div, nextSiblingOfP);
-    }
-  });
-
-  //Observe mutations on <html> element and its descendants (see comments above)
-  pToDivReplacer.observe(document.body.parentNode, {
-    childList: true,
-    subtree: true,
-  });
+  window.pToDivReplacer.activate();
 }
 
 
@@ -104,5 +116,46 @@ function isInIframe() {
   }
   catch (e) {
     return true;
+  }
+}
+
+
+/**
+ * Find all cases where a <details> is inside a <p>, and replace the <p> with a
+ * <div>.
+ */
+function replaceAncestorPsWithDivs() {
+  let detailsTag;
+  while (detailsTag = document.querySelector('p details:first-of-type')) {
+    //Find ancestor <p> of <details>
+    let ancestorP = detailsTag.parentElement;
+    while (ancestorP && ancestorP.tagName !== 'P')
+      ancestorP = ancestorP.parentElement;
+
+    if (!ancestorP) {
+      console.error('Cannot find ancestor <p> of', detailsTag);
+      continue;
+    }
+
+    //Remember the position of <p>, so that we can insert <div> later
+    const parentOfP = ancestorP.parentNode;
+    const nextSiblingOfP = ancestorP.nextSibling;
+
+    //Remove <p> to prevent triggering a reflow for each child node transfer
+    parentOfP.removeChild(ancestorP);
+
+    //Create <div> to replace <p>
+    const div = document.createElement('div');
+
+    //Copy all attributes of <p> to <div>
+    for (const attribute of ancestorP.attributes)
+      div.setAttribute(attribute.name, attribute.value);
+
+    //Move all child nodes of <p> to <div>
+    while (ancestorP.firstChild)
+      div.appendChild(ancestorP.firstChild);
+
+    //Insert <div> into the former position of <p>
+    parentOfP.insertBefore(div, nextSiblingOfP);
   }
 }

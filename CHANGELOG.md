@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+### Fixed
+- Fixed a bug that caused injected `<detailed>` tables to be placed in wonky
+  positions when multiple tables were injected in succession.
 
 
 ## [0.9.0] - 2018-11-14
@@ -24,7 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated data with Heroes of the Storm v2.39.0 patch information.
 
-## Fixed
+### Fixed
 - Newline characters (LF) in Skill short descriptions are properly rendered in
   dialog tooltips.
 
