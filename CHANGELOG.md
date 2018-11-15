@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+
+## [0.9.1] - 2018-11-16
 ### Fixed
 - Fixed a bug that caused injected `<detailed>` tables to be placed in wonky
   positions when multiple tables were injected in succession.
