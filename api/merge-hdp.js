@@ -200,7 +200,16 @@ function parseAllSkillsData(heroData) {
     }
   }
 
-  return skillDataArray.map(parseSkillData);
+  return skillDataArray.filter(skillData => {
+    switch (skillData.nameId) {
+      //Exclude Crossfade, because HDP >= 2.7.0 extracts the in-game tooltips instead of the hero shop tooltips
+      case 'LucioCrossfade':
+      case 'LucioCrossfadeActivateHealingBoost':
+        return false;
+    }
+
+    return true;
+  }).map(parseSkillData);
 }
 
 
@@ -266,8 +275,6 @@ function parseSkillData(skillData) {
   skill.type = convertAbilityType(skillData.abilityType);
 
   switch (skillData.nameId) {
-    case 'LucioCrossfade':  //Fix for Crossfade
-      skill.type = 'W'; break;
     case 'TracerBlink':     //Fix for Blink
       skill.type = 'Q'; break;
   }
@@ -286,7 +293,9 @@ function parseSkillData(skillData) {
         parentType = convertAbilityType(skillData.parentAbility.abilityType);
   }
 
-  if (parentType)
+  //HDP >= v2.7.0 classifies Repeater Cannon as a subability. This is
+  //undesirable so add an exception for this skill.
+  if (parentType && skillData.nameId !== 'FenixRepeaterCannon')
     skill.type = parentType + ' - ' + skill.type;
 
   return skill;
