@@ -212,7 +212,7 @@ function exportIconUrls(hotsData) {
       delete unusedIconUrls[hero.icon];
     }
 
-    const skillTalentIconUrls = new Map;
+    const skillTalentIconUrls = iconUrlGroups.skillsAndTalents.get(hero.id) || new Map;
     iconUrlGroups.skillsAndTalents.set(hero.id, skillTalentIconUrls);
     for (const skillOrTalent of hero.allSkillsAndTalents()) {
       if (skillOrTalent.icon in hotsData.iconUrls) {
@@ -287,8 +287,8 @@ function generateIconListfileHtml(iconUrlGroups, hotsData, iconSubgroupMaxSize =
 
     listfileHtml += `\n\n\n<!-- Section ${subgroupIndex + 1}: ${heroIconGroups.length} hero(es), ${iconCount} icon(s) (${cumulativeIconCount + 1} ~ ${cumulativeIconCount += iconCount}) -->\n\n`
       + heroIconGroups.map(([heroId, iconUrls]) => {
-        const heroName = hotsData.heroes[heroId] ? hotsData.heroes[heroId].name : '';
-        return `<p>${heroName}</p>\n` + [...iconUrls].map(iconUrlToImg).join('\n') + '\n\n';
+        const hero = hotsData.heroes[heroId] || hotsData.ptrHeroes[heroId];
+        return `<p>${hero.name}</p>\n` + [...iconUrls].map(iconUrlToImg).join('\n') + '\n\n';
       }).join('');
   }
 
