@@ -1,5 +1,6 @@
 {
   "hotsVersion": "2.41.2.71138",
+  "hotsPtrVersion": "2.42.0.71134",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -31028,6 +31029,798 @@
       }
     }
   },
+  "ptrHeroes": {
+    "Abathur": {
+      "name": "아바투르",
+      "title": "진화 군주",
+      "icon": "ui_targetportrait_hero_abathur",
+      "type": "근접",
+      "role": "specialist",
+      "newRole": "support",
+      "universe": "starcraft",
+      "stats": {
+        "hp": {
+          "value": 685,
+          "levelScaling": 0.04
+        },
+        "radius": 0.75,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 1.4257,
+          "levelScaling": 0.04
+        },
+        "range": 1,
+        "period": 0.7,
+        "damage": {
+          "value": 26,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Locust Strain",
+            "ko": "식충 변종"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_abathur_spawnlocust",
+          "description": "15초마다 식충을 생성합니다. 식충은 가장 가까운 공격로에 합류하여 적을 공격합니다. 식충은 25초 동안 지속되며 35(+4%)의 일반 공격력과 329(+4%)의 생명력을 지닙니다.",
+          "shortDescription": "가장 가까운 공격로를 공격하는 식충 생성",
+          "cooldown": 15
+        },
+        {
+          "name": {
+            "en": "Symbiote",
+            "ko": "공생체"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_abathur_symbiote",
+          "description": "공생체를 소환하여 다른 아군 유닛이나 구조물을 지원합니다. 활성화된 동안 공생체를 조종하여 새로운 기술을 사용할 수 있습니다. 공생체는 주위 적들이 죽을 때 경험치를 획득할 수 있습니다.",
+          "shortDescription": "아군을 돕고 새 능력을 얻음",
+          "cooldown": 4,
+          "extras": {
+            "사거리": "∞"
+          }
+        },
+        {
+          "name": {
+            "en": "Stab",
+            "ko": "찌르기"
+          },
+          "type": "Q - Q",
+          "icon": "storm_ui_icon_abathur_stab",
+          "description": "대상 지역을 향해 가시를 발사하여 처음 적중한 적에게 124(+4%)의 피해를 줍니다.",
+          "shortDescription": "처음 적중한 적에게 피해를 주는 가시 발사",
+          "rechargeCooldown": 3,
+          "extras": {
+            "사거리": 9,
+            "너비": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Spike Burst",
+            "ko": "가시 난사"
+          },
+          "type": "Q - W",
+          "icon": "storm_ui_icon_abathur_spikeburst",
+          "description": "주위 적들에게 125(+4%)의 피해를 줍니다.",
+          "shortDescription": "주위 적들에게 피해를 줌",
+          "cooldown": 6,
+          "extras": {
+            "피해 반경": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Carapace",
+            "ko": "갑피"
+          },
+          "type": "Q - E",
+          "icon": "storm_ui_icon_abathur_carapace",
+          "description": "지원하는 아군에게 163(+4%)의 피해를 흡수하는 보호막을 부여합니다. 8초 동안 지속됩니다.",
+          "shortDescription": "아군에게 보호막 부여",
+          "cooldown": 12
+        },
+        {
+          "name": {
+            "en": "Toxic Nest",
+            "ko": "독성 둥지"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_abathur_toxicnest",
+          "description": "일정 시간 후 활성화되는 지뢰를 생성합니다. 지뢰는 159(+4%)의 피해를 주고 4초 동안 적을 드러냅니다. 90초 동안 지속됩니다.\n\n최대 3회 충전됩니다.",
+          "shortDescription": "지뢰 생성",
+          "rechargeCooldown": 10,
+          "extras": {
+            "사거리": 70
+          }
+        },
+        {
+          "name": {
+            "en": "Deep Tunnel",
+            "ko": "굴 파기"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_abathur_mount",
+          "description": "시야가 확보된 곳으로 빠르게 굴을 파서 이동합니다.",
+          "shortDescription": "대상 위치로 굴을 파서 이동",
+          "cooldown": 30,
+          "extras": {
+            "사거리": "∞"
+          }
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Pressurized Glands",
+              "ko": "가압 분비선"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spikeburst",
+            "description": "공생체의 가시 난사의 사거리가 25% 증가하고 재사용 대기시간이 1초 감소합니다.",
+            "shortDescription": "가시 난사 사거리 증가 및 재사용 대기시간 감소",
+            "upgradeFor": "Q - W"
+          },
+          {
+            "name": {
+              "en": "Survival Instincts",
+              "ko": "생존 본능"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spawnlocust",
+            "description": "식충의 생명력이 40% 증가하고 지속 시간이 40% 증가합니다.",
+            "shortDescription": "식충 생명력 및 지속 시간 증가",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Regenerative Microbes",
+              "ko": "재생성 미생물"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_carapace",
+            "description": "공생체의 갑피가 대상의 생명력을 4초에 걸쳐 초당 64(+4%) 회복시킵니다.",
+            "shortDescription": "갑피가 대상 치유",
+            "upgradeFor": "Q - E"
+          },
+          {
+            "name": {
+              "en": "Envenomed Nest",
+              "ko": "맹독 둥지"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_toxicnest",
+            "description": "독성 둥지가 3초에 걸쳐 75%의 추가 피해를 줍니다.",
+            "shortDescription": "독성 둥지가 추가 피해를 줌",
+            "upgradeFor": "W"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Prolific Dispersal",
+              "ko": "대량 살포"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_toxicnest",
+            "description": "독성 둥지의 재사용 대기시간이 2초 감소하고 충전 횟수가 2회 증가합니다.",
+            "shortDescription": "독성 둥지 충전 횟수 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Ballistospores",
+              "ko": "탄도포자"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_toxicnest_var1",
+            "description": "독성 둥지를 거리 제한 없이 생성할 수 있고 지속 시간이 25% 증가합니다.",
+            "shortDescription": "독성 둥지 지속 시간 증가 및 거리 제한 없이 생성 가능",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Sustained Carapace",
+              "ko": "질긴 갑피"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_carapace",
+            "description": "공생체의 갑피의 보호막이 40% 증가하고 공생체가 사라져도 지속됩니다.",
+            "shortDescription": "갑피 보호막 증가 및 공생체가 사라져도 지속",
+            "upgradeFor": "Q - E"
+          },
+          {
+            "name": {
+              "en": "Adrenal Overload",
+              "ko": "아드레날린 과부하"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_symbiote",
+            "description": "숙주로 삼은 영웅의 공격 속도가 25% 증가합니다.",
+            "shortDescription": "숙주 공격 속도 증가",
+            "upgradeFor": "Q"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Needlespine",
+              "ko": "바늘가시"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_stab",
+            "description": "공생체의 찌르기의 공격력과 사거리가 20% 증가합니다.",
+            "shortDescription": "찌르기 공격력 및 사거리 증가",
+            "upgradeFor": "Q - Q"
+          },
+          {
+            "name": {
+              "en": "Vile Nest",
+              "ko": "불결한 둥지"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_toxicnest",
+            "description": "독성 둥지가 적의 이동 속도를 2.5초 동안 40% 감소시킵니다.",
+            "shortDescription": "독성 둥지가 이동 속도를 감소시킴",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Networked Carapace",
+              "ko": "갑피 연결체"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_carapace",
+            "description": "공생체의 갑피를 사용하면 특성이 적용되지 않은 갑피가 주위 모든 아군 영웅, 돌격병, 용병에게 적용됩니다.",
+            "shortDescription": "갑피가 주위 모든 아군에게 보호막 부여",
+            "extras": {
+              "효과 반경": 3
+            },
+            "upgradeFor": "Q - E"
+          },
+          {
+            "name": {
+              "en": "Calldown: MULE",
+              "ko": "투하: 지게로봇"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_talent_mule",
+            "description": "사용하면 대상 지점 근처의 구조물을 한 번에 하나씩 40초 동안 수리합니다. 1초마다 100의 생명력을 회복시킵니다.",
+            "shortDescription": "사용 시 구조물 치유",
+            "cooldown": 60,
+            "extras": {
+              "사거리": "∞",
+              "생명력": "140 (+분당 43)",
+              "이동 속도": 2.5,
+              "탐색 반경": 15
+            }
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Ultimate Evolution",
+              "ko": "최종 진화물"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_abathur_ultimateevolution",
+            "description": "대상 아군 영웅을 복제하여 20초 동안 조종합니다. 아바투르는 복제물을 더욱 완벽하게 만들어 기술 위력을 20%, 일반 공격력을 20%, 이동 속도를 10% 증가시킵니다. 복제한 영웅의 궁극기는 사용할 수 없습니다.",
+            "shortDescription": "대상 아군 영웅을 복제하여 조종",
+            "cooldown": 70,
+            "extras": {
+              "사거리": "∞"
+            }
+          },
+          {
+            "name": {
+              "en": "Evolve Monstrosity",
+              "ko": "흉물 진화"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_abathur_evolvemonstrosity",
+            "description": "아군 돌격병이나 식충을 흉물로 진화시킵니다. 흉물 주위에서 적 돌격병이 죽으면 흉물의 생명력이 2% 증가하고 일반 공격력이 2% 증가합니다. 이 효과는 최대 40회 중첩됩니다. 흉물은 영웅이 아닌 적으로부터 받는 피해가 50% 감소합니다.\n\n흉물에 공생체를 사용하면, 공생체의 기술을 사용하면서 흉물을 조종할 수 있습니다. 흉물을 소환한 후 이 기술을 다시 사용하면 자동으로 흉물에게 공생체를 사용합니다.",
+            "shortDescription": "돌격병이나 식충이 강력한 흉물로 진화",
+            "cooldown": 90,
+            "extras": {
+              "사거리": "∞"
+            }
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Assault Strain",
+              "ko": "강습충 변종"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spawnlocust",
+            "description": "식충의 일반 공격이 주위에 50%의 피해를 주고, 죽을 때 폭발하여 106(+4%)의 피해를 줍니다.",
+            "shortDescription": "식충이 가르기 공격 및 폭발",
+            "extras": {
+              "공격 사거리": 0.5,
+              "가르기 반경": 1.25,
+              "중심각": "180°",
+              "자폭 반경": 3
+            },
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Bombard Strain",
+              "ko": "포격충 변종"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spawnlocust_var1",
+            "description": "식충의 일반 공격이 장거리 공성 공격이 되고 70%의 추가 피해를 줍니다.",
+            "shortDescription": "식충이 원거리 공격",
+            "extras": {
+              "공격 사거리": "3 (근접) / 7 (원거리)",
+              "원거리 공격 피해 반경": 0.4
+            },
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Spatial Efficiency",
+              "ko": "탑재 효율 증가"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_stab",
+            "description": "공생체의 찌르기의 충전 횟수가 1회 증가하고 재사용 대기시간이 0.5초 감소합니다.",
+            "shortDescription": "찌르기 충전 횟수 증가",
+            "upgradeFor": "Q - Q"
+          },
+          {
+            "name": {
+              "en": "Soma Transference",
+              "ko": "세포체 전이"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spikeburst",
+            "description": "공생체의 가시 난사가 적중한 적 영웅 하나당 숙주가 67(+4%)의 생명력을 회복합니다.",
+            "shortDescription": "가시 난사가 적중한 적 영웅 수에 따라 숙주 생명력 회복",
+            "upgradeFor": "Q - W"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Envenomed Spikes",
+              "ko": "맹독 가시"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_spikeburst",
+            "description": "공생체의 가시 난사가 적의 이동 속도를 2초 동안 40% 감소시킵니다.",
+            "shortDescription": "가시 난사가 적의 이동 속도를 감소시킴",
+            "upgradeFor": "Q - W"
+          },
+          {
+            "name": {
+              "en": "Adrenaline Boost",
+              "ko": "아드레날린 증폭"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_carapace",
+            "description": "공생체의 갑피가 대상의 이동 속도를 3.5초 동안 40% 증가시킵니다.",
+            "shortDescription": "갑피가 이동 속도를 증가시킴",
+            "upgradeFor": "Q - E"
+          },
+          {
+            "name": {
+              "en": "Locust Brood",
+              "ko": "식충 번식"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_abathur_spawnlocust",
+            "description": "사용하면 주위 대상 지역에서 3마리의 식충이 생성됩니다.",
+            "shortDescription": "식충 떼 생성",
+            "cooldown": 45,
+            "extras": {
+              "사거리": 6
+            }
+          },
+          {
+            "name": {
+              "en": "Volatile Mutation",
+              "ko": "불안정한 변이"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_volatilemutation",
+            "description": "최종 진화물과 흉물이 3초마다, 그리고 죽는 순간에 주위 적들에게 142(+4%)의 피해를 줍니다.",
+            "shortDescription": "궁극기로 생성된 소환물이 주위에 주기적으로 피해를 줌",
+            "extras": {
+              "피해 반경": 3
+            },
+            "upgradeFor": "R"
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Evolutionary Link",
+              "ko": "진화의 고리"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_ultimateevolution",
+            "description": "최종 진화물이 살아 있는 동안 복제의 대상이 최대 생명력의 25%에 해당하는 보호막을 얻습니다. 이 효과는 5초마다 갱신됩니다.",
+            "shortDescription": "최종 진화물의 대상이 보호막을 얻음",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Evolution Complete",
+              "ko": "진화 완료"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_evolvemonstrosity",
+            "description": "흉물이 시야가 확보된 곳으로 25초마다 굴 파기 기술을 사용할 수 있습니다.",
+            "shortDescription": "흉물이 굴 파기 사용 가능",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Hivemind",
+              "ko": "군체의식"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_abathur_symbiote",
+            "description": "공생체를 사용하면 주위 아군 영웅 한 명에게 공생체가 추가로 생성됩니다. 추가된 공생체는 첫 번째 공생체의 행동을 그대로 따라하지만 부여하는 보호막과 공격력이 절반으로 감소합니다.",
+            "shortDescription": "공생체를 두 대상에게 사용",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Locust Nest",
+              "ko": "식충 둥지"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_abathur_locustnest",
+            "description": "사용하면 주기적으로 식충을 생성하는 둥지를 만듭니다. 식충 둥지는 동시에 하나만 활성화할 수 있습니다.",
+            "shortDescription": "식충 둥지 생성",
+            "cooldown": 45,
+            "extras": {
+              "사거리": 6
+            }
+          }
+        ]
+      }
+    },
+    "Imperius": {
+      "name": "임페리우스",
+      "title": "용기의 대천사",
+      "icon": "ui_targetportrait_hero_imperius",
+      "type": "근접",
+      "role": "warrior",
+      "newRole": "bruiser",
+      "universe": "diablo",
+      "stats": {
+        "hp": {
+          "value": 2450,
+          "levelScaling": 0.04
+        },
+        "radius": 0.8125,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 5.1054,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 2,
+        "period": 1.2,
+        "damage": {
+          "value": 122,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Valorous Brand",
+            "ko": "용기의 낙인"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_imperius_trait",
+          "description": "각 일반 기술이 적 영웅에게 적중할 때마다 대상에게 10초 동안 낙인을 찍습니다. 낙인이 찍힌 적에게 일반 공격을 하면 대상의 낙인을 불태울 수 있으며, 불태운 낙인 하나당 30%의 추가 피해를 줍니다.",
+          "shortDescription": "일반 기술로 적 영웅에게 낙인을 찍어 일반 공격 강화"
+        },
+        {
+          "name": {
+            "en": "Celestial Charge",
+            "ko": "천공의 돌진"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_imperius_q",
+          "description": "대상 방향으로 달려들며 솔라리온을 찔러 36(+4%)의 피해를 줍니다. 적 영웅에게 적중하면 정신을 집중하며 1초 동안 기절시키고 정신 집중을 마칠 때 73(+4%)의 추가 피해를 줍니다.",
+          "shortDescription": "전방으로 돌진하여 적들을 기절시킴",
+          "cooldown": 10,
+          "manaCost": 40
+        },
+        {
+          "name": {
+            "en": "Solarion's Fire",
+            "ko": "솔라리온의 불길"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_imperius_w",
+          "description": "불길의 파도를 내보내 104(+4%)의 피해를 줍니다. 중심부의 적에게는 52(+4%)의 추가 피해를 주고 3초 동안 40% 느려지게 합니다.",
+          "shortDescription": "일직선상의 적들에게 피해를 주고 느려지게 함",
+          "cooldown": 8,
+          "manaCost": 60
+        },
+        {
+          "name": {
+            "en": "Molten Armor",
+            "ko": "타오르는 갑옷"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_imperius_e",
+          "description": "자신을 3초 동안 불길로 감싸 주위 적에게 0.25초마다 20(+4%)의 피해를 줍니다. 적에게 준 피해의 100%만큼 생명력을 회복합니다. 영웅을 상대로는 회복량이 두 배가 됩니다.",
+          "shortDescription": "주위 적들을 불태우고 생명력 회복",
+          "cooldown": 12,
+          "manaCost": 50
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Impaling Light",
+              "ko": "꿰뚫는 빛줄기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_q",
+            "description": "천공의 돌진의 공격력이 125% 증가합니다.\n\n퀘스트: 천공의 돌진으로 다수의 적 영웅을 동시에 기절시켜야 합니다.\n보상: 동시에 2명의 영웅을 기절시키면 재사용 대기시간이 영구히 2초 감소합니다.\n보상: 동시에 3명의 영웅을 기절시키면 재사용 대기시간이 추가로 2초 감소합니다.",
+            "shortDescription": "퀘스트: 천공의 돌진 재사용 대기시간 감소",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Consuming Flame",
+              "ko": "사로잡는 불길"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_w",
+            "description": "퀘스트: 솔라리온의 불길의 중심부에 적 영웅이 적중할 때마다 중심부의 공격력이 10 증가하여 최대 150 증가합니다.\n보상: 솔라리온의 불길의 중심부에 적 영웅이 15회 적중하면 솔라리온의 불길의 감속 효과가 15% 증가합니다.",
+            "shortDescription": "퀘스트: 솔라리온의 불길 중심부 공격력 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Burn The Impure",
+              "ko": "부정한 자를 불태워라"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_w_alt_01",
+            "description": "솔라리온의 불길의 낙인을 불태우면 대상 적 영웅의 최대 생명력의 3%만큼 추가 피해를 줍니다.",
+            "shortDescription": "솔라리온의 불길 낙인이 추가 피해",
+            "upgradeFor": "W"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Bulwark of Flame",
+              "ko": "불길의 보루"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_w",
+            "description": "적 영웅에게 솔라리온의 불길이 적중하면 물리 방어력이 60 증가하여 다음 2회의 영웅 일반 공격으로 받는 피해가 감소합니다. 최대 4회 충전됩니다.",
+            "shortDescription": "솔라리온의 불길이 물리 방어력을 증가시킴",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Unshakable Faith",
+              "ko": "흔들리지 않는 신념"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_e",
+            "description": "타오르는 갑옷을 사용하면 자신에게 걸린 모든 감속 및 이동 불과 효과를 제거합니다. 무력화 효과가 제거되면 260(+4%)의 생명력을 회복합니다.",
+            "shortDescription": "타오르는 갑옷이 감속 및 이동 불가 효과 제거",
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Battle Hunger",
+              "ko": "전투의 갈망"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_trait",
+            "description": "불태운 용기의 낙인 하나당 85(+4%)의 생명력을 회복합니다.",
+            "shortDescription": "용기의 낙인으로 생명력 회복",
+            "upgradeFor": "D"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Flash of Anger",
+              "ko": "분노의 섬광"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_q",
+            "description": "솔라리온의 불길의 낙인이 찍힌 적 영웅에게 천공의 돌진이 적중하면 대상 주위에 166(+4%)의 피해를 줍니다.",
+            "shortDescription": "솔라리온의 불길로 광역 피해를 줄 수 있음",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Blaze of Glory",
+              "ko": "영광의 불꽃"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_w",
+            "description": "솔라리온의 불길이 중심부를 따라 이글거리는 대지를 남깁니다. 이글거리는 대지는 2초 후에 폭발하며 130(+4%)의 피해를 줍니다.",
+            "shortDescription": "솔라리온의 불길이 일정 시간 후 폭발",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Holy Fervor",
+              "ko": "신성한 백열"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_imperius_item_01",
+            "description": "사용하면 다음 4회의 일반 공격이 대상 주위에 163(+4%)의 피해를 줍니다.",
+            "shortDescription": "사용 시 일반 공격으로 주위 방사 피해",
+            "cooldown": 18
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Angelic Armaments",
+              "ko": "천사의 무구"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_imperius_r1",
+            "description": "불타는 검들로 이루어진 고리를 소환해 3초 동안 1040(+4%)의 피해를 흡수하는 보호막을 얻습니다.\n\n지속 시간이 만료될 때 보호막이 남아있으면 천사의 무구를 5초 내에 다시 사용해 대상 위치로 6자루의 검을 날릴 수 있습니다. 각각의 검은 처음 적중한 적에게 146(+4%)의 피해를 줍니다.",
+            "shortDescription": "보호막 대량 획득 및 재사용하여 적에게 피해",
+            "cooldown": 60,
+            "manaCost": 60
+          },
+          {
+            "name": {
+              "en": "Wrath of the Angiris",
+              "ko": "앙기리스의 분노"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_imperius_r2",
+            "description": "0.75초 후, 대상 방향으로 돌진해 처음 적중한 적 영웅을 움켜쥐고 천상으로 날아오릅니다. 공중에 있는 동안 이동 명령으로 착지 지점을 조정할 수 있습니다.\n\n2초 후, 대상을 지면에 내리꽂아 390(+4%)의 피해를 주고 1초 동안 기절시킵니다.",
+            "shortDescription": "적과 함께 천상으로 승천",
+            "cooldown": 80,
+            "manaCost": 80
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Pathetic Mortals",
+              "ko": "필멸자의 한계"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_q",
+            "description": "천공의 돌진으로 적 영웅을 기절시키면 대상의 공격력이 4초 동안 35% 감소합니다.",
+            "shortDescription": "천공의 돌진이 공격력을 감소시킴",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Divine Rage",
+              "ko": "신성한 분노"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_e",
+            "description": "타오르는 갑옷이 적 영웅에게 적중할 때마다 타오르는 갑옷의 재사용 대기시간이 0.25초 감소합니다.",
+            "shortDescription": "타오르는 갑옷 영웅 적중 시 재사용 대기시간 감소",
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Heat of Battle",
+              "ko": "전투의 열기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_e_alt_01",
+            "description": "생명력이 50% 미만이면 타오르는 갑옷의 치유량이 25% 증가합니다.",
+            "shortDescription": "생명력이 낮을 때 타오르는 갑옷 치유량 증가",
+            "upgradeFor": "E"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Celestial Swiftness",
+              "ko": "천공의 신속함"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_q",
+            "description": "천공의 돌진으로 적 영웅을 기절시키면 5초 동안 공격 속도가 50%, 이동 속도가 20% 증가합니다.",
+            "shortDescription": "천공의 돌진 적중 시 공격 및 이동 속도 증가",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Melting Touch",
+              "ko": "녹아내리는 손길"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_e",
+            "description": "타오르는 갑옷의 낙인을 불태우면 대상의 방어력이 4초 동안 25 감소합니다.",
+            "shortDescription": "타오르는 갑옷의 낙인이 방어력을 감소시킴",
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Sovereign Armor",
+              "ko": "지존의 방어구"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_e_alt_01",
+            "description": "타오르는 갑옷을 사용하면 방어력이 2.5초 동안 50 증가합니다.",
+            "shortDescription": "타오르는 갑옷이 방어력을 증가시킴",
+            "upgradeFor": "E"
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Heavenly Host",
+              "ko": "천상의 군단장"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_r1",
+            "description": "주위의 아군 영웅들에게 3초 동안 624(+4%)의 피해를 흡수하는 보호막을 부여합니다.\n\n지속 시간이 만료될 때 보호막이 남아있으면 가장 가까운 적 영웅에게 검을 날려 146(+4%)의 피해를 줍니다.",
+            "shortDescription": "아군 영웅들도 보호막 획득",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Unrelenting Descent",
+              "ko": "무자비한 강림"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_imperius_r2",
+            "description": "용기의 낙인을 불태우면 앙기리스의 분노의 재사용 대기시간이 5초 감소합니다.",
+            "shortDescription": "용기의 낙인으로 재사용 대기시간 감소",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Impervious",
+              "ko": "불굴의 용기"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_imperius_item_02",
+            "description": "사용하면 2초 동안 저지 불가 상태가 되고 기술 방어력이 75 증가합니다. 솔라리온의 불길의 중심부에 적 영웅이 적중할 때마다 이 기술의 재사용 대기시간이 5초 감소합니다.",
+            "shortDescription": "사용 시 저지 불가 및 기술 방어력 증가",
+            "cooldown": 75
+          },
+          {
+            "name": {
+              "en": "Valorous Pursuit",
+              "ko": "용기의 추적"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_imperius_item_03",
+            "description": "사용하면 용기의 낙인이 찍힌 적에게 순간이동합니다.",
+            "shortDescription": "용기의 낙인이 찍힌 적에게 순간이동",
+            "cooldown": 15
+          }
+        ]
+      }
+    }
+  },
   "iconUrls": {
     "storm_btn_d3_traits_wizard_astralpresence": "http://i1.ruliweb.com/img/18/07/02/16459596af219dc2c.png",
     "storm_btn_d3_traits_wizard_elementalexposure": "http://i2.ruliweb.com/img/18/07/02/164595aa7bf19dc2c.png",
@@ -31389,6 +32182,17 @@
     "storm_ui_icon_illidan_sweepingstrike_a": "http://i2.ruliweb.com/img/18/07/02/1645957730619dc2c.png",
     "storm_ui_icon_illidan_sweepingstrike_c": "http://i2.ruliweb.com/img/18/07/02/164595776d419dc2c.png",
     "storm_ui_icon_illidan_thehunt": "http://i1.ruliweb.com/img/18/07/02/16459577ab619dc2c.png",
+    "storm_ui_icon_imperius_e": "http://i2.ruliweb.com/img/19/01/03/16812862c2119dc2c.png",
+    "storm_ui_icon_imperius_e_alt_01": "http://i2.ruliweb.com/img/19/01/03/16812862d3319dc2c.png",
+    "storm_ui_icon_imperius_item_01": "http://i1.ruliweb.com/img/19/01/03/16812862e1b19dc2c.png",
+    "storm_ui_icon_imperius_item_02": "http://i1.ruliweb.com/img/19/01/03/16812862eef19dc2c.png",
+    "storm_ui_icon_imperius_item_03": "http://i3.ruliweb.com/img/19/01/03/16812862fd419dc2c.png",
+    "storm_ui_icon_imperius_q": "http://i1.ruliweb.com/img/19/01/03/1681286293e19dc2c.png",
+    "storm_ui_icon_imperius_r1": "http://i1.ruliweb.com/img/19/01/03/16812862a4219dc2c.png",
+    "storm_ui_icon_imperius_r2": "http://i1.ruliweb.com/img/19/01/03/16812867e7019dc2c.png",
+    "storm_ui_icon_imperius_trait": "http://i2.ruliweb.com/img/19/01/03/16812867f6419dc2c.png",
+    "storm_ui_icon_imperius_w": "http://i1.ruliweb.com/img/19/01/03/1681286804019dc2c.png",
+    "storm_ui_icon_imperius_w_alt_01": "http://i3.ruliweb.com/img/19/01/03/1681286811b19dc2c.png",
     "storm_ui_icon_jaina_arcaneintellect": "http://i2.ruliweb.com/img/18/07/02/16459577e3c19dc2c.png",
     "storm_ui_icon_jaina_blizzard": "http://i2.ruliweb.com/img/18/07/02/16459577fb619dc2c.png",
     "storm_ui_icon_jaina_coneofcold": "http://i1.ruliweb.com/img/18/07/02/1645957811d19dc2c.png",
@@ -32053,6 +32857,7 @@
     "ui_targetportrait_hero_guldan": "http://i3.ruliweb.com/img/18/06/14/163fc227d4919dc2c.png",
     "ui_targetportrait_hero_hanzo": "http://i2.ruliweb.com/img/18/06/14/163fc227e0619dc2c.png",
     "ui_targetportrait_hero_illidan": "http://i1.ruliweb.com/img/18/06/14/163fc22aae919dc2c.png",
+    "ui_targetportrait_hero_imperius": "http://i1.ruliweb.com/img/19/01/03/16812883ef919dc2c.png",
     "ui_targetportrait_hero_jaina": "http://i1.ruliweb.com/img/18/06/13/163f62ac5c319dc2c.png",
     "ui_targetportrait_hero_johanna": "http://i1.ruliweb.com/img/18/06/14/163fc22a5d219dc2c.png",
     "ui_targetportrait_hero_junkrat": "http://i2.ruliweb.com/img/18/06/14/163fc22a68719dc2c.png",
