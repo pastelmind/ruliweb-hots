@@ -448,7 +448,8 @@
             "R - W",
             "R - E",
             "passive",
-            "active"
+            "active",
+            "D - active"
           ]
         },
         "upgradeFor": {

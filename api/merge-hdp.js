@@ -81,6 +81,9 @@ if (!program.jsonEn) {
 
   const heroes = {};
   for (const heroDataName in jsonKr) {
+    //Fix for HDP 3.1.0
+    if (heroDataName === '_stormhero') continue;
+
     console.log('Parsing entry:', heroDataName);
     console.group();
     heroes[heroDataName] = parseHeroData(jsonKr[heroDataName]);
