@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "2.42.1.71652",
+  "hotsVersion": "2.42.2.71931",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -17783,7 +17783,7 @@
           "icon": "storm_ui_icon_medic_deployshield",
           "description": "대상 아군 영웅의 방어력을 3초 동안 30 증가시킵니다.",
           "shortDescription": "대상의 방어력을 증가시킴",
-          "cooldown": 10,
+          "cooldown": 11,
           "extras": {
             "사거리": 8.5
           }
