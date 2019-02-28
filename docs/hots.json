@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "2.42.2.71931",
+  "hotsVersion": "2.43.2.72481",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -164,7 +164,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_abathur_spawnlocust",
-            "description": "식충의 생명력이 40% 증가하고 공격력이 40% 증가합니다.",
+            "description": "식충의 생명력이 60% 증가하고 공격력이 60% 증가합니다.",
             "shortDescription": "식충 생명력 및 공격력 증가",
             "upgradeFor": "D"
           }
@@ -660,7 +660,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_alarak_sadism",
-            "description": "영웅에게 일반 공격을 하면 가학성이 4초 동안 7% 증가하여 최대 35% 증가합니다. 적 영웅에게 일반 공격을 하면 지속 시간이 갱신됩니다.",
+            "description": "영웅에게 일반 공격을 하면 가학성이 2% 증가하여 최대 30% 증가합니다.\n\n이 증가량은 죽으면 사라집니다.",
             "shortDescription": "일반 공격 시 가학성 증가",
             "upgradeFor": "D"
           },
@@ -1683,7 +1683,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_sleep_dart",
-            "description": "적 영웅이 수면총의 영향을 받고 있는 동안 이동 속도가 25% 증가합니다.",
+            "description": "수면총이 적 영웅에게 적중하면 이동 속도가 3초 동안 25% 증가합니다.",
             "shortDescription": "수면총이 이동 속도를 증가시킴",
             "upgradeFor": "E"
           },
@@ -1729,7 +1729,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_ana_debilitatingdart",
-            "description": "사용하면 다트를 발사하여 처음 적중한 적 영웅의 공격력과 이동 속도를 3초 동안 50% 감소시킵니다.",
+            "description": "사용하면 다트를 발사하여 처음 적중한 적 영웅의 공격력과 이동 속도를 4초 동안 50% 감소시킵니다.",
             "shortDescription": "공격력 및 이동 속도를 감소시키는 다트 발사",
             "cooldown": 20,
             "extras": {
@@ -1746,7 +1746,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_biotic_grenade",
-            "description": "생체 수류탄의 범위가 100% 증가하고 치유량 감소 효과의 지속 시간이 50% 증가합니다.",
+            "description": "생체 수류탄의 범위가 100% 증가하고 치유량 감소 효과의 지속 시간이 25% 증가합니다.",
             "shortDescription": "생체 수류탄 강화",
             "upgradeFor": "W"
           },
@@ -1757,7 +1757,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_sleep_dart",
-            "description": "수면총의 수면 효과가 만료되면 대상의 최대 생명력의 8%만큼 피해를 줍니다. 수면 효과가 조기에 종료되지 않았다면 수면총의 재사용 대기시간이 6초로 감소합니다.",
+            "description": "수면총의 수면 효과가 만료되면 대상의 최대 생명력의 8%만큼 피해를 줍니다. 수면 효과가 조기에 종료되지 않았다면 수면총의 재사용 대기시간이 5초로 감소합니다.",
             "shortDescription": "수면총 강화",
             "upgradeFor": "E"
           },
@@ -1798,7 +1798,7 @@
             "icon": "storm_ui_icon_ana_overwatch",
             "description": "저격용 조준경을 활성화하여 사거리가 무한인 6발의 특수 탄환을 발사할 수 있습니다. 탄환은 영웅을 관통하지만 적 구조물은 관통할 수 없고 아군 영웅의 생명력은 234(+4%) 회복시키며 적 영웅에게는 140(+4%)의 피해를 줍니다. 구조물에는 50% 감소한 피해를 줍니다.\n\n호루스의 눈이 활성화된 동안에는 이동할 수 없습니다.",
             "shortDescription": "사거리가 무한인 탄환을 발사하여 치유 또는 피해를 줌",
-            "cooldown": 45,
+            "cooldown": 60,
             "manaCost": 45,
             "extras": {
               "사거리": "∞",
@@ -1891,7 +1891,7 @@
           {
             "name": {
               "en": "Deadeye",
-              "ko": "명사수"
+              "ko": "우제트의 심판"
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_overwatch",
@@ -3429,7 +3429,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_azmodan_globeofannihilation",
-          "description": "파괴의 구슬을 날려 190(+3%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
+          "description": "파괴의 구슬을 날려 189(+2.5%)의 피해를 줍니다.\n\n퀘스트: 파멸의 구슬이 적 영웅에게 적중하거나 파멸의 구슬이 적중한 적 돌격병을 1.5초 안에 처치하면 파멸이 2회 중첩됩니다.\n보상: 파멸 중첩 하나당 파멸의 구슬의 공격력이 1 증가하여 최대 400 증가합니다.",
           "shortDescription": "긴 사거리를 가진 파괴의 구슬을 던져 광역 피해를 줌",
           "cooldown": 10,
           "manaCost": 60,
@@ -3479,8 +3479,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_azmodan_globeofannihilation",
-            "description": "파멸의 구슬이 적 돌격병에게 적중한 후에 파멸이 중첩될 수 있는 시간이 1.5초에서 3초로 증가합니다.\n\n퀘스트: 파멸이 200회 중첩되면 파멸의 구슬의 사거리가 33% 증가하고 영웅이 아닌 적에게 주는 피해가 20% 증가합니다.",
-            "shortDescription": "퀘스트: 사거리 증가, 돌격병 및 용병에게 추가 피해",
+            "description": "파멸의 구슬이 영웅이 아닌 적에게 20%의 추가 피해를 줍니다.\n\n퀘스트: 파멸이 200회 중첩되면 모두 다 불타리라의 사거리가 25% 증가하고 악마 전사의 공격 속도와 이동 속도가 20% 증가합니다.",
+            "shortDescription": "영웅이 아닌 적에게 파멸의 구슬 추가 피해\n퀘스트: 모두 다 불타리라 사거리 증가",
             "upgradeFor": "Q"
           },
           {
@@ -3669,8 +3669,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_azmodan_allshallburn_a",
-            "description": "모두 다 불타리라의 사거리가 20% 증가합니다. 모두 다 불타리라가 끝까지 지속되면 재사용 대기시간이 50% 감소합니다.",
-            "shortDescription": "모두 다 불타리라 사거리 증가 및 재사용 대기시간 감소",
+            "description": "모두 다 불타리라가 대상을 지속 시간 동안 15% 느려지게 합니다. 모두 다 불타리라가 끝까지 지속되면 재사용 대기시간이 50% 감소하고 대상을 2초 동안 45% 느려지게 합니다.",
+            "shortDescription": "모두 다 불타리라 재사용 대기시간 감소 및 적 영웅을 느려지게 함",
             "upgradeFor": "E"
           }
         ],
@@ -3717,7 +3717,7 @@
             "icon": "storm_ui_icon_azmodan_trample",
             "description": "사용하면 짧은 거리를 돌진하여 250(+4%)의 피해를 주고 적중한 적들을 1초 동안 60% 느려지게 합니다.",
             "shortDescription": "짧은 거리 돌진",
-            "cooldown": 60
+            "cooldown": 20
           }
         ]
       }
@@ -3983,7 +3983,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_sonya_seismicslam",
-            "description": "일반 공격과 대지 강타가 대상 적 영웅의 최대 생명력의 1.25%만큼 추가 피해를 줍니다.",
+            "description": "일반 공격과 대지 강타가 대상 적 영웅의 최대 생명력의 1.25%만큼 추가 피해를 주고 그만큼 생명력을 회복합니다.",
             "shortDescription": "일반 공격 및 대지 강타가 추가 피해",
             "upgradeFor": "W"
           },
@@ -4787,13 +4787,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2750,
+          "value": 2850,
           "levelScaling": 0.045
         },
         "radius": 1.1875,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 5.7304,
+          "value": 5.9414,
           "levelScaling": 0.045
         },
         "range": 2,
@@ -4938,7 +4938,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_cho_moltensurge_a",
-            "description": "쇄도의 주먹이 적중한 적 영웅 하나당 쇄도의 주먹의 재사용 대기시간이 4초 감소합니다.",
+            "description": "쇄도의 주먹이 적중한 적 영웅 하나당 쇄도의 주먹의 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "영웅 적중 시 쇄도의 주먹 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -5000,6 +5000,44 @@
         "13": [
           {
             "name": {
+              "en": "Surging Dash",
+              "ko": "쇄도의 질주"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_cho_moltensurge_a",
+            "description": "쇄도의 주먹을 준비하는 동안 초당 156(+4%)의 생명력을 회복합니다.",
+            "shortDescription": "쇄도의 주먹 준비 중 생명력 회복",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Twilight Veil",
+              "ko": "황혼의 장막"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_talent_hardenedshield",
+            "description": "사용하면 오우거의 가죽의 추가 방어력이 4초 동안 100% 증가합니다. 오우거의 분노가 활성화된 동안 사용하면 즉시 오우거의 가죽으로 전환됩니다.",
+            "shortDescription": "사용 시 오우거의 가죽 방어력 증가",
+            "cooldown": 30
+          },
+          {
+            "name": {
+              "en": "Molten Block",
+              "ko": "용암 방패"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_cho_moltenblock",
+            "description": "사용하면 3초 동안 정지 및 무적 상태가 되고, 주위 적들에게 초당 96(+4%)의 피해를 줍니다.",
+            "shortDescription": "사용 시 무적",
+            "cooldown": 60,
+            "extras": {
+              "피해 반경": 4.5
+            }
+          }
+        ],
+        "16": [
+          {
+            "name": {
               "en": "Frenzied Fists",
               "ko": "광란의 주먹"
             },
@@ -5027,46 +5065,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_cooldown",
-            "description": "일반 공격을 할 때마다 초와 갈의 궁극기의 재사용 대기시간이 0.75초 감소합니다.",
+            "description": "일반 공격을 할 때마다 초와 갈의 궁극기의 재사용 대기시간이 5% 감소합니다.",
             "shortDescription": "일반 공격 시 궁극기 재사용 대기시간 감소"
-          }
-        ],
-        "16": [
-          {
-            "name": {
-              "en": "Surging Dash",
-              "ko": "쇄도의 질주"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_cho_moltensurge_a",
-            "description": "쇄도의 주먹을 준비하는 동안 초당 156(+4%)의 생명력을 회복합니다.",
-            "shortDescription": "쇄도의 주먹 준비 중 생명력 회복",
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Twilight Veil",
-              "ko": "황혼의 장막"
-            },
-            "type": "active",
-            "icon": "storm_ui_icon_talent_hardenedshield",
-            "description": "사용하면 오우거의 가죽의 추가 방어력이 2초 동안 100% 증가합니다. 오우거의 분노가 활성화된 동안 사용하면 즉시 오우거의 가죽으로 전환됩니다.",
-            "shortDescription": "사용 시 오우거의 가죽 방어력 증가",
-            "cooldown": 30
-          },
-          {
-            "name": {
-              "en": "Molten Block",
-              "ko": "용암 방패"
-            },
-            "type": "active",
-            "icon": "storm_ui_icon_cho_moltenblock",
-            "description": "사용하면 3초 동안 정지 및 무적 상태가 되고, 주위 적들에게 초당 96(+4%)의 피해를 줍니다.",
-            "shortDescription": "사용 시 무적",
-            "cooldown": 60,
-            "extras": {
-              "피해 반경": 4.5
-            }
           }
         ],
         "20": [
@@ -7375,7 +7375,7 @@
           "icon": "storm_ui_icon_diablo_shadowcharge_var1",
           "description": "적에게 돌진해 밀쳐내며 42(+4%)의 피해를 주고 이동 속도가 2초 동안 15% 증가합니다. 대상이 지형에 부딪히면 1초 동안 기절하고 125(+4%)의 피해를 추가로 받습니다.",
           "shortDescription": "대상에게 돌진하여 밀쳐냄",
-          "cooldown": 12,
+          "cooldown": 13,
           "manaCost": 70,
           "extras": {
             "사거리": 8.5,
@@ -7408,7 +7408,7 @@
           "icon": "storm_ui_icon_diablo_overpower_var1",
           "description": "대상을 집어 들고 디아블로 뒤로 메쳐서, 76(+4%)의 피해를 주고 0.25초 동안 기절시킵니다.",
           "shortDescription": "적을 집어 들고 뒤로 메쳐서 피해를 주고 기절시킴",
-          "cooldown": 12,
+          "cooldown": 13,
           "manaCost": 40,
           "extras": {
             "사거리": 1
@@ -7819,7 +7819,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_pollencloud",
-            "description": "치명적인 꽃의 사거리가 25% 증가하고 폭발 반경이 20% 증가합니다.",
+            "description": "치명적인 꽃의 사거리가 25% 증가하고 폭발 반경이 20% 증가합니다. 치명적인 꽃이 적 영웅에게 적중하면 이동 속도가 3초 동안 15% 증가합니다.",
             "shortDescription": "치명적인 꽃 사거리 및 폭발 반경 증가",
             "upgradeFor": "Q"
           },
@@ -9561,13 +9561,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2750,
+          "value": 2850,
           "levelScaling": 0.045
         },
         "radius": 1.1875,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 5.7304,
+          "value": 5.9414,
           "levelScaling": 0.045
         }
       },
@@ -9662,7 +9662,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_shove",
-            "description": "밀치기의 이동 속도 증가 효과의 지속 시간이 1초 증가합니다. 초의 일반 공격이 적 영웅에게 적중하면 활성화된 밀치기 효과의 지속 시간이 1초 증가합니다.",
+            "description": "밀치기의 이동 속도 증가 효과의 지속 시간이 2초 증가합니다.",
             "shortDescription": "밀치기 이동 속도 증가 효과 지속 시간 증가",
             "upgradeFor": "Z"
           },
@@ -9684,7 +9684,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_eyeofkilrogg",
-            "description": "킬로그의 눈의 재사용 대기시간이 15초 감소하고 사거리가 33% 증가합니다.",
+            "description": "킬로그의 눈의 재사용 대기시간이 25초 감소하고 사거리가 33% 증가합니다.",
             "shortDescription": "킬로그의 눈 재사용 대기시간 감소",
             "upgradeFor": "active"
           }
@@ -9697,7 +9697,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_chaoscollision",
-            "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n지속 효과: 세 번째로 튀는 공포의 보주가 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
+            "description": "공포의 보주가 두 번째로 튀기 전에 사용하면 보주가 세 번째로 튈 때 뒤로 튑니다.\n\n지속 효과: 세 번째로 튀는 공포의 보주가 영웅에게 50%의 추가 피해를 주고 영웅이 아닌 대상에게 200%의 추가 피해를 줍니다.",
             "shortDescription": "다시 사용 시 공포의 보주가 세 번째로 튈 때 뒤로 튐",
             "upgradeFor": "W"
           },
@@ -9732,7 +9732,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_shadowflame",
-            "description": "같은 적 영웅에게 암흑불길이 연속해서 적중할 때마다 8%의 추가 피해를 줘 최대 40%의 추가 피해를 줍니다. 이 효과는 대상을 4초 이상 공격하지 않으면 사라집니다.",
+            "description": "같은 적 영웅에게 암흑불길이 연속해서 적중할 때마다 8%의 추가 피해를 줘 최대 40%의 추가 피해를 줍니다. 이 효과는 대상을 7초 이상 공격하지 않으면 사라집니다.",
             "shortDescription": "암흑불길 공격력 증가",
             "upgradeFor": "Q"
           },
@@ -9754,7 +9754,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_ogrerage",
-            "description": "초가 오우거의 가죽을 활성화한 후, 갈의 일반 기술의 재사용 대기시간이 5초 동안 75% 더 빨리 감소합니다.",
+            "description": "오우거의 분노의 공격력 증가 효과가 5% 증가합니다. 초가 오우거의 가죽을 활성화한 후, 갈의 일반 기술의 재사용 대기시간이 5초 동안 75% 더 빨리 감소합니다.",
             "shortDescription": "초의 오우거의 가죽이 재사용 대기시간을 감소시킴",
             "upgradeFor": "D"
           }
@@ -9833,7 +9833,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_shadowflame",
-            "description": "암흑불길이 적 영웅을 4초 동안 10% 느려지게 만듭니다. 이 효과는 최대 3회 중첩됩니다.",
+            "description": "암흑불길이 적 영웅을 4초 동안 15% 느려지게 만듭니다. 이 효과는 최대 2회 중첩됩니다.",
             "shortDescription": "암흑불길이 적 영웅을 느려지게 함",
             "upgradeFor": "Q"
           },
@@ -9844,7 +9844,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_gall_chaoscollision",
-            "description": "공포의 보주가 적 영웅을 0.5초 동안 기절시킵니다.",
+            "description": "공포의 보주가 적 영웅을 0.75초 동안 기절시킵니다.",
             "shortDescription": "공포의 보주가 적을 기절시킴",
             "upgradeFor": "W"
           },
@@ -14943,17 +14943,6 @@
           },
           {
             "name": {
-              "en": "Hardened Bones",
-              "ko": "단단한 골격"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_leoric_drainhope_var1",
-            "description": "절망의 손아귀 중에 방어력이 40 증가합니다. 절망의 손아귀가 끝까지 지속되면 방어력 증가 효과가 2초 동안 유지됩니다.",
-            "shortDescription": "절망의 손아귀 중 방어력 증가",
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
               "en": "Ominous Wraith",
               "ko": "불길한 망령"
             },
@@ -14962,6 +14951,16 @@
             "description": "망령 걸음의 지속 시간이 100% 증가하고 그동안 뚫고 지나간 적 영웅의 공격력이 4초 동안 50% 감소합니다.",
             "shortDescription": "망령 걸음 강화",
             "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Spectral Leech",
+              "ko": "저승의 착취"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_autoattack_heal",
+            "description": "일반 공격으로 적 영웅을 공격할 때마다 대상의 최대 생명력의 2.5%만큼 추가 피해를 주고, 추가 피해량의 2배만큼 생명력을 회복합니다.",
+            "shortDescription": "영웅 일반 공격 시 추가 피해 및 생명력 회복"
           }
         ],
         "16": [
@@ -15026,13 +15025,14 @@
           },
           {
             "name": {
-              "en": "Spectral Leech",
-              "ko": "저승의 착취"
+              "en": "Hardened Bones",
+              "ko": "단단한 골격"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_talent_autoattack_heal",
-            "description": "일반 공격으로 적 영웅을 공격할 때마다 대상의 최대 생명력의 2.5%만큼 추가 피해를 주고, 추가 피해량의 2배만큼 생명력을 회복합니다.",
-            "shortDescription": "영웅 일반 공격 시 추가 피해 및 생명력 회복"
+            "icon": "storm_ui_icon_leoric_drainhope_var1",
+            "description": "절망의 손아귀 중에 방어력이 40 증가합니다. 절망의 손아귀가 끝까지 지속되면 방어력 증가 효과가 2초 동안 유지됩니다.",
+            "shortDescription": "절망의 손아귀 중 방어력 증가",
+            "upgradeFor": "W"
           },
           {
             "name": {
@@ -15072,13 +15072,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 1534,
+          "value": 1500,
           "levelScaling": 0.04
         },
         "radius": 0.625,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 3.1953,
+          "value": 3.125,
           "levelScaling": 0.04
         },
         "mp": {
@@ -15114,7 +15114,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_lili_healingbrew",
-          "description": "사거리 6 내의 생명력이 가장 낮은 아군의 생명력을 188(+4%) 회복시킵니다. 영웅을 우선으로 합니다.",
+          "description": "사거리 6 내의 생명력이 가장 낮은 아군의 생명력을 182(+4%) 회복시킵니다. 영웅을 우선으로 합니다.",
           "shortDescription": "주위 아군의 생명력 회복",
           "cooldown": 4,
           "manaCost": 25,
@@ -15185,7 +15185,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lili_fastfeet",
-            "description": "빠른 발의 지속 시간이 125% 증가하고 빠른 발이 활성화된 동안 마나 재생량이 100% 증가합니다.",
+            "description": "빠른 발의 지속 시간이 125% 증가하고 빠른 발이 활성화된 동안 마나 재생량이 125% 증가합니다.",
             "shortDescription": "빠른 발 지속 시간 증가",
             "upgradeFor": "D"
           }
@@ -15365,7 +15365,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lili_cloudserpent",
-            "description": "운룡이 공격할 때마다 대상 아군의 최대 생명력의 1.25%를 회복시킵니다.",
+            "description": "운룡이 공격할 때마다 대상 아군의 최대 생명력의 1%를 회복시킵니다.",
             "shortDescription": "운룡 치유량 증가",
             "upgradeFor": "W"
           }
@@ -16574,13 +16574,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2700,
+          "value": 2600,
           "levelScaling": 0.04
         },
         "radius": 0.875,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 5.625,
+          "value": 5.414,
           "levelScaling": 0.04
         },
         "mp": {
@@ -16635,7 +16635,7 @@
           "description": "대기를 더렵혀 주위 적들에게 114(+4%)의 피해를 주고, 방어력이 3초 동안 25 증가합니다.",
           "shortDescription": "주위에 피해를 주며 방어력 증가",
           "cooldown": 8,
-          "manaCost": 30,
+          "manaCost": 35,
           "extras": {
             "피해 반경": 3.5
           }
@@ -18302,7 +18302,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_medivh_arcanemissile_a",
-            "description": "일반 공격을 할 때마다 궁극기의 재사용 대기시간이 1초 감소합니다. 비전 균열이 적 영웅에게 적중할 때마다 궁극기의 재사용 대기시간이 3초 감소합니다.",
+            "description": "일반 공격을 할 때마다 궁극기의 재사용 대기시간이 3% 감소합니다. 비전 균열이 적 영웅에게 적중할 때마다 궁극기의 재사용 대기시간이 9% 감소합니다.",
             "shortDescription": "일반 공격 및 비전 균열 적중 시 궁극기 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -20786,7 +20786,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_orphea_e",
-            "description": "퀘스트: 두려움이 적 영웅에게 적중하면 두려움의 공격력이 5 증가하여 최대 200 증가합니다.\n보상: 두려움이 적 영웅에게 40회 적중하면 두려움의 폭발이 적 영웅에게 적중할 때마다 재사용 대기시간이 6초로 감소하고 50의 마나를 돌려받습니다.",
+            "description": "퀘스트: 두려움이 적 영웅에게 적중하면 두려움의 공격력이 4 증가하여 최대 160 증가합니다.\n보상: 두려움이 적 영웅에게 40회 적중하면 두려움의 폭발이 적 영웅에게 적중할 때마다 재사용 대기시간이 6초로 감소하고 50의 마나를 돌려받습니다.",
             "shortDescription": "퀘스트: 두려움 공격력 증가 및 재사용 대기시간 감소",
             "upgradeFor": "E"
           }
@@ -22473,13 +22473,13 @@
         {
           "unitName": "렉사르",
           "hp": {
-            "value": 1725,
+            "value": 1810,
             "levelScaling": 0.04
           },
           "radius": 0.875,
           "speed": 4.3984,
           "hpRegen": {
-            "value": 3.5898,
+            "value": 3.7695,
             "levelScaling": 0.04
           },
           "mp": {
@@ -22493,7 +22493,7 @@
           "range": 5.5,
           "period": 1.15,
           "damage": {
-            "value": 99,
+            "value": 125,
             "levelScaling": 0.04
           }
         },
@@ -22512,7 +22512,7 @@
           "range": 1.5,
           "period": 1.2,
           "damage": {
-            "value": 62,
+            "value": 50,
             "levelScaling": 0.04
           }
         }
@@ -22551,7 +22551,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_rexxar_mishacharge",
-          "description": "미샤가 일직선상으로 돌진해서 적들에게 61(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.",
+          "description": "미샤가 일직선상으로 돌진해서 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.",
           "shortDescription": "미샤에게 돌진 명령을 내려 적들에게 피해를 주고 기절시킴",
           "cooldown": 10,
           "manaCost": 45,
@@ -22662,7 +22662,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rexxar_mishacharge",
-            "description": "미샤의 일반 공격이 미샤, 돌진!의 재사용 대기시간을 1.25초 감소시킵니다.",
+            "description": "미샤의 일반 공격이 미샤, 돌진!의 재사용 대기시간을 1초 감소시킵니다.",
             "shortDescription": "미샤 일반 공격 시 미샤, 돌진! 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -22697,7 +22697,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_rexxar_bestialwrath",
-            "description": "미샤의 일반 공격력이 12초 동안 150% 증가합니다.",
+            "description": "미샤의 일반 공격력이 12초 동안 200% 증가합니다.",
             "shortDescription": "미샤 일반 공격력 증가",
             "cooldown": 50,
             "manaCost": 75
@@ -22751,7 +22751,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rexxar_mishacharge",
-            "description": "렉사르와 미샤가 일반 공격을 할 때마다 다음 미샤, 돌진!의 공격력이 40% 증가하여 최대 400% 증가합니다.",
+            "description": "렉사르와 미샤가 일반 공격을 할 때마다 다음 미샤, 돌진!의 공격력이 15% 증가하여 최대 150% 증가합니다.",
             "shortDescription": "일반 공격 시 미샤, 돌진! 공격력 증가",
             "upgradeFor": "W"
           }
@@ -22932,7 +22932,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_samuro_criticalstrike",
-            "description": "치명타가 3번째 일반 공격마다 발동합니다.",
+            "description": "치명타가 3번째 일반 공격마다 발동합니다. 사무로 자신의 치명타가 적 영웅의 물리 방어력을 2초 동안 10 감소시킵니다.",
             "shortDescription": "치명타가 더 자주 발동",
             "upgradeFor": "W"
           },
@@ -22943,7 +22943,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_samuro_windwalk",
-            "description": "바람 걸음을 사용하거나 바람 걸음의 은신이 풀리면 이동 속도가 3초 동안 40% 증가합니다.",
+            "description": "바람 걸음을 사용하거나 바람 걸음의 은신이 풀리면 이동 속도가 3초 동안 40% 증가합니다. 치명타가 바람걸음의 재사용 대기시간을 1.5초 감소시킵니다.",
             "shortDescription": "바람 걸음 동안 이동 속도 증가",
             "upgradeFor": "E"
           }
@@ -26490,7 +26490,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_tychus_runandgun",
-            "description": "달려 쏴와 오딘의 추진기의 충전 횟수가 2회 증가하고, 달려 쏴의 마나 소모량이 50에서 25로 감소합니다.",
+            "description": "일반 공격 사거리가 1.5 증가합니다. 달려 쏴와 오딘의 추진기의 충전 횟수가 2회 증가하고, 달려 쏴의 마나 소모량이 50에서 25로 감소합니다.",
             "shortDescription": "달려 쏴 충전 가능 및 마나 소모량 감소",
             "upgradeFor": "E"
           }
@@ -26624,7 +26624,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_regenerationmaster",
-            "description": "적 영웅에게 피해를 줄 때마다 5초에 걸쳐 16(+4%)의 생명력을 회복합니다. 이 효과는 적 영웅에게 피해를 줄 때마다 갱신되며 최대 10회 중첩됩니다.",
+            "description": "적 영웅에게 피해를 줄 때마다 5초에 걸쳐 19(+4%)의 생명력을 회복합니다. 이 효과는 적 영웅에게 피해를 줄 때마다 갱신되며 최대 10회 중첩됩니다.",
             "shortDescription": "영웅 공격 시 생명력 지속 회복"
           }
         ],
@@ -26658,7 +26658,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_tyrael_smite",
-            "description": "강타가 적에게 적중하면 다음 4초 동안 일반 공격으로 준 피해의 50%만큼 생명력을 회복합니다.",
+            "description": "강타가 적에게 적중하면 다음 4초 동안 일반 공격으로 준 피해의 60%만큼 생명력을 회복합니다.",
             "shortDescription": "강타 적중 시 일반 공격으로 생명력 회복",
             "upgradeFor": "E"
           }
@@ -26685,7 +26685,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_tyrael_smite",
-            "description": "강타가 적중한 적 영웅 하나당 일반 공격력이 4초 동안 45% 증가합니다.",
+            "description": "강타가 적중한 적 영웅 하나당 일반 공격력이 4초 동안 55% 증가합니다.",
             "shortDescription": "적 영웅에게 강타 적중 시 일반 공격력 증가",
             "upgradeFor": "E"
           },
@@ -27249,12 +27249,12 @@
       "skills": [
         {
           "name": {
-            "en": "Devotion, Eternal Vanguard",
-            "ko": "헌신, 영원한 선봉장"
+            "en": "Devotion",
+            "ko": "헌신"
           },
           "type": "D",
           "icon": "storm_ui_icon_uther_eternaldevotion",
-          "description": "일반 기술로 치유한 아군 영웅의 방어력이 2초 동안 25 증가합니다. 이 기술 자체로는 효과가 중첩되지 않습니다.\n\n죽으면 최대 8초 동안 무적 상태의 영혼이 됩니다. 영혼 상태에서는 빛의 섬광으로 아군을 치유할 수 있습니다.",
+          "description": "일반 기술로 치유한 아군 영웅의 방어력이 2초 동안 25 증가합니다. 이 기술 자체로는 효과가 중첩되지 않습니다.\n\n<span style=\"color:#ffffff\">영원한 선봉장</span>\n\n죽으면 최대 8초 동안 무적 상태의 영혼이 됩니다. 영혼 상태에서는 빛의 섬광으로 아군을 치유할 수 있습니다.",
           "shortDescription": "영웅 치유 시 대상 방어력 증가, 죽으면 영혼 상태가 됨"
         },
         {
@@ -28476,9 +28476,9 @@
           "levelAdd": 0.098
         },
         "range": 5.5,
-        "period": 0.75,
+        "period": 0.85,
         "damage": {
-          "value": 45,
+          "value": 60,
           "levelScaling": 0.04
         }
       },
@@ -28522,7 +28522,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_whitemane_lash",
-          "description": "0.5초 후, 일직선상의 적들을 강타하여 81(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
+          "description": "0.5초 후, 일직선상의 적들을 강타하여 85(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
           "shortDescription": "일직선상의 적들에게 피해",
           "cooldown": 6
         }
@@ -28677,7 +28677,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_whitemane_desperation",
-            "description": "아군에게 절박한 기도를 사용하면 자신 또한 130(+4%)의 생명력을 회복합니다. <span style=\"color:#fff5c2\">열의</span>는 부여하지 않습니다.",
+            "description": "아군에게 절박한 기도를 사용하면 자신 또한 140(+4%)의 생명력을 회복합니다. <span style=\"color:#fff5c2\">열의</span>는 부여하지 않습니다.",
             "shortDescription": "절박한 기도가 자신도 치유",
             "upgradeFor": "Q"
           },
@@ -29285,7 +29285,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_teleport",
-            "description": "3초 동안 피해를 받지 않으면, 순간이동이 마나를 소모하지 않고 재사용 대기시간이 2초 감소합니다.",
+            "description": "순간이동을 사용하면 다음 마력탄이 10%의 추가 피해를 줍니다.  3초 동안 피해를 받지 않으면, 순간이동이 마나를 소모하지 않고 재사용 대기시간이 2초 감소합니다.",
             "shortDescription": "비전투 시 순간이동에 마나가 소모되지 않음",
             "upgradeFor": "E"
           }
@@ -29309,7 +29309,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_arcaneorb",
-            "description": "비전 보주가 기본 사거리의 50% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 50% 감소합니다.",
+            "description": "비전 보주가 기본 사거리의 50% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "최대 거리에서 폭발 시 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -29344,7 +29344,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_arcaneorb",
-            "description": "비전 보주가 이동 거리에 따라 공격력이 최대 25% 증가합니다. 비전 보주의 재사용 대기시간이 2초 감소합니다.",
+            "description": "비전 보주가 이동 거리에 따라 공격력이 최대 25% 증가합니다. 비전 보주의 재사용 대기시간이 1초 감소합니다.",
             "shortDescription": "비전 보주가 멀리 있는 적에게 적중 시 추가 피해",
             "upgradeFor": "W"
           },
@@ -30057,8 +30057,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zagara_banelingbarrage",
-            "description": "맹독충의 충전 횟수가 2회 증가합니다.",
-            "shortDescription": "맹독충 수 증가",
+            "description": "맹독충 굴리기의 공격력이 20% 증가하고 충전 횟수가 2회 증가합니다.",
+            "shortDescription": "맹독충 수 및 공격력 증가",
             "upgradeFor": "Q"
           },
           {
@@ -30068,7 +30068,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zagara_banelingbarrage_a",
-            "description": "맹독충이 적을 1.5초 동안 20% 느려지게 합니다.",
+            "description": "맹독충이 적을 2.5초 동안 25% 느려지게 합니다.",
             "shortDescription": "맹독충이 적을 느려지게 함",
             "upgradeFor": "Q"
           },
@@ -30079,7 +30079,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zagara_infesteddrop",
-            "description": "퀘스트: 감염체 투하의 반경이 20% 증가합니다.\n보상: 감염체 투하가 적 영웅에게 15회 이상 적중하면 애바퀴가 추가로 생성됩니다.",
+            "description": "퀘스트: 감염체 투하의 반경이 20% 증가합니다.\n보상: 감염체 투하가 적 영웅에게 12회 이상 적중하면 애바퀴가 추가로 생성됩니다.",
             "shortDescription": "퀘스트: 생성되는 최대 애바퀴 수 증가",
             "upgradeFor": "E"
           }
