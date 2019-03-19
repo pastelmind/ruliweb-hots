@@ -18,6 +18,7 @@ module.exports = class Skill {
    * @param {string=} o.description
    * @param {string=} o.shortDescription
    * @param {number=} o.cooldown
+   * @param {number=} o.cooldownPerAlly
    * @param {number=} o.rechargeCooldown
    * @param {number=} o.manaCost
    * @param {number=} o.manaCostPerSecond
@@ -32,6 +33,7 @@ module.exports = class Skill {
     this.description = o.description || '';
     this.shortDescription = o.shortDescription || '';
     this.cooldown = o.cooldown || 0;
+    this.cooldownPerAlly = o.cooldownPerAlly || 0;
     this.rechargeCooldown = o.rechargeCooldown || 0;
     this.manaCost = o.manaCost || 0;
     this.manaCostPerSecond = o.manaCostPerSecond || 0;
@@ -51,6 +53,7 @@ module.exports = class Skill {
       description: this.description,
       shortDescription: this.shortDescription,
       cooldown: this.cooldown || undefined,
+      cooldownPerAlly: this.cooldownPerAlly || undefined,
       rechargeCooldown: this.rechargeCooldown || undefined,
       manaCost: this.manaCost || undefined,
       manaCostPerSecond: this.manaCostPerSecond || undefined,

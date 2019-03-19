@@ -17,6 +17,9 @@
 {{#rechargeCooldown}}
 <br><span class="skill-stat-entry skill-stat-entry--cooldown"><b>충전 대기시간</b> {{rechargeCooldown}}초</span>
 {{/rechargeCooldown}}
+{{#cooldownPerAlly}}
+<br><span class="skill-stat-entry skill-stat-entry--cooldown"><b>재사용 대기시간</b> 각 아군당 {{cooldownPerAlly}}초</span>
+{{/cooldownPerAlly}}
 {{#extras.length}}
 <br><span class="skill-stat-entry skill-stat-entry--extras">{{#extras}}<b>{{name}}</b> {{value}} {{/extras}}</span>
 {{/extras.length}}

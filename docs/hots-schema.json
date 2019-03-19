@@ -505,6 +505,11 @@
           "exclusiveMinimum": 0,
           "multipleOf": 0.5
         },
+        "cooldownPerAlly": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "multipleOf": 0.5
+        },
         "rechargeCooldown": {
           "type": "number",
           "exclusiveMinimum": 0,
