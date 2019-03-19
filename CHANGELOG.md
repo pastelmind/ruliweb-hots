@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.10.0] - 2019-03-19
+### Changed
+- Updated data with Heroes of the Storm v2.43.2 + PTR v2.44.0 patch information.
+- Added high-quality icons for the new hero roles.
+- Added Korean terms for the new hero roles.
+
+
 ## [0.9.1] - 2018-11-16
 ### Fixed
 - Fixed a bug that caused injected `<detailed>` tables to be placed in wonky
