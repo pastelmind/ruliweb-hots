@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+const assert = require('assert');
+const util = require('util');
 const HotsData = require('./hots-data');
 
 /**
@@ -28,6 +30,10 @@ const HotsData = require('./hots-data');
  */
 module.exports = function mergeHotsData(target, source) {
   for (const sourceHero of Object.values(source.heroes)) {
+    assert(
+      sourceHero.id,
+      `Source hero has no ID (raw value: ${util.inspect(sourceHero.id)})\n`
+    );
     let targetHero = target.heroes[sourceHero.id];
 
     //Cannot find hero with same ID
