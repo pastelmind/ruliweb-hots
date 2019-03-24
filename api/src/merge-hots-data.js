@@ -27,14 +27,20 @@ const HotsData = require('./hots-data');
  * Merges the source dataset into the target dataset.
  * @param {HotsData} target Dataset to merge into
  * @param {HotsData} source Dataset to import from
+ * @param {boolean=} usePtr If truthy, merge heroes into the PTR section whenever possible.
  */
-module.exports = function mergeHotsData(target, source) {
+module.exports = function mergeHotsData(target, source, usePtr = false) {
   for (const sourceHero of Object.values(source.heroes)) {
     assert(
       sourceHero.id,
       `Source hero has no ID (raw value: ${util.inspect(sourceHero.id)})\n`
     );
-    let targetHero = target.heroes[sourceHero.id];
+
+    let targetHero = null;
+    if (usePtr)
+      targetHero = target.ptrHeroes[sourceHero.id];
+    if (!targetHero)
+      targetHero = target.heroes[sourceHero.id];
 
     //Cannot find hero with same ID
     if (!targetHero) {
@@ -48,6 +54,10 @@ module.exports = function mergeHotsData(target, source) {
       console.group('Merging', sourceHero.id);
       mergeHero(targetHero, sourceHero);
       console.groupEnd();
+    }
+    else if (usePtr) {
+      console.log('Added new hero to PTR:', sourceHero.name);
+      target.ptrHeroes[sourceHero.id] = sourceHero;
     }
     else {
       console.log('Added new hero:', sourceHero.name);

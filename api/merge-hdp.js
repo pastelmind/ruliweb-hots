@@ -50,6 +50,7 @@ program
   })
   .option('-m, --merge-json [jsonfile]', 'hots.json file to merge with', DEFAULT_JSON_PATH)
   .option('-o, --output-json [jsonfile]', 'hots.json file to write to', DEFAULT_JSON_PATH)
+  .option('-p, --ptr', 'Prioritize merging into heroes in PTR section')
   .action((jsonKr, jsonEn) => {
     if (jsonKr)
       program.jsonKr = path.resolve(jsonKr);
@@ -95,9 +96,8 @@ if (!program.jsonEn) {
   console.log('Reading input JSON from', program.mergeJson);
   const hotsData = new HotsData(await readFileAsync(program.mergeJson, 'utf8'));
 
-  console.log('Merging data...')
-  mergeHotsData(hotsData, { heroes });
-  // hotsData.heroes = heroes;
+  console.log('Merging data...');
+  mergeHotsData(hotsData, { heroes }, program.ptr);
 
   program.outputJson = path.resolve(program.outputJson);
   await writeFileAsync(program.outputJson, hotsData.stringify());
