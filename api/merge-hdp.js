@@ -11,7 +11,6 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const program = require('commander');
-const assert = require('assert');
 
 const HotsData = require('./src/hots-data');
 const Hero = require('./src/hero');
@@ -88,7 +87,7 @@ if (!program.jsonEn) {
 
     console.log('Parsing entry:', heroDataName);
     console.group();
-    heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroDataName);
+    heroes[heroDataName] = parseHeroData(jsonKr[heroDataName]);
     console.groupEnd();
   }
 
@@ -110,28 +109,23 @@ if (!program.jsonEn) {
 /**
  * Extract hero data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
- * @param {string} heroId ID string for the hero
  * @return {Hero} Hero object containing the extracted data
  */
-function parseHeroData(heroData, heroId) {
+function parseHeroData(heroData) {
   const hero = new Hero({
-    id: heroId,
+    id: heroData.cHeroId,
     name: heroData.name,
     icon: extractIconId(heroData.portraits.target),
   });
 
-  assert(hero.id, `Missing hero ID (raw value: ${util.inspect(hero.id)})`);
-  assert(hero.name, `Missing hero name (raw value: ${util.inspect(hero.name)})`);
-  assert(hero.icon, `Missing hero icon (raw value: ${util.inspect(hero.icon)})`);
-
   hero.stats = undefined;
-  hero.skills = parseAllSkillsData(heroData, heroId);
-  hero.talents = parseAllTalentsData(heroData, heroId);
+  hero.skills = parseAllSkillsData(heroData);
+  hero.talents = parseAllTalentsData(heroData);
 
   //Fixes for heroic abilities that have sub-abilities
   //TODO: Move these abilities into properties of the parent abilities
 
-  switch (heroId) {
+  switch (heroData.cHeroId) {
     case 'LostVikings': //Longboat Raid! => Mortar
       relocateSubAbilitiesAfterTalent(hero, '바이킹의 습격!', '박격포');
       break;
@@ -156,10 +150,9 @@ function parseHeroData(heroData, heroId) {
 /**
  * Parses all skill data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
- * @param {string} heroId ID string for the hero
  * @return {Skill[]} Array of Skills
  */
-function parseAllSkillsData(heroData, heroId) {
+function parseAllSkillsData(heroData) {
   const skillDataArray = [];
 
   const {
@@ -176,7 +169,7 @@ function parseAllSkillsData(heroData, heroId) {
     skillDataArray.push(...abilityArray);
 
   //Exclude heroic abilities unless the hero is Tracer
-  if (heroId === 'Tracer')
+  if (heroData.cHeroId === 'Tracer')
     skillDataArray.push(...heroicArray);
 
   //Exclude mount abilities that share the same name with the trait
@@ -226,17 +219,16 @@ function parseAllSkillsData(heroData, heroId) {
 /**
  * Parses all talent data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
- * @param {string} heroId ID string for the hero
  * @return {{ [talentLevel: number]: Talent[] }} Collection of Talents, keyed by talent level
  */
-function parseAllTalentsData(heroData, heroId) {
+function parseAllTalentsData(heroData) {
   const talents = {};
 
   for (const talentLevelPropertyName in heroData.talents) {
     let talentLevel = +(talentLevelPropertyName.replace('level', ''));
 
     //Fix for Chromie's trait
-    if (heroId === 'Chromie')
+    if (heroData.cHeroId === 'Chromie')
       talentLevel = Math.max(1, talentLevel - 2);
 
     talents[talentLevel] = heroData.talents[talentLevelPropertyName].map(parseTalentData);
