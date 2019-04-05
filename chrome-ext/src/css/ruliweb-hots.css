@@ -222,8 +222,9 @@ label.hero-filter {
 }
 
 .hots-talentset__group-title {
-  width: 4em;
-  padding-left: .5em;
+  min-width: 4em;
+  padding-right: .5em;
+  text-align: right;
 }
 
 .hots-talentset__group-buttonset {
