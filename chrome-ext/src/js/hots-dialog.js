@@ -46,17 +46,8 @@ const HotsDialog = {
         'overwatch': '오버워치'
       }
     },
-    'role': {
-      name: '역할',
-      filters: {
-        'warrior': '전사',
-        'assassin': '암살자',
-        'support': '지원가',
-        'specialist': '전문가'
-      }
-    },
     newRole: {
-      name: '역할군 (신규)',
+      name: '역할',
       filters: {
         tank: '전사',
         bruiser: '투사',
