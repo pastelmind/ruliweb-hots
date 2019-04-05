@@ -143,12 +143,6 @@ const StatPresets = {
  * @return {HotsData} Decorated HotS data object
  */
 function decorateHotsData(hotsData) {
-  const ROLE_NAMES = Object.freeze({
-    'warrior': '전사',
-    'assassin': '암살자',
-    'support': '지원가',
-    'specialist': '전문가'
-  });
   const MISSING_ICON_URL = 'http://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
 
   //Set PTR version string
@@ -171,10 +165,14 @@ function decorateHotsData(hotsData) {
     hero.id = heroId;
 
     //Add hero role names
-    hero.roleName = '';
-    for (const roleId in ROLE_NAMES)
-      if (hero.role.includes(roleId))
-        hero.roleName += (hero.roleName ? ' / ' : '') + ROLE_NAMES[roleId];
+    hero.roleName = {
+      'tank': '전사',
+      'bruiser': '투사',
+      'ranged_assassin': '원거리 암살자',
+      'melee_assassin': '근접 암살자',
+      'healer': '치유사',
+      'support': '지원가',
+    }[hero.newRole] || '잘못된 역할군입니다';
 
     //Add hero universe names
     hero.universeName = {
