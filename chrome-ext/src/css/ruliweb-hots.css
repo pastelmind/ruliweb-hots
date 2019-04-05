@@ -16,8 +16,21 @@
 /* Icons */
 
 .hots-hero-icon-wrapper, .hots-current-hero-icon-wrapper, .hots-skill-icon-wrapper, .hots-talent-icon-wrapper {
-  /* Wrap to size of content <img> */
-  display: inline-flex;
+  /* Set the line height to zero remove vertical gaps between flexbox children */
+  line-height: 0;
+}
+
+.hots-hero-icon-wrapper::before,
+.hots-hero-icon-wrapper::after,
+.hots-current-hero-icon-wrapper::before,
+.hots-current-hero-icon-wrapper::after,
+.hots-skill-icon-wrapper::before,
+.hots-skill-icon-wrapper::after,
+.hots-talent-icon-wrapper::before,
+.hots-talent-icon-wrapper::after
+{
+  /* Reset the line height to properly style the tooltips */
+  line-height: 1.5;
 }
 
 
@@ -180,7 +193,8 @@ label.hero-filter {
 /* Skillset section */
 
 .hots-skillset {
-  padding: 3px 3px 0;
+  display: flex;
+  padding: 3px;
   background-color: #213;
   border: 1px solid #55d;
   border-bottom: none;
@@ -197,7 +211,9 @@ label.hero-filter {
 }
 
 .hots-talentset__group {
-  padding-top: 3px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
   border-top: 1px solid #55d;
 }
 
@@ -206,16 +222,18 @@ label.hero-filter {
 }
 
 .hots-talentset__group-title {
-  display: inline-block;
   width: 4em;
-  position: relative;
-  top: -0.4em;
   padding-left: .5em;
 }
 
+.hots-talentset__group-buttonset {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 .5em;
+}
+
 .hots-talentset__group-add-all {
-  float: right;
-  margin: .35em 1em 0 0;
   padding: .25em;
   cursor: pointer;
   font-size: .75em;

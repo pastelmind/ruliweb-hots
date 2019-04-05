@@ -5,6 +5,8 @@
     <img class="hots-talent-icon" src="{{{iconUrl}}}" alt="{{name}} ({{typeNameLong}} - 레벨 {{talentLevel}})" data-hero-id="{{id}}" data-is-ptr="{{isPtr}}" data-talent-level="{{talentLevel}}" data-talent-index="{{index}}">
   </div>
   {{/talentGroup}}
-  <input type="button" class="hots-talentset__group-add-all" data-hero-id="{{id}}" data-is-ptr="{{isPtr}}" data-talent-level="{{talentLevel}}" value="모두 넣기">
+  <div class="hots-talentset__group-buttonset">
+    <input type="button" class="hots-talentset__group-add-all" data-hero-id="{{id}}" data-is-ptr="{{isPtr}}" data-talent-level="{{talentLevel}}" value="모두 넣기">
+  </div>
 </li>
 {{/talents}}
