@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.10.1] - 2019-04-18
+### Changed
+- Updated data with Heroes of the Storm v2.44.1 patch information.
+- Removed old hero role icons from the filter.
+- Use new role names in the dialog and the Hero Tables.
+
+
 ## [0.10.0] - 2019-03-19
 ### Changed
 - Updated data with Heroes of the Storm v2.43.2 + PTR v2.44.0 patch information.
