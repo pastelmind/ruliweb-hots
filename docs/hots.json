@@ -5417,7 +5417,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_chromie_aethercannon_a",
-            "description": "모래 강타가 기본 사거리의 1500% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 0.5초로 감소합니다.",
+            "description": "모래 강타가 기본 사거리의 50% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 0.5초로 감소합니다.",
             "shortDescription": "먼 거리에서 적중 시 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
