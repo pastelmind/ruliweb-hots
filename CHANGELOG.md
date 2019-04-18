@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+### Changed
+- (Server) In-browser tests no longer depend on [axios](https://github.com/axios/axios).
+  They now require an HTTP server bound to localhost.
 
 
 ## [0.10.1] - 2019-04-18

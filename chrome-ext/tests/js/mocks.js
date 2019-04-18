@@ -19,7 +19,7 @@ chrome.runtime.getManifest = () => ({ version: "app version string" });
 
 
 /**
- * For use in browser tests. Requires `axios.js`.
+ * For use in browser tests.
  * Loads all template files (`templates/*.mustache`).
  * @return {Promise<Object<string, string>>} Mapping of template name => template string
  */
@@ -31,14 +31,17 @@ async function loadTemplates() {
     'dialog',
     'insert-hero',
     'insert-skill-stats',
-    'insert-skill'
+    'insert-skill',
   ]);
 
   await Promise.all(
     templateNames.map(
       templateName => (async () => {
-        const response = await axios.get(`../templates/${templateName}.mustache`, { responseType: 'text' });
-        templates[templateName] = response.data;
+        const templatePath = `../templates/${templateName}.mustache`
+        const response = await fetch(templatePath);
+        if (!response.ok)
+          throw new Error(`Cannot retrieve ${templatePath}: ${response.status} ${response.statusText}`);
+        templates[templateName] = await response.text();
       })()
     )
   );

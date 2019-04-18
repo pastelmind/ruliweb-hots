@@ -24,7 +24,6 @@
 <body>
   <section class="content" id="generated_content"></section>
 
-  <script src="../../node_modules/axios/dist/axios.min.js"></script>
   <script src="../../node_modules/mustache/mustache.min.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
@@ -35,7 +34,12 @@
       HotsDialog.htmlGenerators.templates = await loadTemplates();
 
       //Load hero data for testing
-      const hotsData = (await axios.get('./data/hots.json')).data;
+      const jsonPath = './data/hots.json';
+      const response = await fetch(jsonPath);
+      if (!response.ok)
+        throw new Error(`Cannot retrieve ${jsonPath}: ${response.status} ${response.statusText}`);
+
+      const hotsData = await response.json();
       decorateHotsData(hotsData);
       const hero = hotsData.heroes.Fenix;
       hero.roleName = '암살자'; //TODO Use data prepare function

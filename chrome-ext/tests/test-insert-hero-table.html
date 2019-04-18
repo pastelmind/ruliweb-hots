@@ -11,7 +11,6 @@
 </head>
 
 <body>
-  <script src="../../node_modules/axios/dist/axios.min.js"></script>
   <script src="../../node_modules/mustache/mustache.min.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
@@ -20,8 +19,12 @@
     (async function main() {
 
       HotsDialog.htmlGenerators.templates = await loadTemplates();
-      const hotsData = (await axios.get('../../docs/hots.json')).data;
+      const jsonPath = '../../docs/hots.json';
+      const response = await fetch(jsonPath);
+      if (!response.ok)
+        throw new Error(`Cannot retrieve ${jsonPath}: ${response.status} ${response.statusText}`);
 
+      const hotsData = await response.json();
       decorateHotsData(hotsData);
 
       const template = document.createElement('template');
@@ -42,7 +45,7 @@
         'Tracer',
         'Junkrat',
         'Rexxar',
-        'LostVikings'
+        'LostVikings',
       ];
 
       for (const heroId of heroIds) {

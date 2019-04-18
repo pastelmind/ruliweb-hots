@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <script src="../../node_modules/axios/dist/axios.min.js"></script>
   <script src="../../node_modules/tingle.js/dist/tingle.min.js"></script>
   <script src="../../node_modules/mustache/mustache.min.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
@@ -26,7 +25,12 @@
 
     //Test code
     (async () => {
-      HotsDialog.data = (await axios.get('../../docs/hots.json')).data;
+      const jsonPath = '../../docs/hots.json';
+      const response = await fetch(jsonPath);
+      if (!response.ok)
+        throw new Error(`Cannot retrieve ${jsonPath}: ${response.status} ${response.statusText}`);
+
+      HotsDialog.data = await response.json();
       decorateHotsData(HotsDialog.data);
       const heroes = HotsDialog.data.heroes;
 

@@ -46,7 +46,6 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
     * [microtip](https://github.com/ghosh/microtip/)
 * 서버 스크립트
     * [Node.js](https://nodejs.org/)
-    * [axios](https://github.com/axios/axios)
     * [yazl](https://github.com/thejoshwolfe/yazl)
     * 자세한 것은 [package.json](package.json) 참조
 
