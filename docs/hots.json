@@ -31382,7 +31382,10 @@
           "icon": "storm_ui_icon_anduin_leap_of_faith",
           "description": "즉시 아군 영웅을 자신의 위치로 끌어당깁니다. 대상 아군은 끌려 오는 동안 저지 불가 상태가 됩니다.",
           "shortDescription": "자신의 위치로 아군 영웅을 끌어당김",
-          "cooldown": 80
+          "cooldown": 80,
+          "extras": {
+            "사거리": 10
+          }
         },
         {
           "name": {
@@ -31394,7 +31397,10 @@
           "description": "0.75초 동안 주문을 시전해 대상 아군 영웅의 생명력을 270(+4%) 회복시킵니다.",
           "shortDescription": "아군 영웅 치유",
           "cooldown": 4,
-          "manaCost": 30
+          "manaCost": 30,
+          "extras": {
+            "사거리": 9
+          }
         },
         {
           "name": {
@@ -31406,7 +31412,11 @@
           "description": "빛을 내보내 적들에게 146(+4%)의 피해를 줍니다. 빛은 넓은 범위로 자신에게 되돌아오며 경로에 있는 아군 영웅의 생명력을 135(+4%) 회복시킵니다. 적중한 적 영웅 하나당 치유량이 25% 증가합니다.",
           "shortDescription": "적에게 피해를 주고 아군은 치유하는 신성한 빛을 내보냄",
           "cooldown": 9,
-          "manaCost": 45
+          "manaCost": 45,
+          "extras": {
+            "사거리": 10.25,
+            "너비": "2.25 (나갈 때) / 7 (돌아올 때)"
+          }
         },
         {
           "name": {
@@ -31418,7 +31428,11 @@
           "description": "회오리치는 빛의 물결을 전방으로 내보내 처음 적중하는 적 영웅에게 151(+4%)의 피해를 주고 1.25초 동안 이동 불가 상태로 만듭니다.",
           "shortDescription": "이동 불가 상태로 만드는 빛을 내보냄",
           "cooldown": 10,
-          "manaCost": 40
+          "manaCost": 40,
+          "extras": {
+            "사거리": 10.85,
+            "중심각": "20°"
+          }
         }
       ],
       "talents": {
@@ -31442,7 +31456,10 @@
             "type": "passive",
             "icon": "storm_ui_icon_anduin_varians_legacy",
             "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 29(+4%) 회복시킵니다.",
-            "shortDescription": "적 영웅 공격 시 주위 아군 치유"
+            "shortDescription": "적 영웅 공격 시 주위 아군 치유",
+            "extras": {
+              "탐색 반경": 6.5
+            }
           },
           {
             "name": {
@@ -31465,6 +31482,9 @@
             "icon": "storm_ui_icon_anduin_divine_star",
             "description": "천상의 별이 전환점 가까이에 있는 2명의 적 영웅에게 일반 공격을 발사하여 일반 공격의 70%에 해당하는 피해를 줍니다.",
             "shortDescription": "천상의 별이 전환점에서 일반 공격",
+            "extras": {
+              "탐색 반경": 3
+            },
             "upgradeFor": "W"
           },
           {
@@ -31476,6 +31496,9 @@
             "icon": "storm_ui_icon_anduin_chastise",
             "description": "응징이 적 영웅에게 적중하면 다음 일반 공격의 사거리가 50% 증가하고 공격력이 50% 증가하며 주위 아군 영웅의 생명력을 94(+4%) 회복시킵니다.",
             "shortDescription": "응징이 다음 일반 공격 강화",
+            "extras": {
+              "효과 반경": 3.5
+            },
             "upgradeFor": "E"
           },
           {
@@ -31534,7 +31557,10 @@
             "description": "0.5초 후, 정신을 집중하여 3초 동안 빛의 은총을 받습니다. 정신을 집중하는 동안 주위에 있는 아군 영웅들은 최대 생명력의 25%까지 회복하고 보호 상태가 됩니다.",
             "shortDescription": "주위 아군 보호 및 치유",
             "cooldown": 80,
-            "manaCost": 70
+            "manaCost": 70,
+            "extras": {
+              "효과 반경": 6.25
+            }
           },
           {
             "name": {
@@ -31546,7 +31572,11 @@
             "description": "아군 영웅에게 빛의 힘을 불어 넣습니다. 1.5초 후, 빛이 폭발하며 주위 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n대상 아군은 폭발에 적중당한 적 영웅 하나당 146(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 5초 동안 지속됩니다.",
             "shortDescription": "아군 주위의 적들을 기절시킴",
             "cooldown": 60,
-            "manaCost": 70
+            "manaCost": 70,
+            "extras": {
+              "사거리": 8,
+              "피해 반경": 4.5
+            }
           }
         ],
         "13": [
@@ -31604,6 +31634,9 @@
             "icon": "storm_ui_icon_anduin_divine_star",
             "description": "천상의 별이 자신에게 닿으면 폭발하여 주위 아군 영웅의 생명력을 104(+4%) 회복시키고 적에게는 104(+4%)의 피해를 줍니다.",
             "shortDescription": "천상의 별이 자신에게 닿으면 폭발",
+            "extras": {
+              "피해 반경": 4
+            },
             "upgradeFor": "W"
           },
           {
@@ -31626,7 +31659,11 @@
             "icon": "storm_ui_icon_anduin_lightwell",
             "description": "주기적으로 주위 아군 영웅의 생명력을 78(+4%) 회복시키는 빛샘을 소환합니다. 아군을 10회 치유하거나 다른 곳에 소환되면 사라집니다.\n\n아군 영웅을 치유할 때마다 재사용 대기시간이 1초 감소합니다.",
             "shortDescription": "사용 시 아군을 치유하는 빛샘 소환",
-            "cooldown": 70
+            "cooldown": 70,
+            "extras": {
+              "사거리": 8,
+              "효과 반경": 3.75
+            }
           }
         ],
         "20": [
@@ -31671,7 +31708,10 @@
             "icon": "storm_ui_icon_anduin_desperate_prayer",
             "description": "사용하면 아군 영웅의 생명력을 562(+4%) 회복시키지만 2초 동안 무릎을 꿇어 아무런 행동도 할 수 없습니다.\n\n구원의 기도를 사용하면 순간 치유에 10초의 재사용 대기시간이  적용됩니다.",
             "shortDescription": "사용 시 아군 영웅 대량 치유",
-            "cooldown": 40
+            "cooldown": 40,
+            "extras": {
+              "사거리": 9
+            }
           }
         ]
       }
@@ -31739,19 +31779,19 @@
     "storm_ui_icon_ana_overwatch": "http://i3.ruliweb.com/img/18/07/02/1645943701719dc2c.png",
     "storm_ui_icon_ana_shrike": "http://i3.ruliweb.com/img/18/07/02/1645943862219dc2c.png",
     "storm_ui_icon_ana_sleep_dart": "http://i3.ruliweb.com/img/18/07/02/164594389f019dc2c.png",
-    "storm_ui_icon_anduin_blessed_recovery": "https://i1.ruliweb.com/img/19/04/23/16a4918475119dc2c.png",
-    "storm_ui_icon_anduin_bold_strategy": "https://i1.ruliweb.com/img/19/04/23/16a4918483e19dc2c.png",
-    "storm_ui_icon_anduin_chastise": "https://i1.ruliweb.com/img/19/04/23/16a4918492719dc2c.png",
-    "storm_ui_icon_anduin_desperate_prayer": "https://i1.ruliweb.com/img/19/04/23/16a49184a0219dc2c.png",
-    "storm_ui_icon_anduin_divine_star": "https://i2.ruliweb.com/img/19/04/23/16a49184af119dc2c.png",
-    "storm_ui_icon_anduin_flash_heal": "https://i3.ruliweb.com/img/19/04/23/16a49184bd519dc2c.png",
-    "storm_ui_icon_anduin_flash_heal_a": "https://i3.ruliweb.com/img/19/04/23/16a49184cb819dc2c.png",
-    "storm_ui_icon_anduin_holy_word_salvation": "https://i2.ruliweb.com/img/19/04/23/16a49184db319dc2c.png",
-    "storm_ui_icon_anduin_inner_focus": "https://i1.ruliweb.com/img/19/04/23/16a49184e9c19dc2c.png",
-    "storm_ui_icon_anduin_leap_of_faith": "https://i2.ruliweb.com/img/19/04/23/16a491843a319dc2c.png",
-    "storm_ui_icon_anduin_light_bomb": "https://i1.ruliweb.com/img/19/04/23/16a4918447819dc2c.png",
-    "storm_ui_icon_anduin_lightwell": "https://i2.ruliweb.com/img/19/04/23/16a4918455819dc2c.png",
-    "storm_ui_icon_anduin_varians_legacy": "https://i2.ruliweb.com/img/19/04/23/16a4918466c19dc2c.png",
+    "storm_ui_icon_anduin_blessed_recovery": "http://i1.ruliweb.com/img/19/04/23/16a4918475119dc2c.png",
+    "storm_ui_icon_anduin_bold_strategy": "http://i1.ruliweb.com/img/19/04/23/16a4918483e19dc2c.png",
+    "storm_ui_icon_anduin_chastise": "http://i1.ruliweb.com/img/19/04/23/16a4918492719dc2c.png",
+    "storm_ui_icon_anduin_desperate_prayer": "http://i1.ruliweb.com/img/19/04/23/16a49184a0219dc2c.png",
+    "storm_ui_icon_anduin_divine_star": "http://i2.ruliweb.com/img/19/04/23/16a49184af119dc2c.png",
+    "storm_ui_icon_anduin_flash_heal": "http://i3.ruliweb.com/img/19/04/23/16a49184bd519dc2c.png",
+    "storm_ui_icon_anduin_flash_heal_a": "http://i3.ruliweb.com/img/19/04/23/16a49184cb819dc2c.png",
+    "storm_ui_icon_anduin_holy_word_salvation": "http://i2.ruliweb.com/img/19/04/23/16a49184db319dc2c.png",
+    "storm_ui_icon_anduin_inner_focus": "http://i1.ruliweb.com/img/19/04/23/16a49184e9c19dc2c.png",
+    "storm_ui_icon_anduin_leap_of_faith": "http://i2.ruliweb.com/img/19/04/23/16a491843a319dc2c.png",
+    "storm_ui_icon_anduin_light_bomb": "http://i1.ruliweb.com/img/19/04/23/16a4918447819dc2c.png",
+    "storm_ui_icon_anduin_lightwell": "http://i2.ruliweb.com/img/19/04/23/16a4918455819dc2c.png",
+    "storm_ui_icon_anduin_varians_legacy": "http://i2.ruliweb.com/img/19/04/23/16a4918466c19dc2c.png",
     "storm_ui_icon_anubarak_burrowcharge": "http://i3.ruliweb.com/img/18/07/02/16459438dd119dc2c.png",
     "storm_ui_icon_anubarak_burrowcharge_a": "http://i1.ruliweb.com/img/18/07/02/164594391d119dc2c.png",
     "storm_ui_icon_anubarak_hardencarapace_var1": "http://i2.ruliweb.com/img/18/07/02/1645943999519dc2c.png",
@@ -32697,7 +32737,7 @@
     "ui_targetportrait_hero_alarak": "http://i2.ruliweb.com/img/18/06/14/163fc21f6bc19dc2c.png",
     "ui_targetportrait_hero_alexstrasza": "http://i1.ruliweb.com/img/18/06/14/163fc21f78419dc2c.png",
     "ui_targetportrait_hero_ana": "http://i2.ruliweb.com/img/18/06/14/163fc21f83a19dc2c.png",
-    "ui_targetportrait_hero_anduin": "https://i1.ruliweb.com/img/19/04/23/16a491477bc19dc2c.png",
+    "ui_targetportrait_hero_anduin": "http://i1.ruliweb.com/img/19/04/23/16a491477bc19dc2c.png",
     "ui_targetportrait_hero_anubarak": "http://i3.ruliweb.com/img/18/06/14/163fc21f8f419dc2c.png",
     "ui_targetportrait_hero_artanis": "http://i1.ruliweb.com/img/18/06/14/163fc21f3ad19dc2c.png",
     "ui_targetportrait_hero_arthas": "http://i3.ruliweb.com/img/18/06/13/163f62ac4df19dc2c.png",
