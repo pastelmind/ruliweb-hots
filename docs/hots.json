@@ -1,6 +1,5 @@
 {
-  "hotsVersion": "2.44.1.73493",
-  "hotsPtrVersion": "2.45.0.73576",
+  "hotsVersion": "2.45.0.73662",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -1922,6 +1921,384 @@
             "description": "일반 공격을 할 때마다 일반 공격 속도가 3초 동안 10% 증가하여 최대 100% 증가합니다. 정조준이 활성화된 동안 일반 공격 사거리가 4 증가합니다.",
             "shortDescription": "일반 공격 강화",
             "upgradeFor": "D"
+          }
+        ]
+      }
+    },
+    "Anduin": {
+      "name": "안두인",
+      "title": "스톰윈드 국왕",
+      "icon": "ui_targetportrait_hero_anduin",
+      "type": "원거리",
+      "role": "support",
+      "newRole": "healer",
+      "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "value": 1665,
+          "levelScaling": 0.04
+        },
+        "radius": 0.625,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 3.4687,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 5.5,
+        "period": 1.2,
+        "damage": {
+          "value": 85,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Leap of Faith",
+            "ko": "신의의 도약"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_anduin_leap_of_faith",
+          "description": "즉시 아군 영웅을 자신의 위치로 끌어당깁니다. 대상 아군은 끌려 오는 동안 저지 불가 상태가 됩니다.",
+          "shortDescription": "자신의 위치로 아군 영웅을 끌어당김",
+          "cooldown": 80,
+          "extras": {
+            "사거리": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Heal",
+            "ko": "순간 치유"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_anduin_flash_heal",
+          "description": "0.75초 동안 주문을 시전해 대상 아군 영웅의 생명력을 270(+4%) 회복시킵니다.",
+          "shortDescription": "아군 영웅 치유",
+          "cooldown": 4,
+          "manaCost": 30,
+          "extras": {
+            "사거리": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Divine Star",
+            "ko": "천상의 별"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_anduin_divine_star",
+          "description": "빛을 내보내 적들에게 146(+4%)의 피해를 줍니다. 빛은 넓은 범위로 자신에게 되돌아오며 경로에 있는 아군 영웅의 생명력을 135(+4%) 회복시킵니다. 적중한 적 영웅 하나당 치유량이 25% 증가합니다.",
+          "shortDescription": "적에게 피해를 주고 아군은 치유하는 신성한 빛을 내보냄",
+          "cooldown": 9,
+          "manaCost": 45,
+          "extras": {
+            "사거리": 10.25,
+            "너비": "2.25 (나갈 때) / 7 (돌아올 때)"
+          }
+        },
+        {
+          "name": {
+            "en": "Chastise",
+            "ko": "응징"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_anduin_chastise",
+          "description": "회오리치는 빛의 물결을 전방으로 내보내 처음 적중하는 적 영웅에게 151(+4%)의 피해를 주고 1.25초 동안 이동 불가 상태로 만듭니다.",
+          "shortDescription": "이동 불가 상태로 만드는 빛을 내보냄",
+          "cooldown": 10,
+          "manaCost": 40,
+          "extras": {
+            "사거리": 10.85,
+            "중심각": "20°"
+          }
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Renew",
+              "ko": "소생"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_flash_heal_a",
+            "description": "적 영웅에게 일반 공격을 하면 다음 순간 치유가 5초에 걸쳐 120(+4%)의 생명력을 추가로 회복시킵니다.",
+            "shortDescription": "일반 공격 시 순간 치유 강화",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Pursued by Grace",
+              "ko": "뒤따르는 은총"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_varians_legacy",
+            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 29(+4%) 회복시킵니다.",
+            "shortDescription": "적 영웅 공격 시 주위 아군 치유",
+            "extras": {
+              "탐색 반경": 6.5
+            }
+          },
+          {
+            "name": {
+              "en": "Bold Strategy",
+              "ko": "과감한 전략"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_bold_strategy",
+            "description": "다른 1 레벨 특성들을 모두 습득하는 대신 순간 치유의 재사용 대기시간이 1초 증가합니다.",
+            "shortDescription": "순간 치유가 약화되지만 특성 추가 습득"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Moral Compass",
+              "ko": "도의의 영역"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_divine_star",
+            "description": "천상의 별이 전환점 가까이에 있는 2명의 적 영웅에게 일반 공격을 발사하여 일반 공격의 70%에 해당하는 피해를 줍니다.",
+            "shortDescription": "천상의 별이 전환점에서 일반 공격",
+            "extras": {
+              "탐색 반경": 3
+            },
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Holy Reach",
+              "ko": "신성한 공세"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_chastise",
+            "description": "응징이 적 영웅에게 적중하면 다음 일반 공격의 사거리가 50% 증가하고 공격력이 50% 증가하며 주위 아군 영웅의 생명력을 94(+4%) 회복시킵니다.",
+            "shortDescription": "응징이 다음 일반 공격 강화",
+            "extras": {
+              "효과 반경": 3.5
+            },
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Inner Fire",
+              "ko": "내면의 열정"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_varians_legacy",
+            "description": "공격 속도가 20% 증가하고 일반 공격 사거리가 15% 증가합니다.",
+            "shortDescription": "공격 속도 및 사거리 증가"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Binding Heal",
+              "ko": "결속의 치유"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_flash_heal",
+            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 83(+4%) 회복합니다.",
+            "shortDescription": "순간 치유가 자신도 치유",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Power Word: Shield",
+              "ko": "신의 권능: 보호막"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_divine_star",
+            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 172(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
+            "shortDescription": "천상의 별로 보호막 획득",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Blessed Recovery",
+              "ko": "축복받은 회복력"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_blessed_recovery",
+            "description": "한 번에 최대 생명력의 8% 이상을 잃으면 3초에 걸쳐 최대 생명력의 15%를 회복합니다.\n\n10초에 한 번씩만 발동합니다.",
+            "shortDescription": "큰 피해를 받으면 생명력 회복"
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Holy Word: Salvation",
+              "ko": "빛의 권능: 구원"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_anduin_holy_word_salvation",
+            "description": "0.5초 후, 정신을 집중하여 3초 동안 빛의 은총을 받습니다. 정신을 집중하는 동안 주위에 있는 아군 영웅들은 최대 생명력의 25%까지 회복하고 보호 상태가 됩니다.",
+            "shortDescription": "주위 아군 보호 및 치유",
+            "cooldown": 80,
+            "manaCost": 70,
+            "extras": {
+              "효과 반경": 6.25
+            }
+          },
+          {
+            "name": {
+              "en": "Lightbomb",
+              "ko": "빛폭탄"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_anduin_light_bomb",
+            "description": "아군 영웅에게 빛의 힘을 불어 넣습니다. 1.5초 후, 빛이 폭발하며 주위 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n대상 아군은 폭발에 적중당한 적 영웅 하나당 146(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 5초 동안 지속됩니다.",
+            "shortDescription": "아군 주위의 적들을 기절시킴",
+            "cooldown": 60,
+            "manaCost": 70,
+            "extras": {
+              "사거리": 8,
+              "피해 반경": 4.5
+            }
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Speed of the Pious",
+              "ko": "신앙이 깊은 자의 속도"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_divine_star",
+            "description": "천상의 별이 움직이는 동안 이동 속도가 30% 증가합니다.",
+            "shortDescription": "천상의 별로 이동 속도 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Enchant Boots - Lion's Speed",
+              "ko": "장화 마법부여 - 사자의 속도"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_leap_of_faith",
+            "description": "이동 속도가 5% 증가합니다. 신의의 도약이 재사용 대기 중이지 않은 동안에는 증가량이 세 배가 됩니다.",
+            "shortDescription": "신의의 도약 사용 가능한 동안 이동 속도 증가",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Push Forward!",
+              "ko": "돌격하라!"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_varians_legacy",
+            "description": "적 영웅에게 피해를 주면 이동 속도가 6초 동안 3% 증가하여 최대 15% 증가합니다.",
+            "shortDescription": "적 영웅 공격 시 이동 속도 증가"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Evenhanded Blessings",
+              "ko": "공평한 축복"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_flash_heal",
+            "description": "순간 치유를 이전과 다른 대상에게 사용하면 재사용 대기시간이 40% 감소합니다.",
+            "shortDescription": "새로운 대상에게 순간 치유 사용 시 재사용 대기시간 감소",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Holy Nova",
+              "ko": "신성한 폭발"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_divine_star",
+            "description": "천상의 별이 자신에게 닿으면 폭발하여 주위 아군 영웅의 생명력을 104(+4%) 회복시키고 적에게는 104(+4%)의 피해를 줍니다.",
+            "shortDescription": "천상의 별이 자신에게 닿으면 폭발",
+            "extras": {
+              "피해 반경": 4
+            },
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Inner Focus",
+              "ko": "내면의 집중력"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_anduin_inner_focus",
+            "description": "사용하면 순간 치유의 재사용 대기시간이 초기화되고 다음 순간 치유의 치유량이 40% 증가합니다.\n\n천상의 별로 적에게 피해를 주면 이 능력의 재사용 대기시간이 10초 감소합니다.",
+            "shortDescription": "사용 시 순간 치유 재사용 대기시간 초기화",
+            "cooldown": 20
+          },
+          {
+            "name": {
+              "en": "Lightwell",
+              "ko": "빛샘"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_anduin_lightwell",
+            "description": "주기적으로 주위 아군 영웅의 생명력을 78(+4%) 회복시키는 빛샘을 소환합니다. 아군을 10회 치유하거나 다른 곳에 소환되면 사라집니다.\n\n아군 영웅을 치유할 때마다 재사용 대기시간이 1초 감소합니다.",
+            "shortDescription": "사용 시 아군을 치유하는 빛샘 소환",
+            "cooldown": 70,
+            "extras": {
+              "사거리": 8,
+              "효과 반경": 3.75
+            }
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Light of Stormwind",
+              "ko": "스톰윈드의 빛"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_holy_word_salvation",
+            "description": "빛의 권능: 구원의 치유량이 증가하여 최대 생명력의 30%까지 치유하고, 정신 집중이 끝나면 아군 영웅들의 이동속도를 3초 동안 40% 증가시킵니다.",
+            "shortDescription": "빛의 권능: 구원이 아군의 이동 속도를 증가시킴",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Glyph of Faith",
+              "ko": "신의의 문양"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_leap_of_faith",
+            "description": "신의의 도약을 2회 충전할 수 있습니다.",
+            "shortDescription": "신의의 도약 2회 충전 가능",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Varian's Legacy",
+              "ko": "바리안의 유산"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_anduin_varians_legacy",
+            "description": "일반 공격이 적을 불태워 3초에 걸쳐 90(+4%)의 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다.",
+            "shortDescription": "일반 공격이 적을 불태움"
+          },
+          {
+            "name": {
+              "en": "Desperate Prayer",
+              "ko": "구원의 기도"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_anduin_desperate_prayer",
+            "description": "사용하면 아군 영웅의 생명력을 562(+4%) 회복시키지만 2초 동안 무릎을 꿇어 아무런 행동도 할 수 없습니다.\n\n구원의 기도를 사용하면 순간 치유에 10초의 재사용 대기시간이  적용됩니다.",
+            "shortDescription": "사용 시 아군 영웅 대량 치유",
+            "cooldown": 40,
+            "extras": {
+              "사거리": 9
+            }
           }
         ]
       }
@@ -6828,7 +7205,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_dehaka_isolation",
-            "description": "생체 물질을 발사해 처음 적중한 적 영웅에게 208(+4%)의 피해를 주고 3초 동안 침묵시키며 30% 느려지게 합니다. 추가로, 대상의 시야 반경이 6초 동안 매우 좁아집니다.",
+            "description": "생체 물질을 발사해 처음 적중한 적 영웅에게 208(+4%)의 피해를 주고 3초 동안 대상을 드러내고 침묵시키며 30% 느려지게 합니다. 추가로, 대상의 시야 반경이 6초 동안 매우 좁아집니다.",
             "shortDescription": "적 영웅 침묵, 감속 및 시야 감소",
             "cooldown": 60,
             "manaCost": 70,
@@ -20805,7 +21182,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_orphea_ult_darkfall",
-            "description": "1.5초 후, 일정 지역 안에 218(+4%)의 피해를 줍니다. 영원한 만찬이 적 영웅에게 적중하면 0초마다 반복됩니다.",
+            "description": "1.5초 후, 일정 지역 안에 218(+4%)의 피해를 줍니다. 영원한 만찬이 적 영웅에게 적중하면 1초마다 반복됩니다.",
             "shortDescription": "일정 지역 안의 적들에게 반복적인 피해",
             "cooldown": 50,
             "manaCost": 75,
@@ -31332,386 +31709,6 @@
             "description": "재생에 정신 집중이 필요하지 않고 피해를 받아도 중단되지 않습니다.",
             "shortDescription": "재생 방해 불가",
             "upgradeFor": "E"
-          }
-        ]
-      }
-    }
-  },
-  "ptrHeroes": {
-    "Anduin": {
-      "name": "안두인",
-      "title": "스톰윈드 국왕",
-      "icon": "ui_targetportrait_hero_anduin",
-      "type": "원거리",
-      "role": "support",
-      "newRole": "healer",
-      "universe": "warcraft",
-      "stats": {
-        "hp": {
-          "value": 1665,
-          "levelScaling": 0.04
-        },
-        "radius": 0.625,
-        "speed": 4.3984,
-        "hpRegen": {
-          "value": 3.4687,
-          "levelScaling": 0.04
-        },
-        "mp": {
-          "value": 500,
-          "levelAdd": 10
-        },
-        "mpRegen": {
-          "value": 3,
-          "levelAdd": 0.098
-        },
-        "range": 5.5,
-        "period": 1.2,
-        "damage": {
-          "value": 85,
-          "levelScaling": 0.04
-        }
-      },
-      "skills": [
-        {
-          "name": {
-            "en": "Leap of Faith",
-            "ko": "신의의 도약"
-          },
-          "type": "D",
-          "icon": "storm_ui_icon_anduin_leap_of_faith",
-          "description": "즉시 아군 영웅을 자신의 위치로 끌어당깁니다. 대상 아군은 끌려 오는 동안 저지 불가 상태가 됩니다.",
-          "shortDescription": "자신의 위치로 아군 영웅을 끌어당김",
-          "cooldown": 80,
-          "extras": {
-            "사거리": 10
-          }
-        },
-        {
-          "name": {
-            "en": "Flash Heal",
-            "ko": "순간 치유"
-          },
-          "type": "Q",
-          "icon": "storm_ui_icon_anduin_flash_heal",
-          "description": "0.75초 동안 주문을 시전해 대상 아군 영웅의 생명력을 270(+4%) 회복시킵니다.",
-          "shortDescription": "아군 영웅 치유",
-          "cooldown": 4,
-          "manaCost": 30,
-          "extras": {
-            "사거리": 9
-          }
-        },
-        {
-          "name": {
-            "en": "Divine Star",
-            "ko": "천상의 별"
-          },
-          "type": "W",
-          "icon": "storm_ui_icon_anduin_divine_star",
-          "description": "빛을 내보내 적들에게 146(+4%)의 피해를 줍니다. 빛은 넓은 범위로 자신에게 되돌아오며 경로에 있는 아군 영웅의 생명력을 135(+4%) 회복시킵니다. 적중한 적 영웅 하나당 치유량이 25% 증가합니다.",
-          "shortDescription": "적에게 피해를 주고 아군은 치유하는 신성한 빛을 내보냄",
-          "cooldown": 9,
-          "manaCost": 45,
-          "extras": {
-            "사거리": 10.25,
-            "너비": "2.25 (나갈 때) / 7 (돌아올 때)"
-          }
-        },
-        {
-          "name": {
-            "en": "Chastise",
-            "ko": "응징"
-          },
-          "type": "E",
-          "icon": "storm_ui_icon_anduin_chastise",
-          "description": "회오리치는 빛의 물결을 전방으로 내보내 처음 적중하는 적 영웅에게 151(+4%)의 피해를 주고 1.25초 동안 이동 불가 상태로 만듭니다.",
-          "shortDescription": "이동 불가 상태로 만드는 빛을 내보냄",
-          "cooldown": 10,
-          "manaCost": 40,
-          "extras": {
-            "사거리": 10.85,
-            "중심각": "20°"
-          }
-        }
-      ],
-      "talents": {
-        "1": [
-          {
-            "name": {
-              "en": "Renew",
-              "ko": "소생"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_flash_heal_a",
-            "description": "적 영웅에게 일반 공격을 하면 다음 순간 치유가 5초에 걸쳐 120(+4%)의 생명력을 추가로 회복시킵니다.",
-            "shortDescription": "일반 공격 시 순간 치유 강화",
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Pursued by Grace",
-              "ko": "뒤따르는 은총"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 29(+4%) 회복시킵니다.",
-            "shortDescription": "적 영웅 공격 시 주위 아군 치유",
-            "extras": {
-              "탐색 반경": 6.5
-            }
-          },
-          {
-            "name": {
-              "en": "Bold Strategy",
-              "ko": "과감한 전략"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_bold_strategy",
-            "description": "다른 1 레벨 특성들을 모두 습득하는 대신 순간 치유의 재사용 대기시간이 1초 증가합니다.",
-            "shortDescription": "순간 치유가 약화되지만 특성 추가 습득"
-          }
-        ],
-        "4": [
-          {
-            "name": {
-              "en": "Moral Compass",
-              "ko": "도의의 영역"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 전환점 가까이에 있는 2명의 적 영웅에게 일반 공격을 발사하여 일반 공격의 70%에 해당하는 피해를 줍니다.",
-            "shortDescription": "천상의 별이 전환점에서 일반 공격",
-            "extras": {
-              "탐색 반경": 3
-            },
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Holy Reach",
-              "ko": "신성한 공세"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_chastise",
-            "description": "응징이 적 영웅에게 적중하면 다음 일반 공격의 사거리가 50% 증가하고 공격력이 50% 증가하며 주위 아군 영웅의 생명력을 94(+4%) 회복시킵니다.",
-            "shortDescription": "응징이 다음 일반 공격 강화",
-            "extras": {
-              "효과 반경": 3.5
-            },
-            "upgradeFor": "E"
-          },
-          {
-            "name": {
-              "en": "Inner Fire",
-              "ko": "내면의 열정"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "공격 속도가 20% 증가하고 일반 공격 사거리가 15% 증가합니다.",
-            "shortDescription": "공격 속도 및 사거리 증가"
-          }
-        ],
-        "7": [
-          {
-            "name": {
-              "en": "Binding Heal",
-              "ko": "결속의 치유"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 83(+4%) 회복합니다.",
-            "shortDescription": "순간 치유가 자신도 치유",
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Power Word: Shield",
-              "ko": "신의 권능: 보호막"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 172(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
-            "shortDescription": "천상의 별로 보호막 획득",
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Blessed Recovery",
-              "ko": "축복받은 회복력"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_blessed_recovery",
-            "description": "한 번에 최대 생명력의 8% 이상을 잃으면 3초에 걸쳐 최대 생명력의 15%를 회복합니다.\n\n10초에 한 번씩만 발동합니다.",
-            "shortDescription": "큰 피해를 받으면 생명력 회복"
-          }
-        ],
-        "10": [
-          {
-            "name": {
-              "en": "Holy Word: Salvation",
-              "ko": "빛의 권능: 구원"
-            },
-            "type": "R",
-            "icon": "storm_ui_icon_anduin_holy_word_salvation",
-            "description": "0.5초 후, 정신을 집중하여 3초 동안 빛의 은총을 받습니다. 정신을 집중하는 동안 주위에 있는 아군 영웅들은 최대 생명력의 25%까지 회복하고 보호 상태가 됩니다.",
-            "shortDescription": "주위 아군 보호 및 치유",
-            "cooldown": 80,
-            "manaCost": 70,
-            "extras": {
-              "효과 반경": 6.25
-            }
-          },
-          {
-            "name": {
-              "en": "Lightbomb",
-              "ko": "빛폭탄"
-            },
-            "type": "R",
-            "icon": "storm_ui_icon_anduin_light_bomb",
-            "description": "아군 영웅에게 빛의 힘을 불어 넣습니다. 1.5초 후, 빛이 폭발하며 주위 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n대상 아군은 폭발에 적중당한 적 영웅 하나당 146(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 5초 동안 지속됩니다.",
-            "shortDescription": "아군 주위의 적들을 기절시킴",
-            "cooldown": 60,
-            "manaCost": 70,
-            "extras": {
-              "사거리": 8,
-              "피해 반경": 4.5
-            }
-          }
-        ],
-        "13": [
-          {
-            "name": {
-              "en": "Speed of the Pious",
-              "ko": "신앙이 깊은 자의 속도"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 움직이는 동안 이동 속도가 30% 증가합니다.",
-            "shortDescription": "천상의 별로 이동 속도 증가",
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Enchant Boots - Lion's Speed",
-              "ko": "장화 마법부여 - 사자의 속도"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_leap_of_faith",
-            "description": "이동 속도가 5% 증가합니다. 신의의 도약이 재사용 대기 중이지 않은 동안에는 증가량이 세 배가 됩니다.",
-            "shortDescription": "신의의 도약 사용 가능한 동안 이동 속도 증가",
-            "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Push Forward!",
-              "ko": "돌격하라!"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "적 영웅에게 피해를 주면 이동 속도가 6초 동안 3% 증가하여 최대 15% 증가합니다.",
-            "shortDescription": "적 영웅 공격 시 이동 속도 증가"
-          }
-        ],
-        "16": [
-          {
-            "name": {
-              "en": "Evenhanded Blessings",
-              "ko": "공평한 축복"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "순간 치유를 이전과 다른 대상에게 사용하면 재사용 대기시간이 40% 감소합니다.",
-            "shortDescription": "새로운 대상에게 순간 치유 사용 시 재사용 대기시간 감소",
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Holy Nova",
-              "ko": "신성한 폭발"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 자신에게 닿으면 폭발하여 주위 아군 영웅의 생명력을 104(+4%) 회복시키고 적에게는 104(+4%)의 피해를 줍니다.",
-            "shortDescription": "천상의 별이 자신에게 닿으면 폭발",
-            "extras": {
-              "피해 반경": 4
-            },
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Inner Focus",
-              "ko": "내면의 집중력"
-            },
-            "type": "active",
-            "icon": "storm_ui_icon_anduin_inner_focus",
-            "description": "사용하면 순간 치유의 재사용 대기시간이 초기화되고 다음 순간 치유의 치유량이 40% 증가합니다.\n\n천상의 별로 적에게 피해를 주면 이 능력의 재사용 대기시간이 10초 감소합니다.",
-            "shortDescription": "사용 시 순간 치유 재사용 대기시간 초기화",
-            "cooldown": 20
-          },
-          {
-            "name": {
-              "en": "Lightwell",
-              "ko": "빛샘"
-            },
-            "type": "active",
-            "icon": "storm_ui_icon_anduin_lightwell",
-            "description": "주기적으로 주위 아군 영웅의 생명력을 78(+4%) 회복시키는 빛샘을 소환합니다. 아군을 10회 치유하거나 다른 곳에 소환되면 사라집니다.\n\n아군 영웅을 치유할 때마다 재사용 대기시간이 1초 감소합니다.",
-            "shortDescription": "사용 시 아군을 치유하는 빛샘 소환",
-            "cooldown": 70,
-            "extras": {
-              "사거리": 8,
-              "효과 반경": 3.75
-            }
-          }
-        ],
-        "20": [
-          {
-            "name": {
-              "en": "Light of Stormwind",
-              "ko": "스톰윈드의 빛"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_holy_word_salvation",
-            "description": "빛의 권능: 구원의 치유량이 증가하여 최대 생명력의 30%까지 치유하고, 정신 집중이 끝나면 아군 영웅들의 이동속도를 3초 동안 40% 증가시킵니다.",
-            "shortDescription": "빛의 권능: 구원이 아군의 이동 속도를 증가시킴",
-            "upgradeFor": "R"
-          },
-          {
-            "name": {
-              "en": "Glyph of Faith",
-              "ko": "신의의 문양"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_leap_of_faith",
-            "description": "신의의 도약을 2회 충전할 수 있습니다.",
-            "shortDescription": "신의의 도약 2회 충전 가능",
-            "upgradeFor": "D"
-          },
-          {
-            "name": {
-              "en": "Varian's Legacy",
-              "ko": "바리안의 유산"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "일반 공격이 적을 불태워 3초에 걸쳐 90(+4%)의 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다.",
-            "shortDescription": "일반 공격이 적을 불태움"
-          },
-          {
-            "name": {
-              "en": "Desperate Prayer",
-              "ko": "구원의 기도"
-            },
-            "type": "active",
-            "icon": "storm_ui_icon_anduin_desperate_prayer",
-            "description": "사용하면 아군 영웅의 생명력을 562(+4%) 회복시키지만 2초 동안 무릎을 꿇어 아무런 행동도 할 수 없습니다.\n\n구원의 기도를 사용하면 순간 치유에 10초의 재사용 대기시간이  적용됩니다.",
-            "shortDescription": "사용 시 아군 영웅 대량 치유",
-            "cooldown": 40,
-            "extras": {
-              "사거리": 9
-            }
           }
         ]
       }
