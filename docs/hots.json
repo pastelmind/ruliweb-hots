@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "2.45.0.73662",
+  "hotsVersion": "2.45.1.74238",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -558,7 +558,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_alarak_discordstrike",
-            "description": "퀘스트: 불화의 일격이 적 영웅에게 적중해야 합니다.\n보상: 불화의 일격이 적 영웅에게 15회 적중하면 불화의 일격의 공격력이 50 증가합니다.\n보상: 불화의 일격이 적 영웅 2명에게 동시에 적중하면 불화의 일격의 공격력이 추가로 50 증가합니다.\n보상: 불화의 일격이 적 영웅 3명에게 동시에 적중하면 불화의 일격의 공격력이 추가로 80 증가하고 다른 모든 보상을 획득합니다.",
+            "description": "퀘스트: 불화의 일격이 적 영웅에게 적중해야 합니다.\n보상: 불화의 일격이 적 영웅에게 15회 적중하면 불화의 일격의 공격력이 60 증가합니다.\n보상: 불화의 일격이 적 영웅 2명에게 동시에 적중하면 불화의 일격의 공격력이 추가로 60 증가합니다.\n보상: 불화의 일격이 적 영웅 3명에게 동시에 적중하면 불화의 일격의 공격력이 추가로 100 증가하고 다른 모든 보상을 획득합니다.",
             "shortDescription": "퀘스트: 영웅 적중 시 불화의 일격 공격력 증가",
             "upgradeFor": "Q"
           },
@@ -569,7 +569,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_alarak_lightningsurge",
-            "description": "대상과 자신 사이의 적에게 주는 피해가 150%로 증가합니다.\n\n반복 퀘스트: 번개 쇄도가 대상과 자신 사이의 적 영웅에게 적중할 때마다 추가 피해량이 5% 증가합니다.",
+            "description": "대상과 자신 사이의 적에게 주는 피해가 150%로 증가합니다.\n\n반복 퀘스트: 번개 쇄도가 대상과 자신 사이의 적 영웅에게 적중할 때마다 추가 피해량이 4% 증가합니다.",
             "shortDescription": "퀘스트: 번개 쇄도 중앙 피해 증가",
             "upgradeFor": "E"
           },
@@ -580,8 +580,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_alarak_sadism",
-            "description": "2초 안에 적 영웅에게 기술 공격이 3회 적중하면 83(+4%)의 추가 피해를 줍니다.",
-            "shortDescription": "기술 연계 시 추가 피해",
+            "description": "2초 안에 적 영웅에게 기술 공격이 3회 적중하면 71(+4%)의 추가 피해를 주고 가학성이 2% 증가하여 최대 20% 증가합니다.\n\n수준 차이로 증가한 가학성은 죽으면 사라집니다.",
+            "shortDescription": "기술 연계 시 추가 피해 및 가학성 증가",
             "upgradeFor": "D"
           }
         ],
@@ -1638,7 +1638,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_ana_biotic_grenade",
-          "description": "대상 위치로 수류탄을 던져 수류탄이 적중한 아군 영웅의 생명력을 173(+4%) 회복시키고 4초 동안 아나로부터 받는 치유량을 25% 증가시킵니다. 수류탄이 적중한 적 영웅에게는 62(+4%)의 피해를 주고 2초 동안 받는 치유량을 100% 감소시킵니다.",
+          "description": "대상 위치로 수류탄을 던져 수류탄이 적중한 아군 영웅의 생명력을 158(+4%) 회복시키고 4초 동안 아나로부터 받는 치유량을 25% 증가시킵니다. 수류탄이 적중한 적 영웅에게는 62(+4%)의 피해를 주고 2초 동안 받는 치유량을 100% 감소시킵니다.",
           "shortDescription": "아군을 치유하고 적의 받는 치유량을 감소시키는 수류탄 투척",
           "cooldown": 16,
           "manaCost": 50,
@@ -1984,7 +1984,7 @@
           "description": "0.75초 동안 주문을 시전해 대상 아군 영웅의 생명력을 270(+4%) 회복시킵니다.",
           "shortDescription": "아군 영웅 치유",
           "cooldown": 4,
-          "manaCost": 30,
+          "manaCost": 25,
           "extras": {
             "사거리": 9
           }
@@ -1999,7 +1999,7 @@
           "description": "빛을 내보내 적들에게 146(+4%)의 피해를 줍니다. 빛은 넓은 범위로 자신에게 되돌아오며 경로에 있는 아군 영웅의 생명력을 135(+4%) 회복시킵니다. 적중한 적 영웅 하나당 치유량이 25% 증가합니다.",
           "shortDescription": "적에게 피해를 주고 아군은 치유하는 신성한 빛을 내보냄",
           "cooldown": 9,
-          "manaCost": 45,
+          "manaCost": 50,
           "extras": {
             "사거리": 10.25,
             "너비": "2.25 (나갈 때) / 7 (돌아올 때)"
@@ -2031,7 +2031,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_flash_heal_a",
-            "description": "적 영웅에게 일반 공격을 하면 다음 순간 치유가 5초에 걸쳐 120(+4%)의 생명력을 추가로 회복시킵니다.",
+            "description": "적 영웅에게 일반 공격을 하면 다음 순간 치유가 5초에 걸쳐 135(+4%)의 생명력을 추가로 회복시킵니다.",
             "shortDescription": "일반 공격 시 순간 치유 강화",
             "upgradeFor": "Q"
           },
@@ -2042,7 +2042,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 29(+4%) 회복시킵니다.",
+            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 34(+4%) 회복시킵니다.",
             "shortDescription": "적 영웅 공격 시 주위 아군 치유",
             "extras": {
               "탐색 반경": 6.5
@@ -2055,7 +2055,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_bold_strategy",
-            "description": "다른 1 레벨 특성들을 모두 습득하는 대신 순간 치유의 재사용 대기시간이 1초 증가합니다.",
+            "description": "다른 1 레벨 특성들을 모두 습득하는 대신 순간 치유의 재사용 대기시간이 2초 증가합니다.",
             "shortDescription": "순간 치유가 약화되지만 특성 추가 습득"
           }
         ],
@@ -2081,7 +2081,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_chastise",
-            "description": "응징이 적 영웅에게 적중하면 다음 일반 공격의 사거리가 50% 증가하고 공격력이 50% 증가하며 주위 아군 영웅의 생명력을 94(+4%) 회복시킵니다.",
+            "description": "응징이 적 영웅에게 적중하면 다음 일반 공격의 사거리가 50% 증가하고 공격력이 75% 증가하며 주위 아군 영웅의 생명력을 104(+4%) 회복시킵니다.",
             "shortDescription": "응징이 다음 일반 공격 강화",
             "extras": {
               "효과 반경": 3.5
@@ -2107,7 +2107,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 83(+4%) 회복합니다.",
+            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 99(+4%) 회복합니다.",
             "shortDescription": "순간 치유가 자신도 치유",
             "upgradeFor": "Q"
           },
@@ -2118,7 +2118,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 172(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
+            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 179(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
             "shortDescription": "천상의 별로 보호막 획득",
             "upgradeFor": "W"
           },
@@ -2156,7 +2156,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_anduin_light_bomb",
-            "description": "아군 영웅에게 빛의 힘을 불어 넣습니다. 1.5초 후, 빛이 폭발하며 주위 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n대상 아군은 폭발에 적중당한 적 영웅 하나당 146(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 5초 동안 지속됩니다.",
+            "description": "아군 영웅에게 빛의 힘을 불어 넣습니다. 1.5초 후, 빛이 폭발하며 주위 적들에게 156(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n대상 아군은 폭발에 적중당한 적 영웅 하나당 172(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 5초 동안 지속됩니다.",
             "shortDescription": "아군 주위의 적들을 기절시킴",
             "cooldown": 60,
             "manaCost": 70,
@@ -2185,7 +2185,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_leap_of_faith",
-            "description": "이동 속도가 5% 증가합니다. 신의의 도약이 재사용 대기 중이지 않은 동안에는 증가량이 세 배가 됩니다.",
+            "description": "이동 속도가 5% 증가합니다. 신의의 도약이 재사용 대기 중이지 않은 동안에는 증가량이 네 배가 됩니다.",
             "shortDescription": "신의의 도약 사용 가능한 동안 이동 속도 증가",
             "upgradeFor": "D"
           },
@@ -2196,7 +2196,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "적 영웅에게 피해를 주면 이동 속도가 6초 동안 3% 증가하여 최대 15% 증가합니다.",
+            "description": "적 영웅에게 피해를 주면 이동 속도가 6초 동안 2.5% 증가하여 최대 20% 증가합니다.",
             "shortDescription": "적 영웅 공격 시 이동 속도 증가"
           }
         ],
@@ -2208,7 +2208,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "순간 치유를 이전과 다른 대상에게 사용하면 재사용 대기시간이 40% 감소합니다.",
+            "description": "순간 치유를 이전과 다른 대상에게 사용하면 재사용 대기시간이 50% 감소합니다.",
             "shortDescription": "새로운 대상에게 순간 치유 사용 시 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -2219,7 +2219,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 자신에게 닿으면 폭발하여 주위 아군 영웅의 생명력을 104(+4%) 회복시키고 적에게는 104(+4%)의 피해를 줍니다.",
+            "description": "천상의 별이 자신에게 닿으면 폭발하여 주위 아군 영웅의 생명력을 109(+4%) 회복시키고 적에게는 109(+4%)의 피해를 줍니다.",
             "shortDescription": "천상의 별이 자신에게 닿으면 폭발",
             "extras": {
               "피해 반경": 4
@@ -2233,7 +2233,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_anduin_inner_focus",
-            "description": "사용하면 순간 치유의 재사용 대기시간이 초기화되고 다음 순간 치유의 치유량이 40% 증가합니다.\n\n천상의 별로 적에게 피해를 주면 이 능력의 재사용 대기시간이 10초 감소합니다.",
+            "description": "사용하면 순간 치유의 재사용 대기시간이 초기화되고 다음 순간 치유의 치유량이 40% 증가합니다.\n\n천상의 별로 적 영웅에게 피해를 주면 이 능력의 재사용 대기시간이 8초 감소합니다.",
             "shortDescription": "사용 시 순간 치유 재사용 대기시간 초기화",
             "cooldown": 20
           },
@@ -2246,7 +2246,7 @@
             "icon": "storm_ui_icon_anduin_lightwell",
             "description": "주기적으로 주위 아군 영웅의 생명력을 78(+4%) 회복시키는 빛샘을 소환합니다. 아군을 10회 치유하거나 다른 곳에 소환되면 사라집니다.\n\n아군 영웅을 치유할 때마다 재사용 대기시간이 1초 감소합니다.",
             "shortDescription": "사용 시 아군을 치유하는 빛샘 소환",
-            "cooldown": 70,
+            "cooldown": 80,
             "extras": {
               "사거리": 8,
               "효과 반경": 3.75
@@ -2412,7 +2412,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anubarak_scarabhost",
-            "description": "딱정벌레는 기본 기술 방어력이 30입니다.8초마다 딱정벌레를 생성합니다. 활성화 또는 비활성화할 수 있습니다.",
+            "description": "딱정벌레는 기본 기술 방어력이 30입니다.12초마다 딱정벌레를 생성합니다. 활성화 또는 비활성화할 수 있습니다.",
             "shortDescription": "주기적으로 딱정벌레 생성",
             "upgradeFor": "D"
           },
@@ -2526,13 +2526,13 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_anubarak_webblast",
-            "description": "대상 적 영웅을 8초 동안 고치 안에 가둡니다. 고치에 갇힌 적은 아무런 행동도 할 수 없고, 대상으로 지정되지 않습니다. 갇힌 영웅의 아군들은 고치를 공격해서 동료를 더 일찍 풀어줄 수 있습니다.",
+            "description": "대상 적 영웅을 7초 동안 고치 안에 가둡니다. 고치에 갇힌 적은 아무런 행동도 할 수 없고, 대상으로 지정되지 않습니다. 갇힌 영웅의 아군들은 고치를 공격해서 동료를 더 일찍 풀어줄 수 있습니다.",
             "shortDescription": "적을 고치 안에 가둠",
             "cooldown": 70,
             "manaCost": 70,
             "extras": {
               "사거리": 6,
-              "고치 생명력": "16 (초당 -2)"
+              "고치 생명력": "28 (초당 -4)"
             }
           }
         ],
@@ -5928,7 +5928,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_johanna_condemn",
-          "description": "1초 후, 주위 적들을 끌어당기며 57(+4%)의 피해를 주고 0.25초 동안 기절시킵니다. 돌격병과 용병에게는 200%의 추가 피해를 줍니다.",
+          "description": "1초 후, 주위 적들을 끌어당기며 60(+4%)의 피해를 주고 0.25초 동안 기절시킵니다. 돌격병과 용병에게는 200%의 추가 피해를 줍니다.",
           "shortDescription": "주위 적들을 끌어당기고 피해를 줌",
           "cooldown": 10,
           "manaCost": 50,
@@ -5972,7 +5972,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_johanna_iron_skin",
-            "description": "철갑 피부의 보호막이 50% 증가하고 재사용 대기시간이 4초 감소합니다.",
+            "description": "철갑 피부의 보호막이 60% 증가하고 재사용 대기시간이 5초 감소합니다.",
             "shortDescription": "철갑 피부 보호막 증가 및 재사용 대기시간 감소",
             "upgradeFor": "D"
           },
@@ -5996,7 +5996,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_johanna_condemn",
-            "description": "규탄이 적중한 적 하나당 규탄의 재사용 대기시간이 0.5초 감소하고 3의 마나를 돌려받습니다. 최대 10명의 대상에게 적용됩니다.",
+            "description": "규탄이 적중한 적 하나당 규탄의 재사용 대기시간이 0.75초 감소하고 3의 마나를 돌려받습니다. 최대 8명의 대상에게 적용됩니다.",
             "shortDescription": "규탄 강화",
             "upgradeFor": "W"
           },
@@ -6042,7 +6042,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_johanna_shield_glare",
-            "description": "눈부신 방패의 실명 효과의 지속 시간이 0.75초 증가합니다. 눈부신 방패가 적중한 적에게 일반 공격을 하면 지속 시간이 추가로 1초 증가하여 최대 3초 증가합니다.",
+            "description": "눈부신 방패의 실명 효과의 지속 시간이 1초 증가합니다. 눈부신 방패가 적중한 적에게 일반 공격을 하면 지속 시간이 추가로 1초 증가하여 최대 3초 증가합니다.",
             "shortDescription": "눈부신 방패 지속 시간 증가",
             "upgradeFor": "E"
           },
@@ -6185,7 +6185,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_johanna_blessed_shield",
-            "description": "축복받은 방패의 기절 지속 시간이 33% 증가하고, 방패에 적중당하는 적의 최대 수가 2 증가합니다.",
+            "description": "축복받은 방패에 적중당하는 적의 수가 2 증가합니다. 기절 지속 시간이 2초로 증가하고 적중당하는 모든 적이 최대 시간만큼 기절합니다.",
             "shortDescription": "축복받은 방패 기절 지속 시간 및 적중 대상 수 증가",
             "upgradeFor": "R"
           },
@@ -6947,7 +6947,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_deckard_stay_awhile_and_listen",
-            "description": "잠시 내 말 좀 들어보게나로 수면 상태가 되었다가 깨어난 적들이 2초 동안 침묵 및 실명 상태가 됩니다.",
+            "description": "잠시 내 말 좀 들어보게나로 수면 상태가 되었다가 깨어난 적들이 3초 동안 침묵 및 실명 상태가 됩니다.",
             "shortDescription": "잠시 내 말 좀 들어보게나가 침묵 및 실명",
             "upgradeFor": "R"
           },
@@ -6958,7 +6958,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_deckard_lorenado",
-            "description": "고서 회오리가 적 영웅을 밀쳐낼 때마다 고서 회오리의 재사용 대기시간이 6초 감소합니다. 이 효과는 0.5초에 한 번씩만 발동합니다.",
+            "description": "고서 회오리가 적 영웅을 밀쳐낼 때마다 고서 회오리의 재사용 대기시간이 10초 감소합니다. 이 효과는 0.5초에 한 번씩만 발동합니다.",
             "shortDescription": "영웅 적중 시 고서 회오리 재사용 대기시간 감소",
             "upgradeFor": "R"
           },
@@ -6980,7 +6980,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_deckard_perfect_gems",
-            "description": "모든 보석의 재사용 대기시간이 25초 감소하고 호라드림의 함의 재사용 대기시간이 5초 감소합니다.",
+            "description": "모든 보석의 재사용 대기시간이 25초 감소하고 호라드림의 함의 재사용 대기시간이 6초 감소합니다.",
             "shortDescription": "보석 및 호라드림의 함 재사용 대기시간 감소",
             "upgradeFor": "W"
           }
@@ -8189,7 +8189,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_boundlessstride_a",
-            "description": "5초 동안 일반 공격하거나 피해를 입지 않으면 드리아드의 날렵함의 이동 속도 증가 효과가 10% 증가합니다.",
+            "description": "4초 동안 일반 공격하거나 피해를 입지 않으면 드리아드의 날렵함의 이동 속도 증가 효과가 10% 증가합니다.",
             "shortDescription": "드리아드의 날렵함 효과 증가",
             "upgradeFor": "Z"
           }
@@ -8202,7 +8202,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_pollencloud",
-            "description": "치명적인 꽃의 사거리가 25% 증가하고 폭발 반경이 20% 증가합니다. 치명적인 꽃이 적 영웅에게 적중하면 이동 속도가 3초 동안 12% 증가합니다. 이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
+            "description": "치명적인 꽃의 사거리가 25% 증가하고 폭발 반경이 20% 증가합니다. 치명적인 꽃이 적 영웅에게 적중하면 이동 속도가 3초 동안 15% 증가합니다. 이 효과는 다른 이동 속도 증가 효과와 함께 적용될 수 있습니다.",
             "shortDescription": "치명적인 꽃 사거리 및 폭발 반경 증가",
             "upgradeFor": "Q"
           },
@@ -8252,7 +8252,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_pollencloud_b",
-            "description": "자연의 독소가 적용된 적에게 치명적인 꽃이 85%의 추가 피해를 줍니다. 자연의 독소가 3회 중첩된 적에게는 135%의 추가 피해를 줍니다.",
+            "description": "자연의 독소가 적용된 적에게 치명적인 꽃이 100%의 추가 피해를 줍니다. 자연의 독소가 3회 중첩된 적에게는 150%의 추가 피해를 줍니다.",
             "shortDescription": "자연의 독소로 치명적인 꽃 공격력 증가",
             "upgradeFor": "Q"
           },
@@ -8276,7 +8276,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_lunara_wildspear",
-            "description": "덩굴을 내보내 일직선상의 적들에게 171(+4%)의 피해를 줍니다.\n\n최대 3회 충전됩니다.",
+            "description": "덩굴을 내보내 일직선상의 적들에게 183(+4%)의 피해를 줍니다.\n\n최대 3회 충전됩니다.",
             "shortDescription": "일직선상의 적들에게 피해",
             "rechargeCooldown": 15,
             "manaCost": 35,
@@ -8309,7 +8309,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_fullbloom",
-            "description": "자연의 독소가 2명 이상의 적 영웅에게 적용된 동안 마비 포자를 사용하면 마비 포자의 재사용 대기시간이 3초 감소합니다.",
+            "description": "자연의 독소가 2명 이상의 적 영웅에게 적용된 동안 마비 포자를 사용하면 마비 포자의 재사용 대기시간이 4초 감소합니다.",
             "shortDescription": "자연의 독소로 마비 포자 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -8343,7 +8343,7 @@
             "icon": "storm_ui_icon_lunara_abolishmagic",
             "description": "사용하면 자신과 대상 아군에게 걸린 모든 무력화 효과와 지속 피해 효과를 제거합니다. 그 후 2초 동안 무력화 효과의 지속 시간을 50% 감소시킵니다.",
             "shortDescription": "자신과 대상의 모든 무력화 효과 제거",
-            "cooldown": 35,
+            "cooldown": 30,
             "extras": {
               "사거리": 10
             }
@@ -8357,7 +8357,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lunara_pollencloud",
-            "description": "자연의 독소가 2명 이상의 적 영웅에게 적용된 동안 치명적인 꽃의 재사용 대기시간이 100% 더 빨리 감소합니다.",
+            "description": "치명적인 꽃의 마나 소모량이 60에서 40으로 감소합니다. 자연의 독소가 2명 이상의 적 영웅에게 적용된 동안 치명적의 꽃의 재사용 대기시간이 100% 더 빨리 감소합니다.",
             "shortDescription": "치명적인 꽃 충전 속도 증가",
             "upgradeFor": "Q"
           },
@@ -9595,7 +9595,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_blaze_pyromania",
-          "description": "4초 동안 방어력이 35 증가하고 주위 적들에게 0.5초마다 42(+4%)의 피해를 줍니다.\n\n적 영웅에게 화염 방사가 적중할 때마다 방화광의 재사용 대기시간이 5초 감소합니다.",
+          "description": "4초 동안 방어력이 40 증가하고 주위 적들에게 0.5초마다 42(+4%)의 피해를 줍니다.\n\n적 영웅에게 화염 방사가 적중할 때마다 방화광의 재사용 대기시간이 5초 감소합니다.",
           "shortDescription": "방어력 증가 및 주위 적들에게 피해를 줌",
           "cooldown": 90,
           "extras": {
@@ -9644,8 +9644,8 @@
           "icon": "storm_ui_icon_blaze_jet",
           "description": "0.5초 후, 전방으로 질주하여 처음 적중한 적 영웅과 주위의 적 영웅들에게 54(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.",
           "shortDescription": "전방으로 질주하여 적 영웅들에게 피해를 주고 기절시킴",
-          "cooldown": 9,
-          "manaCost": 45,
+          "cooldown": 8,
+          "manaCost": 40,
           "extras": {
             "사거리": 9.8,
             "너비": 2.25,
@@ -9703,17 +9703,6 @@
         "4": [
           {
             "name": {
-              "en": "Feeding the Flame",
-              "ko": "불장난"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_blaze_flame",
-            "description": "화염 방사가 적중한 적 영웅 하나당 기름 뿌리기의 재사용 대기시간이 2초 감소하고 5의 마나를 돌려받습니다.",
-            "shortDescription": "화염 방사로 기름 뿌리기 재사용 대기시간 감소",
-            "upgradeFor": "Q"
-          },
-          {
-            "name": {
               "en": "Adhesive Petroleum",
               "ko": "접착성 석유"
             },
@@ -9730,7 +9719,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_blaze_oil_b",
-            "description": "기름 뿌리기의 범위가 20% 증가합니다.",
+            "description": "기름 뿌리기의 범위가 20% 증가합니다. 화염 방사가 적중한 적 영웅 하나당 기름 뿌리기의 재사용 대기시간이 1초 감소하고 5의 마나를 돌려받습니다.",
             "shortDescription": "기름 뿌리기 범위 증가",
             "upgradeFor": "W"
           },
@@ -9790,8 +9779,8 @@
             "icon": "storm_ui_icon_blaze_bunker",
             "description": "0.5초 후, 생명력이 1492(+4%)인 벙커를 호출하여 들어갑니다. 벙커에는 자신과 아군이 자유롭게 드나들 수 있습니다. 벙커 내부에 있는 동안 아군 영웅은 화염 방사기를 사용하여 일직선상의 적들에게 177(+4%)의 피해를 줄 수 있습니다.\n\n벙커에서 나오면 방어력이 2초 동안 25 증가합니다. 10초 동안, 또는 파괴될 때까지 지속됩니다.",
             "shortDescription": "벙커를 호출합니다.",
-            "cooldown": 80,
-            "manaCost": 80,
+            "cooldown": 70,
+            "manaCost": 70,
             "extras": {
               "충돌 반경": 1.25,
               "시야 반경": "3 (빈 벙커) / 7 (들어갔을 때)"
@@ -9836,7 +9825,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_blaze_flame",
-            "description": "화염 방사의 각 불길이 적 영웅의 기술 위력을 4초 동안 20% 감소시켜 최대 40% 감소시킵니다.",
+            "description": "화염 방사의 각 불길이 적 영웅의 기술 위력을 4초 동안 25% 감소시켜 최대 50% 감소시킵니다.",
             "shortDescription": "화염 방사가 적 기술 위력을 감소시킴",
             "upgradeFor": "Q"
           },
@@ -9871,7 +9860,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_blaze_jet",
-            "description": "제트 추진기가 적중한 적 영웅 하나당 방어력이 3초 동안 10 증가하고 재사용 대기시간이 1.5초 감소합니다.",
+            "description": "제트 추진기가 적중한 적 영웅 하나당 방어력이 3초 동안 10 증가하고 재사용 대기시간이 1.25초 감소합니다.",
             "shortDescription": "제트 추진기 적중 시 방어력 증가 및 재사용 대기시간 감소",
             "upgradeFor": "E"
           },
@@ -10379,7 +10368,7 @@
           "icon": "storm_ui_icon_garrosh_wrecking_ball",
           "description": "주위의 적 영웅이나 돌격병, 용병을 내던져 대상 위치에 있는 적들에게 95(+4%)의 피해를 주고 2.5초 동안 30% 느려지게 합니다.",
           "shortDescription": "적을 내던져 피해를 주고 느려지게 함",
-          "cooldown": 14,
+          "cooldown": 16,
           "manaCost": 60,
           "extras": {
             "포획 반경": 2.75,
@@ -10408,7 +10397,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_garrosh_wrecking_ball",
-            "description": "파쇄추의 투척 사거리가 25% 증가하고 공격력이 75% 증가합니다.",
+            "description": "파쇄추의 투척 사거리가 25% 증가하고 공격력이 125% 증가합니다.",
             "shortDescription": "파쇄추 투척 사거리 및 공격력 증가",
             "upgradeFor": "E"
           },
@@ -10419,7 +10408,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_garrosh_slam",
-            "description": "사용하면 적에게 115(+4%)의 피해를 주고 2초 동안 40% 느려지게 합니다.\n\n고유 능력으로 증가한 방어력의 200%만큼 공격력이 증가하고, 고유 능력으로 증가한 방어력이 25 이상이면 이동 속도 감소 효과가 20% 증가합니다.",
+            "description": "사용하면 대상 적에게 115(+4%)의 피해를 주고 2초 동안 35% 느려지게 합니다. 적중당한 적 영웅은 3초 동안 받는 치유량이 30% 감소합니다.",
             "shortDescription": "적에게 피해를 주고 느려지게 함",
             "cooldown": 16,
             "extras": {
@@ -10486,17 +10475,6 @@
           },
           {
             "name": {
-              "en": "Brute Force",
-              "ko": "압살"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_garrosh_slam",
-            "description": "들이치기에 적중당한 적 영웅이 받는 치유량이 4초 동안 50% 감소합니다.",
-            "shortDescription": "들이치기가 받는 치유량을 감소시킴",
-            "upgradeFor": "active"
-          },
-          {
-            "name": {
               "en": "Into the Fray",
               "ko": "참전"
             },
@@ -10535,7 +10513,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_garrosh_decimate",
-            "description": "주위 적들에게 52(+4%)의 피해를 주고 1.5초 동안 30% 느려지게 합니다. 영웅에게는 100%의 추가 피해를 주고 적중한 적 영웅 하나당 재사용 대기시간이 1초 감소합니다.\n\n최대 3회 충전됩니다.",
+            "description": "주위 적들에게 52(+4%)의 피해를 주고 1.5초 동안 40% 느려지게 합니다. 영웅에게는 100%의 추가 피해를 주고 적중한 적 영웅 하나당 재사용 대기시간이 1초 감소합니다.\n\n최대 3회 충전됩니다.",
             "shortDescription": "주위 적들에게 피해를 주고 느려지게 함",
             "rechargeCooldown": 8,
             "manaCost": 25,
@@ -10599,7 +10577,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_garrosh_groundbreaker_var1",
-            "description": "대지파괴자로 영웅을 기절시킨 후 3초 내에 파쇄추를 사용하면, 파쇄추의 재사용 대기시간이 9초 감소합니다.",
+            "description": "대지파괴자로 영웅을 기절시킨 후 3초 내에 그 영웅에게 파쇄추를 사용하면, 파쇄추의 재사용 대기시간이 10초 감소합니다. 기술 순서에 상관 없이 적용됩니다.",
             "shortDescription": "대지파괴자로 기절시킨 영웅에게 파쇄추 사용 시 파쇄추 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -10634,7 +10612,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_garrosh_decimate",
-            "description": "척살에 적중당한 적 영웅의 공격력이 3초 동안 20% 감소합니다.",
+            "description": "척살에 적중당한 적 영웅의 공격력이 3초 동안 25% 감소합니다.",
             "shortDescription": "척살이 공격력을 감소시킴",
             "upgradeFor": "R"
           },
@@ -11533,8 +11511,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_guldan_felflame",
-            "description": "퀘스트: 지옥 불길이 적 영웅에게 40회 적중해야 합니다.\n보상: 지옥 불길의 사거리가 10% 증가합니다.",
-            "shortDescription": "퀘스트: 영웅에게 40회 적중 시 사거리 증가",
+            "description": "퀘스트: 지옥 불길이 적 영웅에게 30회 적중해야 합니다.\n보상: 지옥 불길의 사거리가 10% 증가합니다.",
+            "shortDescription": "퀘스트: 영웅에게 30회 적중 시 사거리 증가",
             "upgradeFor": "Q"
           },
           {
@@ -11544,7 +11522,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_guldan_healthfunnel",
-            "description": "생명력 흡수의 시전 사거리가 25% 증가하고 재생의 구슬의 회복량이 50% 증가합니다.\n\n퀘스트: 재생의 구슬을 20개 획득해야 합니다.\n보상: 일반 기술의 마나 소모량이 영구히 20 감소합니다.",
+            "description": "생명력 흡수의 시전 사거리가 25% 증가하고 재생의 구슬의 회복량이 50% 증가합니다.\n\n퀘스트: 재생의 구슬을 15개 획득해야 합니다.\n보상: 일반 기술의 마나 소모량이 영구히 20 감소합니다.",
             "shortDescription": "퀘스트: 재생의 구슬 획득 시 마나 소모량 감소",
             "upgradeFor": "W"
           },
@@ -11606,7 +11584,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_guldan_felflame",
-            "description": "지옥 불길이 적중한 적 영웅 하나당 부패의 재사용 대기시간이 1초 감소합니다.",
+            "description": "지옥 불길이 적중한 적 영웅 하나당 부패의 재사용 대기시간이 1.5초 감소합니다.",
             "shortDescription": "지옥 불길 적중 시 부패 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -11617,7 +11595,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_guldan_healthfunnel",
-            "description": "부패가 적용된 적에게 생명력 흡수가 50%의 추가 피해를 주고 대상의 이동 속도를 35% 감소시킵니다.",
+            "description": "부패가 적용된 적에게 생명력 흡수가 50%의 추가 피해를 주고 대상의 이동 속도를 50% 감소시킵니다.",
             "shortDescription": "부패가 생명력 흡수 강화",
             "upgradeFor": "W"
           },
@@ -11656,12 +11634,12 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_guldan_rainoffire",
-            "description": "정신을 집중하며 대상 지역에 7초 동안 유성우를 소환합니다. 각 유성은 좁은 지역에 172(+4%)의 피해를 줍니다.",
+            "description": "1.5초 후, 대상 지역에 7초 동안 유성우를 소환합니다. 각 유성은 좁은 지역에 172(+4%)의 피해를 줍니다.",
             "shortDescription": "대상 지역에 유성우 소환",
             "cooldown": 100,
             "manaCost": 90,
             "extras": {
-              "사거리": 15,
+              "사거리": 10,
               "생성 반경": 11,
               "피해 반경": 1.75
             }
@@ -11742,7 +11720,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_guldan_lifetap",
-            "description": "생명력 전환을 사용하면 다음 기술의 공격력과 치유량이 25% 증가합니다.",
+            "description": "생명력 전환을 사용하면 다음 기술의 공격력과 치유량이 30% 증가합니다.",
             "shortDescription": "생명력 전환 사용 시 공격력 증가",
             "upgradeFor": "D"
           }
@@ -12549,7 +12527,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_imperius_w",
-          "description": "불길의 파도를 내보내 104(+4%)의 피해를 줍니다. 중심부의 적에게는 52(+4%)의 추가 피해를 주고 3초 동안 40% 느려지게 합니다.",
+          "description": "불길의 파도를 내보내 104(+4%)의 피해를 줍니다. 중심부의 적에게는 50%의 추가 피해를 주고 3초 동안 40% 느려지게 합니다.",
           "shortDescription": "일직선상의 적들에게 피해를 주고 느려지게 함",
           "cooldown": 8,
           "manaCost": 50,
@@ -12594,7 +12572,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_w",
-            "description": "솔라리온의 불길의 중심부의 공격력이 125 증가하고 감속 효과가 15% 증가합니다.",
+            "description": "솔라리온의 불길의 중심부의 공격력이 추가로 100% 증가하고 감속 효과가 15% 증가합니다.",
             "shortDescription": "솔라리온의 불길 중심부 공격력 및 감속 효과 증가",
             "upgradeFor": "W"
           },
@@ -12653,7 +12631,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_q",
-            "description": "솔라리온의 불길의 낙인이 찍힌 적 영웅에게 천공의 돌진이 적중하면 대상 주위에 206(+4%)의 피해를 줍니다.",
+            "description": "천공의 돌진이 적중한 대상의 낙인을 불태우면 대상 주위 적들에게 187(+4%)의 피해를 주고 4초 동안 312(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
             "shortDescription": "솔라리온의 불길로 광역 피해를 줄 수 있음",
             "extras": {
               "피해 반경": 3
@@ -13034,7 +13012,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_jaina_frostbolt",
-            "description": "얼음 화살이 한기를 느끼는 대상에게 적중하면 재사용 대기시간이 2초 감소하고 10의 마나를 회복합니다.",
+            "description": "얼음 화살이 한기를 느끼는 대상에게 적중하면 재사용 대기시간이 1.5초 감소하고 10의 마나를 회복합니다.",
             "shortDescription": "한기를 느끼는 대상 적중 시 얼음 화살 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -13056,7 +13034,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_damage",
-            "description": "일반 공격이 한기를 느끼는 적 영웅에게 100%의 추가 피해를 주고 눈보라의 재사용 대기시간을 1.5초 감소시킵니다.",
+            "description": "일반 공격이 한기를 느끼는 적 영웅에게 100%의 추가 피해를 주고 눈보라의 재사용 대기시간을 2초 감소시킵니다.",
             "shortDescription": "일반 공격력 증가"
           }
         ],
@@ -13101,8 +13079,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_jaina_blizzard",
-            "description": "눈보라의 시전 사거리가 100% 증가합니다.",
-            "shortDescription": "눈보라 시전 사거리 증가",
+            "description": "눈보라의 시전 사거리가 75% 증가하고 반경이 30% 증가합니다.",
+            "shortDescription": "눈보라 시전 사거리 및 반경 증가",
             "upgradeFor": "W"
           },
           {
@@ -13136,8 +13114,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_jaina_blizzard",
-            "description": "눈보라의 반경이 30% 증가합니다.",
-            "shortDescription": "눈보라 반경 증가",
+            "description": "눈보라의 두 번째 얼음 공격력이 20% 증가하고, 세 번째의 공격력은 60% 증가합니다.",
+            "shortDescription": "눈보라 공격력 증가",
             "upgradeFor": "W"
           },
           {
@@ -14776,8 +14754,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_etc_guitarsolo",
-            "description": "기타 솔로가 활성화된 동안, 일반 공격으로 준 피해의 50%만큼 생명력을 회복합니다.",
-            "shortDescription": "기타 솔로 중 일반 공격 시 생명력 회복",
+            "description": "기타 솔로가 활성화된 동안, 일반 공격으로 준 피해의 40%만큼 생명력을 회복합니다. 또한 일반 공격이 기타 솔로의 지속 시간을 0.25초 증가시킵니다.",
+            "shortDescription": "기타 솔로 중 일반 공격 시 지속 시간 및 회복량 증가",
             "upgradeFor": "E"
           },
           {
@@ -14801,7 +14779,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_etc_rockstar",
-            "description": "일반 기술 또는 궁극기를 사용하면 주위 아군 영웅들의 물리 방어력이 50 증가하여 8초 이내의 다음 영웅 일반 공격으로 받는 피해가 50% 감소합니다. 최대 2회 충전됩니다.",
+            "description": "일반 기술 또는 궁극기를 사용하면 주위 아군 영웅들의 물리 방어력이 75 증가하여 8초 이내의 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다. 최대 2회 충전됩니다.",
             "shortDescription": "록스타가 아군의 물리 방어력을 증가시킴",
             "extras": {
               "효과 반경": 4.4
@@ -14839,7 +14817,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_etc_speedmetal",
-            "description": "일반 기술 또는 궁극기를 사용하면 주위 아군 영웅의 이동 속도가 2초 동안 15% 증가합니다.",
+            "description": "일반 기술 또는 궁극기를 사용하면 주위 아군 영웅의 이동 속도가 2초 동안 20% 증가합니다.",
             "shortDescription": "록스타에 이동 속도 증가 효과 추가",
             "upgradeFor": "D"
           }
@@ -14876,7 +14854,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_damage",
-            "description": "기술을 사용한 후 다음 2회의 일반 공격이 35%의 추가 피해를 줍니다.",
+            "description": "기술을 사용한 후 다음 2회의 일반 공격이 40%의 추가 피해를 줍니다.",
             "shortDescription": "기술 사용 시 일반 공격 강화"
           }
         ],
@@ -14921,7 +14899,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_etc_facemelt",
-            "description": "고막 터트리기가 최소 2명의 대상에게 적중하면 재사용 대기시간이 6초 감소합니다.",
+            "description": "고막 터트리기가 최소 2명의 적에게 적중하면 재사용 대기시간이 6초 감소합니다.",
             "shortDescription": "고막 터트리기로 여러 대상 적중 시 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -16687,7 +16665,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_maiev_rush_1",
-          "description": "187(+4%)의 피해를 주는 그림자를 대상 위치로 내보냅니다. 대상 위치에 도달한 그림자는 내보냈던 위치로 되돌아옵니다. 적 영웅에게 적중하면 재사용 대기시간이 4초 감소합니다. 그림자를 내보낸 동안 다시 사용하면 그림자의 위치로 점멸합니다.",
+          "description": "156(+4%)의 피해를 주는 그림자를 대상 위치로 내보냅니다. 대상 위치에 도달한 그림자는 내보냈던 위치로 되돌아옵니다. 적 영웅에게 적중하면 재사용 대기시간이 4초 감소합니다. 그림자를 내보낸 동안 다시 사용하면 그림자의 위치로 점멸합니다.",
           "shortDescription": "자신의 모습을 투영한 그림자를 내보낸 후 대상 위치로 점멸 가능",
           "cooldown": 13,
           "manaCost": 50,
@@ -16768,7 +16746,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_maiev_rush_2",
-            "description": "복수의 영혼이 적 영웅에게 적중한 후 0.35초 안에 점멸을 사용하면 그림자가 폭발하여 적 영웅들에게 대상의 최대 생명력의 5%만큼 피해를 줍니다.",
+            "description": "복수의 영혼으로 점멸을 사용하면 그림자가 폭발하여 주위 모든 적 영웅에게 대상의 최대 생명력의 5%만큼 피해를 줍니다.",
             "shortDescription": "점멸 사용 시 광역 피해",
             "extras": {
               "피해 반경": 3.5
@@ -16806,7 +16784,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_maiev_rush_1",
-            "description": "복수의 영혼의 공격력이 적중한 적 돌격병, 용병, 소환수 하나당 3% 증가하고 적중한 적 영웅 하나당 24% 증가합니다.",
+            "description": "복수의 영혼이 적중한 적 영웅 하나당 모든 공격력이 4초 동안 15% 증가하여 최대 30% 증가합니다.",
             "shortDescription": "복수의 영혼이 적중한 적의 수에 따라 공격력 증가",
             "upgradeFor": "E"
           }
@@ -17050,7 +17028,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_necrotic",
-            "description": "괴저 기운이 적 영웅에게 적중하면 물리 방어력이 50 증가합니다. 이 효과는 여러 번 충전될 수 있습니다.\n\n날개 방패가 충전되지 않은 상태면 6초 후에 1회 충전됩니다.",
+            "description": "괴저 기운이 적 영웅에게 적중하면 물리 방어력이 75 증가합니다. 이 효과는 여러 번 충전될 수 있습니다.\n\n날개 방패가 충전되지 않은 상태면 6초 후에 1회 충전됩니다.",
             "shortDescription": "괴저 기운으로 물리 방어력 증가",
             "extras": {
               "최대 충전 횟수": 10
@@ -17064,7 +17042,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_trait",
-            "description": "자신과 주위 아군 영웅들이 준 물리 피해의 10%만큼 공격자가 생명력을 회복합니다.",
+            "description": "자신과 주위 아군 영웅들이 준 물리 피해의 15%만큼 공격자가 생명력을 회복합니다.",
             "shortDescription": "흡혈의 손길 강화 및 아군에게도 영향",
             "extras": {
               "효과 반경": 8
@@ -17078,7 +17056,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_trait_b",
-            "description": "주위 적 영웅에게 피해를 주면 50(+4%)의 생명력을 회복합니다. 이 효과는 같은 적 영웅에게 6초에 한 번씩만 발동합니다.",
+            "description": "주위 적 영웅에게 피해를 주면 54(+4%)의 생명력을 회복합니다. 이 효과는 같은 적 영웅에게 6초에 한 번씩만 발동합니다.",
             "shortDescription": "적 영웅 처음 공격 시 생명력 회복",
             "upgradeFor": "D"
           }
@@ -17102,7 +17080,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_necrotic_b",
-            "description": "괴저 기운의 방어력이 50으로 증가하지만, 지속 시간이 2초로 감소합니다.",
+            "description": "괴저 기운의 방어력이 50으로 증가하지만, 지속 시간이 2.5초로 감소합니다.",
             "shortDescription": "괴저 기운의 방어력 증가 효과가 증가하지만 지속 시간 감소",
             "upgradeFor": "W"
           },
@@ -17129,7 +17107,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_fel_1",
-            "description": "지옥 발톱으로 적 영웅을 공격하면 다음 일반 공격이 45%의 추가 피해를 줍니다.",
+            "description": "지옥 발톱으로 적 영웅을 공격하면 다음 일반 공격이 60%의 추가 피해를 줍니다.",
             "shortDescription": "적 영웅에게 지옥 발톱 적중 시 일반 공격력 증가",
             "upgradeFor": "Q"
           },
@@ -17151,7 +17129,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_nightrush",
-            "description": "밤의 질주가 만료되면 주위 적들에게 4초 동안 초당 31(+4%)의 피해를 줍니다. 적 영웅에게 일반 공격을 하면 이 효과가 갱신됩니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
+            "description": "밤의 질주가 만료되면 주위 적들에게 5초 동안 초당 31(+4%)의 피해를 줍니다. 적 영웅에게 일반 공격을 하면 이 효과가 갱신됩니다.\n\n수면 상태인 대상을 깨우지 않습니다.",
             "shortDescription": "밤의 질주 시전 후 적에게 주기적으로 피해를 줌",
             "extras": {
               "피해 반경": 3.25
@@ -17164,9 +17142,9 @@
               "ko": "악몽의 원천"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_malganis_nightmarefuel",
-            "description": "수풀에서, 그리고 수풀에서 나온 후 4초 동안 일반 공격력이 30% 증가합니다. 수면 상태인 대상에게는 일반 공격력이 150% 증가합니다.",
-            "shortDescription": "일반 공격 시 추가 피해 가능"
+            "icon": "storm_ui_icon_malganis_nightrush_b",
+            "description": "수풀에서 밤의 질주를 시전하면 기술의 지속 시간이 2.75초로 증가합니다. 수면 상태인 대상에게는 일반 공격이 200%의 추가 피해를 줍니다.",
+            "shortDescription": "밤의 질주 및 일반 공격 강화"
           }
         ],
         "10": [
@@ -17260,7 +17238,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malganis_trait",
-            "description": "남은 생명력 비율이 자신보다 높은 영웅에게 일반 공격을 하면 3초 동안 공격 속도가 40% 증가하고 물리 공격력이 15% 증가합니다.",
+            "description": "남은 생명력 비율이 자신보다 높은 영웅에게 일반 공격을 하면 3초 동안 공격 속도가 50% 증가하고 물리 공격력이 20% 증가합니다.",
             "shortDescription": "생명력이 더 높은 영웅 일반 공격 시 공격 속도 증가",
             "upgradeFor": "D"
           },
@@ -17836,7 +17814,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malthael_deathshroud",
-            "description": "퀘스트: 적 영웅에게 죽음의 안개가 15회 적중해야 합니다.\n보상: 죽음의 안개의 사거리가 33% 증가하고 재사용 대기시간이 4초 감소하며 마나 소모량이 50에서 25로 감소합니다.",
+            "description": "퀘스트: 적 영웅에게 죽음의 안개가 12회 적중해야 합니다.\n보상: 죽음의 안개의 사거리가 33% 증가하고 재사용 대기시간이 4초 감소하며 마나 소모량이 50에서 25로 감소합니다.",
             "shortDescription": "퀘스트: 죽음의 안개 사거리 증가",
             "upgradeFor": "E"
           },
@@ -17901,7 +17879,7 @@
             "description": "4초 동안 영혼의 격류를 내보내 주위 적들에게 지속적으로 <span style=\"color:#00dfdf\">사신의 징표</span>를 남깁니다. 영혼 회오리를 사용할 때, 그리고 만료될 때 망령의 일격의 재사용 대기시간이 초기화됩니다.",
             "shortDescription": "주위 적들에게 사신의 징표를 남김",
             "cooldown": 80,
-            "manaCost": 100,
+            "manaCost": 20,
             "extras": {
               "효과 반경": 5
             }
@@ -17987,7 +17965,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_malthael_wraithstrike",
-            "description": "망령의 일격이 적 영웅에게 적중하면 대상의 최대 생명력의 6%만큼 추가 피해를 줍니다.",
+            "description": "망령의 일격이 적 영웅에게 적중하면 대상의 최대 생명력의 8%만큼 추가 피해를 줍니다.",
             "shortDescription": "망령의 일격이 영웅에게 주는 피해 증가",
             "upgradeFor": "W"
           },
@@ -18963,7 +18941,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_mephisto_shade_b",
-            "description": "메피스토의 그림자 주위의 적들이 2초 동안 50% 느려집니다. 메피스토의 그림자가 활성화된 동안 섬뜩한 해골이 적에게 적중하면 감속 효과가 50%로 증가합니다.",
+            "description": "메피스토의 그림자 주위의 적들이 2초 동안 50% 느려집니다. 메피스토의 그림자가 활성화된 동안 섬뜩한 해골이 적에게 적중하면 섬뜩한 해골의 감속 효과가 50%로 증가합니다.",
             "shortDescription": "메피스토의 그림자가 적을 느려지게 함",
             "extras": {
               "효과 반경": 3
@@ -18977,7 +18955,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_mephisto_shade_c",
-            "description": "메피스토의 그림자가 만료되면 이동 속도가 2.5초 동안 20% 증가하고 모든 감속 및 이동 불가 효과가 제거됩니다.",
+            "description": "메피스토의 그림자가 활성화된 동안 이동 속도가 20% 증가하고, 만료된 후에도 2.5초 동안 지속됩니다. 메피스토의 그림자가 만료되면 모든 감속 및 이동 불가 효과가 제거됩니다.",
             "shortDescription": "메피스토의 그림자가 이동 속도를 증가시킴",
             "upgradeFor": "E"
           }
@@ -19196,7 +19174,7 @@
           "description": "아군이나 적 유닛에게 질주합니다. 적에게 질주하면 즉시 일반 공격을 합니다.\n\n최대 2회 충전됩니다.",
           "shortDescription": "아군이나 적에게 질주",
           "rechargeCooldown": 12,
-          "manaCost": 30,
+          "manaCost": 25,
           "extras": {
             "사거리": 9.25
           }
@@ -19226,7 +19204,7 @@
           "description": "다음 일반 공격 시 공격 속도와 공격 사거리가 2초 동안 100% 증가합니다.",
           "shortDescription": "공격 속도 및 공격 사거리 증가",
           "cooldown": 10,
-          "manaCost": 50
+          "manaCost": 45
         }
       ],
       "talents": {
@@ -19331,7 +19309,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_monk_breath0fheaven",
-            "description": "천상의 숨결로 증가하는 이동 속도가 30%로 증가합니다.",
+            "description": "천상의 숨결로 증가하는 이동 속도가 30%로 증가합니다. 아군 영웅에게 찬란한 질주를 사용하면 대상 영웅이 천상의 숨결로 받는 치유량이 3초 동안 50% 증가합니다.",
             "shortDescription": "천상의 숨결 이동 속도 증가량 증가",
             "upgradeFor": "W"
           },
@@ -19342,7 +19320,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_monk_deadlyreach",
-            "description": "3번째 일반 공격마다 연속 격파의 재사용 대기시간이 0.75초 감소합니다.",
+            "description": "연속 격파의 지속 시간이 100% 증가합니다. 3번째 일반 공격마다 연속 격파의 재사용 대기시간이 0.75초 감소합니다.",
             "shortDescription": "일반 공격 시 연속 격파 재사용 대기시간 감소",
             "upgradeFor": "E"
           }
@@ -19357,7 +19335,7 @@
             "icon": "storm_ui_icon_monk_divinepalm",
             "description": "대상 아군 영웅을 보호하여, 3초 안에 죽음에 이르는 피해를 받으면 즉시 1248(+4%)의 생명력을 회복시킵니다.",
             "shortDescription": "아군이 죽지 않게 보호",
-            "cooldown": 60,
+            "cooldown": 50,
             "manaCost": 50,
             "extras": {
               "사거리": 5.25
@@ -19390,17 +19368,6 @@
             "description": "아군에게 찬란한 질주를 사용하면 자신과 대상의 이동 속도가 3초 동안 30% 증가합니다.",
             "shortDescription": "찬란한 질주가 이동 속도를 증가시킴",
             "upgradeFor": "Q"
-          },
-          {
-            "name": {
-              "en": "Fists of Fury",
-              "ko": "염화의 주먹"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_monk_deadlyreach",
-            "description": "연속 격파의 지속 시간이 100% 증가합니다.",
-            "shortDescription": "연속 격파 지속 시간 증가",
-            "upgradeFor": "E"
           },
           {
             "name": {
@@ -19458,17 +19425,6 @@
             "icon": "storm_ui_icon_monk_breath0fheaven",
             "description": "천상의 숨결의 치유량이 75%로 감소하지만 사용 후 3초 뒤에 한 번 더 발동합니다.",
             "shortDescription": "천상의 숨결이 두 번 치유",
-            "upgradeFor": "W"
-          },
-          {
-            "name": {
-              "en": "Dash of Light",
-              "ko": "빛의 질주"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_monk_breath0fheaven_var1",
-            "description": "아군에게 찬란한 질주를 사용하면 대상이 천상의 숨결로 받는 치유량이 3초 동안 75% 증가합니다.",
-            "shortDescription": "찬란한 질주가 천상의 숨결 치유량을 증가시킴",
             "upgradeFor": "W"
           }
         ],
@@ -19620,16 +19576,6 @@
         "1": [
           {
             "name": {
-              "en": "Block",
-              "ko": "막기"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_talent_block",
-            "description": "5초마다, 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다.",
-            "shortDescription": "주기적으로 물리 방어력 증가"
-          },
-          {
-            "name": {
               "en": "Perfect Storm",
               "ko": "완벽한 폭풍"
             },
@@ -19646,9 +19592,19 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_muradin_secondwind",
-            "description": "생명력 재생률이 초당 86(+4%)으로 증가하고, 이제 생명력이 60% 이하로 내려가면 재생률이 초당 173(+4%)으로 증가합니다.",
+            "description": "생명력 재생률이 초당 94(+4%)로 증가하고, 이제 생명력이 60% 이하로 내려가면 재생률이 초당 187(+4%)으로 증가합니다.",
             "shortDescription": "재기의 바람 치유 효과 증가",
             "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Block",
+              "ko": "막기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_block",
+            "description": "5초마다, 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다.",
+            "shortDescription": "주기적으로 물리 방어력 증가"
           }
         ],
         "4": [
@@ -19659,8 +19615,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_muradin_stormbolt",
-            "description": "영웅이 아닌 대상에게 350%의 피해를 줍니다.",
-            "shortDescription": "폭풍강타가 영웅이 아닌 대상에게 주는 피해 증가",
+            "description": "폭풍강타가 영웅이 아닌 대상에게 350%의 피해를 줍니다. 폭풍강타가 적 영웅에게 적중하면 기본 퀘스트가 1회 추가로 진행됩니다.",
+            "shortDescription": "폭풍강타 강화",
             "upgradeFor": "Q"
           },
           {
@@ -19670,8 +19626,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_muradin_thunderclap",
-            "description": "공격 속도 감소량이 25%에서 50%로 증가하고 지속 시간이 2.5초에서 3.5초로 증가합니다.",
-            "shortDescription": "공격 속도 감소량 및 지속 시간 증가",
+            "description": "천둥벼락의 공격 속도 감소량이 25%에서 50%로 증가하고 지속 시간이 2.5초에서 3.5초로 증가합니다. 천둥벼락이 적중한 적 영웅 하나당 궁극기의 재사용 대기시간이 5% 감소합니다.",
+            "shortDescription": "천둥벼락 및 궁극기 강화",
             "upgradeFor": "W"
           },
           {
@@ -19697,7 +19653,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_muradin_dwarftoss",
-            "description": "드워프 도약이 적을 0.75초 동안 80% 느려지게 합니다.",
+            "description": "드워프 도약이 적을 1.25초 동안 80% 느려지게 합니다.",
             "shortDescription": "드워프 도약이 적을 느려지게 함",
             "upgradeFor": "E"
           },
@@ -19718,7 +19674,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_stun",
-            "description": "같은 적에게 일반 공격이 연속으로 3회 적중할 때마다 대상에게 70% 의 추가 피해를 주고 0.25초 동안 기절시킵니다.",
+            "description": "같은 적에게 일반 공격이 연속으로 3회 적중할 때마다 대상에게 90% 의 추가 피해를 주고 0.25초 동안 기절시킵니다.",
             "shortDescription": "연속 일반 공격 시 추가 피해 및 대상 기절"
           }
         ],
@@ -19770,7 +19726,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_muradin_thunderclap",
-            "description": "천둥벼락이 한 대상에게만 적중하면 300%의 피해를 줍니다.",
+            "description": "천둥벼락이 한 대상에게만 적중하면 300%의 피해를 줍니다.\n\n지속 효과: 드워프 도약의 방어력 지속 시간이 2초 증가합니다.",
             "shortDescription": "천둥벼락이 단일 대상에게 주는 피해 증가",
             "upgradeFor": "W"
           },
@@ -19781,7 +19737,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_burningrage",
-            "description": "주위 적들에게 초당 20(+4%)의 피해를 줍니다. 감속, 이동 불가, 기절 상태인 적 영웅에게 일반 공격을 하면 이 효과의 공격력이 3초 동안 100% 증가합니다.",
+            "description": "주위 적들에게 초당 21(+4%)의 피해를 주고 이 공격으로 준 피해의 75%만큼 생명력을 회복합니다. 기절, 감속, 이동 불가 상태인 적 영웅에게 일반 공격을 하면 이 효과의 공격력이 3초 동안 100% 증가합니다.",
             "shortDescription": "주위 적들에게 피해",
             "extras": {
               "피해 반경": 2.5
@@ -21718,13 +21674,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2000,
+          "value": 2075,
           "levelScaling": 0.04
         },
         "radius": 1,
         "speed": 4.3984,
         "hpRegen": {
-          "value": 4.168,
+          "value": 4.3242,
           "levelScaling": 0.04
         },
         "mp": {
@@ -21738,7 +21694,7 @@
         "range": 2,
         "period": 1.2,
         "damage": {
-          "value": 171,
+          "value": 180,
           "levelScaling": 0.04
         }
       },
@@ -22069,7 +22025,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ragnaros_sulfurassmash",
-            "description": "설퍼라스 강타가 적을 2초 동안 50% 느려지게 하고 중심부에 있는 적의 기절 시간이 0.5초 증가합니다.",
+            "description": "설퍼라스 강타가 적을 2.5초 동안 50% 느려지게 하고 중심부에 있는 적의 기절 시간이 1초 증가합니다.",
             "shortDescription": "설퍼라스 강타 기절 시간 증가 및 적을 느려지게 함",
             "upgradeFor": "R"
           },
@@ -22104,7 +22060,7 @@
             "icon": "storm_ui_icon_ragnaros_submerge",
             "description": "사용하면 땅속으로 숨어, 3초 동안 정지 상태가 되고 지속 시간에 걸쳐 624(+4%)의 생명력을 회복합니다.",
             "shortDescription": "사용 시 정지 상태가 되고 생명력 회복",
-            "cooldown": 90
+            "cooldown": 60
           }
         ]
       }
@@ -22274,7 +22230,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_raynor_split_debilitatingrounds",
-            "description": "격려가 활성화된 동안 일반 공격으로 감소하는 아드레날린 촉진의 재사용 대기시간이 200% 증가합니다.",
+            "description": "아드레날린 촉진의 마나 소모량이 75에서 50으로 감소합니다. 격려가 활성화된 동안 일반 공격으로 감소하는 아드레날린 촉진의 재사용 대기시간이 200% 증가합니다.",
             "shortDescription": "격려 사용 시 아드레날린 촉진 재사용 대기시간 감소량 증가",
             "upgradeFor": "W / E"
           },
@@ -22341,7 +22297,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_raynor_split_fuelrush",
-            "description": "천공 탄환의 재사용 대기시간이 3초 감소합니다. 격려가 활성화된 동안 천공 탄환의 감속 효과가 20% 증가합니다.",
+            "description": "천공 탄환의 마나 소모량이 65에서 45로 감소하고 재사용 대기시간이 3초 감소합니다. 격려가 활성화된 동안 천공 탄환의 감속 효과가 20% 증가합니다.",
             "shortDescription": "격려 사용 시 천공 탄환 강화",
             "upgradeFor": "Q / W"
           },
@@ -22883,14 +22839,14 @@
         {
           "unitName": "미샤",
           "hp": {
-            "value": 1762,
-            "levelScaling": 0.04
+            "value": 1620,
+            "levelScaling": 0.0475
           },
           "radius": 0.9375,
           "speed": 5.0582,
           "hpRegen": {
-            "value": 3.6718,
-            "levelScaling": 0.04
+            "value": 3.375,
+            "levelScaling": 0.0475
           },
           "range": 1.5,
           "period": 1.2,
@@ -24108,7 +24064,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stitches_slam_b",
-            "description": "지면 강타의 안쪽 범위에 적 영웅이 적중하면 공격 속도가 5초 동안 50% 증가합니다.",
+            "description": "지면 강타의 안쪽 범위에 적 영웅이 적중하면 공격 속도가 6초 동안 50% 증가합니다.",
             "shortDescription": "지면 강타가 공격 속도를 증가시킴",
             "upgradeFor": "W"
           }
@@ -24201,7 +24157,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stitches_devour",
-            "description": "뜯어먹기로 적 영웅에게 주는 피해가 40% 증가하고 대상 적 영웅의 공격력을 5초 동안 50% 감소시킵니다.",
+            "description": "뜯어먹기로 적 영웅을 공격하면 재사용 대기시간이 5초 감소하고, 대상 적 영웅의 공격력을 5초 동안 50% 감소시킵니다.",
             "shortDescription": "뜯어먹기가 적 영웅의 공격력을 감소시킴",
             "upgradeFor": "E"
           },
@@ -24212,7 +24168,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_burningrage",
-            "description": "주위 적들에게 초당 16(+4%)의 피해를 줍니다. 갈고리가 적 영웅에게 적중하면 불타는 가스의 공격력이 4초 동안 150% 증가합니다.",
+            "description": "주위 적들에게 초당 16(+4%)의 피해를 줍니다. 갈고리가 적 영웅에게 적중하면 불타는 가스의 공격력이 8초 동안 150% 증가합니다.",
             "shortDescription": "주위 적들에게 피해",
             "extras": {
               "피해 반경": 2.5
@@ -24238,7 +24194,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stitches_hook_b",
-            "description": "갈고리가 적 영웅에게 적중하면 4초에 걸쳐 최대 생명력의 16%를 회복합니다. 이후 4초 동안 갈고리가 적중한 적에게 일반 공격을 하면 치유 효과의 지속 시간이 갱신됩니다.",
+            "description": "갈고리가 적 영웅에게 적중하면 4초에 걸쳐 최대 생명력의 20%를 회복합니다. 이후 4초 동안 갈고리가 적중한 적에게 일반 공격을 하면 치유 효과의 지속 시간이 갱신됩니다.",
             "shortDescription": "갈고리로 생명력 지속 회복",
             "upgradeFor": "Q"
           },
@@ -24409,7 +24365,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stukov_weightedpustule",
-            "description": "퀘스트: 독성 고름이 적 영웅에게 적중해야 합니다.\n보상: 독성 고름이 적 영웅에게 15회 적중하면 독성 고름의 재사용 대기시간이 2.5초 감소합니다.\n보상: 독성 고름이 적 영웅에게 30회 적중하면 독성 고름의 재사용 대기시간이 추가로 2.5초 감소하고 마나 소모량이 제거됩니다.",
+            "description": "퀘스트: 독성 고름이 적 영웅에게 적중해야 합니다.\n보상: 독성 고름이 적 영웅에게 15회 적중하면 독성 고름의 재사용 대기시간이 2.5초 감소하고, 마나 소모량이 25 감소합니다.\n보상: 독성 고름이 적 영웅에게 30회 적중하면 독성 고름의 재사용 대기시간이 추가로 2.5초 감소하고 마나 소모량이 제거됩니다.",
             "shortDescription": "퀘스트: 독성 고름 재사용 대기시간 및 마나 소모량 감소",
             "upgradeFor": "W"
           },
@@ -24517,7 +24473,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stukov_bio-killswitch",
-            "description": "감염체 폭발로 독성 고름을 1개만 폭발시키면 감염체 폭발의 재사용 대기시간이 5초로 감소합니다. 폭발시킨 치유성 병원균의 개수는 이와 무관합니다.",
+            "description": "감염체 폭발로 독성 고름을 1개만 폭발시키면 감염체 폭발의 재사용 대기시간이 5초로 감소하고 다른 일반 기술의 재사용 대기시간이 1.5초 감소합니다. 폭발시킨 치유성 병원균의 개수는 이와 무관합니다.",
             "shortDescription": "독성 고름 하나만 폭발 시 재사용 대기시간 감소",
             "upgradeFor": "D"
           }
@@ -24566,7 +24522,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stukov_lurkingarm",
-            "description": "스멀거리는 팔의 사거리가 20% 증가합니다. 스멀거리는 팔이 적 영웅들에게 12회 이상 피해를 주면 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
+            "description": "스멀거리는 팔의 사거리가 20% 증가합니다. 스멀거리는 팔이 적 영웅들에게 10회 이상 피해를 주면 재사용 대기시간이 초기화되고 소모한 마나를 돌려받습니다.",
             "shortDescription": "스멀거리는 팔 마나 반환 가능",
             "upgradeFor": "E"
           },
@@ -24599,7 +24555,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stukov_bio-killswitch",
-            "description": "독성 고름의 지속 시간이 1.5초 이하로 남았을 때 감염체 폭발을 사용하면 감염체 폭발의 공격력이 150% 증가하고 주위 적들에게도 피해를 주고 느려지게 합니다.",
+            "description": "독성 고름의 지속 시간이 1.5초 이하로 남았을 때 감염체 폭발을 사용하면 감염체 폭발의 공격력이 150% 증가하고 주위 적들에게도 피해를 주고 느려지게 합니다. 이 피해에 적중당한 적 영웅에게는 독성 고름이 적용됩니다.",
             "shortDescription": "독성 고름 폭발 광역 피해 가능",
             "extras": {
               "피해 반경": 3.75
@@ -24626,7 +24582,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_stukov_healingpathogen_a",
-            "description": "치유성 병원균이 스투코프와 아군 영웅들을 오가며 무한히 전염될 수 있지만 치유량이 50% 감소합니다.",
+            "description": "치유성 병원균이 스투코프와 아군 영웅들을 오가며 무한히 전염될 수 있지만 치유량이 40% 감소합니다.",
             "shortDescription": "치유성 병원균 무한히 전염 가능",
             "upgradeFor": "Q"
           },
@@ -24759,7 +24715,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_sylvanas_shadowdagger",
-          "description": "적에게 비수를 던져 33(+4%)의 피해를 주고 2.5초에 걸쳐 166(+4%)의 추가 피해를 줍니다. 처음 적중한 대상에게 피해를 주면 어둠의 비수가 주위 모든 적에게 전이됩니다.",
+          "description": "적에게 비수를 던져 31(+4%)의 피해를 주고 2.5초에 걸쳐 156(+4%)의 추가 피해를 줍니다. 처음 적중한 대상에게 피해를 주면 어둠의 비수가 주위 모든 적에게 전이됩니다.",
           "shortDescription": "적에게 지속 피해를 주고 효과를 전이시킴",
           "cooldown": 11,
           "manaCost": 50,
@@ -30714,7 +30670,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zarya_shieldally",
-            "description": "방벽 씌우기의 대상이 준 피해 6(+4%)당 1의 에너지를 충전합니다. 보호막당 최대 30의 에너지를 충전할 수 있습니다.",
+            "description": "방벽 씌우기의 대상이 준 피해 5(+4%)당 1의 에너지를 충전합니다. 보호막당 최대 40의 에너지를 충전할 수 있습니다.",
             "shortDescription": "방벽 씌우기의 대상이 준 피해가 에너지 충전",
             "upgradeFor": "E"
           },
@@ -30974,8 +30930,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zarya_gravitonsurge",
-            "description": "중력자탄의 지속 시간이 1초 증가하고 지속 시간에 걸쳐 182(+4%)의 피해를 줍니다.",
-            "shortDescription": "중력자탄 지속 시간 증가 및 적에게 피해",
+            "description": "중력자탄의 지속 시간이 1초 증가하고 범위 내의 적 영웅을 침묵시킵니다.",
+            "shortDescription": "중력자탄의 지속 시간이 증가하고 적을 침묵시킴",
             "upgradeFor": "R"
           },
           {
@@ -30985,8 +30941,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_zarya_expulsionzone",
-            "description": "축출 지대의 반경이 15% 증가하고 적중한 적 영웅 하나당 자리야의 최대 에너지가 10초 동안 15 증가합니다.",
-            "shortDescription": "축출 지대 반경 증가 및 에너지 획득",
+            "description": "축출 지대의 지속 시간이 1.5초 증가하고 반경이 15% 증가합니다.",
+            "shortDescription": "축출 지대 지속 시간 및 반경 증가",
             "upgradeFor": "R"
           },
           {
@@ -31066,7 +31022,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_zeratul_cleave",
-          "description": "주위 적들에게 220(+4%)의 피해를 줍니다.",
+          "description": "주위 적들에게 208(+4%)의 피해를 줍니다.",
           "shortDescription": "주위 적들에게 피해를 줌",
           "cooldown": 6,
           "manaCost": 40,
