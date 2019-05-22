@@ -55,7 +55,7 @@ class HotsJsonValidator {
     if (!isObjectSortedByKey(hotsDataJson.ptrHeroes || {}))
       throw new Error(`hotsData.ptrHeroes is not sorted`);
 
-    const KNOWN_HERO_COUNT = 85;
+    const KNOWN_HERO_COUNT = 86;
 
     //Warn if # of heroes is different than the expected value
     const heroCount = Object.keys(hotsDataJson.heroes).length;
