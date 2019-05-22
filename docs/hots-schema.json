@@ -207,7 +207,7 @@
             },
             "levelScaling": {
               "type": "number",
-              "multipleOf": 0.005
+              "multipleOf": 0.0025
             }
           },
           "additionalProperties": false,
@@ -386,7 +386,7 @@
         },
         "levelScaling": {
           "type": "number",
-          "multipleOf": 0.005
+          "multipleOf": 0.0025
         }
       },
       "additionalProperties": false,
@@ -404,7 +404,7 @@
         },
         "levelScaling": {
           "type": "number",
-          "multipleOf": 0.005
+          "multipleOf": 0.0025
         }
       },
       "additionalProperties": false,
