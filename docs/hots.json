@@ -1,5 +1,6 @@
 {
   "hotsVersion": "2.45.1.74238",
+  "hotsPtrVersion": "2.46.0.74592",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -31670,6 +31671,403 @@
       }
     }
   },
+  "ptrHeroes": {
+    "Chen": {
+      "name": "첸",
+      "title": "전설의 양조사",
+      "icon": "ui_targetportrait_hero_chen",
+      "type": "근접",
+      "role": "warrior",
+      "newRole": "bruiser",
+      "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "value": 2473,
+          "levelScaling": 0.04
+        },
+        "radius": 0.9375,
+        "speed": 4.3984,
+        "hpRegen": {
+          "value": 5.1523,
+          "levelScaling": 0.04
+        },
+        "brew": 100,
+        "range": 2,
+        "period": 0.9,
+        "damage": {
+          "value": 90,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "name": {
+            "en": "Fortifying Brew",
+            "ko": "강화주"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_chen_fortifyingbrew",
+          "description": "술을 들이켜 초당 50의 취기와 187(+4%)의 피해를 흡수하는 일시적인 보호막을 얻어 최대 562(+4%)의 피해를 흡수하는 보호막을 얻습니다. 보호막은 4초 동안 유지됩니다.",
+          "shortDescription": "취기 획득 및 들이켜는 동안 보호막 획득",
+          "cooldown": 7
+        },
+        {
+          "name": {
+            "en": "Flying Kick",
+            "ko": "날아차기"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_chen_flyingkick",
+          "description": "대상 적을 날아차고 넘어가 125(+4%)의 피해를 줍니다.",
+          "shortDescription": "대상 적을 날아차고 넘어감",
+          "cooldown": 5,
+          "extras": {
+            "취기": 10,
+            "사거리": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Keg Smash",
+            "ko": "술통 부수기"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_chen_kegsmash",
+          "description": "적에게 52(+4%)의 피해를 주고, 3초 동안 술에 적셔 10% 느려지게 합니다. 1.5초 후, 감속 효과가 40%로 증가합니다.\n\n술통 부수기를 사용하면 이 기술이 불의 숨결로 바뀝니다.\n\n<span style=\"color:#ff0000\">불의 숨결</span>\n술에 젖은 적에게 피해를 주고 불을 붙입니다.",
+          "shortDescription": "대상 지역의 적들을 술에 적셔 느려지게 함",
+          "cooldown": 5,
+          "extras": {
+            "취기": 30,
+            "사거리": 3.5,
+            "피해 반경": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Breath of Fire",
+            "ko": "불의 숨결"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_chen_breathoffire",
+          "description": "부채꼴 모양으로 불의 숨결을 내뱉어 88(+4%)의 피해를 줍니다. 술에 젖은 적에게는 불을 붙여 3초에 걸쳐 172(+4%)의 추가 피해를 주고, 술통 부수기의 감속 효과 지속 시간을 1.5초 증가시킵니다.\n\n불의 숨결을 사용하거나 6초가 지나면, 이 기술이 술통 부수기로 바뀝니다.\n\n<span style=\"color:#e1c72c\">술통 부수기</span>\n적들에게 피해를 주고 느려지게 합니다.",
+          "shortDescription": "대상 방향으로 불을 내뿜어 피해를 주고 술에 젖은 대상들에 불을 붙임",
+          "extras": {
+            "취기": 10,
+            "피해 반경": 7,
+            "중심각": "60°"
+          }
+        },
+        {
+          "name": {
+            "en": "Stagger",
+            "ko": "시간차"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_chen_stagger",
+          "description": "다음 3초간 받는 피해를 모두 흡수합니다. 이 효과가 만료되면 흡수한 피해의 75%를 5초에 걸쳐 나눠 받습니다.",
+          "shortDescription": "피해를 모두 흡수한 뒤 시간에 걸쳐 나눠 받음",
+          "cooldown": 18
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "name": {
+              "en": "Eye of the Tiger",
+              "ko": "호랑이의 눈"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_kegsmash",
+            "description": "술에 젖은 적 영웅에게 일반 공격을 하면 50%의 추가 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다.",
+            "shortDescription": "일반 공격 시 추가 피해 및 생명력 회복",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Freshest Ingredients",
+              "ko": "신선한 재료"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew",
+            "description": "재생의 구슬의 지속 시간이 100% 증가합니다.\n\n퀘스트: 재생의 구슬을 15개 획득해야 합니다.\n보상: 강화주로 획득한 보호막의 50%가 계속 유지됩니다.",
+            "shortDescription": "퀘스트: 재생의 구슬 치유량 증가",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Stormstout Secret Recipe",
+              "ko": "스톰스타우트 가문의 비밀 양조법"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_stormstoutsecretrecipe",
+            "description": "일반 기술이 적 영웅에게 적중하면 최대 생명력의 2%를 회복합니다.",
+            "shortDescription": "일반 기술로 생명력 회복"
+          }
+        ],
+        "4": [
+          {
+            "name": {
+              "en": "Deadly Strike",
+              "ko": "치명적인 일격"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_flyingkick",
+            "description": "날아차기에 취기가 소모되지 않고 강화주의 보호막이 활성화된 동안 날아차기의 공격력이 100% 증가합니다.",
+            "shortDescription": "날아차기 공격력 증가 및 취기 소모량 제거",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Accumulating Flame",
+              "ko": "커져가는 불길"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_breathoffire",
+            "description": "적에게 붙은 불의 공격력이 25% 증가합니다. 불이 붙은 적 영웅에게 일반 공격을 하면 불길의 지속 시간이 0.75초 증가합니다.",
+            "shortDescription": "불길 공격력 및 지속 시간 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Withering Flames",
+              "ko": "위축의 불길"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_breathoffire_a",
+            "description": "불이 붙은 적 영웅의 기술 위력이 4초 동안 30% 감소합니다.",
+            "shortDescription": "불이 붙은 적 영웅 기술 위력 감소",
+            "upgradeFor": "W"
+          }
+        ],
+        "7": [
+          {
+            "name": {
+              "en": "Gift of the Ox",
+              "ko": "소의 선물"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_stagger",
+            "description": "시간차의 피해 흡수 시간이 0.5초 증가하며, 시간에 걸쳐 받는 피해가 흡수한 피해의 60%로 감소합니다.",
+            "shortDescription": "시간차 지속 시간 증가 및 받는 피해 감소",
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Brewmaster's Balance",
+              "ko": "양조사의 균형"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew",
+            "description": "취기가 50 이하면, 이동 속도가 20% 증가합니다. 취기가 50 이상이면, 초당 19(+4%)의 생명력을 추가로 재생합니다.",
+            "shortDescription": "현재 취기에 따라 이로운 효과 획득",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Elusive Brawler",
+              "ko": "교묘한 싸움꾼"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_chen_elusivebrew",
+            "description": "사용하면 이동 속도가 30% 증가하고 2초 동안 적의 일반 공격을 회피합니다. 일반 공격을 할 때마다 이 능력의 재사용 대기시간이 2초 감소합니다.",
+            "shortDescription": "사용 시 적 일반 공격 회피",
+            "cooldown": 25
+          }
+        ],
+        "10": [
+          {
+            "name": {
+              "en": "Wandering Keg",
+              "ko": "술통 구르기"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_chen_wanderingkeg",
+            "description": "저지할 수 없는 술통 안에 들어가 이동 속도가 70% 증가하고 술통을 굴리며 경로에 있는 적들에게 61(+4%)의 피해를 주고 밀쳐냅니다. 5초 동안 지속됩니다.",
+            "shortDescription": "술통 안에서 술통을 굴리며 적들을 밀쳐냄",
+            "cooldown": 70
+          },
+          {
+            "name": {
+              "en": "Storm, Earth, Fire",
+              "ko": "폭풍, 대지, 불"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_chen_stormearthfire",
+            "description": "1초 후, 12초 동안 각각 자신의 최대 생명력의 70%를 지닌 세 원소 정령으로 분리됩니다. 원소 정령들은 고유한 기술을 하나씩 사용할 수 있으며, 마지막으로 시전하는 정령 기술은 강화됩니다. 원소 정령이 모두 죽으면 첸 또한 죽습니다.\n\n<span style=\"color:#00ffff\">폭풍</span>은 원소 정령들에게 보호막을 부여합니다.\n<span style=\"color:#00ff00\">대지</span>는 대상 지역에 도약하여 적들을 느려지게 합니다.\n<span style=\"color:#ff6600\">불</span>은 원소 정령들의 공격 속도와 공격력을 증가시킵니다.",
+            "shortDescription": "세 원소 정령으로 분리됨",
+            "cooldown": 100
+          },
+          {
+            "name": {
+              "en": "Storm",
+              "ko": "폭풍"
+            },
+            "type": "Q",
+            "icon": "storm_temp_war3_btntornado",
+            "description": "정령들이 3초 동안 416(+4%)의 피해를 흡수하는 보호막을 얻습니다.\n\n이 기술을 마지막으로 사용하면, 보호막의 흡수량이 780(+4%)으로 증가하고 시간이 지나도 사라지지 않으며, 폭풍, 대지, 불의 지속 시간이 5초 증가합니다.",
+            "shortDescription": "보호막 획득"
+          },
+          {
+            "name": {
+              "en": "Earth",
+              "ko": "대지"
+            },
+            "type": "W",
+            "icon": "storm_temp_war3_btnearthquake",
+            "description": "불과 대지가 대상 위치로 도약하여 넓은 지역 안의 적들에게 33(+4%)의 피해를 주고 1.5초 동안 70% 느려지게 합니다.\n\n이 기술을 마지막으로 사용하면, 공격력이 300% 증가하고, 적을 느려지게 하는 대신 도약이 적중한 적을 1.75초 동안 이동 불가 상태로 만듭니다.",
+            "shortDescription": "대상 위치로 도약하여 적들에게 피해를 주고 느려지게 함",
+            "extras": {
+              "사거리": 9,
+              "피해 반경": 3
+            }
+          },
+          {
+            "name": {
+              "en": "Fire",
+              "ko": "불"
+            },
+            "type": "E",
+            "icon": "storm_temp_war3_btnmarkoffire",
+            "description": "정령들의 공격 속도와 일반 공격력이 5초 동안 50% 증가합니다.\n\n이 기술을 마지막으로 사용하면, 공격 속도와 공격력이 75%로 증가하고, 지속 시간 동안 이동 속도가 50% 증가합니다.",
+            "shortDescription": "공격 속도 및 공격력 증가"
+          }
+        ],
+        "13": [
+          {
+            "name": {
+              "en": "Pressure Point",
+              "ko": "급소 차기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_flyingkick",
+            "description": "날아차기가 대상을 1초 동안 35% 느려지게 합니다. 강화주의 보호막이 활성화된 동안에는 대상이 70% 느려집니다.",
+            "shortDescription": "날아차기가 적을 느려지게 함",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "A Touch of Honey",
+              "ko": "꿀 바르기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_kegsmash",
+            "description": "술통 부수기의 감속 효과가 10% 증가하고 감속 효과의 지속 시간이 0.5 초 증가합니다.",
+            "shortDescription": "술통 부수기 감속 효과 및 지속 시간 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Ring of Fire",
+              "ko": "불의 고리"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_breathoffire",
+            "description": "적에게 불을 붙이면, 자신이 불타는 오라에 휩싸여 5초 동안 주위 적들에게 매초 62(+4%)의 피해를 줍니다.",
+            "shortDescription": "적에게 불을 붙이면 주위 적들에게 피해",
+            "extras": {
+              "피해 반경": 3
+            },
+            "upgradeFor": "W"
+          },
+          {
+            "name": {
+              "en": "Enough to Share",
+              "ko": "나눔의 미덕"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew",
+            "description": "강화주를 사용하면 즉시 187(+4%)의 피해를 흡수하는 보호막을 얻고, 주위 아군 영웅들에게도 매초 146(+4%)의 피해를 흡수하는 보호막을 부여해, 최대 437(+4%)의 피해를 흡수하는 보호막을 부여합니다.",
+            "shortDescription": "강화주가 아군 영웅들에게 보호막 부여",
+            "extras": {
+              "효과 반경": 5
+            },
+            "upgradeFor": "D"
+          }
+        ],
+        "16": [
+          {
+            "name": {
+              "en": "Flying Leap",
+              "ko": "나비처럼 날아서"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_flyingkick",
+            "description": "날아차기의 사거리가 15% 증가하고 적 영웅에게 붙은 불이 피해를 줄 때마다 재사용 대기시간이 0.5초 감소합니다.",
+            "shortDescription": "사거리 증가 및 재사용 대기시간 감소",
+            "upgradeFor": "Q"
+          },
+          {
+            "name": {
+              "en": "Celerity",
+              "ko": "기민함"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_stagger",
+            "description": "기절, 감속, 이동 불가 상태인 적 영웅에게 일반 공격을 할 때마다 시간차의 재사용 대기시간이 1.5초 감소하고, 방어력이 3초 동안 15 증가합니다.",
+            "shortDescription": "일반 공격 시 시간차 재사용 대기시간 감소 및 방어력 증가",
+            "upgradeFor": "E"
+          },
+          {
+            "name": {
+              "en": "Combo Strikes",
+              "ko": "연계 일격"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew",
+            "description": "같은 대상에게 일반 공격이 연속으로 3회 적중할 때마다 75%의 추가 피해를 줍니다. 강화주의 보호막이 활성화된 동안 공격 속도가 50% 증가하고 보호막이 만료된 후에도 2초 동안 유지됩니다.",
+            "shortDescription": "공격 속도 및 공격력 증가",
+            "upgradeFor": "D"
+          }
+        ],
+        "20": [
+          {
+            "name": {
+              "en": "Untapped Potential",
+              "ko": "술통 사고"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_wanderingkeg",
+            "description": "술통 구르기로 증가하는 이동 속도가 70%에서 125%로 증가하고 지속 시간 동안 방어력이 75 증가하여 받는 피해가 75% 감소합니다. 이 효과는 술통 구르기가 만료된 후에도 3초 동안 지속됩니다.",
+            "shortDescription": "이동 속도 및 방어력 증가",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Elemental Conduit",
+              "ko": "원소 출현"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_stormearthfire",
+            "description": "원소 정령들의 생명력이 자신의 최대 생명력의 100%로 증가하고 모든 기술이 강화됩니다.",
+            "shortDescription": "폭풍, 대지, 불 정령 기술 모두 강화",
+            "upgradeFor": "R"
+          },
+          {
+            "name": {
+              "en": "Purifying Brew",
+              "ko": "정화주"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew",
+            "description": "강화주를 시전하면 1.5초 동안 저지 불가 상태가 됩니다.",
+            "shortDescription": "강화주 시전 시 저지 불가",
+            "upgradeFor": "D"
+          },
+          {
+            "name": {
+              "en": "Energizing Brew",
+              "ko": "기력 회복주"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_chen_fortifyingbrew_b",
+            "description": "강화주가 끝까지 지속되면 최대 생명력이 20% 증가하고 공격력이 20% 증가합니다. 25초 동안 지속됩니다.",
+            "shortDescription": "강화주가 최대 생명력 및 공격력을 증가시킴",
+            "upgradeFor": "D"
+          }
+        ]
+      }
+    }
+  },
   "iconUrls": {
     "storm_btn_d3_traits_wizard_astralpresence": "http://i1.ruliweb.com/img/18/07/02/16459596af219dc2c.png",
     "storm_btn_d3_traits_wizard_elementalexposure": "http://i2.ruliweb.com/img/18/07/02/164595aa7bf19dc2c.png",
@@ -31838,12 +32236,14 @@
     "storm_ui_icon_cassia_valkrie": "http://i2.ruliweb.com/img/18/07/02/1645947fc1b19dc2c.png",
     "storm_ui_icon_cassia_valkrie_a": "http://i2.ruliweb.com/img/18/07/02/1645948000219dc2c.png",
     "storm_ui_icon_chen_breathoffire": "http://i2.ruliweb.com/img/18/07/02/164594803ee19dc2c.png",
+    "storm_ui_icon_chen_breathoffire_a": "https://i2.ruliweb.com/img/19/06/11/16b44c0f38519dc2c.png",
     "storm_ui_icon_chen_elusivebrew": "http://i1.ruliweb.com/img/18/07/02/16459480bda19dc2c.png",
     "storm_ui_icon_chen_flyingkick": "http://i1.ruliweb.com/img/18/07/02/1645948139619dc2c.png",
     "storm_ui_icon_chen_fortifyingbrew": "http://i1.ruliweb.com/img/18/07/02/1645948175c19dc2c.png",
     "storm_ui_icon_chen_fortifyingbrew_a": "http://i2.ruliweb.com/img/18/07/02/16459481b2719dc2c.png",
     "storm_ui_icon_chen_fortifyingbrew_b": "http://i3.ruliweb.com/img/18/07/02/16459481f1919dc2c.png",
     "storm_ui_icon_chen_kegsmash": "http://i1.ruliweb.com/img/18/07/02/164594822fa19dc2c.png",
+    "storm_ui_icon_chen_stagger": "https://i1.ruliweb.com/img/19/06/11/16b44c0f4b319dc2c.png",
     "storm_ui_icon_chen_stormearthfire": "http://i1.ruliweb.com/img/18/07/02/16459482acd19dc2c.png",
     "storm_ui_icon_chen_stormstoutsecretrecipe": "http://i1.ruliweb.com/img/18/07/02/16459482eb919dc2c.png",
     "storm_ui_icon_chen_wanderingkeg": "http://i2.ruliweb.com/img/18/07/02/1645948329b19dc2c.png",
