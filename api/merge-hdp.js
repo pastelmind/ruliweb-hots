@@ -362,16 +362,18 @@ function extractSkillTalentInfo(skillTalentData) {
  * Mapping of color names in `<c val="">` tags to their colors.
  */
 const COLOR_CODES = {
-  AbilityPassive: '00ff90',
-  ColorCreamYellow: 'ffff80',
-  ColorViolet: 'd65cff',
-  GlowColorRed: 'ff5858',
-  MalthaelTrait: '00dfdf',
-  StandardTooltipHeader: 'ffffff',
-  TooltipNumbers: 'bfd4fd',
-  TooltipQuest: 'e4b800',
-  WhitemaneDesperation: 'ff8b8b',
-  WhitemaneZeal: 'fff5c2',
+  AbilityPassive: '00ff90',       // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  ColorCreamYellow: 'ffff80',     // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  ColorRed: 'ff0000',             // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  ColorViolet: 'd65cff',          // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  ColorYellow: 'e1c72c',          // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  GlowColorRed: 'ff5858',         // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  MalthaelTrait: '00dfdf',        // Based on heromods/malthael.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  StandardTooltipHeader: 'ffffff',// Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  TooltipNumbers: 'bfd4fd',       // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  TooltipQuest: 'e4b800',         // Based on core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  WhitemaneDesperation: 'ff8b8b', // Based on heromods/whitemane.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  WhitemaneZeal: 'fff5c2',        // Based on heromods/whitemane.stormmod/base.stormdata/UI/FontStyles.StormStyle
 };
 
 
