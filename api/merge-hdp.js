@@ -362,14 +362,14 @@ function extractSkillTalentInfo(skillTalentData) {
  * Mapping of color names in `<c val="">` tags to their colors.
  */
 const COLOR_CODES = {
-  TooltipNumbers: 'bfd4fd',
-  StandardTooltipHeader: 'ffffff',
-  TooltipQuest: 'e4b800',
   AbilityPassive: '00ff90',
-  ColorViolet: 'd65cff',
   ColorCreamYellow: 'ffff80',
-  MalthaelTrait: '00dfdf',
+  ColorViolet: 'd65cff',
   GlowColorRed: 'ff5858',
+  MalthaelTrait: '00dfdf',
+  StandardTooltipHeader: 'ffffff',
+  TooltipNumbers: 'bfd4fd',
+  TooltipQuest: 'e4b800',
   WhitemaneDesperation: 'ff8b8b',
   WhitemaneZeal: 'fff5c2',
 };
