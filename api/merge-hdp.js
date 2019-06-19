@@ -268,6 +268,17 @@ function relocateSubAbilitiesAfterTalent(hero, talentName, ...subAbilityNames) {
 
 
 /**
+ * IDs of abilities classified by HDP as subabilities, but should not be treated
+ * as such for `hots.json`
+ * @const
+ */
+const NOT_SUB_ABILITIES = new Set([
+  'FenixRepeaterCannon',
+  'ChenBreathOfFire',
+]);
+
+
+/**
  * Parses skill data from a skill JSON object.
  * @param {*} skillData JSON object that represents skill data
  * @return {Skill} Skill object containing the extracted data
@@ -296,9 +307,8 @@ function parseSkillData(skillData) {
         parentType = convertAbilityType(skillData.parentAbility.abilityType);
   }
 
-  //HDP >= v2.7.0 classifies Repeater Cannon as a subability. This is
-  //undesirable so add an exception for this skill.
-  if (parentType && skillData.nameId !== 'FenixRepeaterCannon')
+  // Set special type strings for SubAbilities, except those in the blacklist
+  if (parentType && !NOT_SUB_ABILITIES.has(skillData.nameId))
     skill.type = parentType + ' - ' + skill.type;
 
   return skill;
