@@ -53,23 +53,35 @@ function isSemverLessOrEqual(semVerA, semVerB) {
 /**
  * Prepares a legacy injected table element for hero level slider enhancements.
  *
- * This looks for text matching the form "number(+number%)" and surrounds them
- * with `<output>` tags decorated with `data-*` attributes.
+ * This looks for text matching the form "number(+number)" or "number(+number)%"
+ * and surrounds them with `<output>` tags decorated with `data-*` attributes.
  *
  * @param {HTMLElement} tableElem Injected table element
  */
 function prepareLegacyTable(tableElem) {
   tableElem.innerHTML = tableElem.innerHTML.replace(
-    /(\d+(?:\.\d+)?) ?\(\+(\d+(?:\.\d+)?)%\)/g,
-    (match, level1ValueStr, scalingPercentStr) => {
+    /(\d+(?:\.\d+)?) ?\(\+(\d+(?:\.\d+)?)(%?)\)/g,
+    (match, level1ValueStr, scalingValueStr, percentSign) => {
       const level1Value = parseFloat(level1ValueStr);
-      const levelScaling = 1 + parseFloat(scalingPercentStr) / 100;
-      if (Number.isNaN(level1Value) || Number.isNaN(levelScaling))
-        return match; //No change if value cannot be parsed
+      if (Number.isNaN(level1Value)) return match;
 
-      const base = Math.round(level1Value / levelScaling);
-      return `<output data-hots-level-base="${base}"` +
-        ` data-hots-level-scaling="${levelScaling}">${match}</output>`
+      if (percentSign) {
+        const levelScaling = 1 + parseFloat(scalingValueStr) / 100;
+        if (Number.isNaN(levelScaling)) return match;
+
+        const base = Math.round(level1Value / levelScaling);
+        return `<output data-hots-level-base="${base}"` +
+          ` data-hots-level-scaling="${levelScaling}">${match}</output>`
+      }
+      else {
+        const levelAdd = parseFloat(scalingValueStr);
+        if (Number.isNaN(levelAdd)) return match;
+
+        //For linearly scaling values, the level 1-value is the base value, and
+        //the levelAdd value is added on every level up
+        return `<output data-hots-level-base="${level1Value}"` +
+          ` data-hots-level-add="${levelAdd}">${match}</output>`
+      }
     }
   );
 }
