@@ -49,6 +49,19 @@
       "js": [
         "js/editor-iframe.js"
       ]
+    },
+    {
+      "matches": [
+        "*://*.ruliweb.com/*"
+      ],
+      "exclude_matches": [
+        "*://*.ruliweb.com/*/write",
+        "*://*.ruliweb.com/*/modify/*",
+        "*://mypi.ruliweb.com/write*"
+      ],
+      "js": [
+        "js/page-enhancer.js"
+      ]
     }
   ],
   "web_accessible_resources": [
