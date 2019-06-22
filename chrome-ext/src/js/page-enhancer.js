@@ -3,4 +3,71 @@
  */
 
 
-alert('Injected!');
+//Update all ruliweb-hots tables
+const injectedTables = document.querySelectorAll(
+  '.ruliweb-hots-skill-table, .ruliweb-hots-talent-table'
+);
+for (const table of injectedTables) {
+  if (isSemverLessOrEqual(table.dataset.ruliwebHotsVersion, '0.10.1')) {
+    prepareLegacyTable(table);
+  }
+}
+
+
+/**
+ * Checks if the semver-compatible version A is lesser than or equal to B.
+ *
+ * Note: This only accepts version strings of the form "number.number.number".
+ * If either string does not match the pattern, returns false.
+ *
+ * @param {string} semVerA Semver-compatible version A
+ * @param {string} semVerB Semver-compatible version B
+ * @return {boolean} true iff `semVerA` <= `semVerB`, false otherwise
+ */
+function isSemverLessOrEqual(semVerA, semVerB) {
+  const semVerPattern = /(\d+)\.(\d+)\.(\d+)/;
+
+  const semVerAMatch = semVerA.match(semVerPattern);
+  if (!semVerAMatch) return false;
+  const semVerBMatch = semVerB.match(semVerPattern);
+  if (!semVerBMatch) return false;
+
+  const aMajor = parseInt(semVerAMatch[1]);
+  const bMajor = parseInt(semVerBMatch[1]);
+  if (aMajor < bMajor) return true;
+  if (aMajor > bMajor) return false;
+
+  const aMinor = parseInt(semVerAMatch[2]);
+  const bMinor = parseInt(semVerBMatch[2]);
+  if (aMinor < bMinor) return true;
+  if (aMinor > bMinor) return false;
+
+  const aPatch = parseInt(semVerAMatch[3]);
+  const bPatch = parseInt(semVerBMatch[3]);
+  return aPatch <= bPatch;
+}
+
+
+/**
+ * Prepares a legacy injected table element for hero level slider enhancements.
+ *
+ * This looks for text matching the form "number(+number%)" and surrounds them
+ * with `<output>` tags decorated with `data-*` attributes.
+ *
+ * @param {HTMLElement} tableElem Injected table element
+ */
+function prepareLegacyTable(tableElem) {
+  tableElem.innerHTML = tableElem.innerHTML.replace(
+    /(\d+(?:\.\d+)?)\(\+(\d+(?:\.\d+)?)%\)/g,
+    (match, level1ValueStr, scalingPercentStr) => {
+      const level1Value = parseFloat(level1ValueStr);
+      const levelScaling = 1 + parseFloat(scalingPercentStr) / 100;
+      if (Number.isNaN(level1Value) || Number.isNaN(levelScaling))
+        return match; //No change if value cannot be parsed
+
+      const base = Math.round(level1Value / levelScaling);
+      return `<output data-hots-level-base="${base}"` +
+        ` data-hots-level-scaling="${levelScaling}">${match}</output>`
+    }
+  );
+}
