@@ -4,9 +4,11 @@
 
 
 //Update all ruliweb-hots tables
-const injectedTables = document.querySelectorAll(
-  '.ruliweb-hots-skill-table, .ruliweb-hots-talent-table'
-);
+const injectedTables = document.querySelectorAll([
+  '.ruliweb-hots-hero-table',
+  '.ruliweb-hots-skill-table',
+  '.ruliweb-hots-talent-table',
+].join());
 for (const table of injectedTables) {
   if (isSemverLessOrEqual(table.dataset.ruliwebHotsVersion, '0.10.1')) {
     prepareLegacyTable(table);
@@ -58,7 +60,7 @@ function isSemverLessOrEqual(semVerA, semVerB) {
  */
 function prepareLegacyTable(tableElem) {
   tableElem.innerHTML = tableElem.innerHTML.replace(
-    /(\d+(?:\.\d+)?)\(\+(\d+(?:\.\d+)?)%\)/g,
+    /(\d+(?:\.\d+)?) ?\(\+(\d+(?:\.\d+)?)%\)/g,
     (match, level1ValueStr, scalingPercentStr) => {
       const level1Value = parseFloat(level1ValueStr);
       const levelScaling = 1 + parseFloat(scalingPercentStr) / 100;
