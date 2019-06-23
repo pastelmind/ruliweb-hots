@@ -30,14 +30,8 @@ document.body.addEventListener('input', event => {
     element.textContent = level;
   }
 
-  for (const heroBox of heroBoxes) {
-    updateHeroLevels(heroBox, level);
-  }
-  for (const skillBox of skillBoxes) {
-    updateHeroLevels(skillBox, level);
-  }
-  for (const talentBox of talentBoxes) {
-    updateHeroLevels(talentBox, level);
+  for (const hotsBox of [...heroBoxes, ...skillBoxes, ...talentBoxes]) {
+    updateHeroLevels(hotsBox, level);
   }
 });
 
