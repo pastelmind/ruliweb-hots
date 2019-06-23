@@ -9,10 +9,11 @@ const injectedTables = document.querySelectorAll([
   '.ruliweb-hots-skill-table',
   '.ruliweb-hots-talent-table',
 ].join());
-for (const table of injectedTables) {
-  if (isSemverLessOrEqual(table.dataset.ruliwebHotsVersion, '0.10.1')) {
-    prepareLegacyTable(table);
+for (const tableElement of injectedTables) {
+  if (isSemverLessOrEqual(tableElement.dataset.ruliwebHotsVersion, '0.10.1')) {
+    prepareLegacyTable(tableElement);
   }
+  addHeroLevelSlider(tableElement);
 }
 
 
@@ -94,8 +95,44 @@ function prepareLegacyTable(tableElem) {
  */
 function addHeroLevelSlider(tableElement) {
   const hlsContainer = document.createElement('div');
+  hlsContainer.style.textAlign = 'right';
   hlsContainer.innerHTML = '영웅 레벨: ' +
-    '<output data-hots-level-base="1" data-hots-level-add="1"></output> ' +
-    '<input type="range" min="0" max="30">';
-  tableElement.appendChild
+    '<output class="hots-hero-level"></output> ' +
+    '<input type="range" min="0" max="30" value="1">';
+  tableElement.appendChild(hlsContainer);
+  tableElement.querySelector('input[type=range]')
+    .addEventListener('input', event => {
+      const level = event.target.value;
+      //Update hero level display
+      for (const element of document.getElementsByClassName('hots-hero-level')) {
+        element.textContent = level;
+      }
+
+      //Synchronize all hero level sliders
+      document.querySelectorAll(
+        '.ruliweb-hots-hero-table input[type=range],' +
+        '.ruliweb-hots-skill-table input[type=range],' +
+        '.ruliweb-hots-talent-table input[type=range]'
+      ).forEach(slider => slider.value = level);
+
+      //Update level scaling values
+      document.querySelectorAll(
+        '.ruliweb-hots-hero-table output,' +
+        '.ruliweb-hots-skill-table output,' +
+        '.ruliweb-hots-talent-table output'
+      ).forEach(element => {
+        const { hotsLevelBase, hotsLevelScaling, hotsLevelAdd } = element.dataset;
+        if (!hotsLevelBase) return;
+        if (hotsLevelScaling) {
+          levelScaling = +hotsLevelScaling;
+          const scaledValue = Math.round(hotsLevelBase * levelScaling ** level);
+          const scalingPercent = Math.round((levelScaling - 1) * 10000) / 100;
+          element.textContent = `${scaledValue}(+${scalingPercent}%)`;
+        }
+        else {
+          const scaledValue = (+hotsLevelBase) + hotsLevelAdd * (level - 1);
+          element.textContent = `${scaledValue}(+${hotsLevelAdd})`;
+        }
+      });
+    });
 }
