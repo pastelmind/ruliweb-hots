@@ -85,3 +85,17 @@ function prepareLegacyTable(tableElem) {
     }
   );
 }
+
+
+/**
+ * Adds a Hero Level Slider at the bottom of an injected table.
+ *
+ * @param {HTMLElement} tableElement Root element of the injected table
+ */
+function addHeroLevelSlider(tableElement) {
+  const hlsContainer = document.createElement('div');
+  hlsContainer.innerHTML = '영웅 레벨: ' +
+    '<output data-hots-level-base="1" data-hots-level-add="1"></output> ' +
+    '<input type="range" min="0" max="30">';
+  tableElement.appendChild
+}
