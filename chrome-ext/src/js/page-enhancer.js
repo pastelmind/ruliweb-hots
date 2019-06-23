@@ -16,6 +16,35 @@ for (const tableElement of injectedTables) {
   addHeroLevelSlider(tableElement);
 }
 
+const heroLevelDisplays = document.getElementsByClassName('hots-hero-level');
+const heroBoxes = document.getElementsByClassName('ruliweb-hots-hero-table');
+const skillBoxes = document.getElementsByClassName('ruliweb-hots-skill-table');
+const talentBoxes = document.getElementsByClassName('ruliweb-hots-talent-table');
+
+//Add combined event listener for all hero level sliders
+document.body.addEventListener('input', event => {
+  /** @type {HTMLInputElement} */
+  const slider = event.target;
+  if (!(slider.tagName === 'INPUT' && slider.type === 'range')) return;
+
+  const level = slider.value;
+
+  //Update hero level displays
+  for (const element of heroLevelDisplays) {
+    element.textContent = level;
+  }
+
+  for (const heroBox of heroBoxes) {
+    updateHeroLevels(heroBox, level);
+  }
+  for (const skillBox of skillBoxes) {
+    updateHeroLevels(skillBox, level);
+  }
+  for (const talentBox of talentBoxes) {
+    updateHeroLevels(talentBox, level);
+  }
+});
+
 
 /**
  * Checks if the semver-compatible version A is lesser than or equal to B.
@@ -100,39 +129,42 @@ function addHeroLevelSlider(tableElement) {
     '<output class="hots-hero-level"></output> ' +
     '<input type="range" min="0" max="30" value="1">';
   tableElement.appendChild(hlsContainer);
-  tableElement.querySelector('input[type=range]')
-    .addEventListener('input', event => {
-      const level = event.target.value;
-      //Update hero level display
-      for (const element of document.getElementsByClassName('hots-hero-level')) {
-        element.textContent = level;
-      }
+}
 
-      //Synchronize all hero level sliders
-      document.querySelectorAll(
-        '.ruliweb-hots-hero-table input[type=range],' +
-        '.ruliweb-hots-skill-table input[type=range],' +
-        '.ruliweb-hots-talent-table input[type=range]'
-      ).forEach(slider => slider.value = level);
 
-      //Update level scaling values
-      document.querySelectorAll(
-        '.ruliweb-hots-hero-table output,' +
-        '.ruliweb-hots-skill-table output,' +
-        '.ruliweb-hots-talent-table output'
-      ).forEach(element => {
-        const { hotsLevelBase, hotsLevelScaling, hotsLevelAdd } = element.dataset;
-        if (!hotsLevelBase) return;
-        if (hotsLevelScaling) {
-          levelScaling = +hotsLevelScaling;
-          const scaledValue = Math.round(hotsLevelBase * levelScaling ** level);
-          const scalingPercent = Math.round((levelScaling - 1) * 10000) / 100;
-          element.textContent = `${scaledValue}(+${scalingPercent}%)`;
-        }
-        else {
-          const scaledValue = (+hotsLevelBase) + hotsLevelAdd * (level - 1);
-          element.textContent = `${scaledValue}(+${hotsLevelAdd})`;
-        }
-      });
-    });
+/**
+ * Updates the hero level slider, level display, and all scaling values in the
+ * given hero/skill/talent box element.
+ *
+ * @param {HTMLElement} hotsBox Root element of a hero, skill, or talent box
+ * @param {number} level Global hero level
+ */
+function updateHeroLevels(hotsBox, level) {
+  //Synchronize all hero level sliders
+  for (const slider of hotsBox.getElementsByTagName('input')) {
+    if (slider.type === 'range') {
+      slider.value = level;
+    }
+  }
+
+  //Update level scaling values
+  for (const valueElement of hotsBox.getElementsByTagName('output')) {
+    const {
+      hotsLevelBase,
+      hotsLevelScaling,
+      hotsLevelAdd,
+    } = valueElement.dataset;
+    if (!hotsLevelBase) return;
+
+    if (hotsLevelScaling) {
+      levelScaling = +hotsLevelScaling;
+      const scaledValue = Math.round(hotsLevelBase * levelScaling ** level);
+      const scalingPercent = Math.round((levelScaling - 1) * 10000) / 100;
+      valueElement.textContent = `${scaledValue}(+${scalingPercent}%)`;
+    }
+    else {
+      const scaledValue = (+hotsLevelBase) + hotsLevelAdd * (level - 1);
+      valueElement.textContent = `${scaledValue}(+${hotsLevelAdd})`;
+    }
+  }
 }
