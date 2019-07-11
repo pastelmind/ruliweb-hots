@@ -90,8 +90,9 @@ function prepareLegacyHotsBox(hotsBox) {
         if (Number.isNaN(levelScaling)) return match;
 
         const base = Math.round(level1Value / levelScaling);
-        return `<output data-hots-level-base="${base}"` +
-          ` data-hots-level-scaling="${levelScaling}">${match}</output>`
+        return `<a style="color: #fff; border-bottom: 1px dashed #ff0">` +
+          `<output data-hots-level-base="${base}"` +
+          ` data-hots-level-scaling="${levelScaling}">${match}</output></a>`
       }
       else {
         const levelAdd = parseFloat(scalingValueStr);
