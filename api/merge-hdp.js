@@ -187,9 +187,13 @@ function parseAllSkillsData(heroData, heroId) {
   for (const subAbilityGroup of heroData.subAbilities || []) {
     for (const [parentAbilityId, subAbilities] of Object.entries(subAbilityGroup)) {
       for (const abilityArray of Object.values(subAbilities)) {
-        const parentAbility = jsonFind(heroData, o => o && o.nameId === parentAbilityId);
-        for (const a of abilityArray)
-          a.parentAbility = parentAbility;
+        //Fix for HDP 4.0.0+
+        //If the subability is the parent of itself, don't bother
+        if (parentAbilityId !== abilityArray[0].nameId) {
+          const parentAbility = jsonFind(heroData, o => o && o.nameId === parentAbilityId);
+          for (const a of abilityArray)
+            a.parentAbility = parentAbility;
+        }
 
         skillDataArray.push(...abilityArray);
       }
