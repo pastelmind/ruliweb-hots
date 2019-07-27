@@ -10,6 +10,7 @@ module.exports = class Skill {
   /**
    * Create a new Skill object.
    * @param {Object} o
+   * @param {string=} o.id
    * @param {string | KoEnString=} o.name
    * @param {string=} o.icon
    * @param {string=} o.iconUrl
@@ -25,6 +26,7 @@ module.exports = class Skill {
    * @param {Object<string, string|number>} o.extras
    */
   constructor(o = {}) {
+    this.id = o.id || '';
     this.name = new KoEnString(o.name || '');
     this.icon = o.icon || '';
     this.iconUrl = o.iconUrl || '';
@@ -45,6 +47,7 @@ module.exports = class Skill {
    */
   toJSON() {
     return {
+      id: this.id,
       name: this.name,
       type: this.type,
       icon: this.icon || undefined,
