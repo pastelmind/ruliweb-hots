@@ -130,19 +130,40 @@ function parseHeroData(heroData, heroId) {
 
   switch (hero.id) {
     case 'LostVikings': //Longboat Raid! => Mortar
-      relocateSubAbilitiesAfterTalent(hero, '바이킹의 습격!', '박격포');
+      relocateSubAbilitiesAfterTalent(
+          hero,
+          'LostVikingsHeroicAbilityLongboatRaid',
+          'LostVikingsLongboatRaidMortar',
+      );
       break;
     case 'Firebat':     //Bunker Drop => Flamethrower
-      relocateSubAbilitiesAfterTalent(hero, '벙커 투하', '화염방사기');
+      relocateSubAbilitiesAfterTalent(
+          hero,
+          'FirebatHeroicAbilityBunkerDrop',
+          'FirebatBunkerDropFlamethrower',
+      );
       break;
     case 'Junkrat':     //RIP-Tire => Jump!
-      relocateSubAbilitiesAfterTalent(hero, '죽이는 타이어', '점프!');
+      relocateSubAbilitiesAfterTalent(hero,
+          'JunkratRIPTire',
+          'JunkratRIPTireJump',
+      );
       break;
     case 'Chen':        //Storm, Earth, Fire => Storm / Earth / Fire
-      relocateSubAbilitiesAfterTalent(hero, '폭풍, 대지, 불', '폭풍', '대지', '불');
+      relocateSubAbilitiesAfterTalent(hero,
+          'ChenHeroicAbilityStormEarthFire',
+          'ChenStorm',
+          'ChenEarth',
+          'ChenFire',
+      );
       break;
     case 'Tychus':      //Commandeer Odin => Annihilate / Ragnarok Missiles / Thrusters
-      relocateSubAbilitiesAfterTalent(hero, '오딘 출격', '몰살', '라그나로크 미사일', '추진기 가동');
+      relocateSubAbilitiesAfterTalent(hero,
+          'TychusHeroicAbilityCommandeerOdin',
+          'TychusOdinAnnihilate',
+          'TychusOdinRagnarokMissilesTargeted',
+          'TychusOdinThrusters',
+      );
       break;
   }
 
@@ -254,22 +275,22 @@ function parseAllTalentsData(heroData, heroId) {
  * Finds a talent by `talentName` in `hero`, and inserts the given subabilities
  * after it as talents.
  * @param {Hero} hero Hero
- * @param {string} talentName Name of talent to search for
- * @param  {...string} subAbilityNames Names of subabilities to insert
+ * @param {string} talentId ID of the talent to search for
+ * @param  {...string} subAbilityIds ID strings of subabilities to insert
  */
-function relocateSubAbilitiesAfterTalent(hero, talentName, ...subAbilityNames) {
+function relocateSubAbilitiesAfterTalent(hero, talentId, ...subAbilityIds) {
   for (const talentArray of Object.values(hero.talents)) {
-    const talentIndex = talentArray.findIndex(talent => talent.name.ko === talentName);
+    const talentIndex = talentArray.findIndex(talent => talent.id === talentId);
     if (talentIndex !== -1) {
-      const subAbilities = subAbilityNames.map(name => {
+      const subAbilities = subAbilityIds.map(id => {
         for (const [skillIndex, skill] of hero.skills.entries()) {
-          if (skill.name.ko === name) {
+          if (skill.id === id) {
             //If a skill is found, remove it from the array of skills
             hero.skills.splice(skillIndex, 1);
             return skill;
           }
         }
-        return new Talent({ name: { ko: name } });
+        return new Talent({ id });
       });
 
       talentArray.splice(talentIndex + 1, 0, ...subAbilities);
