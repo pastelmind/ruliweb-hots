@@ -167,7 +167,10 @@ function parseAllSkillsData(heroData, heroId) {
   } = heroData.abilities;
 
   //Always place traits at the front
-  skillDataArray.push(...traitArray);
+  if (traitArray)
+    skillDataArray.push(...traitArray);
+  else
+    console.warn(`${heroId} has no trait`)
 
   for (const abilityArray of Object.values(abilities))
     skillDataArray.push(...abilityArray);
