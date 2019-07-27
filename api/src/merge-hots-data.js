@@ -93,21 +93,22 @@ function mergeHero(target, source) {
     target.stats = mergeHeroStats(target.stats[0] || target.stats, source.stats);
 
   //Merge skills
-  source.skills.forEach((sourceSkill, sourceSkillIndex) => {
-    //Find matching skill by index
-    let targetSkill = target.skills[sourceSkillIndex];
+  source.skills.forEach(sourceSkill => {
+    //Find matching skill by ID
+    let targetSkill = target.skills.find(skill => skill.id === sourceSkill.id);
 
-    //If the corresponding target skill is not in the same index, search for the
-    //target skill.
-    if (!(targetSkill && isEqualInOneLocale(targetSkill.name, sourceSkill.name))) {
-      const targetSkillIndex = target.skills.findIndex(skill => isEqualInOneLocale(skill.name, sourceSkill.name));
+    //If there is no skill matching the ID, search using the skill name.
+    if (!targetSkill) {
+      targetSkill = target.skills.find(skill => isEqualInOneLocale(skill.name, sourceSkill.name));
 
-      if (targetSkillIndex !== -1) {
-        console.warn(`Skill index mismatch: ${sourceSkill.name} was expected in [${sourceSkillIndex}], but found in [${targetSkillIndex}]`);
-        targetSkill = target.skills[targetSkillIndex];
+      if (targetSkill && !targetSkill.id) {
+        console.warn(
+            `Target skill (${targetSkill.name}) has no ID,`,
+            `matched by name with ${sourceSkill.name}`,
+        );
       }
       else {
-        console.warn(`Skill not found: ${sourceSkill.name} in [${sourceSkillIndex}]`);
+        console.warn(`Skill not found: ${sourceSkill.id} (${sourceSkill.name})`);
         return;
       }
     }
@@ -128,14 +129,35 @@ function mergeHero(target, source) {
         //Find matching talent by level and index
         let targetTalent = (oldTalents[sourceTalentLevel] || [])[sourceTalentIndex];
 
-        //If the corresponding target talent is not in the same level and index,
-        //search for the target talent.
-        if (!(targetTalent && isEqualInOneLocale(targetTalent.name, sourceTalent.name))) {
-          targetTalent = undefined; //Unset targetTalent (in case of name mismatch)
+        if (targetTalent) {
+          //Compare using talent ID only if the target talent has one
+          if (targetTalent.id) {
+            //If the target talent does not match the ID, force a manual search
+            if (targetTalent.id !== sourceTalent.id) targetTalent = null;
+          }
+          else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
+            console.warn(
+                `Target talent (${targetTalent.name}) has no ID,`,
+                `matched by position with ${sourceTalent.name}`,
+            );
+          }
+          //If the target talent does not match the name, force a manual search
+          else {
+            targetTalent = null;
+          }
+        }
 
+        if (!targetTalent) {
           let targetTalentIndex = -1, targetTalentLevel, targetTalentArray;
           for ([targetTalentLevel, targetTalentArray] of Object.entries(oldTalents)) {
-            targetTalentIndex = targetTalentArray.findIndex(talent => isEqualInOneLocale(talent.name, sourceTalent.name));
+            targetTalentIndex = targetTalentArray.findIndex(talent => {
+              if (talent.id) {
+                return talent.id === sourceTalent.id;
+              }
+              else {
+                return isEqualInOneLocale(talent.name, sourceTalent.name);
+              }
+            });
 
             if (targetTalentIndex !== -1)
               break;
@@ -222,6 +244,7 @@ function mergeSkill(target, source) {
   mergeProperties(target.extras, source.extras, source.extras)
 
   return mergeProperties(target, source, {
+    id: 0,
     type: 0,
     icon: 0,
     description: 0,
