@@ -409,8 +409,8 @@ function parseTooltip(tooltip) {
     .replace(/(\d+)~~(.+?)~~/gi, (match, base, levelScaling) =>
       `${Math.round(base * (1 + (+levelScaling)))}(+${levelScaling * 100}%)`  //Set scaling numbers to level 1-values
     )
-    .replace(/<c val="#(?:TooltipNumbers|TooltipQuest)">(.*?)<\/c>/gi, '$1')   //Remove #TooltipNumbers styling
-    .replace(/<c val="#AbilityPassive">(지속 효과:)<\/c>/gi, '$1')             //Remove #AbilityPassive for generic passive descriptions
+    .replace(/<c val="#?(?:TooltipNumbers|TooltipQuest|bfd4fd|e4b800)">(.*?)<\/c>/gi, '$1') //Remove #TooltipNumbers and #TooltipQuest styling
+    .replace(/<c val="#?(?:AbilityPassive|00ff90)">(지속 효과:)<\/c>/gi, '$1')              //Remove #AbilityPassive for generic passive descriptions
     .replace(/<[cs] val="(.*?)">/gi, (match, colorName) =>
       `<span style="color:#${COLOR_CODES[colorName.replace(/#/gi, '')] || colorName.toLowerCase()}">`
     )
