@@ -346,6 +346,13 @@ function extractSkillTalentInfo(skillTalentData) {
   /** @type {Partial<Skill>} */
   const skillTalentInfo = {};
 
+  if (skillTalentData.nameId) {
+    skillTalentInfo.id = skillTalentData.nameId;
+  }
+  else {
+    console.warn(`Missing nameId field in ${util.inspect(skillTalentData)}`);
+  }
+
   //Extract name
   if (skillTalentData.name)
     skillTalentInfo.name = new KoEnString(skillTalentData.name);
