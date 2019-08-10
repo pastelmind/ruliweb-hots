@@ -16978,7 +16978,7 @@
             "levelScaling": 0.04
           },
           "radius": 0.5,
-          "speed": 5,
+          "speed": 5.5664,
           "hpRegen": {
             "value": 1.5976,
             "levelScaling": 0.04
@@ -22016,12 +22016,38 @@
     },
     "NexusHunter": {
       "name": "키히라",
-      "title": "",
+      "title": "정처 없는 현상금 사냥꾼",
       "icon": "ui_targetportrait_hero_nexus2",
       "type": "",
       "role": "",
       "newRole": "",
       "universe": "",
+      "stats": {
+        "hp": {
+          "value": 2075,
+          "levelScaling": 0.04
+        },
+        "radius": 0.625,
+        "speed": 4.8398,
+        "hpRegen": {
+          "value": 4.3242,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 2.25,
+        "period": 1,
+        "damage": {
+          "value": 100,
+          "levelScaling": 0.04
+        }
+      },
       "skills": [
         {
           "id": "NexusHunterGrapplingHook",
@@ -24767,7 +24793,7 @@
             "levelScaling": 0.0475
           },
           "radius": 0.9375,
-          "speed": 5.0582,
+          "speed": 5.5658,
           "hpRegen": {
             "value": 3.375,
             "levelScaling": 0.0475
