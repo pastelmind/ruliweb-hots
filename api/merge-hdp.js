@@ -462,7 +462,8 @@ function parseTooltip(tooltip) {
           }
         }
 
-        let color = val.replace('#', '');
+        // Handle color gradients introduced in HDP 4.0.0
+        let color = val.replace('#', '').replace(/^\w{6}-(\w{6})$/g, '$1');
         if (BLACKLISTED_COLORS.has(color)) return text;
         if (/AbilityPassive|00ff90/gi.test(color)
             && text.startsWith('지속 효과')) {
