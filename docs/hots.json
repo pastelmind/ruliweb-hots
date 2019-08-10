@@ -22109,10 +22109,11 @@
               "en": "Maximum Effort",
               "ko": "분투"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_q",
             "description": "한 번의 살육으로 같은 적 영웅에게 3회 피해를 주면 대상에게 112(+4%)의 추가 피해를 주고 2초 동안 20% 느려지게 합니다.",
-            "shortDescription": "살육이 추가 피해를 주고 느려지게 함"
+            "shortDescription": "살육이 추가 피해를 주고 느려지게 함",
+            "upgradeFor": "Q"
           },
           {
             "id": "NexusHunterFatalWounds",
@@ -22120,10 +22121,11 @@
               "en": "Fatal Wounds",
               "ko": "치명상"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_w",
             "description": "생명력이 50% 미만인 적 영웅에게 피의 분노가 최대로 중첩되면 대상 영웅에게 주는 출혈 피해가 50% 증가합니다.\n\n퀘스트: 피의 분노로 적 영웅에게 출혈 피해를 줘야 합니다.\n보상: 피의 분노로 적 영웅에게 125회의 출혈 피해를 주면, 피의 분노의 지속 시간이 2초 증가합니다.",
-            "shortDescription": "퀘스트: 피의 분노 공격력 및 지속 시간 증가"
+            "shortDescription": "퀘스트: 피의 분노 공격력 및 지속 시간 증가",
+            "upgradeFor": "W"
           },
           {
             "id": "NexusHunterFinishingTouch",
@@ -22131,7 +22133,7 @@
               "en": "Finishing Touch",
               "ko": "화룡점정"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_passive",
             "description": "생명력이 50% 미만인 적 영웅에게 일반 공격을 하면 25%의 추가 피해를 주고 공격 속도가 2.5초 동안 35% 증가합니다.",
             "shortDescription": "생명력이 낮은 영웅에게 일반 공격력 증가"
@@ -22144,10 +22146,11 @@
               "en": "Upstage",
               "ko": "무대 체질"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_w",
             "description": "피의 분노로 2명 이상의 적 영웅에게 피해를 주면 12초 내의 적 영웅의 일반 공격을 4회 회피합니다.",
-            "shortDescription": "피의 분노로 일반 공격 회피"
+            "shortDescription": "피의 분노로 일반 공격 회피",
+            "upgradeFor": "W"
           },
           {
             "id": "NexusHunterEnsnaringSwing",
@@ -22155,10 +22158,11 @@
               "en": "Ensnaring Swing",
               "ko": "옭아매기"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e",
             "description": "회전하는 동안 회전 휩쓸기의 주 대상이 25% 느려집니다. 회전 휩쓸기로 피해를 받은 부가 대상은 3초 동안 35% 느려집니다.",
-            "shortDescription": "회전 휩쓸기가 적을 느려지게 함"
+            "shortDescription": "회전 휩쓸기가 적을 느려지게 함",
+            "upgradeFor": "E"
           },
           {
             "id": "NexusHunterBloodRageYourPainMyGain",
@@ -22166,7 +22170,7 @@
               "en": "Your Pain, My Gain",
               "ko": "너의 고통은 나의 기쁨"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_passive",
             "description": "적 영웅에게 일반 공격을 하면 방어력이 3초 동안 10 증가합니다. 최대 3회 중첩됩니다.",
             "shortDescription": "영웅 일반 공격 시 방어력 증가"
@@ -22179,10 +22183,11 @@
               "en": "The Thirst",
               "ko": "갈망"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_q",
             "description": "살육으로 적 영웅에게 피해를 줄 때마다, 4초 내의 다음 일반 공격이 적 영웅에게 <span style=\"color:#tooltip numbers\">12%</span>의 추가 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다. 공격력은 최대 10회 중첩됩니다.",
-            "shortDescription": "살육으로 일반 공격력 증가 및 생명력 회복"
+            "shortDescription": "살육으로 일반 공격력 증가 및 생명력 회복",
+            "upgradeFor": "Q"
           },
           {
             "id": "NexusHunterBloodRageHealmonger",
@@ -22190,10 +22195,11 @@
               "en": "Healmonger",
               "ko": "생기 탐식자"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_w",
             "description": "피의 분노로 생명력이 50% 미만인 적 영웅에게 피해를 주면 생명력을 213(+4%) 추가로 회복합니다.",
-            "shortDescription": "적 생명력이 낮으면 피의 분노 치유량 증가"
+            "shortDescription": "적 생명력이 낮으면 피의 분노 치유량 증가",
+            "upgradeFor": "W"
           },
           {
             "id": "NexusHunterSiphoningLink",
@@ -22201,10 +22207,11 @@
               "en": "Siphoning Link",
               "ko": "흡수의 휩쓸기"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e",
             "description": "회전 휩쓸기의 첫 번째 공격과 회전 공격으로 적 영웅에게 피해를 줄 때마다 4초에 걸쳐 100(+4%)의 생명력을 회복합니다. 최대 4회 중첩됩니다.",
-            "shortDescription": "회전 휩쓸기로 생명력 지속 회복"
+            "shortDescription": "회전 휩쓸기로 생명력 지속 회복",
+            "upgradeFor": "E"
           }
         ],
         "10": [
@@ -22214,7 +22221,7 @@
               "en": "Unrelenting Strikes",
               "ko": "무자비한 난도"
             },
-            "type": "",
+            "type": "R",
             "icon": "storm_ui_icon_nexushunter_r1",
             "description": "칼이 점차 늘어나며 주위 적들에게 2.5초 동안 0.5초마다 46(+4%)의 피해를 줍니다. 공격이 끝날 때 주위 적 영웅에게 86(+4%)의 피해를 주고 0.75초 동안 기절시킵니다.",
             "shortDescription": "주위 적들에게 피해를 주고 기절시킴",
@@ -22227,7 +22234,7 @@
               "en": "Final Strike",
               "ko": "최후의 일격"
             },
-            "type": "",
+            "type": "R",
             "icon": "storm_ui_icon_nexushunter_r2",
             "description": "1초 후, 일직선상의 적들에게 432(+4%)의 피해를 줍니다. 적 영웅의 생명력이 50% 미만이면 25%의 추가 피해를 줍니다.",
             "shortDescription": "칼의 힘을 방출해 결정타를 입힘",
@@ -22242,10 +22249,11 @@
               "en": "Chainsaw",
               "ko": "사슬톱날"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_q",
             "description": "적 영웅에게 피의 분노가 최대로 중첩된 동안 살육의 재사용 대기시간이 100% 더 빨리 감소합니다.",
-            "shortDescription": "피의 분노로 살육 재사용 대기시간 감소"
+            "shortDescription": "피의 분노로 살육 재사용 대기시간 감소",
+            "upgradeFor": "Q"
           },
           {
             "id": "NexusHunterPulsingPain",
@@ -22253,10 +22261,11 @@
               "en": "Pulsing Pain",
               "ko": "고동치는 고통"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e",
             "description": "회전 휩쓸기의 회전으로 적 영웅에게 피해를 줄 때마다 주 대상에게 120(+4%)의 추가 피해를 줍니다.",
-            "shortDescription": "회전 휩쓸기가 주 대상에게 추가 피해"
+            "shortDescription": "회전 휩쓸기가 주 대상에게 추가 피해",
+            "upgradeFor": "E"
           },
           {
             "id": "NexusHunterTheHunted",
@@ -22264,7 +22273,7 @@
               "en": "The Hunted",
               "ko": "사냥감"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_passive",
             "description": "적 영웅에게 일반 공격을 하면 같은 영웅을 대상으로 한 다음 일반 공격이 25의 추가 피해를 줍니다. 최대 4회 중첩되며 4초 동안 지속됩니다. 이 효과는 다른 영웅에게 일반 공격을 하면 사라집니다.",
             "shortDescription": "같은 대상 연속 일반 공격 시 추가 피해"
@@ -22277,10 +22286,11 @@
               "en": "Booming Kick",
               "ko": "괴력 발차기"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e",
             "description": "회전 휩쓸기의 밀치기로 기절하는 시간이 0.25% 증가합니다. 주 대상 주위의 모든 적 영웅이 회전 휩쓸기의 밀치기 공격에 영향을 받습니다.",
-            "shortDescription": "회전 휩쓸기의 밀치기가 일정 지역에 피해를 줌"
+            "shortDescription": "회전 휩쓸기의 밀치기가 일정 지역에 피해를 줌",
+            "upgradeFor": "E"
           },
           {
             "id": "NexusHunterRevolvingSweepLingeringAilment",
@@ -22288,10 +22298,11 @@
               "en": "Lingering Ailment",
               "ko": "만성 통증"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e_alt_1",
             "description": "회전 휩쓸기의 첫 번째 공격과 회전 공격이 적 영웅의 방어력을 3초 동안 15 감소시킵니다.",
-            "shortDescription": "적 영웅의 방어력을 감소시킴"
+            "shortDescription": "적 영웅의 방어력을 감소시킴",
+            "upgradeFor": "E"
           },
           {
             "id": "NexusHunterRevolvingSweepSwingLifeAway",
@@ -22299,10 +22310,11 @@
               "en": "Swing Life Away",
               "ko": "다시 돌고"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_e_alt_2",
             "description": "회전 휩쓸기로 대상 주변을 회전하는 동안 회전 휩쓸기의 재사용 대기시간이 150% 더 빨리 감소하며, 밀치기 후 기술 방어력이 2초 동안 50 증가합니다.",
-            "shortDescription": "회전 휩쓸기 재사용 대기시간 감소"
+            "shortDescription": "회전 휩쓸기 재사용 대기시간 감소",
+            "upgradeFor": "E"
           }
         ],
         "20": [
@@ -22312,10 +22324,11 @@
               "en": "Silent Killer",
               "ko": "침묵의 암살자"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_r1",
             "description": "무자비한 난도를 사용하는 순간 범위 내에 있는 적을 2초 동안 침묵시키며, 무자비한 난도로 적 영웅에게 피해를 줄 때마다 무자비한 난도의 재사용 대기시간이 3초 감소합니다.",
-            "shortDescription": "무자비한 난도가 적을 침묵시킴"
+            "shortDescription": "무자비한 난도가 적을 침묵시킴",
+            "upgradeFor": "R"
           },
           {
             "id": "NexusHunterFinalStrikeUnleashedPotential",
@@ -22323,10 +22336,11 @@
               "en": "Unleashed Potential",
               "ko": "잠재력 방출"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_r2",
             "description": "생명력이 50% 미만인 적 영웅에게 주는 추가 피해가 25%에서 50%로 증가합니다.\n\n적 영웅이 최후의 일격에 적중당한 후 1.5초 안에 죽으면 최후의 일격과 모든 일반 기술의 재사용 대기시간이 초기화됩니다.",
-            "shortDescription": "최후의 일격으로 기술 재사용 대기시간 초기화"
+            "shortDescription": "최후의 일격으로 기술 재사용 대기시간 초기화",
+            "upgradeFor": "R"
           },
           {
             "id": "NexusHunterGrapplingHookUtilityBelt",
@@ -22334,10 +22348,11 @@
               "en": "Utility Belt",
               "ko": "만능 도구"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_d",
             "description": "회전 휩쓸기의 첫 번째 공격이 적 영웅에게 적중하면 고정 갈고리의 재사용 대기시간이 초기화되고, 5초 동안 피해를 받지 않으면 고정 갈고리의 재사용 대기시간이 900% 더 빨리 감소합니다.",
-            "shortDescription": "고정 갈고리 재사용 대기시간 감소"
+            "shortDescription": "고정 갈고리 재사용 대기시간 감소",
+            "upgradeFor": "D"
           },
           {
             "id": "NexusHunterHuntersVengeanceNoSanctuary",
@@ -22345,7 +22360,7 @@
               "en": "No Sanctuary",
               "ko": "숨을 곳은 없다"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_nexushunter_passive_alt_1",
             "description": "생명력이 50% 미만인 주위 적 영웅의 모습이 드러나며, 이 능력으로 적 영웅의 모습이 드러난 동안 이동 속도가 20% 증가합니다.\n\n추가로 모습이 드러난 적 영웅에게 20%의 추가 피해를 줍니다.",
             "shortDescription": "생명력이 낮은 적을 사냥함"
