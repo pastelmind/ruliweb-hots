@@ -336,8 +336,16 @@ function parseSkillData(skillData) {
     case 'HeroChenStorm':
       parentType = 'R'; break;
     default:
-      if (skillData.parentAbility)
+      const parentAbility = skillData.parentAbility;
+      if (parentAbility) {
+        //Fix for HDP 4.2.0+
+        if (parentAbility.nameId === 'LeoricSkeletalSwingTargetedReady' ||
+            parentAbility.nameId === 'LeoricDrainHope'
+            ) {
+          parentType = 'D'; break;
+        }
         parentType = convertAbilityType(skillData.parentAbility.abilityType);
+      }
   }
 
   // Set special type strings for SubAbilities, except those in the blacklist
