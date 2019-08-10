@@ -427,6 +427,15 @@ const COLOR_CODES = {
 };
 
 
+/** Colors that will be removed from tooltips. */
+const BLACKLISTED_COLORS = new Set([
+  'TooltipNumbers',
+  'TooltipQuest',
+  'bfd4fd',
+  'e4b800',
+]);
+
+
 /**
  * Parse tooltip text, removing game data tags.
  * @param {string} tooltip
@@ -437,12 +446,32 @@ function parseTooltip(tooltip) {
     .replace(/(\d+)~~(.+?)~~/gi, (match, base, levelScaling) =>
       `${Math.round(base * (1 + (+levelScaling)))}(+${levelScaling * 100}%)`  //Set scaling numbers to level 1-values
     )
-    .replace(/<c val="#?(?:TooltipNumbers|TooltipQuest|bfd4fd|e4b800)">(.*?)<\/c>/gi, '$1') //Remove #TooltipNumbers and #TooltipQuest styling
-    .replace(/<c val="#?(?:AbilityPassive|00ff90)">(지속 효과:)<\/c>/gi, '$1')              //Remove #AbilityPassive for generic passive descriptions
-    .replace(/<[cs] val="(.*?)">/gi, (match, colorName) =>
-      `<span style="color:#${COLOR_CODES[colorName.replace(/#/gi, '')] || colorName.toLowerCase()}">`
+    .replace(
+      /<[cs]((?:\s+\w+=".*?")+)>(.*?)(?:<\/[cs]>|$)/gi,
+      (tag, attrs, text) => {
+        const attributePattern = /\b(\w+)="(.*?)"/gi;
+        let match, val;
+        while (match = attributePattern.exec(attrs)) {
+          const attribute = match[1];
+          //Fix Blizzard's typo errors
+          if (attribute === 'val' || attribute === 'al') {
+            val = match[2];
+          }
+          else {
+            console.warn(`Unknown attribute '${attribute}' in ${tag}`);
+          }
+        }
+
+        let color = val.replace('#', '');
+        if (BLACKLISTED_COLORS.has(color)) return text;
+        if (/AbilityPassive|00ff90/gi.test(color)
+            && text.startsWith('지속 효과')) {
+          return text;
+        }
+        color = COLOR_CODES[color] || color.toLowerCase();
+        return `<span style="color:#${color}">${text}</span>`;
+      }
     )
-    .replace(/<\/[cs]>/gi, '</span>')
     .replace(/(\d(?:\(\+.*?%\))?)<lang rule="jongsung">(.*?),(.*?)<\/lang>/gi, (match, digitPart, eul, rul) =>
       digitPart + ('2459'.includes(digitPart.charAt(0)) ? rul : eul)
     )

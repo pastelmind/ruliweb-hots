@@ -4585,7 +4585,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_talent_mercenarylord",
-            "description": "사용하면 최대 생명력의 10%를 회복합니다. 최대 2회 충전할 수 있습니다. 소용돌이 중에도 사용할 수 있습니다.\n\n<span style=\"color:#00ff90\">지속 효과: </span>용병에게 주는 피해가 25% 증가합니다.",
+            "description": "사용하면 최대 생명력의 10%를 회복합니다. 최대 2회 충전할 수 있습니다. 소용돌이 중에도 사용할 수 있습니다.\n\n지속 효과: 용병에게 주는 피해가 25% 증가합니다.",
             "shortDescription": "용병에게 추가 피해 및 사용 시 생명력 회복",
             "rechargeCooldown": 30
           }
@@ -14971,7 +14971,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_kel'thuzad_powerofthecolddark",
-          "description": "퀘스트: 적 영웅이 얼음 회오리의 중심부나 켈투자드의 사슬에 적중당하면 어둠이 1회 중첩됩니다.\n보상: 어둠이 15회 중첩되면 혹한의 쐐기를 사용할 수 있게 됩니다.\n보상: 어둠이 30회 중첩되면 기술 위력이 75% 증가합니다.\n\n어둠: <span style=\"color:##tooltipnumbers\" validator=\"true\">0/30</span>",
+          "description": "퀘스트: 적 영웅이 얼음 회오리의 중심부나 켈투자드의 사슬에 적중당하면 어둠이 1회 중첩됩니다.\n보상: 어둠이 15회 중첩되면 혹한의 쐐기를 사용할 수 있게 됩니다.\n보상: 어둠이 30회 중첩되면 기술 위력이 75% 증가합니다.\n\n어둠: 0/30",
           "shortDescription": "적 방해 시 기술 강화"
         },
         {
@@ -17682,7 +17682,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_lucio_wallride",
-            "description": "벽 타기가 활성화된 동안 적 영웅 주위를 지나면 이동 속도 증가 효과가 <c al=\"#TooltipNumbers\">1</span>초 동안 36%로 증가합니다.\n\n지속 효과: 벽 타기가 활성화된 동안 방어력이 20 증가합니다.",
+            "description": "벽 타기가 활성화된 동안 적 영웅 주위를 지나면 이동 속도 증가 효과가 1초 동안 36%로 증가합니다.\n\n지속 효과: 벽 타기가 활성화된 동안 방어력이 20 증가합니다.",
             "shortDescription": "벽 타기 중 방어력 및 이동 속도 증가",
             "upgradeFor": "Z"
           }
@@ -20526,7 +20526,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_monk_trait1",
-          "description": "<span style=\"color:#bfd4fd\">특성 창에서 초월, 철권, 통찰 중 하나를 선택하십시오.",
+          "description": "특성 창에서 초월, 철권, 통찰 중 하나를 선택하십시오.",
           "shortDescription": "고유 능력 선택"
         },
         {
@@ -20922,7 +20922,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_muradin_stormbolt",
-          "description": "망치를 던져 처음 적중한 적에게 114(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n퀘스트: 폭풍강타가 적 영웅에게 <span style=\"color:##tooltipnumbers\" validator=\"true\">25</span>회 적중해야 합니다. 폭풍강타가 적중한 적 영웅이 2.5초 안에 죽으면 퀘스트가 3회 진행됩니다.\n보상: 폭풍강타가 처음 적중한 대상을 관통하고 일반 공격을 할 때마다 폭풍강타의 재사용 대기시간이 1초 감소합니다.",
+          "description": "망치를 던져 처음 적중한 적에게 114(+4%)의 피해를 주고 1.25초 동안 기절시킵니다.\n\n퀘스트: 폭풍강타가 적 영웅에게 25회 적중해야 합니다. 폭풍강타가 적중한 적 영웅이 2.5초 안에 죽으면 퀘스트가 3회 진행됩니다.\n보상: 폭풍강타가 처음 적중한 대상을 관통하고 일반 공격을 할 때마다 폭풍강타의 재사용 대기시간이 1초 감소합니다.",
           "shortDescription": "망치를 던져 처음 적중한 적을 기절시키고 피해를 줌",
           "cooldown": 10,
           "manaCost": 45,
@@ -30571,7 +30571,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_varian_colossus_smash",
-            "description": "대상 적을 강타하여 166(+4%)의 피해를 주고 방어력을 3초 동안 20 감소시켜 받는 피해를 20% 증가시킵니다.\n\n지속 효과: 일반 공격력이 100% 증가합니다.\n<span style=\"color:#00ff90\">지속 효과: </span>최대 생명력과 생명력 재생량이 10% 감소합니다.",
+            "description": "대상 적을 강타하여 166(+4%)의 피해를 주고 방어력을 3초 동안 20 감소시켜 받는 피해를 20% 증가시킵니다.\n\n지속 효과: 일반 공격력이 100% 증가합니다.\n지속 효과: 최대 생명력과 생명력 재생량이 10% 감소합니다.",
             "shortDescription": "공격력이 증가하지만 생명력 감소\n적을 강타하여 방어력을 감소시킴",
             "cooldown": 20,
             "manaCost": 40,
