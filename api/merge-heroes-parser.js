@@ -501,6 +501,7 @@ function parseAllTalents(heroData) {
  */
 function parseTalentData(talentData) {
   return {
+    id: talentData.id,
     name: toKoEnString(talentData.button.name),
     icon: extractIconId(talentData.button.icon),
   };

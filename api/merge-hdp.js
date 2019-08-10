@@ -87,7 +87,9 @@ if (!program.jsonEn) {
 
     console.log('Parsing entry:', heroDataName);
     console.group();
-    heroes[heroDataName] = parseHeroData(jsonKr[heroDataName]);
+    //Fix for HDP >= 4.0.0
+    const heroId = jsonKr[heroDataName].cHeroId || heroDataName;
+    heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroId);
     console.groupEnd();
   }
 
@@ -109,37 +111,59 @@ if (!program.jsonEn) {
 /**
  * Extract hero data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
+ * @param {string} heroId ID of hero entry
  * @return {Hero} Hero object containing the extracted data
  */
-function parseHeroData(heroData) {
+function parseHeroData(heroData, heroId) {
   const hero = new Hero({
-    id: heroData.cHeroId,
+    id: heroId,
     name: heroData.name,
     icon: extractIconId(heroData.portraits.target),
   });
 
   hero.stats = undefined;
-  hero.skills = parseAllSkillsData(heroData);
-  hero.talents = parseAllTalentsData(heroData);
+  hero.skills = parseAllSkillsData(heroData, heroId);
+  hero.talents = parseAllTalentsData(heroData, heroId);
 
   //Fixes for heroic abilities that have sub-abilities
   //TODO: Move these abilities into properties of the parent abilities
 
-  switch (heroData.cHeroId) {
+  switch (hero.id) {
     case 'LostVikings': //Longboat Raid! => Mortar
-      relocateSubAbilitiesAfterTalent(hero, '바이킹의 습격!', '박격포');
+      relocateSubAbilitiesAfterTalent(
+          hero,
+          'LostVikingsHeroicAbilityLongboatRaid',
+          'LostVikingsLongboatRaidMortar',
+      );
       break;
     case 'Firebat':     //Bunker Drop => Flamethrower
-      relocateSubAbilitiesAfterTalent(hero, '벙커 투하', '화염방사기');
+      relocateSubAbilitiesAfterTalent(
+          hero,
+          'FirebatHeroicAbilityBunkerDrop',
+          'FirebatBunkerDropFlamethrower',
+      );
       break;
     case 'Junkrat':     //RIP-Tire => Jump!
-      relocateSubAbilitiesAfterTalent(hero, '죽이는 타이어', '점프!');
+      relocateSubAbilitiesAfterTalent(hero,
+          'JunkratRIPTire',
+          'JunkratRIPTireJump',
+      );
       break;
     case 'Chen':        //Storm, Earth, Fire => Storm / Earth / Fire
-      relocateSubAbilitiesAfterTalent(hero, '폭풍, 대지, 불', '폭풍', '대지', '불');
+      relocateSubAbilitiesAfterTalent(hero,
+          'ChenHeroicAbilityStormEarthFire',
+          'ChenStorm',
+          'ChenEarth',
+          'ChenFire',
+      );
       break;
     case 'Tychus':      //Commandeer Odin => Annihilate / Ragnarok Missiles / Thrusters
-      relocateSubAbilitiesAfterTalent(hero, '오딘 출격', '몰살', '라그나로크 미사일', '추진기 가동');
+      relocateSubAbilitiesAfterTalent(hero,
+          'TychusHeroicAbilityCommandeerOdin',
+          'TychusOdinAnnihilate',
+          'TychusOdinRagnarokMissilesTargeted',
+          'TychusOdinThrusters',
+      );
       break;
   }
 
@@ -150,9 +174,10 @@ function parseHeroData(heroData) {
 /**
  * Parses all skill data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
+ * @param {string} heroId ID of the hero entry
  * @return {Skill[]} Array of Skills
  */
-function parseAllSkillsData(heroData) {
+function parseAllSkillsData(heroData, heroId) {
   const skillDataArray = [];
 
   const {
@@ -163,13 +188,16 @@ function parseAllSkillsData(heroData) {
   } = heroData.abilities;
 
   //Always place traits at the front
-  skillDataArray.push(...traitArray);
+  if (traitArray)
+    skillDataArray.push(...traitArray);
+  else
+    console.warn(`${heroId} has no trait`)
 
   for (const abilityArray of Object.values(abilities))
     skillDataArray.push(...abilityArray);
 
   //Exclude heroic abilities unless the hero is Tracer
-  if (heroData.cHeroId === 'Tracer')
+  if (heroId === 'Tracer')
     skillDataArray.push(...heroicArray);
 
   //Exclude mount abilities that share the same name with the trait
@@ -180,9 +208,13 @@ function parseAllSkillsData(heroData) {
   for (const subAbilityGroup of heroData.subAbilities || []) {
     for (const [parentAbilityId, subAbilities] of Object.entries(subAbilityGroup)) {
       for (const abilityArray of Object.values(subAbilities)) {
-        const parentAbility = jsonFind(heroData, o => o && o.nameId === parentAbilityId);
-        for (const a of abilityArray)
-          a.parentAbility = parentAbility;
+        //Fix for HDP 4.0.0+
+        //If the subability is the parent of itself, don't bother
+        if (parentAbilityId !== abilityArray[0].nameId) {
+          const parentAbility = jsonFind(heroData, o => o && o.nameId === parentAbilityId);
+          for (const a of abilityArray)
+            a.parentAbility = parentAbility;
+        }
 
         skillDataArray.push(...abilityArray);
       }
@@ -219,16 +251,17 @@ function parseAllSkillsData(heroData) {
 /**
  * Parses all talent data from a hero JSON object.
  * @param {*} heroData JSON object that represents hero data
+ * @param {string} heroId ID of the hero entry
  * @return {{ [talentLevel: number]: Talent[] }} Collection of Talents, keyed by talent level
  */
-function parseAllTalentsData(heroData) {
+function parseAllTalentsData(heroData, heroId) {
   const talents = {};
 
   for (const talentLevelPropertyName in heroData.talents) {
     let talentLevel = +(talentLevelPropertyName.replace('level', ''));
 
     //Fix for Chromie's trait
-    if (heroData.cHeroId === 'Chromie')
+    if (heroId === 'Chromie')
       talentLevel = Math.max(1, talentLevel - 2);
 
     talents[talentLevel] = heroData.talents[talentLevelPropertyName].map(parseTalentData);
@@ -242,22 +275,22 @@ function parseAllTalentsData(heroData) {
  * Finds a talent by `talentName` in `hero`, and inserts the given subabilities
  * after it as talents.
  * @param {Hero} hero Hero
- * @param {string} talentName Name of talent to search for
- * @param  {...string} subAbilityNames Names of subabilities to insert
+ * @param {string} talentId ID of the talent to search for
+ * @param  {...string} subAbilityIds ID strings of subabilities to insert
  */
-function relocateSubAbilitiesAfterTalent(hero, talentName, ...subAbilityNames) {
+function relocateSubAbilitiesAfterTalent(hero, talentId, ...subAbilityIds) {
   for (const talentArray of Object.values(hero.talents)) {
-    const talentIndex = talentArray.findIndex(talent => talent.name.ko === talentName);
+    const talentIndex = talentArray.findIndex(talent => talent.id === talentId);
     if (talentIndex !== -1) {
-      const subAbilities = subAbilityNames.map(name => {
+      const subAbilities = subAbilityIds.map(id => {
         for (const [skillIndex, skill] of hero.skills.entries()) {
-          if (skill.name.ko === name) {
+          if (skill.id === id) {
             //If a skill is found, remove it from the array of skills
             hero.skills.splice(skillIndex, 1);
             return skill;
           }
         }
-        return new Talent({ name: { ko: name } });
+        return new Talent({ id });
       });
 
       talentArray.splice(talentIndex + 1, 0, ...subAbilities);
@@ -303,8 +336,16 @@ function parseSkillData(skillData) {
     case 'HeroChenStorm':
       parentType = 'R'; break;
     default:
-      if (skillData.parentAbility)
+      const parentAbility = skillData.parentAbility;
+      if (parentAbility) {
+        //Fix for HDP 4.2.0+
+        if (parentAbility.nameId === 'LeoricSkeletalSwingTargetedReady' ||
+            parentAbility.nameId === 'LeoricDrainHope'
+            ) {
+          parentType = 'D'; break;
+        }
         parentType = convertAbilityType(skillData.parentAbility.abilityType);
+      }
   }
 
   // Set special type strings for SubAbilities, except those in the blacklist
@@ -333,6 +374,13 @@ function parseTalentData(talentData) {
 function extractSkillTalentInfo(skillTalentData) {
   /** @type {Partial<Skill>} */
   const skillTalentInfo = {};
+
+  if (skillTalentData.nameId) {
+    skillTalentInfo.id = skillTalentData.nameId;
+  }
+  else {
+    console.warn(`Missing nameId field in ${util.inspect(skillTalentData)}`);
+  }
 
   //Extract name
   if (skillTalentData.name)
@@ -387,6 +435,15 @@ const COLOR_CODES = {
 };
 
 
+/** Colors that will be removed from tooltips. */
+const BLACKLISTED_COLORS = new Set([
+  'TooltipNumbers',
+  'TooltipQuest',
+  'bfd4fd',
+  'e4b800',
+]);
+
+
 /**
  * Parse tooltip text, removing game data tags.
  * @param {string} tooltip
@@ -394,15 +451,40 @@ const COLOR_CODES = {
  */
 function parseTooltip(tooltip) {
   return tooltip
-    .replace(/(\d+)~~(.+?)~~/gi, (match, base, levelScaling) =>
-      `${Math.round(base * (1 + (+levelScaling)))}(+${levelScaling * 100}%)`  //Set scaling numbers to level 1-values
+    //Set scaling numbers to level 1-values
+    .replace(/(\d+%?)~~(.+?)~~/gi, (match, base, levelScaling) => {
+      const percentSign = base.includes('%') ? '%' : '';
+      levelScaling = parseFloat(levelScaling);
+      const amount = Math.round(parseFloat(base) * (1 + levelScaling));
+      return `${amount}${percentSign}(+${levelScaling * 100}%)`;
+    })
+    .replace(
+      /<[cs]((?:\s+\w+=".*?")+)>(.*?)(?:<\/[cs]>|$)/gi,
+      (tag, attrs, text) => {
+        const attributePattern = /\b(\w+)="(.*?)"/gi;
+        let match, val;
+        while (match = attributePattern.exec(attrs)) {
+          const attribute = match[1];
+          //Fix Blizzard's typo errors
+          if (attribute === 'val' || attribute === 'al') {
+            val = match[2];
+          }
+          else {
+            console.warn(`Unknown attribute '${attribute}' in ${tag}`);
+          }
+        }
+
+        // Handle color gradients introduced in HDP 4.0.0
+        let color = val.replace('#', '').replace(/^\w{6}-(\w{6})$/g, '$1');
+        if (BLACKLISTED_COLORS.has(color)) return text;
+        if (/AbilityPassive|00ff90/gi.test(color)
+            && text.startsWith('지속 효과')) {
+          return text;
+        }
+        color = COLOR_CODES[color] || color.toLowerCase();
+        return `<span style="color:#${color}">${text}</span>`;
+      }
     )
-    .replace(/<c val="#(?:TooltipNumbers|TooltipQuest)">(.*?)<\/c>/gi, '$1')   //Remove #TooltipNumbers styling
-    .replace(/<c val="#AbilityPassive">(지속 효과:)<\/c>/gi, '$1')             //Remove #AbilityPassive for generic passive descriptions
-    .replace(/<[cs] val="(.*?)">/gi, (match, colorName) =>
-      `<span style="color:#${COLOR_CODES[colorName.replace(/#/gi, '')] || colorName.toLowerCase()}">`
-    )
-    .replace(/<\/[cs]>/gi, '</span>')
     .replace(/(\d(?:\(\+.*?%\))?)<lang rule="jongsung">(.*?),(.*?)<\/lang>/gi, (match, digitPart, eul, rul) =>
       digitPart + ('2459'.includes(digitPart.charAt(0)) ? rul : eul)
     )

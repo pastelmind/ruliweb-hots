@@ -417,6 +417,11 @@
       "description": "Represents a talent",
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\S+$"
+        },
         "name": {
           "type": "object",
           "properties": {
