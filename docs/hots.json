@@ -11907,7 +11907,7 @@
             "en": "Razor Swipe",
             "ko": "잔혹한 할퀴기"
           },
-          "type": "Q",
+          "type": "D - Q",
           "icon": "storm_ui_icon_greymane_swipe",
           "description": "전방으로 약진하며 적들을 할퀴어 131(+4%)의 피해를 줍니다.\n\n<span style=\"color:#ffff80\">인간: 길니안 독주</span>\n처음 적중한 적에게 피해를 주고 그 뒤에 있는 적들에게 더 큰 피해를 줍니다.",
           "shortDescription": "전방으로 약진하며 적들을 할퀴어 피해를 줌",
@@ -11953,7 +11953,7 @@
             "en": "Disengage",
             "ko": "철수"
           },
-          "type": "E",
+          "type": "D - E",
           "icon": "storm_ui_icon_greymane_disengage",
           "description": "대상 위치로 구르고 <span style=\"color:#ffff80\">인간</span>으로 변신합니다.\n\n<span style=\"color:#ffff80\">인간: 암흑질주</span>\n<span style=\"color:#d65cff\">늑대인간</span>으로 변신하고 적에게 도약합니다.",
           "shortDescription": "대상 위치로 구르고 인간으로 변신",
