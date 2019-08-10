@@ -22018,10 +22018,10 @@
       "name": "키히라",
       "title": "정처 없는 현상금 사냥꾼",
       "icon": "ui_targetportrait_hero_nexus2",
-      "type": "",
-      "role": "",
-      "newRole": "",
-      "universe": "",
+      "type": "원거리",
+      "role": "assassin",
+      "newRole": "ranged_assassin",
+      "universe": "nexus",
       "stats": {
         "hp": {
           "value": 2075,
