@@ -5369,7 +5369,7 @@
               "en": "Storm",
               "ko": "폭풍"
             },
-            "type": "Q",
+            "type": "R - Q",
             "icon": "storm_temp_war3_btntornado",
             "description": "정령들이 3초 동안 416(+4%)의 피해를 흡수하는 보호막을 얻습니다.\n\n이 기술을 마지막으로 사용하면, 보호막의 흡수량이 780(+4%)으로 증가하고 시간이 지나도 사라지지 않으며, 폭풍, 대지, 불의 지속 시간이 5초 증가합니다.",
             "shortDescription": "보호막 획득"
@@ -5380,7 +5380,7 @@
               "en": "Earth",
               "ko": "대지"
             },
-            "type": "W",
+            "type": "R - W",
             "icon": "storm_temp_war3_btnearthquake",
             "description": "불과 대지가 대상 위치로 도약하여 넓은 지역 안의 적들에게 33(+4%)의 피해를 주고 1.5초 동안 70% 느려지게 합니다.\n\n이 기술을 마지막으로 사용하면, 공격력이 300% 증가하고, 적을 느려지게 하는 대신 도약이 적중한 적을 1.75초 동안 이동 불가 상태로 만듭니다.",
             "shortDescription": "대상 위치로 도약하여 적들에게 피해를 주고 느려지게 함",
@@ -5395,7 +5395,7 @@
               "en": "Fire",
               "ko": "불"
             },
-            "type": "E",
+            "type": "R - E",
             "icon": "storm_temp_war3_btnmarkoffire",
             "description": "정령들의 공격 속도와 일반 공격력이 5초 동안 50% 증가합니다.\n\n이 기술을 마지막으로 사용하면, 공격 속도와 공격력이 75%로 증가하고, 지속 시간 동안 이동 속도가 50% 증가합니다.",
             "shortDescription": "공격 속도 및 공격력 증가"
@@ -14388,7 +14388,7 @@
               "en": "Jump!",
               "ko": "점프!"
             },
-            "type": "Q",
+            "type": "R - Q",
             "icon": "storm_ui_icon_junkrat_rip_tire_jump",
             "description": "사용하면 죽이는 타이어가 점프해서 지형 및 구조물을 건너뛸 수 있습니다.",
             "shortDescription": "점프!",
@@ -14772,7 +14772,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_kaelthas_phoenix",
-            "description": "대상 지역으로 불사조를 날려 경로에 있는 적들에게 81(+4%)의 피해를 줍니다. 불사조는 7초 동안 전장에 머무르며 적들을 공격해 81(+4%)의 피해와 39%의 방사 피해를 줍니다.",
+            "description": "대상 지역으로 불사조를 날려 경로에 있는 적들에게 81(+4%)의 피해를 줍니다. 불사조는 7초 동안 전장에 머무르며 적들을 공격해 81(+4%)의 피해와 41(+4%)의 방사 피해를 줍니다.",
             "shortDescription": "적들을 불태우는 불사조 소환",
             "cooldown": 60,
             "manaCost": 80,
@@ -21580,7 +21580,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_murky_octograb",
-            "description": "문어발 휘감기의 공격력이 13700% 증가합니다.",
+            "description": "문어발 휘감기의 공격력이 14248%(+4%) 증가합니다.",
             "shortDescription": "문어발 휘감기 공격력 증가",
             "extras": {
               "공격력": "142 (+4%) × 3"
@@ -27993,7 +27993,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_tracer_blink",
-          "description": "대상 지점을 향해 질주합니다. 최대 3회 충전됩니다.",
+          "description": "대상 지점을 향해 질주합니다.\n\n최대 3회 충전됩니다.",
           "shortDescription": "대상 지점을 향해 질주",
           "rechargeCooldown": 9,
           "extras": {
