@@ -451,9 +451,13 @@ const BLACKLISTED_COLORS = new Set([
  */
 function parseTooltip(tooltip) {
   return tooltip
-    .replace(/(\d+)~~(.+?)~~/gi, (match, base, levelScaling) =>
-      `${Math.round(base * (1 + (+levelScaling)))}(+${levelScaling * 100}%)`  //Set scaling numbers to level 1-values
-    )
+    //Set scaling numbers to level 1-values
+    .replace(/(\d+%?)~~(.+?)~~/gi, (match, base, levelScaling) => {
+      const percentSign = base.includes('%') ? '%' : '';
+      levelScaling = parseFloat(levelScaling);
+      const amount = Math.round(parseFloat(base) * (1 + levelScaling));
+      return `${amount}${percentSign}(+${levelScaling * 100}%)`;
+    })
     .replace(
       /<[cs]((?:\s+\w+=".*?")+)>(.*?)(?:<\/[cs]>|$)/gi,
       (tag, attrs, text) => {
