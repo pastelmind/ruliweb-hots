@@ -8751,7 +8751,7 @@
           }
         },
         {
-          "id": "DryadGallopingGait",
+          "id": "DryadDryadsSwiftness",
           "name": {
             "en": "Dryad's Swiftness",
             "ko": "드리아드의 날렵함"
@@ -28350,7 +28350,7 @@
       },
       "skills": [
         {
-          "id": "TychusMinigunActive",
+          "id": "TychusMinigun",
           "name": {
             "en": "Minigun",
             "ko": "미니건"
@@ -32034,7 +32034,7 @@
           }
         },
         {
-          "id": "YrelRighteousHammer",
+          "id": "YrelRighteousHammerChannel",
           "name": {
             "en": "Righteous Hammer",
             "ko": "정의의 망치"
