@@ -231,6 +231,7 @@ function decorateHotsData(hotsData) {
 
       //Store hero name
       skill.heroName = hero.name;
+      skill.heroId = hero.id;
 
       //Convert skill/talent ID to URL
       skill.iconUrl = hotsData.iconUrls[skill.icon] || MISSING_ICON_URL;
