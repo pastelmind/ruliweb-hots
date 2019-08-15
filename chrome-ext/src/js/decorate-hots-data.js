@@ -229,7 +229,6 @@ function decorateHotsData(hotsData) {
       if (skill.name.ko)
         skill.name = skill.name.ko;
 
-      //Store hero name
       skill.heroName = hero.name;
       skill.heroId = hero.id;
 
