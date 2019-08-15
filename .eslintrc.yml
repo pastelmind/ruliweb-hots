@@ -10,4 +10,15 @@ globals:
   SharedArrayBuffer: readonly
 parserOptions:
   ecmaVersion: 2018
-rules: {}
+rules:
+  arrow-parens:
+    - error
+    - as-needed
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  linebreak-style: off
+  object-curly-spacing:
+    - error
+    - always
