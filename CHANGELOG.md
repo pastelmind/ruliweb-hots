@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated data with Heroes of the Storm v2.47.1 patch information.
 - (Server) In-browser tests no longer depend on [axios](https://github.com/axios/axios).
   They now require an HTTP server bound to localhost.
+  
+### Fixed
 - Fixed a bug that prevented inserting skill/talent boxes since HotS 2.47.0.
 
 
