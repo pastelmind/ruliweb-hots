@@ -8,20 +8,20 @@
 if (typeof chrome === 'undefined') {
   var chrome = {};
 
-  //For testing in Node.js
-  if (typeof module !== 'undefined' && module.exports)
-    global.chrome = chrome;
+  // For testing in Node.js
+  if (typeof module !== 'undefined' && module.exports) global.chrome = chrome;
 }
 
 chrome.runtime = chrome.runtime || {};
 chrome.runtime.getURL = url => '../src/' + url;
-chrome.runtime.getManifest = () => ({ version: "app version string" });
+chrome.runtime.getManifest = () => ({ version: 'app version string' });
 
 
 /**
  * For use in browser tests.
  * Loads all template files (`templates/*.mustache`).
- * @return {Promise<Object<string, string>>} Mapping of template name => template string
+ * @return {Promise<Object<string, string>>} Mapping of template name =>
+ *    template string
  */
 async function loadTemplates() {
   const templates = {};
@@ -37,10 +37,14 @@ async function loadTemplates() {
   await Promise.all(
     templateNames.map(
       templateName => (async () => {
-        const templatePath = `../templates/${templateName}.mustache`
+        const templatePath = `../templates/${templateName}.mustache`;
         const response = await fetch(templatePath);
-        if (!response.ok)
-          throw new Error(`Cannot retrieve ${templatePath}: ${response.status} ${response.statusText}`);
+        if (!response.ok) {
+          throw new Error(
+            `Cannot retrieve ${templatePath}: ` +
+            `${response.status} ${response.statusText}`
+          );
+        }
         templates[templateName] = await response.text();
       })()
     )

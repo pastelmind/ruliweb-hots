@@ -12,7 +12,7 @@ const path = require('path');
 
 const decorateHotsData = require('../src/js/decorate-hots-data');
 
-//Mocks for HotsDialog
+// Mocks for HotsDialog
 require('./js/mocks');
 global.Mustache = require('mustache');
 
@@ -24,7 +24,9 @@ const HotsDialog = require('../src/js/hots-dialog');
  * @return {string} HTML source with newlines normalized to LF
  */
 function getExpectedHtml(fileName) {
-  return fs.readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8').replace(/\r/g, '');
+  return fs
+    .readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8')
+    .replace(/\r/g, '');
 }
 
 describe('HotsDialog.htmlGenerators', () => {
@@ -32,20 +34,25 @@ describe('HotsDialog.htmlGenerators', () => {
 
 
   before('Loading test data files', () => {
-    hotsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8'));
+    hotsData = JSON.parse(
+      fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8')
+    );
     decorateHotsData(hotsData);
 
-    const templateFileContent = fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
+    const templateFileContent =
+      fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
     eval(templateFileContent);
   });
 
 
   describe('Dialog templates', () => {
     it('generates dialog content correctly', () => {
-      const dialogHtml =
-        HotsDialog.htmlGenerators.generateDialogContent(HotsDialog.heroFilters, hotsData.heroes);
+      const dialogHtml = HotsDialog.htmlGenerators
+        .generateDialogContent(HotsDialog.heroFilters, hotsData.heroes);
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/dialog.html'), dialogHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/dialog.html'), dialogHtml
+      // );
       assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
     });
 
@@ -53,7 +60,9 @@ describe('HotsDialog.htmlGenerators', () => {
       const skillIconsHtml =
         HotsDialog.htmlGenerators.generateSkillIcons(hotsData.heroes.Tinker);
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml
+      // );
       assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
     });
 
@@ -61,7 +70,9 @@ describe('HotsDialog.htmlGenerators', () => {
       const talentIconsHtml =
         HotsDialog.htmlGenerators.generateTalentList(hotsData.heroes.Tinker);
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml
+      // );
       assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));
     });
   });
@@ -72,11 +83,16 @@ describe('HotsDialog.htmlGenerators', () => {
       let heroInfoHtml = '';
 
       for (const hero of Object.values(hotsData.heroes)) {
-        heroInfoHtml += HotsDialog.htmlGenerators.generateHeroInfoTable(hero,  64, 48, hotsData.hotsVersion)
-          + HotsDialog.htmlGenerators.generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true);
+        const heroBoxFull = HotsDialog.htmlGenerators
+          .generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion);
+        const heroBoxSimple = HotsDialog.htmlGenerators
+          .generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true);
+        heroInfoHtml += heroBoxFull + heroBoxSimple;
       }
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml
+      // );
       assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));
     });
 
@@ -85,12 +101,18 @@ describe('HotsDialog.htmlGenerators', () => {
 
       for (const hero of Object.values(hotsData.heroes)) {
         for (const skill of hero.skills) {
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, 64);
-          skillInfoHtml += HotsDialog.htmlGenerators.generateSkillInfoTable(skill, 64, '34.3');
+          const skillBox = HotsDialog.htmlGenerators
+            .generateSkillInfoTable(skill, 64);
+          const skillBoxWithVersion = HotsDialog.htmlGenerators
+            .generateSkillInfoTable(skill, 64, '34.3');
+          skillInfoHtml += skillBox + skillBoxWithVersion;
         }
       }
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/insert-skill-info.html'), skillInfoHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/insert-skill-info.html'),
+      //   skillInfoHtml
+      // );
       assert.strictEqual(skillInfoHtml, getExpectedHtml('insert-skill-info'));
     });
 
@@ -100,13 +122,20 @@ describe('HotsDialog.htmlGenerators', () => {
       for (const hero of Object.values(hotsData.heroes)) {
         for (const talentLevel in hero.talents) {
           for (const talent of hero.talents[talentLevel]) {
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, 48);
-            talentInfoHtml += HotsDialog.htmlGenerators.generateTalentInfoTable(talent, 48, '34.3');
+            const talentBox = HotsDialog.htmlGenerators
+              .generateTalentInfoTable(talent, 48);
+            const talentBoxWithVersion = HotsDialog.htmlGenerators
+              .generateTalentInfoTable(talent, 48, '34.3');
+
+            talentInfoHtml += talentBox + talentBoxWithVersion;
           }
         }
       }
 
-      // fs.writeFileSync(path.join(__dirname, 'expected/insert-talent-info.html'), talentInfoHtml);
+      // fs.writeFileSync(
+      //   path.join(__dirname, 'expected/insert-talent-info.html'),
+      //   talentInfoHtml
+      // );
       assert.strictEqual(talentInfoHtml, getExpectedHtml('insert-talent-info'));
     });
   });

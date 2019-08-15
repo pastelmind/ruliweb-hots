@@ -44,6 +44,7 @@ module.exports = class Skill {
 
   /**
    * Produce a compact, minimal JSON representation
+   * @return {object} A JSON-compatible representation of this object.
    */
   toJSON() {
     return {
@@ -60,7 +61,7 @@ module.exports = class Skill {
       rechargeCooldown: this.rechargeCooldown || undefined,
       manaCost: this.manaCost || undefined,
       manaCostPerSecond: this.manaCostPerSecond || undefined,
-      extras: Object.keys(this.extras).length ? this.extras : undefined
+      extras: Object.keys(this.extras).length ? this.extras : undefined,
     };
   }
 };

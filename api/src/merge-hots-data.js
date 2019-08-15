@@ -27,7 +27,8 @@ const HotsData = require('./hots-data');
  * Merges the source dataset into the target dataset.
  * @param {HotsData} target Dataset to merge into
  * @param {HotsData} source Dataset to import from
- * @param {boolean=} usePtr If truthy, merge heroes into the PTR section whenever possible.
+ * @param {boolean=} usePtr If truthy, merge heroes into the PTR section
+ *    whenever possible.
  */
 module.exports = function mergeHotsData(target, source, usePtr = false) {
   for (const sourceHero of Object.values(source.heroes)) {
@@ -37,29 +38,30 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
     );
 
     let targetHero = null;
-    if (usePtr)
-      targetHero = target.ptrHeroes[sourceHero.id];
-    if (!targetHero)
-      targetHero = target.heroes[sourceHero.id];
+    if (usePtr) targetHero = target.ptrHeroes[sourceHero.id];
+    if (!targetHero) targetHero = target.heroes[sourceHero.id];
 
-    //Cannot find hero with same ID
+    // Cannot find hero with same ID
     if (!targetHero) {
-      //Attempt to find a hero with a matching name
-      targetHero = Object.values(target.heroes).find(hero => isEqualInOneLocale(hero.name, sourceHero.name));
-      if (targetHero)
-        console.warn(`Hero ID mismatch: Expected to find ${sourceHero.id}, but matched with ${targetHero.id}`);
+      // Attempt to find a hero with a matching name
+      targetHero = Object.values(target.heroes)
+        .find(hero => isEqualInOneLocale(hero.name, sourceHero.name));
+      if (targetHero) {
+        console.warn(
+          `Hero ID mismatch: Expected to find ${sourceHero.id},`,
+          `but matched with ${targetHero.id}`
+        );
+      }
     }
 
     if (targetHero) {
       console.group('Merging', sourceHero.id);
       mergeHero(targetHero, sourceHero);
       console.groupEnd();
-    }
-    else if (usePtr) {
+    } else if (usePtr) {
       console.log('Added new hero to PTR:', sourceHero.name);
       target.ptrHeroes[sourceHero.id] = sourceHero;
-    }
-    else {
+    } else {
       console.log('Added new hero:', sourceHero.name);
       target.heroes[sourceHero.id] = sourceHero;
     }
@@ -73,7 +75,7 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
  * @param {Hero} source Hero data to merge from
  */
 function mergeHero(target, source) {
-  //Merge properties
+  // Merge properties
   mergeProperties(target, source, {
     id: 0,
     name: 0,
@@ -84,31 +86,40 @@ function mergeHero(target, source) {
     universe: 0,
   });
 
-  //Merge hero stats
+  // Merge hero stats
   if (Array.isArray(source.stats)) {
-    target.stats = source.stats.map((sourceUnitStats, sourceUnitIndex) =>
-      mergeHeroStats(target.stats[sourceUnitIndex] || target.stats[0] || target.stats, sourceUnitStats));
+    target.stats = source.stats.map(
+      (sourceUnitStats, sourceUnitIndex) =>
+        mergeHeroStats(
+          target.stats[sourceUnitIndex] || target.stats[0] || target.stats,
+          sourceUnitStats
+        )
+    );
+  } else if (source.stats) {
+    target.stats =
+      mergeHeroStats(target.stats[0] || target.stats, source.stats);
   }
-  else if (source.stats)
-    target.stats = mergeHeroStats(target.stats[0] || target.stats, source.stats);
 
-  //Merge skills
+  // Merge skills
   source.skills.forEach(sourceSkill => {
-    //Find matching skill by ID
+    // Find matching skill by ID
     let targetSkill = target.skills.find(skill => skill.id === sourceSkill.id);
 
-    //If there is no skill matching the ID, search using the skill name.
+    // If there is no skill matching the ID, search using the skill name.
     if (!targetSkill) {
-      targetSkill = target.skills.find(skill => isEqualInOneLocale(skill.name, sourceSkill.name));
+      targetSkill = target.skills.find(
+        skill => isEqualInOneLocale(skill.name, sourceSkill.name)
+      );
 
       if (targetSkill && !targetSkill.id) {
         console.warn(
-            `Target skill (${targetSkill.name}) has no ID,`,
-            `matched by name with ${sourceSkill.name}`,
+          `Target skill (${targetSkill.name}) has no ID,`,
+          `matched by name with ${sourceSkill.name}`,
         );
-      }
-      else {
-        console.warn(`Skill not found: ${sourceSkill.id} (${sourceSkill.name})`);
+      } else {
+        console.warn(
+          `Skill not found: ${sourceSkill.id} (${sourceSkill.name})`
+        );
         return;
       }
     }
@@ -116,67 +127,64 @@ function mergeHero(target, source) {
     mergeSkill(targetSkill, sourceSkill);
   });
 
-  //Merge talents
+  // Merge talents
   const sourceTalentEntries = Object.entries(source.talents);
   if (sourceTalentEntries.length) {
     const oldTalents = target.talents;
     const newTalents = target.talents = {};
 
-    for (const [sourceTalentLevel, sourceTalentArray] of sourceTalentEntries) {
-      const newTalentArray = newTalents[sourceTalentLevel] = [];
+    for (const [sourceLevel, sourceTalentArray] of sourceTalentEntries) {
+      const newTalentArray = newTalents[sourceLevel] = [];
 
       sourceTalentArray.forEach((sourceTalent, sourceTalentIndex) => {
-        //Find matching talent by level and index
-        let targetTalent = (oldTalents[sourceTalentLevel] || [])[sourceTalentIndex];
+        // Find matching talent by level and index
+        let targetTalent = (oldTalents[sourceLevel] || [])[sourceTalentIndex];
 
         if (targetTalent) {
-          //Compare using talent ID only if the target talent has one
+          // Compare using talent ID only if the target talent has one
           if (targetTalent.id) {
-            //If the target talent does not match the ID, force a manual search
+            // If the target talent does not match the ID, force a manual search
             if (targetTalent.id !== sourceTalent.id) targetTalent = null;
-          }
-          else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
+          } else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
             console.warn(
-                `Target talent (${targetTalent.name}) has no ID,`,
-                `matched by position with ${sourceTalent.name}`,
+              `Target talent (${targetTalent.name}) has no ID,`,
+              `matched by position with ${sourceTalent.name}`,
             );
-          }
-          //If the target talent does not match the name, force a manual search
-          else {
-            targetTalent = null;
-          }
+          } else targetTalent = null; // Force a manual search
         }
 
         if (!targetTalent) {
-          let targetTalentIndex = -1, targetTalentLevel, targetTalentArray;
-          for ([targetTalentLevel, targetTalentArray] of Object.entries(oldTalents)) {
+          let targetTalentIndex = -1;
+          let targetLevel;
+          let targetTalentArray;
+          for ([targetLevel, targetTalentArray] of Object.entries(oldTalents)) {
             targetTalentIndex = targetTalentArray.findIndex(talent => {
-              if (talent.id) {
-                return talent.id === sourceTalent.id;
-              }
-              else {
-                return isEqualInOneLocale(talent.name, sourceTalent.name);
-              }
+              if (talent.id) return talent.id === sourceTalent.id;
+              return isEqualInOneLocale(talent.name, sourceTalent.name);
             });
 
-            if (targetTalentIndex !== -1)
-              break;
+            if (targetTalentIndex !== -1) break;
           }
 
           if (targetTalentIndex !== -1) {
-            console.warn(`Talent position mismatch: ${sourceTalent.name} was expected in [${sourceTalentLevel}][${sourceTalentIndex}], but found in [${targetTalentLevel}][${targetTalentIndex}]`);
+            console.warn(
+              `Talent position mismatch: ${sourceTalent.name}`,
+              `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
+              `but found in [${targetLevel}][${targetTalentIndex}]`
+            );
             targetTalent = targetTalentArray[targetTalentIndex];
+          } else {
+            console.warn(
+              `Talent not found: ${sourceTalent.name} in`,
+              `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`
+            );
           }
-          else
-            console.warn(`Talent not found: ${sourceTalent.name} in [${sourceTalentLevel}][${sourceTalentIndex}], creating new talent...`);
         }
 
-        if (targetTalent)
-          mergeTalent(targetTalent, sourceTalent);
-        else
-          targetTalent = sourceTalent;
+        if (targetTalent) mergeTalent(targetTalent, sourceTalent);
+        else targetTalent = sourceTalent;
 
-        //Move talent to new position specified by source
+        // Move talent to new position specified by source
         newTalentArray[sourceTalentIndex] = targetTalent;
       });
     }
@@ -185,7 +193,7 @@ function mergeHero(target, source) {
 
 
 /**
- * Merges data from the source HeroStats object into the target HeroStats object.
+ * Merges data from the source HeroStats into the target HeroStats.
  * @param {HeroStats} target HeroStats object to merge stat data into
  * @param {HeroStats} source HeroStats object to merge stat data from
  * @return {HeroStats} Merged HeroStats object
@@ -204,13 +212,19 @@ function mergeHeroStats(target, source) {
     mergeScalingStat(target[propertyName], source[propertyName]);
   }
 
-  //HeroStats.prototype.damage can be either a ScalingStat or an array of ScalingStats
+  // HeroStats.prototype.damage can be either a ScalingStat or an array of
+  // ScalingStats
   if (Array.isArray(source.damage)) {
-    target.damage = source.damage.map((d, index) =>
-      mergeScalingStat(target.damage[index] || target.damage[0] || target.damage, d));
+    target.damage = source.damage.map(
+      (d, index) =>
+        mergeScalingStat(
+          target.damage[index] || target.damage[0] || target.damage, d
+        )
+    );
+  } else {
+    target.damage =
+      mergeScalingStat(target.damage[0] || target.damage, source.damage);
   }
-  else
-    target.damage = mergeScalingStat(target.damage[0] || target.damage, source.damage);
 
   return mergeProperties(target, source, {
     unitName: 0,
@@ -237,11 +251,11 @@ function mergeHeroStats(target, source) {
  * @return {Skill} Merged Skill object
  */
 function mergeSkill(target, source) {
-  //Merge skill and talent names
+  // Merge skill and talent names
   mergeProperties(target.name, source.name, { ko: 0, en: 0 });
 
-  //Merge extras
-  mergeProperties(target.extras, source.extras, source.extras)
+  // Merge extras
+  mergeProperties(target.extras, source.extras, source.extras);
 
   return mergeProperties(target, source, {
     id: 0,
@@ -258,7 +272,7 @@ function mergeSkill(target, source) {
 
 
 /**
- * Merges data from the source Talent object into the target Talent object.
+ * Merges data from the source Talent into the target Talent.
  * @param {Talent} target Talent object to merge into
  * @param {Talent} source Talent object to merge from
  * @return {Talent} Merged Talent object
@@ -271,7 +285,7 @@ function mergeTalent(target, source) {
 
 
 /**
- * Merges data from the source ScalingStat object into the target ScalingStat object.
+ * Merges data from the source ScalingStat into the target ScalingStat.
  * @param {ScalingStat} target ScalingStat object to merge into
  * @param {ScalingStat} source ScalingStat object to merge from
  * @return {ScalingStat} Merged ScalingStat object
@@ -292,14 +306,16 @@ function mergeScalingStat(target, source) {
  * copied.
  * @param {Object<string, *>} target Target object to copy properties into
  * @param {Object<string, *>} source Source object to copy properties from
- * @param {{ [propertyName: string]: * }} propertyNames Object whose keys are property names to copy. Values are
- * ignored.
+ * @param {{ [propertyName: string]: * }} propertyNames Object whose keys are
+ *    property names to copy. Values are ignored.
  * @return {Object<string, *>} The merged target object.
  */
 function mergeProperties(target, source, propertyNames) {
-  for (const property in propertyNames)
-    if (source[property] || source[property] === null)
+  for (const property in propertyNames) {
+    if (source[property] || source[property] === null) {
       target[property] = source[property];
+    }
+  }
 
   return target;
 }
@@ -310,6 +326,7 @@ function mergeProperties(target, source, propertyNames) {
  * Empty strings (`''`) are treated as non-equal.
  * @param {KoEnString} str1
  * @param {KoEnString} str2
+ * @return {boolean}
  */
 function isEqualInOneLocale(str1, str2) {
   return (str1.ko && str1.ko === str2.ko) || (str1.en && str1.en === str2.en);

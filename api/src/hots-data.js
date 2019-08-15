@@ -10,11 +10,11 @@ const Hero = require('./hero');
 module.exports = class HotsData {
   /**
    * Parse data from `hots.json`
-   * @param {Object|string} hotsData Contents of `hots.json` (JSON string or parsed object)
+   * @param {Object|string} hotsData Contents of `hots.json` (JSON string or
+   *    parsed object)
    */
   constructor(hotsData) {
-    if (typeof hotsData === 'string')
-      hotsData = JSON.parse(hotsData);
+    if (typeof hotsData === 'string') hotsData = JSON.parse(hotsData);
 
     /** @type {string} */
     this.hotsVersion = hotsData.hotsVersion;
@@ -28,25 +28,29 @@ module.exports = class HotsData {
 
   /**
    * Produce a compact, minimal JSON representation
+   * @return {object} A JSON-compatible representation of this object.
    */
   toJSON() {
     const o = {
       hotsVersion: this.hotsVersion,
-      hotsPtrVersion: this.hotsPtrVersion || undefined, //Omit PTR version if it is falsy
+      // Omit PTR version if it is falsy
+      hotsPtrVersion: this.hotsPtrVersion || undefined,
       heroes: HotsData.packHeroes(this.heroes),
       ptrHeroes: HotsData.packHeroes(this.ptrHeroes),
       iconUrls: {},
     };
 
-    //Sort icon URLs by key (icon ID)
-    for (const icon of Object.keys(this.iconUrls).sort())
+    // Sort icon URLs by key (icon ID)
+    for (const icon of Object.keys(this.iconUrls).sort()) {
       o.iconUrls[icon] = this.iconUrls[icon];
+    }
 
     return o;
   }
 
   /**
    * Alias for `JSON.stringify(this, null, 2)`
+   * @return {string}
    */
   stringify() {
     return JSON.stringify(this, null, 2);
@@ -63,7 +67,8 @@ module.exports = class HotsData {
   /**
    * Unpack a collection of Hero objects from `source`.
    * If `source` does not contain any hero data, returns an empty object.
-   * @param {Object<string, *>} source Mapping of hero ID => (packed/unpacked) hero object
+   * @param {Object<string, *>} source Mapping of hero ID => (packed/unpacked)
+   *    hero object
    * @return {Object<string, Hero>} Mapping of hero ID => Hero object
    */
   static unpackHeroes(source) {
@@ -82,28 +87,28 @@ module.exports = class HotsData {
    * @return {Object<string, *>} Mapping of hero ID => packed Hero object
    */
   static packHeroes(heroes) {
-    /** @type {Hero[]} */
-    const heroesArray = Object.values(heroes);
-
-    //Sort hero by ID in ascending order
+    // Sort hero by ID in ascending order
     const heroIds = Object.keys(heroes).sort();
 
-    //Collection is empty
-    if (!heroIds.length)
-      return undefined;
+    // Collection is empty
+    if (!heroIds.length) return undefined;
 
     const packedHeroes = {};
 
     for (const heroId of heroIds) {
       const heroJson = packedHeroes[heroId] = heroes[heroId].toJSON();
 
-      //hero.id is unnecessary; hero ID can be retrieved from keys of hero collection
+      // hero.id is unnecessary; hero ID can be retrieved from keys of hero
+      // collection
       delete heroJson.id;
 
-      //talent.level is unnecessary; talent level can be retrieved from keys of hero.talents
-      for (const talentLevel in heroJson.talents)
-        for (const talent of heroJson.talents[talentLevel])
+      // talent.level is unnecessary; talent level can be retrieved from keys of
+      // hero.talents
+      for (const talentLevel in heroJson.talents) {
+        for (const talent of heroJson.talents[talentLevel]) {
           delete talent.level;
+        }
+      }
     }
 
     return packedHeroes;

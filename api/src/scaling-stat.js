@@ -7,11 +7,11 @@
 module.exports = class ScalingStat {
   /**
    * Creates a new ScalingStat object.
-   * @param {Partial<ScalingStat> | number} o A number or an object that can be converted to a ScalingStat
+   * @param {Partial<ScalingStat> | number} o A number or an object that can be
+   *    converted to a ScalingStat
    */
   constructor(o) {
-    if (typeof o !== 'object')
-      o = { value: o };
+    if (typeof o !== 'object') o = { value: o };
 
     /**
      * Base value of the stat (at level 0).
@@ -37,6 +37,7 @@ module.exports = class ScalingStat {
 
   /**
    * Produce a compact, minimal JSON representation that has fixed key order.
+   * @return {object} A JSON-compatible representation of this object.
    */
   toJSON() {
     if (this.levelAdd || this.levelScaling || this.altName) {
@@ -46,9 +47,7 @@ module.exports = class ScalingStat {
         levelScaling: this.levelScaling || undefined,
         altName: this.altName || undefined,
       };
-    }
-    else
-      return this.value || undefined;
+    } else return this.value || undefined;
   }
 
   /**

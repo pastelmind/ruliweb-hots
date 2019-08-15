@@ -15,12 +15,9 @@ if (parseInt(process.version.match(/\d+/)[0]) < 10) {
   console.assert = (value, message, ...args) => {
     try {
       oldAssert(value, message, ...args);
-    }
-    catch (e) {
-      if (e instanceof AssertionError)
-        console.error(e.stack);
-      else
-        throw e;
+    } catch (e) {
+      if (e instanceof AssertionError) console.error(e.stack);
+      else throw e;
     }
   };
 }

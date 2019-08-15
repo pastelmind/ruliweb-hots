@@ -15,8 +15,7 @@ module.exports = class KoEnString {
       this.en = o.en || '';
       /** @type {string} */
       this.ko = o.ko || '';
-    }
-    else {
+    } else {
       o += '';
       const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^\)]*)\))?\s*$/.exec(o);
       this.en = enMatch.trim();
@@ -26,23 +25,23 @@ module.exports = class KoEnString {
 
   /**
    * Return the value matching the given localization, or the full string.
-   * @param {string=} lang If `"en"` or `"ko"`, returns the English or Korean string. Otherwise, returns "KoString (EnString)".
+   * @param {string=} lang If `"en"` or `"ko"`, returns the English or Korean
+   *    string. Otherwise, returns "KoString (EnString)".
+   * @return {string}
    */
   toString(lang) {
-    if (lang === 'en')
-      return this.en;
-    if (lang === 'ko')
-      return this.ko;
+    if (lang === 'en') return this.en;
+    if (lang === 'ko') return this.ko;
     return `${this.ko} (${this.en})`;
   }
 
   /**
    * Tests if `str` is equal to this value.
    * @param {KoEnString | string} str String to compare
+   * @return {boolean}
    */
   equals(str) {
-    if (!(str instanceof KoEnString))
-      str = new KoEnString(str);
+    if (!(str instanceof KoEnString)) str = new KoEnString(str);
     return this.ko === str.ko && this.en === str.en;
   }
 };

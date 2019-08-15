@@ -102,23 +102,27 @@ module.exports = class HeroStats {
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.damage = Array.isArray(o.damage) ? o.damage.map(s => new ScalingStat(s)) : new ScalingStat(o.damage);
+    this.damage = Array.isArray(o.damage) ?
+      o.damage.map(s => new ScalingStat(s)) : new ScalingStat(o.damage);
     /**
      * Basic attack range of the hero.
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.range = Array.isArray(o.range) ? o.range.map(s => new ScalingStat(s)) : new ScalingStat(o.range);
+    this.range = Array.isArray(o.range) ?
+      o.range.map(s => new ScalingStat(s)) : new ScalingStat(o.range);
     /**
      * Basic attack period (time between basic attacks) of the hero
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.period = Array.isArray(o.period) ? o.period.map(s => new ScalingStat(s)) : new ScalingStat(o.period);
+    this.period = Array.isArray(o.period) ?
+      o.period.map(s => new ScalingStat(s)) : new ScalingStat(o.period);
   }
 
   /**
    * Produce a compact, minimal JSON representation that has fixed key order.
+   * @return {object} A JSON-compatible representation of this object.
    */
   toJSON() {
     return {

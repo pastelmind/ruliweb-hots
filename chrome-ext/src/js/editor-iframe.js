@@ -5,7 +5,7 @@
  */
 
 
-//Attached to window so as to allow access from hots-dialog.js
+// Attached to window so as to allow access from hots-dialog.js
 window.pToDivReplacer = {
   /**
    * When a user injects a <details> inside a <p>, replace <p> with a <div> to
@@ -57,11 +57,11 @@ window.pToDivReplacer = {
 
 
 if (isInIframe()) {
-  //Delete hero/skill/talent tables when Ctrl + clicked
-  //Note: The editor normally prevents click events from going through,
+  // Delete hero/skill/talent tables when Ctrl + clicked
+  // Note: The editor normally prevents click events from going through,
   //      but clicks made on the pseudo-elements register just fine. Yay!
-  //Add the event listener to the <html> element, because Cheditor will replace
-  //the <body> element when switching between editor modes
+  // Add the event listener to the <html> element, because Cheditor will replace
+  // the <body> element when switching between editor modes
   document.body.parentNode.addEventListener('click', event => {
     if (!(event.target && event.ctrlKey)) return;
 
@@ -76,9 +76,9 @@ if (isInIframe()) {
     }
   });
 
-  //Prevent user from inadvertently setting "text-align: center" on the <body>
-  //element. This should prevent the illusory center-alignment of <details>
-  //elements inserted by HotsDialog
+  // Prevent user from inadvertently setting "text-align: center" on the <body>
+  // element. This should prevent the illusory center-alignment of <details>
+  // elements inserted by HotsDialog
   const bodyStyleRemover = new MutationObserver(mutations => {
     for (const mutation of mutations) {
       if (mutation.type === 'attributes'
@@ -88,12 +88,12 @@ if (isInIframe()) {
         /** @type {HTMLBodyElement} */
         const body = mutation.target;
         body.style.textAlign = '';
-        return; //Mission accomplished, don't process any more mutations
+        return; // Mission accomplished, don't process any more mutations
       }
     }
   });
 
-  //Observe mutations on <html> element and its descendants (see comments above)
+  // Observe mutations on <html> and its descendants (see comments above)
   bodyStyleRemover.observe(document.body.parentNode, {
     attributes: true,
     attributeFilter: ['style'],
@@ -113,8 +113,7 @@ if (isInIframe()) {
 function isInIframe() {
   try {
     return window.self !== window.top;
-  }
-  catch (e) {
+  } catch (e) {
     return true;
   }
 }
@@ -127,35 +126,36 @@ function isInIframe() {
 function replaceAncestorPsWithDivs() {
   let detailsTag;
   while (detailsTag = document.querySelector('p details:first-of-type')) {
-    //Find ancestor <p> of <details>
+    // Find ancestor <p> of <details>
     let ancestorP = detailsTag.parentElement;
-    while (ancestorP && ancestorP.tagName !== 'P')
+    while (ancestorP && ancestorP.tagName !== 'P') {
       ancestorP = ancestorP.parentElement;
+    }
 
     if (!ancestorP) {
       console.error('Cannot find ancestor <p> of', detailsTag);
       continue;
     }
 
-    //Remember the position of <p>, so that we can insert <div> later
+    // Remember the position of <p>, so that we can insert <div> later
     const parentOfP = ancestorP.parentNode;
     const nextSiblingOfP = ancestorP.nextSibling;
 
-    //Remove <p> to prevent triggering a reflow for each child node transfer
+    // Remove <p> to prevent triggering a reflow for each child node transfer
     parentOfP.removeChild(ancestorP);
 
-    //Create <div> to replace <p>
+    // Create <div> to replace <p>
     const div = document.createElement('div');
 
-    //Copy all attributes of <p> to <div>
-    for (const attribute of ancestorP.attributes)
+    // Copy all attributes of <p> to <div>
+    for (const attribute of ancestorP.attributes) {
       div.setAttribute(attribute.name, attribute.value);
+    }
 
-    //Move all child nodes of <p> to <div>
-    while (ancestorP.firstChild)
-      div.appendChild(ancestorP.firstChild);
+    // Move all child nodes of <p> to <div>
+    while (ancestorP.firstChild) div.appendChild(ancestorP.firstChild);
 
-    //Insert <div> into the former position of <p>
+    // Insert <div> into the former position of <p>
     parentOfP.insertBefore(div, nextSiblingOfP);
   }
 }
