@@ -84,11 +84,6 @@ const HotsDialog = {
           if (frameWindow && frameWindow.pToDivReplacer) {
             frameWindow.pToDivReplacer.activate();
           }
-
-          // Circumvent a bug in Firefox where closing and immediately
-          // re-opening the dialog causes its contents to be selected.
-          const selection = window.getSelection();
-          if (selection) selection.collapseToEnd();
         },
       });
 
