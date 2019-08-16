@@ -8,12 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.10.3] - 2019-08-16
+
+### Fixed
+- Fixed a bug that prevented opening a dialog after closing it once.
+
+
 ## [0.10.2] - 2019-08-15
 ### Changed
 - Updated data with Heroes of the Storm v2.47.1 patch information.
 - (Server) In-browser tests no longer depend on [axios](https://github.com/axios/axios).
   They now require an HTTP server bound to localhost.
-  
+
 ### Fixed
 - Fixed a bug that prevented inserting skill/talent boxes since HotS 2.47.0.
 
