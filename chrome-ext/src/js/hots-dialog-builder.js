@@ -304,7 +304,7 @@
    * @param {Element} eventTarget Element that was triggered by the user
    */
   function injectHtmlInEditor(html, eventTarget) {
-    const injectedElements = HotsDialog.injectHtml(html);
+    const injectedElements = HotsDialog.paster.paste(html);
     const { left: endX, top: endY } =
     HotsDialog.util.getOffsetToViewport(injectedElements[0]);
 

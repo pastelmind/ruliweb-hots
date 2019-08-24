@@ -29,8 +29,8 @@ const HotsDialog = {
    */
   data: null,
 
-  /** @type {HtmlStringInjector} */
-  injectHtml: null,
+  /** @type {HtmlPaster} */
+  paster: null,
 
   /** @type {Hero} */
   selectedHero: null,
@@ -61,12 +61,10 @@ const HotsDialog = {
 
   /**
    * Launch the hero/skill/talent selection dialog
-   * @param {HtmlStringInjector} injector Callback that injects the given HTML
-   *    fragment into the appropriate position
    */
-  launchDialog(injector) {
+  launchDialog() {
     // Snapshot currently selected area
-    this.injectHtml = injector;
+    this.paster = new this.HtmlPaster;
 
     if (!this.dialog) {
       this.dialog = new tingle.modal({
@@ -95,6 +93,8 @@ const HotsDialog = {
 
   buildDialogContent: (typeof require !== 'undefined') ?
     require('./hots-dialog-builder') : null,
+  HtmlPaster: (typeof require !== 'undefined') ?
+    require('./hots-dialog-paster') : null,
 
   /**
    * Collection of methods that generate HTML source strings.
@@ -124,9 +124,7 @@ function openHotsDialog() {
       }
     );
   } else {
-    HotsDialog.launchDialog(
-      HotsDialog.util.getHtmlInjectorAtSelectedPosition()
-    );
+    HotsDialog.launchDialog();
   }
 }
 

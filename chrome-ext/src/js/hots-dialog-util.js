@@ -16,69 +16,6 @@
   }
 
   /**
-   * Captures the currently selected position in a child frame of the current
-   * window, and returns a callback that can inject HTML to it
-   * @return {HtmlStringInjector} A callback that injects a valid HTML string
-   * into the currently selected frame.
-   */
-  function getHtmlInjectorAtSelectedPosition() {
-    const selectedWindow = HotsDialog.util.getSelectedChildWindow();
-
-    if (!selectedWindow) throw new Error('선택된 프레임을 찾을 수 없습니다.');
-
-    return html => {
-      const range = getSelectedRange(selectedWindow);
-      if (!range.collapsed) range.deleteContents();
-      // splitAncestorElements(range);
-
-      // Add padding to help editing
-      html += '&nbsp;';
-
-      // Build DOM nodes from HTML string
-      const docFragment =
-        createDocumentFragmentFromHtml(selectedWindow.document, html);
-      const injectedElements = [...docFragment.children];
-
-      // Inject HTML into page
-      range.insertNode(docFragment);
-
-      // Deselect inserted HTML
-      selectedWindow.getSelection()
-        .collapse(range.endContainer, range.endOffset);
-
-      return injectedElements;
-    };
-  }
-
-  /**
-   * Helper function that retrieves the currently selected range
-   * @package
-   * @param {Window} selectedWindow
-   * @return {Range}
-   */
-  function getSelectedRange(selectedWindow) {
-    const selection = selectedWindow.getSelection();
-    let range = null;
-
-    if (selection.rangeCount) {
-      range = selection.getRangeAt(0);
-      // Weird edge case
-      if ('HTML' !== range.startContainer.nodeName) return range;
-    }
-
-    const document = selectedWindow.document;
-
-    if (!range) {
-      range = document.createRange();
-      selection.addRange(range);
-    }
-
-    range.setStart(document.body, document.body.childNodes.length);
-    range.setEnd(document.body, document.body.childNodes.length);
-    return range;
-  }
-
-  /**
    * Creates a DocumentFragment filled with the given HTML.
    * @param {Document} document Base document
    * @param {string} html HTML source
@@ -166,7 +103,6 @@
     // Node.js
     module.exports = exports = {
       getSelectedChildWindow,
-      getHtmlInjectorAtSelectedPosition,
       createDocumentFragmentFromHtml,
       animateFlyingBox,
       getOffsetToViewport,
@@ -175,7 +111,6 @@
     // Browser globals
     root.HotsDialog.util = {
       getSelectedChildWindow,
-      getHtmlInjectorAtSelectedPosition,
       createDocumentFragmentFromHtml,
       animateFlyingBox,
       getOffsetToViewport,
