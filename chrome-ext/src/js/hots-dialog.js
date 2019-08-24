@@ -5,23 +5,6 @@
 
 'use strict';
 
-/**
- * A callback that injects the given HTML string into a desired position.
- * @callback HtmlStringInjector
- * @param {string} html HTML string to inject
- * @return {Element[]} Elements injected by the callback
- */
-
-/**
- * Collection of HotS data loaded from hots.json
- * @typedef {import("../../../api/src/hots-data")} HotsData
- */
-
-/**
- * @typedef {import("../../../api/src/hero")} Hero
- */
-
-
 const HotsDialog = {
   heroFilters: {
     universe: {
