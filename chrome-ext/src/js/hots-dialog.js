@@ -102,7 +102,7 @@ const HotsDialog = {
     // Generate dialog
     const dialogFragment = this.util.createDocumentFragmentFromHtml(
       document,
-      this.renderers.generateDialogContent(
+      this.renderers.renderDialogContent(
         this.heroFilters, hotsData.heroes, hotsData.ptrHeroes
       )
     );
@@ -167,8 +167,8 @@ const HotsDialog = {
         this.getHeroDataById(heroId, usePtrCheckbox.checked);
       console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-      skillsetSection.innerHTML = this.renderers.generateSkillIcons(hero);
-      talentsetSection.innerHTML = this.renderers.generateTalentList(hero);
+      skillsetSection.innerHTML = this.renderers.renderSkillIcons(hero);
+      talentsetSection.innerHTML = this.renderers.renderTalentList(hero);
     });
 
     // Check if PTR data is available
@@ -190,8 +190,8 @@ const HotsDialog = {
           this.getHeroDataById(heroId, usePtrCheckbox.checked);
         console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-        skillsetSection.innerHTML = this.renderers.generateSkillIcons(hero);
-        talentsetSection.innerHTML = this.renderers.generateTalentList(hero);
+        skillsetSection.innerHTML = this.renderers.renderSkillIcons(hero);
+        talentsetSection.innerHTML = this.renderers.renderTalentList(hero);
       });
     } else {
       // Disable "Use PTR" checkbox
@@ -220,12 +220,12 @@ const HotsDialog = {
 
         let html;
         if (isHeroIcon) {
-          html = this.renderers.generateHeroInfoTable(
+          html = this.renderers.renderHeroInfoTable(
             hero, iconSize, iconSize, version,
             useSimpleHeroTableCheckbox.checked
           );
         } else { // isSkillIcon
-          html = this.renderers.generateSkillInfoTable(
+          html = this.renderers.renderSkillInfoTable(
             hero.skills[skillIndex], iconSize, version
           );
         }
@@ -256,11 +256,11 @@ const HotsDialog = {
         // TODO De-duplicate code
         let html;
         if (isTalentIcon) {
-          html = this.renderers.generateTalentInfoTable(
+          html = this.renderers.renderTalentInfoTable(
             talentGroup[talentIndex], iconSize, version
           );
         } else { // isTalentGroupButton
-          html = this.renderers.generateTalentGroupInfoTable(
+          html = this.renderers.renderTalentGroupInfoTable(
             talentGroup, iconSize, version
           );
         }
@@ -401,7 +401,7 @@ const HotsDialog = {
      * @param {Object<string, Hero>} ptrHeroes Hero ID => hero data
      * @return {string} HTML source
      */
-    generateDialogContent(heroFilterGroups, heroes, ptrHeroes) {
+    renderDialogContent(heroFilterGroups, heroes, ptrHeroes) {
       // Prepare filter groups
       const filterGroups = [];
       for (const heroFilterGroupId in heroFilterGroups) {
@@ -450,7 +450,7 @@ const HotsDialog = {
      * @param {Hero} hero Hero data
      * @return {string} HTML source
      */
-    generateSkillIcons(hero) {
+    renderSkillIcons(hero) {
       return Mustache.render(HotsDialog.templates['dialog-skills'], hero);
     },
 
@@ -459,7 +459,7 @@ const HotsDialog = {
      * @param {Hero} hero Hero data
      * @return {string} HTML source
      */
-    generateTalentList(hero) {
+    renderTalentList(hero) {
       // Convert talent groups into nested arrays of objects
       const talents = Object.entries(hero.talents).map(
         ([talentLevel, talentGroup]) => ({ talentLevel, talentGroup })
@@ -480,7 +480,7 @@ const HotsDialog = {
      * @param {boolean} isSimpleTable If truthy, generate a simplified table
      * @return {string} HTML source
      */
-    generateHeroInfoTable(
+    renderHeroInfoTable(
       hero, iconSize = 64, skillIconSize = 48, hotsVersion, isSimpleTable
     ) {
       const heroView = Object.create(hero);
@@ -516,7 +516,7 @@ const HotsDialog = {
 
       for (const skillGroup of heroView.skillGroups) {
         skillGroup.skills = skillGroup.skills.map(
-          skill => this.generateSkillTalentView(skill, skillIconSize)
+          skill => this.renderSkillTalentView(skill, skillIconSize)
         );
       }
 
@@ -540,10 +540,10 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateSkillInfoTable(skill, iconSize = 64, hotsVersion) {
+    renderSkillInfoTable(skill, iconSize = 64, hotsVersion) {
       return Mustache.render(
         HotsDialog.templates['insert-skill'],
-        this.generateSkillTalentView(skill, iconSize, hotsVersion),
+        this.renderSkillTalentView(skill, iconSize, hotsVersion),
         { stats: HotsDialog.templates['insert-skill-stats'] }
       );
     },
@@ -555,9 +555,9 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateTalentInfoTable(talent, iconSize = 48, hotsVersion) {
+    renderTalentInfoTable(talent, iconSize = 48, hotsVersion) {
       const talentView =
-        this.generateSkillTalentView(talent, iconSize, hotsVersion);
+        this.renderSkillTalentView(talent, iconSize, hotsVersion);
       talentView.isTalent = true;
 
       return Mustache.render(
@@ -574,9 +574,9 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string to display
      * @return {string} HTML source
      */
-    generateTalentGroupInfoTable(talentGroup, iconSize = 48, hotsVersion) {
+    renderTalentGroupInfoTable(talentGroup, iconSize = 48, hotsVersion) {
       return talentGroup.map(
-        talent => this.generateTalentInfoTable(talent, iconSize, hotsVersion)
+        talent => this.renderTalentInfoTable(talent, iconSize, hotsVersion)
       ).join('&nbsp;');
     },
 
@@ -589,7 +589,7 @@ const HotsDialog = {
      * @param {string=} hotsVersion (optional) HotS version string
      * @return {object} Object to be fed into Mustache
      */
-    generateSkillTalentView(skill, iconSize = 48, hotsVersion) {
+    renderSkillTalentView(skill, iconSize = 48, hotsVersion) {
       const view = Object.create(skill);
       view.hotsVersion = hotsVersion;
       view.iconSize = iconSize;

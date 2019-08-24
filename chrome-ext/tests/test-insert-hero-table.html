@@ -50,7 +50,7 @@
 
       for (const heroId of heroIds) {
         if (heroId in hotsData.heroes)
-          template.innerHTML += HotsDialog.renderers.generateHeroInfoTable(hotsData.heroes[heroId], 64, 48, undefined);
+          template.innerHTML += HotsDialog.renderers.renderHeroInfoTable(hotsData.heroes[heroId], 64, 48, undefined);
         else
           console.error('Cannot find hero ID:', heroId);
       }

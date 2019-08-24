@@ -48,7 +48,7 @@ describe('HotsDialog.renderers', () => {
   describe('Dialog templates', () => {
     it('generates dialog content correctly', () => {
       const dialogHtml = HotsDialog.renderers
-        .generateDialogContent(HotsDialog.heroFilters, hotsData.heroes);
+        .renderDialogContent(HotsDialog.heroFilters, hotsData.heroes);
 
       // fs.writeFileSync(
       //   path.join(__dirname, 'expected/dialog.html'), dialogHtml
@@ -58,7 +58,7 @@ describe('HotsDialog.renderers', () => {
 
     it('generates skill icons correctly', () => {
       const skillIconsHtml =
-        HotsDialog.renderers.generateSkillIcons(hotsData.heroes.Tinker);
+        HotsDialog.renderers.renderSkillIcons(hotsData.heroes.Tinker);
 
       // fs.writeFileSync(
       //   path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml
@@ -68,7 +68,7 @@ describe('HotsDialog.renderers', () => {
 
     it('generates talent list correctly', () => {
       const talentIconsHtml =
-        HotsDialog.renderers.generateTalentList(hotsData.heroes.Tinker);
+        HotsDialog.renderers.renderTalentList(hotsData.heroes.Tinker);
 
       // fs.writeFileSync(
       //   path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml
@@ -84,9 +84,9 @@ describe('HotsDialog.renderers', () => {
 
       for (const hero of Object.values(hotsData.heroes)) {
         const heroBoxFull = HotsDialog.renderers
-          .generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion);
+          .renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion);
         const heroBoxSimple = HotsDialog.renderers
-          .generateHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true);
+          .renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true);
         heroInfoHtml += heroBoxFull + heroBoxSimple;
       }
 
@@ -102,9 +102,9 @@ describe('HotsDialog.renderers', () => {
       for (const hero of Object.values(hotsData.heroes)) {
         for (const skill of hero.skills) {
           const skillBox = HotsDialog.renderers
-            .generateSkillInfoTable(skill, 64);
+            .renderSkillInfoTable(skill, 64);
           const skillBoxWithVersion = HotsDialog.renderers
-            .generateSkillInfoTable(skill, 64, '34.3');
+            .renderSkillInfoTable(skill, 64, '34.3');
           skillInfoHtml += skillBox + skillBoxWithVersion;
         }
       }
@@ -123,9 +123,9 @@ describe('HotsDialog.renderers', () => {
         for (const talentLevel in hero.talents) {
           for (const talent of hero.talents[talentLevel]) {
             const talentBox = HotsDialog.renderers
-              .generateTalentInfoTable(talent, 48);
+              .renderTalentInfoTable(talent, 48);
             const talentBoxWithVersion = HotsDialog.renderers
-              .generateTalentInfoTable(talent, 48, '34.3');
+              .renderTalentInfoTable(talent, 48, '34.3');
 
             talentInfoHtml += talentBox + talentBoxWithVersion;
           }
