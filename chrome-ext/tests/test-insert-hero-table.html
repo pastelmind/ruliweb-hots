@@ -18,7 +18,7 @@
   <script>
     (async function main() {
 
-      HotsDialog.htmlGenerators.templates = await loadTemplates();
+      HotsDialog.renderers.templates = await loadTemplates();
       const jsonPath = '../../docs/hots.json';
       const response = await fetch(jsonPath);
       if (!response.ok)
@@ -50,7 +50,7 @@
 
       for (const heroId of heroIds) {
         if (heroId in hotsData.heroes)
-          template.innerHTML += HotsDialog.htmlGenerators.generateHeroInfoTable(hotsData.heroes[heroId], 64, 48, undefined);
+          template.innerHTML += HotsDialog.renderers.generateHeroInfoTable(hotsData.heroes[heroId], 64, 48, undefined);
         else
           console.error('Cannot find hero ID:', heroId);
       }

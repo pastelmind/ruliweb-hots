@@ -102,7 +102,7 @@ const HotsDialog = {
     // Generate dialog
     const dialogFragment = this.util.createDocumentFragmentFromHtml(
       document,
-      this.htmlGenerators.generateDialogContent(
+      this.renderers.generateDialogContent(
         this.heroFilters, hotsData.heroes, hotsData.ptrHeroes
       )
     );
@@ -167,8 +167,8 @@ const HotsDialog = {
         this.getHeroDataById(heroId, usePtrCheckbox.checked);
       console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-      skillsetSection.innerHTML = this.htmlGenerators.generateSkillIcons(hero);
-      talentsetSection.innerHTML = this.htmlGenerators.generateTalentList(hero);
+      skillsetSection.innerHTML = this.renderers.generateSkillIcons(hero);
+      talentsetSection.innerHTML = this.renderers.generateTalentList(hero);
     });
 
     // Check if PTR data is available
@@ -190,10 +190,8 @@ const HotsDialog = {
           this.getHeroDataById(heroId, usePtrCheckbox.checked);
         console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-        skillsetSection.innerHTML =
-          this.htmlGenerators.generateSkillIcons(hero);
-        talentsetSection.innerHTML =
-          this.htmlGenerators.generateTalentList(hero);
+        skillsetSection.innerHTML = this.renderers.generateSkillIcons(hero);
+        talentsetSection.innerHTML = this.renderers.generateTalentList(hero);
       });
     } else {
       // Disable "Use PTR" checkbox
@@ -222,12 +220,12 @@ const HotsDialog = {
 
         let html;
         if (isHeroIcon) {
-          html = this.htmlGenerators.generateHeroInfoTable(
+          html = this.renderers.generateHeroInfoTable(
             hero, iconSize, iconSize, version,
             useSimpleHeroTableCheckbox.checked
           );
         } else { // isSkillIcon
-          html = this.htmlGenerators.generateSkillInfoTable(
+          html = this.renderers.generateSkillInfoTable(
             hero.skills[skillIndex], iconSize, version
           );
         }
@@ -258,11 +256,11 @@ const HotsDialog = {
         // TODO De-duplicate code
         let html;
         if (isTalentIcon) {
-          html = this.htmlGenerators.generateTalentInfoTable(
+          html = this.renderers.generateTalentInfoTable(
             talentGroup[talentIndex], iconSize, version
           );
         } else { // isTalentGroupButton
-          html = this.htmlGenerators.generateTalentGroupInfoTable(
+          html = this.renderers.generateTalentGroupInfoTable(
             talentGroup, iconSize, version
           );
         }
@@ -394,7 +392,7 @@ const HotsDialog = {
   templates: null,
 
   /** Collection of methods that generate HTML source strings from templates */
-  htmlGenerators: {
+  renderers: {
     /**
      * Generates the HTML source of the main dialog.
      * @param {Object<string, {name: string, filters: Object}>} heroFilterGroups
