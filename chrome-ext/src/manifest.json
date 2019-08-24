@@ -31,7 +31,11 @@
       "js": [
         "js/tingle.js",
         "js/mustache.js",
-        "js/hots-dialog.js"
+        "js/hots-dialog.js",
+        "js/hots-dialog-builder.js",
+        "js/hots-dialog-paster.js",
+        "js/hots-dialog-renderers.js",
+        "js/hots-dialog-util.js"
       ]
     },
     {

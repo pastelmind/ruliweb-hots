@@ -14,8 +14,6 @@ const decorateHotsData = require('../src/js/decorate-hots-data');
 
 // Mocks for HotsDialog
 require('./js/mocks');
-global.Mustache = require('mustache');
-
 const HotsDialog = require('../src/js/hots-dialog');
 
 /**
@@ -38,10 +36,6 @@ describe('HotsDialog.renderers', () => {
       fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8')
     );
     decorateHotsData(hotsData);
-
-    const templateJson =
-      fs.readFileSync(path.join(__dirname, `../src/templates.json`), 'utf8');
-    HotsDialog.templates = JSON.parse(templateJson);
   });
 
 
