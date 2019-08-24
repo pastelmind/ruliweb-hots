@@ -386,7 +386,6 @@ const HotsDialog = {
 
   /**
    * Object containing template name => template string.
-   * This property is set by `./templates.js`
    * @type {Object<string, string>}
    */
   templates: null,
@@ -793,7 +792,19 @@ const HotsDialog = {
  * Load HotS data on first run and launch the Hots dialog.
  * This function is called when the right-click menu is selected.
  */
-function openHotsDialog() {
+async function openHotsDialog() {
+  if (!HotsDialog.templates) {
+    const templateJson = 'templates.json';
+    const response = await fetch(chrome.runtime.getURL(templateJson));
+    if (!response.ok) {
+      throw new Error(
+        `Cannot retrieve ${templateJson}: ` +
+        `${response.status} ${response.statusText}`
+      );
+    }
+    HotsDialog.templates = await response.json();
+  }
+
   if (!HotsDialog.data) {
     chrome.storage.local.get(
       ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],

@@ -31,8 +31,7 @@
       "js": [
         "js/tingle.js",
         "js/mustache.js",
-        "js/hots-dialog.js",
-        "js/templates.js"
+        "js/hots-dialog.js"
       ]
     },
     {
@@ -52,7 +51,8 @@
     }
   ],
   "web_accessible_resources": [
-    "images/*"
+    "images/*",
+    "templates.json"
   ],
   "icons": {
     "16": "icons/RuHeros_01_16.png",

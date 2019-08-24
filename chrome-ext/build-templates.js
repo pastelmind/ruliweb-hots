@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Combines the contents of all files in `templates/` and stores them as a
- * browser-side script in src/js/templates.js
+ * @file Compiles all templates in `templates/` and packs them into a JSON file.
  */
 
 
@@ -63,14 +62,10 @@ for (const fileName of fileNames) {
   });
 }
 
-// Save the templates as a JavaScript file
-const assignTarget = 'HotsDialog.templates';
-const outputFilePath = path.join(__dirname, 'src/js/templates.js');
-fs.writeFileSync(
-  outputFilePath, assignTarget + ' = ' + JSON.stringify(templates, null, 2)
-);
+// Save the templates
+const outputFilePath = path.join(__dirname, 'src/templates.json');
+fs.writeFileSync(outputFilePath, JSON.stringify(templates));
 console.log('\nTemplates written to', outputFilePath);
-console.log('Once loaded, templates can be accessed with', assignTarget);
 
 
 // -------- Support functions -------- //

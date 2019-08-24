@@ -39,9 +39,9 @@ describe('HotsDialog.renderers', () => {
     );
     decorateHotsData(hotsData);
 
-    const templateFileContent =
-      fs.readFileSync(path.join(__dirname, `../src/js/templates.js`), 'utf8');
-    eval(templateFileContent);
+    const templateJson =
+      fs.readFileSync(path.join(__dirname, `../src/templates.json`), 'utf8');
+    HotsDialog.templates = JSON.parse(templateJson);
   });
 
 

@@ -33,7 +33,7 @@ Note: All npm scripts expect a Unix-like shell environment. Windows users may ne
 # npm Scripts
 
 * `npm run build`: Package the Chrome extension source into a ZIP file which can be uploaded to the Chrome Web Store.
-* `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/js/templates.js` when anything changes.
+* `npm run watch`: Watch `./chrome-ext/templates/` on background and rebuild `./chrome-ext/src/templates.json` when anything changes.
 * `npm run link-dep`: Creates hard links to 3rd-party dependencies in `node_modules/`. This script is automatically called by `npm install`.
 * `npm run validate-data`: Validates `hots.json`. This script is called by `npm test`.
 
