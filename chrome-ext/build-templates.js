@@ -64,7 +64,7 @@ for (const fileName of fileNames) {
 }
 
 // Save the templates as a JavaScript file
-const assignTarget = 'HotsDialog.htmlGenerators.templates';
+const assignTarget = 'HotsDialog.templates';
 const outputFilePath = path.join(__dirname, 'src/js/templates.js');
 fs.writeFileSync(
   outputFilePath, assignTarget + ' = ' + JSON.stringify(templates, null, 2)

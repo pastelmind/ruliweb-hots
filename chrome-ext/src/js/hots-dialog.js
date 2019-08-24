@@ -386,15 +386,15 @@ const HotsDialog = {
     this.util.animateFlyingBox(eventTarget, endX, endY);
   },
 
+  /**
+   * Object containing template name => template string.
+   * This property is set by `./templates.js`
+   * @type {Object<string, string>}
+   */
+  templates: null,
+
   /** Collection of methods that generate HTML source strings from templates */
   htmlGenerators: {
-    /**
-     * Object containing template name => template string.
-     * This property is set by `./templates.js`
-     * @type {Object<string, string>}
-     */
-    templates: null,
-
     /**
      * Generates the HTML source of the main dialog.
      * @param {Object<string, {name: string, filters: Object}>} heroFilterGroups
@@ -438,7 +438,7 @@ const HotsDialog = {
       );
 
       return Mustache.render(
-        this.templates['dialog'],
+        HotsDialog.templates['dialog'],
         {
           filterGroups,
           heroes: heroesArray,
@@ -453,7 +453,7 @@ const HotsDialog = {
      * @return {string} HTML source
      */
     generateSkillIcons(hero) {
-      return Mustache.render(this.templates['dialog-skills'], hero);
+      return Mustache.render(HotsDialog.templates['dialog-skills'], hero);
     },
 
     /**
@@ -468,7 +468,7 @@ const HotsDialog = {
       );
 
       return Mustache.render(
-        this.templates['dialog-talents'],
+        HotsDialog.templates['dialog-talents'],
         { talents, id: hero.id, isPtr: hero.isPtr }
       );
     },
@@ -529,9 +529,9 @@ const HotsDialog = {
       heroView.isSimpleHeroTable = heroView.isSimpleSkillTable =
         !!isSimpleTable;
 
-      return Mustache.render(this.templates['insert-hero'], heroView, {
-        skill: this.templates['insert-skill'],
-        stats: this.templates['insert-skill-stats'],
+      return Mustache.render(HotsDialog.templates['insert-hero'], heroView, {
+        skill: HotsDialog.templates['insert-skill'],
+        stats: HotsDialog.templates['insert-skill-stats'],
       });
     },
 
@@ -544,9 +544,9 @@ const HotsDialog = {
      */
     generateSkillInfoTable(skill, iconSize = 64, hotsVersion) {
       return Mustache.render(
-        this.templates['insert-skill'],
+        HotsDialog.templates['insert-skill'],
         this.generateSkillTalentView(skill, iconSize, hotsVersion),
-        { stats: this.templates['insert-skill-stats'] }
+        { stats: HotsDialog.templates['insert-skill-stats'] }
       );
     },
 
@@ -563,9 +563,9 @@ const HotsDialog = {
       talentView.isTalent = true;
 
       return Mustache.render(
-        this.templates['insert-skill'],
+        HotsDialog.templates['insert-skill'],
         talentView,
-        { stats: this.templates['insert-skill-stats'] }
+        { stats: HotsDialog.templates['insert-skill-stats'] }
       );
     },
 
