@@ -52,7 +52,8 @@ const HotsDialog = {
    */
   launchDialog() {
     // Snapshot currently selected area
-    this.paster = new this.HtmlPaster;
+    if (this.paster) this.paster.bind();
+    else this.paster = new this.HtmlPaster;
 
     if (!this.dialog) {
       this.dialog = new tingle.modal({
@@ -73,15 +74,16 @@ const HotsDialog = {
         },
       });
 
-      this.dialog.setContent(
-        this.buildDialogContent(this.data, this.heroFilters)
+      const dialogContent = new this.Dialog(
+        this.data, this.heroFilters, this.paster
       );
+      this.dialog.setContent(dialogContent.getFragment());
     }
 
     this.dialog.open();
   },
 
-  buildDialogContent: (typeof require !== 'undefined') ?
+  Dialog: (typeof require !== 'undefined') ?
     require('./hots-dialog-builder') : null,
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,

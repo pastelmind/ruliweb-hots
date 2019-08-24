@@ -14,6 +14,13 @@
      * Creates a HtmlPaster bound to the active frame.
      */
     constructor() {
+      this.bind();
+    }
+
+    /**
+     * Attempt to bind to the currently active frame.
+     */
+    bind() {
       this._frame = HotsDialog.util.getSelectedChildWindow();
       if (!this._frame) {
         throw new Error('선택된 프레임을 찾을 수 없습니다.');

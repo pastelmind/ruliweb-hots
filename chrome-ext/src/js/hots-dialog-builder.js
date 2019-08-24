@@ -13,6 +13,10 @@
  * @typedef {import("../../../api/src/hero")} Hero
  */
 
+/**
+ * @typedef {import("./hots-dialog-paster")} HtmlPaster
+ */
+
 (root => {
   const HotsDialog = (typeof require == 'function') ?
     require('./hots-dialog') : root.HotsDialog;
@@ -24,11 +28,13 @@
      *
      * @param {HotsData} data
      * @param {Object<string, Object<string, *>>} heroFilters
+     * @param {HtmlPaster} paster
      */
-    constructor(data, heroFilters) {
+    constructor(data, heroFilters, paster) {
       this._data = data;
       this._heroFilters = heroFilters;
       this._selectedHero = null;
+      this._paster = paster;
 
       // Generate document fragment
       this._fragment = HotsDialog.util.createDocumentFragmentFromHtml(
@@ -166,7 +172,7 @@
               hero.skills[skillIndex], iconSize, version
             );
           }
-          injectHtmlInEditor(html, event.target);
+          this.pasteWithEffect(html, event.target);
         }
       });
 
@@ -202,7 +208,7 @@
               talentGroup, iconSize, version
             );
           }
-          injectHtmlInEditor(html, event.target);
+          this.pasteWithEffect(html, event.target);
         }
       });
     }
@@ -274,17 +280,18 @@
     getHotsVersion(isPtr = false) {
       return isPtr ? this._data.hotsPtrVersion : this._data.hotsVersion;
     }
-  }
 
-  /**
-   * Generates the dialog content and attaches event handlers.
-   * @param {HotsData} hotsData
-     * @param {Object<string, Object<string, *>>} heroFilters
-   * @return {DocumentFragment} A collection of generated DOM elements
-   */
-  function buildDialogContent(hotsData, heroFilters) {
-    const dialog = new Dialog(hotsData, heroFilters);
-    return dialog.getFragment();
+    /**
+     * Pastes a HTML string into the WYSIWYG editor and creates visual effects.
+     * @param {string} html HTML string
+     * @param {Element} eventTarget Element that was triggered by the user
+     */
+    pasteWithEffect(html, eventTarget) {
+      const injectedElements = this._paster.paste(html);
+      const { left: endX, top: endY } =
+        HotsDialog.util.getOffsetToViewport(injectedElements[0]);
+      HotsDialog.util.animateFlyingBox(eventTarget, endX, endY);
+    }
   }
 
   /**
@@ -327,24 +334,10 @@
 
   if (typeof module === 'object' && module.exports) {
     // Node.js
-    module.exports = exports = buildDialogContent;
+    module.exports = exports = Dialog;
   } else {
     // Browser globals
-    root.HotsDialog.buildDialogContent = buildDialogContent;
-  }
-
-  /**
-   * Injects the given HTML string into the WYSIWYG editor, at the selection
-   * which was saved when the dialog was launched.
-   * @param {string} html HTML string
-   * @param {Element} eventTarget Element that was triggered by the user
-   */
-  function injectHtmlInEditor(html, eventTarget) {
-    const injectedElements = HotsDialog.paster.paste(html);
-    const { left: endX, top: endY } =
-      HotsDialog.util.getOffsetToViewport(injectedElements[0]);
-
-    HotsDialog.util.animateFlyingBox(eventTarget, endX, endY);
+    root.HotsDialog.Dialog = Dialog;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)
