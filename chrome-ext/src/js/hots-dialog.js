@@ -23,18 +23,6 @@
 
 
 const HotsDialog = {
-  /**
-   * Set by `openHotsDialog()`
-   * @type {HotsData}
-   */
-  data: null,
-
-  /** @type {HtmlPaster} */
-  paster: null,
-
-  /** @type {Hero} */
-  selectedHero: null,
-
   heroFilters: {
     universe: {
       name: '세계관',
@@ -85,7 +73,9 @@ const HotsDialog = {
         },
       });
 
-      this.dialog.setContent(this.buildDialogContent(this.data));
+      this.dialog.setContent(
+        this.buildDialogContent(this.data, this.heroFilters)
+      );
     }
 
     this.dialog.open();
