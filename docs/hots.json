@@ -24553,10 +24553,11 @@
               "en": "Grounded Totem",
               "ko": "흔들리지 않는 토템"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_rehgar_earthbindtotem",
             "description": "속박의 토템의 생명력이 100% 증가합니다. 속박의 토템으로 느려진 적 영웅의 공격 속도가 40% 감소합니다.",
-            "shortDescription": "토템 생명력 증가 및 적 공격 속도를 감소시킴"
+            "shortDescription": "토템 생명력 증가 및 적 공격 속도를 감소시킴",
+            "upgradeFor": "E"
           },
           {
             "id": "RehgarBloodAndThunder",
