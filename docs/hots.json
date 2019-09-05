@@ -22059,7 +22059,10 @@
           "icon": "storm_ui_icon_nexushunter_d",
           "description": "고정 갈고리를 발사해 갈고리가 부착된 지형을 향해 자신을 끌어당깁니다. 고정 갈고리가 적 영웅에게 적중하면 36(+4%)의 피해를 주고, 대상을 향해 자신을 끌어당긴 후 공격해 112(+4%)의 추가 피해를 줍니다.\n\n회전 휩쓸기 중에도 사용할 수 있습니다.",
           "shortDescription": "지형 및 영웅을 향해 돌진",
-          "cooldown": 25
+          "cooldown": 25,
+          "extras": {
+            "사거리": 11
+          }
         },
         {
           "id": "NexusHunterCarnage",
@@ -24613,7 +24616,7 @@
             "cooldown": 90,
             "manaCost": 70,
             "extras": {
-              "효과 반경": 8.25
+              "효과 반경": 12
             }
           }
         ],
