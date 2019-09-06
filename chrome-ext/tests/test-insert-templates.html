@@ -25,14 +25,12 @@
   <section class="content" id="generated_content"></section>
 
   <script src="../../node_modules/mustache/mustache.min.js"></script>
+  <script src="./js/mocks.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
-  <script src="./js/mocks.js"></script>
+  <script src="../src/js/hots-dialog-renderers.js"></script>
   <script>
     (async () => {
-      //Load templates directly from files
-      HotsDialog.renderers.templates = await loadTemplates();
-
       //Load hero data for testing
       const jsonPath = './data/hots.json';
       const response = await fetch(jsonPath);

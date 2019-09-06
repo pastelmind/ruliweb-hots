@@ -16,10 +16,13 @@
 <body>
   <script src="../../node_modules/tingle.js/dist/tingle.min.js"></script>
   <script src="../../node_modules/mustache/mustache.min.js"></script>
+  <script src="./js/mocks.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
-  <script src="../src/js/templates.js"></script>
-  <script src="./js/mocks.js"></script>
+  <script src="../src/js/hots-dialog-builder.js"></script>
+  <script src="../src/js/hots-dialog-paster.js"></script>
+  <script src="../src/js/hots-dialog-renderers.js"></script>
+  <script src="../src/js/hots-dialog-util.js"></script>
   <script>
     'use strict';
 
@@ -34,12 +37,8 @@
       decorateHotsData(HotsDialog.data);
       const heroes = HotsDialog.data.heroes;
 
-      HotsDialog.launchDialog(htmlFragment => {
-        const docFragment = HotsDialog.util.createDocumentFragmentFromHtml(document, htmlFragment);
-        const injectedElements = [...docFragment.children];
-        document.body.appendChild(docFragment);
-        return injectedElements;
-      });
+      HotsDialog.util.getSelectedChildWindow = () => window;
+      HotsDialog.launchDialog();
     })();
 
   </script>

@@ -12,13 +12,13 @@
 
 <body>
   <script src="../../node_modules/mustache/mustache.min.js"></script>
+  <script src="./js/mocks.js"></script>
   <script src="../src/js/decorate-hots-data.js"></script>
   <script src="../src/js/hots-dialog.js"></script>
-  <script src="./js/mocks.js"></script>
+  <script src="../src/js/hots-dialog-renderers.js"></script>
+  <script src="../src/js/hots-dialog-util.js"></script>
   <script>
     (async function main() {
-
-      HotsDialog.renderers.templates = await loadTemplates();
       const jsonPath = '../../docs/hots.json';
       const response = await fetch(jsonPath);
       if (!response.ok)
