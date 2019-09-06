@@ -293,7 +293,7 @@ function parseAllTalentsData(heroData, heroId) {
 
 
 /**
- * Finds a talent by `talentName` in `hero`, and inserts the given subabilities
+ * Finds a talent by `talentId` in `hero`, and inserts the given subabilities
  * after it as talents.
  * @param {Hero} hero Hero
  * @param {string} talentId ID of the talent to search for
