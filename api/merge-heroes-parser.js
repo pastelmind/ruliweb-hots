@@ -133,26 +133,40 @@ function parseHero(heroData) {
   switch (hero.id) {
     // Longboat Raid! => Mortar
     case 'LostVikings':
-      insertSubAbilitiesAfterTalent(hero, heroData, '바이킹의 습격!', '박격포');
+      insertSubAbilitiesAfterTalent(
+        hero, heroData,
+        'LostVikingsHeroicAbilityLongboatRaid', 'LostVikingsLongboatRaidMortar',
+      );
       break;
     // Bunker Drop => Flamethrower
     case 'Firebat':
-      insertSubAbilitiesAfterTalent(hero, heroData, '벙커 투하', '화염방사기');
+      insertSubAbilitiesAfterTalent(
+        hero, heroData,
+        'FirebatHeroicAbilityBunkerDrop', 'FirebatBunkerDropFlamethrower',
+      );
       break;
     // RIP-Tire => Jump!
     case 'Junkrat':
-      insertSubAbilitiesAfterTalent(hero, heroData, '죽이는 타이어', '점프!');
+      insertSubAbilitiesAfterTalent(
+        hero, heroData, 'JunkratRIPTire', 'JunkratRIPTireJump'
+      );
       break;
     // Storm, Earth, Fire => Storm / Earth / Fire
     case 'Chen':
       insertSubAbilitiesAfterTalent(
-        hero, heroData, '폭풍, 대지, 불', '폭풍', '대지', '불'
+        hero, heroData,
+        'ChenHeroicAbilityStormEarthFire',
+        'ChenStorm', 'ChenEarth', 'ChenFire',
       );
       break;
     // Commandeer Odin => Annihilate / Ragnarok Missiles / Thrusters
     case 'Tychus':
       insertSubAbilitiesAfterTalent(
-        hero, heroData, '오딘 출격', '몰살', '라그나로크 미사일', '추진기 가동'
+        hero, heroData,
+        'TychusHeroicAbilityCommandeerOdin',
+        'TychusOdinAnnihilate',
+        'TychusOdinRagnarokMissilesTargeted',
+        'TychusOdinThrusters',
       );
       break;
   }
@@ -589,7 +603,7 @@ function parseAllTalents(heroData) {
  */
 function parseTalentData(talentData) {
   return {
-    id: talentData.id,
+    id: (talentData.ability || {}).id || talentData.id,
     name: toKoEnString(talentData.button.name),
     icon: extractIconId(talentData.button.icon),
   };
@@ -597,28 +611,24 @@ function parseTalentData(talentData) {
 
 
 /**
- * Finds a talent by `talentName` in `hero`, and inserts the given subabilities
+ * Finds a talent by `talentId` in `hero`, and inserts the given subabilities
  * after it as talents.
  * @param {Hero} hero Hero
  * @param {Object} heroData JSON object that represents a hero
- * @param {string} talentName Name of talent to search for
- * @param  {...string} subAbilityNames Names of subabilities to insert
+ * @param {string} talentId ID of the talent to search for
+ * @param  {...string} subAbilityIds Names of subabilities to insert
  */
 function insertSubAbilitiesAfterTalent(
-  hero, heroData, talentName, ...subAbilityNames
+  hero, heroData, talentId, ...subAbilityIds
 ) {
   for (const talentArray of Object.values(hero.talents)) {
-    const talentIndex =
-      talentArray.findIndex(talent => talent.name.ko === talentName);
+    const talentIndex = talentArray.findIndex(talent => talent.id === talentId);
     if (talentIndex !== -1) {
-      const subAbilities = subAbilityNames.map(name => {
+      const subAbilities = subAbilityIds.map(id => {
         const abilityData = jsonFind(
-          heroData,
-          o => o && o.button && o.button.name && o.button.name.kokr === name
+          heroData, o => o && o.ability && o.ability.id === id && o.button
         );
-        return new Talent(
-          abilityData ? parseTalentData(abilityData) : { name: { ko: name } }
-        );
+        return new Talent(abilityData ? parseTalentData(abilityData) : { id });
       });
 
       talentArray.splice(talentIndex + 1, 0, ...subAbilities);
