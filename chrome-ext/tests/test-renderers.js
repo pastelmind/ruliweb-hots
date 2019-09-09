@@ -6,9 +6,10 @@
 
 'use strict';
 
-const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+
+const snapshot = require('snap-shot-it');
 
 const decorateHotsData = require('../src/js/decorate-hots-data');
 
@@ -16,16 +17,6 @@ const decorateHotsData = require('../src/js/decorate-hots-data');
 require('./js/mocks');
 const HotsDialog = require('../src/js/hots-dialog');
 
-/**
- * Retrieves the contents of the HTML file in the expected/ directory
- * @param {string} fileName HTML file name without the .html extension
- * @return {string} HTML source with newlines normalized to LF
- */
-function getExpectedHtml(fileName) {
-  return fs
-    .readFileSync(path.join(__dirname, `expected/${fileName}.html`), 'utf8')
-    .replace(/\r/g, '');
-}
 
 describe('HotsDialog.renderers', () => {
   let hotsData;
@@ -44,30 +35,21 @@ describe('HotsDialog.renderers', () => {
       const dialogHtml = HotsDialog.renderers
         .renderDialogContent(HotsDialog.heroFilters, hotsData.heroes);
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/dialog.html'), dialogHtml
-      // );
-      assert.strictEqual(dialogHtml, getExpectedHtml('dialog'));
+      snapshot(dialogHtml);
     });
 
     it('generates skill icons correctly', () => {
       const skillIconsHtml =
         HotsDialog.renderers.renderSkillIcons(hotsData.heroes.Tinker);
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/dialog-skills.html'), skillIconsHtml
-      // );
-      assert.strictEqual(skillIconsHtml, getExpectedHtml('dialog-skills'));
+      snapshot(skillIconsHtml);
     });
 
     it('generates talent list correctly', () => {
       const talentIconsHtml =
         HotsDialog.renderers.renderTalentList(hotsData.heroes.Tinker);
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/dialog-talents.html'), talentIconsHtml
-      // );
-      assert.strictEqual(talentIconsHtml, getExpectedHtml('dialog-talents'));
+      snapshot(talentIconsHtml);
     });
   });
 
@@ -84,10 +66,7 @@ describe('HotsDialog.renderers', () => {
         heroInfoHtml += heroBoxFull + heroBoxSimple;
       }
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/insert-hero-info.html'), heroInfoHtml
-      // );
-      assert.strictEqual(heroInfoHtml, getExpectedHtml('insert-hero-info'));
+      snapshot(heroInfoHtml);
     });
 
     it('generates skill info table correctly', () => {
@@ -103,11 +82,7 @@ describe('HotsDialog.renderers', () => {
         }
       }
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/insert-skill-info.html'),
-      //   skillInfoHtml
-      // );
-      assert.strictEqual(skillInfoHtml, getExpectedHtml('insert-skill-info'));
+      snapshot(skillInfoHtml);
     });
 
     it('generates talent info table correctly', () => {
@@ -126,11 +101,7 @@ describe('HotsDialog.renderers', () => {
         }
       }
 
-      // fs.writeFileSync(
-      //   path.join(__dirname, 'expected/insert-talent-info.html'),
-      //   talentInfoHtml
-      // );
-      assert.strictEqual(talentInfoHtml, getExpectedHtml('insert-talent-info'));
+      snapshot(talentInfoHtml);
     });
   });
 });
