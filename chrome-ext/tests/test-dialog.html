@@ -44,7 +44,7 @@
       const templates = await HotsDialog.loadTemplates();
       HotsDialog.renderers = new HotsDialog.Renderer(templates);
 
-      HotsDialog.launchDialog();
+      await HotsDialog.launchDialog();
     })();
 
   </script>

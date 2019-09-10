@@ -33,7 +33,7 @@ const HotsDialog = {
   /**
    * Launch the hero/skill/talent selection dialog
    */
-  launchDialog() {
+  async launchDialog() {
     // Snapshot currently selected area
     if (this.paster) this.paster.bind();
     else this.paster = new this.HtmlPaster;
@@ -123,7 +123,7 @@ async function openHotsDialog() {
     HotsDialog.renderers = new HotsDialog.Renderer(templates);
   }
 
-  HotsDialog.launchDialog();
+  await HotsDialog.launchDialog();
 }
 
 
