@@ -66,17 +66,34 @@ const HotsDialog = {
     this.dialog.open();
   },
 
+  /**
+   * Retrieves the renderering templates.
+   * @return {Promise<Object<string, string>>} Object mapping template names to
+   *    template strings
+   * @throws {Error} Template cannot be loaded.
+   */
+  async loadTemplates() {
+    const templateJsonPath = chrome.runtime.getURL('templates.json');
+    const response = await fetch(templateJsonPath);
+    if (response.ok) return response.json();
+    throw new Error(
+      `Cannot retrieve ${templateJsonPath}, ` +
+      `got ${response.status} ${response.statusText}`
+    );
+  },
+
   Dialog: (typeof require !== 'undefined') ?
     require('./hots-dialog-builder') : null,
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,
+  Renderer: (typeof require !== 'undefined') ?
+    require('./hots-dialog-renderers') : null,
 
   /**
-   * Collection of methods that generate HTML source strings.
-   * See hots-dialog-renderers.js
+   * Shared Renderer instance
+   * @type {import('./hots-dialog-renderers')}
    */
-  renderers: (typeof require !== 'undefined') ?
-    require('./hots-dialog-renderers') : null,
+  renderers: null,
 
   /** Collection of utility functions */
   util: (typeof require !== 'undefined') ? require('./hots-dialog-util') : null,
@@ -99,6 +116,11 @@ async function openHotsDialog() {
         }
       );
     });
+  }
+
+  if (!HotsDialog.renderers) {
+    const templates = await HotsDialog.loadTemplates();
+    HotsDialog.renderers = new HotsDialog.Renderer(templates);
   }
 
   HotsDialog.launchDialog();
