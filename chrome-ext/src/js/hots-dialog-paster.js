@@ -5,8 +5,18 @@
 'use strict';
 
 (root => {
-  const HotsDialog = (typeof require == 'function') ?
-    require('./hots-dialog') : root.HotsDialog;
+  /** @type {import('./hots-dialog-util')} */
+  let util;
+  if (typeof require === 'function') {
+    util = require('./hots-dialog-util');
+  } else {
+    ({ util } = root.HotsDialog);
+  }
+
+  const {
+    createDocumentFragmentFromHtml,
+    getSelectedChildWindow,
+  } = util;
 
   /** Class that pastes HTML into a frame. */
   class HtmlPaster {
@@ -21,7 +31,7 @@
      * Attempt to bind to the currently active frame.
      */
     bind() {
-      this._frame = HotsDialog.util.getSelectedChildWindow();
+      this._frame = getSelectedChildWindow();
       if (!this._frame) {
         throw new Error('선택된 프레임을 찾을 수 없습니다.');
       }
@@ -41,7 +51,7 @@
       html += '&nbsp;';
 
       // Build DOM nodes from HTML string
-      const docFragment = HotsDialog.util.createDocumentFragmentFromHtml(
+      const docFragment = createDocumentFragmentFromHtml(
         this._frame.document, html
       );
       const pastedElements = [...docFragment.children];
