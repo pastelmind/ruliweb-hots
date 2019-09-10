@@ -37,6 +37,9 @@
       decorateHotsData(HotsDialog.data);
       const heroes = HotsDialog.data.heroes;
 
+      const templates = await HotsDialog.loadTemplates();
+      HotsDialog.renderers = new HotsDialog.Renderer(templates);
+
       HotsDialog.util.getSelectedChildWindow = () => window;
       HotsDialog.launchDialog();
     })();

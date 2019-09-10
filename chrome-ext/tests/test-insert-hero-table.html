@@ -27,6 +27,9 @@
       const hotsData = await response.json();
       decorateHotsData(hotsData);
 
+      const renderTemplates = await HotsDialog.loadTemplates();
+      const renderer = new HotsDialog.Renderer(renderTemplates);
+
       const template = document.createElement('template');
 
       const heroIds = [
@@ -49,10 +52,13 @@
       ];
 
       for (const heroId of heroIds) {
-        if (heroId in hotsData.heroes)
-          template.innerHTML += HotsDialog.renderers.renderHeroInfoTable(hotsData.heroes[heroId], 64, 48, undefined);
-        else
+        if (heroId in hotsData.heroes) {
+          template.innerHTML += renderer.renderHeroInfoTable(
+            hotsData.heroes[heroId], 64, 48, undefined
+          );
+        } else {
           console.error('Cannot find hero ID:', heroId);
+        }
       }
 
       for (const detailsElement of template.content.querySelectorAll('details.ruliweb-hots-hero-table'))

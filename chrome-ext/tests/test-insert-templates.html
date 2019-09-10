@@ -42,16 +42,22 @@
       const hero = hotsData.heroes.Fenix;
       hero.roleName = '암살자'; //TODO Use data prepare function
 
+      const templates = await HotsDialog.loadTemplates();
+      const renderer = new HotsDialog.Renderer(templates);
+
       let html = '';
 
       //Generate hero description
-      html += '<h2>영웅</h2>' + HotsDialog.renderers.renderHeroInfoTable(hero, 64, 48, '34.1');
+      html += '<h2>영웅</h2>' +
+        renderer.renderHeroInfoTable(hero, 64, 48, '34.1');
 
       //Generate skill description
-      html += '<h2>기술</h2>' + HotsDialog.renderers.renderSkillInfoTable(hero.skills[1], 64, '34.1');
+      html += '<h2>기술</h2>' +
+        renderer.renderSkillInfoTable(hero.skills[1], 64, '34.1');
 
       //Generate talent description
-      html += '<h2>특성</h2>' + HotsDialog.renderers.renderTalentInfoTable(hero.talents[4][0], 48, '34.1');
+      html += '<h2>특성</h2>' +
+        renderer.renderTalentInfoTable(hero.talents[4][0], 48, '34.1');
 
       document.getElementById('generated_content').innerHTML = html;
     })();
