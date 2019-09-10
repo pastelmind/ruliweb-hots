@@ -18,8 +18,19 @@
  */
 
 (root => {
-  const HotsDialog = (typeof require == 'function') ?
-    require('./hots-dialog') : root.HotsDialog;
+  /** @type {import('./hots-dialog-util')} */
+  let util;
+  if (typeof require === 'function') {
+    util = require('./hots-dialog-util');
+  } else {
+    ({ util } = root.HotsDialog);
+  }
+
+  const {
+    animateFlyingBox,
+    createDocumentFragmentFromHtml,
+    getOffsetToViewport,
+  } = util;
 
   /** Class for the dialog content. */
   class Dialog {
@@ -39,7 +50,7 @@
       this._paster = paster;
 
       // Generate document fragment
-      this._fragment = HotsDialog.util.createDocumentFragmentFromHtml(
+      this._fragment = createDocumentFragmentFromHtml(
         document,
         this._renderer.renderDialogContent(
           heroFilters, data.heroes, data.ptrHeroes
@@ -287,8 +298,8 @@
     pasteWithEffect(html, eventTarget) {
       const injectedElements = this._paster.paste(html);
       const { left: endX, top: endY } =
-        HotsDialog.util.getOffsetToViewport(injectedElements[0]);
-      HotsDialog.util.animateFlyingBox(eventTarget, endX, endY);
+        getOffsetToViewport(injectedElements[0]);
+      animateFlyingBox(eventTarget, endX, endY);
     }
   }
 
