@@ -57,8 +57,11 @@ const HotsDialog = {
         },
       });
 
+      const templates = await HotsDialog.loadTemplates();
+      const renderer = new HotsDialog.Renderer(templates);
+
       const dialogContent = new this.Dialog(
-        this.data, this.heroFilters, this.renderers, this.paster
+        this.data, this.heroFilters, renderer, this.paster
       );
       this.dialog.setContent(dialogContent.getFragment());
     }
@@ -89,12 +92,6 @@ const HotsDialog = {
   Renderer: (typeof require !== 'undefined') ?
     require('./hots-dialog-renderer') : null,
 
-  /**
-   * Shared Renderer instance
-   * @type {import('./hots-dialog-renderer')}
-   */
-  renderers: null,
-
   /** Collection of utility functions */
   util: (typeof require !== 'undefined') ? require('./hots-dialog-util') : null,
 };
@@ -116,11 +113,6 @@ async function openHotsDialog() {
         }
       );
     });
-  }
-
-  if (!HotsDialog.renderers) {
-    const templates = await HotsDialog.loadTemplates();
-    HotsDialog.renderers = new HotsDialog.Renderer(templates);
   }
 
   await HotsDialog.launchDialog();
