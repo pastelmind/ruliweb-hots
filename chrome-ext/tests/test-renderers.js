@@ -105,6 +105,15 @@ describe('HotsDialog.renderers', () => {
         snapshot(talentBoxWithVersion);
       }
     });
+
+    it('generates talent box groups correctly', () => {
+      const hero = hotsData.heroes.Tinker;
+      for (const talentGroup of Object.values(hero.talents)) {
+        const talentBoxGroup = HotsDialog.renderers
+          .renderTalentGroupInfoTable(talentGroup, 48);
+        snapshot(talentBoxGroup);
+      }
+    });
   });
 });
 
