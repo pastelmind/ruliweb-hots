@@ -258,26 +258,10 @@
 
   if (typeof module === 'object' && module.exports) {
     // Node.js
-    const fs = require('fs');
-    const path = require('path');
-    const templateJson = path.join(__dirname, '../templates.json');
-    const templates = JSON.parse(fs.readFileSync(templateJson, 'utf8'));
-    module.exports = exports = new Renderer(templates);
+    module.exports = exports = Renderer;
   } else {
     // Browser globals (root is window in Chrome, sandbox in Firefox)
-    const templateJson = 'templates.json';
-    // TODO Dirty hack to keep tests working, please remove
-    root.HotsDialog.renderers = new Renderer({});
-    (async () => {
-      const response = await fetch(chrome.runtime.getURL(templateJson));
-      if (!response.ok) {
-        throw new Error(
-          `Cannot retrieve ${templateJson}: ` +
-          `${response.status} ${response.statusText}`
-        );
-      }
-      root.HotsDialog.renderers._templates = await response.json();
-    })();
+    (root.HotsDialog = root.HotsDialog || {}).Renderer = Renderer;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)
