@@ -1,4 +1,4 @@
-exports['HotsDialog.renderers Dialog templates generates dialog content correctly 1'] = `
+exports['HotsDialog.Renderer Dialog templates generates dialog content correctly 1'] = `
 <div class="hots-dialog">
   <section class="hots-dialog__section hots-dialog-options">
     <label class="hots-dialog-option hots-dialog-option--checkbox">
@@ -99,7 +99,7 @@ exports['HotsDialog.renderers Dialog templates generates dialog content correctl
 </div>
 `
 
-exports['HotsDialog.renderers Dialog templates generates skill icons correctly 1'] = `
+exports['HotsDialog.Renderer Dialog templates generates skill icons correctly 1'] = `
 <div class="hots-current-hero-icon-wrapper" aria-label="가즈로 (근접 암살자)" data-microtip-position="top" role="tooltip">
   <img class="hots-current-hero-icon" src="http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png" data-hero-id="Tinker" data-is-ptr="" alt="가즈로 (근접 암살자)">
 </div>
@@ -121,7 +121,7 @@ exports['HotsDialog.renderers Dialog templates generates skill icons correctly 1
 
 `
 
-exports['HotsDialog.renderers Dialog templates generates talent list correctly 1'] = `
+exports['HotsDialog.Renderer Dialog templates generates talent list correctly 1'] = `
 <li class="hots-talentset__group"><span class="hots-talentset__group-title">1레벨</span>
   <div class="hots-talent-icon-wrapper" aria-label="추가 TNT&#xa;(능력 강화 (E) - 레벨 1)&#xA;터진다늄 폭탄 공격력 증가" data-microtip-position="top" role="tooltip">
     <img class="hots-talent-icon" src="http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png" alt="추가 TNT (능력 강화 (E) - 레벨 1)" data-hero-id="Tinker" data-is-ptr="" data-talent-level="1" data-talent-index="0">
@@ -229,7 +229,7 @@ exports['HotsDialog.renderers Dialog templates generates talent list correctly 1
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates hero boxes correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates hero boxes correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-hero-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #426;border-image:linear-gradient(#135,#426) 1;background:#101;color:#ffd;line-HEIGHT:normal">
   <summary style="float:left;padding:4px;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] 가즈로 - 근접 암살자"></summary>
 
@@ -528,7 +528,7 @@ exports['HotsDialog.renderers HotsBox templates generates hero boxes correctly 1
 </details>
 `
 
-exports['HotsDialog.renderers HotsBox templates generates hero boxes correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates hero boxes correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-hero-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #426;border-image:linear-gradient(#135,#426) 1;background:#101;color:#ffd;line-HEIGHT:normal">
   <summary style="float:left;padding:4px;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png) center/cover no-repeat content-box" title="[클릭하여 접기/펼치기] 가즈로 - 근접 암살자"></summary>
 
@@ -738,7 +738,7 @@ exports['HotsDialog.renderers HotsBox templates generates hero boxes correctly 2
 </details>
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 고유 능력 - 보호막 축전기"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -767,7 +767,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] Q - 플라스마 절단기"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -799,7 +799,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 3'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 3'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 연발포"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -828,7 +828,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 4'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 4'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 위상 폭탄"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -857,7 +857,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 5'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 5'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png) center/cover" title="[클릭하여 접기/펼치기] E - 차원이동"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -889,7 +889,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes correctly 
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 쉬운 사냥감 (지속 효과 - 레벨 1)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -918,7 +918,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 굶주린 곰 (지속 효과 - 레벨 4)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -947,7 +947,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 3'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 3'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야수의 상 (능력 강화 (W) - 레벨 7)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -977,7 +977,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 4'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 4'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야수의 격노 (R - 레벨 10)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1009,7 +1009,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 5'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 5'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/1645948a1fd19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야생불곰 (지속 효과 - 레벨 13)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1040,7 +1040,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 6'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 6'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 사냥의 희열 (지속 효과 - 레벨 16)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1069,7 +1069,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly 7'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 7'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 정신의 결속 (능력 강화 (R) - 레벨 20)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1099,7 +1099,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes correctly
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 쉬운 사냥감 (지속 효과 - 레벨 1)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1128,7 +1128,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 굶주린 곰 (지속 효과 - 레벨 4)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1157,7 +1157,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 3'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 3'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f298219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야수의 상 (능력 강화 (W) - 레벨 7)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1187,7 +1187,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 4'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 4'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야수의 격노 (R - 레벨 10)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1219,7 +1219,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 5'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 5'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/1645948a1fd19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 야생불곰 (지속 효과 - 레벨 13)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1250,7 +1250,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 6'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 6'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 사냥의 희열 (지속 효과 - 레벨 16)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1279,7 +1279,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent boxes (with version) correctly 7'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with version) correctly 7'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i1.ruliweb.com/img/18/07/02/164595f234119dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 정신의 결속 (능력 강화 (R) - 레벨 20)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1309,7 +1309,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent boxes (with ver
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes (with version) correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 고유 능력 - 보호막 축전기"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -1338,7 +1338,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes (with vers
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes (with version) correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] Q - 플라스마 절단기"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -1370,7 +1370,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes (with vers
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes (with version) correctly 3'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 3'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 연발포"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -1399,7 +1399,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes (with vers
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes (with version) correctly 4'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 4'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 위상 폭탄"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -1428,7 +1428,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes (with vers
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates skill boxes (with version) correctly 5'] = `
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 5'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
   <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(http://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png) center/cover" title="[클릭하여 접기/펼치기] E - 차원이동"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
@@ -1460,7 +1460,7 @@ exports['HotsDialog.renderers HotsBox templates generates skill boxes (with vers
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 1'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i3.ruliweb.com/img/18/07/02/1645956af9a19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 추가 TNT (능력 강화 (E) - 레벨 1)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1567,7 +1567,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 2'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 2'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/1645956a00919dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 태엽장치 증기 주먹 (능력 강화 (Q) - 레벨 4)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1676,7 +1676,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 3'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 3'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/1645956a00919dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 완전 잘나가! 포탑 (능력 강화 (Q) - 레벨 7)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1760,7 +1760,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 4'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 4'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/16459569c9519dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 로보고블린 (R - 레벨 10)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1820,7 +1820,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 5'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 5'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i3.ruliweb.com/img/18/07/02/1645956889519dc2c.png) center/cover" title="[클릭하여 접기/펼치기] E-848 차원 절단기 (능력 강화 (W) - 레벨 13)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1902,7 +1902,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 6'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 6'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/1645956a00919dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 포탑 비축 (능력 강화 (Q) - 레벨 16)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">
@@ -1986,7 +1986,7 @@ exports['HotsDialog.renderers HotsBox templates generates talent box groups corr
 
 `
 
-exports['HotsDialog.renderers HotsBox templates generates talent box groups correctly 7'] = `
+exports['HotsDialog.Renderer HotsBox templates generates talent box groups correctly 7'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(http://i2.ruliweb.com/img/18/07/02/16459569c9519dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 기계왕 (능력 강화 (R) - 레벨 20)"></summary>
   <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 48px - 8px)">

@@ -17,7 +17,7 @@ const { loadTemplates } = require('./js/mocks');
 const Renderer = require('../src/js/hots-dialog-renderer');
 
 
-describe('HotsDialog.renderers', () => {
+describe('HotsDialog.Renderer', () => {
   let hotsData;
   let renderer;
   const heroFilters = {
