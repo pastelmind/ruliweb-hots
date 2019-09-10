@@ -11,27 +11,6 @@
 (root => {
   const Mustache =
     (typeof require === 'function') ? require('mustache') : root.Mustache;
-  let templates;
-  if (typeof module === 'object' && module.exports) {
-    // Node.js
-    const fs = require('fs');
-    const path = require('path');
-    const templateJson = path.join(__dirname, '../templates.json');
-    templates = JSON.parse(fs.readFileSync(templateJson, 'utf8'));
-  } else {
-    // Browser globals (root is window in Chrome, sandbox in Firefox)
-    const templateJson = 'templates.json';
-    (async () => {
-      const response = await fetch(chrome.runtime.getURL(templateJson));
-      if (!response.ok) {
-        throw new Error(
-          `Cannot retrieve ${templateJson}: ` +
-          `${response.status} ${response.statusText}`
-        );
-      }
-      templates = await response.json();
-    })();
-  }
 
   /** Template-based renderer that generates HTML strings. */
   class Renderer {
@@ -86,7 +65,7 @@
       );
 
       return Mustache.render(
-        templates['dialog'],
+        this._templates['dialog'],
         {
           filterGroups,
           heroes: heroesArray,
@@ -101,7 +80,7 @@
      * @return {string} HTML source
      */
     renderSkillIcons(hero) {
-      return Mustache.render(templates['dialog-skills'], hero);
+      return Mustache.render(this._templates['dialog-skills'], hero);
     }
 
     /**
@@ -116,7 +95,7 @@
       );
 
       return Mustache.render(
-        templates['dialog-talents'],
+        this._templates['dialog-talents'],
         { talents, id: hero.id, isPtr: hero.isPtr }
       );
     }
@@ -177,9 +156,9 @@
       heroView.isSimpleHeroTable = heroView.isSimpleSkillTable =
         !!isSimpleTable;
 
-      return Mustache.render(templates['insert-hero'], heroView, {
-        skill: templates['insert-skill'],
-        stats: templates['insert-skill-stats'],
+      return Mustache.render(this._templates['insert-hero'], heroView, {
+        skill: this._templates['insert-skill'],
+        stats: this._templates['insert-skill-stats'],
       });
     }
 
@@ -192,9 +171,9 @@
      */
     renderSkillInfoTable(skill, iconSize = 64, hotsVersion) {
       return Mustache.render(
-        templates['insert-skill'],
+        this._templates['insert-skill'],
         this.renderSkillTalentView(skill, iconSize, hotsVersion),
-        { stats: templates['insert-skill-stats'] }
+        { stats: this._templates['insert-skill-stats'] }
       );
     }
 
@@ -211,9 +190,9 @@
       talentView.isTalent = true;
 
       return Mustache.render(
-        templates['insert-skill'],
+        this._templates['insert-skill'],
         talentView,
-        { stats: templates['insert-skill-stats'] }
+        { stats: this._templates['insert-skill-stats'] }
       );
     }
 
@@ -277,14 +256,28 @@
     }
   }
 
-  const rendererInstance = new Renderer(templates);
-
   if (typeof module === 'object' && module.exports) {
     // Node.js
-    module.exports = exports = rendererInstance;
+    const fs = require('fs');
+    const path = require('path');
+    const templateJson = path.join(__dirname, '../templates.json');
+    const templates = JSON.parse(fs.readFileSync(templateJson, 'utf8'));
+    module.exports = exports = new Renderer(templates);
   } else {
-    // Browser globals
-    root.HotsDialog.renderers = rendererInstance;
+    // Browser globals (root is window in Chrome, sandbox in Firefox)
+    const templateJson = 'templates.json';
+    // TODO Dirty hack to keep tests working, please remove
+    root.HotsDialog.renderers = new Renderer({});
+    (async () => {
+      const response = await fetch(chrome.runtime.getURL(templateJson));
+      if (!response.ok) {
+        throw new Error(
+          `Cannot retrieve ${templateJson}: ` +
+          `${response.status} ${response.statusText}`
+        );
+      }
+      root.HotsDialog.renderers._templates = await response.json();
+    })();
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)
