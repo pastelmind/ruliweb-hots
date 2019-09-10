@@ -14,7 +14,7 @@ const snapshot = require('snap-shot-it');
 const decorateHotsData = require('../src/js/decorate-hots-data');
 
 const { loadTemplates } = require('./js/mocks');
-const Renderer = require('../src/js/hots-dialog-renderers');
+const Renderer = require('../src/js/hots-dialog-renderer');
 
 
 describe('HotsDialog.renderers', () => {

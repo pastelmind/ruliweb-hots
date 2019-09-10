@@ -87,11 +87,11 @@ const HotsDialog = {
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,
   Renderer: (typeof require !== 'undefined') ?
-    require('./hots-dialog-renderers') : null,
+    require('./hots-dialog-renderer') : null,
 
   /**
    * Shared Renderer instance
-   * @type {import('./hots-dialog-renderers')}
+   * @type {import('./hots-dialog-renderer')}
    */
   renderers: null,
 
