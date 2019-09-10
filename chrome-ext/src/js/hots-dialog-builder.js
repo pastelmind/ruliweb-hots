@@ -18,8 +18,19 @@
  */
 
 (root => {
-  const HotsDialog = (typeof require == 'function') ?
-    require('./hots-dialog') : root.HotsDialog;
+  /** @type {import('./hots-dialog-util')} */
+  let util;
+  if (typeof require === 'function') {
+    util = require('./hots-dialog-util');
+  } else {
+    ({ util } = root.HotsDialog);
+  }
+
+  const {
+    animateFlyingBox,
+    createDocumentFragmentFromHtml,
+    getOffsetToViewport,
+  } = util;
 
   /** Class for the dialog content. */
   class Dialog {
@@ -28,18 +39,20 @@
      *
      * @param {HotsData} data
      * @param {Object<string, Object<string, *>>} heroFilters
+     * @param {import("./hots-dialog-renderer")} renderer
      * @param {HtmlPaster} paster
      */
-    constructor(data, heroFilters, paster) {
+    constructor(data, heroFilters, renderer, paster) {
       this._data = data;
       this._heroFilters = heroFilters;
       this._selectedHero = null;
+      this._renderer = renderer;
       this._paster = paster;
 
       // Generate document fragment
-      this._fragment = HotsDialog.util.createDocumentFragmentFromHtml(
+      this._fragment = createDocumentFragmentFromHtml(
         document,
-        HotsDialog.renderers.renderDialogContent(
+        this._renderer.renderDialogContent(
           heroFilters, data.heroes, data.ptrHeroes
         )
       );
@@ -106,10 +119,8 @@
           this.getHeroDataById(heroId, usePtrCheckbox.checked);
         console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-        skillsetSection.innerHTML
-          = HotsDialog.renderers.renderSkillIcons(hero);
-        talentsetSection.innerHTML
-          = HotsDialog.renderers.renderTalentList(hero);
+        skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
+        talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
       });
 
       // Check if PTR data is available
@@ -131,10 +142,8 @@
             this.getHeroDataById(heroId, usePtrCheckbox.checked);
           console.assert(hero, `Cannot find hero with ID: ${heroId}`);
 
-          skillsetSection.innerHTML =
-            HotsDialog.renderers.renderSkillIcons(hero);
-          talentsetSection.innerHTML =
-            HotsDialog.renderers.renderTalentList(hero);
+          skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
+          talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
         });
       } else {
         // Disable "Use PTR" checkbox
@@ -163,12 +172,12 @@
 
           let html;
           if (isHeroIcon) {
-            html = HotsDialog.renderers.renderHeroInfoTable(
+            html = this._renderer.renderHeroInfoTable(
               hero, iconSize, iconSize, version,
               useSimpleHeroTableCheckbox.checked
             );
           } else { // isSkillIcon
-            html = HotsDialog.renderers.renderSkillInfoTable(
+            html = this._renderer.renderSkillInfoTable(
               hero.skills[skillIndex], iconSize, version
             );
           }
@@ -200,11 +209,11 @@
           // TODO De-duplicate code
           let html;
           if (isTalentIcon) {
-            html = HotsDialog.renderers.renderTalentInfoTable(
+            html = this._renderer.renderTalentInfoTable(
               talentGroup[talentIndex], iconSize, version
             );
           } else { // isTalentGroupButton
-            html = HotsDialog.renderers.renderTalentGroupInfoTable(
+            html = this._renderer.renderTalentGroupInfoTable(
               talentGroup, iconSize, version
             );
           }
@@ -289,8 +298,8 @@
     pasteWithEffect(html, eventTarget) {
       const injectedElements = this._paster.paste(html);
       const { left: endX, top: endY } =
-        HotsDialog.util.getOffsetToViewport(injectedElements[0]);
-      HotsDialog.util.animateFlyingBox(eventTarget, endX, endY);
+        getOffsetToViewport(injectedElements[0]);
+      animateFlyingBox(eventTarget, endX, endY);
     }
   }
 
