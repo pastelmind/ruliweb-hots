@@ -6,6 +6,8 @@
 
 /**
  * @typedef {import("../../../api/src/hero")} Hero
+ * @typedef {import("../../../api/src/skill")} Skill
+ * @typedef {import("../../../api/src/talent")} Talent
  */
 
 (root => {

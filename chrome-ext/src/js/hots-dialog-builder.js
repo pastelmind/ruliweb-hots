@@ -5,16 +5,7 @@
 'use strict';
 
 /**
- * Collection of HotS data loaded from hots.json
- * @typedef {import("../../../api/src/hots-data")} HotsData
- */
-
-/**
  * @typedef {import("../../../api/src/hero")} Hero
- */
-
-/**
- * @typedef {import("./hots-dialog-paster")} HtmlPaster
  */
 
 (root => {
@@ -37,10 +28,10 @@
     /**
      * Creates a dialog instance and attaches event handlers.
      *
-     * @param {HotsData} data
+     * @param {import("../../../api/src/hots-data")} data
      * @param {Object<string, Object<string, *>>} heroFilters
      * @param {import("./hots-dialog-renderer")} renderer
-     * @param {HtmlPaster} paster
+     * @param {import("./hots-dialog-paster")} paster
      */
     constructor(data, heroFilters, renderer, paster) {
       this._data = data;
