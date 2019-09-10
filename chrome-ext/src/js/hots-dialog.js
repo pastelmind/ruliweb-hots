@@ -66,17 +66,34 @@ const HotsDialog = {
     this.dialog.open();
   },
 
+  /**
+   * Retrieves the renderering templates.
+   * @return {Promise<Object<string, string>>} Object mapping template names to
+   *    template strings
+   * @throws {Error} Template cannot be loaded.
+   */
+  async loadTemplates() {
+    const templateJsonPath = chrome.runtime.getURL('templates.json');
+    const response = await fetch(templateJsonPath);
+    if (response.ok) return response.json();
+    throw new Error(
+      `Cannot retrieve ${templateJsonPath}, ` +
+      `got ${response.status} ${response.statusText}`
+    );
+  },
+
   Dialog: (typeof require !== 'undefined') ?
     require('./hots-dialog-builder') : null,
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,
+  Renderer: (typeof require !== 'undefined') ?
+    require('./hots-dialog-renderer') : null,
 
   /**
-   * Collection of methods that generate HTML source strings.
-   * See hots-dialog-renderers.js
+   * Shared Renderer instance
+   * @type {import('./hots-dialog-renderer')}
    */
-  renderers: (typeof require !== 'undefined') ?
-    require('./hots-dialog-renderers') : null,
+  renderers: null,
 
   /** Collection of utility functions */
   util: (typeof require !== 'undefined') ? require('./hots-dialog-util') : null,
@@ -87,20 +104,26 @@ const HotsDialog = {
  * Load HotS data on first run and launch the Hots dialog.
  * This function is called when the right-click menu is selected.
  */
-function openHotsDialog() {
+async function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(
-      ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
-      data => {
-        if (chrome.runtime.lastError) throw chrome.runtime.lastError;
-
-        HotsDialog.data = data; // Cache the data for subsequent calls
-        openHotsDialog();
-      }
-    );
-  } else {
-    HotsDialog.launchDialog();
+    // Cache the data for subsequent calls
+    HotsDialog.data = await new Promise((resolve, reject) => {
+      chrome.storage.local.get(
+        ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
+        data => {
+          if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+          resolve(data);
+        }
+      );
+    });
   }
+
+  if (!HotsDialog.renderers) {
+    const templates = await HotsDialog.loadTemplates();
+    HotsDialog.renderers = new HotsDialog.Renderer(templates);
+  }
+
+  HotsDialog.launchDialog();
 }
 
 
