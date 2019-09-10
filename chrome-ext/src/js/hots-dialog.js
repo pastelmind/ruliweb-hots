@@ -58,7 +58,7 @@ const HotsDialog = {
       });
 
       const dialogContent = new this.Dialog(
-        this.data, this.heroFilters, this.paster
+        this.data, this.heroFilters, this.renderers, this.paster
       );
       this.dialog.setContent(dialogContent.getFragment());
     }
