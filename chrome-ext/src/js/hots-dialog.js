@@ -87,20 +87,21 @@ const HotsDialog = {
  * Load HotS data on first run and launch the Hots dialog.
  * This function is called when the right-click menu is selected.
  */
-function openHotsDialog() {
+async function openHotsDialog() {
   if (!HotsDialog.data) {
-    chrome.storage.local.get(
-      ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
-      data => {
-        if (chrome.runtime.lastError) throw chrome.runtime.lastError;
-
-        HotsDialog.data = data; // Cache the data for subsequent calls
-        openHotsDialog();
-      }
-    );
-  } else {
-    HotsDialog.launchDialog();
+    // Cache the data for subsequent calls
+    HotsDialog.data = await new Promise((resolve, reject) => {
+      chrome.storage.local.get(
+        ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
+        data => {
+          if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+          resolve(data);
+        }
+      );
+    });
   }
+
+  HotsDialog.launchDialog();
 }
 
 
