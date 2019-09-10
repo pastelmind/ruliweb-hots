@@ -337,7 +337,7 @@
     module.exports = exports = Dialog;
   } else {
     // Browser globals
-    root.HotsDialog.Dialog = Dialog;
+    (root.HotsDialog = root.HotsDialog || {}).Dialog = Dialog;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)

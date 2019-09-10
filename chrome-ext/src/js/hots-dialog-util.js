@@ -109,7 +109,7 @@
     };
   } else {
     // Browser globals
-    root.HotsDialog.util = {
+    (root.HotsDialog = root.HotsDialog || {}).util = {
       getSelectedChildWindow,
       createDocumentFragmentFromHtml,
       animateFlyingBox,

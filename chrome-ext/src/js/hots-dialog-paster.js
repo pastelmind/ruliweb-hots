@@ -100,7 +100,7 @@
     module.exports = exports = HtmlPaster;
   } else {
     // Browser globals
-    root.HotsDialog.HtmlPaster = HtmlPaster;
+    (root.HotsDialog = root.HotsDialog || {}).HtmlPaster = HtmlPaster;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)
