@@ -31,39 +31,22 @@ const HotsDialog = {
   },
 
   /**
-   * Launch the hero/skill/talent selection dialog
+   * Launch the hero/skill/talent selection dialog.
    */
   async launchDialog() {
-    // Snapshot currently selected area
-    if (this.paster) this.paster.bind();
-    else this.paster = new this.HtmlPaster;
-
     if (!this.dialog) {
-      this.dialog = new tingle.modal({
-        cssClass: ['hots-dialog-container'],
-        onOpen() {
-          // Temporarily deactivate PToDivReplacer in editor-iframe.js
-          const frameWindow = HotsDialog.util.getSelectedChildWindow();
-          if (frameWindow && frameWindow.pToDivReplacer) {
-            frameWindow.pToDivReplacer.deactivate();
+      const templates = await HotsDialog.loadTemplates();
+      const data = await new Promise((resolve, reject) => {
+        chrome.storage.local.get(
+          ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
+          data => {
+            if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+            resolve(data);
           }
-        },
-        onClose() {
-          // Reactivate PToDivReplacer in editor-iframe.js
-          const frameWindow = HotsDialog.util.getSelectedChildWindow();
-          if (frameWindow && frameWindow.pToDivReplacer) {
-            frameWindow.pToDivReplacer.activate();
-          }
-        },
+        );
       });
 
-      const templates = await HotsDialog.loadTemplates();
-      const renderer = new HotsDialog.Renderer(templates);
-
-      const dialogContent = new this.Dialog(
-        this.data, this.heroFilters, renderer, this.paster
-      );
-      this.dialog.setContent(dialogContent.getFragment());
+      this.dialog = new this.Dialog(templates, data, this.heroFilters);
     }
 
     this.dialog.open();
@@ -86,7 +69,9 @@ const HotsDialog = {
   },
 
   Dialog: (typeof require !== 'undefined') ?
-    require('./hots-dialog-builder') : null,
+    require('./hots-dialog-dialog') : null,
+  DialogContent: (typeof require !== 'undefined') ?
+    require('./hots-dialog-content') : null,
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,
   Renderer: (typeof require !== 'undefined') ?
@@ -95,28 +80,6 @@ const HotsDialog = {
   /** Collection of utility functions */
   util: (typeof require !== 'undefined') ? require('./hots-dialog-util') : null,
 };
-
-
-/**
- * Load HotS data on first run and launch the Hots dialog.
- * This function is called when the right-click menu is selected.
- */
-async function openHotsDialog() {
-  if (!HotsDialog.data) {
-    // Cache the data for subsequent calls
-    HotsDialog.data = await new Promise((resolve, reject) => {
-      chrome.storage.local.get(
-        ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
-        data => {
-          if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
-          resolve(data);
-        }
-      );
-    });
-  }
-
-  await HotsDialog.launchDialog();
-}
 
 
 if (typeof module !== 'undefined' && module.exports) {

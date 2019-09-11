@@ -21,29 +21,32 @@
   <script src="../src/js/hots-dialog.js"></script>
   <script src="../src/js/hots-dialog-renderer.js"></script>
   <script src="../src/js/hots-dialog-util.js"></script>
-  <script src="../src/js/hots-dialog-builder.js"></script>
+  <script src="../src/js/hots-dialog-content.js"></script>
   <script>
     // Patch here to make the test work
     HotsDialog.util.getSelectedChildWindow = () => window;
   </script>
   <script src="../src/js/hots-dialog-paster.js"></script>
+  <script src="../src/js/hots-dialog-dialog.js"></script>
   <script>
     'use strict';
 
-    //Test code
-    (async () => {
-      const jsonPath = '../../docs/hots.json';
-      const response = await fetch(jsonPath);
-      if (!response.ok)
-        throw new Error(`Cannot retrieve ${jsonPath}: ${response.status} ${response.statusText}`);
+    chrome.storage = chrome.storage || {};
+    chrome.storage.local = chrome.storage.local || {};
+    chrome.storage.local.get = async (keys, callback) => {
+      const response = await fetch('../../docs/hots.json');
+      if (!response.ok) {
+        throw new Error(
+          `Cannot retrieve data: ${response.status} ${response.statusText}`
+        );
+      }
 
-      HotsDialog.data = await response.json();
-      decorateHotsData(HotsDialog.data);
-      const heroes = HotsDialog.data.heroes;
+      const data = await response.json();
+      decorateHotsData(data);
+      callback(data);
+    };
 
-      await HotsDialog.launchDialog();
-    })();
-
+    HotsDialog.launchDialog();
   </script>
 </body>
 
