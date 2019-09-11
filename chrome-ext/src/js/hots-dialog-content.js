@@ -4,6 +4,10 @@
 
 /**
  * @typedef {import("../../../api/src/hero")} Hero
+ * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
+ * @typedef {import('../../../api/src/hots-data')} HotsData
+ * @typedef {import('./hots-dialog-renderer')} Renderer
+ * @typedef {import('./hots-dialog-paster')} HtmlPaster
  */
 
 (root => {
@@ -26,10 +30,10 @@
     /**
      * Creates a dialog instance and attaches event handlers.
      *
-     * @param {import("../../../api/src/hots-data")} data
-     * @param {Object<string, Object<string, *>>} heroFilters
-     * @param {import("./hots-dialog-renderer")} renderer
-     * @param {import("./hots-dialog-paster")} paster
+     * @param {HotsData} data
+     * @param {Object<string, HeroFilter>} heroFilters
+     * @param {Renderer} renderer
+     * @param {HtmlPaster} paster
      */
     constructor(data, heroFilters, renderer, paster) {
       this._data = data;

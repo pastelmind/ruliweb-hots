@@ -20,14 +20,6 @@ const KoEnString = require('./src/ko-en-string');
 const mergeHotsData = require('./src/merge-hots-data');
 const jsonFind = require('./src/json-find');
 
-/**
- * @typedef {import('./src/skill')} Skill
- */
-
-/**
- * @typedef {import('./src/talent')} Talent
- */
-
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -270,10 +262,9 @@ function parseAllSkillsData(heroData, heroId) {
 
 /**
  * Parses all talent data from a hero JSON object.
- * @param {*} heroData JSON object that represents hero data
+ * @param {Hero} heroData JSON object that represents hero data
  * @param {string} heroId ID of the hero entry
- * @return {{ [talentLevel: number]: Talent[] }} Collection of Talents, keyed by
- *    talent level
+ * @return {Object<number, Talent[]>} Mapping of talent levels to Talent groups
  */
 function parseAllTalentsData(heroData, heroId) {
   const talents = {};

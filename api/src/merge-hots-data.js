@@ -3,25 +3,14 @@
 
 const assert = require('assert');
 const util = require('util');
-const HotsData = require('./hots-data');
 
 /**
+ * @typedef {import('./hots-data')} HotsData
  * @typedef {import('./hero')} Hero
- */
-
-/**
  * @typedef {import('./skill')} Skill
- */
-
-/**
  * @typedef {import('./talent')} Talent
- */
-
-/**
  * @typedef {import('./ko-en-string')} KoEnString
  */
-
-0;
 
 /**
  * Merges the source dataset into the target dataset.
@@ -306,8 +295,8 @@ function mergeScalingStat(target, source) {
  * copied.
  * @param {Object<string, *>} target Target object to copy properties into
  * @param {Object<string, *>} source Source object to copy properties from
- * @param {{ [propertyName: string]: * }} propertyNames Object whose keys are
- *    property names to copy. Values are ignored.
+ * @param {Object} propertyNames Object whose keys are property names to copy.
+ *    Values are ignored.
  * @return {Object<string, *>} The merged target object.
  */
 function mergeProperties(target, source, propertyNames) {

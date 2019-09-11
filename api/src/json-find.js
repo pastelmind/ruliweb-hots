@@ -7,7 +7,8 @@
  * value for which `callback` evaluates to true.
  * JSON equivalent (not really) of Array.prototype.find()
  * @param {*} json
- * @param {(value: *, key: number|string) => *} callback
+ * @param {function (*, (number|string)): *} callback
+ * @param {(number|string)=} key
  * @return {*} Matched object or `undefined`
  */
 module.exports = function jsonFind(json, callback, key = undefined) {

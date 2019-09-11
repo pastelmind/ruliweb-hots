@@ -89,8 +89,12 @@ if (process.argv.length <= 2) program.help();
 /**
  * Import icons from one or more HTML listfiles into HotS JSON.
  * @param {string[]} listfiles One or more paths to listfiles
- * @param {{ inputJson: string, outputJson?: string, force?: boolean }} options
- *    Options object
+ * @param {Object} options
+ * @param {string} options.inputJson JSON file to read from
+ * @param {string=} options.outputJson JSON file to write to
+ * @param {boolean=} options.force If truthy, always overwrite icon URLs.
+ * @param {boolean=} options.skipSameUrl If truthy, do not add an icon if its
+ *    URL is already used by another icon.
  */
 async function importListfiles(listfiles, options) {
   console.log('Reading HotS JSON from', options.inputJson);

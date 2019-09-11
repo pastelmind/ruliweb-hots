@@ -23,7 +23,7 @@ const Hero = module.exports = class Hero {
    * @param {string=} o.universe
    * @param {HeroStats | HeroStats[]} o.stats
    * @param {Skill[]} o.skills
-   * @param {{ [level: number]: Talent[] }=} o.talents
+   * @param {Object<number, Talent[]>=} o.talents
    * @param {Object<string, string|number>} o.extras
    */
   constructor(o = {}) {

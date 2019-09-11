@@ -582,10 +582,10 @@ function getDamageEffect(effect) {
 /**
  * Parses all talents from the given hero data.
  * @param {Object} heroData JSON object that represents a hero
- * @return {{ [talentLevel: number]: Talent[] }} Collection of Talents, keyed by
- *    talent level
+ * @return {Object<number, Talent[]>} Mapping of talent levels to Talent groups
  */
 function parseAllTalents(heroData) {
+  /** @type {Object<number, Talent[]>} */
   const talents = {};
 
   for (const [level, talentDataArray] of Object.entries(heroData.talents)) {
