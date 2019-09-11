@@ -82,15 +82,6 @@ const HotsDialog = {
 };
 
 
-/**
- * Load HotS data on first run and launch the Hots dialog.
- * This function is called when the right-click menu is selected.
- */
-async function openHotsDialog() {
-  await HotsDialog.launchDialog();
-}
-
-
 if (typeof module !== 'undefined' && module.exports) {
   // For testing in Node.js
   module.exports = exports = HotsDialog;
