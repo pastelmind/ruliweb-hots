@@ -60,7 +60,7 @@ const HotsDialog = {
       const templates = await HotsDialog.loadTemplates();
       const renderer = new HotsDialog.Renderer(templates);
 
-      const dialogContent = new this.Dialog(
+      const dialogContent = new this.DialogContent(
         this.data, this.heroFilters, renderer, this.paster
       );
       this.dialog.setContent(dialogContent.getFragment());
@@ -85,8 +85,8 @@ const HotsDialog = {
     );
   },
 
-  Dialog: (typeof require !== 'undefined') ?
-    require('./hots-dialog-builder') : null,
+  DialogContent: (typeof require !== 'undefined') ?
+    require('./hots-dialog-content') : null,
   HtmlPaster: (typeof require !== 'undefined') ?
     require('./hots-dialog-paster') : null,
   Renderer: (typeof require !== 'undefined') ?

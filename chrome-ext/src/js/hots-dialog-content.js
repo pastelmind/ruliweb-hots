@@ -1,6 +1,4 @@
-/**
- * @file Provides a factory function for the dialog.
- */
+/** @file Provides a class that generates and manages the dialog content. */
 
 'use strict';
 
@@ -24,7 +22,7 @@
   } = util;
 
   /** Class for the dialog content. */
-  class Dialog {
+  class DialogContent {
     /**
      * Creates a dialog instance and attaches event handlers.
      *
@@ -334,10 +332,10 @@
 
   if (typeof module === 'object' && module.exports) {
     // Node.js
-    module.exports = exports = Dialog;
+    module.exports = exports = DialogContent;
   } else {
     // Browser globals
-    (root.HotsDialog = root.HotsDialog || {}).Dialog = Dialog;
+    (root.HotsDialog = root.HotsDialog || {}).DialogContent = DialogContent;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)

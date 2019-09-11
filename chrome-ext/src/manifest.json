@@ -34,7 +34,7 @@
         "js/hots-dialog.js",
         "js/hots-dialog-renderer.js",
         "js/hots-dialog-util.js",
-        "js/hots-dialog-builder.js",
+        "js/hots-dialog-content.js",
         "js/hots-dialog-paster.js"
       ]
     },
