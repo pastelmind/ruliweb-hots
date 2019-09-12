@@ -6,7 +6,6 @@
       "title": "기사단의 귀감",
       "icon": "ui_targetportrait_hero_fenix",
       "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -390,7 +389,6 @@
       "title": "호드의 용사",
       "icon": "ui_targetportrait_hero_rexxar",
       "type": "원거리",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
@@ -769,7 +767,6 @@
       "title": "톱니항 두목",
       "icon": "ui_targetportrait_hero_gazlowe",
       "type": "근접",
-      "role": "specialist",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {

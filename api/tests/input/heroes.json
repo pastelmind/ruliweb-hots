@@ -4,7 +4,7 @@
     "title": "",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
     "type": "원거리",
-    "role": "support",
+    "newRole": "healer",
     "universe": "overwatch",
     "stats": {
       "attackDamage": {
@@ -270,7 +270,7 @@
     "name": "아바투르",
     "title": "",
     "type": "근접",
-    "role": "specialist",
+    "newRole": "support",
     "universe": "starcraft",
     "stats": {
       "attackDamage": {
@@ -592,7 +592,7 @@
     "title": "",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "type": "근접",
-    "role": "warrior",
+    "newRole": "tank",
     "universe": "warcraft",
     "stats": {
       "attackDamage": {
@@ -836,7 +836,7 @@
     "title": "",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
     "type": "원거리",
-    "role": "assassin",
+    "newRole": "ranged_assassin",
     "universe": "warcraft",
     "stats": {
       "attackDamage": 0,

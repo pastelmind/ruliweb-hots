@@ -88,10 +88,6 @@
             "근접 / 원거리"
           ]
         },
-        "role": {
-          "type": "string",
-          "pattern": "^(warrior|assassin|support|specialist)(,(warrior|assassin|support|specialist))*$"
-        },
         "newRole": {
           "enum": [
             "tank",
@@ -180,7 +176,6 @@
         "name",
         "type",
         "icon",
-        "role",
         "newRole",
         "universe",
         "stats",
