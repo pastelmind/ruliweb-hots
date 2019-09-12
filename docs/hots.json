@@ -5,8 +5,6 @@
       "name": "아바투르",
       "title": "진화 군주",
       "icon": "ui_targetportrait_hero_abathur",
-      "type": "근접",
-      "role": "specialist",
       "newRole": "support",
       "universe": "starcraft",
       "stats": {
@@ -454,8 +452,6 @@
       "name": "알라라크",
       "title": "탈다림의 군주",
       "icon": "ui_targetportrait_hero_alarak",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
@@ -844,8 +840,6 @@
       "name": "알렉스트라자",
       "title": "생명의 어머니",
       "icon": "ui_targetportrait_hero_alexstrasza",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": [
@@ -1309,8 +1303,6 @@
       "name": "카시아",
       "title": "아마존 여군주",
       "icon": "ui_targetportrait_hero_d2amazonf",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -1681,8 +1673,6 @@
       "name": "아나",
       "title": "노련한 저격수",
       "icon": "ui_targetportrait_hero_ana",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "overwatch",
       "stats": {
@@ -2061,8 +2051,6 @@
       "name": "안두인",
       "title": "스톰윈드 국왕",
       "icon": "ui_targetportrait_hero_anduin",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -2465,8 +2453,6 @@
       "name": "아눕아락",
       "title": "배신자 왕",
       "icon": "ui_targetportrait_hero_anubarak",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -2852,8 +2838,6 @@
       "name": "아르타니스",
       "title": "댈람의 신관",
       "icon": "ui_targetportrait_hero_artanis",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "starcraft",
       "stats": {
@@ -3253,8 +3237,6 @@
       "name": "아서스",
       "title": "리치 왕",
       "icon": "ui_targetportrait_hero_arthas",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -3630,8 +3612,6 @@
       "name": "아우리엘",
       "title": "희망의 대천사",
       "icon": "ui_targetportrait_hero_auriel",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "diablo",
       "stats": {
@@ -4017,8 +3997,6 @@
       "name": "아즈모단",
       "title": "죄악의 군주",
       "icon": "ui_targetportrait_hero_azmodan",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -4391,8 +4369,6 @@
       "name": "소냐",
       "title": "떠도는 야만용사",
       "icon": "ui_targetportrait_hero_barbarian",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
@@ -4751,8 +4727,6 @@
       "name": "도살자",
       "title": "고기 해체자",
       "icon": "ui_targetportrait_hero_butcher",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "diablo",
       "stats": {
@@ -5126,8 +5100,6 @@
       "name": "첸",
       "title": "전설의 양조사",
       "icon": "ui_targetportrait_hero_chen",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
@@ -5551,8 +5523,6 @@
       "name": "초",
       "title": "황혼의 망치단 족장",
       "icon": "ui_targetportrait_hero_cho",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
@@ -5918,8 +5888,6 @@
       "name": "크로미",
       "title": "시간의 수호자",
       "icon": "ui_targetportrait_hero_chromie",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -6304,8 +6272,6 @@
       "name": "요한나",
       "title": "자카룸의 성전사",
       "icon": "ui_targetportrait_hero_johanna",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "diablo",
       "stats": {
@@ -6686,8 +6652,6 @@
       "name": "D.Va",
       "title": "MEKA 조종사",
       "icon": "ui_targetportrait_hero_dva",
-      "type": "원거리",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "overwatch",
       "stats": [
@@ -7157,8 +7121,6 @@
       "name": "데커드",
       "title": "마지막 호라드림",
       "icon": "ui_targetportrait_hero_deckard",
-      "type": "근접",
-      "role": "support",
       "newRole": "healer",
       "universe": "diablo",
       "stats": {
@@ -7514,8 +7476,6 @@
       "name": "데하카",
       "title": "원시 무리 우두머리",
       "icon": "ui_targetportrait_hero_dehaka",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "starcraft",
       "stats": {
@@ -7901,8 +7861,6 @@
       "name": "발라",
       "title": "악마사냥꾼",
       "icon": "ui_targetportrait_hero_demonhunter",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -8282,8 +8240,6 @@
       "name": "디아블로",
       "title": "공포의 군주",
       "icon": "ui_targetportrait_hero_diablo",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "diablo",
       "stats": {
@@ -8662,8 +8618,6 @@
       "name": "루나라",
       "title": "세나리우스의 첫 번째 딸",
       "icon": "ui_targetportrait_hero_lunara",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -9075,8 +9029,6 @@
       "name": "빛나래",
       "title": "요정용",
       "icon": "ui_targetportrait_hero_faeriedragon",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -9475,8 +9427,6 @@
       "name": "폴스타트",
       "title": "와일드해머 영주",
       "icon": "ui_targetportrait_hero_falstad",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -9863,8 +9813,6 @@
       "name": "피닉스",
       "title": "기사단의 귀감",
       "icon": "ui_targetportrait_hero_fenix",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -10262,8 +10210,6 @@
       "name": "블레이즈",
       "title": "노련한 화염방사병",
       "icon": "ui_targetportrait_hero_firebat",
-      "type": "원거리",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "starcraft",
       "stats": {
@@ -10658,8 +10604,6 @@
       "name": "갈",
       "title": "황혼의 망치단 족장",
       "icon": "ui_targetportrait_hero_gall",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -11044,8 +10988,6 @@
       "name": "가로쉬",
       "title": "헬스크림의 아들",
       "icon": "ui_targetportrait_hero_garrosh",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -11428,8 +11370,6 @@
       "name": "겐지",
       "title": "사이보그 닌자",
       "icon": "ui_targetportrait_hero_genji",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
@@ -11824,8 +11764,6 @@
       "name": "그레이메인",
       "title": "늑대인간의 지도자",
       "icon": "ui_targetportrait_hero_genngreymane",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -12251,8 +12189,6 @@
       "name": "굴단",
       "title": "어둠의 화신",
       "icon": "ui_targetportrait_hero_guldan",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -12627,8 +12563,6 @@
       "name": "한조",
       "title": "일급 암살자",
       "icon": "ui_targetportrait_hero_hanzo",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
@@ -13014,8 +12948,6 @@
       "name": "일리단",
       "title": "배신자",
       "icon": "ui_targetportrait_hero_illidan",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -13374,8 +13306,6 @@
       "name": "임페리우스",
       "title": "용기의 대천사",
       "icon": "ui_targetportrait_hero_imperius",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
@@ -13766,8 +13696,6 @@
       "name": "제이나",
       "title": "대마법사",
       "icon": "ui_targetportrait_hero_jaina",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -14158,8 +14086,6 @@
       "name": "정크랫",
       "title": "쓰레기촌 폭파 전문가",
       "icon": "ui_targetportrait_hero_junkrat",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
@@ -14554,8 +14480,6 @@
       "name": "캘타스",
       "title": "태양왕",
       "icon": "ui_targetportrait_hero_kaelthas",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -14932,8 +14856,6 @@
       "name": "켈투자드",
       "title": "낙스라마스의 고위 리치",
       "icon": "ui_targetportrait_hero_kelthuzad",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -15337,8 +15259,6 @@
       "name": "케리건",
       "title": "칼날 여왕",
       "icon": "ui_targetportrait_hero_kerrigan",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
@@ -15723,8 +15643,6 @@
       "name": "정예 타우렌 족장",
       "title": "록의 신",
       "icon": "ui_targetportrait_hero_l90etc",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -16121,8 +16039,6 @@
       "name": "레오릭",
       "title": "해골 왕",
       "icon": "ui_targetportrait_hero_leoric",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
@@ -16544,8 +16460,6 @@
       "name": "리 리",
       "title": "세계 유랑자",
       "icon": "ui_targetportrait_hero_lili",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -16928,8 +16842,6 @@
       "name": "길 잃은 바이킹",
       "title": "답 없는 삼형제",
       "icon": "ui_targetportrait_hero_lostvikings",
-      "type": "근접 / 원거리",
-      "role": "specialist",
       "newRole": "support",
       "universe": "classic",
       "stats": [
@@ -17389,8 +17301,6 @@
       "name": "루시우",
       "title": "자유의 투사 DJ",
       "icon": "ui_targetportrait_hero_lucio",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "overwatch",
       "stats": {
@@ -17781,8 +17691,6 @@
       "name": "마이에브",
       "title": "감시관",
       "icon": "ui_targetportrait_hero_maiev",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -18151,8 +18059,6 @@
       "name": "말가니스",
       "title": "나스레짐 군주",
       "icon": "ui_targetportrait_hero_malganis",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -18564,8 +18470,6 @@
       "name": "말퓨리온",
       "title": "대드루이드",
       "icon": "ui_targetportrait_hero_malfurion",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -18945,8 +18849,6 @@
       "name": "말티엘",
       "title": "죽음의 화신",
       "icon": "ui_targetportrait_hero_malthael",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
@@ -19332,8 +19234,6 @@
       "name": "모랄레스 중위",
       "title": "전투 의무관",
       "icon": "ui_targetportrait_hero_medic",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "starcraft",
       "stats": {
@@ -19694,8 +19594,6 @@
       "name": "메디브",
       "title": "최후의 수호자",
       "icon": "ui_targetportrait_hero_medivh",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "support",
       "universe": "warcraft",
       "stats": {
@@ -20101,8 +19999,6 @@
       "name": "메피스토",
       "title": "증오의 군주",
       "icon": "ui_targetportrait_hero_mephisto",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -20487,8 +20383,6 @@
       "name": "카라짐",
       "title": "베라다니의 수도사",
       "icon": "ui_targetportrait_hero_monk",
-      "type": "근접",
-      "role": "support",
       "newRole": "healer",
       "universe": "diablo",
       "stats": {
@@ -20872,8 +20766,6 @@
       "name": "무라딘",
       "title": "산왕",
       "icon": "ui_targetportrait_hero_muradin",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -21249,8 +21141,6 @@
       "name": "머키",
       "title": "아기 멀록",
       "icon": "ui_targetportrait_hero_murky",
-      "type": "근접",
-      "role": "specialist",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -21618,8 +21508,6 @@
       "name": "줄",
       "title": "수수께끼의 강령술사",
       "icon": "ui_targetportrait_hero_necromancer",
-      "type": "근접",
-      "role": "specialist",
       "newRole": "bruiser",
       "universe": "diablo",
       "stats": {
@@ -22018,8 +21906,6 @@
       "name": "키히라",
       "title": "정처 없는 현상금 사냥꾼",
       "icon": "ui_targetportrait_hero_nexus2",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "nexus",
       "stats": {
@@ -22375,8 +22261,6 @@
       "name": "노바",
       "title": "자치령 유령",
       "icon": "ui_targetportrait_hero_nova",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -22768,8 +22652,6 @@
       "name": "오르피아",
       "title": "까마귀 궁정의 후예",
       "icon": "ui_targetportrait_hero_orphea",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "nexus",
       "stats": {
@@ -23168,8 +23050,6 @@
       "name": "프로비우스",
       "title": "호기심 많은 탐사정",
       "icon": "ui_targetportrait_hero_probius",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -23568,8 +23448,6 @@
       "name": "라그나로스",
       "title": "불의 군주",
       "icon": "ui_targetportrait_hero_ragnaros",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
@@ -23997,8 +23875,6 @@
       "name": "레이너",
       "title": "반란군 사령관",
       "icon": "ui_targetportrait_hero_raynor",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -24367,8 +24243,6 @@
       "name": "레가르",
       "title": "대지 고리회 주술사",
       "icon": "ui_targetportrait_hero_rehgar",
-      "type": "근접",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -24756,8 +24630,6 @@
       "name": "렉사르",
       "title": "호드의 용사",
       "icon": "ui_targetportrait_hero_rexxar",
-      "type": "원거리",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
@@ -25161,8 +25033,6 @@
       "name": "사무로",
       "title": "검귀",
       "icon": "ui_targetportrait_hero_samuro",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -25515,8 +25385,6 @@
       "name": "해머 상사",
       "title": "공성 전차 전차장",
       "icon": "ui_targetportrait_hero_sgthammer",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -25921,8 +25789,6 @@
       "name": "누더기",
       "title": "어둠골의 공포",
       "icon": "ui_targetportrait_hero_stitches",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "warcraft",
       "stats": {
@@ -26320,8 +26186,6 @@
       "name": "스투코프",
       "title": "감염된 제독",
       "icon": "ui_targetportrait_hero_stukov",
-      "type": "근접",
-      "role": "support",
       "newRole": "healer",
       "universe": "starcraft",
       "stats": {
@@ -26732,8 +26596,6 @@
       "name": "실바나스",
       "title": "밴시 여왕",
       "icon": "ui_targetportrait_hero_sylvanas",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {
@@ -27119,8 +26981,6 @@
       "name": "태사다르",
       "title": "기사단의 구원자",
       "icon": "ui_targetportrait_hero_tassadar",
-      "type": "원거리",
-      "role": "support",
       "newRole": "support",
       "universe": "starcraft",
       "stats": {
@@ -27495,8 +27355,6 @@
       "name": "스랄",
       "title": "호드의 대족장",
       "icon": "ui_targetportrait_hero_thrall",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
@@ -27870,8 +27728,6 @@
       "name": "가즈로",
       "title": "톱니항 두목",
       "icon": "ui_targetportrait_hero_gazlowe",
-      "type": "근접",
-      "role": "specialist",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -28290,8 +28146,6 @@
       "name": "트레이서",
       "title": "오버워치 요원",
       "icon": "ui_targetportrait_hero_tracer",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "overwatch",
       "stats": {
@@ -28659,8 +28513,6 @@
       "name": "타이커스",
       "title": "악명 높은 범죄자",
       "icon": "ui_targetportrait_hero_tychus",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -29079,8 +28931,6 @@
       "name": "티리엘",
       "title": "정의의 대천사",
       "icon": "ui_targetportrait_hero_tyrael",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "tank",
       "universe": "diablo",
       "stats": {
@@ -29458,8 +29308,6 @@
       "name": "티란데",
       "title": "엘룬의 대여사제",
       "icon": "ui_targetportrait_hero_tyrande",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -29844,8 +29692,6 @@
       "name": "우서",
       "title": "빛의 수호자",
       "icon": "ui_targetportrait_hero_uther",
-      "type": "근접",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -30242,8 +30088,6 @@
       "name": "발리라",
       "title": "무관의 그림자",
       "icon": "ui_targetportrait_hero_valeera",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {
@@ -30675,8 +30519,6 @@
       "name": "바리안",
       "title": "얼라이언스의 국왕",
       "icon": "ui_targetportrait_hero_varian",
-      "type": "근접",
-      "role": "warrior,assassin",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
@@ -31162,8 +31004,6 @@
       "name": "화이트메인",
       "title": "종교재판관",
       "icon": "ui_targetportrait_hero_whitemane",
-      "type": "원거리",
-      "role": "support",
       "newRole": "healer",
       "universe": "warcraft",
       "stats": {
@@ -31527,8 +31367,6 @@
       "name": "나지보",
       "title": "이교도 부두술사",
       "icon": "ui_targetportrait_hero_witchdoctor",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -31916,8 +31754,6 @@
       "name": "리밍",
       "title": "반항적인 마법사",
       "icon": "ui_targetportrait_hero_wizard",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "diablo",
       "stats": {
@@ -32315,8 +32151,6 @@
       "name": "이렐",
       "title": "희망의 빛",
       "icon": "ui_targetportrait_hero_yrel",
-      "type": "근접",
-      "role": "warrior",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": {
@@ -32683,8 +32517,6 @@
       "name": "자가라",
       "title": "군단의 무리어미",
       "icon": "ui_targetportrait_hero_zagara",
-      "type": "원거리",
-      "role": "specialist",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -33063,8 +32895,6 @@
       "name": "자리야",
       "title": "러시아의 수호자",
       "icon": "ui_targetportrait_hero_zarya",
-      "type": "원거리",
-      "role": "warrior",
       "newRole": "support",
       "universe": "overwatch",
       "stats": {
@@ -33492,8 +33322,6 @@
       "name": "제라툴",
       "title": "암흑 정무관",
       "icon": "ui_targetportrait_hero_zeratul",
-      "type": "근접",
-      "role": "assassin",
       "newRole": "melee_assassin",
       "universe": "starcraft",
       "stats": {
@@ -33869,8 +33697,6 @@
       "name": "줄진",
       "title": "아마니의 전쟁군주",
       "icon": "ui_targetportrait_hero_zuljin",
-      "type": "원거리",
-      "role": "assassin",
       "newRole": "ranged_assassin",
       "universe": "warcraft",
       "stats": {

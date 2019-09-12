@@ -17,8 +17,6 @@ const Hero = module.exports = class Hero {
    * @param {string=} o.icon
    * @param {string=} o.iconUrl
    * @param {string=} o.id
-   * @param {string=} o.type
-   * @param {string=} o.role
    * @param {string=} o.newRole
    * @param {string=} o.universe
    * @param {HeroStats | HeroStats[]} o.stats
@@ -32,8 +30,6 @@ const Hero = module.exports = class Hero {
     this.icon = o.icon || '';
     this.iconUrl = o.iconUrl || '';
     this.id = o.id || '';
-    this.type = o.type || '';
-    this.role = o.role || '';
     this.newRole = o.newRole || '';
     this.universe = o.universe || '';
 
@@ -57,18 +53,9 @@ const Hero = module.exports = class Hero {
   /**
    * Returns the role name of this hero.
    * @return {string} Role name defined in `Hero.roles`, or '' if unknown.
-   *    Multiple roles are separated by a comma(,).
    */
   getRoleName() {
-    let roleNames = '';
-
-    for (const roleId in Hero.roles) {
-      if (this.role.includes(roleId)) {
-        roleNames += (roleNames ? ',' : '') + Hero.roles[roleId];
-      }
-    }
-
-    return roleNames;
+    return Hero.roles[this.newRole] || '';
   }
 
   /**
@@ -109,8 +96,6 @@ const Hero = module.exports = class Hero {
       icon: this.icon || undefined,
       iconUrl: this.iconUrl || undefined,
       id: this.id,
-      type: this.type,
-      role: this.role,
       newRole: this.newRole,
       universe: this.universe,
       stats: this.stats,
@@ -125,22 +110,6 @@ const Hero = module.exports = class Hero {
     }
 
     return o;
-  }
-
-  /**
-   * Parse one or more role names from the given string and return an array of
-   * role IDs.
-   * @param {string} roleString String containing the role name
-   * @return {string[]} An array of role IDs, or an empty Array if unknown.
-   */
-  static parseRoles(roleString) {
-    const roles = new Set;
-
-    for (const roleId in Hero.roles) {
-      if (roleString.includes(Hero.roles[roleId])) roles.add(roleId);
-    }
-
-    return [...roles];
   }
 
   /**
@@ -161,10 +130,12 @@ const Hero = module.exports = class Hero {
 
 
 Hero.roles = {
-  'warrior': '전사',
-  'assassin': '암살자',
-  'support': '지원가',
-  'specialist': '전문가',
+  tank: '전사',
+  bruiser: '투사',
+  ranged_assassin: '원거리 암살자',
+  melee_assassin: '근접 암살자',
+  healer: '치유사',
+  support: '지원가',
 };
 
 Hero.universes = {
