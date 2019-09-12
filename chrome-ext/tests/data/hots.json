@@ -5,7 +5,6 @@
       "name": "피닉스",
       "title": "기사단의 귀감",
       "icon": "ui_targetportrait_hero_fenix",
-      "type": "원거리",
       "newRole": "ranged_assassin",
       "universe": "starcraft",
       "stats": {
@@ -388,7 +387,6 @@
       "name": "렉사르",
       "title": "호드의 용사",
       "icon": "ui_targetportrait_hero_rexxar",
-      "type": "원거리",
       "newRole": "bruiser",
       "universe": "warcraft",
       "stats": [
@@ -766,7 +764,6 @@
       "name": "가즈로",
       "title": "톱니항 두목",
       "icon": "ui_targetportrait_hero_gazlowe",
-      "type": "근접",
       "newRole": "melee_assassin",
       "universe": "warcraft",
       "stats": {

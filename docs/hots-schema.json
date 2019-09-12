@@ -80,14 +80,6 @@
         "icon": {
           "$ref": "#/definitions/iconId"
         },
-        "type": {
-          "type": "string",
-          "enum": [
-            "근접",
-            "원거리",
-            "근접 / 원거리"
-          ]
-        },
         "newRole": {
           "enum": [
             "tank",
@@ -174,7 +166,6 @@
       },
       "required": [
         "name",
-        "type",
         "icon",
         "newRole",
         "universe",

@@ -269,7 +269,6 @@
   "abathur": {
     "name": "아바투르",
     "title": "",
-    "type": "근접",
     "newRole": "support",
     "universe": "starcraft",
     "stats": {
@@ -591,7 +590,6 @@
     "name": "초",
     "title": "",
     "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
-    "type": "근접",
     "newRole": "tank",
     "universe": "warcraft",
     "stats": {
@@ -835,7 +833,6 @@
     "name": "갈",
     "title": "",
     "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
-    "type": "원거리",
     "newRole": "ranged_assassin",
     "universe": "warcraft",
     "stats": {

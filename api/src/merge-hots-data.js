@@ -70,7 +70,6 @@ function mergeHero(target, source) {
     name: 0,
     title: 0,
     icon: 0,
-    type: 0,
     universe: 0,
   });
 

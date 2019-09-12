@@ -17,7 +17,6 @@ const Hero = module.exports = class Hero {
    * @param {string=} o.icon
    * @param {string=} o.iconUrl
    * @param {string=} o.id
-   * @param {string=} o.type
    * @param {string=} o.newRole
    * @param {string=} o.universe
    * @param {HeroStats | HeroStats[]} o.stats
@@ -31,7 +30,6 @@ const Hero = module.exports = class Hero {
     this.icon = o.icon || '';
     this.iconUrl = o.iconUrl || '';
     this.id = o.id || '';
-    this.type = o.type || '';
     this.newRole = o.newRole || '';
     this.universe = o.universe || '';
 
@@ -98,7 +96,6 @@ const Hero = module.exports = class Hero {
       icon: this.icon || undefined,
       iconUrl: this.iconUrl || undefined,
       id: this.id,
-      type: this.type,
       newRole: this.newRole,
       universe: this.universe,
       stats: this.stats,
