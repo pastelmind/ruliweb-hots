@@ -99,22 +99,19 @@
     return { left, top };
   }
 
+  const util = {
+    getSelectedChildWindow,
+    createDocumentFragmentFromHtml,
+    animateFlyingBox,
+    getOffsetToViewport,
+  };
+
   if (typeof module === 'object' && module.exports) {
     // Node.js
-    module.exports = exports = {
-      getSelectedChildWindow,
-      createDocumentFragmentFromHtml,
-      animateFlyingBox,
-      getOffsetToViewport,
-    };
+    module.exports = exports = util;
   } else {
     // Browser globals
-    (root.HotsDialog = root.HotsDialog || {}).util = {
-      getSelectedChildWindow,
-      createDocumentFragmentFromHtml,
-      animateFlyingBox,
-      getOffsetToViewport,
-    };
+    (root.HotsDialog = root.HotsDialog || {}).util = util;
   }
 
   // Obtain the global context (`this` works in both Chrome and Firefox)

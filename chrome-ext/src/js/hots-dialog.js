@@ -5,8 +5,8 @@
 
 'use strict';
 
-const HotsDialog = {
-  heroFilters: {
+(root => {
+  const heroFilters = {
     universe: {
       name: '세계관',
       filters: {
@@ -28,37 +28,15 @@ const HotsDialog = {
         support: '지원가',
       },
     },
-  },
-
-  /**
-   * Launch the hero/skill/talent selection dialog.
-   */
-  async launchDialog() {
-    if (!this.dialog) {
-      const templates = await HotsDialog.loadTemplates();
-      const data = await new Promise((resolve, reject) => {
-        chrome.storage.local.get(
-          ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
-          data => {
-            if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
-            resolve(data);
-          }
-        );
-      });
-
-      this.dialog = new this.Dialog(templates, data, this.heroFilters);
-    }
-
-    this.dialog.open();
-  },
+  };
 
   /**
    * Retrieves the renderering templates.
-   * @return {Promise<Object<string, string>>} Object mapping template names to
-   *    template strings
+   * @return {Promise<Object<string, string>>} Object mapping template names
+   *    to template strings
    * @throws {Error} Template cannot be loaded.
    */
-  async loadTemplates() {
+  async function loadTemplates() {
     const templateJsonPath = chrome.runtime.getURL('templates.json');
     const response = await fetch(templateJsonPath);
     if (response.ok) return response.json();
@@ -66,26 +44,51 @@ const HotsDialog = {
       `Cannot retrieve ${templateJsonPath}, ` +
       `got ${response.status} ${response.statusText}`
     );
-  },
+  }
 
-  Dialog: (typeof require !== 'undefined') ?
-    require('./hots-dialog-dialog') : null,
-  DialogContent: (typeof require !== 'undefined') ?
-    require('./hots-dialog-content') : null,
-  HtmlPaster: (typeof require !== 'undefined') ?
-    require('./hots-dialog-paster') : null,
-  Renderer: (typeof require !== 'undefined') ?
-    require('./hots-dialog-renderer') : null,
+  const HotsDialog = {
+    heroFilters,
+    loadTemplates,
 
-  /** Collection of utility functions */
-  util: (typeof require !== 'undefined') ? require('./hots-dialog-util') : null,
-};
+    /**
+     * Launch the hero/skill/talent selection dialog.
+     */
+    async launchDialog() {
+      if (!this.dialog) {
+        const templates = await this.loadTemplates();
+        const data = await new Promise((resolve, reject) => {
+          chrome.storage.local.get(
+            ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
+            data => {
+              if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+              resolve(data);
+            }
+          );
+        });
+
+        this.dialog = new this.Dialog(templates, data, this.heroFilters);
+      }
+
+      this.dialog.open();
+    },
+  };
 
 
-if (typeof module !== 'undefined' && module.exports) {
-  // For testing in Node.js
-  module.exports = exports = HotsDialog;
-} else {
-  // For binding modules
-  (typeof self !== 'undefined' ? self : this).HotsDialog = HotsDialog;
-}
+  if (typeof module !== 'undefined' && module.exports) {
+    // Node.js
+    module.exports = exports = {
+      ...HotsDialog,
+      Dialog: require('./hots-dialog-dialog'),
+      DialogContent: require('./hots-dialog-content'),
+      HtmlPaster: require('./hots-dialog-paster'),
+      Renderer: require('./hots-dialog-renderer'),
+      util: require('./hots-dialog-util'),
+    };
+  } else {
+    // Browser globals
+    root.HotsDialog =
+      root.HotsDialog ? Object.assign(root.HotsDialog, HotsDialog) : HotsDialog;
+  }
+
+  // Obtain the global context (`this` works in both Chrome and Firefox)
+})(this); // eslint-disable-line no-invalid-this
