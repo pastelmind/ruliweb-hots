@@ -11,9 +11,16 @@
  */
 
 (root => {
+  const isNodeJs = typeof require === 'function';
+  /** @type {import('htm')} */
+  const htm = isNodeJs ? require('htm') : root.htm;
+  /** @type {import('preact')} */
+  const preact = isNodeJs ? require('preact') : root.preact;
   /** @type {import('./hots-dialog')} */
-  const HotsDialog = (typeof require === 'function') ?
+  const HotsDialog = isNodeJs ?
     require('./hots-dialog') : (root.HotsDialog = root.HotsDialog || {});
+
+  const html = htm.bind(preact.createElement);
 
   /** Class for the dialog content. */
   class DialogContent {
@@ -27,10 +34,14 @@
      */
     constructor(data, heroFilters, renderer, paster) {
       this._data = data;
-      this._heroFilters = heroFilters;
       this._selectedHero = null;
       this._renderer = renderer;
       this._paster = paster;
+
+      this._activeFilters = {};
+      for (const filterId in heroFilters) {
+        this._activeFilters[filterId] = [];
+      }
 
       // Generate document fragment
       this._fragment = HotsDialog.util.createDocumentFragmentFromHtml(
@@ -69,19 +80,36 @@
       const heroIconElems =
         heroIconsSection.querySelectorAll('.hots-hero-icon');
       /** @type {NodeListOf<HTMLInputElement>} */
-      const heroFilterCheckboxes =
-        heroFilterSection.querySelectorAll('.hero-filter input[type=checkbox]');
+      const heroFilterSelects =
+        heroFilterSection.querySelectorAll('.hots-hero-filter-group__icons');
 
-      // Add click handler for hero filters
-      for (const checkbox of heroFilterCheckboxes) {
-        checkbox.addEventListener('change', () =>
+      // Render Preact components
+      for (const heroFilterSelect of heroFilterSelects) {
+        const { filterType } = heroFilterSelect.dataset;
+        const options = Object.entries(heroFilters[filterType].filters)
+          .map(([id, name]) => ({
+            id, name,
+            iconUrl: chrome.runtime.getURL(`/images/${filterType}-${id}.png`),
+          }));
+        const onSelectChange = selectedIds => {
+          this._activeFilters[filterType] = selectedIds;
           this.updateHeroIcons(
             heroIconElems,
-            heroFilterCheckboxes,
+            this._activeFilters,
             this._data.heroes,
             this._data.ptrHeroes,
             usePtrCheckbox.checked
-          ));
+          );
+        };
+        preact.render(
+          html`
+            <${HotsDialog.components.MultiSelectIcons}
+              options=${options}
+              onSelectChange=${onSelectChange} />
+          `,
+          heroFilterSection,
+          heroFilterSelect
+        );
       }
 
       // Add change handler for icon size input
@@ -112,7 +140,7 @@
         usePtrCheckbox.addEventListener('change', event => {
           this.updateHeroIcons(
             heroIconElems,
-            heroFilterCheckboxes,
+            this._activeFilters,
             this._data.heroes,
             this._data.ptrHeroes,
             usePtrCheckbox.checked
@@ -208,29 +236,22 @@
     /**
      * Updates the hero icons, filtered by `heroFilterCheckboxes`.
      * @param {Iterable<Element>} heroIconElems Array of hero icon elements
-     * @param {Iterable<HTMLInputElement>} heroFilterCheckboxes Array of
-     *    checkbox <input> elements
+     * @param {Object<string, string[]>} activeFilterLists Maps filter types to
+     *    array of active filter IDs
      * @param {Object<string, Hero>} heroes All heroes in the live server
      * @param {Object<string, Hero>} ptrHeroes New or changed heroes in the PTR
      * @param {boolean} selectPtrOnly If truthy, only highlight heroes that are
      *    new or changed in the PTR
      */
     updateHeroIcons(
-      heroIconElems, heroFilterCheckboxes, heroes, ptrHeroes, selectPtrOnly
+      heroIconElems, activeFilterLists, heroes, ptrHeroes, selectPtrOnly
     ) {
       // Generate a collection of active filters
       const activeFilters = {};
-
-      for (const filterType in this._heroFilters) {
-        activeFilters[filterType] = new Set;
+      for (const [filterType, filters] of Object.entries(activeFilterLists)) {
+        activeFilters[filterType] = new Set(filters);
       }
 
-      for (const checkbox of heroFilterCheckboxes) {
-        if (checkbox.checked) {
-          // data-filter-type
-          activeFilters[checkbox.dataset.filterType].add(checkbox.value);
-        }
-      }
       // Toggle CSS class of each hero icon
       for (const heroIconElem of heroIconElems) {
         // data-hero-id, data-is-ptr

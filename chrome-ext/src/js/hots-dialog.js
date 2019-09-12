@@ -83,6 +83,9 @@
       HtmlPaster: require('./hots-dialog-paster'),
       Renderer: require('./hots-dialog-renderer'),
       util: require('./hots-dialog-util'),
+      components: {
+        MultiSelectIcons: require('./components/multi-select-icons'),
+      },
     };
   } else {
     // Browser globals

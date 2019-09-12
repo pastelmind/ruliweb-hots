@@ -38,7 +38,8 @@
         "js/hots-dialog-dialog.js",
         "js/hots-dialog-paster.js",
         "js/hots-dialog-renderer.js",
-        "js/hots-dialog-util.js"
+        "js/hots-dialog-util.js",
+        "js/components/multi-select-icons.js"
       ]
     },
     {

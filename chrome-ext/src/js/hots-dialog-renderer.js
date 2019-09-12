@@ -34,24 +34,8 @@
      */
     renderDialogContent(heroFilterGroups, heroes, ptrHeroes) {
       // Prepare filter groups
-      const filterGroups = [];
-      for (const heroFilterGroupId in heroFilterGroups) {
-        const heroFilterGroup = heroFilterGroups[heroFilterGroupId];
-
-        const filters = [];
-        for (const filterId in heroFilterGroup.filters) {
-          filters.push({
-            type: heroFilterGroupId,
-            value: filterId,
-            name: heroFilterGroup.filters[filterId],
-            iconUrl: chrome.runtime.getURL(
-              `/images/${heroFilterGroupId}-${filterId}.png`
-            ),
-          });
-        }
-
-        filterGroups.push({ name: heroFilterGroup.name, filters });
-      }
+      const filterGroups = Object.entries(heroFilterGroups)
+        .map(([type, { name }]) => ({ type, name }));
 
       // Create hero array
       const heroesArray = Object.values(heroes);

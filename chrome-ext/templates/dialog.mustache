@@ -25,12 +25,7 @@
     {{#filterGroups}}
     <section class="hots-hero-filter-group">
       <header class="hots-hero-filter-group__description">{{name}}: </header>
-      {{#filters}}
-      <label class="hero-filter" aria-label="{{name}}" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="{{type}}" value="{{value}}">
-        <img class="hero-filter__content" src="{{{iconUrl}}}" alt="{{name}}">
-      </label>
-      {{/filters}}
+      <div class="hots-hero-filter-group__icons" data-filter-type="{{type}}"></div>
     </section>
     {{/filterGroups}}
   </section>

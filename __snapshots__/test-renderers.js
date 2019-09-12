@@ -24,53 +24,11 @@ exports['HotsDialog.Renderer Dialog templates generates dialog content correctly
   <section class="hots-dialog__section hots-hero-filters">
     <section class="hots-hero-filter-group">
       <header class="hots-hero-filter-group__description">세계관: </header>
-      <label class="hero-filter" aria-label="워크래프트" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="universe" value="warcraft">
-        <img class="hero-filter__content" src="../src//images/universe-warcraft.png" alt="워크래프트">
-      </label>
-      <label class="hero-filter" aria-label="스타크래프트" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="universe" value="starcraft">
-        <img class="hero-filter__content" src="../src//images/universe-starcraft.png" alt="스타크래프트">
-      </label>
-      <label class="hero-filter" aria-label="디아블로" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="universe" value="diablo">
-        <img class="hero-filter__content" src="../src//images/universe-diablo.png" alt="디아블로">
-      </label>
-      <label class="hero-filter" aria-label="블리자드 고전" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="universe" value="classic">
-        <img class="hero-filter__content" src="../src//images/universe-classic.png" alt="블리자드 고전">
-      </label>
-      <label class="hero-filter" aria-label="오버워치" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="universe" value="overwatch">
-        <img class="hero-filter__content" src="../src//images/universe-overwatch.png" alt="오버워치">
-      </label>
+      <div class="hots-hero-filter-group__icons" data-filter-type="universe"></div>
     </section>
     <section class="hots-hero-filter-group">
       <header class="hots-hero-filter-group__description">역할: </header>
-      <label class="hero-filter" aria-label="전사" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="tank">
-        <img class="hero-filter__content" src="../src//images/newRole-tank.png" alt="전사">
-      </label>
-      <label class="hero-filter" aria-label="투사" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="bruiser">
-        <img class="hero-filter__content" src="../src//images/newRole-bruiser.png" alt="투사">
-      </label>
-      <label class="hero-filter" aria-label="원거리 암살자" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="ranged_assassin">
-        <img class="hero-filter__content" src="../src//images/newRole-ranged_assassin.png" alt="원거리 암살자">
-      </label>
-      <label class="hero-filter" aria-label="근접 암살자" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="melee_assassin">
-        <img class="hero-filter__content" src="../src//images/newRole-melee_assassin.png" alt="근접 암살자">
-      </label>
-      <label class="hero-filter" aria-label="치유사" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="healer">
-        <img class="hero-filter__content" src="../src//images/newRole-healer.png" alt="치유사">
-      </label>
-      <label class="hero-filter" aria-label="지원가" data-microtip-position="top" role="tooltip">
-        <input type="checkbox" data-filter-type="newRole" value="support">
-        <img class="hero-filter__content" src="../src//images/newRole-support.png" alt="지원가">
-      </label>
+      <div class="hots-hero-filter-group__icons" data-filter-type="newRole"></div>
     </section>
   </section>
 
