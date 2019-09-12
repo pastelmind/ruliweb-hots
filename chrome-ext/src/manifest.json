@@ -29,6 +29,8 @@
         "css/ruliweb-hots.css"
       ],
       "js": [
+        "js/htm.js",
+        "js/preact.js",
         "js/tingle.js",
         "js/mustache.js",
         "js/hots-dialog.js",
