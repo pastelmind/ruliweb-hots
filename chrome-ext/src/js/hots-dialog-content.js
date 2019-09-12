@@ -307,44 +307,6 @@
     }
   }
 
-  /**
-   * Tests if a hero icon should be highlighted.
-   * @package
-   * @param {Hero} hero Hero object to test
-   * @param {Object<string, Set<string>>} activeFilters Mapping of
-   *    filter type (string) => set of active filter tags
-   * @param {boolean} selectPtrOnly If truthy, highlight only if hero is added
-   *    or has changes in PTR.
-   * @return {boolean}
-   */
-  function canBeHighlighted(hero, activeFilters, selectPtrOnly) {
-    if (selectPtrOnly && !(hero.hasPtrChanges || hero.isPtr)) return false;
-
-    for (const filterType in activeFilters) {
-      const filterSet = activeFilters[filterType];
-      const heroAttribute = hero[filterType];
-
-      // Keep this hero if the filterSet is empty
-      if (!filterSet.size) continue;
-
-      let isMatched = false;
-
-      // Keep this hero if there is a filter that matches him/her/it/them.
-      for (const filter of activeFilters[filterType]) {
-        // Hardcoded workaround for Orphea
-        // TODO remove if Blizzard ever adds a stylized Nexus universe icon
-        if (
-          heroAttribute.includes(filter) ||
-          (heroAttribute === 'nexus' && filter === 'classic')
-        ) isMatched = true;
-      }
-
-      if (!isMatched) return false;
-    }
-
-    return true;
-  }
-
   if (typeof module === 'object' && module.exports) {
     // Node.js
     module.exports = exports = DialogContent;
