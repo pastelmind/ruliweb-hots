@@ -46,9 +46,7 @@
       // Generate document fragment
       this._fragment = HotsDialog.util.createDocumentFragmentFromHtml(
         document,
-        this._renderer.renderDialogContent(
-          heroFilters, data.heroes, data.ptrHeroes
-        )
+        this._renderer.renderDialogContent(heroFilters)
       );
 
       // Retrieve each dialog section
@@ -56,7 +54,7 @@
         this._fragment.querySelector('.hots-dialog-options');
       const heroFilterSection =
         this._fragment.querySelector('.hots-hero-filters');
-      const heroIconsSection = this._fragment.querySelector('.hots-hero-icons');
+      const heroIconsSection = this._fragment.querySelector('.hots-hero-menu');
       const skillsetSection = this._fragment.querySelector('.hots-skillset');
       const talentsetSection = this._fragment.querySelector('.hots-talentset');
 
@@ -77,13 +75,31 @@
       const iconSizeOutput =
         optionsSection.querySelector(`output[for=${iconSizeRange.id}]`);
 
-      const heroIconElems =
-        heroIconsSection.querySelectorAll('.hots-hero-icon');
       /** @type {NodeListOf<HTMLInputElement>} */
       const heroFilterSelects =
         heroFilterSection.querySelectorAll('.hots-hero-filter-group__icons');
 
       // Render Preact components
+      const onSelectHero = hero => {
+        skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
+        talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
+      };
+      const renderHeroMenu = () => {
+        preact.render(
+          html`
+            <${HotsDialog.components.HeroMenu}
+              heroes=${this._data.heroes}
+              ptrHeroes=${this._data.ptrHeroes}
+              activeFilters=${this._activeFilters}
+              ptrMode=${usePtrCheckbox.checked}
+              onClickHero=${onSelectHero}
+              />
+          `,
+          heroIconsSection
+        );
+      };
+      renderHeroMenu();
+
       for (const heroFilterSelect of heroFilterSelects) {
         const { filterType } = heroFilterSelect.dataset;
         const options = Object.entries(heroFilters[filterType].filters)
@@ -92,14 +108,12 @@
             iconUrl: chrome.runtime.getURL(`/images/${filterType}-${id}.png`),
           }));
         const onSelectChange = selectedIds => {
-          this._activeFilters[filterType] = selectedIds;
-          this.updateHeroIcons(
-            heroIconElems,
-            this._activeFilters,
-            this._data.heroes,
-            this._data.ptrHeroes,
-            usePtrCheckbox.checked
-          );
+          this._activeFilters = {
+            ...this._activeFilters,
+            [filterType]: selectedIds,
+          };
+          // TODO Remove when transition to Preact is complete
+          renderHeroMenu();
         };
         preact.render(
           html`
@@ -119,45 +133,8 @@
       });
       iconSizeRange.dispatchEvent(new Event('input'));
 
-      // Add click handler for hero icons
-      heroIconsSection.addEventListener('click', event => {
-        if (
-          !(event.target && event.target.classList.contains('hots-hero-icon'))
-        ) return;
-        const heroId = event.target.dataset.heroId; // data-hero-id
-
-        const hero = this._selectedHero =
-          this.getHeroDataById(heroId, usePtrCheckbox.checked);
-        console.assert(hero, `Cannot find hero with ID: ${heroId}`);
-
-        skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
-        talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
-      });
-
       // Check if PTR data is available
-      if (this._data.ptrHeroes && Object.keys(this._data.ptrHeroes).length) {
-        // Add click handler for "Use PTR" checkbox
-        usePtrCheckbox.addEventListener('change', event => {
-          this.updateHeroIcons(
-            heroIconElems,
-            this._activeFilters,
-            this._data.heroes,
-            this._data.ptrHeroes,
-            usePtrCheckbox.checked
-          );
-
-          if (!this._selectedHero) return;
-
-          const heroId = this._selectedHero.id;
-          const hero = this._selectedHero =
-            this.getHeroDataById(heroId, usePtrCheckbox.checked);
-          console.assert(hero, `Cannot find hero with ID: ${heroId}`);
-
-          skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
-          talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
-        });
-      } else {
-        // Disable "Use PTR" checkbox
+      if (!this._data.ptrHeroes || !Object.keys(this._data.ptrHeroes).length) {
         usePtrCheckbox.checked = false;
         usePtrCheckbox.disabled = true;
         usePtrCheckbox.closest('.hots-dialog-option')
@@ -231,37 +208,6 @@
           this.pasteWithEffect(html, event.target);
         }
       });
-    }
-
-    /**
-     * Updates the hero icons, filtered by `heroFilterCheckboxes`.
-     * @param {Iterable<Element>} heroIconElems Array of hero icon elements
-     * @param {Object<string, string[]>} activeFilterLists Maps filter types to
-     *    array of active filter IDs
-     * @param {Object<string, Hero>} heroes All heroes in the live server
-     * @param {Object<string, Hero>} ptrHeroes New or changed heroes in the PTR
-     * @param {boolean} selectPtrOnly If truthy, only highlight heroes that are
-     *    new or changed in the PTR
-     */
-    updateHeroIcons(
-      heroIconElems, activeFilterLists, heroes, ptrHeroes, selectPtrOnly
-    ) {
-      // Generate a collection of active filters
-      const activeFilters = {};
-      for (const [filterType, filters] of Object.entries(activeFilterLists)) {
-        activeFilters[filterType] = new Set(filters);
-      }
-
-      // Toggle CSS class of each hero icon
-      for (const heroIconElem of heroIconElems) {
-        // data-hero-id, data-is-ptr
-        const { heroId, isPtr } = heroIconElem.dataset;
-        const hero = (isPtr ? ptrHeroes : heroes)[heroId];
-        heroIconElem.classList.toggle(
-          'hots-hero-icon--excluded',
-          !canBeHighlighted(hero, activeFilters, selectPtrOnly)
-        );
-      }
     }
 
     /**

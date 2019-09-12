@@ -84,6 +84,7 @@
       Renderer: require('./hots-dialog-renderer'),
       util: require('./hots-dialog-util'),
       components: {
+        HeroMenu: require('./components/hero-menu'),
         MultiSelectIcons: require('./components/multi-select-icons'),
       },
     };

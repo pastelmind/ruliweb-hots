@@ -32,23 +32,7 @@ exports['HotsDialog.Renderer Dialog templates generates dialog content correctly
     </section>
   </section>
 
-  <section class="hots-dialog__section hots-hero-icons">
-    <div class="hots-hero-icon-wrapper" data-microtip-position="top" role="tooltip" aria-label="가즈로 (근접 암살자)">
-      <img class="hots-hero-icon" src="http://i2.ruliweb.com/img/18/06/14/163fc227a1919dc2c.png" data-hero-id="Tinker" data-is-ptr="" alt="가즈로 (근접 암살자)">
-      
-      
-    </div>
-    <div class="hots-hero-icon-wrapper" data-microtip-position="top" role="tooltip" aria-label="렉사르 (투사)">
-      <img class="hots-hero-icon" src="http://i3.ruliweb.com/img/18/06/14/163fc0e215b19dc2c.png" data-hero-id="Rexxar" data-is-ptr="" alt="렉사르 (투사)">
-      
-      
-    </div>
-    <div class="hots-hero-icon-wrapper" data-microtip-position="top" role="tooltip" aria-label="피닉스 (원거리 암살자)">
-      <img class="hots-hero-icon" src="http://i2.ruliweb.com/img/18/06/14/163fc227f7919dc2c.png" data-hero-id="Fenix" data-is-ptr="" alt="피닉스 (원거리 암살자)">
-      
-      
-    </div>
-  </section>
+  <section class="hots-dialog__section hots-hero-menu"></section>
   <section class="hots-dialog__section hots-skillset"></section>
   <ul class="hots-dialog__section hots-talentset"></ul>
   <section class="hots-dialog__section hots-dialog-version">

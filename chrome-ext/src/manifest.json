@@ -39,6 +39,7 @@
         "js/hots-dialog-paster.js",
         "js/hots-dialog-renderer.js",
         "js/hots-dialog-util.js",
+        "js/components/hero-menu.js",
         "js/components/multi-select-icons.js"
       ]
     },

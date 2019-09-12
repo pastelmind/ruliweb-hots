@@ -28,33 +28,17 @@
      * Generates the HTML source of the main dialog.
      * @param {Object<string, {name: string, filters: Object}>} heroFilterGroups
      *    A collection of hero filter groups
-     * @param {Object<string, Hero>} heroes Hero ID => hero data
-     * @param {Object<string, Hero>} ptrHeroes Hero ID => hero data
      * @return {string} HTML source
      */
-    renderDialogContent(heroFilterGroups, heroes, ptrHeroes) {
+    renderDialogContent(heroFilterGroups) {
       // Prepare filter groups
       const filterGroups = Object.entries(heroFilterGroups)
         .map(([type, { name }]) => ({ type, name }));
-
-      // Create hero array
-      const heroesArray = Object.values(heroes);
-
-      // Load hero(es) available only in the PTR
-      for (const ptrHeroId in ptrHeroes) {
-        if (!(ptrHeroId in heroes)) heroesArray.push(ptrHeroes[ptrHeroId]);
-      }
-
-      // Sort heroes by name
-      heroesArray.sort(
-        (heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en')
-      );
 
       return Mustache.render(
         this._templates['dialog'],
         {
           filterGroups,
-          heroes: heroesArray,
           appVersion: chrome.runtime.getManifest().version,
         }
       );
