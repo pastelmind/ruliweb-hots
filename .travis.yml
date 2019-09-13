@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 10
+
+env:
+  - CHROME_APP_ID=cnglbnilhbknecgmekgagelljoljcbfe
+
+deploy:
+  provider: script
+  script: npm run build && bash deploy.sh
+  skip_cleanup: true
+  on:
+    # By default, Travis CI only runs deploy script for master branch.
+    # To change this, use all_branches: true
+    # (See https://docs.travis-ci.com/user/deployment/#conditional-releases-with-on)
+    tags: true

@@ -1,5 +1,7 @@
 # ruliweb-hots
 
+[![Build Status](https://travis-ci.com/pastelmind/ruliweb-hots.svg?branch=master)](https://travis-ci.com/pastelmind/ruliweb-hots)
+
 루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 / 파이어폭스 확장 프로그램입니다.
 
 * [크롬 확장 프로그램 설치](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
