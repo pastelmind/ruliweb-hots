@@ -9,4 +9,5 @@ deploy:
   provider: script
   script: npm run build && bash deploy.sh
   on:
+    all_branches: true
     tags: false
