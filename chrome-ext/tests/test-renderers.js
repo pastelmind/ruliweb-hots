@@ -61,14 +61,6 @@ describe('HotsDialog.Renderer', () => {
         renderer.renderDialogContent(heroFilters, hotsData.heroes)
       );
     });
-
-    it('generates skill icons correctly', () => {
-      snapshot(renderer.renderSkillIcons(hotsData.heroes.Tinker));
-    });
-
-    it('generates talent list correctly', () => {
-      snapshot(renderer.renderTalentList(hotsData.heroes.Tinker));
-    });
   });
 
 

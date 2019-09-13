@@ -55,8 +55,8 @@
       const heroFilterSection =
         this._fragment.querySelector('.hots-hero-filters');
       const heroIconsSection = this._fragment.querySelector('.hots-hero-menu');
-      const skillsetSection = this._fragment.querySelector('.hots-skillset');
-      const talentsetSection = this._fragment.querySelector('.hots-talentset');
+      const hotsBoxMenuSection =
+        this._fragment.querySelector('.hots-box-menu-container');
 
       // Retrieve individual elements and element groups
       /** @type {HTMLInputElement} */
@@ -80,9 +80,84 @@
         heroFilterSection.querySelectorAll('.hots-hero-filter-group__icons');
 
       // Render Preact components
+
+      /** @return {{version: string, iconSize: number}} */
+      function getPasteParams() {
+        let version = '';
+        if (addVersionCheckbox.checked) {
+          version = usePtrCheckbox.checked
+            ? data.hotsPtrVersion : data.hotsVersion;
+        }
+        return { version, iconSize: iconSizeRange.value };
+      };
+
+      /**
+       * @param {Hero} hero
+       * @return {Element[]}
+       */
+      function pasteHero(hero) {
+        const { iconSize, version } = getPasteParams();
+        const html = renderer.renderHeroInfoTable(
+          hero, iconSize, iconSize, version, useSimpleHeroTableCheckbox.checked
+        );
+        return paster.paste(html);
+      };
+
+      /**
+       * @param {Skill} skill
+       * @return {Element[]}
+       */
+      function pasteSkill(skill) {
+        const { iconSize, version } = getPasteParams();
+        const html = renderer.renderSkillInfoTable(skill, iconSize, version);
+        return paster.paste(html);
+      };
+
+      /**
+       * @param {Talent} talent
+       * @return {Element[]}
+       */
+      function pasteTalent(talent) {
+        const { iconSize, version } = getPasteParams();
+        const html = renderer.renderTalentInfoTable(talent, iconSize, version);
+        return paster.paste(html);
+      };
+
+      /**
+       * @param {Talent[]} talentGroup
+       * @return {Element[]}
+       */
+      function pasteTalentGroup(talentGroup) {
+        const { iconSize, version } = getPasteParams();
+        const html = renderer.renderTalentGroupInfoTable(
+          talentGroup, iconSize, version
+        );
+        return paster.paste(html);
+      };
+
+      /**
+       * @param {Hero=} hero Currently selected hero.
+       * @return {undefined}
+       */
+      function renderHotsBoxMenu(hero) {
+        preact.render(
+          html`
+            <${HotsDialog.components.HotsBoxMenu}
+              hero=${hero || data.heroes.Dva}
+              onPasteHero=${pasteHero}
+              onPasteSkill=${pasteSkill}
+              onPasteTalent=${pasteTalent}
+              onPasteTalentGroup=${pasteTalentGroup}
+              />
+          `,
+          hotsBoxMenuSection
+        );
+      }
+      renderHotsBoxMenu();
+
       const onSelectHero = hero => {
-        skillsetSection.innerHTML = this._renderer.renderSkillIcons(hero);
-        talentsetSection.innerHTML = this._renderer.renderTalentList(hero);
+        // TODO Remove when transition to Preact is complete
+        renderHotsBoxMenu(hero);
       };
       const renderHeroMenu = () => {
         preact.render(
@@ -140,74 +215,6 @@
         usePtrCheckbox.closest('.hots-dialog-option')
           .setAttribute('aria-label', 'PTR 서버 패치 정보가 없습니다');
       }
-
-      // Add event handlers for selected hero icon and skill icons
-      skillsetSection.addEventListener('click', event => {
-        if (!(event.target)) return;
-
-        const isHeroIcon =
-          event.target.classList.contains('hots-current-hero-icon');
-        const isSkillIcon = event.target.classList.contains('hots-skill-icon');
-
-        if (isHeroIcon || isSkillIcon) {
-          // data-hero-id, data-is-ptr, data-skill-index
-          const { heroId, isPtr, skillIndex } = event.target.dataset;
-          const version =
-            addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
-
-          const hero = this.getHeroDataById(heroId, isPtr);
-          const iconSize = iconSizeRange.value;
-
-          let html;
-          if (isHeroIcon) {
-            html = this._renderer.renderHeroInfoTable(
-              hero, iconSize, iconSize, version,
-              useSimpleHeroTableCheckbox.checked
-            );
-          } else { // isSkillIcon
-            html = this._renderer.renderSkillInfoTable(
-              hero.skills[skillIndex], iconSize, version
-            );
-          }
-          this.pasteWithEffect(html, event.target);
-        }
-      });
-
-      // Add event handlers for talent icons
-      talentsetSection.addEventListener('click', event => {
-        if (!(event.target)) return;
-
-        const isTalentIcon =
-          event.target.classList.contains('hots-talent-icon');
-        const isTalentGroupButton =
-          event.target.classList.contains('hots-talentset__group-add-all');
-
-        if (isTalentIcon || isTalentGroupButton) {
-          // data-hero-id, data-is-ptr, data-talent-level, data-talent-index
-          const { heroId, isPtr, talentLevel, talentIndex } =
-            event.target.dataset;
-          const version =
-            addVersionCheckbox.checked ? this.getHotsVersion(isPtr) : '';
-
-          const hero = this.getHeroDataById(heroId, isPtr);
-          const iconSize = iconSizeRange.value;
-
-          const talentGroup = hero.talents[talentLevel];
-
-          // TODO De-duplicate code
-          let html;
-          if (isTalentIcon) {
-            html = this._renderer.renderTalentInfoTable(
-              talentGroup[talentIndex], iconSize, version
-            );
-          } else { // isTalentGroupButton
-            html = this._renderer.renderTalentGroupInfoTable(
-              talentGroup, iconSize, version
-            );
-          }
-          this.pasteWithEffect(html, event.target);
-        }
-      });
     }
 
     /**
@@ -216,40 +223,6 @@
      */
     getFragment() {
       return this._fragment;
-    }
-
-    /**
-     * Get the hero data from the hero's ID. Searches for the hero ID first in
-     * the live data, then in the PTR data.
-     * @param {string} heroId Hero ID string
-     * @param {boolean} preferPtr If truthy, use the PTR data first.
-     * @return {Hero} Selected hero object
-     */
-    getHeroDataById(heroId, preferPtr = false) {
-      const data = this._data;
-      if (preferPtr) return data.ptrHeroes[heroId] || data.heroes[heroId];
-      return data.heroes[heroId] || data.ptrHeroes[heroId];
-    }
-
-    /**
-     * Retrieve the Heroes of the Storm version string for the dataset.
-     * @param {boolean} isPtr If truthy, return the PTR version string instead.
-     * @return {string} HotS version string
-     */
-    getHotsVersion(isPtr = false) {
-      return isPtr ? this._data.hotsPtrVersion : this._data.hotsVersion;
-    }
-
-    /**
-     * Pastes a HTML string into the WYSIWYG editor and creates visual effects.
-     * @param {string} html HTML string
-     * @param {Element} eventTarget Element that was triggered by the user
-     */
-    pasteWithEffect(html, eventTarget) {
-      const injectedElements = this._paster.paste(html);
-      const { left: endX, top: endY } =
-        HotsDialog.util.getOffsetToViewport(injectedElements[0]);
-      HotsDialog.util.animateFlyingBox(eventTarget, endX, endY);
     }
   }
 

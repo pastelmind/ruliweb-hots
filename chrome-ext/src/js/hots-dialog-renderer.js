@@ -45,32 +45,6 @@
     }
 
     /**
-     * Generate a group of skill icons for the hero.
-     * @param {Hero} hero Hero data
-     * @return {string} HTML source
-     */
-    renderSkillIcons(hero) {
-      return Mustache.render(this._templates['dialog-skills'], hero);
-    }
-
-    /**
-     * Generate a list of talent icons for the hero, grouped by talent level.
-     * @param {Hero} hero Hero data
-     * @return {string} HTML source
-     */
-    renderTalentList(hero) {
-      // Convert talent groups into nested arrays of objects
-      const talents = Object.entries(hero.talents).map(
-        ([talentLevel, talentGroup]) => ({ talentLevel, talentGroup })
-      );
-
-      return Mustache.render(
-        this._templates['dialog-talents'],
-        { talents, id: hero.id, isPtr: hero.isPtr }
-      );
-    }
-
-    /**
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {number=} iconSize Hero icon size in pixels (default: 64)
