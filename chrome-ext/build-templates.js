@@ -75,7 +75,6 @@ function inlineCss(html, cssToInline) {
   // Postprocessing for inlined CSS
   html = stripCssClasses(html, CSS_CLASSES_PRESERVED);
   html = ruliwebCssFix(html);
-  html = minifyCssFix(html);
   html = minifyInlineCss(html);
 
   return html;
@@ -106,17 +105,6 @@ function stripCssClasses(html, whitelist = {}) {
 function ruliwebCssFix(html) {
   return html.replace(/\sstyle="[^]*?"/gi, styleAttr =>
     styleAttr.replace(/width/gi, 'WIDTH').replace(/height/gi, 'HEIGHT'));
-}
-
-/**
- * Further minify CSS that has not been optimized by html-minifier.
- * Applies the following fix(es):
- * - Remove spaces between `width: {{...}}` or `height: {{...}}`
- * @param {*} html
- * @return {string}
- */
-function minifyCssFix(html) {
-  return html.replace(/(width|height):\s+/gi, '$1:');
 }
 
 /**
