@@ -8,7 +8,6 @@
 const fs = require('fs');
 const path = require('path');
 const juice = require('juice');
-const minifyHtml = require('html-minifier').minify;
 
 
 /**
@@ -53,13 +52,8 @@ for (const fileName of fileNames) {
   // Check if the template is insertable content and should be CSS-inlined
   if (/^insert-/gi.test(templateName)) template = inlineCss(template, css);
 
-  // Minify HTML
-  templates[templateName] = minifyHtml(template, {
-    collapseBooleanAttributes: true,
-    ignoreCustomFragments: [/\{{2,3}.*?\}{2,3}/],
-    minifyCSS: true,
-    removeEmptyAttributes: true,
-  });
+  // Minify CSS
+  templates[templateName] = minifyInlineCss(template);
 }
 
 // Save the templates
@@ -125,4 +119,19 @@ function ruliwebCssFix(html) {
  */
 function minifyCssFix(html) {
   return html.replace(/(width|height):\s+/gi, '$1:');
+}
+
+/**
+ * Minify the inline CSS
+ * @param {string} html HTML markup with inline CSS
+ * @return {string} HTML markup with minified inline CSS
+ */
+function minifyInlineCss(html) {
+  return html.replace(
+    /(?<=\bstyle=").*?(?=")/gi,
+    inlineCss => inlineCss
+      .replace(/;\s*$/, '')
+      .trim()
+      .replace(/\s*([;:,])\s*/g, '$1')
+  );
 }
