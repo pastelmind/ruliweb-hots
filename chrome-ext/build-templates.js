@@ -8,7 +8,6 @@
 const fs = require('fs');
 const path = require('path');
 const juice = require('juice');
-const minifyHtml = require('html-minifier').minify;
 
 
 /**
@@ -47,19 +46,11 @@ for (const fileName of fileNames) {
   );
 
   // Normalize CRLF to LF
-  let template = fs.readFileSync(filePath, 'utf8').replace(/\r/g, '');
+  const template = fs.readFileSync(filePath, 'utf8').replace(/\r/g, '');
   console.log('Read template:', templateName.padEnd(20), 'from', filePath);
 
-  // Check if the template is insertable content and should be CSS-inlined
-  if (/^insert-/gi.test(templateName)) template = inlineCss(template, css);
-
-  // Minify HTML
-  templates[templateName] = minifyHtml(template, {
-    collapseBooleanAttributes: true,
-    ignoreCustomFragments: [/\{{2,3}.*?\}{2,3}/],
-    minifyCSS: true,
-    removeEmptyAttributes: true,
-  });
+  // Inline-ify and minify CSS
+  templates[templateName] = inlineCss(template, css);
 }
 
 // Save the templates
@@ -84,7 +75,7 @@ function inlineCss(html, cssToInline) {
   // Postprocessing for inlined CSS
   html = stripCssClasses(html, CSS_CLASSES_PRESERVED);
   html = ruliwebCssFix(html);
-  html = minifyCssFix(html);
+  html = minifyInlineCss(html);
 
   return html;
 }
@@ -117,12 +108,16 @@ function ruliwebCssFix(html) {
 }
 
 /**
- * Further minify CSS that has not been optimized by html-minifier.
- * Applies the following fix(es):
- * - Remove spaces between `width: {{...}}` or `height: {{...}}`
- * @param {*} html
- * @return {string}
+ * Minify the inline CSS
+ * @param {string} html HTML markup with inline CSS
+ * @return {string} HTML markup with minified inline CSS
  */
-function minifyCssFix(html) {
-  return html.replace(/(width|height):\s+/gi, '$1:');
+function minifyInlineCss(html) {
+  return html.replace(
+    /(?<=\bstyle=").*?(?=")/gi,
+    inlineCss => inlineCss
+      .replace(/;\s*$/, '')
+      .trim()
+      .replace(/\s*([;:,])\s*/g, '$1')
+  );
 }
