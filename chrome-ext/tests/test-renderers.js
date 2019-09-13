@@ -20,29 +20,6 @@ const Renderer = require('../src/js/hots-dialog-renderer');
 describe('HotsDialog.Renderer', () => {
   let hotsData;
   let renderer;
-  const heroFilters = {
-    universe: {
-      name: '세계관',
-      filters: {
-        'warcraft': '워크래프트',
-        'starcraft': '스타크래프트',
-        'diablo': '디아블로',
-        'classic': '블리자드 고전',
-        'overwatch': '오버워치',
-      },
-    },
-    newRole: {
-      name: '역할',
-      filters: {
-        tank: '전사',
-        bruiser: '투사',
-        ranged_assassin: '원거리 암살자',
-        melee_assassin: '근접 암살자',
-        healer: '치유사',
-        support: '지원가',
-      },
-    },
-  };
 
   before('Loading test data files', async () => {
     hotsData = JSON.parse(
@@ -52,15 +29,6 @@ describe('HotsDialog.Renderer', () => {
 
     const templates = await loadTemplates();
     renderer = new Renderer(templates);
-  });
-
-
-  describe('Dialog templates', () => {
-    it('generates dialog content correctly', () => {
-      snapshot(
-        renderer.renderDialogContent(heroFilters, hotsData.heroes)
-      );
-    });
   });
 
 

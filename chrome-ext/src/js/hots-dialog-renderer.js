@@ -25,26 +25,6 @@
     }
 
     /**
-     * Generates the HTML source of the main dialog.
-     * @param {Object<string, {name: string, filters: Object}>} heroFilterGroups
-     *    A collection of hero filter groups
-     * @return {string} HTML source
-     */
-    renderDialogContent(heroFilterGroups) {
-      // Prepare filter groups
-      const filterGroups = Object.entries(heroFilterGroups)
-        .map(([type, { name }]) => ({ type, name }));
-
-      return Mustache.render(
-        this._templates['dialog'],
-        {
-          filterGroups,
-          appVersion: chrome.runtime.getManifest().version,
-        }
-      );
-    }
-
-    /**
      * Generates a table of hero information to be injected into a page.
      * @param {Hero} hero Hero data
      * @param {number=} iconSize Hero icon size in pixels (default: 64)
