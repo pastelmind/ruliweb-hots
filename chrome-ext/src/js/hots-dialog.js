@@ -79,10 +79,15 @@
     module.exports = exports = {
       ...HotsDialog,
       Dialog: require('./hots-dialog-dialog'),
-      DialogContent: require('./hots-dialog-content'),
       HtmlPaster: require('./hots-dialog-paster'),
       Renderer: require('./hots-dialog-renderer'),
       util: require('./hots-dialog-util'),
+      components: {
+        DialogContent: require('./components/dialog-content'),
+        HeroMenu: require('./components/hero-menu'),
+        HotsBoxMenu: require('./components/hots-box-menu'),
+        MultiSelectIcons: require('./components/multi-select-icons'),
+      },
     };
   } else {
     // Browser globals
