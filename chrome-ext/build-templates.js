@@ -46,14 +46,11 @@ for (const fileName of fileNames) {
   );
 
   // Normalize CRLF to LF
-  let template = fs.readFileSync(filePath, 'utf8').replace(/\r/g, '');
+  const template = fs.readFileSync(filePath, 'utf8').replace(/\r/g, '');
   console.log('Read template:', templateName.padEnd(20), 'from', filePath);
 
-  // Check if the template is insertable content and should be CSS-inlined
-  if (/^insert-/gi.test(templateName)) template = inlineCss(template, css);
-
-  // Minify CSS
-  templates[templateName] = minifyInlineCss(template);
+  // Inline-ify and minify CSS
+  templates[templateName] = inlineCss(template, css);
 }
 
 // Save the templates
@@ -79,6 +76,7 @@ function inlineCss(html, cssToInline) {
   html = stripCssClasses(html, CSS_CLASSES_PRESERVED);
   html = ruliwebCssFix(html);
   html = minifyCssFix(html);
+  html = minifyInlineCss(html);
 
   return html;
 }
