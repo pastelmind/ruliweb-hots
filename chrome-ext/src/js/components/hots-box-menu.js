@@ -81,7 +81,7 @@
 
     return html`
       <${Fragment}>
-        <div class="hots-dialog__section hots-skillset">
+        <div class="hots-dialog__section hots-skillset" key=${hero.id}>
           <div class="hots-current-hero-icon-wrapper"
             aria-label="${hero.name} (${hero.roleName})"
             data-microtip-position="top" role="tooltip">
@@ -99,7 +99,7 @@
             </div>
           `)}
         </div>
-        <ul class="hots-dialog__section hots-talentset">
+        <ul class="hots-dialog__section hots-talentset"  key=${hero.id}>
           ${Object.entries(hero.talents).map(([level, talentGroup]) => html`
             <li class="hots-talentset__group">
               <span class="hots-talentset__group-title">${level}레벨</span>
