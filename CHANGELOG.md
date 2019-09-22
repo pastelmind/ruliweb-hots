@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.10.4] - 2019-09-22
+
+### Changed
+- Use HTTPS for all image URLs.
+- HotsDialog has been refactored. It now uses [Preact](https://preactjs.com/)
+  with [htm](https://github.com/developit/htm) instead of Mustache templates. It
+  has also been split into individual components for better organization.
+
+### Fixed
+- The "Open Ruliweb Hots" context menu now appears properly in Chrome.
+
+
 ## [0.10.3] - 2019-08-16
 
 ### Fixed
