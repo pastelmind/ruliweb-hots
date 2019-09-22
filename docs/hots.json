@@ -34954,6 +34954,19 @@
           "description": "0.5초 후, 일직선상의 적들을 강타하여 78(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
           "shortDescription": "일직선상의 적들에게 피해",
           "cooldown": 6
+        },
+        {
+          "id": "WhitemaneInquisitionClemency",
+          "name": {
+            "en": "",
+            "ko": "관용"
+          },
+          "type": "active",
+          "icon": "storm_ui_icon_whitemane_clemency",
+          "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 <c val=\"bfd4fd\">3</c>초에 걸쳐 최대 <c val=\"bfd4fd\">329~~0.04~~</c>의 생명력을 회복시킵니다.<n/><n/>심문과 재사용 대기시간을 공유합니다.",
+          "shortDescription": "심문으로 아군 치유",
+          "cooldown": 12,
+          "manaCost": 75
         }
       ],
       "talents": {
