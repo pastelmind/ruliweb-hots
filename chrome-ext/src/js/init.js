@@ -13,27 +13,18 @@ const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
 
 // Things that should be called only once (when installed)
 chrome.runtime.onInstalled.addListener(() => {
-  // Run only if Google Chrome
-  if (typeof browser === 'undefined') {
-    chrome.contextMenus.create({
-      'id': 'ruli-context-menu',
-      'title': '히오스 공략툴 열기',
-      'contexts': ['frame'],
-      // Firefox throws an unexpected error on about:blank
-      'documentUrlPatterns': ['about:blank'],
-    });
-  } else { // Run only if Firefox
-    // Firefox does not recognize Ruliweb's WYSIWYG editor as a frame, so create
-    // context menus on all editables instead
-    chrome.contextMenus.create({
-      id: 'ruli-context-menu-test',
-      title: '히오스 공략툴 열기',
-      contexts: ['editable'],
-      // Use the same patterns used for injecting content scripts
-      documentUrlPatterns:
-        chrome.runtime.getManifest().content_scripts[0].matches,
-    });
-  }
+  chrome.contextMenus.create({
+    'id': 'ruli-context-menu',
+    'title': '히오스 공략툴 열기',
+    'contexts': [
+      // Firefox does not recognize Ruliweb's WYSIWYG editor as a frame.
+      // Therefore, create context menus on all editables instead
+      typeof browser === 'undefined' ? 'frame' : 'editable',
+    ],
+    // Use the same patterns used for injecting content scripts
+    'documentUrlPatterns':
+      chrome.runtime.getManifest().content_scripts[0].matches,
+  });
 
   // Load pre-packaged hero data
   updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
