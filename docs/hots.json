@@ -34191,10 +34191,11 @@
               "en": "Blow 'Em Up!",
               "ko": "날려 버리자고!"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_junkrat_trap_mine",
             "description": "충격 지뢰나 강철 덫으로 적 영웅에게 피해를 주면 일반 공격과 일반 기술이 6초 동안 25%의 추가 피해를 줍니다.",
-            "shortDescription": "충격 지뢰와 강철 덫 적중 시 공격력 증가"
+            "shortDescription": "충격 지뢰와 강철 덫 적중 시 공격력 증가",
+            "upgradeFor": "E"
           }
         ],
         "4": [
@@ -34282,10 +34283,11 @@
               "en": "Dirty Trickster",
               "ko": "치사한 술수"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_junkrat_bomb_pack",
             "description": "완전 난장판의 폭발 반경이 20% 증가합니다. 기절, 이동 불가 상태가 되거나 생명력이 50% 미만일 때 적 영웅에게 피해를 받으면 완전 난장판을 사용하여 발 밑에 폭발하는 폭탄을 5개 떨어뜨립니다.\n\n이 효과는 12초에 한 번씩만 발동합니다.",
-            "shortDescription": "완전 난장판이 더 자주 발동"
+            "shortDescription": "완전 난장판이 더 자주 발동",
+            "upgradeFor": "D"
           }
         ],
         "10": [
@@ -34346,10 +34348,11 @@
               "en": "Bombs Away",
               "ko": "폭탄 먹어!"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_junkrat_frag_launcher",
             "description": "일반 공격 사거리가 1 증가합니다. 일반 공격 후 0.5초 내에 폭탄 발사기를 사용하면 발사된 폭탄이 25%의 추가 피해를 줍니다.",
-            "shortDescription": "일반 공격 사거리 증가 및 폭탄 공격력 증가"
+            "shortDescription": "일반 공격 사거리 증가 및 폭탄 공격력 증가",
+            "upgradeFor": "Q"
           },
           {
             "id": "JunkratConcussionMineRipperAir",
@@ -34460,10 +34463,11 @@
               "en": "I Hate Waiting!",
               "ko": "기다리는 거 싫어!"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_junkrat_mount_rocket",
             "description": "자폭 로켓을 탈것으로 사용합니다. 이동 속도가 150% 증가하지만 탈것의 재사용 대기시간이 12초로 증가합니다.",
-            "shortDescription": "로켓을 타고 달릴 수 있음!"
+            "shortDescription": "로켓을 타고 달릴 수 있음!",
+            "upgradeFor": "Z"
           }
         ]
       }
@@ -34984,10 +34988,11 @@
               "en": "Inquisitor's Prayer",
               "ko": "재판관의 기도"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_whitemane_lash_alt_1",
             "description": "퀘스트: 이글거리는 채찍이 적 영웅에게 적중해야 합니다.\n보상: 이글거리는 채찍이 적 영웅에게 적중할 때마다 최대 생명력이 3, 최대 마나가 2 영구히 증가합니다. 두 번째 타격이 적 영웅에게 적중하면 퀘스트가 2회 진행됩니다.",
-            "shortDescription": "퀘스트: 이글거리는 채찍 적중 시 최대 생명력 및 마나 증가"
+            "shortDescription": "퀘스트: 이글거리는 채찍 적중 시 최대 생명력 및 마나 증가",
+            "upgradeFor": "E"
           }
         ],
         "4": [
@@ -35021,10 +35026,11 @@
               "en": "Indulgence",
               "ko": "면죄부"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_whitemane_desperation_alt_2",
             "description": "이동 속도가 5% 증가합니다. 활성화된 <span style=\"color:#fff5c2\">열의</span> 하나당 이동 속도가 추가로 5% 증가합니다.",
-            "shortDescription": "열의가 이동 속도를 증가시킴"
+            "shortDescription": "열의가 이동 속도를 증가시킴",
+            "upgradeFor": "Q"
           }
         ],
         "7": [
@@ -35046,10 +35052,11 @@
               "en": "Scarlet Wrath",
               "ko": "붉은 분노"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_whitemane_zeal",
             "description": "적 영웅에게 일반 공격을 할 때마다 <span style=\"color:#fff5c2\">열의</span>의 지속 시간이 0.75초 증가합니다.",
-            "shortDescription": "일반 공격 시 열의 지속 시간 증가"
+            "shortDescription": "일반 공격 시 열의 지속 시간 증가",
+            "upgradeFor": "D"
           },
           {
             "id": "WhitemaneIntercession",
@@ -35121,10 +35128,11 @@
               "en": "Saintly Greatstaff",
               "ko": "성스러운 지팡이"
             },
-            "type": "",
+            "type": "passive",
             "icon": "storm_ui_icon_whitemane_zeal",
             "description": "일반 공격의 <span style=\"color:#fff5c2\">열의</span> 치유량이 100% 증가합니다.",
-            "shortDescription": "일반 공격의 열의 치유량 증가"
+            "shortDescription": "일반 공격의 열의 치유량 증가",
+            "upgradeFor": "D"
           }
         ],
         "16": [
