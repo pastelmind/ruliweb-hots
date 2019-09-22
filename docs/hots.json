@@ -34195,7 +34195,7 @@
             "icon": "storm_ui_icon_junkrat_trap_mine",
             "description": "충격 지뢰나 강철 덫으로 적 영웅에게 피해를 주면 일반 공격과 일반 기술이 6초 동안 25%의 추가 피해를 줍니다.",
             "shortDescription": "충격 지뢰와 강철 덫 적중 시 공격력 증가",
-            "upgradeFor": "E"
+            "upgradeFor": "W / E"
           }
         ],
         "4": [
@@ -34981,7 +34981,7 @@
             "icon": "storm_ui_icon_whitemane_inquisition_lash",
             "description": "이글거리는 채찍이 적 영웅에게 적중할 때마다 심문의 재사용 대기시간이 1초 감소합니다. 생명력이 30% 미만인 아군은 화이트메인에게서 받는 치유량이 25% 증가합니다.",
             "shortDescription": "이글거리는 채찍이 심문의 재사용 대기시간을 감소시킴",
-            "upgradeFor": "D"
+            "upgradeFor": "W / E"
           },
           {
             "id": "WhitemaneSearingLashRighteousFlame",
