@@ -155,7 +155,7 @@
         .replace(
           /^[^\S\r\n]*(퀘스트|보상|반복\s*퀘스트)\s*(?=:)/gm,
           '<img style="HEIGHT: 1.3em; vertical-align: -20%" ' +
-          'src="http://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" ' +
+          'src="https://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" ' +
           'alt="$1" title="$1"> <b style="color: #fb0">$1</b>'
         )
         .replace(

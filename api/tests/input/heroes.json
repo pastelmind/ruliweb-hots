@@ -2,7 +2,7 @@
   "lucio": {
     "name": "루시우",
     "title": "",
-    "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
+    "iconUrl": "https://i3.ruliweb.com/img/18/06/14/163fc22d88119dc2c.png",
     "type": "원거리",
     "newRole": "healer",
     "universe": "overwatch",
@@ -589,7 +589,7 @@
   "cho": {
     "name": "초",
     "title": "",
-    "iconUrl": "http://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
+    "iconUrl": "https://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "newRole": "tank",
     "universe": "warcraft",
     "stats": {
@@ -832,7 +832,7 @@
   "gall": {
     "name": "갈",
     "title": "",
-    "iconUrl": "http://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
+    "iconUrl": "https://i2.ruliweb.com/img/18/06/14/163fc22803219dc2c.png",
     "newRole": "ranged_assassin",
     "universe": "warcraft",
     "stats": {
