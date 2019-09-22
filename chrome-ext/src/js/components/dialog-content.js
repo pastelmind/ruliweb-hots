@@ -59,6 +59,21 @@
     }
 
     /**
+     * Sets the `shouldUsePtr` state.
+     * @param {boolean} shouldUsePtr New value of `shouldUsePtr`
+     */
+    setShouldUsePtr(shouldUsePtr) {
+      let { currentHero } = this.state;
+      if (currentHero) {
+        const { heroes, ptrHeroes } = this.props.data;
+        const liveHero = heroes[currentHero.id];
+        const ptrHero = ptrHeroes[currentHero.id];
+        currentHero = shouldUsePtr ? ptrHero || liveHero : liveHero || ptrHero;
+      }
+      this.setState({ currentHero, shouldUsePtr });
+    }
+
+    /**
      * Sets a boolean state based on an event originating from a checkbox.
      * @param {number | string} iconSize Icon size
      */
@@ -168,7 +183,7 @@
               <input type="checkbox"
                 disabled=${!isPtrAvailable}
                 checked=${this.state.shouldUsePtr}
-                onInput=${e => this.setCheckboxState('shouldUsePtr', e)}/>
+                onInput=${e => this.setShouldUsePtr(e.target.checked)}/>
               <span class="hots-dialog-option__description">PTR 적용</span>
             </label>
             <label class="hots-dialog-option hots-dialog-option--checkbox"
