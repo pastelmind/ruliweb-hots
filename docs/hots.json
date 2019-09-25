@@ -31039,7 +31039,7 @@
           "levelAdd": 0.098
         },
         "range": 5.5,
-        "period": 0.85,
+        "period": 1.0,
         "damage": {
           "value": 55,
           "levelScaling": 0.04
