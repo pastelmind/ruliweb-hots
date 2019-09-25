@@ -3646,7 +3646,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_auriel_bestowhope",
-          "description": "지속 효과: 영웅에게 준 피해의 60%와 영웅이 아닌 대상에게 준 피해의 20%를 치유 에너지로 저장합니다.\n\n사용하면 대상 아군 영웅에게 희망을 불어넣습니다. 대상이 주위에 있으면 대상이 영웅에게 준 피해의 30%와 영웅이 아닌 대상에게 준 피해의 20% 역시 치유 에너지로 저장됩니다. 동시에 1명의 영웅에게만 희망을 불어넣을 수 있습니다.\n\n최대 494(+4%)의 치유 에너지를 저장할 수 있습니다.",
+          "description": "지속 효과: 영웅에게 준 피해의 60%와 영웅이 아닌 대상에게 준 피해의 20%를 치유 에너지로 저장합니다.\n\n사용하면 대상 아군 영웅에게 희망을 불어넣습니다. 대상이 주위에 있으면 대상이 영웅에게 준 피해의 30%와 영웅이 아닌 대상에게 준 피해의 10% 역시 치유 에너지로 저장됩니다. 동시에 1명의 영웅에게만 희망을 불어넣을 수 있습니다.\n\n최대 494(+4%)의 치유 에너지를 저장할 수 있습니다.",
           "shortDescription": "희망을 불어넣은 아군이 준 피해를 에너지로 저장",
           "cooldown": 1.5,
           "extras": {
@@ -24385,7 +24385,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rehgar_ghostwolf",
-            "description": "늑대 정령 형상일 때의 이동 속도 증가량이 20%에서 30%로 증가합니다. 늑대 정령 형상으로 적 영웅에게 일반 공격을 하면 늑대 정령의 재사용 대기시간이 1초 감소합니다.",
+            "description": "늑대 정령 형상일 때의 이동 속도 증가량이 20%에서 30%로 증가합니다. 늑대 정령 형상으로 적 영웅에게 일반 공격을 하면 늑대 정령의 재사용 대기시간이 3초 감소합니다.",
             "shortDescription": "늑대 정령 속도 증가 및 재사용 대기시간 감소",
             "upgradeFor": "Z"
           }
@@ -31089,7 +31089,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_whitemane_lash",
-          "description": "0.5초 후, 일직선상의 적들을 강타하여 78(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
+          "description": "0.5초 후, 일직선상의 적들을 강타하여 85(+4%)의 피해를 줍니다.\n\n첫 번째 타격이 적 영웅에게 적중하면 일정 시간 후 두 번째 타격이 발동합니다.",
           "shortDescription": "일직선상의 적들에게 피해",
           "cooldown": 6
         },
@@ -31155,7 +31155,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_whitemane_desperation",
-            "description": "일반 공격 사거리가 1.1 증가합니다. 활성화된 <span style=\"color:#fff5c2\">열의</span> 하나당 일반 공격력이 20% 증가합니다.",
+            "description": "일반 공격 사거리가 1.1 증가합니다. 활성화된 <span style=\"color:#fff5c2\">열의</span> 하나당 일반 공격력이 15% 증가합니다.",
             "shortDescription": "일반 공격력 및 사거리 증가",
             "upgradeFor": "Q"
           },
@@ -31167,7 +31167,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_whitemane_desperation_alt_1",
-            "description": "절박한 기도의 치유량이 10% 증가합니다. 활성화된 <span style=\"color:#fff5c2\">열의</span> 하나당 치유량이 추가로 10% 증가합니다.",
+            "description": "절박한 기도의 치유량이 20% 증가합니다. 활성화된 <span style=\"color:#fff5c2\">열의</span> 하나당 치유량이 추가로 10% 증가합니다.",
             "shortDescription": "열의가 절박한 기도의 치유량을 증가시킴",
             "upgradeFor": "Q"
           },
@@ -31205,7 +31205,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_whitemane_zeal",
-            "description": "적 영웅에게 일반 공격을 할 때마다 <span style=\"color:#fff5c2\">열의</span>의 지속 시간이 0.75초 증가합니다.",
+            "description": "적 영웅에게 일반 공격을 할 때마다 <span style=\"color:#fff5c2\">열의</span>의 지속 시간이 0.5초 증가합니다.",
             "shortDescription": "일반 공격 시 열의 지속 시간 증가",
             "upgradeFor": "D"
           },
