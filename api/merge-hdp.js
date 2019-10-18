@@ -248,6 +248,12 @@ function parseAllSkillsData(heroData, heroId) {
 
   return skillDataArray.filter(skillData => {
     switch (skillData.nameId) {
+      // Exclude common abilities
+      case 'Hearthstone':
+      case 'LootSpray':
+      case 'LootYellVoiceLine':
+      case 'Mount':
+      case 'Dismount':
       // Exclude Crossfade, because HDP >= 2.7.0 extracts the in-game tooltips
       // instead of the hero shop tooltips
       case 'LucioCrossfade':
