@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "2.48.0.76389",
+  "hotsVersion": "2.48.2.76781",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -1703,15 +1703,16 @@
       },
       "skills": [
         {
-          "id": "AnaTraitShrikeSniper",
+          "id": "AnaAimDownSightsActivate",
           "name": {
             "en": "Shrike",
             "ko": "때까치"
           },
           "type": "D",
-          "icon": "storm_ui_icon_ana_shrike",
-          "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.0.5초마다 때까치로 준 피해의 50%만큼 생명력을 회복합니다.\n\n<span style=\"color:#ffffff\">정조준</span>\n\n때까치를 사용하면 이동 속도가 25% 감소하지만, 치유탄과 수면총의 사거리가 25% 증가하고 영웅 하나를 관통합니다. 취소할 때까지 유지할 수 있습니다.",
-          "shortDescription": "일반 공격, 치유탄 및 수면총 강화"
+          "icon": "storm_ui_icon_ana_aim_down_sights",
+          "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.0.5초마다 때까치로 준 피해의 60%만큼 생명력을 회복합니다.\n\n<span style=\"color:#ffffff\">정조준</span>\n\n때까치를 사용하면 이동 속도가 25% 감소하지만, 치유탄과 수면총의 사거리가 25% 증가하고 영웅 하나를 관통합니다. 취소할 때까지 유지할 수 있습니다.",
+          "shortDescription": "일반 공격 시 지속 피해",
+          "cooldown": 4
         },
         {
           "id": "AnaHealingDart",
@@ -1787,8 +1788,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_sleep_dart",
-            "description": "수면총의 수면 효과가 만료되면 대상이 3초 동안 25% 느려집니다.",
-            "shortDescription": "수면총이 적을 느려지게 함",
+            "description": "수면총의 재사용 대기시간이 4초 감소합니다. 수면총의 수면 효과가 만료되면 대상이 3초 동안 25% 느려집니다.",
+            "shortDescription": "수면총이 적을 느려지게 함, 재사용 대기시간 감소",
             "upgradeFor": "E"
           },
           {
@@ -1799,7 +1800,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_shrike",
-            "description": "퀘스트: 적 영웅에게 독극물 5중첩을 달성해야 합니다.\n보상: 때까치의 치유량이 추가로 1.5% 증가합니다.",
+            "description": "퀘스트: 적 영웅에게 독극물 5중첩을 달성하거나 독극물이 5중첩인 영웅에게 일반 공격을 해야 합니다.\n보상: 독극물 5중첩을 달성하면 때까치의 치유량이 0.75% 증가합니다.\n보상: 독극물이 5중첩인 영웅에게 일반 공격을 하면 때까치의 치유량이 0.25% 증가합니다.",
             "shortDescription": "퀘스트: 때까치 치유량 증가",
             "upgradeFor": "D"
           }
@@ -1867,7 +1868,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_sleep_dart",
-            "description": "수면총의 수면 효과가 만료되면 대상의 최대 생명력의 10%만큼 피해를 줍니다. 수면 효과가 조기에 종료되지 않았다면 수면총의 재사용 대기시간이 5초로 감소합니다.",
+            "description": "수면총이 적중한 적 영웅 하나당 이동 속도가 2초 동안 20% 증가합니다. 수면총의 수면 효과가 만료되면 대상의 최대 생명력의 10%만큼 피해를 줍니다.",
             "shortDescription": "수면총 강화",
             "upgradeFor": "E"
           },
@@ -3087,7 +3088,8 @@
             "manaCost": 80,
             "extras": {
               "사거리": "∞",
-              "피해 반경": 1.25
+              "피해 반경": 1.25,
+              "추적 속도": 3.2
             }
           }
         ],
@@ -3199,7 +3201,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_artanis_purifierbeam",
-            "description": "정화 광선의 속도가 15% 증가합니다. 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 정화 광선이 다시 사용됩니다.",
+            "description": "정화 광선의 속도가 14% 증가합니다. 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 정화 광선이 다시 사용됩니다.",
             "shortDescription": "정화 광선 속도 증가 및 대상 처치 시 다시 사용됨",
             "upgradeFor": "R"
           },
@@ -7159,7 +7161,10 @@
           "type": "D",
           "icon": "storm_ui_icon_deckard_protectors_of_cain",
           "description": "주위에 아군 영웅이 1명 이상 있으면 방어력이 10 증가하고 일반 기술의 재사용 대기시간이 50% 더 빨리 감소합니다.",
-          "shortDescription": "주위에 아군 영웅이 있으면 방어력 증가 및 재사용 대기시간 감소"
+          "shortDescription": "주위에 아군 영웅이 있으면 방어력 증가 및 재사용 대기시간 감소",
+          "extras": {
+            "효과 반경": 6.5
+          }
         },
         {
           "id": "DeckardHealingPotion",
@@ -7172,7 +7177,10 @@
           "description": "지면에 생명력 물약을 놓습니다. 생명력 물약을 획득한 아군 영웅은 281(+4%)의 생명력을 회복합니다.\n\n동시에 최대 5개의 생명력 물약을 놓을 수 있습니다.",
           "shortDescription": "아군을 치유하는 물약 투척",
           "cooldown": 4,
-          "manaCost": 25
+          "manaCost": 25,
+          "extras": {
+            "물약 활성화 반경": 1
+          }
         },
         {
           "id": "DeckardHoradricCube",
@@ -7235,7 +7243,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_deckard_sapphire",
-            "description": "사용하면 다음 호라드림의 함의 감속 효과가 30% 증가힙니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
+            "description": "사용하면 다음 호라드림의 함의 공격력이 100% 증가하고 함의 감속 효과가 30% 증가힙니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
             "shortDescription": "다음 호라드림의 함 감속 효과 증가",
             "cooldown": 30
           }
@@ -7273,9 +7281,12 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_deckard_ruby",
-            "description": "사용하면 다음 호라드림의 함이 적중한 적 영웅들에게서 하급 생명력 물약 3개가 생성됩니다. 하급 생명력 물약은 10초 동안 지속되며 이를 획득한 아군 영웅은 260(+4%)의 생명력을 회복합니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
+            "description": "사용하면 다음 호라드림의 함의 공격력이 100% 증가하고 함이 적중한 적 영웅들에게서 하급 생명력 물약 3개가 생성됩니다. 하급 생명력 물약은 10초 동안 지속되며 이를 획득한 아군 영웅은 260(+4%)의 생명력을 회복합니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
             "shortDescription": "다음 호라드림의 함이 하급 생명력 물약 생성",
-            "cooldown": 30
+            "cooldown": 20,
+            "extras": {
+              "물약 활성화 반경": 1
+            }
           }
         ],
         "7": [
@@ -7311,7 +7322,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_deckard_emerald",
-            "description": "사용하면 다음 호라드림의 함이 적중한 적 영웅들의 받는 치유량이 4초 동안 75% 감소합니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
+            "description": "사용하면 다음 호라드림의 함의 공격력이 100% 증가하고 함이 적중한 적 영웅들의 받는 치유량이 4초 동안 75% 감소합니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
             "shortDescription": "다음 호라드림의 함에 적중한 적 받는 치유량 감소",
             "cooldown": 30
           }
@@ -7465,7 +7476,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_deckard_perfect_gems",
-            "description": "모든 보석의 재사용 대기시간이 25초 감소하고 호라드림의 함의 재사용 대기시간이 6초 감소합니다.",
+            "description": "모든 보석의 재사용 대기시간이 5초로 감소하고 호라드림의 함의 재사용 대기시간이 6초 감소합니다.",
             "shortDescription": "보석 및 호라드림의 함 재사용 대기시간 감소",
             "upgradeFor": "W"
           }
@@ -8244,13 +8255,13 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "value": 2670,
+          "value": 2825,
           "levelScaling": 0.04
         },
         "radius": 1.1875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.5625,
+          "value": 5.8867,
           "levelScaling": 0.04
         },
         "mp": {
@@ -8277,7 +8288,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_diablo_blacksoulstone_var1",
-          "description": "반복 퀘스트: 영웅을 처치할 때마다 10개, 돌격병을 처치할 때마다 1개의 영혼을 얻어 최대 100개의 영혼을 보유할 수 있습니다. 영혼 하나당 최대 생명력이 0.4% 증가합니다. 죽을 때 영혼이 100개 있으면 5초 만에 부활하고 영혼을 100개 잃습니다.",
+          "description": "반복 퀘스트: 영웅을 처치할 때마다 10개, 돌격병을 처치할 때마다 1개의 영혼을 얻어 최대 100개의 영혼을 보유할 수 있습니다. 영혼 하나당 최대 생명력이 0.3% 증가합니다. 죽을 때 영혼이 100개 있으면 5초 만에 부활하고 영혼을 100개 잃습니다.",
           "shortDescription": "적에게서 영혼을 모아 생명력을 얻고 더 빨리 부활"
         },
         {
@@ -8456,7 +8467,7 @@
             "description": "전장에 있는 모든 적 영웅의 위치에 악마의 룬을 만들어 냅니다. 룬은 1.75초 후에 폭발하여 적에게 142(+4%)의 피해를 주고 1.75초 동안 기절시킵니다.",
             "shortDescription": "적 영웅을 모두 기절시킴",
             "cooldown": 90,
-            "manaCost": 100,
+            "manaCost": 50,
             "extras": {
               "사거리": "∞",
               "피해 반경": 2.5
@@ -14090,13 +14101,13 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "value": 1350,
+          "value": 1425,
           "levelScaling": 0.04
         },
         "radius": 0.6875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 2.8125,
+          "value": 2.9687,
           "levelScaling": 0.04
         },
         "ammo": 4,
@@ -14235,7 +14246,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_junkrat_concussion_mine",
-            "description": "충격 지뢰가 적 영웅에게 적중하면 재사용 대기시간이 8초 감소합니다.",
+            "description": "충격 지뢰가 적 영웅에게 적중하면 재사용 대기시간이 9초 감소합니다.",
             "shortDescription": "적 영웅 적중 시 충격 지뢰 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -14277,7 +14288,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_junkrat_steel_trap",
-            "description": "강철 덫의 반경과 공격력이 50% 증가하고 덫을 밟은 적 영웅의 방어력을 3초 동안 10 감소시킵니다.",
+            "description": "강철 덫의 반경과 공격력이 50% 증가하고 덫을 밟은 적 영웅의 방어력을 3초 동안 15 감소시킵니다.",
             "shortDescription": "강철 덫 반경 및 공격력 증가",
             "upgradeFor": "E"
           },
@@ -14347,7 +14358,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_junkrat_rocket_ride",
-            "description": "1.25초 후, 로켓을 타고 하늘로 날아오릅니다. 공중에 있는 동안 이동 명령으로 착지 지점을 조정할 수 있습니다.\n\n3.75초 후에 추락하여 주위 적들에게 848(+4%)의 피해를 주고 완전 난장판을 발동시킵니다. 추락한 뒤 5초 후에 폭풍의 전당에서 다시 나타나고 탈것에서 내리기 전까지 이동 속도가 150% 증가합니다.",
+            "description": "1.25초 후, 로켓을 타고 하늘로 날아오릅니다. 공중에 있는 동안 이동 명령으로 착지 지점을 조정할 수 있습니다.\n\n3.75초 후에 추락하여 주위 적들에게 926(+4%)의 피해를 주고 완전 난장판을 발동시킵니다. 추락한 뒤 5초 후에 폭풍의 전당에서 다시 나타나고 탈것에서 내리기 전까지 이동 속도가 150% 증가합니다.",
             "shortDescription": "하늘로 날아오른 후 추락하여 적에게 피해를 줌",
             "cooldown": 75,
             "extras": {
@@ -16615,15 +16626,15 @@
             "upgradeFor": "W"
           },
           {
-            "id": "LiLiHinderingWinds",
+            "id": "LiLiMasteryBlindingWindSurgingWinds",
             "name": {
-              "en": "Hindering Winds",
-              "ko": "휘감는 바람"
+              "en": "Surging Winds",
+              "ko": "쇄도의 바람"
             },
             "type": "passive",
             "icon": "storm_ui_icon_lili_blindingwind",
-            "description": "실명의 바람이 적 영웅의 이동 속도를 1.5초 동안 25% 감소시킵니다.",
-            "shortDescription": "실명의 바람이 대상 영웅을 느려지게 함",
+            "description": "실명의 바람이 2명 이상의 적 영웅에게 적중하면 재사용 대기시간이 2초 감소하고 기술 위력이 10초 동안 10% 증가합니다.",
+            "shortDescription": "실명의 바람으로 기술 위력 증가",
             "upgradeFor": "E"
           },
           {
@@ -16733,15 +16744,15 @@
             "upgradeFor": "E"
           },
           {
-            "id": "LiLiMasteryBlindingWindSurgingWinds",
+            "id": "LiLiHinderingWinds",
             "name": {
-              "en": "Surging Winds",
-              "ko": "쇄도의 바람"
+              "en": "Hindering Winds",
+              "ko": "휘감는 바람"
             },
             "type": "passive",
             "icon": "storm_ui_icon_lili_blindingwind_a",
-            "description": "실명의 바람이 2명 이상의 적 영웅에게 적중하면 재사용 대기시간이 3초 감소하고 기술 위력이 10초 동안 10% 증가합니다.",
-            "shortDescription": "실명의 바람으로 기술 위력 증가",
+            "description": "실명의 바람이 적 영웅의 이동 속도를 2초 동안 25% 감소시킵니다.",
+            "shortDescription": "실명의 바람이 대상 영웅을 느려지게 함",
             "upgradeFor": "E"
           },
           {
@@ -18521,7 +18532,7 @@
           "icon": "storm_ui_icon_malfurion_innerrvate",
           "description": "대상 아군 영웅이 5초에 걸쳐 최대 마나의 20%를 회복합니다. 정신 자극의 영향을 받는 동안 대상은 일반 기술 재사용 대기시간이 50% 더 빨리 감소합니다.\n\n<span style=\"color:#ffff8a\">마나를 사용하지 않는 영웅에게는 사용할 수 없습니다.</span>",
           "shortDescription": "아군 마나 회복 및 재사용 대기시간 감소",
-          "cooldown": 30,
+          "cooldown": 25,
           "extras": {
             "사거리": 7.88
           }
@@ -18569,8 +18580,8 @@
           "icon": "storm_ui_icon_malfurion_entanglingroots",
           "description": "일정 지역 안의 적 영웅들을 1.25초 동안 이동 불가 상태로 만들고 지속 시간에 걸쳐 122(+4%)의 피해를 줍니다. 효과 범위가 3초에 걸쳐 점점 증가합니다.",
           "shortDescription": "일정 지역 안의 적 영웅들을 이동 불가 상태로 만들고 피해를 줌",
-          "cooldown": 14,
-          "manaCost": 75,
+          "cooldown": 12,
+          "manaCost": 65,
           "extras": {
             "사거리": 8,
             "피해 반경": "0.5 ~ 3"
@@ -19424,21 +19435,21 @@
               "ko": "바나듐 장갑"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_medic_deployshield_b",
-            "description": "대상이 이동 불가 상태이거나 기절한 동안 보호기가 증가시키는 방어력이 추가로 25 증가하고 지속 시간이 유지됩니다.",
-            "shortDescription": "대상 이동 불가 및 기절 시 방어력 및 지속 시간 증가",
+            "icon": "storm_ui_icon_medic_deployshield_c",
+            "description": "지속 효과: 보호기의 지속 시간이 1초 증가합니다.\n\n보호기의 대상이 기절, 이동 불가 상태인 동안 보호기가 증가시키는 방어력이 추가로 20 증가합니다.",
+            "shortDescription": "지속 시간 증가, 대상 기절 및 이동 불가 시 방어력 증가",
             "upgradeFor": "W"
           },
           {
-            "id": "MedicProlongedSafeguard",
+            "id": "MedicMediDrone",
             "name": {
-              "en": "Prolonged Safeguard",
-              "ko": "장시간 보호기"
+              "en": "Medi-Drone",
+              "ko": "치유기"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_medic_deployshield_c",
-            "description": "보호기의 지속 시간이 50% 증가합니다.",
-            "shortDescription": "보호기 지속 시간 증가",
+            "icon": "storm_ui_icon_medic_deployshield_b",
+            "description": "아군에게 보호기를 사용하면, 치유 광선으로 다른 아군을 치유해도 치유한 양의 50%만큼 보호기의 대상이 생명력을 회복합니다.",
+            "shortDescription": "치료 광선이 보호기 대상도 치유",
             "upgradeFor": "W"
           }
         ],
@@ -22036,7 +22047,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_nexushunter_passive",
-            "description": "생명력이 50% 미만인 적 영웅에게 일반 공격을 하면 30%의 추가 피해를 주고 공격 속도가 3초 동안 35% 증가합니다.",
+            "description": "일반 공격력이 15% 증가합니다. 생명력이 50% 미만인 적 영웅에게 일반 공격을 하면 15%의 추가 피해를 주고 공격 속도가 3초 동안 35% 증가합니다.",
             "shortDescription": "생명력이 낮은 영웅에게 일반 공격력 증가"
           }
         ],
@@ -24749,7 +24760,7 @@
           "description": "미샤의 생명력을 5초에 걸쳐 743(+4%) 회복시킵니다.",
           "shortDescription": "미샤 지속 치유",
           "cooldown": 10,
-          "manaCost": 55
+          "manaCost": 60
         }
       ],
       "talents": {
@@ -24774,7 +24785,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rexxar_heremishaactive",
-            "description": "미샤의 일반 공격이 돌격병과 용병에게 주는 피해가 200% 증가하고, 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
+            "description": "미샤의 일반 공격이 돌격병과 용병에게 주는 피해가 150% 증가하고, 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
             "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐"
           },
           {
@@ -24789,7 +24800,7 @@
             "shortDescription": "대상 지역을 드러냄",
             "cooldown": 20,
             "extras": {
-              "사거리": 15,
+              "사거리": 25,
               "시야 반경": 8
             }
           }
@@ -24814,7 +24825,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_regenerationmaster",
-            "description": "퀘스트: 재생의 구슬을 획득할 때마다 렉사르의 초당 생명력 재생량이 1.25 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 20개 이상 획득하면 렉사르와 미샤의 방어력이 15 증가합니다.",
+            "description": "퀘스트: 재생의 구슬을 획득할 때마다 렉사르의 초당 생명력 재생량이 1 증가하여 최대 25 증가합니다.\n보상: 재생의 구슬을 25개 이상 획득하면 렉사르와 미샤의 방어력이 15 증가합니다.",
             "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가"
           },
           {
@@ -30725,7 +30736,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_varian_parry",
-            "description": "무기 막기로 영웅의 일반 공격을 막으면 영웅의 일격의 재사용 대기시간이 초기화되고 다음 영웅의 일격의 공격력이 30% 증가합니다.",
+            "description": "무기 막기로 영웅의 일반 공격을 막으면 영웅의 일격의 재사용 대기시간이 초기화되고 다음 영웅의 일격의 공격력이 40% 증가합니다.",
             "shortDescription": "영웅 공격 무기 막기 시 영웅의 일격 재사용 대기시간 초기화",
             "upgradeFor": "W"
           },
@@ -30750,7 +30761,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_varian_taunt",
-            "description": "대상 영웅을 침묵시키고 도발하여 1.25초 동안 자신을 공격하게 만듭니다.\n\n지속 효과: 최대 생명력과 생명력 재생량이 30% 증가합니다.",
+            "description": "대상 영웅을 침묵시키고 도발하여 1.25초 동안 자신을 공격하게 만듭니다.\n\n지속 효과: 최대 생명력과 생명력 재생량이 40% 증가합니다.",
             "shortDescription": "생명력 증가\n대상 영웅이 자신을 공격하게 만듦",
             "cooldown": 16,
             "manaCost": 20,
@@ -30782,7 +30793,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_varian_twinbladesoffury",
-            "description": "일반 공격을 하면 영웅의 일격의 재사용 대기시간이 9초 감소하고 이동 속도가 2초 동안 30% 증가합니다.\n\n지속 효과: 공격 속도가 100% 증가합니다.\n지속 효과: 일반 공격력이 20% 감소합니다.",
+            "description": "일반 공격을 하면 영웅의 일격의 재사용 대기시간이 9초 감소하고 이동 속도가 2초 동안 30% 증가합니다.\n\n지속 효과: 공격 속도가 100% 증가합니다.\n지속 효과: 일반 공격력이 25% 감소합니다.",
             "shortDescription": "공격 속도가 증가하지만 일반 공격력 감소\n일반 공격의 영웅의 일격 재사용 대기시간 감소량 증가"
           }
         ],
@@ -30795,7 +30806,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_varian_lionsfang",
-            "description": "사자의 송곳니가 적 영웅에게 적중했을 때의 치유량이 50% 증가합니다.",
+            "description": "사자의 송곳니가 적 영웅에게 적중했을 때의 치유량이 75% 증가합니다.",
             "shortDescription": "사자의 송곳니 치유량 증가",
             "upgradeFor": "Q"
           },
@@ -30900,7 +30911,7 @@
             "icon": "storm_ui_icon_varian_bannerofstormwind",
             "description": "사용하면 주위 아군 영웅의 이동 속도를 25% 증가시키는 깃발을 놓습니다. 12초 동안 지속됩니다.",
             "shortDescription": "이동 속도를 증가시키는 깃발 소환",
-            "cooldown": 45,
+            "cooldown": 25,
             "extras": {
               "사거리": 10,
               "생명력": "452 (+4%)",
@@ -30934,7 +30945,7 @@
             "icon": "storm_ui_icon_varian_bannerofdalaran",
             "description": "사용하면 주위 아군 영웅의 기술 위력을 20% 증가시키는 깃발을 놓습니다. 12초 동안 지속됩니다.",
             "shortDescription": "기술 위력을 증가시키는 깃발 소환",
-            "cooldown": 45,
+            "cooldown": 25,
             "extras": {
               "사거리": 10,
               "생명력": "452 (+4%)",
@@ -30990,7 +31001,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_varian_glorytothealliance",
-            "description": "깃발이 주위 아군 영웅의 생명력 재생량 및 받는 치유 효과를 50% 증가시킵니다. 깃발의 재사용 대기시간이 20초 감소합니다.",
+            "description": "깃발이 주위 아군 영웅의 생명력 재생량 및 받는 치유 효과를 50% 증가시킵니다. 깃발의 재사용 대기시간이 50% 감소합니다.",
             "shortDescription": "깃발이 치유 효과를 증가시킴",
             "upgradeFor": "active"
           },
@@ -31038,9 +31049,9 @@
           "levelAdd": 0.098
         },
         "range": 5.5,
-        "period": 1.0,
+        "period": 1,
         "damage": {
-          "value": 55,
+          "value": 62,
           "levelScaling": 0.04
         }
       },
@@ -31076,7 +31087,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_whitemane_inquisition",
-          "description": "정신을 집중하여 적 영웅에게 3초 동안 0.5초마다 49(+4%)의 피해를 주고 30% 느려지게 합니다.\n\n관용과 재사용 대기시간을 공유합니다.",
+          "description": "정신을 집중하여 적 영웅에게 3초 동안 0.5초마다 49(+4%)의 피해를 주고 30% 느려지게 합니다. <span style=\"color:#ff8b8b\">절박함</span> 중첩을 하나 제거합니다.\n\n관용과 재사용 대기시간을 공유합니다.",
           "shortDescription": "적 영웅 공격 또는 아군 영웅 치유",
           "cooldown": 14
         },
@@ -31100,10 +31111,9 @@
           },
           "type": "active",
           "icon": "storm_ui_icon_whitemane_clemency",
-          "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 342(+4%)의 생명력을 회복시킵니다.\n\n심문과 재사용 대기시간을 공유합니다.",
+          "description": "사용하면 심문을 아군 영웅에게 시전하여 정신을 집중하는 동안 3초에 걸쳐 최대 342(+4%)의 생명력을 회복시키고 <span style=\"color:#ff8b8b\">절박함</span> 중첩을 하나 제거합니다.\n\n심문과 재사용 대기시간을 공유합니다.",
           "shortDescription": "심문으로 아군 치유",
-          "cooldown": 12,
-          "manaCost": 75
+          "cooldown": 12
         }
       ],
       "talents": {
@@ -31279,9 +31289,9 @@
               "ko": "성스러운 지팡이"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_whitemane_zeal",
-            "description": "일반 공격의 <span style=\"color:#fff5c2\">열의</span> 치유량이 100% 증가합니다.",
-            "shortDescription": "일반 공격의 열의 치유량 증가",
+            "icon": "storm_ui_icon_whitemane_lash_alt_1",
+            "description": "이글거리는 채찍이 적중한 적 영웅에게 3초 동안 낙인을 찍습니다. 낙인이 찍힌 대상에게 일반 공격을 하면 52(+4%)의 추가 기술 피해를 주고 낙인을 제거합니다.",
+            "shortDescription": "이글거리는 채찍이 일반 공격 강화",
             "upgradeFor": "D"
           }
         ],
@@ -31349,15 +31359,15 @@
             "upgradeFor": "R"
           },
           {
-            "id": "WhitemaneFanaticalPower",
+            "id": "WhitemaneGuidingLight",
             "name": {
-              "en": "Fanatical Power",
-              "ko": "광신적인 힘"
+              "en": "Guiding Light",
+              "ko": "인도의 빛"
             },
             "type": "active",
-            "icon": "storm_ui_icon_whitemane_desperation",
-            "description": "사용하면 아군 영웅에게 열의를 영구히 부여하는 절박한 기도를 시전합니다. 이 기술은 마나를 소모하지 않고 <span style=\"color:#ff8b8b\">절박함</span>을 얻지 않으며 사거리 제한이 없습니다. 동시에 하나만 활성화할 수 있습니다.",
-            "shortDescription": "사용 시 다음 절박한 기도 비용 없이 시전",
+            "icon": "storm_ui_icon_whitemane_zeal",
+            "description": "사용하면 아군 영웅에게 <span style=\"color:#fff5c2\">열의</span>를 영구히 부여합니다. 이 기술은 마나를 소모하지 않고 <span style=\"color:#ff8b8b\">절박함</span>을 얻지 않으며 사거리 제한이 없습니다. 동시에 하나만 활성화할 수 있습니다.",
+            "shortDescription": "사용 시 비용 없이 열의 부여",
             "cooldown": 30
           },
           {
@@ -31770,13 +31780,13 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "value": 1232,
+          "value": 1270,
           "levelScaling": 0.04
         },
         "radius": 0.625,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 2.5664,
+          "value": 2.6484,
           "levelScaling": 0.04
         },
         "mp": {
@@ -31868,7 +31878,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_magicmissiles",
-            "description": "마력탄으로 적 영웅에게 피해를 주면 기술 방어력이 50 증가하여 다음 기술 공격으로 받는 피해가 50% 감소합니다. 마력탄을 한 번 시전할 때 최대 1회 충전됩니다.\n\n최대 4회 충전됩니다.",
+            "description": "마력탄으로 적 영웅에게 피해를 주면 기술 방어력이 50 증가하여 다음 기술 공격으로 받는 피해가 50% 감소합니다. 마력탄을 한 번 시전할 때마다 1회 충전되어 최대 4회 충전됩니다.\n\n지속 효과: 마나가 35% 미만이면 마나 재생량이 100% 증가합니다.",
             "shortDescription": "마력탄이 기술 방어력을 증가시킴",
             "upgradeFor": "Q"
           },
@@ -31883,17 +31893,6 @@
             "description": "순간이동이 마나를 소모하지 않습니다. 3초 동안 피해를 받지 않으면 순간이동의 재사용 대기시간이 2초 감소합니다. 순간이동을 사용하면 다음 마력탄이 10%의 추가 피해를 줍니다.",
             "shortDescription": "비전투 시 순간이동 재사용 대기시간 감소",
             "upgradeFor": "E"
-          },
-          {
-            "id": "WizardAstralPresence",
-            "name": {
-              "en": "Astral Presence",
-              "ko": "초월적 존재"
-            },
-            "type": "passive",
-            "icon": "storm_btn_d3_traits_wizard_astralpresence",
-            "description": "마나가 35% 미만이면 마나 재생량이 100% 증가합니다.",
-            "shortDescription": "마나가 낮을 때 마나 재생량 증가"
           },
           {
             "id": "WizardPowerHungry",
@@ -31928,7 +31927,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_arcaneorb",
-            "description": "비전 보주가 기본 사거리의 50% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 5초 감소합니다.",
+            "description": "비전 보주가 기본 사거리의 50% 이상을 이동한 후 적 영웅에게 적중하면 재사용 대기시간이 5초 감소하고 40의 마나를 돌려받습니다.",
             "shortDescription": "최대 거리에서 폭발 시 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
