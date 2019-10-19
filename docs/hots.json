@@ -1703,15 +1703,16 @@
       },
       "skills": [
         {
-          "id": "AnaTraitShrikeSniper",
+          "id": "AnaAimDownSightsActivate",
           "name": {
             "en": "Shrike",
             "ko": "때까치"
           },
           "type": "D",
-          "icon": "storm_ui_icon_ana_shrike",
-          "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.0.5초마다 때까치로 준 피해의 50%만큼 생명력을 회복합니다.\n\n<span style=\"color:#ffffff\">정조준</span>\n\n때까치를 사용하면 이동 속도가 25% 감소하지만, 치유탄과 수면총의 사거리가 25% 증가하고 영웅 하나를 관통합니다. 취소할 때까지 유지할 수 있습니다.",
-          "shortDescription": "일반 공격, 치유탄 및 수면총 강화"
+          "icon": "storm_ui_icon_ana_aim_down_sights",
+          "description": "적에게 일반 공격을 하면 독극물을 투여하여 5초에 걸쳐 추가로 42(+4%)의 피해를 줍니다. 이 효과는 최대 5회 중첩됩니다.0.5초마다 때까치로 준 피해의 60%만큼 생명력을 회복합니다.\n\n<span style=\"color:#ffffff\">정조준</span>\n\n때까치를 사용하면 이동 속도가 25% 감소하지만, 치유탄과 수면총의 사거리가 25% 증가하고 영웅 하나를 관통합니다. 취소할 때까지 유지할 수 있습니다.",
+          "shortDescription": "일반 공격 시 지속 피해",
+          "cooldown": 4
         },
         {
           "id": "AnaHealingDart",
@@ -3087,7 +3088,8 @@
             "manaCost": 80,
             "extras": {
               "사거리": "∞",
-              "피해 반경": 1.25
+              "피해 반경": 1.25,
+              "추적 속도": 3.2
             }
           }
         ],
@@ -7159,7 +7161,10 @@
           "type": "D",
           "icon": "storm_ui_icon_deckard_protectors_of_cain",
           "description": "주위에 아군 영웅이 1명 이상 있으면 방어력이 10 증가하고 일반 기술의 재사용 대기시간이 50% 더 빨리 감소합니다.",
-          "shortDescription": "주위에 아군 영웅이 있으면 방어력 증가 및 재사용 대기시간 감소"
+          "shortDescription": "주위에 아군 영웅이 있으면 방어력 증가 및 재사용 대기시간 감소",
+          "extras": {
+            "효과 반경": 6.5
+          }
         },
         {
           "id": "DeckardHealingPotion",
@@ -7172,7 +7177,10 @@
           "description": "지면에 생명력 물약을 놓습니다. 생명력 물약을 획득한 아군 영웅은 281(+4%)의 생명력을 회복합니다.\n\n동시에 최대 5개의 생명력 물약을 놓을 수 있습니다.",
           "shortDescription": "아군을 치유하는 물약 투척",
           "cooldown": 4,
-          "manaCost": 25
+          "manaCost": 25,
+          "extras": {
+            "물약 활성화 반경": 1
+          }
         },
         {
           "id": "DeckardHoradricCube",
@@ -7275,7 +7283,10 @@
             "icon": "storm_ui_icon_deckard_ruby",
             "description": "사용하면 다음 호라드림의 함의 공격력이 100% 증가하고 함이 적중한 적 영웅들에게서 하급 생명력 물약 3개가 생성됩니다. 하급 생명력 물약은 10초 동안 지속되며 이를 획득한 아군 영웅은 260(+4%)의 생명력을 회복합니다.\n\n한 번에 1개의 보석만 활성화할 수 있습니다.",
             "shortDescription": "다음 호라드림의 함이 하급 생명력 물약 생성",
-            "cooldown": 20
+            "cooldown": 20,
+            "extras": {
+              "물약 활성화 반경": 1
+            }
           }
         ],
         "7": [
@@ -8244,13 +8255,13 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "value": 2670,
+          "value": 2825,
           "levelScaling": 0.04
         },
         "radius": 1.1875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.5625,
+          "value": 5.8867,
           "levelScaling": 0.04
         },
         "mp": {
@@ -14090,13 +14101,13 @@
       "universe": "overwatch",
       "stats": {
         "hp": {
-          "value": 1350,
+          "value": 1425,
           "levelScaling": 0.04
         },
         "radius": 0.6875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 2.8125,
+          "value": 2.9687,
           "levelScaling": 0.04
         },
         "ammo": 4,
@@ -24789,7 +24800,7 @@
             "shortDescription": "대상 지역을 드러냄",
             "cooldown": 20,
             "extras": {
-              "사거리": 15,
+              "사거리": 25,
               "시야 반경": 8
             }
           }
@@ -31040,7 +31051,7 @@
         "range": 5.5,
         "period": 1,
         "damage": {
-          "value": 55,
+          "value": 62,
           "levelScaling": 0.04
         }
       },
@@ -31769,13 +31780,13 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "value": 1232,
+          "value": 1270,
           "levelScaling": 0.04
         },
         "radius": 0.625,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 2.5664,
+          "value": 2.6484,
           "levelScaling": 0.04
         },
         "mp": {
