@@ -1,5 +1,5 @@
 {
-  "hotsVersion": "2.48.2.76781",
+  "hotsVersion": "2.48.2.76893",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -1868,7 +1868,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_ana_sleep_dart",
-            "description": "수면총이 적중한 적 영웅 하나당 이동 속도가 2초 동안 20% 증가합니다. 수면총의 수면 효과가 만료되면 대상의 최대 생명력의 10%만큼 피해를 줍니다.",
+            "description": "수면총이 적중한 적 영웅 하나당 이동 속도가 2초 동안 25% 증가합니다. 수면총의 수면 효과가 만료되면 대상의 최대 생명력의 10%만큼 피해를 줍니다.",
             "shortDescription": "수면총 강화",
             "upgradeFor": "E"
           },
