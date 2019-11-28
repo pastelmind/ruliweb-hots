@@ -440,6 +440,9 @@ const COLOR_CODES = {
   StandardTooltipHeader: 'ffffff',
   TooltipNumbers: 'bfd4fd',
   TooltipQuest: 'e4b800',
+  // From heromods/deathwing.stormmod/base.stormdata/UI/FontStyles.StormStyle
+  DeathwingWorldBreaker: 'd8ab80',
+  DeathwingDestroyer: 'ef6e28',
   // From heromods/malthael.stormmod/base.stormdata/UI/FontStyles.StormStyle
   MalthaelTrait: '00dfdf',
   // From heromods/whitemane.stormmod/base.stormdata/UI/FontStyles.StormStyle
