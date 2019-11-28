@@ -1,5 +1,6 @@
 {
   "hotsVersion": "2.48.4.77406",
+  "hotsPtrVersion": "2.49.0.77435",
   "heroes": {
     "Abathur": {
       "name": "아바투르",
@@ -34076,6 +34077,1279 @@
       }
     }
   },
+  "ptrHeroes": {
+    "Deathwing": {
+      "name": "데스윙",
+      "title": "파괴자",
+      "icon": "ui_targetportrait_hero_deathwing",
+      "newRole": "bruiser",
+      "universe": "warcraft",
+      "stats": {
+        "hp": {
+          "value": 3200,
+          "levelScaling": 0.04
+        },
+        "radius": 1.25,
+        "speed": 4.8398,
+        "hpRegen": {
+          "value": 6.668,
+          "levelScaling": 0.04
+        },
+        "energy": 100,
+        "range": 2.5,
+        "period": 1.5,
+        "damage": {
+          "value": 170,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "id": "DeathwingAspectOfDeath",
+          "name": {
+            "en": "Aspect of Death",
+            "ko": "죽음의 위상"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_deathwing_aspect_of_death",
+          "description": "방어력을 각각 10 증가시키는 갑옷을 4개 장착하고 있습니다. 생명력을 25% 잃을 때마다 갑옷을 하나씩 잃습니다. 갑옷은 용의 비상으로만 복구할 수 있으며, 착지하는 순간의 생명력에 따라 복구됩니다.\n\n또한, 강력한 용의 위상으로 영구적으로 저지 불가 상태이며 영웅에게 100%의 추가 피해를 주지만, 아군을 경멸하여 그들의 모든 우호적 효과를 무시합니다.",
+          "shortDescription": "위력이 특히 강하지만 우호적 효과를 무시"
+        },
+        {
+          "id": "DeathwingMoltenFlame",
+          "name": {
+            "en": "Molten Flame",
+            "ko": "이글거리는 화염"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_deathwing_molten_flame",
+          "description": "1.5초 후, 화염 줄기를 내뿜어 0.125초마다 22(+4%)의 피해를 줍니다. 초당 30의 기력이 소모됩니다.",
+          "shortDescription": "이글거리는 화염 줄기로 적들을 녹임",
+          "cooldown": 3,
+          "extras": {
+            "기력": "초당 30"
+          }
+        },
+        {
+          "id": "DeathwingIncinerate",
+          "name": {
+            "en": "Incinerate",
+            "ko": "소각"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_deathwing_incinerate",
+          "description": "0.75초 후, 날개를 퍼덕여 주위 적들에게 88(+4%)의 피해를 줍니다.\n\n<span style=\"color:#d8ab80\">세계 파괴자: 용암 폭발</span>\n피해를 주고 느려지게 하는 용암 웅덩이를 만듭니다.",
+          "shortDescription": "주위 적들에게 피해를 줌",
+          "cooldown": 4,
+          "extras": {
+            "기력": 15
+          }
+        },
+        {
+          "id": "DeathwingLavaBurst",
+          "name": {
+            "en": "Lava Burst",
+            "ko": "용암 폭발"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_deathwing_lava_burst",
+          "description": "1초 후, 마그마를 폭발시켜 대상 지역의 모든 적에게 31(+4%)의 피해를 줍니다. 폭발한 마그마는 웅덩이를 남겨 범위 안의 적들에게 초당 17(+4%)의 피해를 주고 35% 느려지게 합니다. 6초 동안 지속됩니다.\n\n<span style=\"color:#ef6e28\">파괴자: 소각</span>\n주위 적들에게 피해를 줍니다.",
+          "shortDescription": "피해를 주고 느려지게 하는 용암 웅덩이를 만듦",
+          "cooldown": 6,
+          "extras": {
+            "기력": 20
+          }
+        },
+        {
+          "id": "DeathwingOnslaught",
+          "name": {
+            "en": "Onslaught",
+            "ko": "맹격"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_deathwing_onslaught",
+          "description": "0.5초 후, 한 방향으로 돌진하여 적들에게 44(+4%)의 피해를 주고 2초 동안 35% 느려지게 합니다. 뛰어든 후에는 적들을 물어 83(+4%)의 추가 피해를 줍니다.\n\n<span style=\"color:#d8ab80\">세계 파괴자: 대지 분쇄</span>\n두 줄로 적에게 피해를 주고 기절시킵니다.",
+          "shortDescription": "한 방향으로 돌진",
+          "cooldown": 5,
+          "extras": {
+            "기력": 20
+          }
+        },
+        {
+          "id": "DeathwingEarthShatter",
+          "name": {
+            "en": "Earth Shatter",
+            "ko": "대지 분쇄"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_deathwing_earth_shatter",
+          "description": "대지에 균열을 만들어 적중한 적들에게 83(+4%)의 피해를 주고 0.75초 동안 기절시킵니다.\n\n<span style=\"color:#ef6e28\">파괴자: 맹격</span>\n한 방향으로 돌진합니다.",
+          "shortDescription": "두 줄로 적에게 피해를 주고 기절시킴",
+          "cooldown": 12,
+          "extras": {
+            "기력": 25
+          }
+        },
+        {
+          "id": "DeathwingCataclysm",
+          "name": {
+            "en": "Cataclysm",
+            "ko": "대격변"
+          },
+          "type": "R",
+          "icon": "storm_ui_icon_deathwing_cataclysm",
+          "description": "2초 후, 대상 방향으로 날며 땅을 불태워 경로상의 적들에게 94(+4%)의 피해를 주고 초당 50(+4%)의 피해를 주는 흔적을 남깁니다. 6초 동안 지속됩니다.",
+          "shortDescription": "한 방향으로 비행하며 지나온 길을 황폐화시킴",
+          "cooldown": 90
+        },
+        {
+          "id": "DeathwingFormSwitch",
+          "name": {
+            "en": "Form Switch",
+            "ko": "형상 전환"
+          },
+          "type": "active",
+          "icon": "storm_ui_icon_deathwing_deathdrop",
+          "description": "<span style=\"color:#ef6e28\">파괴자</span> 또는 <span style=\"color:#d8ab80\">세계 파괴자</span>로 형상을 바꾸어 형상 당 두 가지의 고유한 일반 기술을 사용합니다.\n\n<span style=\"color:#ef6e28\">소각</span>은 주위 적들에게 피해를 주며 <span style=\"color:#ef6e28\">맹격</span>으로 적에게 뛰어들 수 있습니다.\n\n<span style=\"color:#d8ab80\">용암 폭발</span>은 감속 지역을 만들며 <span style=\"color:#d8ab80\">대지 분쇄</span>는 두 줄로 적들을 기절시킵니다.",
+          "shortDescription": "파괴자 또는 세계 파괴자로 형상 전환",
+          "cooldown": 20
+        },
+        {
+          "id": "DeathwingDragonflight",
+          "name": {
+            "en": "Dragonflight",
+            "ko": "용의 비상"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_deathwing_mount",
+          "description": "3초 후, 하늘로 날아올라 모든 효과에 면역이 되고 초당 생명력의 2.5%를 회복합니다. 시전을 시작하면 피해를 받아도 중단되지 않습니다. 피해를 받거나 일반 공격 및 기술 공격을 하면 4초간 사용할 수 없습니다.",
+          "shortDescription": "하늘로 날아오름",
+          "cooldown": 45
+        },
+        {
+          "id": "DeathwingDestroyerForm",
+          "name": {
+            "en": "Destroyer",
+            "ko": "파괴자"
+          },
+          "type": "Z - Q",
+          "icon": "storm_ui_icon_deathwing_destroyer",
+          "description": "1.75초 후, 지상을 강타해 대상 지역 안의 적들에게 52(+4%)의 피해를 주고 <span style=\"color:#ef6e28\">파괴자</span> 형상으로 착지합니다. 착지하고 3초 후부터 기술을 사용할 수 있습니다.",
+          "shortDescription": "파괴자 형상으로 지상에 착지",
+          "cooldown": 8
+        },
+        {
+          "id": "DeathwingWorldbreakerForm",
+          "name": {
+            "en": "World Breaker",
+            "ko": "세계 파괴자"
+          },
+          "type": "Z - W",
+          "icon": "storm_ui_icon_deathwing_world_breaker",
+          "description": "1.75초 후, 지상을 강타해 대상 지역 안의 적들에게 52(+4%)의 피해를 주고 <span style=\"color:#d8ab80\">세계 파괴자</span> 형상으로 착지합니다. 착지하고 3초 후부터 기술을 사용할 수 있습니다.",
+          "shortDescription": "세계 파괴자 형상으로 지상에 착지",
+          "cooldown": 8
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "id": "DeathwingDragonSoul",
+            "name": {
+              "en": "Dragon Soul",
+              "ko": "용의 영혼"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_heat_wave",
+            "description": "<span style=\"color:#ef6e28\">파괴자:</span> <span style=\"color:#ef6e28\">소각</span>으로 적 영웅에게 준 피해의 75%만큼 생명력을 회복합니다.\n\n<span style=\"color:#d8ab80\">세계 파괴자:</span> <span style=\"color:#ef6e28\">용암 폭발</span>의 폭발로 적 영웅에게 준 피해의 150%만큼 생명력을 회복합니다.",
+            "shortDescription": "소각과 용암 폭발로 생명력 회복",
+            "upgradeFor": "W"
+          },
+          {
+            "id": "DeathwingMoltenBlood",
+            "name": {
+              "en": "Molten Blood",
+              "ko": "용암의 피"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_aspect_of_death",
+            "description": "갑옷이 3개 이상이면 초당 최대 생명력의 0.4%를 회복합니다.",
+            "shortDescription": "갑옷이 생명력을 더 빠르게 회복시킴",
+            "upgradeFor": "D"
+          },
+          {
+            "id": "DeathwingDraconicMight",
+            "name": {
+              "en": "Draconic Might",
+              "ko": "용족의 권능"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_aspect_of_death_alt1",
+            "description": "일반 공격으로 적 영웅에게 준 피해의 40%만큼 생명력을 회복합니다. 갑옷을 하나 잃으면 0.75초 동안 보호 상태가 됩니다.",
+            "shortDescription": "갑옷을 잃으면 보호 상태가 됨, 일반 공격으로 생명력 회복",
+            "upgradeFor": "W"
+          }
+        ],
+        "4": [
+          {
+            "id": "DeathwingInfernus",
+            "name": {
+              "en": "Infernus",
+              "ko": "지옥불"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_molten_flame",
+            "description": "기력이 75% 이상일 때 이글거리는 화염을 사용하면 적 영웅에게 75%의 추가 피해를 줍니다.",
+            "shortDescription": "기력이 높을 때 이글거리는 화염의 공격력 증가",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "DeathwingHeatWave",
+            "name": {
+              "en": "Heat Wave",
+              "ko": "열기의 파도"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_heat_wave",
+            "description": "<span style=\"color:#ef6e28\">파괴자:</span> <span style=\"color:#ef6e28\">소각</span>이 적중한 적 영웅 하나당 다음 8초 동안 주위 모든 적에게 초당 17(+4%)의 피해를 줍니다. 최대 4회 중첩됩니다.\n\n<span style=\"color:#d8ab80\">세계 파괴자:</span> <span style=\"color:#d8ab80\">용암 폭발</span>의 폭발 공격력이 125% 증가합니다.",
+            "shortDescription": "소각 및 용암 폭발 공격력 증가",
+            "upgradeFor": "W"
+          },
+          {
+            "id": "DeathwingDragonsIre",
+            "name": {
+              "en": "Dragon's Ire",
+              "ko": "용의 분노"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_aspect_of_death",
+            "description": "갑옷이 3개 이하면 공격력이 30% 증가합니다.",
+            "shortDescription": "갑옷을 잃으면 공격력 증가",
+            "upgradeFor": "D"
+          }
+        ],
+        "7": [
+          {
+            "id": "DeathwingFirestorm",
+            "name": {
+              "en": "Firestorm",
+              "ko": "화염폭풍"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_firestorm",
+            "description": "착지할 때, 착지한 위치 주변에 7개의 유성우를 내려 적중한 적들에게 68(+4%)의 피해를 줍니다. 유성우가 영웅에게 적중하면 용의 비상의 재사용 대기시간이 12초 감소합니다.\n\n유성우는 영웅을 우선시하지만, 대상 지역 안에 영웅이 없으면 무작위로 떨어집니다.",
+            "shortDescription": "유성우로 용의 비행 재사용 대기시간 감소",
+            "upgradeFor": "Z - Q / Z - W"
+          },
+          {
+            "id": "DeathwingDeathDrop",
+            "name": {
+              "en": "Death Drop",
+              "ko": "죽음의 낙하"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_deathdrop",
+            "description": "<span style=\"color:#ef6e28\">파괴자</span> 또는 <span style=\"color:#d8ab80\">세계 파괴자의</span> 착지가 적 영웅에게 적중하면 일반 기술의 재사용 대기시간이 2초 감소하고 대상의 기술 방어력을 6초 동안 15 감소시킵니다.",
+            "shortDescription": "적 영웅에게 착지하면 대상의 기술 방어력 감소",
+            "upgradeFor": "Z - Q / Z - W"
+          },
+          {
+            "id": "DeathwingSkyfall",
+            "name": {
+              "en": "Skyfall",
+              "ko": "하늘붕괴"
+            },
+            "type": "Z - E",
+            "icon": "storm_ui_icon_deathwing_skyfall",
+            "description": "용의 비행 사용 후, 시야가 확보된 곳 어디에든 유성우를 떨어뜨려 대상 지역 안의 적들에게 60(+4%)의 피해를 줍니다. 총 3회 충전됩니다.\n\n영웅에게 적중하면 최대 생명력의 5%를 회복하며 착지 대기시간이 1.5초 감소합니다.",
+            "shortDescription": "유성우를 떨어뜨려 더 빨리 착지",
+            "rechargeCooldown": 10
+          }
+        ],
+        "10": [
+          {
+            "id": "DeathwingBurnBeneathMyShadow",
+            "name": {
+              "en": "Burn Beneath My Shadow",
+              "ko": "내 그림자 아래 불타올라라"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_cataclysm",
+            "description": "적 요새 또는 성채가 파괴되면 대격변의 재사용 대기시간이 초기화됩니다. 대격변의 지속 피해량이 150% 증가합니다.",
+            "shortDescription": "요새나 성채를 파괴하면 대격변 즉시 재사용 가능",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "DeathwingBellowingRoar",
+            "name": {
+              "en": "Bellowing Roar",
+              "ko": "우레의 포효"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_deathwing_bellowing_roar",
+            "description": "1초 후, 맹렬한 포효로 주위 영웅들에게 26(+4%)의 피해를 주고 2초 동안 공포에 질려 달아나게 합니다.",
+            "shortDescription": "포효로 주위 영웅들을 공포에 질리게 함",
+            "cooldown": 60
+          }
+        ],
+        "13": [
+          {
+            "id": "DeathwingWickedInferno",
+            "name": {
+              "en": "Wicked Inferno",
+              "ko": "부정한 지옥불"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_molten_flame",
+            "description": "이글거리는 화염의 초당 기력 소모량이 10 감소합니다. 이글거리는 화염을 사용한 후, 3초에 걸쳐 15의 기력을 회복합니다.",
+            "shortDescription": "이글거리는 화염의 기력 소모량 감소",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "DeathwingRuination",
+            "name": {
+              "en": "Ruination",
+              "ko": "초토화"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_ruination",
+            "description": "<span style=\"color:#ef6e28\">파괴자:</span> <span style=\"color:#ef6e28\">맹격</span>의 물기가 대상을 1.5초 동안 60% 느려지게 합니다.\n\n<span style=\"color:#d8ab80\">세계 파괴자:</span> <span style=\"color:#d8ab80\">대지 분쇄</span>의 재사용 대기시간이 6초 감소하고 기력 소모량이 10 감소합니다.",
+            "shortDescription": "맹격 물기가 적을 느려지게 하고, 대지 분쇄 기력 소모량 감소",
+            "upgradeFor": "E"
+          },
+          {
+            "id": "DeathwingFireAndFury",
+            "name": {
+              "en": "Fire and Fury",
+              "ko": "불과 격노"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_fire_and_fury",
+            "description": "기절, 감속, 이동 불가 상태인 적 영웅에게 일반 공격을 하면 30%의 추가 피해를 주고 일반 기술의 재사용 대기시간이 0.5초 감소합니다.",
+            "shortDescription": "일반 공격이 무력화된 적들에게 추가 피해"
+          }
+        ],
+        "16": [
+          {
+            "id": "DeathwingConflagration",
+            "name": {
+              "en": "Conflagration",
+              "ko": "대화재"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_molten_flame",
+            "description": "이글거리는 화염으로 적 영웅에게 4초 안에 333(+4%)의 피해를 주면 대상을 불타게 만들어 4초에 걸쳐 104(+4%)의 피해를 줍니다. 불길은 타는 동안 1초 마다 폭발해 주위 모든 적에게 83(+4%)의 피해를 줍니다.",
+            "shortDescription": "이글거리는 화염이 영웅에게 폭발하는 불길을 붙임",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "DeathwingGazeOntoDestruction",
+            "name": {
+              "en": "Gaze Onto Destruction",
+              "ko": "파괴를 목도하라"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_deathdrop",
+            "description": "<span style=\"color:#ef6e28\">파괴자</span> 또는 <span style=\"color:#d8ab80\">세계 파괴자의</span> 착지가 적 영웅에게 적중하면 5초 동안 대상의 공격력이 75% 감소하고 40% 느려집니다.",
+            "shortDescription": "영웅 위로 착지하면 대상이 느려지고 공격력 감소",
+            "upgradeFor": "Z - Q / Z - W"
+          },
+          {
+            "id": "DeathwingElementiumPlating",
+            "name": {
+              "en": "Elementium Plating",
+              "ko": "엘레멘티움 갑옷"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_deathwing_elemental_plating",
+            "description": "사용하면 8초 동안 잃은 생명력의 35%에 해당하는 보호막을 얻습니다. 보호막이 지속되는 동안 초당 최대 생명력의 2%를 회복합니다.\n\n보호막이 만료되거나 파괴될 때 새로운 생명력에 맞는 갑옷을 다시 획득합니다.\n\n용의 비상을 사용하면 보호막과 효과가 즉시 사라집니다.",
+            "shortDescription": "사용 시 보호막 획득 및 생명력 회복",
+            "cooldown": 60
+          }
+        ],
+        "20": [
+          {
+            "id": "DeathwingStoodInTheFire",
+            "name": {
+              "en": "Stood in the Fire",
+              "ko": "불길 속으로"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_cataclysm",
+            "description": "불타는 땅 위에 있는 모든 적이 40% 느려지며, 흔적의 지속 시간이 50% 증가합니다.",
+            "shortDescription": "대격변이 적을 느려지게 함, 재사용 대기시간 감소",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "DeathwingArrivalOfAGod",
+            "name": {
+              "en": "Arrival of a God",
+              "ko": "신의 강림"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_deathdrop",
+            "description": "<span style=\"color:#ef6e28\">파괴자</span> 또는 <span style=\"color:#d8ab80\">세계 파괴자의</span> 착지 공격력이 400% 증가합니다.\n\n또한, 모든 7레벨 특성을 습득합니다.",
+            "shortDescription": "착지 공격력이 증가하고 모든 7레벨 특성 습득",
+            "upgradeFor": "Z - Q / Z - W"
+          },
+          {
+            "id": "DeathwingDestroyersRampage",
+            "name": {
+              "en": "Destroyer's Rampage",
+              "ko": "파괴자의 광란"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_deathwing_destroyer",
+            "description": "<span style=\"color:#ef6e28\">파괴자</span> 형태로 착지한 후 6초 동안 공격력이 40% 증가하고, 일반 기술의 재사용 대기시간이 50% 더 빨리 감소합니다.\n\n영웅에게 피해를 주면 이 효과의 지속 시간이 갱신되며 <span style=\"color:#d8ab80\">세계 파괴자</span> 형상으로 변신하면 효과가 사라집니다.",
+            "shortDescription": "파괴자 형상으로 착지한 뒤 공격력 강화",
+            "upgradeFor": "Z - Q"
+          }
+        ]
+      }
+    },
+    "LostVikings": {
+      "name": "길 잃은 바이킹",
+      "title": "답 없는 삼형제",
+      "icon": "ui_targetportrait_hero_lostvikings",
+      "newRole": "support",
+      "universe": "classic",
+      "stats": [
+        {
+          "unitName": "올라프",
+          "hp": {
+            "value": 1540,
+            "levelScaling": 0.04
+          },
+          "radius": 0.875,
+          "speed": 4.8398,
+          "hpRegen": {
+            "value": 3.207,
+            "levelScaling": 0.04
+          },
+          "range": 1.25,
+          "period": 1,
+          "damage": {
+            "value": 57,
+            "levelScaling": 0.04
+          }
+        },
+        {
+          "unitName": "밸로그",
+          "hp": {
+            "value": 1180,
+            "levelScaling": 0.04
+          },
+          "radius": 0.5625,
+          "speed": 4.8398,
+          "hpRegen": {
+            "value": 2.457,
+            "levelScaling": 0.04
+          },
+          "range": 4,
+          "period": 0.9,
+          "damage": {
+            "value": 78,
+            "levelScaling": 0.04
+          }
+        },
+        {
+          "unitName": "에릭",
+          "hp": {
+            "value": 840,
+            "levelScaling": 0.04
+          },
+          "radius": 0.5,
+          "speed": 5.5664,
+          "hpRegen": {
+            "value": 1.75,
+            "levelScaling": 0.04
+          },
+          "range": 6.5,
+          "period": 0.7,
+          "damage": {
+            "value": 65,
+            "levelScaling": 0.04
+          }
+        }
+      ],
+      "skills": [
+        {
+          "id": "LostVikingsVikingHoardTalent",
+          "name": {
+            "en": "Viking Hoard",
+            "ko": "바이킹 비상 식량"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_lostvikings_vikinghoard",
+          "description": "바이킹으로 재생의 구슬을 획득할 때마다 모든 바이킹의 초당 생명력 재생량이 0.5 증가합니다.\n\n현재 추가 생명력 재생량: 초당 0",
+          "shortDescription": "재생의 구슬 획득 시 생명력 재생량 증가"
+        },
+        {
+          "id": "LostVikingSelectOlaf",
+          "name": {
+            "en": "Select Olaf",
+            "ko": "올라프 선택"
+          },
+          "type": "active",
+          "icon": "storm_ui_icon_lostvikings_selectolaf",
+          "description": "올라프는 우클릭으로 적에게 돌진해서 대상의 이동 속도를 3초 동안 30% 감소시킬 수 있습니다. 8초에 한 번씩만 발동합니다.\n\n올라프는 4초 동안 전투에서 벗어나면 생명력 재생량이 증가합니다.",
+          "shortDescription": "올라프는 생명력이 매우 많고 빠르게 재생되며, 돌진하여 적을 느려지게 함",
+          "extras": {
+            "돌진 사거리": 5,
+            "생명력 재생": "초당 5%"
+          }
+        },
+        {
+          "id": "LostVikingSelectBaleog",
+          "name": {
+            "en": "Select Baleog",
+            "ko": "밸로그 선택"
+          },
+          "type": "active",
+          "icon": "storm_ui_icon_lostvikings_selectbaleog",
+          "description": "밸로그의 일반 공격은 공격 대상 뒤에 있는 적들에게 50%의 방사 피해를 줍니다.",
+          "shortDescription": "밸로그는 공격 대상 뒤에 있는 적들에게 방사 피해를 줌",
+          "extras": {
+            "피해 반경": 5,
+            "중심각": "65°"
+          }
+        },
+        {
+          "id": "LostVikingSelectErik",
+          "name": {
+            "en": "Select Erik",
+            "ko": "에릭 선택"
+          },
+          "type": "active",
+          "icon": "storm_ui_icon_lostvikings_selecterik",
+          "description": "에릭은 다른 바이킹보다 이동 속도가 빠르고 일반 공격 사거리가 깁니다.",
+          "shortDescription": "에릭은 다른 바이킹보다 이동 속도가 빠르고 공격 사거리가 김"
+        },
+        {
+          "id": "LostVikingsGoGoGo",
+          "name": {
+            "en": "Go Go Go!",
+            "ko": "달려라 달려!"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_lostvikings_mount",
+          "description": "바이킹들의 이동 속도가 4초 동안 30% 증가합니다.",
+          "shortDescription": "일시적으로 이동 속도 30% 증가",
+          "cooldown": 30
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "id": "LostVikingsMasteryOlafTheStout",
+            "name": {
+              "en": "Olaf the Stout",
+              "ko": "뚱보 올라프"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectolaf",
+            "description": "5초마다, 올라프의 물리 방어력이 75 증가하여 다음 영웅 일반 공격으로 받는 피해가 75% 감소합니다.\n\n최대 2회 충전됩니다.",
+            "shortDescription": "올라프 물리 방어력 증가",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasterySpyGames",
+            "name": {
+              "en": "Spy Games",
+              "ko": "잠입 액션"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selecterik",
+            "description": "에릭이 3초 동안 가만히 서 있으면 은신 상태가 되고 시야 반경이 75% 증가합니다. 은신 효과는 움직인 후에도 3초 동안 유지됩니다.",
+            "shortDescription": "에릭이 움직이지 않으면 은신 및 시야 증가",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryExplosiveAttacks",
+            "name": {
+              "en": "Explosive Attacks",
+              "ko": "폭발성 공격"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectbaleog",
+            "description": "밸로그가 영웅이 아닌 대상에게 주는 방사 피해가 100%로 증가합니다.",
+            "shortDescription": "밸로그가 영웅이 아닌 대상에게 주는 방사 피해 증가",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryVikingBribery",
+            "name": {
+              "en": "Viking Bribery",
+              "ko": "바이킹 매수"
+            },
+            "type": "E",
+            "icon": "storm_ui_icon_talent_bribe",
+            "description": "주위에서 적 돌격병이나 고용된 용병이 죽으면 매수 중첩이 쌓입니다. 40중첩을 대상 용병에게 사용하면, 용병이 즉시 매수됩니다. 정예 용병에게는 적용되지 않습니다. 최대 200회 중첩됩니다. 매수만으로 용병 캠프를 점령하면 그 캠프의 재생성 대기시간이 50% 감소합니다.\n\n<span style=\"color:#ffff8a\">현재 매수 중첩: </span>0",
+            "shortDescription": "돌격병을 처치해서 용병 매수",
+            "extras": {
+              "매수 사거리": 6
+            }
+          }
+        ],
+        "4": [
+          {
+            "id": "LostVikingsMasteryPainDontHurt",
+            "name": {
+              "en": "Pain Don't Hurt",
+              "ko": "아파도 괜찮아"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectbaleog",
+            "description": "밸로그가 일반 공격 및 방사 피해의 20%만큼 생명력을 회복합니다. 영웅에게 피해를 주면 치유랑이 두 배가 됩니다.",
+            "shortDescription": "밸로그가 공격 시 생명력 회복",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryErikTheSwift",
+            "name": {
+              "en": "Erik the Swift",
+              "ko": "날쌘돌이 에릭"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selecterik",
+            "description": "에릭의 기본 이동 속도가 영구히 10% 증가하고, 이동하는 동안 초당 35(+4%)의 생명력을 회복합니다.",
+            "shortDescription": "에릭 이동 속도 증가 및 이동 중 생명력 회복",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryItsASabotage",
+            "name": {
+              "en": "It's a Sabotage!",
+              "ko": "파괴 공작!"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selecterik_var1",
+            "description": "에릭의 일반 공격이 구조물에 불을 붙여 5초에 걸쳐 260(+4%)의 피해를 줍니다.",
+            "shortDescription": "에릭이 구조물에 추가 피해",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "GenericTalentMercenaryLord",
+            "name": {
+              "en": "Mercenary Lord",
+              "ko": "용병의 왕"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_mercenarylord",
+            "description": "우두머리를 제외한 주위 아군 용병들의 공격력이 50% 증가합니다. 돌격병과 용병을 상대로 방어력이 50 증가하여 받는 피해가 50% 감소합니다.",
+            "shortDescription": "주위 용병 강화",
+            "extras": {
+              "효과 반경": 9
+            }
+          }
+        ],
+        "7": [
+          {
+            "id": "LostVikingsMasteryBaleogTheFierce",
+            "name": {
+              "en": "Baleog the Fierce",
+              "ko": "용맹한 밸로그"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectbaleog",
+            "description": "밸로그의 일반 공격이 공격 속도를 8% 증가시킵니다. 최대 5회 중첩됩니다. 3초 동안 공격하지 않으면 중첩이 빠른 속도로 사라집니다.",
+            "shortDescription": "밸로그가 공격 시 공격 속도 증가",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasterySpinToWin",
+            "name": {
+              "en": "Spin To Win!",
+              "ko": "돌아야 이긴다!"
+            },
+            "type": "Q",
+            "icon": "storm_ui_icon_lostvikings_spintowin",
+            "description": "사용하면 각 바이킹이 주위 적들에게 105(+4%)의 피해를 줍니다.",
+            "shortDescription": "각 바이킹이 주위 적들에게 피해",
+            "cooldown": 10,
+            "extras": {
+              "피해 반경": 2
+            }
+          },
+          {
+            "id": "LostVikingsMasteryNorseForce",
+            "name": {
+              "en": "Norse Force!",
+              "ko": "바이킹의 힘!"
+            },
+            "type": "Q",
+            "icon": "storm_ui_icon_lostvikings_norseforce",
+            "description": "현재 살아 있는 바이킹의 수에 따라 모든 바이킹이 135(+4%)에서 270(+4%)의 보호막을 얻습니다. 4초 동안 지속됩니다.",
+            "shortDescription": "모든 바이킹이 보호막 획득",
+            "cooldown": 30
+          }
+        ],
+        "10": [
+          {
+            "id": "LostVikingsHeroicAbilityLongboatRaid",
+            "name": {
+              "en": "Longboat Raid!",
+              "ko": "바이킹의 습격!"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_lostvikings_longboatraid",
+            "description": "저지할 수 없는 함선에 올라타, 주위 적들에게 포격을 퍼부어 초당 116(+4%)의 피해를 줍니다. 대상 지역에 237(+4%)의 피해를 주는 박격포를 발사할 수 있습니다. 함선의 생명력은 탑승한 바이킹 수에 따라 증가합니다. 적의 공격으로 함선이 파괴되면 모든 바이킹이 1초 동안 기절합니다. 함선은 15초 동안 지속됩니다.\n\n<span style=\"color:#ffff8a\">살아 있는 모든 바이킹이 주위에 있어야 합니다.</span>",
+            "shortDescription": "함선에 올라타 적들을 공격",
+            "cooldown": 90
+          },
+          {
+            "id": "LostVikingsLongboatRaidMortar",
+            "name": {
+              "en": "Mortar",
+              "ko": "박격포"
+            },
+            "type": "R - Q",
+            "icon": "storm_ui_icon_lostvikings_mortar",
+            "description": "대상 지역에 박격포를 발사해, 넓은 지역에 237(+4%)의 피해를 줍니다.",
+            "shortDescription": "넓은 지역에 피해를 줌",
+            "cooldown": 3,
+            "extras": {
+              "사거리": 12.5,
+              "피해 반경": 2.5
+            }
+          },
+          {
+            "id": "LostVikingsHeroicAbilityPlayAgain",
+            "name": {
+              "en": "Play Again!",
+              "ko": "한 판 더!"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_lostvikings_playagain",
+            "description": "바이킹 하나가 2초 동안 정신을 집중해, 모든 길 잃은 바이킹을 부활시키고 최대 생명력으로 회복시켜 대상 위치에 소환합니다.\n\n<span style=\"color:#ffff8a\">동시에 한 바이킹만 기술을 사용할 수 있습니다.</span>",
+            "shortDescription": "모든 바이킹 부활 및 소환",
+            "cooldown": 80
+          }
+        ],
+        "13": [
+          {
+            "id": "LostVikingsMasteryHunkaBurningOlaf",
+            "name": {
+              "en": "Hunka' Burning Olaf",
+              "ko": "불타올라 올라프"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectolaf",
+            "description": "올라프가 주위 적들에게 매초 35(+4%)의 피해를 줍니다.",
+            "shortDescription": "올라프가 주위 적들에게 피해",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryJump",
+            "name": {
+              "en": "Jump!",
+              "ko": "펄쩍!"
+            },
+            "type": "W",
+            "icon": "storm_ui_icon_lostvikings_jump",
+            "description": "모든 바이킹이 1.5초 동안 무적 상태가 되고 적들의 머리 위로 지나갈 수 있습니다.",
+            "shortDescription": "일시적으로 무적",
+            "cooldown": 30
+          },
+          {
+            "id": "LostVikingsMasteryNordicAttackSquad",
+            "name": {
+              "en": "Nordic Attack Squad",
+              "ko": "바이킹 공격단"
+            },
+            "type": "W",
+            "icon": "storm_ui_icon_talent_autoattack_damage",
+            "description": "사용하면 5초 동안 모든 바이킹의 일반 공격이 대상 적 영웅 최대 생명력의 1.25%만큼 추가 피해를 줍니다.",
+            "shortDescription": "영웅 대상 일반 공격 강화",
+            "cooldown": 20
+          }
+        ],
+        "16": [
+          {
+            "id": "LostVikingsMasteryLargeAndInCharge",
+            "name": {
+              "en": "Large and In Charge",
+              "ko": "힘세고 강한 돌격"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_selectolaf",
+            "description": "올라프가 적에게 돌진하면 적이 1초 동안 기절합니다.",
+            "shortDescription": "돌진 시 적 기절",
+            "upgradeFor": "passive"
+          },
+          {
+            "id": "LostVikingsMasteryImpatienceIsAVirtue",
+            "name": {
+              "en": "Impatience Is a Virtue",
+              "ko": "참으면 손해"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_autoattack_cooldown",
+            "description": "한 바이킹이 일반 공격으로 적에게 피해를 줄 때마다 모든 바이킹 기술의 재사용 대기시간이 0.25초 감소합니다.",
+            "shortDescription": "바이킹이 공격 시 모든 바이킹의 재사용 대기시간 감소"
+          },
+          {
+            "id": "LostVikingsGoGoGo64KBMarathon",
+            "name": {
+              "en": "64 KB Marathon",
+              "ko": "64 KB 마라톤"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_64kbmarathon",
+            "description": "달려라 달려! 사용 시 이동 속도가 추가로 40% 증가한 뒤 4초에 걸쳐 서서히 감소합니다. 또한 바이킹들이 이동 불가 및 감속 효과에서 벗어납니다.",
+            "shortDescription": "이동 속도 증가 및 이동 방해 효과 제거",
+            "upgradeFor": "Z"
+          },
+          {
+            "id": "HeroGenericExecutionerPassive",
+            "name": {
+              "en": "Executioner",
+              "ko": "집행자"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_autoattack_damage",
+            "description": "감속, 이동 불가, 기절 상태인 적 영웅에게 일반 공격을 하면 일반 공격력이 3초 동안 30% 증가합니다.",
+            "shortDescription": "무력화된 영웅 공격 시 일반 공격력 증가"
+          }
+        ],
+        "20": [
+          {
+            "id": "LostVikingsMasteryWereOnABoat",
+            "name": {
+              "en": "Ragnarok 'n' Roll!",
+              "ko": "라그나로크가 간다!"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_longboatraid",
+            "description": "함선이 동시에 두 대상을 공격할 수 있으며, 박격포의 사거리가 100% 증가합니다.",
+            "shortDescription": "전투 능력 강화",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "LostVikingsMasteryCheckpointReached",
+            "name": {
+              "en": "Checkpoint Reached",
+              "ko": "자동 저장 지점"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_playagain",
+            "description": "한 판 더! 시전 10초 후, 죽은 바이킹이 모두 부활하여 소환되고, 모든 바이킹이 생명력을 모두 회복합니다.",
+            "shortDescription": "추가 부활 및 생명력 회복",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "LostVikingsMasteryTheSequel",
+            "name": {
+              "en": "The Sequel!",
+              "ko": "2탄!"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_lostvikings_fastrestart",
+            "description": "길 잃은 바이킹의 부활 대기시간이 50% 감소합니다.",
+            "shortDescription": "모든 바이킹의 부활 대기시간 감소"
+          },
+          {
+            "id": "LostVikingsTalentFuryoftheStorm",
+            "name": {
+              "en": "Fury of the Storm",
+              "ko": "폭풍의 분노"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_talent_autoattack_damage",
+            "description": "5초마다 다음 일반 공격이 대상에게 43(+4%)의 추가 피해를 주고, 주위 모든 돌격병, 용병, 괴물에게 109(+4%)의 피해를 줍니다. 각각의 바이킹이 자신만의 재사용 대기시간을 갖습니다.",
+            "shortDescription": "일반 공격 시 영웅이 아닌 대상들에게 연쇄 피해",
+            "extras": {
+              "피해 반경": 6,
+              "방사 피해의 최대 타격 횟수": 10
+            }
+          }
+        ]
+      }
+    },
+    "Mephisto": {
+      "name": "메피스토",
+      "title": "증오의 군주",
+      "icon": "ui_targetportrait_hero_mephisto",
+      "newRole": "ranged_assassin",
+      "universe": "diablo",
+      "stats": {
+        "hp": {
+          "value": 1968,
+          "levelScaling": 0.04
+        },
+        "radius": 0.75,
+        "speed": 4.8398,
+        "hpRegen": {
+          "value": 4.1015,
+          "levelScaling": 0.04
+        },
+        "mp": {
+          "value": 500,
+          "levelAdd": 10
+        },
+        "mpRegen": {
+          "value": 3,
+          "levelAdd": 0.098
+        },
+        "range": 4.5,
+        "period": 1,
+        "damage": {
+          "value": 66,
+          "levelScaling": 0.04
+        }
+      },
+      "skills": [
+        {
+          "id": "MephistoLordOfHatred",
+          "name": {
+            "en": "Lord Of Hatred",
+            "ko": "증오의 군주"
+          },
+          "type": "D",
+          "icon": "storm_ui_icon_mephisto_hatred",
+          "description": "일반 기술이 적 영웅에게 적중할 때마다 일반 기술의 재사용 대기시간이 감소합니다.\n\n섬뜩한 해골과 메피스토의 그림자는 1.5초씩, 번개 회오리는 0.3초씩 일반 기술의 재사용 대기시간을 감소시킵니다.",
+          "shortDescription": "일반 기술 영웅 적중 시 기술 재사용 대기시간 감소"
+        },
+        {
+          "id": "MephistoSkullMissile",
+          "name": {
+            "en": "Skull Missile",
+            "ko": "섬뜩한 해골"
+          },
+          "type": "Q",
+          "icon": "storm_ui_icon_mephisto_skull",
+          "description": "0.75초 후에 대상 방향으로 날아가는 해골을 소환합니다. 해골은 적들에게 132(+4%)의 피해를 주고 적 영웅을 2초 동안 25% 느려지게 합니다.",
+          "shortDescription": "일정 시간 후 일직선상의 적들에게 피해",
+          "cooldown": 8,
+          "manaCost": 20,
+          "extras": {
+            "사거리": 12.5,
+            "너비": 2
+          }
+        },
+        {
+          "id": "MephistoLightningNova",
+          "name": {
+            "en": "Lightning Nova",
+            "ko": "번개 회오리"
+          },
+          "type": "W",
+          "icon": "storm_ui_icon_mephisto_lightning",
+          "description": "주위에 번개의 고리가 2.5초 동안 나타납니다. 고리에 닿은 적은 0.25초마다 47(+4%)의 피해를 입습니다.\n\n번개 회오리가 적 영웅에게 적중할 때마다 번개 회오리의 공격력이 3% 증가하여 최대 30% 증가합니다.",
+          "shortDescription": "주위 적들에게 점차 증가하는 피해",
+          "cooldown": 14,
+          "manaCost": 50,
+          "extras": {
+            "피해 반경": "4.5 ~ 5.25"
+          }
+        },
+        {
+          "id": "MephistoShadeOfMephisto",
+          "name": {
+            "en": "Shade of Mephisto",
+            "ko": "메피스토의 그림자"
+          },
+          "type": "E",
+          "icon": "storm_ui_icon_mephisto_shade",
+          "description": "대상 위치로 순간이동해, 주위 적들에게 81(+4%)의 피해를 주고 원래 위치에 메피스토의 그림자를 남깁니다.\n\n2.5초 후, 그림자의 위치로 다시 순간이동합니다.",
+          "shortDescription": "대상 위치로 순간이동한 뒤 일정 시간 후 되돌아옴",
+          "cooldown": 18,
+          "manaCost": 35,
+          "extras": {
+            "사거리": 7.5,
+            "피해 반경": 2.5
+          }
+        }
+      ],
+      "talents": {
+        "1": [
+          {
+            "id": "MephistoSkullMissileUnyieldingPower",
+            "name": {
+              "en": "Unyielding Power",
+              "ko": "불굴의 힘"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_skull",
+            "description": "퀘스트: 섬뜩한 해골이 적 영웅에게 적중해야 합니다.\n보상: 섬뜩한 해골이 적 영웅에게 20회 적중하면 섬뜩한 해골의 공격력이 100 증가합니다.\n보상: 섬뜩한 해골이 적 영웅에게 40회 적중하면 섬뜩한 해골의 재사용 대기시간이 영구히 5초로 감소합니다.",
+            "shortDescription": "퀘스트: 섬뜩한 해골 강화",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "MephistoLightningNovaFuriousSpark",
+            "name": {
+              "en": "Furious Spark",
+              "ko": "성난 번개"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_lightning",
+            "description": "같은 대상에게 번개 회오리가 3회 적중할 때마다 75(+4%)의 추가 피해를 주고 2의 마나를 돌려받습니다.",
+            "shortDescription": "번개 회오리가 추가 피해",
+            "upgradeFor": "W"
+          },
+          {
+            "id": "MephistoShadeOfMephistoMaliciousIntent",
+            "name": {
+              "en": "Malicious Intent",
+              "ko": "악독한 의도"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_shade",
+            "description": "메피스토의 그림자가 활성화된 동안 기술 위력이 20% 증가하고 그림자가 사라진 후에도 2.5초 동안 효과가 유지됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 20회 이상 적중하면, 기술 위력 증가 효과가 그림자가 사라진 후에도 10초 동안 유지됩니다.",
+            "shortDescription": "메피스토의 그림자가 기술 위력을 증가시킴",
+            "upgradeFor": "E"
+          }
+        ],
+        "4": [
+          {
+            "id": "MephistoSkullMissileHatefulMending",
+            "name": {
+              "en": "Hateful Mending",
+              "ko": "증오에 찬 회복"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_skull",
+            "description": "섬뜩한 해골로 적 영웅에게 준 피해의 60%만큼 생명력을 회복합니다.",
+            "shortDescription": "섬뜩한 해골로 생명력 회복",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "MephistoLightningNovaStaticBarrier",
+            "name": {
+              "en": "Static Barrier",
+              "ko": "전자기 보호막"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_lightning",
+            "description": "번개 회오리의 지속 시간이 만료되면 번개 회오리로 적 영웅에게 준 피해의 40%에 해당하는 보호막을 얻습니다. 5초 동안 지속됩니다.",
+            "shortDescription": "번개 회오리가 보호막 부여",
+            "upgradeFor": "W"
+          },
+          {
+            "id": "MephistoSpite",
+            "name": {
+              "en": "Spite",
+              "ko": "앙심"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_hatred",
+            "description": "재생의 구슬의 지속 시간이 150% 증가합니다. 재생의 구슬로 생명력을 회복할 때마다 증오의 군주가 발동하여 일반 기술의 재사용 대기시간이 1초 감소합니다.",
+            "shortDescription": "재생의 구슬로 증오의 군주 발동",
+            "upgradeFor": "D"
+          }
+        ],
+        "7": [
+          {
+            "id": "MephistoShadeOfMephistoGhastlyArmor",
+            "name": {
+              "en": "Ghastly Armor",
+              "ko": "섬뜩한 갑옷"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_shade",
+            "description": "메피스토의 그림자가 활성화된 동안 방어력이 20 증가합니다. 메피스토의 그림자가 사라진 후에도 2.5초 동안 유지됩니다.",
+            "shortDescription": "메피스토의 그림자가 방어력을 증가시킴",
+            "upgradeFor": "E"
+          },
+          {
+            "id": "MephistoShadeOfMephistoFrostStorm",
+            "name": {
+              "en": "Frost Storm",
+              "ko": "냉기 습격"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_shade_b",
+            "description": "메피스토의 그림자가 활성화된 동안, 번개 회오리에 적중당한 적이 1초 동안 15% 느려지고 섬뜩한 해골의 감속 효과가 50%로 증가합니다.",
+            "shortDescription": "메피스토의 그림자 사용 시 번개 회오리가 적을 느려지게 함",
+            "extras": {
+              "효과 반경": 3
+            },
+            "upgradeFor": "E"
+          },
+          {
+            "id": "MephistoShadeOfMephistoTrickery",
+            "name": {
+              "en": "Trickery",
+              "ko": "계략"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_shade_c",
+            "description": "메피스토의 그림자가 활성화된 동안 이동 속도가 20% 증가하고, 만료된 후에도 2.5초 동안 지속됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 20회 이상 적중하면 메피스토의 그림자의 재사용 대기시간이 초기화됩니다.",
+            "shortDescription": "메피스토의 그림자가 이동 속도를 증가시킴",
+            "upgradeFor": "E"
+          }
+        ],
+        "10": [
+          {
+            "id": "MephistoConsumeSouls",
+            "name": {
+              "en": "Consume Souls",
+              "ko": "영혼 삼키기"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_mephisto_souls",
+            "description": "2.5초 동안 정신을 집중하여 모든 적 영웅을 드러냅니다. 정신 집중이 끝나면 모든 적 영웅에게 371(+4%)의 피해를 주고 2.5초 동안 25% 느려지게 합니다.",
+            "shortDescription": "모든 적 영웅에게 피해를 주고 느려지게 함",
+            "cooldown": 120,
+            "manaCost": 80
+          },
+          {
+            "id": "MephistoDuranceOfHate",
+            "name": {
+              "en": "Durance of Hate",
+              "ko": "증오의 족쇄"
+            },
+            "type": "R",
+            "icon": "storm_ui_icon_mephisto_durance",
+            "description": "1초 후, 사악한 영혼들을 내보내 처음 적중한 적 영웅을 2.5초 동안 이동 불가 상태로 만들고 지속 시간에 걸쳐 260(+4%)의 피해를 줍니다.\n\n증오의 족쇄는 처음 적중한 대상으로부터 점점 퍼져 나가, 주위의 적 영웅들을 추가로 이동 불가 상태로 만들고 피해를 줍니다.",
+            "shortDescription": "적 영웅을 이동 불가 상태로 만드는 영혼 방출",
+            "cooldown": 50,
+            "manaCost": 50,
+            "extras": {
+              "사거리": 12,
+              "너비": 2,
+              "확산 반경": 6
+            }
+          }
+        ],
+        "13": [
+          {
+            "id": "MephistoSkullMissileAbhorredSkull",
+            "name": {
+              "en": "Abhorred Skull",
+              "ko": "혐오스러운 해골"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_skull",
+            "description": "섬뜩한 해골이 적 영웅에게 적중하면 기술 위력이 6초 동안 20% 증가합니다.",
+            "shortDescription": "섬뜩한 해골 적중 시 기술 위력 증가",
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "MephistoLordOfHatredHysteria",
+            "name": {
+              "en": "Hysteria",
+              "ko": "광분"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_hatred",
+            "description": "증오의 군주가 궁극기의 재사용 대기시간 또한 감소시킵니다. 궁극기를 시전하면 최대 생명력과 최대 마나의 15%를 회복합니다.",
+            "shortDescription": "증오의 군주 발동 시 궁극기 재사용 대기시간 감소",
+            "upgradeFor": "D"
+          },
+          {
+            "id": "MephistoShardOfHate",
+            "name": {
+              "en": "Shard of Hate",
+              "ko": "증오의 조각"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_splash",
+            "description": "일반 공격이 주 대상 주위의 적에게도 피해를 주며, 적 영웅에게 일반 공격이 적중할 때마다 증오의 군주가 발동하여 일반 기술의 재사용 대기시간이 1초 감소합니다.",
+            "shortDescription": "일반 공격 시 방사 피해 및 증오의 군주 발동",
+            "extras": {
+              "피해 반경": 3.5
+            }
+          }
+        ],
+        "16": [
+          {
+            "id": "MephistoSkullMissileLightningReaction",
+            "name": {
+              "en": "Lightning Reaction",
+              "ko": "번개 반응"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_skull",
+            "description": "섬뜩한 해골이 번개 회오리에 닿으면 폭발하여 주위 적들에게 144(+4%)의 피해를 줍니다.",
+            "shortDescription": "섬뜩한 해골이 번개 회오리에 닿으면 폭발",
+            "extras": {
+              "피해 반경": 3
+            },
+            "upgradeFor": "Q"
+          },
+          {
+            "id": "MephistoLightningNovaStaticField",
+            "name": {
+              "en": "Static Field",
+              "ko": "전자기장"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_lightning",
+            "description": "번개 회오리의 공격력 증가 효과가 30%에 도달하면 번개 회오리가 대상의 최대 생명력의 10%만큼 추가 피해를 줍니다.",
+            "shortDescription": "번개 회오리가 영웅에게 주는 피해 증가",
+            "extras": {
+              "피해 반경": 6
+            },
+            "upgradeFor": "W"
+          },
+          {
+            "id": "MephistoAnimosity",
+            "name": {
+              "en": "Animosity",
+              "ko": "적개심"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_lightning_b",
+            "description": "번개 회오리의 지속 시간이 0.5초 증가합니다. 번개 회오리가 활성화된 동안 적 영웅에게 일반 공격을 할 때마다 번개 회오리의 지속 시간이 0.25초 증가합니다.",
+            "shortDescription": "번개 회오리 지속 시간 증가",
+            "upgradeFor": "W"
+          }
+        ],
+        "20": [
+          {
+            "id": "MephistoConsumeSoulsConsumedByHatred",
+            "name": {
+              "en": "Consumed by Hatred",
+              "ko": "증오가 널 삼킨다"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_souls",
+            "description": "영혼 삼키기가 대상이 잃은 생명력의 10%만큼 추가 피해를 줍니다. 영혼 삼키기의 첫 번째 공격으로 적 영웅을 처치하면 영혼 삼키기가 1회 더 사용됩니다.",
+            "shortDescription": "적 영웅 처치 시 영혼 삼키기 재사용",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "MephistoDuranceOfHateUnspeakableHorror",
+            "name": {
+              "en": "Unspeakable Horror",
+              "ko": "형언할 수 없는 공포"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_durance",
+            "description": "증오의 족쇄의 이동 불가 효과가 만료되면 대상을 3초 동안 침묵시킵니다.",
+            "shortDescription": "증오의 족쇄가 적을 침묵시킴",
+            "upgradeFor": "R"
+          },
+          {
+            "id": "MephistoLightningNovaMimic",
+            "name": {
+              "en": "Mimic",
+              "ko": "따라하기"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_mephisto_lightning",
+            "description": "메피스토의 그림자와 번개 회오리가 동시에 활성화된 동안 메피스토의 그림자도 번개 회오리를 시전합니다.",
+            "shortDescription": "메피스토의 그림자가 번개 회오리 사용 가능",
+            "upgradeFor": "W"
+          },
+          {
+            "id": "MephistoShadeOfMephistoShadeLord",
+            "name": {
+              "en": "Shade Lord",
+              "ko": "그림자 군주"
+            },
+            "type": "active",
+            "icon": "storm_ui_icon_mephisto_shade",
+            "description": "사용하면 메피스토의 그림자와 위치를 바꾸고 지속 시간을 갱신합니다.\n\n지속 효과: 메피스토의 그림자에 7 레벨 특성들이 모두 적용됩니다.",
+            "shortDescription": "사용 시 메피스토의 그림자와 위치 교환",
+            "cooldown": 40,
+            "upgradeFor": "E"
+          }
+        ]
+      }
+    }
+  },
   "iconUrls": {
     "storm_btn_d3_traits_wizard_astralpresence": "https://i1.ruliweb.com/img/18/07/02/16459596af219dc2c.png",
     "storm_btn_d3_traits_wizard_elementalexposure": "https://i2.ruliweb.com/img/18/07/02/164595aa7bf19dc2c.png",
@@ -34277,6 +35551,27 @@
     "storm_ui_icon_chromie_timetrap_b": "https://i3.ruliweb.com/img/19/03/19/1699346cbd219dc2c.png",
     "storm_ui_icon_chromie_timetraveler": "https://i2.ruliweb.com/img/18/07/02/164594888c319dc2c.png",
     "storm_ui_icon_chromie_timewarp": "https://i2.ruliweb.com/img/18/07/02/1645948792819dc2c.png",
+    "storm_ui_icon_deathwing_aspect_of_death": "https://i1.ruliweb.com/img/19/11/28/16eafea69d819dc2c.png",
+    "storm_ui_icon_deathwing_aspect_of_death_alt1": "https://i3.ruliweb.com/img/19/11/28/16eafea6ac819dc2c.png",
+    "storm_ui_icon_deathwing_bellowing_roar": "https://i3.ruliweb.com/img/19/11/28/16eafea6bc219dc2c.png",
+    "storm_ui_icon_deathwing_cancel_mount": "https://i1.ruliweb.com/img/19/11/28/16eafea6ce619dc2c.png",
+    "storm_ui_icon_deathwing_cataclysm": "https://i1.ruliweb.com/img/19/11/28/16eafea6dc519dc2c.png",
+    "storm_ui_icon_deathwing_conflagration": "https://i1.ruliweb.com/img/19/11/28/16eafea6ea619dc2c.png",
+    "storm_ui_icon_deathwing_deathdrop": "https://i2.ruliweb.com/img/19/11/28/16eafea6f8419dc2c.png",
+    "storm_ui_icon_deathwing_destroyer": "https://i3.ruliweb.com/img/19/11/28/16eafea706619dc2c.png",
+    "storm_ui_icon_deathwing_earth_shatter": "https://i1.ruliweb.com/img/19/11/28/16eafea717419dc2c.png",
+    "storm_ui_icon_deathwing_elemental_plating": "https://i3.ruliweb.com/img/19/11/28/16eafea729d19dc2c.png",
+    "storm_ui_icon_deathwing_fire_and_fury": "https://i2.ruliweb.com/img/19/11/28/16eafea739819dc2c.png",
+    "storm_ui_icon_deathwing_firestorm": "https://i3.ruliweb.com/img/19/11/28/16eafea748f19dc2c.png",
+    "storm_ui_icon_deathwing_heat_wave": "https://i2.ruliweb.com/img/19/11/28/16eafea755b19dc2c.png",
+    "storm_ui_icon_deathwing_incinerate": "https://i2.ruliweb.com/img/19/11/28/16eafea762b19dc2c.png",
+    "storm_ui_icon_deathwing_lava_burst": "https://i2.ruliweb.com/img/19/11/28/16eafea76c519dc2c.png",
+    "storm_ui_icon_deathwing_molten_flame": "https://i2.ruliweb.com/img/19/11/28/16eafea77b319dc2c.png",
+    "storm_ui_icon_deathwing_mount": "https://i1.ruliweb.com/img/19/11/28/16eafea788719dc2c.png",
+    "storm_ui_icon_deathwing_onslaught": "https://i3.ruliweb.com/img/19/11/28/16eafea796219dc2c.png",
+    "storm_ui_icon_deathwing_ruination": "https://i2.ruliweb.com/img/19/11/28/16eafea7a3f19dc2c.png",
+    "storm_ui_icon_deathwing_skyfall": "https://i1.ruliweb.com/img/19/11/28/16eafea7b1119dc2c.png",
+    "storm_ui_icon_deathwing_world_breaker": "https://i2.ruliweb.com/img/19/11/28/16eafea7bef19dc2c.png",
     "storm_ui_icon_deckard_angelic_conduit": "https://i3.ruliweb.com/img/18/07/02/16459533b0a19dc2c.png",
     "storm_ui_icon_deckard_emerald": "https://i2.ruliweb.com/img/18/07/02/1645953340a19dc2c.png",
     "storm_ui_icon_deckard_healing_potion": "https://i1.ruliweb.com/img/18/07/02/164595342d719dc2c.png",
@@ -35127,6 +36422,7 @@
     "ui_targetportrait_hero_cho": "https://i3.ruliweb.com/img/18/06/14/163fc22380a19dc2c.png",
     "ui_targetportrait_hero_chromie": "https://i3.ruliweb.com/img/18/06/14/163fc2238c619dc2c.png",
     "ui_targetportrait_hero_d2amazonf": "https://i3.ruliweb.com/img/18/06/14/163fc22369b19dc2c.png",
+    "ui_targetportrait_hero_deathwing": "https://i2.ruliweb.com/img/19/11/28/16eafe7171819dc2c.png",
     "ui_targetportrait_hero_deckard": "https://i2.ruliweb.com/img/18/06/14/163fc22398819dc2c.png",
     "ui_targetportrait_hero_dehaka": "https://i2.ruliweb.com/img/18/06/14/163fc0e1d8c19dc2c.png",
     "ui_targetportrait_hero_demonhunter": "https://i3.ruliweb.com/img/18/06/14/163fc23546119dc2c.png",
