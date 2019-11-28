@@ -438,6 +438,9 @@
             "R - Q",
             "R - W",
             "R - E",
+            "Z - Q",
+            "Z - W",
+            "Z - E",
             "passive",
             "active",
             "D - active"
@@ -463,7 +466,10 @@
             "active",
             "Q / W",
             "Q / E",
-            "W / E"
+            "W / E",
+            "Z - Q",
+            "Z - W",
+            "Z - Q / Z - W"
           ]
         },
         "icon": {
