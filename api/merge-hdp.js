@@ -21,10 +21,6 @@ const mergeHotsData = require('./src/merge-hots-data');
 const jsonFind = require('./src/json-find');
 
 
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
-
-
 // Compatibility code for Node v8
 require('./src/console-assert-no-throw');
 
@@ -70,42 +66,6 @@ if (!program.jsonEn) {
   console.error('Must specify HeroesDataParser output JSON file (enUS)');
   program.help();
 }
-
-
-(async () => {
-  console.log('Reading HeroesDataParser JSON (koKR) from', program.jsonKr);
-  const jsonKr = JSON.parse(await readFileAsync(program.jsonKr, 'utf8'));
-
-  console.log('Reading HeroesDataParser JSON (enUS) from', program.jsonEn);
-  const jsonEn = JSON.parse(await readFileAsync(program.jsonEn, 'utf8'));
-
-  console.log('Merging English skill and talent names...');
-  mergeHdpLocale(jsonKr, jsonEn);
-
-  const heroes = {};
-  for (const heroDataName in jsonKr) {
-    // Fix for HDP 3.1.0
-    if (heroDataName === '_stormhero') continue;
-
-    console.log('Parsing entry:', heroDataName);
-    console.group();
-    // Fix for HDP >= 4.0.0
-    const heroId = jsonKr[heroDataName].cHeroId || heroDataName;
-    heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroId);
-    console.groupEnd();
-  }
-
-  program.mergeJson = path.resolve(program.mergeJson);
-  console.log('Reading input JSON from', program.mergeJson);
-  const hotsData = new HotsData(await readFileAsync(program.mergeJson, 'utf8'));
-
-  console.log('Merging data...');
-  mergeHotsData(hotsData, { heroes }, program.ptr);
-
-  program.outputJson = path.resolve(program.outputJson);
-  await writeFileAsync(program.outputJson, hotsData.stringify());
-  console.log('HotS data saved to', program.outputJson);
-})();
 
 
 // -------- Support functions -------- //
@@ -695,3 +655,37 @@ function convertAbilityType(abilityType) {
 function extractIconId(fileName) {
   return fileName.replace(/\.\w+$/, '').toLowerCase();
 }
+
+
+console.log('Reading HeroesDataParser JSON (koKR) from', program.jsonKr);
+const jsonKr = JSON.parse(fs.readFileSync(program.jsonKr, 'utf8'));
+
+console.log('Reading HeroesDataParser JSON (enUS) from', program.jsonEn);
+const jsonEn = JSON.parse(fs.readFileSync(program.jsonEn, 'utf8'));
+
+console.log('Merging English skill and talent names...');
+mergeHdpLocale(jsonKr, jsonEn);
+
+const heroes = {};
+for (const heroDataName in jsonKr) {
+  // Fix for HDP 3.1.0
+  if (heroDataName === '_stormhero') continue;
+
+  console.log('Parsing entry:', heroDataName);
+  console.group();
+  // Fix for HDP >= 4.0.0
+  const heroId = jsonKr[heroDataName].cHeroId || heroDataName;
+  heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroId);
+  console.groupEnd();
+}
+
+program.mergeJson = path.resolve(program.mergeJson);
+console.log('Reading input JSON from', program.mergeJson);
+const hotsData = new HotsData(fs.readFileSync(program.mergeJson, 'utf8'));
+
+console.log('Merging data...');
+mergeHotsData(hotsData, { heroes }, program.ptr);
+
+program.outputJson = path.resolve(program.outputJson);
+fs.writeFileSync(program.outputJson, hotsData.stringify());
+console.log('HotS data saved to', program.outputJson);
