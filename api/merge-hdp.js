@@ -658,13 +658,8 @@ function extractIconId(fileName) {
 
 
 if (require.main === module) {
-  console.log('Reading HeroesDataParser JSON (koKR) from', program.jsonKr);
   const jsonKr = JSON.parse(fs.readFileSync(program.jsonKr, 'utf8'));
-
-  console.log('Reading HeroesDataParser JSON (enUS) from', program.jsonEn);
   const jsonEn = JSON.parse(fs.readFileSync(program.jsonEn, 'utf8'));
-
-  console.log('Merging English skill and talent names...');
   mergeHdpLocale(jsonKr, jsonEn);
 
   const heroes = {};
@@ -672,22 +667,14 @@ if (require.main === module) {
     // Fix for HDP 3.1.0
     if (heroDataName === '_stormhero') continue;
 
-    console.log('Parsing entry:', heroDataName);
-    console.group();
+    console.group(`Parsing entry: ${heroDataName}`);
     // Fix for HDP >= 4.0.0
     const heroId = jsonKr[heroDataName].cHeroId || heroDataName;
     heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroId);
     console.groupEnd();
   }
 
-  program.mergeJson = path.resolve(program.mergeJson);
-  console.log('Reading input JSON from', program.mergeJson);
   const hotsData = new HotsData(fs.readFileSync(program.mergeJson, 'utf8'));
-
-  console.log('Merging data...');
   mergeHotsData(hotsData, { heroes }, program.ptr);
-
-  program.outputJson = path.resolve(program.outputJson);
   fs.writeFileSync(program.outputJson, hotsData.stringify());
-  console.log('HotS data saved to', program.outputJson);
 }
