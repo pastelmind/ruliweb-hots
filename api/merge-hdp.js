@@ -434,6 +434,8 @@ function parseTooltip(tooltip) {
           const attribute = match[1];
           // Fix Blizzard's typo errors
           if (attribute === 'val' || attribute === 'al') val = match[2];
+          // 'name' is a known attribute, ignore it
+          else if (attribute === 'name') continue;
           else logger.warn(`Unknown attribute '${attribute}' in ${tag}`);
         }
 
