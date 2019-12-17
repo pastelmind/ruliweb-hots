@@ -420,7 +420,8 @@ function parseTooltip(tooltip) {
       const percentSign = base.includes('%') ? '%' : '';
       levelScaling = parseFloat(levelScaling);
       const amount = Math.round(parseFloat(base) * (1 + levelScaling));
-      return `${amount}${percentSign}(+${levelScaling * 100}%)`;
+      const scalingFactorPercent = Math.round(levelScaling * 10000) / 100;
+      return `${amount}${percentSign}(+${scalingFactorPercent}%)`;
     })
     .replace(
       /<[cs]((?:\s+\w+=".*?")+)>(.*?)(?:<\/[cs]>|$)/gi,
