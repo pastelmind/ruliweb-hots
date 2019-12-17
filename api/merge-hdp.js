@@ -268,8 +268,8 @@ function relocateSubAbilitiesAfterTalent(hero, talentId, ...subAbilityIds) {
             return skill;
           }
         }
-        return new Talent({ id });
-      });
+        logger.warn(`Cannot find SubAbility ID: ${id}`);
+      }).filter(skill => skill);
 
       talentArray.splice(talentIndex + 1, 0, ...subAbilities);
       return;
