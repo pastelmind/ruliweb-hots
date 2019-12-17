@@ -436,7 +436,15 @@ function parseTooltip(tooltip) {
         }
 
         // Handle color gradients introduced in HDP 4.0.0
-        let color = val.replace('#', '').replace(/^\w{6}-(\w{6})$/g, '$1');
+        const colorGradientMatch = val.match(/^(\w{6})-(\w{6})$/);
+        if (colorGradientMatch) {
+          const [, color1, color2] = colorGradientMatch;
+          return `<span style="` +
+            `color:#${color1};text-shadow:0 0 1px #${color2}` +
+            `">${text}</span>`;
+        }
+
+        let color = val.replace('#', '');
         if (BLACKLISTED_COLORS.has(color)) return text;
         if (/AbilityPassive|00ff90/gi.test(color)
           && text.startsWith('지속 효과')) {
