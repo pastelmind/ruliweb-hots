@@ -199,7 +199,7 @@ function parseAllSkillsData(heroData, heroId) {
     }
   }
 
-  return skillDataArray.filter(skillData => {
+  const skillDataObject = skillDataArray.filter(skillData => {
     switch (skillData.nameId) {
       // Exclude common abilities
       case 'Hearthstone':
@@ -215,7 +215,13 @@ function parseAllSkillsData(heroData, heroId) {
     }
 
     return true;
-  }).map(parseSkillData);
+  }).reduce((obj, skill) => {
+    // Exclude duplicate skill IDs
+    if (!(skill.nameId in obj)) obj[skill.nameId] = skill;
+    return obj;
+  }, {});
+
+  return Object.values(skillDataObject).map(parseSkillData);
 }
 
 
