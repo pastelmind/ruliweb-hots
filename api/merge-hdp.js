@@ -18,6 +18,7 @@ const Skill = require('./src/skill');
 const Talent = require('./src/talent');
 const KoEnString = require('./src/ko-en-string');
 const mergeHotsData = require('./src/merge-hots-data');
+const logger = require('./src/logger.js');
 
 
 // Compatibility code for Node v8
@@ -155,7 +156,7 @@ function parseAllSkillsData(heroData, heroId) {
 
   // Always place traits at the front
   if (traitArray) skillDataArray.push(...traitArray);
-  else console.warn(`${heroId} has no trait`);
+  else logger.warn(`${heroId} has no trait`);
 
   for (const abilityArray of Object.values(abilities)) {
     skillDataArray.push(...abilityArray);
@@ -340,29 +341,29 @@ function extractSkillTalentInfo(skillTalentData) {
   if (skillTalentData.nameId) {
     skillTalentInfo.id = skillTalentData.nameId;
   } else {
-    console.warn(`Missing nameId field in ${util.inspect(skillTalentData)}`);
+    logger.warn(`Missing nameId field in ${util.inspect(skillTalentData)}`);
   }
 
   // Extract name
   if (skillTalentData.name) {
     skillTalentInfo.name = new KoEnString(skillTalentData.name);
-  } else console.warn(`${skillTalentData.nameId} is missing a name`);
+  } else logger.warn(`${skillTalentData.nameId} is missing a name`);
 
   // Extract icon
   if (skillTalentData.icon) {
     skillTalentInfo.icon = extractIconId(skillTalentData.icon);
-  } else console.warn(`${skillTalentData.nameId} is missing an icon`);
+  } else logger.warn(`${skillTalentData.nameId} is missing an icon`);
 
   // Extract description
   if (skillTalentData.fullTooltip) {
     skillTalentInfo.description = parseTooltip(skillTalentData.fullTooltip);
-  } else console.warn(`${skillTalentData.name} is missing a full tooltip`);
+  } else logger.warn(`${skillTalentData.name} is missing a full tooltip`);
 
   // Extract short description
   if (skillTalentData.shortTooltip) {
     skillTalentInfo.shortDescription =
       parseShortDescription(skillTalentData.shortTooltip);
-  } else console.warn(`${skillTalentData.name} is missing a short tooltip`);
+  } else logger.warn(`${skillTalentData.name} is missing a short tooltip`);
 
   // Extract cooldown
   Object.assign(skillTalentInfo, extractCooldownInfo(skillTalentData));
@@ -433,7 +434,7 @@ function parseTooltip(tooltip) {
           const attribute = match[1];
           // Fix Blizzard's typo errors
           if (attribute === 'val' || attribute === 'al') val = match[2];
-          else console.warn(`Unknown attribute '${attribute}' in ${tag}`);
+          else logger.warn(`Unknown attribute '${attribute}' in ${tag}`);
         }
 
         // Handle color gradients introduced in HDP 4.0.0
@@ -553,7 +554,7 @@ function extractResourceCostInfo(skillTalentData) {
           (perSecondString ? perSecondString + ' ' : 0) + resourceCostAmount;
       }
     } else {
-      console.warn(
+      logger.warn(
         `${skillTalentData.nameId}: Unrecognizable energyTooltip -`,
         util.inspect(energyTooltip)
       );
@@ -649,11 +650,11 @@ if (require.main === module) {
     // Fix for HDP 3.1.0
     if (heroDataName === '_stormhero') continue;
 
-    console.group(`Parsing entry: ${heroDataName}`);
+    logger.pushTag(`Parsing ${heroDataName}`);
     // Fix for HDP >= 4.0.0
     const heroId = jsonKr[heroDataName].cHeroId || heroDataName;
     heroes[heroDataName] = parseHeroData(jsonKr[heroDataName], heroId);
-    console.groupEnd();
+    logger.popTag();
   }
 
   const hotsData = new HotsData(fs.readFileSync(program.mergeJson, 'utf8'));

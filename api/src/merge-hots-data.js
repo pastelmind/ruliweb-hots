@@ -3,6 +3,7 @@
 
 const assert = require('assert');
 const util = require('util');
+const logger = require('./logger.js');
 
 /**
  * @typedef {import('./hots-data')} HotsData
@@ -36,7 +37,7 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
       targetHero = Object.values(target.heroes)
         .find(hero => isEqualInOneLocale(hero.name, sourceHero.name));
       if (targetHero) {
-        console.warn(
+        logger.warn(
           `Hero ID mismatch: Expected to find ${sourceHero.id},`,
           `but matched with ${targetHero.id}`
         );
@@ -44,9 +45,9 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
     }
 
     if (targetHero) {
-      console.group('Merging', sourceHero.id);
+      logger.pushTag(sourceHero.id);
       mergeHero(targetHero, sourceHero);
-      console.groupEnd();
+      logger.popTag();
     } else if (usePtr) {
       console.log('Added new hero to PTR:', sourceHero.name);
       target.ptrHeroes[sourceHero.id] = sourceHero;
@@ -99,12 +100,12 @@ function mergeHero(target, source) {
       );
 
       if (targetSkill && !targetSkill.id) {
-        console.warn(
+        logger.warn(
           `Target skill (${targetSkill.name}) has no ID,`,
           `matched by name with ${sourceSkill.name}`,
         );
       } else {
-        console.warn(
+        logger.warn(
           `Skill not found: ${sourceSkill.id} (${sourceSkill.name})`
         );
         return;
@@ -133,7 +134,7 @@ function mergeHero(target, source) {
             // If the target talent does not match the ID, force a manual search
             if (targetTalent.id !== sourceTalent.id) targetTalent = null;
           } else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
-            console.warn(
+            logger.warn(
               `Target talent (${targetTalent.name}) has no ID,`,
               `matched by position with ${sourceTalent.name}`,
             );
@@ -154,14 +155,14 @@ function mergeHero(target, source) {
           }
 
           if (targetTalentIndex !== -1) {
-            console.warn(
+            logger.warn(
               `Talent position mismatch: ${sourceTalent.name}`,
               `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
               `but found in [${targetLevel}][${targetTalentIndex}]`
             );
             targetTalent = targetTalentArray[targetTalentIndex];
           } else {
-            console.warn(
+            logger.warn(
               `Talent not found: ${sourceTalent.name} in`,
               `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`
             );
