@@ -363,7 +363,9 @@ function extractSkillTalentInfo(skillTalentData) {
   if (skillTalentData.shortTooltip) {
     skillTalentInfo.shortDescription =
       parseShortDescription(skillTalentData.shortTooltip);
-  } else logger.warn(`${skillTalentData.name} is missing a short tooltip`);
+  }
+  // Note: Don't warn if the short tooltip is missing; this will be checked by
+  // the merge-hots-data module.
 
   // Extract cooldown
   Object.assign(skillTalentInfo, extractCooldownInfo(skillTalentData));

@@ -245,6 +245,10 @@ function mergeSkill(target, source) {
   // Merge extras
   mergeProperties(target.extras, source.extras, source.extras);
 
+  if (!source.shortDescription) {
+    logger.warn(`${source.name} is missing a short tooltip`);
+  }
+
   return mergeProperties(target, source, {
     id: 0,
     type: 0,
