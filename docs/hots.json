@@ -30491,6 +30491,9 @@
             "icon": "storm_ui_icon_uther_divineshield",
             "description": "천상의 보호막이 대상 근처의 생명력이 가장 낮은 아군 영웅에게도 적용되며 지속 시간이 1초 증가합니다.",
             "shortDescription": "천상의 보호막 지속 시간 증가 및 근처 아군에게 적용",
+            "extras": {
+              "탐색 반경": 3
+            },
             "upgradeFor": "R"
           },
           {
@@ -33690,6 +33693,9 @@
             "icon": "storm_ui_icon_zarya_shieldally_a",
             "description": "방벽 씌우기를 사용하면 대상 주위 아군 영웅 한 명에게 특성이 적용되지 않은 방벽 씌우기가 추가로 적용됩니다.",
             "shortDescription": "방벽 씌우기가 대상 주위 아군 영웅에게 추가 적용",
+            "extras": {
+              "효과 반경": 8
+            },
             "upgradeFor": "E"
           },
           {
