@@ -233,7 +233,7 @@
           "properties": {
             "value": {
               "type": "number",
-              "multipleOf": 1
+              "multipleOf": 0.001
             },
             "levelAdd": {
               "type": "number",
