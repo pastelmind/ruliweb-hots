@@ -22,16 +22,13 @@
  * @typedef {Object} DecoratedStat
  * @prop {string} name
  * @prop {string} iconUrl
- * @prop {number | string =} value Base stat value. If `levelScaling` is
- *    present, this represents a level 0-value; otherwise, a level 1-value.
+ * @prop {number | string =} value Base stat value at level 0.
  * @prop {number=} levelScaling Multiplicative modifier applied to RawStat.value
  *    on each level up
  * @prop {number=} levelAdd Additive modifier applied to RawStat.value on each
  *    level up
  * @prop {number=} percentScaling Value of `levelScaling` represented as a
  *    percentage. This property is omitted if `levelScaling` is not present.
- * @prop {number | string =} level1 The stat's value at level 1. This property
- *    is omitted for constant stats.
  * @prop {number | string =} level20 The stat's value at level 20. This property
  *    is omitted for constant stats.
  */
@@ -333,12 +330,12 @@ function decorateHotsData(hotsData) {
     decoratedStat.iconUrl = preset.iconUrl;
     if (!decoratedStat.name) decoratedStat.name = preset.name;
 
-    if (decoratedStat.level1 && decoratedStat.level20) {
-      decoratedStat.level1 = prettifyStatValue(decoratedStat.level1, preset.id);
+    if (decoratedStat.value) {
+      decoratedStat.value = prettifyStatValue(decoratedStat.value, preset.id);
+    }
+    if (decoratedStat.level20) {
       decoratedStat.level20 =
         prettifyStatValue(decoratedStat.level20, preset.id);
-    } else if (decoratedStat.value) {
-      decoratedStat.value = prettifyStatValue(decoratedStat.value, preset.id);
     }
 
     return decoratedStat;
@@ -353,11 +350,9 @@ function decorateHotsData(hotsData) {
     if (typeof stat !== 'object') return { value: stat };
 
     if (stat.levelScaling) {
-      stat.level1 = stat.value * (1 + stat.levelScaling);
       stat.level20 = stat.value * Math.pow(1 + stat.levelScaling, 20);
       stat.percentScaling = stat.levelScaling * 100;
     } else if (stat.levelAdd) {
-      stat.level1 = stat.value;
       stat.level20 = stat.value + stat.levelAdd * 19;
     }
 
