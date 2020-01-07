@@ -36,7 +36,7 @@
         {{/unitName}}
         <tr>
           <th>능력치</th>
-          <th>1레벨 (성장률)</th>
+          <th>0레벨 (성장률)</th>
           <th>20레벨</th>
         </tr>
       </thead>
@@ -44,9 +44,9 @@
         {{#stats}}
         <tr>
           <td style="background: url({{&iconUrl}}) .4em/1.3em no-repeat">{{name}}{{#altName}} ({{altName}}){{/altName}}</td>
-          {{^level1}}<td colspan="2">{{value}}</td>{{/level1}}
-          {{#percentScaling}}<td>{{level1}} (+{{percentScaling}}%)</td>{{/percentScaling}}
-          {{#levelAdd}}<td>{{level1}} (+{{levelAdd}})</td>{{/levelAdd}}
+          {{^percentScaling}}{{^levelAdd}}<td colspan="2">{{value}}</td>{{/levelAdd}}{{/percentScaling}}
+          {{#percentScaling}}<td>{{value}} (+{{percentScaling}}%)</td>{{/percentScaling}}
+          {{#levelAdd}}<td>{{value}} (+{{levelAdd}})</td>{{/levelAdd}}
           {{#level20}}<td>{{level20}}</td>{{/level20}}
         </tr>
         {{/stats}}

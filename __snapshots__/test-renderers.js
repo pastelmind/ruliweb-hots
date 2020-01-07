@@ -228,7 +228,7 @@ exports['HotsDialog.Renderer HotsBox templates generates hero boxes correctly 1'
       <thead style="background:#224">
         <tr>
           <th style="border:1px solid #76d;padding:.4em;color:#6ce;font:bold 1em sans-serif">능력치</th>
-          <th style="border:1px solid #76d;padding:.4em;color:#6ce;font:bold 1em sans-serif">1레벨 (성장률)</th>
+          <th style="border:1px solid #76d;padding:.4em;color:#6ce;font:bold 1em sans-serif">0레벨 (성장률)</th>
           <th style="border:1px solid #76d;padding:.4em;color:#6ce;font:bold 1em sans-serif">20레벨</th>
         </tr>
       </thead>
@@ -236,14 +236,14 @@ exports['HotsDialog.Renderer HotsBox templates generates hero boxes correctly 1'
         <tr>
           <td style="border:1px solid #76d;color:#efe;font:1em sans-serif;padding:.4em .4em .4em 2em;text-align:initial;background:url(https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png) .4em/1.3em no-repeat">생명력</td>
           
-          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">1899 (+4%)</td>
+          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">1826 (+4%)</td>
           
           <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">4001</td>
         </tr>
         <tr>
           <td style="border:1px solid #76d;color:#efe;font:1em sans-serif;padding:.4em .4em .4em 2em;text-align:initial;background:url(https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png) .4em/1.3em no-repeat">생명력 재생</td>
           
-          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">3.957 (+4%)</td>
+          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">3.805 (+4%)</td>
           
           <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">8.336</td>
         </tr>
@@ -264,7 +264,7 @@ exports['HotsDialog.Renderer HotsBox templates generates hero boxes correctly 1'
         <tr>
           <td style="border:1px solid #76d;color:#efe;font:1em sans-serif;padding:.4em .4em .4em 2em;text-align:initial;background:url(https://i2.ruliweb.com/img/18/07/07/164748d2a3b19dc2c.png) .4em/1.3em no-repeat">공격력</td>
           
-          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">99 (+4%)</td>
+          <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">95 (+4%)</td>
           
           <td style="border:1px solid #76d;padding:.4em;color:#efe;font:1em sans-serif">208</td>
         </tr>
