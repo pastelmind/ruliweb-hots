@@ -35,7 +35,7 @@
   "dependencies": {
     "ajv": "^6.10.2",
     "htm": "^2.2.1",
-    "juice": "^5.2.0",
+    "juice": "^6.0.0",
     "microtip": "^0.2.2",
     "mocha": "^6.2.1",
     "mustache": "^4.0.0",
