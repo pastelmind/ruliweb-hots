@@ -39,7 +39,7 @@
     "microtip": "^0.2.2",
     "mocha": "^7.0.0",
     "mustache": "^4.0.0",
-    "preact": "^10.0.1",
+    "preact": "^10.2.1",
     "snap-shot-it": "^7.9.1",
     "tingle.js": "^0.15.2",
     "yazl": "^2.5.1"
