@@ -21,10 +21,6 @@ const mergeHotsData = require('./src/merge-hots-data');
 const logger = require('./src/logger.js');
 
 
-// Compatibility code for Node v8
-require('./src/console-assert-no-throw');
-
-
 const DEFAULT_JSON_PATH = path.join(__dirname, '../docs/hots.json');
 
 
