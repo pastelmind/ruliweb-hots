@@ -136,7 +136,7 @@ async function exportListfile(listfile, options) {
 
 /**
  * Removes unused icons in the HotS JSON file.
- * @param {{ inputJson: string }} options Options object
+ * @param {{ inputJson: string, outputJson: string, }} options Options object
  */
 async function cleanUnusedIcons(options) {
   console.log('Reading HotS JSON from', options.inputJson);
@@ -371,11 +371,11 @@ function generateIconListfileHtml(
 
   /**
    * Helper function: Create an HTML <img> tag from an icon's ID and URL.
-   * @param {string} iconId Icon ID
-   * @param {string} url Icon URL
+   * @param {[string, string]} arg
    * @return {string} HTML of <img> tag
    */
-  function iconUrlToImg([iconId, url]) {
+  function iconUrlToImg(arg) {
+    const [iconId, url] = arg;
     return `<img src="${url}" alt="${iconId}.png" title="${iconId}.png">`;
   }
 }

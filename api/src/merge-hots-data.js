@@ -8,6 +8,8 @@ const logger = require('./logger.js');
 /**
  * @typedef {import('./hots-data')} HotsData
  * @typedef {import('./hero')} Hero
+ * @typedef {import('./hero-stats')} HeroStats
+ * @typedef {import('./scaling-stat')} ScalingStat
  * @typedef {import('./skill')} Skill
  * @typedef {import('./talent')} Talent
  * @typedef {import('./ko-en-string')} KoEnString
@@ -16,7 +18,7 @@ const logger = require('./logger.js');
 /**
  * Merges the source dataset into the target dataset.
  * @param {HotsData} target Dataset to merge into
- * @param {HotsData} source Dataset to import from
+ * @param {Partial<HotsData>} source Dataset to import from
  * @param {boolean=} usePtr If truthy, merge heroes into the PTR section
  *    whenever possible.
  */
@@ -297,11 +299,11 @@ function mergeScalingStat(target, source) {
  * Copies properties specified in `propertyNames` from the source object to the
  * target object. If a property's value is a non-null falsy value, it is not
  * copied.
- * @param {Object<string, *>} target Target object to copy properties into
- * @param {Object<string, *>} source Source object to copy properties from
- * @param {Object} propertyNames Object whose keys are property names to copy.
- *    Values are ignored.
- * @return {Object<string, *>} The merged target object.
+ * @param {Object} target Target object to copy properties into
+ * @param {Object} source Source object to copy properties from
+ * @param {Object<string, *>} propertyNames Object whose keys are property names
+ *    to copy. Values are ignored.
+ * @return {Object} The merged target object.
  */
 function mergeProperties(target, source, propertyNames) {
   for (const property in propertyNames) {

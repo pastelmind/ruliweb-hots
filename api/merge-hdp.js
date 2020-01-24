@@ -233,6 +233,7 @@ function parseAllSkillsData(heroData, heroId) {
  * @return {Object<number, Talent[]>} Mapping of talent levels to Talent groups
  */
 function parseAllTalentsData(heroData, heroId) {
+  /** @type {Object<number, Talent[]>} */
   const talents = {};
 
   for (const talentLevelPropertyName in heroData.talents) {
@@ -266,11 +267,11 @@ function relocateSubAbilitiesAfterTalent(hero, talentId, ...subAbilityIds) {
           if (skill.id === id) {
             // If a skill is found, remove it from the array of skills
             hero.skills.splice(skillIndex, 1);
-            return skill;
+            return new Talent(skill);
           }
         }
         logger.warn(`Cannot find SubAbility ID: ${id}`);
-      }).filter((skill) => skill);
+      }).filter((talent) => talent);
 
       talentArray.splice(talentIndex + 1, 0, ...subAbilities);
       return;
@@ -492,14 +493,12 @@ function extractCooldownInfo(skillTalentData) {
   let cooldown = null;
   let rechargeCooldown = null;
 
-  if (skillTalentData.cooldownTooltip) {
-    const cooldownMatch = /(?:재사용|충전)\s*대기시간:\s*(.*?)초/.exec(
-      skillTalentData.cooldownTooltip,
-    );
+  const {cooldownTooltip} = skillTalentData;
+  if (cooldownTooltip) {
+    const cooldownMatch =
+      /(?:재사용|충전)\s*대기시간:\s*(.*?)초/.exec(cooldownTooltip);
     if (!cooldownMatch) {
-      throw new Error(
-        'Cooldown pattern mismatch:', skillTalentData.cooldownTooltip,
-      );
+      throw new Error(`Cooldown pattern mismatch: ${cooldownTooltip}`);
     }
 
     const cooldownValue = parseFloat(cooldownMatch[1]);
@@ -537,6 +536,7 @@ function extractCooldownInfo(skillTalentData) {
 function extractResourceCostInfo(skillTalentData) {
   let manaCost = null;
   let manaCostPerSecond = null;
+  /** @type {Object<string, number | string>} */
   const extras = {};
   const {energyTooltip} = skillTalentData;
 
@@ -555,7 +555,7 @@ function extractResourceCostInfo(skillTalentData) {
         else manaCost = +resourceCostAmount;
       } else {
         extras[resourceName] =
-          (perSecondString ? perSecondString + ' ' : 0) + resourceCostAmount;
+          (perSecondString ? perSecondString + ' ' : '0') + resourceCostAmount;
       }
     } else {
       logger.warn(
@@ -649,6 +649,7 @@ if (require.main === module) {
   const jsonEn = JSON.parse(fs.readFileSync(program.jsonEn, 'utf8'));
   mergeHdpLocale(jsonKr, jsonEn);
 
+  /** @type {Object<string, Hero>} */
   const heroes = {};
   for (const heroDataName in jsonKr) {
     // Fix for HDP 3.1.0

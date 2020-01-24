@@ -12,17 +12,17 @@ const Hero = module.exports = class Hero {
   /**
    * Create a new Hero object.
    * @param {Object} o
-   * @param {string=} o.name
+   * @param {string | KoEnString=} o.name
    * @param {string=} o.title
    * @param {string=} o.icon
    * @param {string=} o.iconUrl
    * @param {string=} o.id
    * @param {string=} o.newRole
    * @param {string=} o.universe
-   * @param {HeroStats | HeroStats[]} o.stats
-   * @param {Skill[]} o.skills
+   * @param {HeroStats | HeroStats[]=} o.stats
+   * @param {Skill[]=} o.skills
    * @param {Object<number, Talent[]>=} o.talents
-   * @param {Object<string, string|number>} o.extras
+   * @param {Object<string, string|number>=} o.extras
    */
   constructor(o = {}) {
     this.name = o.name || '';

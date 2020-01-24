@@ -7,7 +7,7 @@
 module.exports = class KoEnString {
   /**
    * Create a new KoEnString object.
-   * @param {string | KoEnString} o
+   * @param {string | Partial<KoEnString>} o
    */
   constructor(o = '') {
     if (o && typeof o === 'object' && ('en' in o || 'ko' in o)) {
