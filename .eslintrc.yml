@@ -13,6 +13,7 @@ globals:
 parserOptions:
   ecmaVersion: 2018
 rules:
+  guard-for-in: off
   indent:
     - error
     - 2
