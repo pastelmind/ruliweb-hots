@@ -12,4 +12,9 @@ globals:
   SharedArrayBuffer: readonly
 parserOptions:
   ecmaVersion: 2018
-rules: {}
+rules:
+  indent:
+    - error
+    - 2
+    - ignoredNodes:
+      - TemplateLiteral > *
