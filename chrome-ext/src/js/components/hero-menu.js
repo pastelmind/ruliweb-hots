@@ -30,7 +30,7 @@
    * @return {Object} DOM content to render
    */
   function HeroMenu(props) {
-    const { heroes, ptrHeroes, activeFilters, ptrMode, onClickHero } = props;
+    const {heroes, ptrHeroes, activeFilters, ptrMode, onClickHero} = props;
 
     const activeFilterSets = {};
     for (const [filterType, filters] of Object.entries(activeFilters)) {
@@ -41,7 +41,7 @@
 
     const icons = Object.values(Object.assign({}, heroes, ptrHeroes))
       .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'))
-      .map(({ id: heroId }) => {
+      .map(({id: heroId}) => {
         const liveHero = heroes[heroId];
         const ptrHero = ptrHeroes[heroId];
         const hero = ptrMode ? (ptrHero || liveHero) : (liveHero || ptrHero);

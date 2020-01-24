@@ -9,7 +9,7 @@
   const preact = isNodeJs ? require('preact') : root.preact;
 
   const html = htm.bind(preact.createElement);
-  const { Component } = preact;
+  const {Component} = preact;
 
   /** Represents a multi-selectable group of icons. */
   class MultiSelectIcons extends Component {
@@ -24,10 +24,10 @@
       super(props);
 
       const selected = {};
-      for (const { id } of props.options) {
+      for (const {id} of props.options) {
         selected[id] = false;
       }
-      this.state = { selected };
+      this.state = {selected};
     }
 
     /**
@@ -38,7 +38,7 @@
      */
     onOptionInput(event, optionId) {
       this.setState(
-        prevState => ({
+        (prevState) => ({
           ...prevState,
           selected: {
             ...prevState.selected,
@@ -47,10 +47,10 @@
         }),
         () => {
           const selectedIds = this.props.options
-            .filter(o => this.state.selected[o.id])
-            .map(o => o.id);
+            .filter((o) => this.state.selected[o.id])
+            .map((o) => o.id);
           this.props.onSelectChange(selectedIds);
-        }
+        },
       );
       event.preventDefault();
     }
@@ -59,12 +59,12 @@
     render() {
       return html`
         <div class="multi-select-icons">
-          ${this.props.options.map(option => html`
+          ${this.props.options.map((option) => html`
             <label key=${option.id} class="multi-select-icons__option"
               aria-label="${option.name}"
               data-microtip-position="top" role="tooltip">
               <input type="checkbox"
-                onInput=${event => this.onOptionInput(event, option.id)}/>
+                onInput=${(event) => this.onOptionInput(event, option.id)}/>
               <img class="multi-select-icons__option-icon" alt="${option.name}"
                 src="${option.iconUrl}"/>
             </label>

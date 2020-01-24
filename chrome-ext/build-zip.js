@@ -23,7 +23,7 @@ if (!packageVersion) {
 const extensionZip = new yazl.ZipFile();
 const sourceDirPath = path.join(__dirname, 'src');
 const targetZipPath = path.join(
-  __dirname, `../build/ruliweb-hots.${packageVersion}.zip`
+  __dirname, `../build/ruliweb-hots.${packageVersion}.zip`,
 );
 const targetZipStream = fs.createWriteStream(targetZipPath);
 

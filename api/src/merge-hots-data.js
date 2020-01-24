@@ -24,7 +24,7 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
   for (const sourceHero of Object.values(source.heroes)) {
     assert(
       sourceHero.id,
-      `Source hero has no ID (raw value: ${util.inspect(sourceHero.id)})\n`
+      `Source hero has no ID (raw value: ${util.inspect(sourceHero.id)})\n`,
     );
 
     let targetHero = null;
@@ -35,11 +35,11 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
     if (!targetHero) {
       // Attempt to find a hero with a matching name
       targetHero = Object.values(target.heroes)
-        .find(hero => isEqualInOneLocale(hero.name, sourceHero.name));
+        .find((hero) => isEqualInOneLocale(hero.name, sourceHero.name));
       if (targetHero) {
         logger.warn(
           `Hero ID mismatch: Expected to find ${sourceHero.id},`,
-          `but matched with ${targetHero.id}`
+          `but matched with ${targetHero.id}`,
         );
       }
     }
@@ -80,8 +80,8 @@ function mergeHero(target, source) {
       (sourceUnitStats, sourceUnitIndex) =>
         mergeHeroStats(
           target.stats[sourceUnitIndex] || target.stats[0] || target.stats,
-          sourceUnitStats
-        )
+          sourceUnitStats,
+        ),
     );
   } else if (source.stats) {
     target.stats =
@@ -89,14 +89,15 @@ function mergeHero(target, source) {
   }
 
   // Merge skills
-  source.skills.forEach(sourceSkill => {
+  source.skills.forEach((sourceSkill) => {
     // Find matching skill by ID
-    let targetSkill = target.skills.find(skill => skill.id === sourceSkill.id);
+    let targetSkill =
+      target.skills.find((skill) => skill.id === sourceSkill.id);
 
     // If there is no skill matching the ID, search using the skill name.
     if (!targetSkill) {
       targetSkill = target.skills.find(
-        skill => isEqualInOneLocale(skill.name, sourceSkill.name)
+        (skill) => isEqualInOneLocale(skill.name, sourceSkill.name),
       );
 
       if (targetSkill && !targetSkill.id) {
@@ -106,7 +107,7 @@ function mergeHero(target, source) {
         );
       } else {
         logger.warn(
-          `Skill not found: ${sourceSkill.id} (${sourceSkill.name})`
+          `Skill not found: ${sourceSkill.id} (${sourceSkill.name})`,
         );
         return;
       }
@@ -146,7 +147,7 @@ function mergeHero(target, source) {
           let targetLevel;
           let targetTalentArray;
           for ([targetLevel, targetTalentArray] of Object.entries(oldTalents)) {
-            targetTalentIndex = targetTalentArray.findIndex(talent => {
+            targetTalentIndex = targetTalentArray.findIndex((talent) => {
               if (talent.id) return talent.id === sourceTalent.id;
               return isEqualInOneLocale(talent.name, sourceTalent.name);
             });
@@ -158,13 +159,13 @@ function mergeHero(target, source) {
             logger.warn(
               `Talent position mismatch: ${sourceTalent.name}`,
               `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
-              `but found in [${targetLevel}][${targetTalentIndex}]`
+              `but found in [${targetLevel}][${targetTalentIndex}]`,
             );
             targetTalent = targetTalentArray[targetTalentIndex];
           } else {
             logger.warn(
               `Talent not found: ${sourceTalent.name} in`,
-              `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`
+              `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`,
             );
           }
         }
@@ -206,8 +207,8 @@ function mergeHeroStats(target, source) {
     target.damage = source.damage.map(
       (d, index) =>
         mergeScalingStat(
-          target.damage[index] || target.damage[0] || target.damage, d
-        )
+          target.damage[index] || target.damage[0] || target.damage, d,
+        ),
     );
   } else {
     target.damage =
@@ -240,7 +241,7 @@ function mergeHeroStats(target, source) {
  */
 function mergeSkill(target, source) {
   // Merge skill and talent names
-  mergeProperties(target.name, source.name, { ko: 0, en: 0 });
+  mergeProperties(target.name, source.name, {ko: 0, en: 0});
 
   // Merge extras
   mergeProperties(target.extras, source.extras, source.extras);

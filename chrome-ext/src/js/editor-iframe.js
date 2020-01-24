@@ -62,13 +62,13 @@ if (isInIframe()) {
   //      but clicks made on the pseudo-elements register just fine. Yay!
   // Add the event listener to the <html> element, because Cheditor will replace
   // the <body> element when switching between editor modes
-  document.body.parentNode.addEventListener('click', event => {
+  document.body.parentNode.addEventListener('click', (event) => {
     if (!(event.target && event.ctrlKey)) return;
 
     const rootElem = event.target.parentNode;
-    if (rootElem.classList.contains('ruliweb-hots-hero-table')
-      || rootElem.classList.contains('ruliweb-hots-skill-table')
-      || rootElem.classList.contains('ruliweb-hots-talent-table')
+    if (rootElem.classList.contains('ruliweb-hots-hero-table') ||
+      rootElem.classList.contains('ruliweb-hots-skill-table') ||
+      rootElem.classList.contains('ruliweb-hots-talent-table')
     ) {
       rootElem.style.transition = 'transform .2s';
       rootElem.style.transform = 'scale(0, 0)';
@@ -79,11 +79,11 @@ if (isInIframe()) {
   // Prevent user from inadvertently setting "text-align: center" on the <body>
   // element. This should prevent the illusory center-alignment of <details>
   // elements inserted by HotsDialog
-  const bodyStyleRemover = new MutationObserver(mutations => {
+  const bodyStyleRemover = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
-      if (mutation.type === 'attributes'
-        && mutation.attributeName === 'style'
-        && mutation.target.nodeName === 'BODY'
+      if (mutation.type === 'attributes' &&
+        mutation.attributeName === 'style' &&
+        mutation.target.nodeName === 'BODY'
       ) {
         /** @type {HTMLBodyElement} */
         const body = mutation.target;
@@ -125,7 +125,7 @@ function isInIframe() {
  */
 function replaceAncestorPsWithDivs() {
   let detailsTag;
-  while (detailsTag = document.querySelector('p details:first-of-type')) {
+  while ((detailsTag = document.querySelector('p details:first-of-type'))) {
     // Find ancestor <p> of <details>
     let ancestorP = detailsTag.parentElement;
     while (ancestorP && ancestorP.tagName !== 'P') {

@@ -5,7 +5,7 @@
 
 'use strict';
 
-(root => {
+((root) => {
   const heroFilters = {
     universe: {
       name: '세계관',
@@ -42,7 +42,7 @@
     if (response.ok) return response.json();
     throw new Error(
       `Cannot retrieve ${templateJsonPath}, ` +
-      `got ${response.status} ${response.statusText}`
+      `got ${response.status} ${response.statusText}`,
     );
   }
 
@@ -59,10 +59,10 @@
         const data = await new Promise((resolve, reject) => {
           chrome.storage.local.get(
             ['heroes', 'hotsVersion', 'ptrHeroes', 'hotsPtrVersion'],
-            data => {
+            (data) => {
               if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
               resolve(data);
-            }
+            },
           );
         });
 

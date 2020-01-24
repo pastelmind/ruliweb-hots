@@ -9,7 +9,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
-const { unpackHeroes } = require('../src/hots-data');
+const {unpackHeroes} = require('../src/hots-data');
 
 
 describe('Hero', () => {
@@ -19,7 +19,7 @@ describe('Hero', () => {
 
   before('Loading test data files', () => {
     heroJsonCompact = JSON.parse(
-      fs.readFileSync(path.join(__dirname, 'input/heroes.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, 'input/heroes.json'), 'utf8'),
     );
   });
 
@@ -35,15 +35,15 @@ describe('Hero', () => {
       const rawHeroData = heroJsonCompact[hero.id];
       assert.equal(
         skillCount, rawHeroData.skills.length,
-        hero.id + ': # of parsed skills is different'
+        hero.id + ': # of parsed skills is different',
       );
 
       const expectedTalentCount =
         Object.values(rawHeroData.talents)
-          .map(arr => arr.length).reduce((a, b) => a + b);
+          .map((arr) => arr.length).reduce((a, b) => a + b);
       assert.equal(
         talentCount, expectedTalentCount,
-        hero.id + ': # of parsed talents is different'
+        hero.id + ': # of parsed talents is different',
       );
     }
   });

@@ -18,14 +18,14 @@ if (require.main === module) {
     if (manifestJson.version === packageVersion) {
       console.log(
         'manifest.json version is up-to-date (%s), no changes',
-        manifestJson.version
+        manifestJson.version,
       );
     } else {
       const oldVersion = manifestJson.version;
       manifestJson.version = packageVersion;
       fs.writeFileSync(manifestJsonPath, JSON.stringify(manifestJson, null, 2));
       console.log(
-        'Updated manifest version: %s => %s', oldVersion, manifestJson.version
+        'Updated manifest version: %s => %s', oldVersion, manifestJson.version,
       );
     }
   }

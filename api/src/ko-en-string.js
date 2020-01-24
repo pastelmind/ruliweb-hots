@@ -17,7 +17,7 @@ module.exports = class KoEnString {
       this.ko = o.ko || '';
     } else {
       o += '';
-      const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^\)]*)\))?\s*$/.exec(o);
+      const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^)]*)\))?\s*$/.exec(o);
       this.en = enMatch.trim();
       this.ko = koMatch.trim();
     }

@@ -10,7 +10,7 @@
  * @typedef {import("../../../api/src/talent")} Talent
  */
 
-(root => {
+((root) => {
   const Mustache =
     (typeof require === 'function') ? require('mustache') : root.Mustache;
 
@@ -34,7 +34,7 @@
      * @return {string} HTML source
      */
     renderHeroInfoTable(
-      hero, iconSize = 64, skillIconSize = 48, hotsVersion, isSimpleTable
+      hero, iconSize = 64, skillIconSize = 48, hotsVersion, isSimpleTable,
     ) {
       const heroView = Object.create(hero);
 
@@ -49,11 +49,11 @@
       }[heroView.universe];
 
       // Generate skill groups
-      const traits = { title: '고유 능력', skills: [] };
-      const basicAbilities = { title: '일반 기술', skills: [] };
-      const heroicAbilities = { title: '궁극기', skills: [] };
+      const traits = {title: '고유 능력', skills: []};
+      const basicAbilities = {title: '일반 기술', skills: []};
+      const heroicAbilities = {title: '궁극기', skills: []};
 
-      heroView.skills.forEach(skill => {
+      heroView.skills.forEach((skill) => {
         if (skill.type === 'D') traits.skills.push(skill);
         else if (skill.type === 'R') heroicAbilities.skills.push(skill);
         else basicAbilities.skills.push(skill);
@@ -69,7 +69,7 @@
 
       for (const skillGroup of heroView.skillGroups) {
         skillGroup.skills = skillGroup.skills.map(
-          skill => this.renderSkillTalentView(skill, skillIconSize)
+          (skill) => this.renderSkillTalentView(skill, skillIconSize),
         );
       }
 
@@ -97,7 +97,7 @@
       return Mustache.render(
         this._templates['insert-skill'],
         this.renderSkillTalentView(skill, iconSize, hotsVersion),
-        { stats: this._templates['insert-skill-stats'] }
+        {stats: this._templates['insert-skill-stats']},
       );
     }
 
@@ -116,7 +116,7 @@
       return Mustache.render(
         this._templates['insert-skill'],
         talentView,
-        { stats: this._templates['insert-skill-stats'] }
+        {stats: this._templates['insert-skill-stats']},
       );
     }
 
@@ -129,7 +129,7 @@
      */
     renderTalentGroupInfoTable(talentGroup, iconSize = 48, hotsVersion) {
       return talentGroup.map(
-        talent => this.renderTalentInfoTable(talent, iconSize, hotsVersion)
+        (talent) => this.renderTalentInfoTable(talent, iconSize, hotsVersion),
       ).join('&nbsp;');
     }
 
@@ -156,10 +156,10 @@
           /^[^\S\r\n]*(퀘스트|보상|반복\s*퀘스트)\s*(?=:)/gm,
           '<img style="HEIGHT: 1.3em; vertical-align: -20%" ' +
           'src="https://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" ' +
-          'alt="$1" title="$1"> <b style="color: #fb0">$1</b>'
+          'alt="$1" title="$1"> <b style="color: #fb0">$1</b>',
         )
         .replace(
-          /^[^\S\r\n]*(지속\s*효과)\s*(?=:)/gm, '<b style="color: #0e8">$1</b>'
+          /^[^\S\r\n]*(지속\s*효과)\s*(?=:)/gm, '<b style="color: #0e8">$1</b>',
         )
         .replace(/\r?\n/g, '<br>');
 
@@ -171,7 +171,7 @@
         else if (/기력|에너지|취기|분노/.test(name)) {
           view.energyCost = skill.extras[name];
           view.energyCostName = name;
-        } else view.extras.push({ name, value: skill.extras[name] });
+        } else view.extras.push({name, value: skill.extras[name]});
 
         view.hasStats = true;
       }

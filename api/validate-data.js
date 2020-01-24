@@ -25,7 +25,7 @@ class HotsJsonValidator {
    * @param {*} hotsDataSchema JSON schema object for `hots.json`
    */
   constructor(hotsDataSchema) {
-    this.ajv = new Ajv({ multipleOfPrecision: 5 });
+    this.ajv = new Ajv({multipleOfPrecision: 5});
 
     try {
       this.schemaValidator = this.ajv.compile(hotsDataSchema);
@@ -64,7 +64,7 @@ class HotsJsonValidator {
     if (heroCount !== KNOWN_HERO_COUNT) {
       console.warn(
         `Warning: Hero count is ${heroCount},`,
-        `expected ${KNOWN_HERO_COUNT}`
+        `expected ${KNOWN_HERO_COUNT}`,
       );
     }
 
@@ -74,7 +74,7 @@ class HotsJsonValidator {
       if (ptrHeroCount > KNOWN_HERO_COUNT) {
         console.warn(
           `Warning: PTR Hero count is ${ptrHeroCount},`,
-          `expected at most ${KNOWN_HERO_COUNT}`
+          `expected at most ${KNOWN_HERO_COUNT}`,
         );
       }
     }
@@ -90,7 +90,7 @@ class HotsJsonValidator {
       if (url in iconUrlsToIds) {
         console.warn(
           `Duplicate icon URL: Both ${iconUrlsToIds[url]} and ${iconId}`,
-          `point to ${url}`
+          `point to ${url}`,
         );
       } else iconUrlsToIds[url] = iconId;
     }
@@ -108,7 +108,7 @@ class HotsJsonValidator {
         if (skill.icon in hotsData.iconUrls) unusedIcons.delete(skill.icon);
         else {
           console.warn(
-            `Warning: Missing icon for ${skill.name} in ${hero.name}`
+            `Warning: Missing icon for ${skill.name} in ${hero.name}`,
           );
         }
       }

@@ -11,7 +11,7 @@ module.exports = class ScalingStat {
    *    converted to a ScalingStat
    */
   constructor(o) {
-    if (typeof o !== 'object') o = { value: o };
+    if (typeof o !== 'object') o = {value: o};
 
     /**
      * Base value of the stat (at level 0).

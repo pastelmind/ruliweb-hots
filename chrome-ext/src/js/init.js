@@ -5,6 +5,8 @@
 
 'use strict';
 
+/* global decorateHotsData */
+
 // Global constants
 const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
 
@@ -28,13 +30,13 @@ chrome.runtime.onInstalled.addListener(() => {
 
   // Load pre-packaged hero data
   updateDataFromUrl(chrome.runtime.getURL('data/hots.json'))
-    .catch(e => console.error(e)) // Report and consume error
+    .catch((e) => console.error(e)) // Report and consume error
     .then(updateDataFromApi); // Immediately attempt an update from API
 
   // Clear and setup an alarm to update the ID.
-  chrome.alarms.clear(ALARM_UPDATE_DATA, wasCleared => {
+  chrome.alarms.clear(ALARM_UPDATE_DATA, (wasCleared) => {
     console.debug(
-      'Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.'
+      'Previous alarm has ' + (wasCleared ? '' : 'not ') + 'been cleared.',
     );
     chrome.alarms.create(ALARM_UPDATE_DATA, {
       delayInMinutes: 180, // 3 hours = 180 minutes
@@ -56,18 +58,18 @@ chrome.runtime.onInstalled.addListener(() => {
 // Register an event listener for the right-click menu
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-    chrome.tabs.executeScript({ code: 'HotsDialog.launchDialog();' });
+    chrome.tabs.executeScript({code: 'HotsDialog.launchDialog();'});
   } else alert('루리웹에서만 실행할 수 있습니다.');
 });
 
 // Register an event listener for the alarm.
-chrome.alarms.onAlarm.addListener(alarm => {
+chrome.alarms.onAlarm.addListener((alarm) => {
   const alarmDate = new Date();
   alarmDate.setTime(alarm.scheduledTime);
   console.debug(
     'Received alarm:', alarm.name,
     'scheduled at', alarmDate,
-    'with period =', alarm.periodInMinutes
+    'with period =', alarm.periodInMinutes,
   );
   if (alarm.name === ALARM_UPDATE_DATA) updateDataFromApi();
 });
@@ -82,22 +84,21 @@ chrome.alarms.onAlarm.addListener(alarm => {
 async function updateDataFromUrl(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(
-      `fetch() for ${url} failed with ${response.status} ${response.statusText}`
-    );
+    const {status, statusText} = response;
+    throw new Error(`fetch() for ${url} failed with ${status} ${statusText}`);
   }
   const hotsData = await response.json();
   console.debug('Retrieved data from', url);
 
   decorateHotsData(hotsData);
 
-  await new Promise(resolve =>
+  await new Promise((resolve) =>
     chrome.storage.local.set(hotsData, () => {
       if (chrome.runtime.lastError) throw chrome.runtime.lastError;
 
       console.debug('Loaded data from', url, 'to local storage');
       resolve();
-    })
+    }),
   );
 }
 
