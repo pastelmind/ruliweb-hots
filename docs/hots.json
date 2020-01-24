@@ -5529,13 +5529,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2850,
+          "value": 2950,
           "levelScaling": 0.045
         },
         "radius": 1.1875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.9414,
+          "value": 6.1445,
           "levelScaling": 0.045
         },
         "range": 2,
@@ -7128,13 +7128,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2920,
+          "value": 2850,
           "levelScaling": 0.04
         },
         "radius": 1.25,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 6.0781,
+          "value": 5.9375,
           "levelScaling": 0.04
         },
         "energy": 100,
@@ -20855,7 +20855,7 @@
         "range": 1.75,
         "period": 0.5,
         "damage": {
-          "value": 60,
+          "value": 64,
           "levelScaling": 0.04
         }
       },
