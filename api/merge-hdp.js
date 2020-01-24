@@ -554,8 +554,8 @@ function extractResourceCostInfo(skillTalentData) {
         if (perSecondString) manaCostPerSecond = +resourceCostAmount;
         else manaCost = +resourceCostAmount;
       } else {
-        extras[resourceName] =
-          (perSecondString ? perSecondString + ' ' : '0') + resourceCostAmount;
+        extras[resourceName] = perSecondString ?
+          `${perSecondString} ${resourceCostAmount}` : resourceCostAmount;
       }
     } else {
       logger.warn(
