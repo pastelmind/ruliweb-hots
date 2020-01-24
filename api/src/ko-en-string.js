@@ -7,7 +7,7 @@
 module.exports = class KoEnString {
   /**
    * Create a new KoEnString object.
-   * @param {string | KoEnString} o
+   * @param {string | Partial<KoEnString>} o
    */
   constructor(o = '') {
     if (o && typeof o === 'object' && ('en' in o || 'ko' in o)) {
@@ -17,7 +17,7 @@ module.exports = class KoEnString {
       this.ko = o.ko || '';
     } else {
       o += '';
-      const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^\)]*)\))?\s*$/.exec(o);
+      const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^)]*)\))?\s*$/.exec(o);
       this.en = enMatch.trim();
       this.ko = koMatch.trim();
     }

@@ -19,7 +19,7 @@
     require('./hots-dialog') : (root.HotsDialog = root.HotsDialog || {});
 
   const html = htm.bind(preact.createElement);
-  const { Fragment } = preact;
+  const {Fragment} = preact;
 
   /**
    * A menu of clickable hero icons.
@@ -40,7 +40,7 @@
    * @return {Object} DOM content to render
    */
   function HotsBoxMenu(props) {
-    const { hero } = props;
+    const {hero} = props;
     if (!hero) return html`<${Fragment}/>`;
 
     /**
@@ -87,15 +87,17 @@
             data-microtip-position="top" role="tooltip">
             <img class="hots-current-hero-icon" src="${hero.iconUrl}"
               alt="${hero.name} (${hero.roleName})"
-              onClick=${e => pasteHeroWithEffect(hero, e)}/>
+              onClick=${(e) => pasteHeroWithEffect(hero, e)}/>
           </div>
-          ${Object.values(hero.skills).map(skill => html`
+          ${Object.values(hero.skills).map((skill) => html`
             <div class="hots-skill-icon-wrapper"
-              aria-label="${skill.typeName} - ${skill.name}\n${skill.tooltipDescription}"
+              aria-label="${
+                `${skill.typeName} - ${skill.name}\n${skill.tooltipDescription}`
+              }"
               data-microtip-position="top" role="tooltip">
               <img class="hots-skill-icon" src="${skill.iconUrl}"
                 alt="${skill.typeName} - ${skill.name}"
-                onClick=${e => pasteSkillWithEffect(skill, e)}/>
+                onClick=${(e) => pasteSkillWithEffect(skill, e)}/>
             </div>
           `)}
         </div>
@@ -103,19 +105,24 @@
           ${Object.entries(hero.talents).map(([level, talentGroup]) => html`
             <li class="hots-talentset__group">
               <span class="hots-talentset__group-title">${level}레벨</span>
-              ${talentGroup.map(talent => html`
+              ${talentGroup.map((talent) => html`
                 <div class="hots-talent-icon-wrapper"
-                  aria-label="${talent.name}\n(${talent.typeNameLong} - 레벨 ${level})\n${talent.tooltipDescription}"
+                  aria-label="${
+                    `${talent.name}\n` +
+                    `(${talent.typeNameLong} - 레벨 ${level})\n` +
+                    talent.tooltipDescription
+                  }"
                   data-microtip-position="top" role="tooltip">
                   <img class="hots-talent-icon" src="${talent.iconUrl}"
                     alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
-                    onClick=${e => pasteTalentWithEffect(talent, e)}/>
+                    onClick=${(e) => pasteTalentWithEffect(talent, e)}
+                  />
                 </div>
               `)}
               <div class="hots-talentset__group-buttonset">
                 <input type="button" class="hots-talentset__group-add-all"
                   value="모두 넣기"
-                  onClick=${e => pasteTalentGroupWithEffect(talentGroup, e)}/>
+                  onClick=${(e) => pasteTalentGroupWithEffect(talentGroup, e)}/>
               </div>
             </li>
           `)}
@@ -130,7 +137,7 @@
    * @param {Element} clickedElement Element that was triggered by the user
    */
   function animatePasteEffect(injectedElement, clickedElement) {
-    const { left: endX, top: endY } =
+    const {left: endX, top: endY} =
       HotsDialog.util.getOffsetToViewport(injectedElement);
     HotsDialog.util.animateFlyingBox(clickedElement, endX, endY);
   }

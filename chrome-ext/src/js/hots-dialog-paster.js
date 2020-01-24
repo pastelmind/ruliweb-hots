@@ -4,7 +4,7 @@
 
 'use strict';
 
-(root => {
+((root) => {
   /** @type {import('./hots-dialog')} */
   const HotsDialog = (typeof require === 'function') ?
     require('./hots-dialog') : (root.HotsDialog = root.HotsDialog || {});
@@ -43,7 +43,7 @@
 
       // Build DOM nodes from HTML string
       const docFragment = HotsDialog.util.createDocumentFragmentFromHtml(
-        this._frame.document, html
+        this._frame.document, html,
       );
       const pastedElements = [...docFragment.children];
 

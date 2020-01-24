@@ -7,7 +7,7 @@
  * @typedef {import('../../../api/src/hots-data')} HotsData
  */
 
-(root => {
+((root) => {
   const isNodeJs = typeof require === 'function';
   /** @type {import('./tingle')} */
   const tingle =
@@ -63,7 +63,7 @@
             paster=${this._paster}
             />
         `,
-        contentFragment
+        contentFragment,
       );
       this._dialog.setContent(contentFragment);
     }

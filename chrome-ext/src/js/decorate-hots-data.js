@@ -200,7 +200,7 @@ function decorateHotsData(hotsData) {
 
     // Decorate units (i.e. collection of unit stats)
     if (Array.isArray(hero.stats)) {
-      hero.units = hero.stats.map(unit => createDecoratedUnit(unit));
+      hero.units = hero.stats.map((unit) => createDecoratedUnit(unit));
     } else hero.units = createDecoratedUnit(hero.stats);
   }
 
@@ -295,17 +295,17 @@ function decorateHotsData(hotsData) {
    * @return { (DecoratedStat | DecoratedStat[])[] }
    */
   function createDecoratedUnit(stats) {
-    const unit = { unitName: stats.unitName, stats: [] };
+    const unit = {unitName: stats.unitName, stats: []};
 
     for (const [presetId, preset] of Object.entries(StatPresets)) {
       preset.id = presetId;
       const stat = createDecoratedStat(
-        stats[preset.id === 'attackSpeed' ? 'period' : preset.id], preset
+        stats[preset.id === 'attackSpeed' ? 'period' : preset.id], preset,
       );
 
       if (!stat) continue;
       if (Array.isArray(stat)) {
-        unit.stats.push(...stat.filter(stat => stat));
+        unit.stats.push(...stat.filter((stat) => stat));
       } else unit.stats.push(stat);
     }
 
@@ -322,7 +322,7 @@ function decorateHotsData(hotsData) {
     if (!stat || preset.isDisabled) return undefined;
 
     if (Array.isArray(stat)) {
-      return stat.map(s => createDecoratedStat(s, preset));
+      return stat.map((s) => createDecoratedStat(s, preset));
     }
 
     const decoratedStat = decorateStatValue(stat);
@@ -347,7 +347,7 @@ function decorateHotsData(hotsData) {
    * @return {DecoratedStat} Decorated stat object
    */
   function decorateStatValue(stat) {
-    if (typeof stat !== 'object') return { value: stat };
+    if (typeof stat !== 'object') return {value: stat};
 
     if (stat.levelScaling) {
       stat.level20 = stat.value * Math.pow(1 + stat.levelScaling, 20);
@@ -367,25 +367,27 @@ function decorateHotsData(hotsData) {
    * @return {number|string}
    */
   function prettifyStatValue(value, statId) {
+    /* eslint-disable no-fallthrough */
     switch (statId) {
-      case 'hp':
-      case 'shields':
-      case 'damage':
-      case 'healEnergy':
-        return +(value.toFixed(0));
+    case 'hp':
+    case 'shields':
+    case 'damage':
+    case 'healEnergy':
+      return +(value.toFixed(0));
 
-      case 'attackSpeed':
-        value = 1 / value; // attackSpeed is derived from (attack) period
-        // Intentional fall-through
+    case 'attackSpeed':
+      value = 1 / value; // attackSpeed is derived from (attack) period
+      // Intentional fall-through
 
-      case 'hpRegen':
-        value = +(value.toFixed(3));
-        // Intentional fall-through
+    case 'hpRegen':
+      value = +(value.toFixed(3));
+      // Intentional fall-through
 
-      case 'range':
-        // Append trailing '.0'
-        if (Number.isInteger(value)) return value.toFixed(1);
+    case 'range':
+      // Append trailing '.0'
+      if (Number.isInteger(value)) return value.toFixed(1);
     }
+    /* eslint-enable no-fallthrough */
 
     return value;
   }

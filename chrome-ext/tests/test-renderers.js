@@ -13,7 +13,7 @@ const snapshot = require('snap-shot-it');
 
 const decorateHotsData = require('../src/js/decorate-hots-data');
 
-const { loadTemplates } = require('./js/mocks');
+const {loadTemplates} = require('./js/mocks');
 const Renderer = require('../src/js/hots-dialog-renderer');
 
 
@@ -23,7 +23,7 @@ describe('HotsDialog.Renderer', () => {
 
   before('Loading test data files', async () => {
     hotsData = JSON.parse(
-      fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, 'data/hots.json'), 'utf8'),
     );
     decorateHotsData(hotsData);
 
@@ -36,10 +36,10 @@ describe('HotsDialog.Renderer', () => {
     it('generates hero boxes correctly', () => {
       const hero = hotsData.heroes.Tinker;
       snapshot(
-        renderer.renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion)
+        renderer.renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion),
       );
       snapshot(
-        renderer.renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true)
+        renderer.renderHeroInfoTable(hero, 64, 48, hotsData.hotsVersion, true),
       );
     });
 

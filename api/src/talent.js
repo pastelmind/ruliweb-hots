@@ -9,7 +9,7 @@ const Skill = require('./skill');
 module.exports = class Talent extends Skill {
   /**
    * Create a new Talent object.
-   * @param {Talent} o
+   * @param {Partial<Talent>} o
    */
   constructor(o = {}) {
     super(o);

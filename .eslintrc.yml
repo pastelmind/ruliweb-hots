@@ -6,25 +6,16 @@ env:
   webextensions: true
 extends:
   - google
+  - "eslint:recommended"
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
 parserOptions:
   ecmaVersion: 2018
 rules:
-  arrow-parens:
-    - error
-    - as-needed
+  guard-for-in: off
   indent:
     - error
     - 2
-    - SwitchCase: 1
-  linebreak-style: off
-  object-curly-spacing:
-    - error
-    - always
-  space-before-function-paren:
-    - error
-    - anonymous: always
-      named: never
-      asyncArrow: always
+    - ignoredNodes:
+      - TemplateLiteral > *

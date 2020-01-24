@@ -39,10 +39,10 @@ for (const fileName of fileNames) {
   if (fs.statSync(filePath).isDirectory()) continue;
 
   // Remove file extension
-  const templateName = fileName.replace(/\.[^\.]+$/, '');
+  const templateName = fileName.replace(/\.[^.]+$/, '');
   console.assert(
     !(templateName in templates),
-    'Duplicate template name found: ' + templateName
+    'Duplicate template name found: ' + templateName,
   );
 
   // Normalize CRLF to LF
@@ -90,7 +90,7 @@ function inlineCss(html, cssToInline) {
 function stripCssClasses(html, whitelist = {}) {
   return html.replace(/\sclass="([^]*?)"/gi, (classAttr, classList) => {
     classList = classList.trim().split(/\s+/)
-      .filter(cssClass => cssClass in whitelist).join(' ');
+      .filter((cssClass) => cssClass in whitelist).join(' ');
     return classList ? ` class="${classList}"` : '';
   });
 }
@@ -103,7 +103,7 @@ function stripCssClasses(html, whitelist = {}) {
  * @return {string} Modified HTML
  */
 function ruliwebCssFix(html) {
-  return html.replace(/\sstyle="[^]*?"/gi, styleAttr =>
+  return html.replace(/\sstyle="[^]*?"/gi, (styleAttr) =>
     styleAttr.replace(/width/gi, 'WIDTH').replace(/height/gi, 'HEIGHT'));
 }
 
@@ -115,9 +115,9 @@ function ruliwebCssFix(html) {
 function minifyInlineCss(html) {
   return html.replace(
     /(?<=\bstyle=").*?(?=")/gi,
-    inlineCss => inlineCss
+    (inlineCss) => inlineCss
       .replace(/;\s*$/, '')
       .trim()
-      .replace(/\s*([;:,])\s*/g, '$1')
+      .replace(/\s*([;:,])\s*/g, '$1'),
   );
 }

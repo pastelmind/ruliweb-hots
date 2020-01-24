@@ -6,20 +6,22 @@
 
 
 if (typeof chrome === 'undefined') {
+  /* eslint-disable no-var */
   var chrome = {};
+  /* eslint-enable no-var */
 
   // For testing in Node.js
   if (typeof module !== 'undefined' && module.exports) global.chrome = chrome;
 }
 
 chrome.runtime = chrome.runtime || {};
-chrome.runtime.getURL = url => '../src/' + url;
-chrome.runtime.getManifest = () => ({ version: 'app version string' });
+chrome.runtime.getURL = (url) => '../src/' + url;
+chrome.runtime.getManifest = () => ({version: 'app version string'});
 
 
 if (typeof module === 'object' && module.exports) {
   const path = require('path');
-  const { promisify } = require('util');
+  const {promisify} = require('util');
   const readFileAsync = promisify(require('fs').readFile);
 
   const templateJsonPath = path.join(__dirname, '../../src/templates.json');

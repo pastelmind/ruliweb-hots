@@ -18,11 +18,11 @@ module.exports = function jsonFind(json, callback, key = undefined) {
   if (json && typeof json === 'object') {
     if (Array.isArray(json)) {
       for (let i = 0; i < json.length; ++i) {
-        if (result = jsonFind(json[i], callback, i)) return result;
+        if ((result = jsonFind(json[i], callback, i))) return result;
       }
     } else {
       for (const objKey in json) {
-        if (result = jsonFind(json[objKey], callback, objKey)) return result;
+        if ((result = jsonFind(json[objKey], callback, objKey))) return result;
       }
     }
   }
