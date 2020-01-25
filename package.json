@@ -9,7 +9,7 @@
     "postbuild": "rm -rf ./build/* && mkdir -p ./build && npm run -s build:zip",
     "build:templates": "node ./chrome-ext/build-templates.js",
     "build:zip": "node ./chrome-ext/build-zip.js",
-    "watch": "watch 'npm run -s build:templates' ./chrome-ext/templates/ --wait=3 --interval=1 &",
+    "watch": "npx watch 'npm run -s build:templates' ./chrome-ext/templates/ --wait=3 --interval=1 &",
     "preversion": "npm run -s prebuild",
     "version": "node ./scripts/update-manifest.js && git add ./chrome-ext/src/manifest.json",
     "postversion": "npm run -s postbuild",
@@ -49,8 +49,7 @@
     "@types/mocha": "^5.2.7",
     "commander": "^4.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-google": "^0.14.0",
-    "watch": "^1.0.2"
+    "eslint-config-google": "^0.14.0"
   },
   "engines": {
     "node": ">=10"
