@@ -41,7 +41,7 @@
     "mustache": "^4.0.1",
     "preact": "^10.4.6",
     "snap-shot-it": "^7.9.3",
-    "tingle.js": "^0.15.2",
+    "tingle.js": "^0.15.3",
     "yazl": "^2.5.1"
   },
   "devDependencies": {
