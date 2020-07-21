@@ -33,22 +33,22 @@
   },
   "homepage": "https://github.com/pastelmind/ruliweb-hots#readme",
   "dependencies": {
-    "ajv": "^6.12.0",
-    "htm": "^3.0.3",
-    "juice": "^6.0.0",
+    "ajv": "^6.12.3",
+    "htm": "^3.0.4",
+    "juice": "^7.0.0",
     "microtip": "^0.2.2",
-    "mocha": "^7.1.1",
+    "mocha": "^8.0.1",
     "mustache": "^4.0.1",
-    "preact": "^10.3.4",
+    "preact": "^10.4.6",
     "snap-shot-it": "^7.9.3",
-    "tingle.js": "^0.15.2",
+    "tingle.js": "^0.15.3",
     "yazl": "^2.5.1"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.100",
-    "@types/mocha": "^7.0.2",
-    "commander": "^5.0.0",
-    "eslint": "^6.8.0",
+    "@types/chrome": "0.0.121",
+    "@types/mocha": "^8.0.0",
+    "commander": "^6.0.0",
+    "eslint": "^7.5.0",
     "eslint-config-google": "^0.14.0"
   },
   "engines": {
