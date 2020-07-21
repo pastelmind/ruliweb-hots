@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/chrome": "0.0.121",
     "@types/mocha": "^8.0.0",
-    "commander": "^5.0.0",
+    "commander": "^6.0.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0"
   },
