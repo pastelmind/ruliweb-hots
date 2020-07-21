@@ -246,3 +246,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added some missing skills (traits and Z-skills).
 - Fixed some skill descriptions.
 - Varian is properly highlighted when selecting either 'Warrior' or 'Assassin'.
+
+
+## [0.3.1]
+### Added
+- Remove dependency on jQuery, use axios instead
+
+### Fixed
+- Fix typo in extension name
+
+## [0.3.0]
+### Added
+- Added hero filters
+
+### Changed
+- Use tingle.js instead of jQuery UI
+- Rewrote NamuWiki crawling script
+
+## [0.2.0]
+### Added
+- Retrieve fresh data every 6 hours
+
+### Fixed
+- Fix Cho'Gall data
+
+
+[Unreleased]: https://github.com/pastelmind/ruliweb-hots/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.10.4...v0.11.0
+[0.10.4]: https://github.com/pastelmind/ruliweb-hots/compare/v0.10.3...v0.10.4
+[0.10.3]: https://github.com/pastelmind/ruliweb-hots/compare/v0.10.2...v0.10.3
+[0.10.2]: https://github.com/pastelmind/ruliweb-hots/compare/v0.10.1...v0.10.2
+[0.10.1]: https://github.com/pastelmind/ruliweb-hots/compare/v0.10.0...v0.10.1
+[0.10.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.9.1...v0.10.0
+[0.9.1]: https://github.com/pastelmind/ruliweb-hots/compare/v0.9.0...v0.9.1
+[0.9.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.8.2...v0.9.0
+[0.8.2]: https://github.com/pastelmind/ruliweb-hots/compare/v0.8.1...v0.8.2
+[0.8.1]: https://github.com/pastelmind/ruliweb-hots/compare/v0.8.0...v0.8.1
+[0.8.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.6.1...v0.7.0
+[0.6.1]: https://github.com/pastelmind/ruliweb-hots/compare/v0.6.0...v0.6.1
+[0.6.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.3.1...v0.4.0
+[0.3.1]: https://github.com/pastelmind/ruliweb-hots/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/pastelmind/ruliweb-hots/compare/v0.0.1...v0.3.0
+[0.2.0]: https://github.com/pastelmind/ruliweb-hots/releases/tag/v0.2.0
