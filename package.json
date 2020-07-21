@@ -34,7 +34,7 @@
   "homepage": "https://github.com/pastelmind/ruliweb-hots#readme",
   "dependencies": {
     "ajv": "^6.12.3",
-    "htm": "^3.0.3",
+    "htm": "^3.0.4",
     "juice": "^6.0.0",
     "microtip": "^0.2.2",
     "mocha": "^8.0.1",
