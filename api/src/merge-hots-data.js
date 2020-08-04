@@ -196,7 +196,7 @@ function mergeHeroStats(target, source) {
     shields: 0,
   };
 
-  for (const propertyName in scalingStatProperties) {
+  for (const propertyName of Object.keys(scalingStatProperties)) {
     mergeScalingStat(target[propertyName], source[propertyName]);
   }
 

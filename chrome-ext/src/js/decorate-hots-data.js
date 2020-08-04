@@ -146,8 +146,7 @@ export function decorateHotsData(hotsData) {
 
   // Mark PTR data
   hotsData.ptrHeroes = hotsData.ptrHeroes || {};
-  for (const ptrHeroId in hotsData.ptrHeroes) {
-    const ptrHero = hotsData.ptrHeroes[ptrHeroId];
+  for (const [ptrHeroId, ptrHero] of Object.entries(hotsData.ptrHeroes)) {
     ptrHero.isPtr = true;
 
     if (ptrHeroId in hotsData.heroes) {
@@ -212,7 +211,7 @@ export function decorateHotsData(hotsData) {
     // Assign skill index
     hero.skills.forEach((skill, index) => (skill.index = index));
 
-    for (const talentLevel in hero.talents) {
+    for (const talentLevel of Object.keys(hero.talents)) {
       hero.talents[talentLevel].forEach((talent, index) => {
         skillsOrTalents.push(talent);
 

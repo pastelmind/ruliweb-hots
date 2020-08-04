@@ -237,7 +237,7 @@ function parseAllTalentsData(heroData, heroId) {
   /** @type {Object<number, Talent[]>} */
   const talents = {};
 
-  for (const talentLevelPropertyName in heroData.talents) {
+  for (const talentLevelPropertyName of Object.keys(heroData.talents)) {
     let talentLevel = +talentLevelPropertyName.replace("level", "");
 
     // Fix for Chromie's trait
@@ -586,7 +586,7 @@ function extractResourceCostInfo(skillTalentData) {
  *    HeroesDataParser
  */
 function mergeHdpLocale(hdpDataKo, hdpDataEn) {
-  for (const heroId in hdpDataKo) {
+  for (const heroId of Object.keys(hdpDataKo)) {
     const heroDataKo = hdpDataKo[heroId];
     const heroDataEn = hdpDataEn[heroId];
 
@@ -595,7 +595,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
     (heroDataKo.subAbilities || []).forEach((superGroupKo, index) => {
       const superGroupEn = heroDataEn.subAbilities[index];
 
-      for (const subAbilityGroupId in superGroupKo) {
+      for (const subAbilityGroupId of Object.keys(superGroupKo)) {
         mergeAbilityGroupLocale(
           superGroupKo[subAbilityGroupId],
           superGroupEn[subAbilityGroupId]
@@ -606,7 +606,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
     (heroDataKo.HeroUnits || []).forEach((heroUnitGroupKo, index) => {
       const heroUnitGroupEn = heroDataEn.HeroUnits[index];
 
-      for (const heroUnitId in heroUnitGroupKo) {
+      for (const heroUnitId of Object.keys(heroUnitGroupKo)) {
         mergeAbilityGroupLocale(
           heroUnitGroupKo[heroUnitId].abilities,
           heroUnitGroupEn[heroUnitId].abilities
@@ -614,7 +614,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
       }
     });
 
-    for (const talentLevelName in heroDataKo.talents) {
+    for (const talentLevelName of Object.keys(heroDataKo.talents)) {
       heroDataKo.talents[talentLevelName].forEach((talentKr, index) => {
         talentKr.name = new KoEnString({
           ko: talentKr.name.trim(),
@@ -630,7 +630,7 @@ function mergeHdpLocale(hdpDataKo, hdpDataEn) {
    * @param {Object} abilityGroupEn
    */
   function mergeAbilityGroupLocale(abilityGroupKo, abilityGroupEn) {
-    for (const abilityType in abilityGroupKo) {
+    for (const abilityType of Object.keys(abilityGroupKo)) {
       abilityGroupKo[abilityType].forEach((abilityKr, index) => {
         abilityKr.name = new KoEnString({
           ko: abilityKr.name.trim(),

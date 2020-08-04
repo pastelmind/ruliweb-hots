@@ -39,7 +39,7 @@ export class Hero {
 
     /** @type {{ [talentLevel: number]: Talent[] }} */
     this.talents = {};
-    for (const talentLevel in o.talents) {
+    for (const talentLevel of Object.keys(o.talents)) {
       this.talents[talentLevel] = o.talents[talentLevel].map((talent) => {
         talent = new Talent(talent);
         talent.level = talentLevel;
@@ -78,8 +78,8 @@ export class Hero {
    * @yield {IterableIterator<Talent>}
    */
   *allTalents() {
-    for (const talentLevel in this.talents) {
-      yield* this.talents[talentLevel];
+    for (const talentGroup of Object.values(this.talents)) {
+      yield* talentGroup;
     }
   }
 

@@ -70,7 +70,7 @@ export class HotsData {
    */
   static unpackHeroes(source) {
     const dest = {};
-    for (const heroId in source) {
+    for (const heroId of Object.keys(source || {})) {
       const hero = (dest[heroId] = new Hero(source[heroId]));
       hero.id = heroId;
     }
@@ -101,7 +101,7 @@ export class HotsData {
 
       // talent.level is unnecessary; talent level can be retrieved from keys of
       // hero.talents
-      for (const talentLevel in heroJson.talents) {
+      for (const talentLevel of Object.keys(heroJson.talents)) {
         for (const talent of heroJson.talents[talentLevel]) {
           delete talent.level;
         }

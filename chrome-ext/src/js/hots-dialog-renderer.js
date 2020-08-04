@@ -62,8 +62,8 @@ export class Renderer {
       else basicAbilities.skills.push(skill);
     });
 
-    for (const talentLevel in heroView.talents) {
-      for (const talent of heroView.talents[talentLevel]) {
+    for (const talentArray of Object.values(heroView.talents)) {
+      for (const talent of talentArray) {
         if (talent.type === "R") heroicAbilities.skills.push(talent);
       }
     }
@@ -175,12 +175,12 @@ export class Renderer {
     // Parse extra properties
     view.extras = [];
 
-    for (const name in skill.extras) {
-      if (name.includes("생명력")) view.lifeCost = skill.extras[name];
+    for (const [name, value] of Object.entries(skill.extras || {})) {
+      if (name.includes("생명력")) view.lifeCost = value;
       else if (/기력|에너지|취기|분노/.test(name)) {
-        view.energyCost = skill.extras[name];
+        view.energyCost = value;
         view.energyCostName = name;
-      } else view.extras.push({ name, value: skill.extras[name] });
+      } else view.extras.push({ name, value });
 
       view.hasStats = true;
     }
