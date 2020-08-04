@@ -22,7 +22,7 @@ export class HtmlPaster {
   bind() {
     this._frame = getSelectedChildWindow();
     if (!this._frame) {
-      throw new Error('선택된 프레임을 찾을 수 없습니다.');
+      console.error('선택된 프레임을 찾을 수 없습니다.');
     }
   }
 
