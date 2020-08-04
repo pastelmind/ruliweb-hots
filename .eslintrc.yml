@@ -1,6 +1,5 @@
 env:
   browser: true
-  commonjs: true
   # Allow use of dynamic import() and import.meta
   es2020: true
   node: true
