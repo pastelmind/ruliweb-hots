@@ -51,7 +51,8 @@
     "commander": "^6.0.0",
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^6.11.0"
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.0.5"
   },
   "engines": {
     "node": ">=12"
