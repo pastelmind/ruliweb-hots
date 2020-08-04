@@ -8,8 +8,9 @@
  * @return {Window} Window object of the currently selected child frame.
  */
 export function getSelectedChildWindow() {
-  return Array.from(window)
-    .find((childWindow) => childWindow.getSelection().rangeCount);
+  return Array.from(window).find(
+    (childWindow) => childWindow.getSelection().rangeCount
+  );
 }
 
 /**
@@ -19,11 +20,10 @@ export function getSelectedChildWindow() {
  * @return {DocumentFragment} DocumentFragment object
  */
 export function createDocumentFragmentFromHtml(document, html) {
-  const templateElement = document.createElement('template');
+  const templateElement = document.createElement("template");
   templateElement.innerHTML = html;
   return templateElement.content;
 }
-
 
 /**
  * Creates an animated flying box that initially covers an element, and
@@ -36,19 +36,19 @@ export function createDocumentFragmentFromHtml(document, html) {
  */
 export function animateFlyingBox(startElem, endX, endY) {
   const startRect = startElem.getBoundingClientRect();
-  const flyingBox = document.createElement('div');
+  const flyingBox = document.createElement("div");
   flyingBox.appendChild(startElem.cloneNode());
 
   Object.assign(flyingBox.style, {
-    position: 'fixed',
-    width: startRect.width + 'px',
-    height: startRect.height + 'px',
-    left: startRect.left + 'px',
-    top: startRect.top + 'px',
+    position: "fixed",
+    width: startRect.width + "px",
+    height: startRect.height + "px",
+    left: startRect.left + "px",
+    top: startRect.top + "px",
     // Appear over all elements (tingle.js uses z-index === 1000)
     zIndex: 9999,
     // Don't trigger event listeners if flying box is accidentally clicked
-    pointerEvents: 'none',
+    pointerEvents: "none",
   });
 
   document.body.appendChild(flyingBox);
@@ -62,10 +62,10 @@ export function animateFlyingBox(startElem, endX, endY) {
       setTimeout(startFlyingAnimation, 5);
     } else {
       Object.assign(flyingBox.style, {
-        transition: '1s',
-        transform: 'scale(0)',
-        left: endX + 'px',
-        top: endY + 'px',
+        transition: "1s",
+        transform: "scale(0)",
+        left: endX + "px",
+        top: endY + "px",
       });
 
       setTimeout(() => flyingBox.remove(), 1000);
@@ -81,17 +81,19 @@ export function animateFlyingBox(startElem, endX, endY) {
  *    the viewport, measured in pixels
  */
 export function getOffsetToViewport(element) {
-  let {left, top} = element.getBoundingClientRect();
+  let { left, top } = element.getBoundingClientRect();
 
   // Add offset of containing <iframe>s
-  let {frameElement} = element.ownerDocument.defaultView;
+  let { frameElement } = element.ownerDocument.defaultView;
   while (frameElement) {
-    const {left: frameLeft, top: frameTop} =
-        frameElement.getBoundingClientRect();
+    const {
+      left: frameLeft,
+      top: frameTop,
+    } = frameElement.getBoundingClientRect();
     left += frameLeft;
     top += frameTop;
-    ({frameElement} = frameElement.ownerDocument.defaultView);
+    ({ frameElement } = frameElement.ownerDocument.defaultView);
   }
 
-  return {left, top};
+  return { left, top };
 }

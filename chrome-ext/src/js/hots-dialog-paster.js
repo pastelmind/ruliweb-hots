@@ -5,7 +5,7 @@
 import {
   createDocumentFragmentFromHtml,
   getSelectedChildWindow,
-} from './hots-dialog-util.js';
+} from "./hots-dialog-util.js";
 
 /** Class that pastes HTML into a frame. */
 export class HtmlPaster {
@@ -22,7 +22,7 @@ export class HtmlPaster {
   bind() {
     this._frame = getSelectedChildWindow();
     if (!this._frame) {
-      console.error('선택된 프레임을 찾을 수 없습니다.');
+      console.error("선택된 프레임을 찾을 수 없습니다.");
     }
   }
 
@@ -37,11 +37,12 @@ export class HtmlPaster {
     if (!range.collapsed) range.deleteContents();
 
     // Add padding to help editing
-    html += '&nbsp;';
+    html += "&nbsp;";
 
     // Build DOM nodes from HTML string
     const docFragment = createDocumentFragmentFromHtml(
-      this._frame.document, html,
+      this._frame.document,
+      html
     );
     const pastedElements = [...docFragment.children];
 
@@ -49,8 +50,7 @@ export class HtmlPaster {
     range.insertNode(docFragment);
 
     // Deselect inserted HTML
-    this._frame.getSelection()
-      .collapse(range.endContainer, range.endOffset);
+    this._frame.getSelection().collapse(range.endContainer, range.endOffset);
 
     return pastedElements;
   }
@@ -69,7 +69,7 @@ function getSelectedRange(frame) {
   if (selection.rangeCount) {
     range = selection.getRangeAt(0);
     // Weird edge case
-    if ('HTML' !== range.startContainer.nodeName) return range;
+    if ("HTML" !== range.startContainer.nodeName) return range;
   }
 
   const document = frame.document;

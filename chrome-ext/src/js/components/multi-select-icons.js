@@ -1,10 +1,10 @@
 /** @file Component representing a multi-selectable group of icons. */
 
-import _htm from '../htm.js';
+import _htm from "../htm.js";
 import {
   Component as _Component,
   createElement as _createElement,
-} from '../preact.js';
+} from "../preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
@@ -28,10 +28,10 @@ export class MultiSelectIcons extends Component {
     super(props);
 
     const selected = {};
-    for (const {id} of props.options) {
+    for (const { id } of props.options) {
       selected[id] = false;
     }
-    this.state = {selected};
+    this.state = { selected };
   }
 
   /**
@@ -54,7 +54,7 @@ export class MultiSelectIcons extends Component {
           .filter((o) => this.state.selected[o.id])
           .map((o) => o.id);
         this.props.onSelectChange(selectedIds);
-      },
+      }
     );
     event.preventDefault();
   }
@@ -63,16 +63,27 @@ export class MultiSelectIcons extends Component {
   render() {
     return html`
       <div class="multi-select-icons">
-        ${this.props.options.map((option) => html`
-          <label key=${option.id} class="multi-select-icons__option"
-            aria-label="${option.name}"
-            data-microtip-position="top" role="tooltip">
-            <input type="checkbox"
-              onInput=${(event) => this.onOptionInput(event, option.id)}/>
-            <img class="multi-select-icons__option-icon" alt="${option.name}"
-              src="${option.iconUrl}"/>
-          </label>
-        `)}
+        ${this.props.options.map(
+          (option) => html`
+            <label
+              key=${option.id}
+              class="multi-select-icons__option"
+              aria-label="${option.name}"
+              data-microtip-position="top"
+              role="tooltip"
+            >
+              <input
+                type="checkbox"
+                onInput=${(event) => this.onOptionInput(event, option.id)}
+              />
+              <img
+                class="multi-select-icons__option-icon"
+                alt="${option.name}"
+                src="${option.iconUrl}"
+              />
+            </label>
+          `
+        )}
       </div>
     `;
   }

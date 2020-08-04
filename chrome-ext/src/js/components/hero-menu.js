@@ -4,8 +4,8 @@
  * @typedef {import("../../../../api/src/hero").Hero} Hero
  */
 
-import _htm from '../htm.js';
-import {createElement as _createElement} from '../preact.js';
+import _htm from "../htm.js";
+import { createElement as _createElement } from "../preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
@@ -30,26 +30,26 @@ const html = htm.bind(createElement);
  * @return {Object} DOM content to render
  */
 export function HeroMenu(props) {
-  const {heroes, ptrHeroes, activeFilters, ptrMode, onClickHero} = props;
+  const { heroes, ptrHeroes, activeFilters, ptrMode, onClickHero } = props;
 
   const activeFilterSets = {};
   for (const [filterType, filters] of Object.entries(activeFilters)) {
-    const filterSet = activeFilterSets[filterType] = new Set(filters);
+    const filterSet = (activeFilterSets[filterType] = new Set(filters));
     // Workaround for Nexus-original heroes
-    if (filterSet.has('classic')) filterSet.add('nexus');
+    if (filterSet.has("classic")) filterSet.add("nexus");
   }
 
   const icons = Object.values(Object.assign({}, heroes, ptrHeroes))
-    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'))
-    .map(({id: heroId}) => {
+    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, "en"))
+    .map(({ id: heroId }) => {
       const liveHero = heroes[heroId];
       const ptrHero = ptrHeroes[heroId];
-      const hero = ptrMode ? (ptrHero || liveHero) : (liveHero || ptrHero);
+      const hero = ptrMode ? ptrHero || liveHero : liveHero || ptrHero;
 
       let tooltip = `${hero.name} (${hero.roleName})`;
       if (ptrHero) {
-        if (liveHero) tooltip += '\n이 영웅은 PTR에서 변경되었습니다';
-        else tooltip += '\n이 영웅은 PTR에 추가되었습니다';
+        if (liveHero) tooltip += "\n이 영웅은 PTR에서 변경되었습니다";
+        else tooltip += "\n이 영웅은 PTR에 추가되었습니다";
       }
 
       let isHighlighted = true;
@@ -57,16 +57,26 @@ export function HeroMenu(props) {
       else isHighlighted = canHeroPassFilters(hero, activeFilterSets);
 
       return html`
-        <div class="hots-hero-icon-wrapper" aria-label="${tooltip}"
-          data-microtip-position="top" role="tooltip">
-          <img class="hots-hero-icon
-            ${!isHighlighted && 'hots-hero-icon--excluded'}"
-            src="${hero.iconUrl}" alt="${`${hero.name} (${hero.roleName})`}"
-            onClick="${() => onClickHero(hero)}"/>
-          ${ptrHero && html`
-            <span class="hots-hero-icon-badge
-              hots-hero-icon-badge--${liveHero ? 'ptr-changes' : 'new'}">
-              ${liveHero ? 'PTR' : 'NEW'}
+        <div
+          class="hots-hero-icon-wrapper"
+          aria-label="${tooltip}"
+          data-microtip-position="top"
+          role="tooltip"
+        >
+          <img
+            class="hots-hero-icon
+            ${!isHighlighted && "hots-hero-icon--excluded"}"
+            src="${hero.iconUrl}"
+            alt="${`${hero.name} (${hero.roleName})`}"
+            onClick="${() => onClickHero(hero)}"
+          />
+          ${ptrHero &&
+          html`
+            <span
+              class="hots-hero-icon-badge
+              hots-hero-icon-badge--${liveHero ? "ptr-changes" : "new"}"
+            >
+              ${liveHero ? "PTR" : "NEW"}
             </span>
           `}
         </div>

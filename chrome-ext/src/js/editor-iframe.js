@@ -4,7 +4,6 @@
  * any <iframe>s on such pages.
  */
 
-
 // Attached to window so as to allow access from hots-dialog.js
 window.pToDivReplacer = {
   /**
@@ -25,7 +24,7 @@ window.pToDivReplacer = {
    */
   activate() {
     if (this.isActive) {
-      console.debug('PToDivReplacer is already active');
+      console.debug("PToDivReplacer is already active");
       return;
     }
 
@@ -45,7 +44,7 @@ window.pToDivReplacer = {
    */
   deactivate() {
     if (!this.isActive) {
-      console.debug('PToDivReplacer is already inactive');
+      console.debug("PToDivReplacer is already inactive");
       return;
     }
 
@@ -55,23 +54,23 @@ window.pToDivReplacer = {
   },
 };
 
-
 if (isInIframe()) {
   // Delete hero/skill/talent tables when Ctrl + clicked
   // Note: The editor normally prevents click events from going through,
   //      but clicks made on the pseudo-elements register just fine. Yay!
   // Add the event listener to the <html> element, because Cheditor will replace
   // the <body> element when switching between editor modes
-  document.body.parentNode.addEventListener('click', (event) => {
+  document.body.parentNode.addEventListener("click", (event) => {
     if (!(event.target && event.ctrlKey)) return;
 
     const rootElem = event.target.parentNode;
-    if (rootElem.classList.contains('ruliweb-hots-hero-table') ||
-      rootElem.classList.contains('ruliweb-hots-skill-table') ||
-      rootElem.classList.contains('ruliweb-hots-talent-table')
+    if (
+      rootElem.classList.contains("ruliweb-hots-hero-table") ||
+      rootElem.classList.contains("ruliweb-hots-skill-table") ||
+      rootElem.classList.contains("ruliweb-hots-talent-table")
     ) {
-      rootElem.style.transition = 'transform .2s';
-      rootElem.style.transform = 'scale(0, 0)';
+      rootElem.style.transition = "transform .2s";
+      rootElem.style.transform = "scale(0, 0)";
       setTimeout(() => rootElem.parentNode.removeChild(rootElem), 200);
     }
   });
@@ -81,13 +80,14 @@ if (isInIframe()) {
   // elements inserted by HotsDialog
   const bodyStyleRemover = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
-      if (mutation.type === 'attributes' &&
-        mutation.attributeName === 'style' &&
-        mutation.target.nodeName === 'BODY'
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "style" &&
+        mutation.target.nodeName === "BODY"
       ) {
         /** @type {HTMLBodyElement} */
         const body = mutation.target;
-        body.style.textAlign = '';
+        body.style.textAlign = "";
         return; // Mission accomplished, don't process any more mutations
       }
     }
@@ -96,14 +96,12 @@ if (isInIframe()) {
   // Observe mutations on <html> and its descendants (see comments above)
   bodyStyleRemover.observe(document.body.parentNode, {
     attributes: true,
-    attributeFilter: ['style'],
+    attributeFilter: ["style"],
     subtree: true,
   });
 
-
   window.pToDivReplacer.activate();
 }
-
 
 /**
  * Check if this script is running in an iframe.
@@ -118,22 +116,21 @@ function isInIframe() {
   }
 }
 
-
 /**
  * Find all cases where a <details> is inside a <p>, and replace the <p> with a
  * <div>.
  */
 function replaceAncestorPsWithDivs() {
   let detailsTag;
-  while ((detailsTag = document.querySelector('p details:first-of-type'))) {
+  while ((detailsTag = document.querySelector("p details:first-of-type"))) {
     // Find ancestor <p> of <details>
     let ancestorP = detailsTag.parentElement;
-    while (ancestorP && ancestorP.tagName !== 'P') {
+    while (ancestorP && ancestorP.tagName !== "P") {
       ancestorP = ancestorP.parentElement;
     }
 
     if (!ancestorP) {
-      console.error('Cannot find ancestor <p> of', detailsTag);
+      console.error("Cannot find ancestor <p> of", detailsTag);
       continue;
     }
 
@@ -145,7 +142,7 @@ function replaceAncestorPsWithDivs() {
     parentOfP.removeChild(ancestorP);
 
     // Create <div> to replace <p>
-    const div = document.createElement('div');
+    const div = document.createElement("div");
 
     // Copy all attributes of <p> to <div>
     for (const attribute of ancestorP.attributes) {

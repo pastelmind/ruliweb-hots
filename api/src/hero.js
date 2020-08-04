@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import {HeroStats} from './hero-stats.js';
-import {Skill} from './skill.js';
-import {Talent} from './talent.js';
+import { HeroStats } from "./hero-stats.js";
+import { Skill } from "./skill.js";
+import { Talent } from "./talent.js";
 
 /**
  * Represents a Heroes of the Storm hero.
@@ -23,23 +23,23 @@ export class Hero {
    * @param {Object<string, string|number>=} o.extras
    */
   constructor(o = {}) {
-    this.name = o.name || '';
-    this.title = o.title || '';
-    this.icon = o.icon || '';
-    this.iconUrl = o.iconUrl || '';
-    this.id = o.id || '';
-    this.newRole = o.newRole || '';
-    this.universe = o.universe || '';
+    this.name = o.name || "";
+    this.title = o.title || "";
+    this.icon = o.icon || "";
+    this.iconUrl = o.iconUrl || "";
+    this.id = o.id || "";
+    this.newRole = o.newRole || "";
+    this.universe = o.universe || "";
 
-    this.stats = Array.isArray(o.stats) ?
-      o.stats.map((unitStats) => new HeroStats(unitStats)) :
-      new HeroStats(o.stats);
+    this.stats = Array.isArray(o.stats)
+      ? o.stats.map((unitStats) => new HeroStats(unitStats))
+      : new HeroStats(o.stats);
 
     this.skills = (o.skills || []).map((skill) => new Skill(skill));
 
     /** @type {{ [talentLevel: number]: Talent[] }} */
     this.talents = {};
-    for (const talentLevel in o.talents) {
+    for (const talentLevel of Object.keys(o.talents)) {
       this.talents[talentLevel] = o.talents[talentLevel].map((talent) => {
         talent = new Talent(talent);
         talent.level = talentLevel;
@@ -53,7 +53,7 @@ export class Hero {
    * @return {string} Role name defined in `Hero.roles`, or '' if unknown.
    */
   getRoleName() {
-    return roles[this.newRole] || '';
+    return roles[this.newRole] || "";
   }
 
   /**
@@ -61,14 +61,14 @@ export class Hero {
    * @return {string} Universe name in `Hero.universes`, or '' if unknown
    */
   getUniverseName() {
-    return universes[this.universe] || '';
+    return universes[this.universe] || "";
   }
 
   /**
    * Iterate through each skill and talent of this hero.
    * @yield {IterableIterator<Skill | Talent>}
    */
-  * allSkillsAndTalents() {
+  *allSkillsAndTalents() {
     yield* this.skills;
     yield* this.allTalents();
   }
@@ -77,9 +77,9 @@ export class Hero {
    * Iterate through each talent of this hero, ordered by level.
    * @yield {IterableIterator<Talent>}
    */
-  * allTalents() {
-    for (const talentLevel in this.talents) {
-      yield* this.talents[talentLevel];
+  *allTalents() {
+    for (const talentGroup of Object.values(this.talents)) {
+      yield* talentGroup;
     }
   }
 
@@ -122,24 +122,23 @@ export class Hero {
       }
     }
 
-    return '';
+    return "";
   }
 }
 
-
 export const roles = {
-  tank: '전사',
-  bruiser: '투사',
-  ranged_assassin: '원거리 암살자',
-  melee_assassin: '근접 암살자',
-  healer: '치유사',
-  support: '지원가',
+  tank: "전사",
+  bruiser: "투사",
+  ranged_assassin: "원거리 암살자",
+  melee_assassin: "근접 암살자",
+  healer: "치유사",
+  support: "지원가",
 };
 
 export const universes = {
-  'warcraft': '워크래프트',
-  'starcraft': '스타크래프트',
-  'diablo': '디아블로',
-  'classic': '고전',
-  'overwatch': '오버워치',
+  warcraft: "워크래프트",
+  starcraft: "스타크래프트",
+  diablo: "디아블로",
+  classic: "고전",
+  overwatch: "오버워치",
 };

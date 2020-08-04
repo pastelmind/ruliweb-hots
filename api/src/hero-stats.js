@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {ScalingStat} from './scaling-stat.js';
+import { ScalingStat } from "./scaling-stat.js";
 
 /**
  * Represents a collection of a stats for a hero or a hero unit.
@@ -14,7 +14,7 @@ export class HeroStats {
      * Alternate name of the heroic unit
      * @type {string}
      */
-    this.unitName = o.unitName || '';
+    this.unitName = o.unitName || "";
     /**
      * Maximum HP
      * @type {ScalingStat}
@@ -100,22 +100,25 @@ export class HeroStats {
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.damage = Array.isArray(o.damage) ?
-      o.damage.map((s) => new ScalingStat(s)) : new ScalingStat(o.damage);
+    this.damage = Array.isArray(o.damage)
+      ? o.damage.map((s) => new ScalingStat(s))
+      : new ScalingStat(o.damage);
     /**
      * Basic attack range of the hero.
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.range = Array.isArray(o.range) ?
-      o.range.map((s) => new ScalingStat(s)) : new ScalingStat(o.range);
+    this.range = Array.isArray(o.range)
+      ? o.range.map((s) => new ScalingStat(s))
+      : new ScalingStat(o.range);
     /**
      * Basic attack period (time between basic attacks) of the hero
      * This property is an array if the hero has multiple attack modes.
      * @type {ScalingStat | ScalingStat[]}
      */
-    this.period = Array.isArray(o.period) ?
-      o.period.map((s) => new ScalingStat(s)) : new ScalingStat(o.period);
+    this.period = Array.isArray(o.period)
+      ? o.period.map((s) => new ScalingStat(s))
+      : new ScalingStat(o.period);
   }
 
   /**

@@ -4,15 +4,14 @@
  * Import/export icon URLs fro HTML listfiles and hots.json
  */
 
-import fs from 'fs';
-import path from 'path';
-import {fileURLToPath} from 'url';
-import util from 'util';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import util from "util";
 
-import program from 'commander';
+import program from "commander";
 
-import {HotsData} from './src/hots-data.js';
-
+import { HotsData } from "./src/hots-data.js";
 
 /**
  * Intermediate format for exporting icon URLs. Icons are grouped by portraits,
@@ -30,62 +29,62 @@ import {HotsData} from './src/hots-data.js';
  * Unused icons, mapped by icon ID => URL and sorted by ID.
  */
 
-
 // -------- Main code -------- //
-
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_JSON_PATH = path.join(__dirname, '../docs/hots.json');
+const DEFAULT_JSON_PATH = path.join(__dirname, "../docs/hots.json");
 
-
-program.command('import <listfiles...>')
-  .description('Import icon URLs from <img> tags in one or more HTML listfiles')
+program
+  .command("import <listfiles...>")
+  .description("Import icon URLs from <img> tags in one or more HTML listfiles")
   .option(
-    '-i, --input-json [jsonfile]',
-    'Source HotS JSON file to read from',
-    DEFAULT_JSON_PATH,
+    "-i, --input-json [jsonfile]",
+    "Source HotS JSON file to read from",
+    DEFAULT_JSON_PATH
   )
   .option(
-    '-o, --output-json [jsonfile]',
-    'Target HotS JSON file to write to (default: same file specified by -i)',
+    "-o, --output-json [jsonfile]",
+    "Target HotS JSON file to write to (default: same file specified by -i)"
   )
-  .option('-f, --force', 'Overwrite icon IDs whose URLs have changed')
+  .option("-f, --force", "Overwrite icon IDs whose URLs have changed")
   .option(
-    '-k, --skip-same-url',
-    'Don\'t add new icons whose URLs are already used by existing icons',
+    "-k, --skip-same-url",
+    "Don't add new icons whose URLs are already used by existing icons"
   )
   .action(importListfiles);
 
-program.command('export <listfile>')
-  .description('Export icon URLs as <img> tags to a HTML listfile')
+program
+  .command("export <listfile>")
+  .description("Export icon URLs as <img> tags to a HTML listfile")
   .option(
-    '-i, --input-json [jsonfile]', 'Source HotS JSON file to read from',
-    DEFAULT_JSON_PATH,
+    "-i, --input-json [jsonfile]",
+    "Source HotS JSON file to read from",
+    DEFAULT_JSON_PATH
   )
   .action(exportListfile);
 
-program.command('clean')
-  .description('Remove unused icon URLs in the HotS JSON file')
+program
+  .command("clean")
+  .description("Remove unused icon URLs in the HotS JSON file")
   .option(
-    '-i, --input-json [jsonfile]',
-    'Source HotS JSON file to read from',
-    DEFAULT_JSON_PATH,
+    "-i, --input-json [jsonfile]",
+    "Source HotS JSON file to read from",
+    DEFAULT_JSON_PATH
   )
   .option(
-    '-o, --output-json [jsonfile]',
-    'Target HotS JSON file to write to (default: same file specified by -i)',
+    "-o, --output-json [jsonfile]",
+    "Target HotS JSON file to write to (default: same file specified by -i)"
   )
   .action(cleanUnusedIcons);
 
-program.on('command:*', () => program.help());
+program.on("command:*", () => program.help());
 
 program.parse(process.argv);
 
 if (process.argv.length <= 2) program.help();
-
 
 /**
  * Import icons from one or more HTML listfiles into HotS JSON.
@@ -98,25 +97,27 @@ if (process.argv.length <= 2) program.help();
  *    URL is already used by another icon.
  */
 async function importListfiles(listfiles, options) {
-  console.log('Reading HotS JSON from', options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, 'utf8'));
+  console.log("Reading HotS JSON from", options.inputJson);
+  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
 
   for (const listfile of listfiles) {
-    console.log('Importing', listfile);
-    const listfileHtml = await readFileAsync(listfile, 'utf8');
+    console.log("Importing", listfile);
+    const listfileHtml = await readFileAsync(listfile, "utf8");
     const iconUrls = extractIconUrlsFromHtml(listfileHtml);
 
     importIconUrls(
-      hotsData, iconUrls.icons, options.force, options.skipSameUrl,
+      hotsData,
+      iconUrls.icons,
+      options.force,
+      options.skipSameUrl
     );
     importUnidentifiedIconUrls(hotsData, iconUrls.unknownIcons);
   }
 
   const outputJsonPath = options.outputJson || options.inputJson;
   await writeFileAsync(outputJsonPath, hotsData.stringify());
-  console.log('HotS JSON saved to', outputJsonPath);
+  console.log("HotS JSON saved to", outputJsonPath);
 }
-
 
 /**
  * Export icons from HotS JSON to HTML listfile.
@@ -124,40 +125,37 @@ async function importListfiles(listfiles, options) {
  * @param {{ inputJson: string }} options Options object
  */
 async function exportListfile(listfile, options) {
-  console.log('Reading HotS JSON from', options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, 'utf8'));
+  console.log("Reading HotS JSON from", options.inputJson);
+  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
 
   const iconUrlGroups = exportIconUrls(hotsData);
   const listfileHtml = generateIconListfileHtml(iconUrlGroups, hotsData, 300);
 
   await writeFileAsync(listfile, listfileHtml);
-  console.log('Listfile saved to', listfile);
+  console.log("Listfile saved to", listfile);
 }
-
 
 /**
  * Removes unused icons in the HotS JSON file.
  * @param {{ inputJson: string, outputJson: string, }} options Options object
  */
 async function cleanUnusedIcons(options) {
-  console.log('Reading HotS JSON from', options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, 'utf8'));
+  console.log("Reading HotS JSON from", options.inputJson);
+  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
 
   const iconUrlGroups = exportIconUrls(hotsData);
   for (const iconId of iconUrlGroups.unused.keys()) {
     delete hotsData.iconUrls[iconId];
   }
 
-  console.log('Deleted', iconUrlGroups.unused.size, 'unused icon(s)');
+  console.log("Deleted", iconUrlGroups.unused.size, "unused icon(s)");
 
   const outputJsonPath = options.outputJson || options.inputJson;
   await writeFileAsync(outputJsonPath, hotsData.stringify());
-  console.log('HotS JSON saved to', outputJsonPath);
+  console.log("HotS JSON saved to", outputJsonPath);
 }
 
-
 // -------- Support functions -------- //
-
 
 /**
  * Merges the given icon URL list into the HotsData object.
@@ -169,7 +167,10 @@ async function cleanUnusedIcons(options) {
  *    icon already has the same URL. Default is `false`.
  */
 function importIconUrls(
-  hotsData, iconUrls, overwrite = false, skipSameUrl = false,
+  hotsData,
+  iconUrls,
+  overwrite = false,
+  skipSameUrl = false
 ) {
   const iconUrlToId = {};
   if (skipSameUrl) {
@@ -182,7 +183,7 @@ function importIconUrls(
     if (url in iconUrlToId) {
       console.log(
         `Ignore icon ${iconId}: ${url} is already used by ID = ` +
-        iconUrlToId[url],
+          iconUrlToId[url]
       );
       continue;
     }
@@ -192,13 +193,13 @@ function importIconUrls(
       if (oldIconUrl === url) continue;
       else if (overwrite) {
         console.log(
-          `Overwrite icon URL for ${iconId}: ${oldIconUrl} => ${url}`,
+          `Overwrite icon URL for ${iconId}: ${oldIconUrl} => ${url}`
         );
         delete iconUrlToId[oldIconUrl];
       } else {
         console.warn(
           `Ignore icon ${iconId}: ` +
-          `URL already set to ${oldIconUrl}, ignoring ${url}`,
+            `URL already set to ${oldIconUrl}, ignoring ${url}`
         );
         continue;
       }
@@ -208,7 +209,6 @@ function importIconUrls(
     if (skipSameUrl) iconUrlToId[url] = iconId;
   }
 }
-
 
 /**
  * Merges a list of icon URLs, whose IDs are unknown, into the HotsData object.
@@ -223,16 +223,15 @@ function importUnidentifiedIconUrls(hotsData, unidentifiedIconUrls) {
   let unusedIdIndex = 0;
   let unusedId;
   for (const url of unidentifiedIconUrls) {
-    if (!(knownIconUrls.has(url))) {
+    if (!knownIconUrls.has(url)) {
       do {
-        unusedId = 'unused' + (unusedIdIndex++);
+        unusedId = "unused" + unusedIdIndex++;
       } while (unusedId in hotsData.iconUrls);
 
       hotsData.iconUrls[unusedId] = url;
     }
   }
 }
-
 
 /**
  * Extracts all icon URLs, grouped by hero.
@@ -242,19 +241,19 @@ function importUnidentifiedIconUrls(hotsData, unidentifiedIconUrls) {
 function exportIconUrls(hotsData) {
   /** @type {IconUrlGroups} */
   const iconUrlGroups = {
-    portraits: new Map,
-    skillsAndTalents: new Map,
-    shared: new Map,
-    unused: new Map,
+    portraits: new Map(),
+    skillsAndTalents: new Map(),
+    shared: new Map(),
+    unused: new Map(),
   };
   const unusedIconUrls = Object.assign({}, hotsData.iconUrls);
   /** @type {Map<string, Set<string>} */
-  const heroesUsingSkillIcons = new Map;
+  const heroesUsingSkillIcons = new Map();
 
   // Sort icons by hero name
-  const sortedHeroes = hotsData.allHeroes().sort(
-    (heroA, heroB) => heroA.name.localeCompare(heroB.name, 'en'),
-  );
+  const sortedHeroes = hotsData
+    .allHeroes()
+    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, "en"));
   for (const hero of sortedHeroes) {
     if (hero.icon in hotsData.iconUrls) {
       iconUrlGroups.portraits.set(hero.icon, hotsData.iconUrls[hero.icon]);
@@ -262,18 +261,19 @@ function exportIconUrls(hotsData) {
     }
 
     const skillTalentIconUrls =
-      iconUrlGroups.skillsAndTalents.get(hero.id) || new Map;
+      iconUrlGroups.skillsAndTalents.get(hero.id) || new Map();
     iconUrlGroups.skillsAndTalents.set(hero.id, skillTalentIconUrls);
     for (const skillOrTalent of hero.allSkillsAndTalents()) {
       if (skillOrTalent.icon in hotsData.iconUrls) {
         if (!heroesUsingSkillIcons.has(skillOrTalent.icon)) {
-          heroesUsingSkillIcons.set(skillOrTalent.icon, new Set);
+          heroesUsingSkillIcons.set(skillOrTalent.icon, new Set());
         }
 
         heroesUsingSkillIcons.get(skillOrTalent.icon).add(hero.id);
 
         skillTalentIconUrls.set(
-          skillOrTalent.icon, hotsData.iconUrls[skillOrTalent.icon],
+          skillOrTalent.icon,
+          hotsData.iconUrls[skillOrTalent.icon]
         );
         delete unusedIconUrls[skillOrTalent.icon];
       }
@@ -304,7 +304,6 @@ function exportIconUrls(hotsData) {
   return iconUrlGroups;
 }
 
-
 /**
  * Converts icon URL groups into listfile HTML. Skill and talent icons are split
  * into subgroups, while each of portraits, shared and unused icons are put in a
@@ -318,12 +317,16 @@ function exportIconUrls(hotsData) {
  * @return {string} HTML source of listfile
  */
 function generateIconListfileHtml(
-  iconUrlGroups, hotsData, iconSubgroupMaxSize = 200,
+  iconUrlGroups,
+  hotsData,
+  iconSubgroupMaxSize = 200
 ) {
-  let listfileHtml = '';
+  let listfileHtml = "";
 
-  listfileHtml += `<!-- Hero portrait(s): ${iconUrlGroups.portraits.size} -->` +
-    `\n\n` + [...iconUrlGroups.portraits].map(iconUrlToImg).join('\n');
+  listfileHtml +=
+    `<!-- Hero portrait(s): ${iconUrlGroups.portraits.size} -->` +
+    `\n\n` +
+    [...iconUrlGroups.portraits].map(iconUrlToImg).join("\n");
 
   // Generate skill/talent icon subgroups
   const skillTalentIconSubgroups = [];
@@ -335,7 +338,7 @@ function generateIconListfileHtml(
 
     if (iconSubgroupSize > iconSubgroupMaxSize) {
       iconSubgroupSize = iconUrls.size;
-      skillTalentIconSubgroups.push(currentSubgroup = new Map);
+      skillTalentIconSubgroups.push((currentSubgroup = new Map()));
     }
 
     currentSubgroup.set(heroId, iconUrls);
@@ -346,27 +349,36 @@ function generateIconListfileHtml(
   for (const [subgroupIndex, subgroup] of skillTalentIconSubgroups.entries()) {
     const heroIconGroups = [...subgroup.entries()];
     const iconCount = heroIconGroups.reduce(
-      (iconCount, [, iconUrls]) => iconCount + iconUrls.size, 0,
+      (iconCount, [, iconUrls]) => iconCount + iconUrls.size,
+      0
     );
 
-    listfileHtml += `\n\n\n<!-- Section ${subgroupIndex + 1}: ` +
+    listfileHtml +=
+      `\n\n\n<!-- Section ${subgroupIndex + 1}: ` +
       `${heroIconGroups.length} hero(es), ${iconCount} icon(s) ` +
-      `(${cumulativeIconCount + 1} ~ ${cumulativeIconCount += iconCount}) ` +
+      `(${cumulativeIconCount + 1} ~ ${(cumulativeIconCount += iconCount)}) ` +
       `-->\n\n` +
-      heroIconGroups.map(([heroId, iconUrls]) => {
-        const hero = hotsData.heroes[heroId] || hotsData.ptrHeroes[heroId];
-        return `<p>${hero.name}</p>\n` +
-          [...iconUrls].map(iconUrlToImg).join('\n') + '\n\n';
-      }).join('');
+      heroIconGroups
+        .map(([heroId, iconUrls]) => {
+          const hero = hotsData.heroes[heroId] || hotsData.ptrHeroes[heroId];
+          return (
+            `<p>${hero.name}</p>\n` +
+            [...iconUrls].map(iconUrlToImg).join("\n") +
+            "\n\n"
+          );
+        })
+        .join("");
   }
 
-  listfileHtml += `\n\n\n<!-- Shared icon(s): ` +
+  listfileHtml +=
+    `\n\n\n<!-- Shared icon(s): ` +
     `${iconUrlGroups.shared.size} -->\n\n` +
-    [...iconUrlGroups.shared.entries()].map(iconUrlToImg).join('\n');
+    [...iconUrlGroups.shared.entries()].map(iconUrlToImg).join("\n");
 
-  listfileHtml += `\n\n\n<!-- Unused icon(s): ` +
+  listfileHtml +=
+    `\n\n\n<!-- Unused icon(s): ` +
     `${iconUrlGroups.unused.size} -->\n\n` +
-    [...iconUrlGroups.unused.entries()].map(iconUrlToImg).join('\n');
+    [...iconUrlGroups.unused.entries()].map(iconUrlToImg).join("\n");
 
   return listfileHtml;
 
@@ -381,7 +393,6 @@ function generateIconListfileHtml(
   }
 }
 
-
 /**
  * Extracts icon URLs from `<img>` tags in the given HTML. If an icon does not
  * have a unique, non-empty ID, it is placed in the `unknownIcons` set.
@@ -390,21 +401,21 @@ function generateIconListfileHtml(
  *    is a mapping of icon ID => URL
  */
 function extractIconUrlsFromHtml(html) {
-  const iconUrls = {icons: new Map, unknownIcons: new Set};
+  const iconUrls = { icons: new Map(), unknownIcons: new Set() };
 
   for (const img of html.match(/<img.*?>/gi)) {
     const srcMatch = img.match(/src="(.*?)"/i);
     const altMatch = img.match(/alt="(.*?)(?:\.\w+)?"/i);
 
     if (!srcMatch) {
-      console.warn('No src attribute in', img);
+      console.warn("No src attribute in", img);
       continue;
     }
 
     const url = srcMatch[1];
 
     if (!altMatch) {
-      console.warn('No alt text for', url);
+      console.warn("No alt text for", url);
       iconUrls.unknownIcons.add(url);
     } else {
       const iconId = altMatch[1];
@@ -413,7 +424,7 @@ function extractIconUrlsFromHtml(html) {
         if (iconUrls.icons.get(iconId) !== url) {
           console.warn(
             `Icon URL conflict in listfile: ID = ${iconId} already has URL = ` +
-            `${iconUrls.icons.get(iconId)}, ignoring ${url}`,
+              `${iconUrls.icons.get(iconId)}, ignoring ${url}`
           );
         }
       } else iconUrls.icons.set(iconId, url);

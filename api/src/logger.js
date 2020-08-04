@@ -1,6 +1,5 @@
 let theTags = [];
 
-
 /**
  * Pushes one or more tags onto the logging tag stack. Subsequent log messages
  * are prepended with all tags on the stack.
@@ -35,6 +34,6 @@ export function popAllTags() {
  * @param {...any} args Additional arguments
  */
 export function warn(message, ...args) {
-  if (theTags.length) message = `[${theTags.join('][')}] ${message}`;
+  if (theTags.length) message = `[${theTags.join("][")}] ${message}`;
   console.warn(message, ...args);
 }

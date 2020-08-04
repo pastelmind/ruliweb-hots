@@ -7,11 +7,11 @@
  * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
  */
 
-import _htm from '../htm.js';
+import _htm from "../htm.js";
 import {
   createElement as _createElement,
   Fragment as _Fragment,
-} from '../preact.js';
+} from "../preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
@@ -22,7 +22,7 @@ const Fragment = _Fragment;
 
 const html = htm.bind(createElement);
 
-import {animateFlyingBox, getOffsetToViewport} from '../hots-dialog-util.js';
+import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
 
 /**
  * A menu of clickable hero icons.
@@ -43,8 +43,8 @@ import {animateFlyingBox, getOffsetToViewport} from '../hots-dialog-util.js';
  * @return {Object} DOM content to render
  */
 export function HotsBoxMenu(props) {
-  const {hero} = props;
-  if (!hero) return html`<${Fragment}/>`;
+  const { hero } = props;
+  if (!hero) return html`<${Fragment} />`;
 
   /**
    * @param {Hero} hero
@@ -85,50 +85,72 @@ export function HotsBoxMenu(props) {
   return html`
     <${Fragment}>
       <div class="hots-dialog__section hots-skillset" key=${hero.id}>
-        <div class="hots-current-hero-icon-wrapper"
+        <div
+          class="hots-current-hero-icon-wrapper"
           aria-label="${hero.name} (${hero.roleName})"
-          data-microtip-position="top" role="tooltip">
-          <img class="hots-current-hero-icon" src="${hero.iconUrl}"
+          data-microtip-position="top"
+          role="tooltip"
+        >
+          <img
+            class="hots-current-hero-icon"
+            src="${hero.iconUrl}"
             alt="${hero.name} (${hero.roleName})"
-            onClick=${(e) => pasteHeroWithEffect(hero, e)}/>
+            onClick=${(e) => pasteHeroWithEffect(hero, e)}
+          />
         </div>
-        ${Object.values(hero.skills).map((skill) => html`
-          <div class="hots-skill-icon-wrapper"
-            aria-label="${
-              `${skill.typeName} - ${skill.name}\n${skill.tooltipDescription}`
-            }"
-            data-microtip-position="top" role="tooltip">
-            <img class="hots-skill-icon" src="${skill.iconUrl}"
-              alt="${skill.typeName} - ${skill.name}"
-              onClick=${(e) => pasteSkillWithEffect(skill, e)}/>
-          </div>
-        `)}
+        ${Object.values(hero.skills).map(
+          (skill) => html`
+            <div
+              class="hots-skill-icon-wrapper"
+              aria-label="${`${skill.typeName} - ${skill.name}\n${skill.tooltipDescription}`}"
+              data-microtip-position="top"
+              role="tooltip"
+            >
+              <img
+                class="hots-skill-icon"
+                src="${skill.iconUrl}"
+                alt="${skill.typeName} - ${skill.name}"
+                onClick=${(e) => pasteSkillWithEffect(skill, e)}
+              />
+            </div>
+          `
+        )}
       </div>
-      <ul class="hots-dialog__section hots-talentset"  key=${hero.id}>
-        ${Object.entries(hero.talents).map(([level, talentGroup]) => html`
-          <li class="hots-talentset__group">
-            <span class="hots-talentset__group-title">${level}레벨</span>
-            ${talentGroup.map((talent) => html`
-              <div class="hots-talent-icon-wrapper"
-                aria-label="${
-                  `${talent.name}\n` +
-                  `(${talent.typeNameLong} - 레벨 ${level})\n` +
-                  talent.tooltipDescription
-                }"
-                data-microtip-position="top" role="tooltip">
-                <img class="hots-talent-icon" src="${talent.iconUrl}"
-                  alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
-                  onClick=${(e) => pasteTalentWithEffect(talent, e)}
+      <ul class="hots-dialog__section hots-talentset" key=${hero.id}>
+        ${Object.entries(hero.talents).map(
+          ([level, talentGroup]) => html`
+            <li class="hots-talentset__group">
+              <span class="hots-talentset__group-title">${level}레벨</span>
+              ${talentGroup.map(
+                (talent) => html`
+                  <div
+                    class="hots-talent-icon-wrapper"
+                    aria-label="${`${talent.name}\n` +
+                    `(${talent.typeNameLong} - 레벨 ${level})\n` +
+                    talent.tooltipDescription}"
+                    data-microtip-position="top"
+                    role="tooltip"
+                  >
+                    <img
+                      class="hots-talent-icon"
+                      src="${talent.iconUrl}"
+                      alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
+                      onClick=${(e) => pasteTalentWithEffect(talent, e)}
+                    />
+                  </div>
+                `
+              )}
+              <div class="hots-talentset__group-buttonset">
+                <input
+                  type="button"
+                  class="hots-talentset__group-add-all"
+                  value="모두 넣기"
+                  onClick=${(e) => pasteTalentGroupWithEffect(talentGroup, e)}
                 />
               </div>
-            `)}
-            <div class="hots-talentset__group-buttonset">
-              <input type="button" class="hots-talentset__group-add-all"
-                value="모두 넣기"
-                onClick=${(e) => pasteTalentGroupWithEffect(talentGroup, e)}/>
-            </div>
-          </li>
-        `)}
+            </li>
+          `
+        )}
       </ul>
     <//>
   `;
@@ -140,6 +162,6 @@ export function HotsBoxMenu(props) {
  * @param {Element} clickedElement Element that was triggered by the user
  */
 function animatePasteEffect(injectedElement, clickedElement) {
-  const {left: endX, top: endY} = getOffsetToViewport(injectedElement);
+  const { left: endX, top: endY } = getOffsetToViewport(injectedElement);
   animateFlyingBox(clickedElement, endX, endY);
 }

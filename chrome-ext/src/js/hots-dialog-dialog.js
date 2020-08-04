@@ -7,16 +7,16 @@
  * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
  */
 
-import _htm from './htm.js';
+import _htm from "./htm.js";
 import {
   createElement as _createElement,
   render as _render,
-} from './preact.js';
+} from "./preact.js";
 
-import {DialogContent} from './components/dialog-content.js';
-import {HtmlPaster} from './hots-dialog-paster.js';
-import {Renderer} from './hots-dialog-renderer.js';
-import {getSelectedChildWindow} from './hots-dialog-util.js';
+import { DialogContent } from "./components/dialog-content.js";
+import { HtmlPaster } from "./hots-dialog-paster.js";
+import { Renderer } from "./hots-dialog-renderer.js";
+import { getSelectedChildWindow } from "./hots-dialog-util.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
@@ -37,10 +37,11 @@ export class Dialog {
    *    IDs to hero filters
    */
   constructor(templates, data, heroFilters) {
-    this._paster = new HtmlPaster;
+    this._paster = new HtmlPaster();
 
-    this._dialog = new tingle.modal({ // eslint-disable-line new-cap
-      cssClass: ['hots-dialog-container'],
+    // eslint-disable-next-line new-cap
+    this._dialog = new tingle.modal({
+      cssClass: ["hots-dialog-container"],
       onOpen() {
         // Temporarily deactivate PToDivReplacer in editor-iframe.js
         const frameWindow = getSelectedChildWindow();
@@ -66,9 +67,9 @@ export class Dialog {
           heroFilters=${heroFilters}
           renderer=${renderer}
           paster=${this._paster}
-          />
+        />
       `,
-      contentFragment,
+      contentFragment
     );
     this._dialog.setContent(contentFragment);
   }

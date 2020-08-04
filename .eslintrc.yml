@@ -1,21 +1,13 @@
 env:
   browser: true
-  # Allow use of dynamic import() and import.meta
   es2020: true
   node: true
   webextensions: true
 extends:
+  - 'eslint:recommended'
   - google
-  - "eslint:recommended"
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
+  - 'plugin:prettier/recommended'
 parserOptions:
+  ecmaVersion: 11
   sourceType: module
-rules:
-  guard-for-in: off
-  indent:
-    - error
-    - 2
-    - ignoredNodes:
-      - TemplateLiteral > *
+rules: {}

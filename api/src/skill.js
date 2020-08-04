@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {KoEnString} from './ko-en-string.js';
+import { KoEnString } from "./ko-en-string.js";
 
 /**
  * Represents a hero's skill in Heroes of the Storm.
@@ -24,14 +24,14 @@ export class Skill {
    * @param {Object<string, string|number>} o.extras
    */
   constructor(o = {}) {
-    this.id = o.id || '';
-    this.name = new KoEnString(o.name || '');
-    this.icon = o.icon || '';
-    this.iconUrl = o.iconUrl || '';
-    this.type = o.type || '';
+    this.id = o.id || "";
+    this.name = new KoEnString(o.name || "");
+    this.icon = o.icon || "";
+    this.iconUrl = o.iconUrl || "";
+    this.type = o.type || "";
     this.level = o.level || 0;
-    this.description = o.description || '';
-    this.shortDescription = o.shortDescription || '';
+    this.description = o.description || "";
+    this.shortDescription = o.shortDescription || "";
     this.cooldown = o.cooldown || 0;
     this.cooldownPerAlly = o.cooldownPerAlly || 0;
     this.rechargeCooldown = o.rechargeCooldown || 0;
