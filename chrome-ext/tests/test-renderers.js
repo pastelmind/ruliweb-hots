@@ -4,17 +4,18 @@
  * Tests for methods that convert mustache templates to HTML
  */
 
-'use strict';
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
-const fs = require('fs');
-const path = require('path');
+import snapshot from 'snap-shot-it';
 
-const snapshot = require('snap-shot-it');
+import {loadTemplates} from './js/mocks.js';
+import {decorateHotsData} from '../src/js/decorate-hots-data.js';
+import {Renderer} from '../src/js/hots-dialog-renderer.js';
 
-const decorateHotsData = require('../src/js/decorate-hots-data');
 
-const {loadTemplates} = require('./js/mocks');
-const Renderer = require('../src/js/hots-dialog-renderer');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
 describe('HotsDialog.Renderer', () => {

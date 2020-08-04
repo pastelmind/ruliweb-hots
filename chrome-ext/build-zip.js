@@ -1,18 +1,21 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Package the extension source directory into a ZIP file
  */
 
-const fs = require('fs');
-const path = require('path');
-const util = require('util');
-const yazl = require('yazl');
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
+import util from 'util';
+
+import yazl from 'yazl';
 
 
 const statAsync = util.promisify(fs.stat);
 const readdirAsync = util.promisify(fs.readdir);
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
 const packageVersion = process.env.npm_package_version;
