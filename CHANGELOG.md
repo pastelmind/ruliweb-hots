@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Changed
+- (Internal) Refactored the code to use ES modules instead of an ugly mix of
+  CommonJS and browser globals.
+
+### Removed
+- This add-on no longer supports Mozilla Firefox. This is because Firefox
+  [does not support](https://bugzilla.mozilla.org/show_bug.cgi?id=1536094)
+  dynamic `import()` in content scripts yet. Sorry folks.
+
 ### Fixed
 - Fixed a bug that made the context menu unavailable in Google Chrome.
 
