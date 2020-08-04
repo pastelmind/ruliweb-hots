@@ -18,11 +18,11 @@ chrome.runtime.onInstalled.addListener(() => {
   // Run only if Google Chrome
   if (typeof browser === 'undefined') {
     chrome.contextMenus.create({
-      'id': 'ruli-context-menu',
-      'title': '히오스 공략툴 열기',
-      'contexts': ['frame'],
-      // Firefox throws an unexpected error on about:blank
-      'documentUrlPatterns': ['about:blank'],
+      id: 'ruli-context-menu',
+      title: '히오스 공략툴 열기',
+      contexts: ['frame'],
+      // Chrome treats iframes with src="" as though they have src="about:blank"
+      documentUrlPatterns: ['about:blank'],
     });
   } else { // Run only if Firefox
     // Firefox does not recognize Ruliweb's WYSIWYG editor as a frame, so create
@@ -31,7 +31,9 @@ chrome.runtime.onInstalled.addListener(() => {
       id: 'ruli-context-menu-test',
       title: '히오스 공략툴 열기',
       contexts: ['editable'],
-      // Use the same patterns used for injecting content scripts
+      // Firefox treats iframes with src="" as though they inherit the URL of
+      // the parent window. Therefore, use the same URL patterns used for
+      // injecting content scripts.
       documentUrlPatterns:
         chrome.runtime.getManifest().content_scripts[0].matches,
     });
