@@ -11,7 +11,6 @@
   ],
   "background": {
     "scripts": [
-      "js/decorate-hots-data.js",
       "js/init.js"
     ],
     "persistent": false
@@ -29,19 +28,7 @@
         "css/ruliweb-hots.css"
       ],
       "js": [
-        "js/htm.js",
-        "js/preact.js",
-        "js/tingle.js",
-        "js/mustache.js",
-        "js/hots-dialog.js",
-        "js/hots-dialog-dialog.js",
-        "js/hots-dialog-paster.js",
-        "js/hots-dialog-renderer.js",
-        "js/hots-dialog-util.js",
-        "js/components/dialog-content.js",
-        "js/components/hero-menu.js",
-        "js/components/hots-box-menu.js",
-        "js/components/multi-select-icons.js"
+        "js/tingle.js"
       ]
     },
     {
@@ -62,6 +49,7 @@
   ],
   "web_accessible_resources": [
     "images/*",
+    "js/*",
     "templates.json"
   ],
   "icons": {
