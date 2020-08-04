@@ -50,7 +50,8 @@
     "@types/mocha": "^8.0.0",
     "commander": "^6.0.0",
     "eslint": "^7.6.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.11.0"
   },
   "engines": {
     "node": ">=12"
