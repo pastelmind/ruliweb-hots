@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
-
+### Fixed
+- Fixed a bug that made the context menu unavailable in Google Chrome.
 
 ## [0.11.0] - 2020-01-07
 ### Changed
