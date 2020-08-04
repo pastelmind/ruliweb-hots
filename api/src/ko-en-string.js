@@ -8,15 +8,15 @@ export class KoEnString {
    * Create a new KoEnString object.
    * @param {string | Partial<KoEnString>} o
    */
-  constructor(o = '') {
-    if (o && typeof o === 'object' && ('en' in o || 'ko' in o)) {
+  constructor(o = "") {
+    if (o && typeof o === "object" && ("en" in o || "ko" in o)) {
       /** @type {string} */
-      this.en = o.en || '';
+      this.en = o.en || "";
       /** @type {string} */
-      this.ko = o.ko || '';
+      this.ko = o.ko || "";
     } else {
-      o += '';
-      const [, koMatch, enMatch = ''] = /^(.*?)(?:\(([^)]*)\))?\s*$/.exec(o);
+      o += "";
+      const [, koMatch, enMatch = ""] = /^(.*?)(?:\(([^)]*)\))?\s*$/.exec(o);
       this.en = enMatch.trim();
       this.ko = koMatch.trim();
     }
@@ -29,8 +29,8 @@ export class KoEnString {
    * @return {string}
    */
   toString(lang) {
-    if (lang === 'en') return this.en;
-    if (lang === 'ko') return this.ko;
+    if (lang === "en") return this.en;
+    if (lang === "ko") return this.ko;
     return `${this.ko} (${this.en})`;
   }
 

@@ -10,7 +10,7 @@ export class ScalingStat {
    *    converted to a ScalingStat
    */
   constructor(o) {
-    if (typeof o !== 'object') o = {value: o};
+    if (typeof o !== "object") o = { value: o };
 
     /**
      * Base value of the stat (at level 0).
@@ -31,7 +31,7 @@ export class ScalingStat {
      * Name of the alternate hero aspect that uses this stat.
      * @type {string}
      */
-    this.altName = '' + (o.altName || '');
+    this.altName = "" + (o.altName || "");
   }
 
   /**

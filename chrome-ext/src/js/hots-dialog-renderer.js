@@ -8,7 +8,7 @@
  * @typedef {import("../../../api/src/talent").Talent} Talent
  */
 
-import _Mustache from './mustache.js';
+import _Mustache from "./mustache.js";
 
 /** @type {import('mustache')} */
 const Mustache = _Mustache;
@@ -33,42 +33,46 @@ export class Renderer {
    * @return {string} HTML source
    */
   renderHeroInfoTable(
-    hero, iconSize = 64, skillIconSize = 48, hotsVersion, isSimpleTable,
+    hero,
+    iconSize = 64,
+    skillIconSize = 48,
+    hotsVersion,
+    isSimpleTable
   ) {
     const heroView = Object.create(hero);
 
     // Set universe icon offset
     heroView.universeIconOffset = {
-      classic: '0%',
-      starcraft: '20%',
-      diablo: '40%',
-      warcraft: '60%',
-      overwatch: '80%',
-      nexus: '100%',
+      classic: "0%",
+      starcraft: "20%",
+      diablo: "40%",
+      warcraft: "60%",
+      overwatch: "80%",
+      nexus: "100%",
     }[heroView.universe];
 
     // Generate skill groups
-    const traits = {title: '고유 능력', skills: []};
-    const basicAbilities = {title: '일반 기술', skills: []};
-    const heroicAbilities = {title: '궁극기', skills: []};
+    const traits = { title: "고유 능력", skills: [] };
+    const basicAbilities = { title: "일반 기술", skills: [] };
+    const heroicAbilities = { title: "궁극기", skills: [] };
 
     heroView.skills.forEach((skill) => {
-      if (skill.type === 'D') traits.skills.push(skill);
-      else if (skill.type === 'R') heroicAbilities.skills.push(skill);
+      if (skill.type === "D") traits.skills.push(skill);
+      else if (skill.type === "R") heroicAbilities.skills.push(skill);
       else basicAbilities.skills.push(skill);
     });
 
     for (const talentLevel in heroView.talents) {
       for (const talent of heroView.talents[talentLevel]) {
-        if (talent.type === 'R') heroicAbilities.skills.push(talent);
+        if (talent.type === "R") heroicAbilities.skills.push(talent);
       }
     }
 
     heroView.skillGroups = [traits, basicAbilities, heroicAbilities];
 
     for (const skillGroup of heroView.skillGroups) {
-      skillGroup.skills = skillGroup.skills.map(
-        (skill) => this.renderSkillTalentView(skill, skillIconSize),
+      skillGroup.skills = skillGroup.skills.map((skill) =>
+        this.renderSkillTalentView(skill, skillIconSize)
       );
     }
 
@@ -76,12 +80,11 @@ export class Renderer {
     heroView.iconSize = iconSize;
     heroView.appVersion = chrome.runtime.getManifest().version;
     heroView.isForHeroTable = true;
-    heroView.isSimpleHeroTable = heroView.isSimpleSkillTable =
-      !!isSimpleTable;
+    heroView.isSimpleHeroTable = heroView.isSimpleSkillTable = !!isSimpleTable;
 
-    return Mustache.render(this._templates['insert-hero'], heroView, {
-      skill: this._templates['insert-skill'],
-      stats: this._templates['insert-skill-stats'],
+    return Mustache.render(this._templates["insert-hero"], heroView, {
+      skill: this._templates["insert-skill"],
+      stats: this._templates["insert-skill-stats"],
     });
   }
 
@@ -94,9 +97,9 @@ export class Renderer {
    */
   renderSkillInfoTable(skill, iconSize = 64, hotsVersion) {
     return Mustache.render(
-      this._templates['insert-skill'],
+      this._templates["insert-skill"],
       this.renderSkillTalentView(skill, iconSize, hotsVersion),
-      {stats: this._templates['insert-skill-stats']},
+      { stats: this._templates["insert-skill-stats"] }
     );
   }
 
@@ -108,15 +111,16 @@ export class Renderer {
    * @return {string} HTML source
    */
   renderTalentInfoTable(talent, iconSize = 48, hotsVersion) {
-    const talentView =
-      this.renderSkillTalentView(talent, iconSize, hotsVersion);
+    const talentView = this.renderSkillTalentView(
+      talent,
+      iconSize,
+      hotsVersion
+    );
     talentView.isTalent = true;
 
-    return Mustache.render(
-      this._templates['insert-skill'],
-      talentView,
-      {stats: this._templates['insert-skill-stats']},
-    );
+    return Mustache.render(this._templates["insert-skill"], talentView, {
+      stats: this._templates["insert-skill-stats"],
+    });
   }
 
   /**
@@ -127,9 +131,11 @@ export class Renderer {
    * @return {string} HTML source
    */
   renderTalentGroupInfoTable(talentGroup, iconSize = 48, hotsVersion) {
-    return talentGroup.map(
-      (talent) => this.renderTalentInfoTable(talent, iconSize, hotsVersion),
-    ).join('&nbsp;');
+    return talentGroup
+      .map((talent) =>
+        this.renderTalentInfoTable(talent, iconSize, hotsVersion)
+      )
+      .join("&nbsp;");
   }
 
   /**
@@ -145,8 +151,11 @@ export class Renderer {
     const view = Object.create(skill);
     view.hotsVersion = hotsVersion;
     view.iconSize = iconSize;
-    view.hasStats =
-      !!(skill.cooldown || skill.rechargeCooldown || skill.manaCost);
+    view.hasStats = !!(
+      skill.cooldown ||
+      skill.rechargeCooldown ||
+      skill.manaCost
+    );
     view.appVersion = chrome.runtime.getManifest().version;
 
     // Parse skill description
@@ -154,23 +163,24 @@ export class Renderer {
       .replace(
         /^[^\S\r\n]*(퀘스트|보상|반복\s*퀘스트)\s*(?=:)/gm,
         '<img style="HEIGHT: 1.3em; vertical-align: -20%" ' +
-        'src="https://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" ' +
-        'alt="$1" title="$1"> <b style="color: #fb0">$1</b>',
+          'src="https://i1.ruliweb.com/img/18/07/08/164761a813c19dc2c.png" ' +
+          'alt="$1" title="$1"> <b style="color: #fb0">$1</b>'
       )
       .replace(
-        /^[^\S\r\n]*(지속\s*효과)\s*(?=:)/gm, '<b style="color: #0e8">$1</b>',
+        /^[^\S\r\n]*(지속\s*효과)\s*(?=:)/gm,
+        '<b style="color: #0e8">$1</b>'
       )
-      .replace(/\r?\n/g, '<br>');
+      .replace(/\r?\n/g, "<br>");
 
     // Parse extra properties
     view.extras = [];
 
     for (const name in skill.extras) {
-      if (name.includes('생명력')) view.lifeCost = skill.extras[name];
+      if (name.includes("생명력")) view.lifeCost = skill.extras[name];
       else if (/기력|에너지|취기|분노/.test(name)) {
         view.energyCost = skill.extras[name];
         view.energyCostName = name;
-      } else view.extras.push({name, value: skill.extras[name]});
+      } else view.extras.push({ name, value: skill.extras[name] });
 
       view.hasStats = true;
     }

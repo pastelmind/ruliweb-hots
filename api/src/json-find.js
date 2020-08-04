@@ -13,7 +13,7 @@ export function jsonFind(json, callback, key = undefined) {
   if (callback(json, key)) return json;
 
   let result;
-  if (json && typeof json === 'object') {
+  if (json && typeof json === "object") {
     if (Array.isArray(json)) {
       for (let i = 0; i < json.length; ++i) {
         if ((result = jsonFind(json[i], callback, i))) return result;

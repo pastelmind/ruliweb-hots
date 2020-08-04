@@ -5,14 +5,13 @@
  * checks.
  */
 
-import fs from 'fs';
-import path from 'path';
-import {fileURLToPath} from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-import Ajv from 'ajv';
+import Ajv from "ajv";
 
-import {HotsData} from './src/hots-data.js';
-
+import { HotsData } from "./src/hots-data.js";
 
 /**
  * Class that validates `hots.json` files.
@@ -25,7 +24,7 @@ class HotsJsonValidator {
    * @param {*} hotsDataSchema JSON schema object for `hots.json`
    */
   constructor(hotsDataSchema) {
-    this.ajv = new Ajv({multipleOfPrecision: 5});
+    this.ajv = new Ajv({ multipleOfPrecision: 5 });
 
     try {
       this.schemaValidator = this.ajv.compile(hotsDataSchema);
@@ -64,7 +63,7 @@ class HotsJsonValidator {
     if (heroCount !== KNOWN_HERO_COUNT) {
       console.warn(
         `Warning: Hero count is ${heroCount},`,
-        `expected ${KNOWN_HERO_COUNT}`,
+        `expected ${KNOWN_HERO_COUNT}`
       );
     }
 
@@ -74,7 +73,7 @@ class HotsJsonValidator {
       if (ptrHeroCount > KNOWN_HERO_COUNT) {
         console.warn(
           `Warning: PTR Hero count is ${ptrHeroCount},`,
-          `expected at most ${KNOWN_HERO_COUNT}`,
+          `expected at most ${KNOWN_HERO_COUNT}`
         );
       }
     }
@@ -90,7 +89,7 @@ class HotsJsonValidator {
       if (url in iconUrlsToIds) {
         console.warn(
           `Duplicate icon URL: Both ${iconUrlsToIds[url]} and ${iconId}`,
-          `point to ${url}`,
+          `point to ${url}`
         );
       } else iconUrlsToIds[url] = iconId;
     }
@@ -108,7 +107,7 @@ class HotsJsonValidator {
         if (skill.icon in hotsData.iconUrls) unusedIcons.delete(skill.icon);
         else {
           console.warn(
-            `Warning: Missing icon for ${skill.name} in ${hero.name}`,
+            `Warning: Missing icon for ${skill.name} in ${hero.name}`
           );
         }
       }
@@ -120,47 +119,44 @@ class HotsJsonValidator {
   }
 }
 
-
 // -------- Main code -------- //
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const hotsDataSchemaPath = path.join(__dirname, '../docs/hots-schema.json');
-const hotsDataSchema = JSON.parse(fs.readFileSync(hotsDataSchemaPath, 'utf8'));
-console.log('Loaded schema from', hotsDataSchemaPath);
-
+const hotsDataSchemaPath = path.join(__dirname, "../docs/hots-schema.json");
+const hotsDataSchema = JSON.parse(fs.readFileSync(hotsDataSchemaPath, "utf8"));
+console.log("Loaded schema from", hotsDataSchemaPath);
 
 let hotsJsonValidator;
 
 try {
   hotsJsonValidator = new HotsJsonValidator(hotsDataSchema);
-  console.log('Passed schema validation');
+  console.log("Passed schema validation");
 } catch (error) {
-  console.error('Schema validation failure');
+  console.error("Schema validation failure");
   throw error;
 }
 
 const HOTS_JSON_PATHS = Object.freeze([
-  path.join(__dirname, '../docs/hots.json'),
-  path.join(__dirname, '../chrome-ext/tests/data/hots.json'),
+  path.join(__dirname, "../docs/hots.json"),
+  path.join(__dirname, "../chrome-ext/tests/data/hots.json"),
 ]);
 
 for (const hotsDataPath of HOTS_JSON_PATHS) {
-  const hotsDataJson = JSON.parse(fs.readFileSync(hotsDataPath, 'utf8'));
-  console.log('Loaded HotS data from', hotsDataPath);
+  const hotsDataJson = JSON.parse(fs.readFileSync(hotsDataPath, "utf8"));
+  console.log("Loaded HotS data from", hotsDataPath);
 
   console.group();
 
   try {
     hotsJsonValidator.validate(hotsDataJson);
     console.groupEnd();
-    console.log('Passed data validation');
+    console.log("Passed data validation");
   } catch (error) {
     console.groupEnd();
-    console.error('Failed validation for', hotsDataPath);
+    console.error("Failed validation for", hotsDataPath);
     throw error;
   }
 }
-
 
 // -------- Support functions -------- //
 

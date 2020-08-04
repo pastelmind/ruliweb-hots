@@ -47,85 +47,84 @@
  */
 const StatPresets = {
   hp: {
-    name: '생명력',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png',
+    name: "생명력",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png",
   },
   hpRegen: {
-    name: '생명력 재생',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png',
+    name: "생명력 재생",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png",
   },
   shields: {
-    name: '보호막',
-    iconUrl: 'https://i2.ruliweb.com/img/18/07/21/164bb97668719dc2c.png',
+    name: "보호막",
+    iconUrl: "https://i2.ruliweb.com/img/18/07/21/164bb97668719dc2c.png",
   },
   mp: {
-    name: '마나',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png',
+    name: "마나",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png",
   },
   mpRegen: {
-    name: '마나 재생',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png',
+    name: "마나 재생",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b15500ad19dc2c.png",
   },
   energy: {
-    name: '기력',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "기력",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   energyRegen: {
-    name: '기력 재생',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "기력 재생",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   fury: {
-    name: '분노',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "분노",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   brew: {
-    name: '취기',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "취기",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   ammo: {
-    name: '탄환',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "탄환",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   healEnergy: {
-    name: '치유 에너지',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png',
+    name: "치유 에너지",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b155016b19dc2c.png",
   },
   charge: {
-    name: '충전',
-    iconUrl: 'https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png',
+    name: "충전",
+    iconUrl: "https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
     isDisabled: true,
   },
   chargeRegen: {
-    name: '충전 재생',
-    iconUrl: 'https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png',
+    name: "충전 재생",
+    iconUrl: "https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
     isDisabled: true,
   },
   zaryaEnergy: {
-    name: '에너지',
-    iconUrl: 'https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png',
+    name: "에너지",
+    iconUrl: "https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
   },
   zaryaEnergyRegen: {
-    name: '에너지 재생',
-    iconUrl: 'https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png',
+    name: "에너지 재생",
+    iconUrl: "https://i1.ruliweb.com/img/18/07/19/164b155022c19dc2c.png",
   },
   damage: {
-    name: '공격력',
-    iconUrl: 'https://i2.ruliweb.com/img/18/07/07/164748d2a3b19dc2c.png',
+    name: "공격력",
+    iconUrl: "https://i2.ruliweb.com/img/18/07/07/164748d2a3b19dc2c.png",
   },
   attackSpeed: {
-    name: '공격 속도',
-    iconUrl: 'https://i1.ruliweb.com/img/18/07/07/164748d2bce19dc2c.png',
+    name: "공격 속도",
+    iconUrl: "https://i1.ruliweb.com/img/18/07/07/164748d2bce19dc2c.png",
   },
   range: {
-    name: '사거리',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png',
+    name: "사거리",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png",
   },
   speed: {
-    name: '이동 속도',
-    iconUrl: 'https://i3.ruliweb.com/img/18/07/07/164748d2c9219dc2c.png',
+    name: "이동 속도",
+    iconUrl: "https://i3.ruliweb.com/img/18/07/07/164748d2c9219dc2c.png",
   },
 };
-
 
 /**
  * Decorates the raw HotsData object for the extension to use.
@@ -139,10 +138,11 @@ const StatPresets = {
  * @return {HotsData} Decorated HotS data object
  */
 export function decorateHotsData(hotsData) {
-  const MISSING_ICON_URL = 'https://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
+  const MISSING_ICON_URL =
+    "https://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png";
 
   // Set PTR version string
-  if (hotsData.hotsPtrVersion) hotsData.hotsPtrVersion += ' (PTR)';
+  if (hotsData.hotsPtrVersion) hotsData.hotsPtrVersion += " (PTR)";
 
   // Mark PTR data
   hotsData.ptrHeroes = hotsData.ptrHeroes || {};
@@ -156,29 +156,31 @@ export function decorateHotsData(hotsData) {
   }
 
   const allHeroes = [
-    ...Object.entries(hotsData.heroes), ...Object.entries(hotsData.ptrHeroes),
+    ...Object.entries(hotsData.heroes),
+    ...Object.entries(hotsData.ptrHeroes),
   ];
 
   for (const [heroId, hero] of allHeroes) {
     hero.id = heroId;
 
     // Add hero role names
-    hero.roleName = {
-      'tank': '전사',
-      'bruiser': '투사',
-      'ranged_assassin': '원거리 암살자',
-      'melee_assassin': '근접 암살자',
-      'healer': '치유사',
-      'support': '지원가',
-    }[hero.newRole] || '잘못된 역할군입니다';
+    hero.roleName =
+      {
+        tank: "전사",
+        bruiser: "투사",
+        ranged_assassin: "원거리 암살자",
+        melee_assassin: "근접 암살자",
+        healer: "치유사",
+        support: "지원가",
+      }[hero.newRole] || "잘못된 역할군입니다";
 
     // Add hero universe names
     hero.universeName = {
-      'warcraft': '워크래프트',
-      'starcraft': '스타크래프트',
-      'diablo': '디아블로',
-      'classic': '블리자드 고전',
-      'overwatch': '오버워치',
+      warcraft: "워크래프트",
+      starcraft: "스타크래프트",
+      diablo: "디아블로",
+      classic: "블리자드 고전",
+      overwatch: "오버워치",
     }[hero.universe];
 
     // Convert hero icon ID to URL
@@ -208,7 +210,7 @@ export function decorateHotsData(hotsData) {
     const skillsOrTalents = [...hero.skills];
 
     // Assign skill index
-    hero.skills.forEach((skill, index) => skill.index = index);
+    hero.skills.forEach((skill, index) => (skill.index = index));
 
     for (const talentLevel in hero.talents) {
       hero.talents[talentLevel].forEach((talent, index) => {
@@ -241,16 +243,16 @@ export function decorateHotsData(hotsData) {
       }
 
       // Set flags for skill/talent type classes
-      if (skill.type === 'R' || skill.upgradeFor === 'R') {
+      if (skill.type === "R" || skill.upgradeFor === "R") {
         skill.isTypeClassHeroic = true;
       } else if (
-        (skill.type === 'passive' && !skill.upgradeFor) ||
-        skill.upgradeFor === 'passive'
+        (skill.type === "passive" && !skill.upgradeFor) ||
+        skill.upgradeFor === "passive"
       ) {
         skill.isTypeClassPassive = true;
       } else if (
-        (skill.type === 'active' && !skill.upgradeFor) ||
-        skill.upgradeFor === 'active'
+        (skill.type === "active" && !skill.upgradeFor) ||
+        skill.upgradeFor === "active"
       ) {
         skill.isTypeClassActive = true;
       } else {
@@ -259,9 +261,8 @@ export function decorateHotsData(hotsData) {
 
       // Convert short description text to tooltip-attr & HTML format
       skill.tooltipDescription = skill.shortDescription;
-      skill.shortDescription = skill.shortDescription.replace(/\r?\n/g, '<br>');
+      skill.shortDescription = skill.shortDescription.replace(/\r?\n/g, "<br>");
     }
-
 
     /**
      * Converts a skill type string to a human-readable version.
@@ -270,12 +271,12 @@ export function decorateHotsData(hotsData) {
      * @return {string}
      */
     function generateSkillTypeName(skillType) {
-      return skillType.replace(/passive/g, '지속 효과')
-        .replace(/active/g, '사용 효과')
-        .replace(/D/g, '고유 능력');
+      return skillType
+        .replace(/passive/g, "지속 효과")
+        .replace(/active/g, "사용 효과")
+        .replace(/D/g, "고유 능력");
     }
   }
-
 
   /**
    * Creates a decorated unit (i.e. array of decorated unit stats) from a
@@ -285,12 +286,13 @@ export function decorateHotsData(hotsData) {
    * @return { (DecoratedStat | DecoratedStat[])[] }
    */
   function createDecoratedUnit(stats) {
-    const unit = {unitName: stats.unitName, stats: []};
+    const unit = { unitName: stats.unitName, stats: [] };
 
     for (const [presetId, preset] of Object.entries(StatPresets)) {
       preset.id = presetId;
       const stat = createDecoratedStat(
-        stats[preset.id === 'attackSpeed' ? 'period' : preset.id], preset,
+        stats[preset.id === "attackSpeed" ? "period" : preset.id],
+        preset
       );
 
       if (!stat) continue;
@@ -324,8 +326,10 @@ export function decorateHotsData(hotsData) {
       decoratedStat.value = prettifyStatValue(decoratedStat.value, preset.id);
     }
     if (decoratedStat.level20) {
-      decoratedStat.level20 =
-        prettifyStatValue(decoratedStat.level20, preset.id);
+      decoratedStat.level20 = prettifyStatValue(
+        decoratedStat.level20,
+        preset.id
+      );
     }
 
     return decoratedStat;
@@ -337,7 +341,7 @@ export function decorateHotsData(hotsData) {
    * @return {DecoratedStat} Decorated stat object
    */
   function decorateStatValue(stat) {
-    if (typeof stat !== 'object') return {value: stat};
+    if (typeof stat !== "object") return { value: stat };
 
     if (stat.levelScaling) {
       stat.level20 = stat.value * Math.pow(1 + stat.levelScaling, 20);
@@ -359,23 +363,23 @@ export function decorateHotsData(hotsData) {
   function prettifyStatValue(value, statId) {
     /* eslint-disable no-fallthrough */
     switch (statId) {
-    case 'hp':
-    case 'shields':
-    case 'damage':
-    case 'healEnergy':
-      return +(value.toFixed(0));
+      case "hp":
+      case "shields":
+      case "damage":
+      case "healEnergy":
+        return +value.toFixed(0);
 
-    case 'attackSpeed':
-      value = 1 / value; // attackSpeed is derived from (attack) period
+      case "attackSpeed":
+        value = 1 / value; // attackSpeed is derived from (attack) period
       // Intentional fall-through
 
-    case 'hpRegen':
-      value = +(value.toFixed(3));
+      case "hpRegen":
+        value = +value.toFixed(3);
       // Intentional fall-through
 
-    case 'range':
-      // Append trailing '.0'
-      if (Number.isInteger(value)) return value.toFixed(1);
+      case "range":
+        // Append trailing '.0'
+        if (Number.isInteger(value)) return value.toFixed(1);
     }
     /* eslint-enable no-fallthrough */
 

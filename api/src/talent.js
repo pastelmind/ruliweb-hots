@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {Skill} from './skill.js';
+import { Skill } from "./skill.js";
 
 /**
  * Represents a hero's talent in Heroes of the Storm.
@@ -13,7 +13,7 @@ export class Talent extends Skill {
     super(o);
 
     /** @type {string} */
-    this.upgradeFor = o.upgradeFor || '';
+    this.upgradeFor = o.upgradeFor || "";
   }
 
   /**

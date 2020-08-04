@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {Hero} from './hero.js';
+import { Hero } from "./hero.js";
 
 /**
  * Helper class for loading from and saving to `hots.json`.
@@ -11,7 +11,7 @@ export class HotsData {
    *    parsed object)
    */
   constructor(hotsData) {
-    if (typeof hotsData === 'string') hotsData = JSON.parse(hotsData);
+    if (typeof hotsData === "string") hotsData = JSON.parse(hotsData);
 
     /** @type {string} */
     this.hotsVersion = hotsData.hotsVersion;
@@ -71,7 +71,7 @@ export class HotsData {
   static unpackHeroes(source) {
     const dest = {};
     for (const heroId in source) {
-      const hero = dest[heroId] = new Hero(source[heroId]);
+      const hero = (dest[heroId] = new Hero(source[heroId]));
       hero.id = heroId;
     }
     return dest;
@@ -93,7 +93,7 @@ export class HotsData {
     const packedHeroes = {};
 
     for (const heroId of heroIds) {
-      const heroJson = packedHeroes[heroId] = heroes[heroId].toJSON();
+      const heroJson = (packedHeroes[heroId] = heroes[heroId].toJSON());
 
       // hero.id is unnecessary; hero ID can be retrieved from keys of hero
       // collection

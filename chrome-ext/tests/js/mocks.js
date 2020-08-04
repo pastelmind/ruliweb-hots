@@ -3,7 +3,7 @@
  */
 
 let mockChrome;
-if (typeof chrome === 'undefined') {
+if (typeof chrome === "undefined") {
   // Since the environment does not have 'chrome', create a new object
   globalThis.chrome = mockChrome = {};
 } else {
@@ -12,8 +12,8 @@ if (typeof chrome === 'undefined') {
 }
 
 mockChrome.runtime = mockChrome.runtime || {};
-mockChrome.runtime.getURL = (url) => '../src/' + url;
-mockChrome.runtime.getManifest = () => ({version: 'app version string'});
+mockChrome.runtime.getURL = (url) => "../src/" + url;
+mockChrome.runtime.getManifest = () => ({ version: "app version string" });
 
 // Imports from Node.js; not used in browser contexts
 
@@ -23,20 +23,20 @@ let readFileAsync;
 let templateJsonPath;
 
 // Execute this only in non-browser contexts (i.e. Node.js)
-if (typeof window === 'undefined') {
+if (typeof window === "undefined") {
   (async () => {
     try {
-      const {readFile} = await import('fs');
-      const path = await import('path');
-      const {fileURLToPath} = await import('url');
-      const {promisify} = await import('util');
+      const { readFile } = await import("fs");
+      const path = await import("path");
+      const { fileURLToPath } = await import("url");
+      const { promisify } = await import("util");
 
       readFileAsync = promisify(readFile);
 
       const __dirname = path.dirname(fileURLToPath(import.meta.url));
-      templateJsonPath = path.join(__dirname, '../../src/templates.json');
+      templateJsonPath = path.join(__dirname, "../../src/templates.json");
     } catch (e) {
-      console.error('Failed to import Node.js native modules.');
+      console.error("Failed to import Node.js native modules.");
       console.error(e);
     }
   })();
@@ -49,6 +49,6 @@ if (typeof window === 'undefined') {
  *    to template strings
  */
 export async function loadTemplates() {
-  const templateFile = await readFileAsync(templateJsonPath, 'utf8');
+  const templateFile = await readFileAsync(templateJsonPath, "utf8");
   return JSON.parse(templateFile);
 }
