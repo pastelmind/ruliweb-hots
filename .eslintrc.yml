@@ -1,7 +1,8 @@
 env:
   browser: true
   commonjs: true
-  es6: true
+  # Allow use of dynamic import() and import.meta
+  es2020: true
   node: true
   webextensions: true
 extends:
@@ -11,7 +12,6 @@ globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
 parserOptions:
-  ecmaVersion: 2018
   sourceType: module
 rules:
   guard-for-in: off
