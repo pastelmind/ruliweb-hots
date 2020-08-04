@@ -6,7 +6,7 @@ env:
 extends:
   - 'eslint:recommended'
   - google
-  - prettier
+  - 'plugin:prettier/recommended'
 parserOptions:
   ecmaVersion: 11
   sourceType: module
