@@ -229,7 +229,7 @@ function parseAllSkillsData(heroData, heroId) {
 
 /**
  * Parses all talent data from a hero JSON object.
- * @param {Hero} heroData JSON object that represents hero data
+ * @param {*} heroData JSON object that represents hero data
  * @param {string} heroId ID of the hero entry
  * @return {Object<number, Talent[]>} Mapping of talent levels to Talent groups
  */
