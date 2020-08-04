@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-'use strict';
-
 
 /**
  * Recursively searches through the given JSON object, and returns the first
@@ -11,7 +9,7 @@
  * @param {(number|string)=} key
  * @return {*} Matched object or `undefined`
  */
-module.exports = function jsonFind(json, callback, key = undefined) {
+export function jsonFind(json, callback, key = undefined) {
   if (callback(json, key)) return json;
 
   let result;
@@ -28,4 +26,4 @@ module.exports = function jsonFind(json, callback, key = undefined) {
   }
 
   return undefined;
-};
+}

@@ -1,17 +1,17 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Validates hots.json using the schema (hots-schema.json) plus some logical
  * checks.
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
-const Ajv = require('ajv');
+import Ajv from 'ajv';
 
-const HotsData = require('./src/hots-data');
+import {HotsData} from './src/hots-data.js';
 
 
 /**
@@ -123,6 +123,7 @@ class HotsJsonValidator {
 
 // -------- Main code -------- //
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hotsDataSchemaPath = path.join(__dirname, '../docs/hots-schema.json');
 const hotsDataSchema = JSON.parse(fs.readFileSync(hotsDataSchemaPath, 'utf8'));
 console.log('Loaded schema from', hotsDataSchemaPath);

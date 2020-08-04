@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-
-const ScalingStat = require('./scaling-stat');
+import {ScalingStat} from './scaling-stat.js';
 
 /**
  * Represents a collection of a stats for a hero or a hero unit.
  */
-module.exports = class HeroStats {
+export class HeroStats {
   /**
    * Create a new HeroStats object.
    * @param {Partial<HeroStats>} o Object to copy hero stats from
@@ -148,4 +146,4 @@ module.exports = class HeroStats {
       damage: this.damage || undefined,
     };
   }
-};
+}

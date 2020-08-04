@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Represents a multilingual string that can be either Korean or English.
  */
-module.exports = class KoEnString {
+export class KoEnString {
   /**
    * Create a new KoEnString object.
    * @param {string | Partial<KoEnString>} o
@@ -44,4 +43,4 @@ module.exports = class KoEnString {
     if (!(str instanceof KoEnString)) str = new KoEnString(str);
     return this.ko === str.ko && this.en === str.en;
   }
-};
+}

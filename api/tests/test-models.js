@@ -4,17 +4,18 @@
  * Test script for models
  */
 
-'use strict';
+import {strict as assert} from 'assert';
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
-const assert = require('assert');
-const fs = require('fs');
-const path = require('path');
-const {unpackHeroes} = require('../src/hots-data');
+import {HotsData} from '../src/hots-data.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe('Hero', () => {
   let heroJsonCompact;
-  /** @type {{ [heroId: string]: import("../src/hero") }} */
+  /** @type {{ [heroId: string]: import("../src/hero").Hero }} */
   let heroes;
 
   before('Loading test data files', () => {
@@ -24,7 +25,7 @@ describe('Hero', () => {
   });
 
   it('should load JSON correctly', () => {
-    heroes = unpackHeroes(heroJsonCompact);
+    heroes = HotsData.unpackHeroes(heroJsonCompact);
   });
 
   it('should provide an iterator for each skill/talent', () => {

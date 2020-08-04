@@ -1,14 +1,12 @@
 #!/usr/bin/env node
-'use strict';
-
-const HeroStats = require('./hero-stats');
-const Skill = require('./skill');
-const Talent = require('./talent');
+import {HeroStats} from './hero-stats.js';
+import {Skill} from './skill.js';
+import {Talent} from './talent.js';
 
 /**
  * Represents a Heroes of the Storm hero.
  */
-const Hero = module.exports = class Hero {
+export class Hero {
   /**
    * Create a new Hero object.
    * @param {Object} o
@@ -55,7 +53,7 @@ const Hero = module.exports = class Hero {
    * @return {string} Role name defined in `Hero.roles`, or '' if unknown.
    */
   getRoleName() {
-    return Hero.roles[this.newRole] || '';
+    return roles[this.newRole] || '';
   }
 
   /**
@@ -63,7 +61,7 @@ const Hero = module.exports = class Hero {
    * @return {string} Universe name in `Hero.universes`, or '' if unknown
    */
   getUniverseName() {
-    return Hero.universes[this.universe] || '';
+    return universes[this.universe] || '';
   }
 
   /**
@@ -118,18 +116,18 @@ const Hero = module.exports = class Hero {
    * @return {string} A universe ID in `Hero.universes`, or '' if unknown.
    */
   static parseUniverse(universeString) {
-    for (const universeId in Hero.universes) {
-      if (universeString.includes(Hero.universes[universeId])) {
+    for (const universeId in universes) {
+      if (universeString.includes(universes[universeId])) {
         return universeId;
       }
     }
 
     return '';
   }
-};
+}
 
 
-Hero.roles = {
+export const roles = {
   tank: '전사',
   bruiser: '투사',
   ranged_assassin: '원거리 암살자',
@@ -138,7 +136,7 @@ Hero.roles = {
   support: '지원가',
 };
 
-Hero.universes = {
+export const universes = {
   'warcraft': '워크래프트',
   'starcraft': '스타크래프트',
   'diablo': '디아블로',
