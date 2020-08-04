@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Represents a hero stat which scales with level.
  */
-module.exports = class ScalingStat {
+export class ScalingStat {
   /**
    * Creates a new ScalingStat object.
    * @param {Partial<ScalingStat> | number} o A number or an object that can be
@@ -60,4 +59,4 @@ module.exports = class ScalingStat {
   static create(o) {
     return o && o.value ? new ScalingStat(o) : null;
   }
-};
+}

@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-
-const Skill = require('./skill');
+import {Skill} from './skill.js';
 
 /**
  * Represents a hero's talent in Heroes of the Storm.
  */
-module.exports = class Talent extends Skill {
+export class Talent extends Skill {
   /**
    * Create a new Talent object.
    * @param {Partial<Talent>} o
@@ -27,4 +25,4 @@ module.exports = class Talent extends Skill {
       upgradeFor: this.upgradeFor || undefined,
     });
   }
-};
+}

@@ -3,10 +3,6 @@
  * This script should be used only as a background script.
  */
 
-'use strict';
-
-/* global decorateHotsData */
-
 // Global constants
 const ALARM_UPDATE_DATA = 'UPDATE_HOTS_DATA';
 
@@ -69,7 +65,13 @@ chrome.runtime.onInstalled.addListener(() => {
 // Register an event listener for the right-click menu
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.pageUrl && info.pageUrl.includes('.ruliweb.com/')) {
-    chrome.tabs.executeScript({code: 'HotsDialog.launchDialog();'});
+    chrome.tabs.executeScript({
+      code: `(async () => {
+        const modulePath = chrome.runtime.getURL('js/hots-dialog.js');
+        const { HotsDialog } = await import(modulePath);
+        HotsDialog.launchDialog();
+      })()`,
+    });
   } else alert('루리웹에서만 실행할 수 있습니다.');
 });
 
@@ -88,6 +90,9 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 // -------- Support functions -------- //
 
+/** @type {import('./decorate-hots-data')['decorateHotsData']} */
+let decorateHotsData;
+
 /**
  * Asynchronously retrieves HotS data from the given URL to local storage
  * @param {string} url URL to load from
@@ -101,6 +106,9 @@ async function updateDataFromUrl(url) {
   const hotsData = await response.json();
   console.debug('Retrieved data from', url);
 
+  if (!decorateHotsData) {
+    ({decorateHotsData} = await import('./decorate-hots-data.js'));
+  }
   decorateHotsData(hotsData);
 
   await new Promise((resolve) =>

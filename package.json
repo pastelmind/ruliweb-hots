@@ -2,6 +2,7 @@
   "name": "ruliweb-hots",
   "version": "0.11.0",
   "description": "A Chrome extension that assists in creating and posting Heroes of the Storm guides on Ruliweb.com",
+  "type": "module",
   "scripts": {
     "test": "npm run -s validate-data && mocha ./api/tests/ ./chrome-ext/tests/",
     "prebuild": "npm run -s build:templates && npm test -s",
@@ -15,9 +16,9 @@
     "postversion": "npm run -s postbuild",
     "postinstall": "npm run -s link-dep && npm run -s prebuild",
     "link-dep": "npm run -s link-dep:htm && npm run -s link-dep:mustache && npm run -s link-dep:preact && npm run -s link-dep:tingle.js && npm run -s link-dep:microtip",
-    "link-dep:htm": "ln -f ./node_modules/htm/dist/htm.js ./chrome-ext/src/js/htm.js",
-    "link-dep:mustache": "ln -f ./node_modules/mustache/mustache.min.js ./chrome-ext/src/js/mustache.js",
-    "link-dep:preact": "ln -f ./node_modules/preact/dist/preact.umd.js ./chrome-ext/src/js/preact.js",
+    "link-dep:htm": "ln -f ./node_modules/htm/dist/htm.module.js ./chrome-ext/src/js/htm.js",
+    "link-dep:mustache": "ln -f ./node_modules/mustache/mustache.mjs ./chrome-ext/src/js/mustache.js",
+    "link-dep:preact": "ln -f ./node_modules/preact/dist/preact.module.js ./chrome-ext/src/js/preact.js",
     "link-dep:tingle.js": "ln -f ./node_modules/tingle.js/dist/tingle.min.js ./chrome-ext/src/js/tingle.js && ln -f ./node_modules/tingle.js/dist/tingle.min.css ./chrome-ext/src/css/tingle.css",
     "link-dep:microtip": "ln -f ./node_modules/microtip/microtip.min.css ./chrome-ext/src/css/microtip.css",
     "validate-data": "node ./api/validate-data.js"
@@ -52,6 +53,6 @@
     "eslint-config-google": "^0.14.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   }
 }

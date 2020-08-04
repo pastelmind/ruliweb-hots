@@ -2,10 +2,11 @@
 
 [![Build Status](https://travis-ci.com/pastelmind/ruliweb-hots.svg?branch=master)](https://travis-ci.com/pastelmind/ruliweb-hots)
 
-루리웹에 히오스 정보글을 쓸 수 있게 해 주는 크롬 / 파이어폭스 확장 프로그램입니다.
+루리웹에 히오스 정보글을 쓸 수 있게 해 주는 구글 크롬 확장 프로그램입니다.
 
 * [크롬 확장 프로그램 설치](https://chrome.google.com/webstore/detail/cnglbnilhbknecgmekgagelljoljcbfe)
-* [파이어폭스 확장 프로그램 설치](https://addons.mozilla.org/ko/firefox/addon/루리웹-히어로즈-오브-더-스톰-공략툴/) (베타)
+* ~~[파이어폭스 확장 프로그램 설치](https://addons.mozilla.org/ko/firefox/addon/루리웹-히어로즈-오브-더-스톰-공략툴/)~~
+    * **기술적인 문제로 인해 파이어폭스 버전은 업데이트가 중단되었습니다. 죄송합니다.**
 
 
 # How to build

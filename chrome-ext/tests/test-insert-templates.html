@@ -24,12 +24,12 @@
 <body>
   <section class="content" id="generated_content"></section>
 
-  <script src="../../node_modules/mustache/mustache.min.js"></script>
-  <script src="./js/mocks.js"></script>
-  <script src="../src/js/decorate-hots-data.js"></script>
-  <script src="../src/js/hots-dialog.js"></script>
-  <script src="../src/js/hots-dialog-renderer.js"></script>
-  <script>
+  <script type="module" src="./js/mocks.js"></script>
+  <script type="module">
+    import {HotsDialog} from '../src/js/hots-dialog.js';
+    import {Renderer} from '../src/js/hots-dialog-renderer.js';
+    import {decorateHotsData} from '../src/js/decorate-hots-data.js';
+
     (async () => {
       //Load hero data for testing
       const jsonPath = './data/hots.json';
@@ -43,7 +43,7 @@
       hero.roleName = '암살자'; //TODO Use data prepare function
 
       const templates = await HotsDialog.loadTemplates();
-      const renderer = new HotsDialog.Renderer(templates);
+      const renderer = new Renderer(templates);
 
       let html = '';
 

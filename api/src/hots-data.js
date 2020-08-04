@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-
-const Hero = require('./hero');
-
+import {Hero} from './hero.js';
 
 /**
  * Helper class for loading from and saving to `hots.json`.
  */
-module.exports = class HotsData {
+export class HotsData {
   /**
    * Parse data from `hots.json`
    * @param {Object|string} hotsData Contents of `hots.json` (JSON string or
@@ -113,4 +110,4 @@ module.exports = class HotsData {
 
     return packedHeroes;
   }
-};
+}

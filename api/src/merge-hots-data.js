@@ -1,18 +1,16 @@
 #!/usr/bin/env node
-'use strict';
-
-const assert = require('assert');
-const util = require('util');
-const logger = require('./logger.js');
+import assert from 'assert';
+import {inspect} from 'util';
+import {warn, pushTag, popTag} from './logger.js';
 
 /**
- * @typedef {import('./hots-data')} HotsData
- * @typedef {import('./hero')} Hero
- * @typedef {import('./hero-stats')} HeroStats
- * @typedef {import('./scaling-stat')} ScalingStat
- * @typedef {import('./skill')} Skill
- * @typedef {import('./talent')} Talent
- * @typedef {import('./ko-en-string')} KoEnString
+ * @typedef {import('./hots-data').HotsData} HotsData
+ * @typedef {import('./hero').Hero} Hero
+ * @typedef {import('./hero-stats').HeroStats} HeroStats
+ * @typedef {import('./scaling-stat').ScalingStat} ScalingStat
+ * @typedef {import('./skill').Skill} Skill
+ * @typedef {import('./talent').Talent} Talent
+ * @typedef {import('./ko-en-string').KoEnString} KoEnString
  */
 
 /**
@@ -22,11 +20,11 @@ const logger = require('./logger.js');
  * @param {boolean=} usePtr If truthy, merge heroes into the PTR section
  *    whenever possible.
  */
-module.exports = function mergeHotsData(target, source, usePtr = false) {
+export function mergeHotsData(target, source, usePtr = false) {
   for (const sourceHero of Object.values(source.heroes)) {
     assert(
       sourceHero.id,
-      `Source hero has no ID (raw value: ${util.inspect(sourceHero.id)})\n`,
+      `Source hero has no ID (raw value: ${inspect(sourceHero.id)})\n`,
     );
 
     let targetHero = null;
@@ -39,7 +37,7 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
       targetHero = Object.values(target.heroes)
         .find((hero) => isEqualInOneLocale(hero.name, sourceHero.name));
       if (targetHero) {
-        logger.warn(
+        warn(
           `Hero ID mismatch: Expected to find ${sourceHero.id},`,
           `but matched with ${targetHero.id}`,
         );
@@ -47,9 +45,9 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
     }
 
     if (targetHero) {
-      logger.pushTag(sourceHero.id);
+      pushTag(sourceHero.id);
       mergeHero(targetHero, sourceHero);
-      logger.popTag();
+      popTag();
     } else if (usePtr) {
       console.log('Added new hero to PTR:', sourceHero.name);
       target.ptrHeroes[sourceHero.id] = sourceHero;
@@ -58,7 +56,7 @@ module.exports = function mergeHotsData(target, source, usePtr = false) {
       target.heroes[sourceHero.id] = sourceHero;
     }
   }
-};
+}
 
 
 /**
@@ -103,12 +101,12 @@ function mergeHero(target, source) {
       );
 
       if (targetSkill && !targetSkill.id) {
-        logger.warn(
+        warn(
           `Target skill (${targetSkill.name}) has no ID,`,
           `matched by name with ${sourceSkill.name}`,
         );
       } else {
-        logger.warn(
+        warn(
           `Skill not found: ${sourceSkill.id} (${sourceSkill.name})`,
         );
         return;
@@ -137,7 +135,7 @@ function mergeHero(target, source) {
             // If the target talent does not match the ID, force a manual search
             if (targetTalent.id !== sourceTalent.id) targetTalent = null;
           } else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
-            logger.warn(
+            warn(
               `Target talent (${targetTalent.name}) has no ID,`,
               `matched by position with ${sourceTalent.name}`,
             );
@@ -158,14 +156,14 @@ function mergeHero(target, source) {
           }
 
           if (targetTalentIndex !== -1) {
-            logger.warn(
+            warn(
               `Talent position mismatch: ${sourceTalent.name}`,
               `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
               `but found in [${targetLevel}][${targetTalentIndex}]`,
             );
             targetTalent = targetTalentArray[targetTalentIndex];
           } else {
-            logger.warn(
+            warn(
               `Talent not found: ${sourceTalent.name} in`,
               `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`,
             );
@@ -249,7 +247,7 @@ function mergeSkill(target, source) {
   mergeProperties(target.extras, source.extras, source.extras);
 
   if (!source.shortDescription) {
-    logger.warn(`${source.name} is missing a short tooltip`);
+    warn(`${source.name} is missing a short tooltip`);
   }
 
   return mergeProperties(target, source, {

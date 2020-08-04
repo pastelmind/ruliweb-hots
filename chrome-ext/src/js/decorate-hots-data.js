@@ -3,9 +3,6 @@
  * This script can be used both in Node.js and in the browser.
  */
 
-'use strict';
-
-
 /**
  * A raw object that represents a hero's stat
  * @typedef {Object} RawStat
@@ -43,13 +40,6 @@
  */
 
 0; // Circumvent a VSCode intellisense bug by capturing JSDoc typedef comments
-
-
-// For use in Node.js
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = decorateHotsData;
-}
-
 
 /**
  * Collection of stat presets
@@ -148,7 +138,7 @@ const StatPresets = {
  * @param {HotsData} hotsData Unmodified HotS data object parsed from hots.json
  * @return {HotsData} Decorated HotS data object
  */
-function decorateHotsData(hotsData) {
+export function decorateHotsData(hotsData) {
   const MISSING_ICON_URL = 'https://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png';
 
   // Set PTR version string

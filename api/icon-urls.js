@@ -1,17 +1,17 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Import/export icon URLs fro HTML listfiles and hots.json
  */
 
-const fs = require('fs');
-const path = require('path');
-const util = require('util');
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
+import util from 'util';
 
-const program = require('commander');
+import program from 'commander';
 
-const HotsData = require('./src/hots-data');
+import {HotsData} from './src/hots-data.js';
 
 
 /**
@@ -37,6 +37,7 @@ const HotsData = require('./src/hots-data');
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_JSON_PATH = path.join(__dirname, '../docs/hots.json');
 
 
