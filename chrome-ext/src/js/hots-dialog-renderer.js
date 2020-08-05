@@ -8,7 +8,7 @@
  * @typedef {import("../../../api/src/talent").Talent} Talent
  */
 
-import _Mustache from "./mustache.js";
+import _Mustache from "./vendor/mustache.js";
 
 /** @type {import('mustache')} */
 const Mustache = _Mustache;

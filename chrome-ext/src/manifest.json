@@ -23,12 +23,12 @@
         "*://mypi.ruliweb.com/write*"
       ],
       "css": [
-        "css/tingle.css",
-        "css/microtip.css",
+        "css/vendor/tingle.css",
+        "css/vendor/microtip.css",
         "css/ruliweb-hots.css"
       ],
       "js": [
-        "js/tingle.js"
+        "js/vendor/tingle.js"
       ]
     },
     {

@@ -2,7 +2,4 @@
 __snapshots__
 
 # Minified 3rd-party libs
-htm.js
-mustache.js
-preact.js
-tingle.js
+vendor/

@@ -7,11 +7,11 @@
  * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
  */
 
-import _htm from "../htm.js";
+import _htm from "../vendor/htm.js";
 import {
   createElement as _createElement,
   Fragment as _Fragment,
-} from "../preact.js";
+} from "../vendor/preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
