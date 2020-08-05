@@ -1,17 +1,7 @@
 /** @file Component representing a multi-selectable group of icons. */
 
-import _htm from "../vendor/htm.js";
-import {
-  Component as _Component,
-  createElement as _createElement,
-} from "../vendor/preact.js";
-
-/** @type {import('htm')['default']} */
-const htm = _htm;
-/** @type {import('preact')['Component']} */
-const Component = _Component;
-/** @type {import('preact')['createElement']} */
-const createElement = _createElement;
+import htm from "../vendor/htm.js";
+import { Component, createElement } from "../vendor/preact.js";
 
 const html = htm.bind(createElement);
 

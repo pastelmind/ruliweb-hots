@@ -1,11 +1,8 @@
 /** @file Menu component for selecting and pasting HotsBoxes. */
 
 import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
-import _htm from "../vendor/htm.js";
-import {
-  Fragment as _Fragment,
-  createElement as _createElement,
-} from "../vendor/preact.js";
+import htm from "../vendor/htm.js";
+import { Fragment, createElement } from "../vendor/preact.js";
 
 /**
  * @typedef {import("../../../../api/src/hero").Hero} Hero
@@ -13,13 +10,6 @@ import {
  * @typedef {import("../../../../api/src/talent").Talent} Talent
  * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
  */
-
-/** @type {import('htm')['default']} */
-const htm = _htm;
-/** @type {import('preact')['createElement']} */
-const createElement = _createElement;
-/** @type {import('preact')['Fragment']} */
-const Fragment = _Fragment;
 
 const html = htm.bind(createElement);
 

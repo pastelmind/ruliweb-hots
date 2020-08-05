@@ -8,22 +8,12 @@
  * @typedef {import('../hots-dialog-paster').HtmlPaster} HtmlPaster
  */
 
-import _htm from "../vendor/htm.js";
-import {
-  Component as _Component,
-  createElement as _createElement,
-} from "../vendor/preact.js";
+import htm from "../vendor/htm.js";
+import { Component, createElement } from "../vendor/preact.js";
 
 import { HeroMenu } from "./hero-menu.js";
 import { HotsBoxMenu } from "./hots-box-menu.js";
 import { MultiSelectIcons } from "./multi-select-icons.js";
-
-/** @type {import('htm')['default']} */
-const htm = _htm;
-/** @type {import('preact')['createElement']} */
-const createElement = _createElement;
-/** @type {import('preact')['Component']} */
-const Component = _Component;
 
 const html = htm.bind(createElement);
 

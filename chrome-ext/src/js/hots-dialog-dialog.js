@@ -6,23 +6,13 @@ import { DialogContent } from "./components/dialog-content.js";
 import { HtmlPaster } from "./hots-dialog-paster.js";
 import { Renderer } from "./hots-dialog-renderer.js";
 import { getSelectedChildWindow } from "./hots-dialog-util.js";
-import _htm from "./vendor/htm.js";
-import {
-  createElement as _createElement,
-  render as _render,
-} from "./vendor/preact.js";
+import htm from "./vendor/htm.js";
+import { createElement, render } from "./vendor/preact.js";
 
 /**
  * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
  * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
  */
-
-/** @type {import('htm')['default']} */
-const htm = _htm;
-/** @type {import('preact')['createElement']} */
-const createElement = _createElement;
-/** @type {import('preact')['render']} */
-const render = _render;
 
 const html = htm.bind(createElement);
 

@@ -8,10 +8,7 @@
  * @typedef {import("../../../api/src/talent").Talent} Talent
  */
 
-import _Mustache from "./vendor/mustache.js";
-
-/** @type {import('mustache')} */
-const Mustache = _Mustache;
+import Mustache from "./vendor/mustache.js";
 
 /** Template-based renderer that generates HTML strings. */
 export class Renderer {
