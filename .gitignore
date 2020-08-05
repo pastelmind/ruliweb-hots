@@ -108,3 +108,5 @@ typings/
 temp/*
 # Build dir
 build/*
+# Types generated from other sources (e.g. JSON schema)
+generated-types/
