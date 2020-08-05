@@ -1,31 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Heroes of the Storm dataset for Ruliweb-HotS",
+  "title": "Ruliweb-HotS Dataset",
   "type": "object",
   "properties": {
     "hotsVersion": {
       "description": "Heroes of the Storm live server patch version",
-      "type": "string",
-      "oneOf": [
-        {
-          "pattern": "^\\d+(\\.\\d+){1,3}$"
-        },
-        {
-          "const": "HotS version (test data)"
-        }
-      ]
+      "$ref": "#/definitions/hotsVersionString"
     },
     "hotsPtrVersion": {
       "description": "Heroes of the Storm PTR patch version",
-      "type": "string",
-      "oneOf": [
-        {
-          "pattern": "^\\d+(\\.\\d+){1,3}$"
-        },
-        {
-          "const": "HotS version (test data)"
-        }
-      ]
+      "$ref": "#/definitions/hotsVersionString"
     },
     "heroes": {
       "description": "Collection of hero data",
@@ -112,15 +96,11 @@
               "allOf": [
                 {
                   "$ref": "#/definitions/unit"
-                },
-                {
-                  "not": {
-                    "required": [
-                      "unitName"
-                    ]
-                  }
                 }
-              ]
+              ],
+              "properties": {
+                "unitName": false
+              }
             },
             {
               "type": "array",
@@ -128,12 +108,10 @@
                 "allOf": [
                   {
                     "$ref": "#/definitions/unit"
-                  },
-                  {
-                    "required": [
-                      "unitName"
-                    ]
                   }
+                ],
+                "required": [
+                  "unitName"
                 ]
               },
               "minItems": 2,
@@ -166,6 +144,7 @@
       },
       "required": [
         "name",
+        "title",
         "icon",
         "newRole",
         "universe",
@@ -330,15 +309,33 @@
         "speed": {
           "type": "number",
           "multipleOf": 0.0001
-        }
-      },
-      "patternProperties": {
-        "^(shields|healEnergy)$": {
+        },
+        "shields": {
           "$ref": "#/definitions/scalingIntegerStat"
         },
-        "^(charge|energy|energyRegen|zaryaEnergy|fury|brew|ammo)$": {
-          "type": "integer",
-          "exclusiveMinimum": 0
+        "healEnergy": {
+          "$ref": "#/definitions/scalingIntegerStat"
+        },
+        "charge": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "energy": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "energyRegen": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "zaryaEnergy": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "fury": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "brew": {
+          "$ref": "#/definitions/positiveInteger"
+        },
+        "ammo": {
+          "$ref": "#/definitions/positiveInteger"
         }
       },
       "required": [
@@ -418,7 +415,11 @@
               "$ref": "#/definitions/trimmedString"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "required": [
+            "ko",
+            "en"
+          ]
         },
         "type": {
           "$comment": "If upgradeFor is present, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4). Otherwise, this specifies the type of skill (unlocked)",
@@ -476,18 +477,21 @@
           "$ref": "#/definitions/iconId"
         },
         "description": {
+          "$comment": "type: string must be present on each entry in allOf; otherwise, json2ts does not recognize the entire subschema as a string",
           "allOf": [
             {
               "$ref": "#/definitions/trimmedString"
             },
             {
               "description": "All newlines must be normalized to LF",
+              "type": "string",
               "not": {
                 "pattern": "\\r"
               }
             },
             {
               "description": "Each line must be trimmed",
+              "type": "string",
               "not": {
                 "pattern": " \\n|\\n "
               }
@@ -538,6 +542,7 @@
         }
       },
       "required": [
+        "id",
         "name",
         "type",
         "icon",
@@ -547,37 +552,41 @@
       "additionalProperties": false
     },
     "skill": {
-      "description": "Represents a talent",
+      "description": "Represents a skill",
       "allOf": [
         {
           "$ref": "#/definitions/talent"
-        },
-        {
-          "not": {
-            "required": [
-              "upgradeFor"
-            ]
-          }
-        },
-        {
-          "not": {
-            "properties": {
-              "type": {
-                "const": "passive"
-              }
-            }
-          }
         }
-      ]
+      ],
+      "properties": {
+        "upgradeFor": false
+      }
     },
     "trimmedString": {
       "type": "string",
       "minLength": 1,
       "pattern": "^\\S([^]*\\S)?$"
     },
+    "hotsVersionString": {
+      "$comment": "type: string must be present on each entry in oneOf; otherwise, json2ts does not recognize the entire subschema as a string",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d+(\\.\\d+){1,3}$"
+        },
+        {
+          "type": "string",
+          "const": "HotS version (test data)"
+        }
+      ]
+    },
     "iconId": {
       "type": "string",
       "pattern": "^[\\w'\\-]+$"
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "exclusiveMinimum": 0
     }
   }
 }
