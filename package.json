@@ -37,6 +37,7 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "htm": "^3.0.4",
+    "json-schema-to-typescript": "^9.1.1",
     "juice": "^7.0.0",
     "microtip": "^0.2.2",
     "mocha": "^8.1.1",
