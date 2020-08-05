@@ -247,7 +247,7 @@ function exportIconUrls(hotsData) {
     unused: new Map(),
   };
   const unusedIconUrls = Object.assign({}, hotsData.iconUrls);
-  /** @type {Map<string, Set<string>} */
+  /** @type {Map<string, Set<string>>} */
   const heroesUsingSkillIcons = new Map();
 
   // Sort icons by hero name
