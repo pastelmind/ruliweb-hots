@@ -7,6 +7,9 @@ extends:
   - 'eslint:recommended'
   - google
   - 'plugin:prettier/recommended'
+ignorePatterns:
+  - '**/__snapshots__/**'
+  - '**/vendor/**'
 parserOptions:
   ecmaVersion: 11
   sourceType: module
