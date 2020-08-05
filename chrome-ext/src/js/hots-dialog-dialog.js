@@ -1,4 +1,6 @@
 /** @file Provides a self-contained Dialog class. */
+// eslint-disable-next-line spaced-comment
+/// <reference path="./vendor/tingle-global.d.ts" />
 
 /* global tingle */
 
