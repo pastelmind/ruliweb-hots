@@ -8,11 +8,11 @@
  * @typedef {import('../hots-dialog-paster').HtmlPaster} HtmlPaster
  */
 
-import _htm from "../htm.js";
+import _htm from "../vendor/htm.js";
 import {
   Component as _Component,
   createElement as _createElement,
-} from "../preact.js";
+} from "../vendor/preact.js";
 
 import { HeroMenu } from "./hero-menu.js";
 import { HotsBoxMenu } from "./hots-box-menu.js";

@@ -7,11 +7,11 @@
  * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
  */
 
-import _htm from "./htm.js";
+import _htm from "./vendor/htm.js";
 import {
   createElement as _createElement,
   render as _render,
-} from "./preact.js";
+} from "./vendor/preact.js";
 
 import { DialogContent } from "./components/dialog-content.js";
 import { HtmlPaster } from "./hots-dialog-paster.js";

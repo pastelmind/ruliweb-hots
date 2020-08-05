@@ -4,8 +4,8 @@
  * @typedef {import("../../../../api/src/hero").Hero} Hero
  */
 
-import _htm from "../htm.js";
-import { createElement as _createElement } from "../preact.js";
+import _htm from "../vendor/htm.js";
+import { createElement as _createElement } from "../vendor/preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
