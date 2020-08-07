@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.121",
+    "@types/firefox-webext-browser": "^78.0.1",
     "@types/mocha": "^8.0.0",
     "@types/mustache": "^4.0.1",
     "@types/yazl": "^2.4.2",
