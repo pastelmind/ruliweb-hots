@@ -5,11 +5,11 @@
 /**
  * Returns the window object of the currently selected child frame. If none
  * can be found, returns `undefined`.
- * @return {Window} Window object of the currently selected child frame.
+ * @return {Window | undefined}
  */
 export function getSelectedChildWindow() {
   return Array.from(window).find(
-    (childWindow) => childWindow.getSelection().rangeCount
+    (childWindow) => (childWindow.getSelection() || {}).rangeCount
   );
 }
 
@@ -84,7 +84,7 @@ export function getOffsetToViewport(element) {
   let { left, top } = element.getBoundingClientRect();
 
   // Add offset of containing <iframe>s
-  let { frameElement } = element.ownerDocument.defaultView;
+  let { frameElement } = element.ownerDocument.defaultView || {};
   while (frameElement) {
     const {
       left: frameLeft,
@@ -92,7 +92,7 @@ export function getOffsetToViewport(element) {
     } = frameElement.getBoundingClientRect();
     left += frameLeft;
     top += frameTop;
-    ({ frameElement } = frameElement.ownerDocument.defaultView);
+    ({ frameElement } = frameElement.ownerDocument.defaultView || {});
   }
 
   return { left, top };
