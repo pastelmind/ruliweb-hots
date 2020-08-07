@@ -30,9 +30,14 @@ export class HtmlPaster {
    * Pastes raw HTML into the frame bound to this object.
    * This replaces any content currently selected by the user.
    * @param {string} html Raw HTML to paste
-   * @return {HTMLElement[]} Array of pasted top-level elements
+   * @return {Element[]} Array of pasted top-level elements
+   * @throws {Error} If the HTML cannot be pasted for whatever reason
    */
   paste(html) {
+    if (!this._frame) {
+      throw new Error("HTML paste failed: No bound frame window");
+    }
+
     const range = getSelectedRange(this._frame);
     if (!range.collapsed) range.deleteContents();
 
@@ -50,7 +55,7 @@ export class HtmlPaster {
     range.insertNode(docFragment);
 
     // Deselect inserted HTML
-    this._frame.getSelection().collapse(range.endContainer, range.endOffset);
+    getSelectionOf(this._frame).collapse(range.endContainer, range.endOffset);
 
     return pastedElements;
   }
@@ -61,9 +66,10 @@ export class HtmlPaster {
  * @package
  * @param {Window} frame
  * @return {Range}
+ * @throws {Error} If the selection cannot be obtained
  */
 function getSelectedRange(frame) {
-  const selection = frame.getSelection();
+  const selection = getSelectionOf(frame);
   let range = null;
 
   if (selection.rangeCount) {
@@ -82,4 +88,20 @@ function getSelectedRange(frame) {
   range.setStart(document.body, document.body.childNodes.length);
   range.setEnd(document.body, document.body.childNodes.length);
   return range;
+}
+
+/**
+ * Retrieves the selection object in a frame.
+ * @package
+ * @param {Window} frame
+ * @return {Selection}
+ * @throws {Error} If the selection cannot be obtained
+ */
+function getSelectionOf(frame) {
+  // According to MDN, getSelection() can _potentially_ return null in Firefox
+  const selection = frame.getSelection();
+  if (!selection) {
+    throw new Error("HTML paste failed: Cannot retrieve selection in frame");
+  }
+  return selection;
 }
