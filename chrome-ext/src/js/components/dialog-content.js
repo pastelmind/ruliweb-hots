@@ -2,10 +2,13 @@
 
 /**
  * @typedef {import('../../../../api/src/hero').Hero} Hero
- * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
  * @typedef {import('../../../../api/src/hots-data').HotsData} HotsData
- * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
  * @typedef {import('../hots-dialog-paster').HtmlPaster} HtmlPaster
+ * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
+ * @typedef {import("../hots-dialog.js").ActiveFilters} ActiveFilters
+ * @typedef {import("../hots-dialog.js").HeroFilterPresets} HeroFilterPresets
+ * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
+ * @typedef {import("../hots-dialog.js").HeroFilterValues} HeroFilterValues
  */
 
 import htm from "../vendor/htm.js";
@@ -17,25 +20,37 @@ import { MultiSelectIcons } from "./multi-select-icons.js";
 
 const html = htm.bind(createElement);
 
-/** Dialog content component. */
+/**
+ * @typedef {object} Props
+ * @property {HotsData} data HotS data object
+ * @property {HeroFilterPresets} heroFilters Mapping of hero filter IDs
+ *    to hero filters
+ * @property {Renderer} renderer Renderer for generating HotsBoxes
+ * @property {HtmlPaster} paster Paster for pasting HotsBoxes
+ */
+
+/**
+ * @typedef {object} State
+ * @property {ActiveFilters} activeFilters
+ * @property {Hero | null} currentHero
+ * @property {boolean} shouldAddHotsVersion
+ * @property {boolean} shouldUsePtr
+ * @property {boolean} shouldUseSimpleHeroBox
+ * @property {number} iconSize
+ */
+
+/**
+ * Dialog content component.
+ * @extends {preact.Component<Props, State>}
+ */
 export class DialogContent extends Component {
-  /**
-   * @param {Object} props
-   * @param {HotsData} props.data HotS data object
-   * @param {Object<string, HeroFilter>} props.heroFilters Mapping of hero
-   *    filter IDs to hero filters
-   * @param {Renderer} props.renderer Renderer for generating HotsBoxes
-   * @param {HtmlPaster} props.paster Paster for pasting HotsBoxes
-   */
+  /** @param {Props} props */
   constructor(props) {
     super(props);
 
-    const activeFilters = {};
-    for (const filterId of Object.keys(this.props.heroFilters)) {
-      activeFilters[filterId] = [];
-    }
+    /** @type {State} */
     this.state = {
-      activeFilters,
+      activeFilters: { universe: [], newRole: [] },
       currentHero: null,
       shouldAddHotsVersion: true,
       shouldUsePtr: false,
@@ -44,13 +59,18 @@ export class DialogContent extends Component {
     };
   }
 
+  // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
   /**
    * Sets a boolean state based on an event originating from a checkbox.
-   * @param {string} stateId Name of the state variable
+   * @param {keyof State} stateId Name of the state variable
    * @param {Event} event originating from a checkbox
    */
   setCheckboxState(stateId, event) {
-    this.setState({ [stateId]: event.target.checked });
+    if (event.target) {
+      this.setState({
+        [stateId]: /** @type {HTMLInputElement} */ (event.target).checked,
+      });
+    }
   }
 
   /**
@@ -76,10 +96,12 @@ export class DialogContent extends Component {
     this.setState({ iconSize: +iconSize });
   }
 
+  // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
   /**
    * Sets a boolean state based on an event originating from a checkbox.
-   * @param {string} filterType Filter type
-   * @param {string[]} selectedFilters Selected filter IDs
+   * @template {HeroFilterType} T
+   * @param {T} filterType Filter type
+   * @param {HeroFilterValues[T][]} selectedFilters Selected filter IDs
    */
   setActiveFilter(filterType, selectedFilters) {
     this.setState((state) => ({
@@ -156,22 +178,43 @@ export class DialogContent extends Component {
     return paster.paste(html);
   }
 
-  /** @return {Object} DOM content to render */
+  /** @return {preact.VNode<Props>} */
   render() {
     // Check if PTR data is available
-    const { data } = this.props;
+    const { data, heroFilters } = this.props;
     const isPtrAvailable = !!(
       data.ptrHeroes && Object.keys(data.ptrHeroes).length
     );
 
-    return html`
+    /** @type {preact.ComponentProps<typeof HeroMenu>} */
+    const heroMenuProps = {
+      heroes: this.props.data.heroes,
+      ptrHeroes: this.props.data.ptrHeroes,
+      activeFilters: this.state.activeFilters,
+      ptrMode: this.state.shouldUsePtr,
+      onClickHero: (hero) => this.setState({ currentHero: hero }),
+    };
+
+    /** @type {preact.ComponentProps<typeof HotsBoxMenu>} */
+    const hotsBoxMenuProps = {
+      hero: this.state.currentHero,
+      onPasteHero: (hero) => this.pasteHero(hero),
+      onPasteSkill: (skill) => this.pasteSkill(skill),
+      onPasteTalent: (talent) => this.pasteTalent(talent),
+      onPasteTalentGroup: (talents) => this.pasteTalentGroup(talents),
+    };
+
+    return /** @type {preact.VNode<Props>} */ (html`
       <div class="hots-dialog">
         <div class="hots-dialog__section hots-dialog-options">
           <label class="hots-dialog-option hots-dialog-option--checkbox">
             <input
               type="checkbox"
               checked=${this.state.shouldAddHotsVersion}
-              onInput=${(e) => this.setCheckboxState("shouldAddHotsVersion", e)}
+              onInput=${this.setCheckboxState.bind(
+                this,
+                "shouldAddHotsVersion"
+              )}
             />
             <span class="hots-dialog-option__description">
               히오스 패치 버전 포함
@@ -189,7 +232,11 @@ export class DialogContent extends Component {
               type="checkbox"
               disabled=${!isPtrAvailable}
               checked=${this.state.shouldUsePtr}
-              onInput=${(e) => this.setShouldUsePtr(e.target.checked)}
+              onInput=${(/** @type {MouseEvent} */ e) =>
+                e.target &&
+                this.setShouldUsePtr(
+                  /** @type {HTMLInputElement} */ (e.target).checked
+                )}
             />
             <span class="hots-dialog-option__description">PTR 적용</span>
           </label>
@@ -203,8 +250,10 @@ export class DialogContent extends Component {
             <input
               type="checkbox"
               checked=${this.state.shouldUseSimpleHeroBox}
-              onInput=${(e) =>
-                this.setCheckboxState("shouldUseSimpleHeroBox", e)}
+              onInput=${this.setCheckboxState.bind(
+                this,
+                "shouldUseSimpleHeroBox"
+              )}
             />
             <span class="hots-dialog-option__description">
               간단한 영웅 표 생성
@@ -221,7 +270,11 @@ export class DialogContent extends Component {
                 max="64"
                 step="8"
                 value=${this.state.iconSize}
-                onInput=${(e) => this.setIconSize(e.target.value)}
+                onInput=${(/** @type {Event} */ e) =>
+                  e.target &&
+                  this.setIconSize(
+                    /** @type {HTMLInputElement} */ (e.target).value
+                  )}
               />
               <output class="hots-dialog-option__description">
                 ${this.state.iconSize} × ${this.state.iconSize}px
@@ -231,51 +284,40 @@ export class DialogContent extends Component {
         </div>
 
         <div class="hots-dialog__section hots-hero-filters">
-          ${Object.entries(this.props.heroFilters).map(
-            ([filterType, filter]) => {
-              const options = Object.entries(filter.filters).map(
+          ${Object.keys(heroFilters).map((_filterType) => {
+            const filterType = /** @type {HeroFilterType} */ (_filterType);
+
+            /** @type {MultiSelectIcons<HeroFilterValues[filterType]>["props"]} */
+            const multiSelectIconsProps = {
+              options: Object.entries(heroFilters[filterType].filters).map(
                 ([id, name]) => ({
-                  id,
+                  id: /** @type {HeroFilterValues[filterType]} */ (id),
                   name,
                   iconUrl: chrome.runtime.getURL(
                     `/images/${filterType}-${id}.png`
                   ),
                 })
-              );
-              return html`
-                <div class="hots-hero-filter-group">
-                  <div class="hots-hero-filter-group__description">
-                    ${filter.name}:
-                  </div>
-                  <${MultiSelectIcons}
-                    options=${options}
-                    onSelectChange=${(selectedIds) =>
-                      this.setActiveFilter(filterType, selectedIds)}
-                  />
+              ),
+              onSelectChange: (sel) => this.setActiveFilter(filterType, sel),
+            };
+
+            return html`
+              <div class="hots-hero-filter-group">
+                <div class="hots-hero-filter-group__description">
+                  ${heroFilters[filterType].name}:
                 </div>
-              `;
-            }
-          )}
+                <${MultiSelectIcons} ...${multiSelectIconsProps} />
+              </div>
+            `;
+          })}
         </div>
 
-        <${HeroMenu}
-          heroes=${this.props.data.heroes}
-          ptrHeroes=${this.props.data.ptrHeroes}
-          activeFilters=${this.state.activeFilters}
-          ptrMode=${this.state.shouldUsePtr}
-          onClickHero=${(hero) => this.setState({ currentHero: hero })}
-        />
-        <${HotsBoxMenu}
-          hero=${this.state.currentHero}
-          onPasteHero=${(hero) => this.pasteHero(hero)}
-          onPasteSkill=${(skill) => this.pasteSkill(skill)}
-          onPasteTalent=${(talent) => this.pasteTalent(talent)}
-          onPasteTalentGroup=${(talents) => this.pasteTalentGroup(talents)}
-        />
+        <${HeroMenu} ...${heroMenuProps} />
+        <${HotsBoxMenu} ...${hotsBoxMenuProps} />
         <div class="hots-dialog__section hots-dialog-version">
           루리웹 히어로즈 오브 더 스톰 공략툴 v{{appVersion}}
         </div>
       </div>
-    `;
+    `);
   }
 }

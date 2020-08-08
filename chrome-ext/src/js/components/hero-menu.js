@@ -10,28 +10,45 @@ import { createElement } from "../vendor/preact.js";
 const html = htm.bind(createElement);
 
 /**
+ * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
+ * @typedef {import("../hots-dialog.js").ActiveFilters} ActiveFilters
+ */
+
+/**
+ * @typedef {{ [K in HeroFilterType]: Set<Hero[K]> }} ActiveFilterSets
+ */
+
+/**
+ * @typedef {object} Props
+ * @property {Object<string, Hero>} heroes Mapping of hero IDs to Hero objects
+ *    for live server data
+ * @property {Object<string, Hero>} ptrHeroes Mapping of hero IDs to Hero
+ *    objects for PTR server data
+ * @property {ActiveFilters} activeFilters Maps filter types to arrays of active
+ *    filter IDs
+ * @property {boolean} ptrMode If truthy, only heroes added or changed in PTR
+ *    are highlighted, and their PTR data is passed to `onClickHero`.
+ * @property {(hero: Hero) => void} props.onClickHero Called when the user
+ *    clicks on a hero. Argument is the clicked Hero object.
+ */
+
+/**
  * A menu of clickable hero icons.
- * @param {Object} props
- * @param {Object<string, Hero>} props.heroes Mapping of hero IDs to Hero
- *    objects, for live server data
- * @param {Object<string, Hero>} props.ptrHeroes Mapping of hero IDs to Hero
- *    objects, for PTR server data
- * @param {Object<string, string[]>} props.activeFilters Maps filter types to
- *    arrays of active filter IDs
- * @param {boolean} props.ptrMode If truthy, only heroes added or changed in
- *    PTR are highlighted, and their PTR data is passed to `onClickHero`.
- * @param {function (Hero): undefined} props.onClickHero Called when the
- *    user clicks on a hero. Argument is the clicked Hero object.
- * @return {Object} DOM content to render
+ * @param {Props} props
+ * @return {preact.VNode<Props>} DOM content to render
  */
 export function HeroMenu(props) {
   const { heroes, ptrHeroes, activeFilters, ptrMode, onClickHero } = props;
 
-  const activeFilterSets = {};
-  for (const [filterType, filters] of Object.entries(activeFilters)) {
-    const filterSet = (activeFilterSets[filterType] = new Set(filters));
-    // Workaround for Nexus-original heroes
-    if (filterSet.has("classic")) filterSet.add("nexus");
+  /** @type {ActiveFilterSets} */
+  const activeFilterSets = {
+    universe: new Set(activeFilters.universe),
+    newRole: new Set(activeFilters.newRole),
+  };
+
+  // Workaround for Nexus-original heroes
+  if (activeFilterSets.universe.has("classic")) {
+    activeFilterSets.universe.add("nexus");
   }
 
   const icons = Object.values(Object.assign({}, heroes, ptrHeroes))
@@ -78,20 +95,20 @@ export function HeroMenu(props) {
       `;
     });
 
-  return html`
+  return /** @type {preact.VNode<Props>} */ (html`
     <div class="hots-dialog__section hots-hero-icons">${icons}</div>
-  `;
+  `);
 }
 
 /**
  * Tests a hero against a set of active filters.
  * @param {Hero} hero Hero object to test
- * @param {Object<string, Set<string>>} activeFilters Mapping of filter types
- *    to set of active filter IDs
+ * @param {ActiveFilterSets} activeFilters
  * @return {boolean}
  */
 function canHeroPassFilters(hero, activeFilters) {
-  for (const [filterType, filterSet] of Object.entries(activeFilters)) {
+  for (const [_filterType, filterSet] of Object.entries(activeFilters)) {
+    const filterType = /** @type {HeroFilterType} */ (_filterType);
     if (!filterSet.size) continue; // Skip filterSet if empty
 
     const heroAttribute = hero[filterType];

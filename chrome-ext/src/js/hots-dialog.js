@@ -5,6 +5,13 @@
 
 import { Dialog } from "./hots-dialog-dialog.js";
 
+/**
+ * @typedef {keyof heroFilters} HeroFilterType
+ * @typedef {typeof heroFilters} HeroFilterPresets
+ * @typedef {{ [K in HeroFilterType]: keyof HeroFilterPresets[K]["filters"] }} HeroFilterValues
+ * @typedef {{ [K in HeroFilterType]: HeroFilterValues[K][] }} ActiveFilters
+ */
+
 const heroFilters = {
   universe: {
     name: "세계관",
@@ -48,6 +55,8 @@ async function loadTemplates() {
 export const HotsDialog = {
   heroFilters,
   loadTemplates,
+  /** @type {Dialog | null} */
+  dialog: null,
 
   /**
    * Launch the hero/skill/talent selection dialog.

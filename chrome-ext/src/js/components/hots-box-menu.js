@@ -14,26 +14,30 @@ import { Fragment, createElement } from "../vendor/preact.js";
 const html = htm.bind(createElement);
 
 /**
+ * @typedef {object} Props
+ * @property {?Hero} hero Currently selected Hero object
+ * @property {(hero: Hero) => Element[]} onPasteHero Called when the user clicks
+ *    on a hero. Argument is the clicked Hero object.
+ *    Must return an array of pasted elements.
+ * @property {(skill: Skill) => Element[]} onPasteSkill Called when the user
+ *    clicks on a skill. Argument is the clicked Skill object.
+ *    Must return an array of pasted elements.
+ * @property {(talent: Talent) => Element[]} onPasteTalent Called when the user
+ *    clicks on a talent. Argument is the clicked Talent object.
+ *    Must return an array of pasted elements.
+ * @property {(talents: Talent[]) => Element[]} onPasteTalentGroup Called when
+ *    the user clicks on a talent group. Argument is array of Talent objects.
+ *    Must return an array of pasted elements.
+ */
+
+/**
  * A menu of clickable hero icons.
- * @param {Object} props
- * @param {Hero} props.hero Currently selected Hero object
- * @param {function (Hero): Element[]} props.onPasteHero Called when the
- *    user clicks on a hero. Argument is the clicked Hero object.
- *    Must return an array of pasted elements.
- * @param {function (Skill): Element[]} props.onPasteSkill Called when the
- *    user clicks on a skill. Argument is the clicked Skill object.
- *    Must return an array of pasted elements.
- * @param {function (Talent): Element[]} props.onPasteTalent Called when the
- *    user clicks on a talent. Argument is the clicked Talent object.
- *    Must return an array of pasted elements.
- * @param {function (Talent[]): Element[]} props.onPasteTalentGroup Called
- *    when the user clicks on a talent group. Argument is array of Talent
- *    objects. Must return an array of pasted elements.
- * @return {Object} DOM content to render
+ * @param {Props} props
+ * @return {preact.VNode<Props>} DOM content to render
  */
 export function HotsBoxMenu(props) {
   const { hero } = props;
-  if (!hero) return html`<${Fragment} />`;
+  if (!hero) return /** @type {preact.VNode<Props>} */ (html`<${Fragment} />`);
 
   /**
    * @param {Hero} hero
@@ -71,7 +75,7 @@ export function HotsBoxMenu(props) {
     animatePasteEffect(pastedElement, event.target);
   }
 
-  return html`
+  return /** @type {preact.VNode<Props>} */ (html`
     <${Fragment}>
       <div class="hots-dialog__section hots-skillset" key=${hero.id}>
         <div
@@ -84,7 +88,7 @@ export function HotsBoxMenu(props) {
             class="hots-current-hero-icon"
             src="${hero.iconUrl}"
             alt="${hero.name} (${hero.roleName})"
-            onClick=${(e) => pasteHeroWithEffect(hero, e)}
+            onClick=${pasteHeroWithEffect.bind(null, hero)}
           />
         </div>
         ${Object.values(hero.skills).map(
@@ -99,7 +103,7 @@ export function HotsBoxMenu(props) {
                 class="hots-skill-icon"
                 src="${skill.iconUrl}"
                 alt="${skill.typeName} - ${skill.name}"
-                onClick=${(e) => pasteSkillWithEffect(skill, e)}
+                onClick=${pasteSkillWithEffect.bind(null, skill)}
               />
             </div>
           `
@@ -124,7 +128,7 @@ export function HotsBoxMenu(props) {
                       class="hots-talent-icon"
                       src="${talent.iconUrl}"
                       alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
-                      onClick=${(e) => pasteTalentWithEffect(talent, e)}
+                      onClick=${pasteTalentWithEffect.bind(null, talent)}
                     />
                   </div>
                 `
@@ -134,7 +138,7 @@ export function HotsBoxMenu(props) {
                   type="button"
                   class="hots-talentset__group-add-all"
                   value="모두 넣기"
-                  onClick=${(e) => pasteTalentGroupWithEffect(talentGroup, e)}
+                  onClick=${pasteTalentGroupWithEffect.bind(null, talentGroup)}
                 />
               </div>
             </li>
@@ -142,15 +146,27 @@ export function HotsBoxMenu(props) {
         )}
       </ul>
     <//>
-  `;
+  `);
 }
 
 /**
  * Creates a flying box effect when pasting.
- * @param {Element} injectedElement Element that was pasted
- * @param {Element} clickedElement Element that was triggered by the user
+ * @param {Element | undefined} injectedElement Element that was pasted. If
+ *    undefined, this function will do nothing.
+ * @param {EventTarget | null} clickedElement Element that was triggered by the user
  */
 function animatePasteEffect(injectedElement, clickedElement) {
+  if (!injectedElement || !isElement(clickedElement)) return;
+
   const { left: endX, top: endY } = getOffsetToViewport(injectedElement);
   animateFlyingBox(clickedElement, endX, endY);
+}
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @param {EventTarget | null} o
+ * @return {o is Element}
+ */
+function isElement(o) {
+  return o != null && "tagName" in o;
 }

@@ -18,14 +18,18 @@ import { createElement, render } from "./vendor/preact.js";
 
 const html = htm.bind(createElement);
 
+/**
+ * @typedef {import("./hots-dialog.js").HeroFilterPresets} HeroFilterPresets
+ */
+
 /** Represents a Dialog for selecting and pasting HotS Boxes. */
 export class Dialog {
   /**
    * Creates a new Dialog instance.
    * @param {Object<string, string>} templates Rendering templates
    * @param {HotsData} data HotS data
-   * @param {Object<string, HeroFilter>} heroFilters Mapping of hero filter
-   *    IDs to hero filters
+   * @param {HeroFilterPresets} heroFilters Mapping of hero filter IDs to hero
+   *    filters
    */
   constructor(templates, data, heroFilters) {
     this._paster = new HtmlPaster();
@@ -36,32 +40,31 @@ export class Dialog {
       onOpen() {
         // Temporarily deactivate PToDivReplacer in editor-iframe.js
         const frameWindow = getSelectedChildWindow();
-        if (frameWindow && frameWindow.pToDivReplacer) {
+        if (frameWindow && hasPToDivReplacer(frameWindow)) {
           frameWindow.pToDivReplacer.deactivate();
         }
       },
       onClose() {
         // Reactivate PToDivReplacer in editor-iframe.js
         const frameWindow = getSelectedChildWindow();
-        if (frameWindow && frameWindow.pToDivReplacer) {
+        if (frameWindow && hasPToDivReplacer(frameWindow)) {
           frameWindow.pToDivReplacer.activate();
         }
       },
     });
 
     const renderer = new Renderer(templates);
+    const paster = this._paster;
     const contentFragment = document.createDocumentFragment();
+
+    /** @type {preact.ComponentProps<typeof DialogContent>} */
+    const dialogContentProps = { data, heroFilters, renderer, paster };
     render(
-      html`
-        <${DialogContent}
-          data=${data}
-          heroFilters=${heroFilters}
-          renderer=${renderer}
-          paster=${this._paster}
-        />
-      `,
+      html`<${DialogContent} ...${dialogContentProps} />`,
       contentFragment
     );
+    // TODO: Remove this when @types/tingle.js is updated
+    // @ts-expect-error Parameter type of setContent() is too narrow
     this._dialog.setContent(contentFragment);
   }
 
@@ -70,4 +73,13 @@ export class Dialog {
     this._paster.bind();
     this._dialog.open();
   }
+}
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @param {Window} frame
+ * @return {frame is Window & { pToDivReplacer: typeof pToDivReplacer }}
+ */
+function hasPToDivReplacer(frame) {
+  return "pToDivReplacer" in frame;
 }
