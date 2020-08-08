@@ -21,7 +21,7 @@ export class Skill {
    * @param {number=} o.rechargeCooldown
    * @param {number=} o.manaCost
    * @param {number=} o.manaCostPerSecond
-   * @param {Object<string, string|number>} o.extras
+   * @param {Object<string, string|number>=} o.extras
    */
   constructor(o = {}) {
     this.id = o.id || "";

@@ -1,3 +1,4 @@
+/** @type {string[]} */
 let theTags = [];
 
 /**
@@ -11,7 +12,8 @@ export function pushTag(...tags) {
 
 /**
  * Pop the topmost tag from the logging tag stack.
- * @return {string?} The popped tag, or `undefined` if the stack was empty.
+ * @return {string | undefined} The popped tag, or `undefined` if the stack was
+ *    empty.
  */
 export function popTag() {
   return theTags.pop();

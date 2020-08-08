@@ -2,6 +2,7 @@
 import assert from "assert";
 import { inspect } from "util";
 
+import { KoEnString } from "./ko-en-string.js";
 import { popTag, pushTag, warn } from "./logger.js";
 
 /**
@@ -11,7 +12,6 @@ import { popTag, pushTag, warn } from "./logger.js";
  * @typedef {import('./scaling-stat').ScalingStat} ScalingStat
  * @typedef {import('./skill').Skill} Skill
  * @typedef {import('./talent').Talent} Talent
- * @typedef {import('./ko-en-string').KoEnString} KoEnString
  */
 
 /**
@@ -22,7 +22,7 @@ import { popTag, pushTag, warn } from "./logger.js";
  *    whenever possible.
  */
 export function mergeHotsData(target, source, usePtr = false) {
-  for (const sourceHero of Object.values(source.heroes)) {
+  for (const sourceHero of Object.values(source.heroes || {})) {
     assert(
       sourceHero.id,
       `Source hero has no ID (raw value: ${inspect(sourceHero.id)})\n`
@@ -79,13 +79,15 @@ function mergeHero(target, source) {
   if (Array.isArray(source.stats)) {
     target.stats = source.stats.map((sourceUnitStats, sourceUnitIndex) =>
       mergeHeroStats(
-        target.stats[sourceUnitIndex] || target.stats[0] || target.stats,
+        Array.isArray(target.stats)
+          ? target.stats[sourceUnitIndex] || target.stats[0]
+          : target.stats,
         sourceUnitStats
       )
     );
   } else if (source.stats) {
     target.stats = mergeHeroStats(
-      target.stats[0] || target.stats,
+      Array.isArray(target.stats) ? target.stats[0] : target.stats,
       source.stats
     );
   }
@@ -121,13 +123,17 @@ function mergeHero(target, source) {
   const sourceTalentEntries = Object.entries(source.talents);
   if (sourceTalentEntries.length) {
     const oldTalents = target.talents;
+    /** @type {typeof oldTalents} */
     const newTalents = (target.talents = {});
 
-    for (const [sourceLevel, sourceTalentArray] of sourceTalentEntries) {
+    for (const [sourceLevelStr, sourceTalentArray] of sourceTalentEntries) {
+      const sourceLevel = Number(sourceLevelStr);
+      /** @type {typeof oldTalents[number]} */
       const newTalentArray = (newTalents[sourceLevel] = []);
 
       sourceTalentArray.forEach((sourceTalent, sourceTalentIndex) => {
         // Find matching talent by level and index
+        /** @type {Talent | null} */
         let targetTalent = (oldTalents[sourceLevel] || [])[sourceTalentIndex];
 
         if (targetTalent) {
@@ -162,7 +168,7 @@ function mergeHero(target, source) {
               `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
               `but found in [${targetLevel}][${targetTalentIndex}]`
             );
-            targetTalent = targetTalentArray[targetTalentIndex];
+            targetTalent = (targetTalentArray || [])[targetTalentIndex];
           } else {
             warn(
               `Talent not found: ${sourceTalent.name} in`,
@@ -197,7 +203,8 @@ function mergeHeroStats(target, source) {
     shields: 0,
   };
 
-  for (const propertyName of Object.keys(scalingStatProperties)) {
+  for (const _propertyName of Object.keys(scalingStatProperties)) {
+    const propertyName = /** @type {keyof scalingStatProperties} */ (_propertyName);
     mergeScalingStat(target[propertyName], source[propertyName]);
   }
 
@@ -206,13 +213,15 @@ function mergeHeroStats(target, source) {
   if (Array.isArray(source.damage)) {
     target.damage = source.damage.map((d, index) =>
       mergeScalingStat(
-        target.damage[index] || target.damage[0] || target.damage,
+        Array.isArray(target.damage)
+          ? target.damage[index] || target.damage[0]
+          : target.damage,
         d
       )
     );
   } else {
     target.damage = mergeScalingStat(
-      target.damage[0] || target.damage,
+      Array.isArray(target.damage) ? target.damage[0] : target.damage,
       source.damage
     );
   }
@@ -236,9 +245,10 @@ function mergeHeroStats(target, source) {
 
 /**
  * Merges data from the source Skill object into the target Skill object.
- * @param {Skill} target Skill object to merge into
- * @param {Skill} source Skill object to merge from
- * @return {Skill} Merged Skill object
+ * @template {Skill} T
+ * @param {T} target Skill object to merge into
+ * @param {T} source Skill object to merge from
+ * @return {T} Merged Skill object
  */
 function mergeSkill(target, source) {
   // Merge skill and talent names
@@ -291,18 +301,21 @@ function mergeScalingStat(target, source) {
   });
 }
 
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
 /**
  * Copies properties specified in `propertyNames` from the source object to the
  * target object. If a property's value is a non-null falsy value, it is not
  * copied.
- * @param {Object} target Target object to copy properties into
- * @param {Object} source Source object to copy properties from
- * @param {Object<string, *>} propertyNames Object whose keys are property names
- *    to copy. Values are ignored.
- * @return {Object} The merged target object.
+ * @template T
+ * @param {T} target Target object to copy properties into
+ * @param {T} source Source object to copy properties from
+ * @param {Partial<Record<keyof T, *>>} propertyNames Object whose keys are
+ *    property names to copy. Values are ignored.
+ * @return {T} The merged target object.
  */
 function mergeProperties(target, source, propertyNames) {
-  for (const property in propertyNames) {
+  for (const _property of Object.keys(propertyNames)) {
+    const property = /** @type {keyof T} */ (_property);
     if (source[property] || source[property] === null) {
       target[property] = source[property];
     }
@@ -314,10 +327,15 @@ function mergeProperties(target, source, propertyNames) {
 /**
  * Checks if two KoEnStrings have either equal Korean or equal English values.
  * Empty strings (`''`) are treated as non-equal.
- * @param {KoEnString} str1
- * @param {KoEnString} str2
+ * @param {string | KoEnString} str1
+ * @param {string | KoEnString} str2
  * @return {boolean}
  */
 function isEqualInOneLocale(str1, str2) {
-  return (str1.ko && str1.ko === str2.ko) || (str1.en && str1.en === str2.en);
+  const name1 = typeof str1 === "string" ? new KoEnString(str1) : str1;
+  const name2 = typeof str2 === "string" ? new KoEnString(str2) : str2;
+  return (
+    (Boolean(name1.ko) && name1.ko === name2.ko) ||
+    (Boolean(name1.en) && name1.en === name2.en)
+  );
 }
