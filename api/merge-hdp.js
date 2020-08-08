@@ -296,12 +296,14 @@ const NOT_SUB_ABILITIES = new Set([
   "FenixRepeaterCannon",
 ]);
 
-const ABILITY_TYPE_TO_SKILL_TYPE = Object.freeze({
-  Active: "active",
-  Heroic: "R",
-  Passive: "passive",
-  Trait: "D",
-});
+const ABILITY_TYPE_TO_SKILL_TYPE = new Map(
+  Object.entries({
+    Active: "active",
+    Heroic: "R",
+    Passive: "passive",
+    Trait: "D",
+  })
+);
 
 /**
  * Parses skill data from a skill JSON object.
@@ -313,10 +315,10 @@ function parseSkillData(skillData) {
 
   // Parse skill type (but not talent type)
   const { abilityType, parentAbilityType } = skillData;
-  skill.type = ABILITY_TYPE_TO_SKILL_TYPE[abilityType] || abilityType;
+  skill.type = ABILITY_TYPE_TO_SKILL_TYPE.get(abilityType) || abilityType;
   if (parentAbilityType && !NOT_SUB_ABILITIES.has(skillData.nameId)) {
     const parentType =
-      ABILITY_TYPE_TO_SKILL_TYPE[parentAbilityType] || parentAbilityType;
+      ABILITY_TYPE_TO_SKILL_TYPE.get(parentAbilityType) || parentAbilityType;
     skill.type = parentType + " - " + skill.type;
   }
 
@@ -384,26 +386,28 @@ function extractSkillTalentInfo(skillTalentData) {
 /**
  * Mapping of color names in `<c val="">` tags to their colors.
  */
-const COLOR_CODES = {
-  // From core.stormmod/base.stormdata/UI/FontStyles.StormStyle
-  AbilityPassive: "00ff90",
-  ColorCreamYellow: "ffff80",
-  ColorRed: "ff0000",
-  ColorViolet: "d65cff",
-  ColorYellow: "e1c72c",
-  GlowColorRed: "ff5858",
-  StandardTooltipHeader: "ffffff",
-  TooltipNumbers: "bfd4fd",
-  TooltipQuest: "e4b800",
-  // From heromods/deathwing.stormmod/base.stormdata/UI/FontStyles.StormStyle
-  DeathwingWorldBreaker: "d8ab80",
-  DeathwingDestroyer: "ef6e28",
-  // From heromods/malthael.stormmod/base.stormdata/UI/FontStyles.StormStyle
-  MalthaelTrait: "00dfdf",
-  // From heromods/whitemane.stormmod/base.stormdata/UI/FontStyles.StormStyle
-  WhitemaneDesperation: "ff8b8b",
-  WhitemaneZeal: "fff5c2",
-};
+const COLOR_CODES = new Map(
+  Object.entries({
+    // From core.stormmod/base.stormdata/UI/FontStyles.StormStyle
+    AbilityPassive: "00ff90",
+    ColorCreamYellow: "ffff80",
+    ColorRed: "ff0000",
+    ColorViolet: "d65cff",
+    ColorYellow: "e1c72c",
+    GlowColorRed: "ff5858",
+    StandardTooltipHeader: "ffffff",
+    TooltipNumbers: "bfd4fd",
+    TooltipQuest: "e4b800",
+    // From heromods/deathwing.stormmod/base.stormdata/UI/FontStyles.StormStyle
+    DeathwingWorldBreaker: "d8ab80",
+    DeathwingDestroyer: "ef6e28",
+    // From heromods/malthael.stormmod/base.stormdata/UI/FontStyles.StormStyle
+    MalthaelTrait: "00dfdf",
+    // From heromods/whitemane.stormmod/base.stormdata/UI/FontStyles.StormStyle
+    WhitemaneDesperation: "ff8b8b",
+    WhitemaneZeal: "fff5c2",
+  })
+);
 
 /** Colors that will be removed from tooltips. */
 const BLACKLISTED_COLORS = new Set([
@@ -442,6 +446,7 @@ function parseTooltip(tooltip) {
             else if (attribute === "name") continue;
             else warn(`Unknown attribute '${attribute}' in ${tag}`);
           }
+          if (val === undefined) return;
 
           // Handle color gradients introduced in HDP 4.0.0
           const colorGradientMatch = val.match(/^(\w{6})-(\w{6})$/);
@@ -462,7 +467,7 @@ function parseTooltip(tooltip) {
           ) {
             return text;
           }
-          color = COLOR_CODES[color] || color.toLowerCase();
+          color = COLOR_CODES.get(color) || color.toLowerCase();
           return `<span style="color:#${color}">${text}</span>`;
         }
       )
@@ -487,15 +492,16 @@ function parseShortDescription(tooltip) {
   return parseTooltip(tooltip).replace(/<.*?>/g, "");
 }
 
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
 /**
  * Extracts cooldown information from a skill or talent JSON object.
  * @param {*} skillTalentData JSON object that represents skill or talent data.
- * @return {Partial<Skill>} Parsed cooldown information. If the skill/talent has
- *    no cooldown data, returns undefined.
+ * @return {{ cooldown?: number; rechargeCooldown?: number; }} Parsed cooldown
+ *    information. If the skill/talent has no cooldown data, returns undefined.
  */
 function extractCooldownInfo(skillTalentData) {
-  let cooldown = null;
-  let rechargeCooldown = null;
+  let cooldown;
+  let rechargeCooldown;
 
   const { cooldownTooltip } = skillTalentData;
   if (cooldownTooltip) {
@@ -517,7 +523,7 @@ function extractCooldownInfo(skillTalentData) {
     switch (skillTalentData.nameId) {
       case "DVaPilotCallMechMEKAfall": // Fix for MEKAfall
       case "ThrallSpiritShield": // Fix for Spirit Shield
-        cooldown = null;
+        cooldown = undefined;
     }
   } else {
     switch (skillTalentData.nameId) {
@@ -535,13 +541,20 @@ function extractCooldownInfo(skillTalentData) {
 }
 
 /**
+ * @typedef {object} ResourceCostInfo
+ * @property {number=} manaCost
+ * @property {number=} manaCostPerSecond
+ * @property {Object<string, number|string>} extras
+ */
+
+/**
  * Extracts resource cost information from a skill or talent JSON object.
  * @param {*} skillTalentData JSON object that represents skill or talent data.
- * @return {Partial<Skill>} Parsed resource cost information.
+ * @return {ResourceCostInfo} Parsed resource cost information.
  */
 function extractResourceCostInfo(skillTalentData) {
-  let manaCost = null;
-  let manaCostPerSecond = null;
+  let manaCost;
+  let manaCostPerSecond;
   /** @type {Object<string, number | string>} */
   const extras = {};
   const { energyTooltip } = skillTalentData;

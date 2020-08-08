@@ -172,18 +172,21 @@ function importIconUrls(
   overwrite = false,
   skipSameUrl = false
 ) {
-  const iconUrlToId = {};
+  /** @type {Map<string, string>} */
+  const iconUrlToId = new Map();
   if (skipSameUrl) {
     for (const [iconId, url] of Object.entries(hotsData.iconUrls)) {
-      if (!(url in iconUrlToId)) iconUrlToId[url] = iconId;
+      if (!iconUrlToId.has(url)) {
+        iconUrlToId.set(url, iconId);
+      }
     }
   }
 
   for (const [iconId, url] of iconUrls) {
-    if (url in iconUrlToId) {
+    if (iconUrlToId.has(url)) {
       console.log(
-        `Ignore icon ${iconId}: ${url} is already used by ID = ` +
-          iconUrlToId[url]
+        `Ignore icon ${iconId}: ${url} is already used by ID = `,
+        iconUrlToId.get(url)
       );
       continue;
     }
@@ -195,7 +198,7 @@ function importIconUrls(
         console.log(
           `Overwrite icon URL for ${iconId}: ${oldIconUrl} => ${url}`
         );
-        delete iconUrlToId[oldIconUrl];
+        iconUrlToId.delete(oldIconUrl);
       } else {
         console.warn(
           `Ignore icon ${iconId}: ` +
@@ -206,7 +209,9 @@ function importIconUrls(
     }
 
     hotsData.iconUrls[iconId] = url;
-    if (skipSameUrl) iconUrlToId[url] = iconId;
+    if (skipSameUrl) {
+      iconUrlToId.set(url, iconId);
+    }
   }
 }
 
@@ -251,9 +256,11 @@ function exportIconUrls(hotsData) {
   const heroesUsingSkillIcons = new Map();
 
   // Sort icons by hero name
-  const sortedHeroes = hotsData
-    .allHeroes()
-    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, "en"));
+  const sortedHeroes = hotsData.allHeroes().sort((heroA, heroB) => {
+    const nameA = typeof heroA.name === "string" ? heroA.name : heroA.name.ko;
+    const nameB = typeof heroB.name === "string" ? heroB.name : heroB.name.ko;
+    return nameA.localeCompare(nameB, "en");
+  });
   for (const hero of sortedHeroes) {
     if (hero.icon in hotsData.iconUrls) {
       iconUrlGroups.portraits.set(hero.icon, hotsData.iconUrls[hero.icon]);
@@ -265,11 +272,14 @@ function exportIconUrls(hotsData) {
     iconUrlGroups.skillsAndTalents.set(hero.id, skillTalentIconUrls);
     for (const skillOrTalent of hero.allSkillsAndTalents()) {
       if (skillOrTalent.icon in hotsData.iconUrls) {
-        if (!heroesUsingSkillIcons.has(skillOrTalent.icon)) {
-          heroesUsingSkillIcons.set(skillOrTalent.icon, new Set());
+        let heroesUsingIcon = heroesUsingSkillIcons.get(skillOrTalent.icon);
+        if (!heroesUsingIcon) {
+          heroesUsingSkillIcons.set(
+            skillOrTalent.icon,
+            (heroesUsingIcon = new Set())
+          );
         }
-
-        heroesUsingSkillIcons.get(skillOrTalent.icon).add(hero.id);
+        heroesUsingIcon.add(hero.id);
 
         skillTalentIconUrls.set(
           skillOrTalent.icon,
@@ -281,12 +291,16 @@ function exportIconUrls(hotsData) {
   }
 
   // Extract shared skill/talent icons to their own group
+  /** @type {typeof hotsData.iconUrls} */
   const sharedIconUrls = {};
   for (const [iconId, heroesUsingIcon] of heroesUsingSkillIcons) {
     if (heroesUsingIcon.size > 1) {
       sharedIconUrls[iconId] = hotsData.iconUrls[iconId];
       for (const heroId of heroesUsingIcon) {
-        iconUrlGroups.skillsAndTalents.get(heroId).delete(iconId);
+        const skillTalentIconUrls = iconUrlGroups.skillsAndTalents.get(heroId);
+        if (skillTalentIconUrls) {
+          skillTalentIconUrls.delete(iconId);
+        }
       }
     }
   }
@@ -329,18 +343,17 @@ function generateIconListfileHtml(
     [...iconUrlGroups.portraits].map(iconUrlToImg).join("\n");
 
   // Generate skill/talent icon subgroups
-  const skillTalentIconSubgroups = [];
-  let currentSubgroup;
-  // Force subgroup creation for the first hero
-  let iconSubgroupSize = iconSubgroupMaxSize;
+  /** @type {Map<string, Map<string, string>>} */
+  let currentSubgroup = new Map();
+  const skillTalentIconSubgroups = [currentSubgroup];
+  let iconSubgroupSize = 0;
   for (const [heroId, iconUrls] of iconUrlGroups.skillsAndTalents) {
-    iconSubgroupSize += iconUrls.size;
-
-    if (iconSubgroupSize > iconSubgroupMaxSize) {
-      iconSubgroupSize = iconUrls.size;
+    if (iconSubgroupSize + iconUrls.size > iconSubgroupMaxSize) {
+      iconSubgroupSize = 0;
       skillTalentIconSubgroups.push((currentSubgroup = new Map()));
     }
 
+    iconSubgroupSize += iconUrls.size;
     currentSubgroup.set(heroId, iconUrls);
   }
 
@@ -403,7 +416,7 @@ function generateIconListfileHtml(
 function extractIconUrlsFromHtml(html) {
   const iconUrls = { icons: new Map(), unknownIcons: new Set() };
 
-  for (const img of html.match(/<img.*?>/gi)) {
+  for (const img of html.match(/<img.*?>/gi) || []) {
     const srcMatch = img.match(/src="(.*?)"/i);
     const altMatch = img.match(/alt="(.*?)(?:\.\w+)?"/i);
 
