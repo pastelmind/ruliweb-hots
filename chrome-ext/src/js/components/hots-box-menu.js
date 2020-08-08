@@ -4,29 +4,29 @@ import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
 import htm from "../vendor/htm.js";
 import { Fragment, createElement } from "../vendor/preact.js";
 
-/**
- * @typedef {import("../../../../api/src/hero").Hero} Hero
- * @typedef {import("../../../../api/src/skill").Skill} Skill
- * @typedef {import("../../../../api/src/talent").Talent} Talent
- * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
- */
-
 const html = htm.bind(createElement);
 
 /**
+ * @typedef {import("../decorate-hots-data.js").DecoratedHero} DecoratedHero
+ * @typedef {import("../decorate-hots-data.js").DecoratedSkill} DecoratedSkill
+ * @typedef {import("../decorate-hots-data.js").DecoratedTalent} DecoratedTalent
+ * @typedef {import("../hots-dialog-renderer.js").Renderer} Renderer
+ */
+
+/**
  * @typedef {object} Props
- * @property {?Hero} hero Currently selected Hero object
- * @property {(hero: Hero) => Element[]} onPasteHero Called when the user clicks
- *    on a hero. Argument is the clicked Hero object.
+ * @property {?DecoratedHero} hero Currently selected DecoratedHero object
+ * @property {(hero: DecoratedHero) => Element[]} onPasteHero Called when the
+ *    user clicks on a hero.
  *    Must return an array of pasted elements.
- * @property {(skill: Skill) => Element[]} onPasteSkill Called when the user
- *    clicks on a skill. Argument is the clicked Skill object.
+ * @property {(skill: DecoratedSkill) => Element[]} onPasteSkill Called when the
+ *    user clicks on a skill.
  *    Must return an array of pasted elements.
- * @property {(talent: Talent) => Element[]} onPasteTalent Called when the user
- *    clicks on a talent. Argument is the clicked Talent object.
+ * @property {(talent: DecoratedTalent) => Element[]} onPasteTalent Called when
+ *    the user clicks on a talent.
  *    Must return an array of pasted elements.
- * @property {(talents: Talent[]) => Element[]} onPasteTalentGroup Called when
- *    the user clicks on a talent group. Argument is array of Talent objects.
+ * @property {(talents: DecoratedTalent[]) => Element[]} onPasteTalentGroup
+ *    Called when the user clicks on a talent group.
  *    Must return an array of pasted elements.
  */
 
@@ -40,7 +40,7 @@ export function HotsBoxMenu(props) {
   if (!hero) return /** @type {preact.VNode<Props>} */ (html`<${Fragment} />`);
 
   /**
-   * @param {Hero} hero
+   * @param {DecoratedHero} hero
    * @param {Event} event
    */
   function pasteHeroWithEffect(hero, event) {
@@ -49,7 +49,7 @@ export function HotsBoxMenu(props) {
   }
 
   /**
-   * @param {Skill} skill
+   * @param {DecoratedSkill} skill
    * @param {Event} event
    */
   function pasteSkillWithEffect(skill, event) {
@@ -58,7 +58,7 @@ export function HotsBoxMenu(props) {
   }
 
   /**
-   * @param {Talent} talent
+   * @param {DecoratedTalent} talent
    * @param {Event} event
    */
   function pasteTalentWithEffect(talent, event) {
@@ -67,7 +67,7 @@ export function HotsBoxMenu(props) {
   }
 
   /**
-   * @param {Talent[]} talentGroup
+   * @param {DecoratedTalent[]} talentGroup
    * @param {Event} event
    */
   function pasteTalentGroupWithEffect(talentGroup, event) {

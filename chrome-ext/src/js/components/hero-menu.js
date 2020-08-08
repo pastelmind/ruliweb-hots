@@ -1,35 +1,32 @@
 /** @file Component for a menu of clickable hero icons. */
 
-/**
- * @typedef {import("../../../../api/src/hero").Hero} Hero
- */
-
 import htm from "../vendor/htm.js";
 import { createElement } from "../vendor/preact.js";
 
 const html = htm.bind(createElement);
 
 /**
- * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
+ * @typedef {import("../decorate-hots-data.js").DecoratedHero} DecoratedHero
  * @typedef {import("../hots-dialog.js").ActiveFilters} ActiveFilters
+ * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
  */
 
 /**
- * @typedef {{ [K in HeroFilterType]: Set<Hero[K]> }} ActiveFilterSets
+ * @typedef {{ [K in HeroFilterType]: Set<DecoratedHero[K]> }} ActiveFilterSets
  */
 
 /**
  * @typedef {object} Props
- * @property {Object<string, Hero>} heroes Mapping of hero IDs to Hero objects
- *    for live server data
- * @property {Object<string, Hero>} ptrHeroes Mapping of hero IDs to Hero
- *    objects for PTR server data
+ * @property {Object<string, DecoratedHero>} heroes Mapping of hero IDs to
+ *    DecoratedHero objects for live server data
+ * @property {Object<string, DecoratedHero>} ptrHeroes Mapping of hero IDs to
+ *    DecoratedHero objects for PTR server data
  * @property {ActiveFilters} activeFilters Maps filter types to arrays of active
  *    filter IDs
  * @property {boolean} ptrMode If truthy, only heroes added or changed in PTR
  *    are highlighted, and their PTR data is passed to `onClickHero`.
- * @property {(hero: Hero) => void} props.onClickHero Called when the user
- *    clicks on a hero. Argument is the clicked Hero object.
+ * @property {(hero: DecoratedHero) => void} props.onClickHero Called when the
+ *    user clicks on a hero. Argument is the clicked DecoratedHero object.
  */
 
 /**
@@ -102,7 +99,7 @@ export function HeroMenu(props) {
 
 /**
  * Tests a hero against a set of active filters.
- * @param {Hero} hero Hero object to test
+ * @param {DecoratedHero} hero Hero object to test
  * @param {ActiveFilterSets} activeFilters
  * @return {boolean}
  */
@@ -112,7 +109,19 @@ function canHeroPassFilters(hero, activeFilters) {
     if (!filterSet.size) continue; // Skip filterSet if empty
 
     const heroAttribute = hero[filterType];
-    if (!filterSet.has(heroAttribute)) return false;
+    // Helper function needed to make TypeScript happy
+    if (!isInSet(heroAttribute, filterSet)) return false;
   }
   return true;
+}
+
+/**
+ * Helper function. Checks if `value` is in `set`.
+ * @template T
+ * @param {T} value
+ * @param {Set<T>} set
+ * @return {boolean}
+ */
+function isInSet(value, set) {
+  return set.has(value);
 }

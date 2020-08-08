@@ -11,9 +11,14 @@ import { fileURLToPath } from "url";
 
 import { HotsData } from "../src/hots-data.js";
 
+/**
+ * @typedef {import("../../generated-types/hots").Hero} StaticHero
+ */
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe("Hero", () => {
+  /** @type {Object<string, StaticHero>} */
   let heroJsonCompact;
   /** @type {{ [heroId: string]: import("../src/hero").Hero }} */
   let heroes;

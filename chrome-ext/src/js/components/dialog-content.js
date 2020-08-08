@@ -1,10 +1,12 @@
 /** @file Component representing the dialog content. */
 
 /**
- * @typedef {import('../../../../api/src/hero').Hero} Hero
- * @typedef {import('../../../../api/src/hots-data').HotsData} HotsData
  * @typedef {import('../hots-dialog-paster').HtmlPaster} HtmlPaster
  * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
+ * @typedef {import("../decorate-hots-data.js").DecoratedHero} DecoratedHero
+ * @typedef {import("../decorate-hots-data.js").DecoratedHotsData} DecoratedHotsData
+ * @typedef {import("../decorate-hots-data.js").DecoratedSkill} DecoratedSkill
+ * @typedef {import("../decorate-hots-data.js").DecoratedTalent} DecoratedTalent
  * @typedef {import("../hots-dialog.js").ActiveFilters} ActiveFilters
  * @typedef {import("../hots-dialog.js").HeroFilterPresets} HeroFilterPresets
  * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
@@ -22,7 +24,7 @@ const html = htm.bind(createElement);
 
 /**
  * @typedef {object} Props
- * @property {HotsData} data HotS data object
+ * @property {DecoratedHotsData} data HotS data object
  * @property {HeroFilterPresets} heroFilters Mapping of hero filter IDs
  *    to hero filters
  * @property {Renderer} renderer Renderer for generating HotsBoxes
@@ -32,7 +34,7 @@ const html = htm.bind(createElement);
 /**
  * @typedef {object} State
  * @property {ActiveFilters} activeFilters
- * @property {Hero | null} currentHero
+ * @property {DecoratedHero | null} currentHero
  * @property {boolean} shouldAddHotsVersion
  * @property {boolean} shouldUsePtr
  * @property {boolean} shouldUseSimpleHeroBox
@@ -119,13 +121,13 @@ export class DialogContent extends Component {
     let version = "";
     if (shouldAddHotsVersion) {
       const { data } = this.props;
-      version = shouldUsePtr ? data.hotsPtrVersion : data.hotsVersion;
+      version = (shouldUsePtr ? data.hotsPtrVersion : data.hotsVersion) || "";
     }
     return { iconSize, version };
   }
 
   /**
-   * @param {Hero} hero
+   * @param {DecoratedHero} hero
    * @return {Element[]}
    */
   pasteHero(hero) {
@@ -142,7 +144,7 @@ export class DialogContent extends Component {
   }
 
   /**
-   * @param {Skill} skill
+   * @param {DecoratedSkill} skill
    * @return {Element[]}
    */
   pasteSkill(skill) {
@@ -153,7 +155,7 @@ export class DialogContent extends Component {
   }
 
   /**
-   * @param {Talent} talent
+   * @param {DecoratedTalent} talent
    * @return {Element[]}
    */
   pasteTalent(talent) {
@@ -164,7 +166,7 @@ export class DialogContent extends Component {
   }
 
   /**
-   * @param {Talent[]} talentGroup
+   * @param {DecoratedTalent[]} talentGroup
    * @return {Element[]}
    */
   pasteTalentGroup(talentGroup) {
