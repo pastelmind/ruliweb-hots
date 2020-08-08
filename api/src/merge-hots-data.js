@@ -35,8 +35,8 @@ export function mergeHotsData(target, source, usePtr = false) {
     // Cannot find hero with same ID
     if (!targetHero) {
       // Attempt to find a hero with a matching name
-      targetHero = Object.values(target.heroes).find((hero) =>
-        isEqualInOneLocale(hero.name, sourceHero.name)
+      targetHero = Object.values(target.heroes).find(
+        (hero) => hero.name === sourceHero.name
       );
       if (targetHero) {
         warn(

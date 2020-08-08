@@ -4,17 +4,13 @@ import { Skill } from "./skill.js";
 import { Talent } from "./talent.js";
 
 /**
- * @typedef {import("./ko-en-string.js").KoEnString} KoEnString
- */
-
-/**
  * Represents a Heroes of the Storm hero.
  */
 export class Hero {
   /**
    * Create a new Hero object.
    * @param {Object} o
-   * @param {string | KoEnString=} o.name
+   * @param {string=} o.name
    * @param {string=} o.title
    * @param {string=} o.icon
    * @param {string=} o.iconUrl

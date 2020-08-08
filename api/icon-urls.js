@@ -256,11 +256,9 @@ function exportIconUrls(hotsData) {
   const heroesUsingSkillIcons = new Map();
 
   // Sort icons by hero name
-  const sortedHeroes = hotsData.allHeroes().sort((heroA, heroB) => {
-    const nameA = typeof heroA.name === "string" ? heroA.name : heroA.name.ko;
-    const nameB = typeof heroB.name === "string" ? heroB.name : heroB.name.ko;
-    return nameA.localeCompare(nameB, "en");
-  });
+  const sortedHeroes = hotsData
+    .allHeroes()
+    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, "en"));
   for (const hero of sortedHeroes) {
     if (hero.icon in hotsData.iconUrls) {
       iconUrlGroups.portraits.set(hero.icon, hotsData.iconUrls[hero.icon]);
