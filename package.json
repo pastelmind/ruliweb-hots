@@ -38,7 +38,7 @@
     "htm": "^3.0.4",
     "juice": "^7.0.0",
     "microtip": "^0.2.2",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "mustache": "^4.0.1",
     "preact": "^10.4.6",
     "snap-shot-it": "^7.9.3",
