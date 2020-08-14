@@ -2,21 +2,20 @@
 
 /* global tingle */
 
-/**
- * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
- * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
- */
-
+import { DialogContent } from "./components/dialog-content.js";
+import { HtmlPaster } from "./hots-dialog-paster.js";
+import { Renderer } from "./hots-dialog-renderer.js";
+import { getSelectedChildWindow } from "./hots-dialog-util.js";
 import _htm from "./vendor/htm.js";
 import {
   createElement as _createElement,
   render as _render,
 } from "./vendor/preact.js";
 
-import { DialogContent } from "./components/dialog-content.js";
-import { HtmlPaster } from "./hots-dialog-paster.js";
-import { Renderer } from "./hots-dialog-renderer.js";
-import { getSelectedChildWindow } from "./hots-dialog-util.js";
+/**
+ * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
+ * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
+ */
 
 /** @type {import('htm')['default']} */
 const htm = _htm;

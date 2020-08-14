@@ -10,15 +10,16 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import util from "util";
+
 import program from "commander";
 
-import { HotsData } from "./src/hots-data.js";
 import { Hero } from "./src/hero.js";
+import { HotsData } from "./src/hots-data.js";
+import { KoEnString } from "./src/ko-en-string.js";
+import { popTag, pushTag, warn } from "./src/logger.js";
+import { mergeHotsData } from "./src/merge-hots-data.js";
 import { Skill } from "./src/skill.js";
 import { Talent } from "./src/talent.js";
-import { KoEnString } from "./src/ko-en-string.js";
-import { mergeHotsData } from "./src/merge-hots-data.js";
-import { popTag, pushTag, warn } from "./src/logger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_JSON_PATH = path.join(__dirname, "../docs/hots.json");

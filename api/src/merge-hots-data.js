@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import assert from "assert";
 import { inspect } from "util";
-import { warn, pushTag, popTag } from "./logger.js";
+
+import { popTag, pushTag, warn } from "./logger.js";
 
 /**
  * @typedef {import('./hots-data').HotsData} HotsData

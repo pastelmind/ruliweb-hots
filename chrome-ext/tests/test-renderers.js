@@ -10,9 +10,10 @@ import { fileURLToPath } from "url";
 
 import snapshot from "snap-shot-it";
 
-import { loadTemplates } from "./js/mocks.js";
 import { decorateHotsData } from "../src/js/decorate-hots-data.js";
 import { Renderer } from "../src/js/hots-dialog-renderer.js";
+
+import { loadTemplates } from "./js/mocks.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
