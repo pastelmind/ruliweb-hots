@@ -4,12 +4,12 @@ env:
   node: true
   webextensions: true
 extends:
-  - 'eslint:recommended'
+  - "eslint:recommended"
   - google
-  - 'plugin:prettier/recommended'
+  - "plugin:prettier/recommended"
 ignorePatterns:
-  - '**/__snapshots__/**'
-  - '**/vendor/**'
+  - "**/__snapshots__/**"
+  - "**/vendor/**"
 parserOptions:
   ecmaVersion: 11
   sourceType: module
