@@ -6,6 +6,8 @@ env:
 extends:
   - "eslint:recommended"
   - google
+  # "plugin:import/errors" is unneeded because TypeScript already covers them
+  - "plugin:import/warnings"
   - "plugin:prettier/recommended"
 ignorePatterns:
   - "**/__snapshots__/**"
@@ -13,4 +15,17 @@ ignorePatterns:
 parserOptions:
   ecmaVersion: 11
   sourceType: module
-rules: {}
+rules:
+  sort-imports:
+    - warn
+    - ignoreDeclarationSort: true
+  import/extensions:
+    - warn
+    - ignorePackages
+  import/first: warn
+  import/newline-after-import: warn
+  import/order:
+    - warn
+    - newlines-between: always
+      alphabetize:
+        order: asc

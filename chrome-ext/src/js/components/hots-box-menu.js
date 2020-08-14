@@ -1,17 +1,18 @@
 /** @file Menu component for selecting and pasting HotsBoxes. */
 
+import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
+import _htm from "../vendor/htm.js";
+import {
+  Fragment as _Fragment,
+  createElement as _createElement,
+} from "../vendor/preact.js";
+
 /**
  * @typedef {import("../../../../api/src/hero").Hero} Hero
  * @typedef {import("../../../../api/src/skill").Skill} Skill
  * @typedef {import("../../../../api/src/talent").Talent} Talent
  * @typedef {import('../hots-dialog-renderer').Renderer} Renderer
  */
-
-import _htm from "../vendor/htm.js";
-import {
-  createElement as _createElement,
-  Fragment as _Fragment,
-} from "../vendor/preact.js";
 
 /** @type {import('htm')['default']} */
 const htm = _htm;
@@ -21,8 +22,6 @@ const createElement = _createElement;
 const Fragment = _Fragment;
 
 const html = htm.bind(createElement);
-
-import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
 
 /**
  * A menu of clickable hero icons.
