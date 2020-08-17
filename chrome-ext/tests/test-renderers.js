@@ -15,18 +15,24 @@ import { Renderer } from "../src/js/hots-dialog-renderer.js";
 
 import { loadTemplates } from "./js/mocks.js";
 
+/**
+ * @typedef {import("../src/js/decorate-hots-data.js").DecoratedHotsData} DecoratedHotsData
+ */
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe("HotsDialog.Renderer", () => {
+  /** @type {DecoratedHotsData} */
   let hotsData;
   /** @type {Renderer} */
   let renderer;
 
   before("Loading test data files", async () => {
-    hotsData = JSON.parse(
-      fs.readFileSync(path.join(__dirname, "data/hots.json"), "utf8")
+    hotsData = decorateHotsData(
+      JSON.parse(
+        fs.readFileSync(path.join(__dirname, "data/hots.json"), "utf8")
+      )
     );
-    decorateHotsData(hotsData);
 
     const templates = await loadTemplates();
     renderer = new Renderer(templates);

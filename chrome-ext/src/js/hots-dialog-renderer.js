@@ -2,18 +2,18 @@
  * @file Provides renderer functions that convert HotS data objects to HTML.
  */
 
-/**
- * @typedef {import("../../../api/src/hero").Hero} Hero
- * @typedef {import("../../../api/src/skill").Skill} Skill
- * @typedef {import("../../../api/src/talent").Talent} Talent
- */
-
 import Mustache from "./vendor/mustache.js";
+
+/**
+ * @typedef {import("./decorate-hots-data.js").DecoratedHero} DecoratedHero
+ * @typedef {import("./decorate-hots-data.js").DecoratedSkill} DecoratedSkill
+ * @typedef {import("./decorate-hots-data.js").DecoratedTalent} DecoratedTalent
+ */
 
 /**
  * @typedef {object} SkillGroup
  * @property {string} title
- * @property {Skill[]} skills
+ * @property {DecoratedSkill[]} skills
  */
 
 /**
@@ -42,8 +42,8 @@ import Mustache from "./vendor/mustache.js";
  */
 
 /**
- * @typedef {Hero & _HeroView} HeroView
- * @typedef {Skill & _SkillView} SkillView
+ * @typedef {DecoratedHero & _HeroView} HeroView
+ * @typedef {DecoratedSkill & _SkillView} SkillView
  */
 
 /** Template-based renderer that generates HTML strings. */
@@ -58,7 +58,7 @@ export class Renderer {
 
   /**
    * Generates a table of hero information to be injected into a page.
-   * @param {Hero} hero Hero data
+   * @param {DecoratedHero} hero Hero data
    * @param {number=} iconSize Hero icon size in pixels (default: 64)
    * @param {number=} skillIconSize Skill i size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string to display
@@ -127,7 +127,7 @@ export class Renderer {
 
   /**
    * Generates a table of skill information to be injected into a page.
-   * @param {Skill} skill Skill data
+   * @param {DecoratedSkill} skill Skill data
    * @param {number=} iconSize Icon size in pixels (default: 64)
    * @param {string=} hotsVersion (optional) HotS version string to display
    * @return {string} HTML source
@@ -142,7 +142,7 @@ export class Renderer {
 
   /**
    * Generates a table of talent information to be injected into a page.
-   * @param {Talent} talent Talent data
+   * @param {DecoratedTalent} talent Talent data
    * @param {number=} iconSize Icon size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string to display
    * @return {string} HTML source
@@ -162,7 +162,7 @@ export class Renderer {
 
   /**
    * Generates a row of talent tables from a talent group.
-   * @param {Talent[]} talentGroup Talent group
+   * @param {DecoratedTalent[]} talentGroup Talent group
    * @param {number=} iconSize Icon size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string to display
    * @return {string} HTML source
@@ -179,7 +179,7 @@ export class Renderer {
    * Generates a Mustache-compatible view from a Skill or Talent.
    * This is an internal method called by other generator methods.
    * @package
-   * @param {Skill | Talent} skill Skill or Talent object
+   * @param {DecoratedSkill | DecoratedTalent} skill Skill or Talent object
    * @param {number=} iconSize Icon size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string
    * @return {SkillView} Object to be fed into Mustache

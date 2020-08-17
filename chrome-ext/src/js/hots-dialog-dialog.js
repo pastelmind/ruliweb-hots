@@ -11,15 +11,15 @@ import { getSelectedChildWindow } from "./hots-dialog-util.js";
 import htm from "./vendor/htm.js";
 import { createElement, render } from "./vendor/preact.js";
 
-/**
- * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
- * @typedef {import('../../../api/src/hots-data').HotsData} HotsData
- */
-
 const html = htm.bind(createElement);
 
 /**
+ * @typedef {import("./decorate-hots-data.js").DecoratedHotsData} DecoratedHotsData
  * @typedef {import("./hots-dialog.js").HeroFilterPresets} HeroFilterPresets
+ */
+
+/**
+ * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
  */
 
 /** Represents a Dialog for selecting and pasting HotS Boxes. */
@@ -27,7 +27,7 @@ export class Dialog {
   /**
    * Creates a new Dialog instance.
    * @param {Object<string, string>} templates Rendering templates
-   * @param {HotsData} data HotS data
+   * @param {DecoratedHotsData} data
    * @param {HeroFilterPresets} heroFilters Mapping of hero filter IDs to hero
    *    filters
    */

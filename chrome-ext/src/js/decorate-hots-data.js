@@ -4,6 +4,93 @@
  */
 
 /**
+ * Extract all known keys of `T` as a union.
+ * Source: https://github.com/microsoft/TypeScript/issues/25987#issuecomment-441224690
+ * @template T
+ * @typedef {
+    { [K in keyof T]: string extends K
+      ? never : number extends K
+      ? never : K
+    } extends {[_ in keyof T]: infer U}
+    ? ({} extends U
+      ? never : U) : never
+  } KnownKeys
+ */
+
+/**
+ * Merge `U` into `T`, overwriting matching property names in `T` with those
+ * from `U`.
+ * @template T, U
+ * @typedef {Pick<T, Exclude<KnownKeys<T>, keyof U>> & U} Override
+ */
+
+/**
+ * @typedef {import("../../../generated-types/hots").RuliwebHotSDataset} RuliwebHotSDataset
+ * @typedef {import("../../../generated-types/hots").Hero} Hero
+ * @typedef {import("../../../generated-types/hots").Unit} Unit
+ * @typedef {import("../../../generated-types/hots").Skill} Skill
+ * @typedef {import("../../../generated-types/hots").Talent} Talent
+ */
+
+/**
+ * @typedef {object} DecoratedHotsData
+ * @property {string} hotsVersion
+ * @property {string=} hotsPtrVersion
+ * @property {Object<string, DecoratedHero>} heroes
+ * @property {Object<string, DecoratedHero>} ptrHeroes
+ */
+
+/**
+ * @typedef {object} _DecoratedHero
+ * @property {string} id Hero ID
+ * @property {string} iconUrl
+ * @property {string} roleName
+ * @property {string} universeName
+ * @property {DecoratedUnit | DecoratedUnit[]} units
+ * @property {DecoratedSkill[]} skills
+ * @property {Object<string, DecoratedTalent[]>} talents
+ * @property {boolean=} isPtr
+ */
+
+// NOTE: Always use `string` as the key type of Object<K, V>, unless there is a
+// very good reason not to!
+// Otherwise, TypeScript cannot infer the return types of Object.values() and
+// Object.entries().
+
+/**
+ * @typedef {object} DecoratedUnit
+ * @property {string=} unitName
+ * @property {DecoratedStat[]} stats
+ */
+
+/**
+ * @typedef {object} _DecoratedSkill
+ * @property {number} index
+ * @property {string} name
+ * @property {string} heroName
+ * @property {string} heroId
+ * @property {string} iconUrl
+ * @property {string} typeName
+ * @property {string} typeNameLong
+ * @property {string} tooltipDescription
+ * @property {boolean=} isTypeClassHeroic
+ * @property {boolean=} isTypeClassPassive
+ * @property {boolean=} isTypeClassActive
+ * @property {boolean=} isTypeClassBasic
+ */
+
+/**
+ * @typedef {object} _DecoratedTalent
+ * @property {number} level Talent level
+ */
+
+/**
+ * @typedef {Override<Hero, _DecoratedHero>} DecoratedHero
+ * @typedef {Override<Skill, _DecoratedSkill>} DecoratedSkill
+ * @typedef {Override<Talent, _DecoratedSkill & _DecoratedTalent>} DecoratedTalent
+ */
+
+/**
  * A raw object that represents a hero's stat
  * @typedef {Object} RawStat
  * @prop {number} value Base stat value. If `levelScaling` is present, this
@@ -16,36 +103,55 @@
 
 /**
  * A decorated object that represents a hero's stat
- * @typedef {Object} DecoratedStat
+ * @typedef {
+    | DecoratedConstantStat
+    | DecoratedLinearStat
+    | DecoratedScalingStat
+  } DecoratedStat
+ */
+
+/**
+ * @typedef {Object} DecoratedConstantStat
  * @prop {string} name
  * @prop {string} iconUrl
- * @prop {number | string =} value Base stat value at level 0.
- * @prop {number=} levelScaling Multiplicative modifier applied to RawStat.value
- *    on each level up
- * @prop {number=} levelAdd Additive modifier applied to RawStat.value on each
- *    level up
- * @prop {number=} percentScaling Value of `levelScaling` represented as a
- *    percentage. This property is omitted if `levelScaling` is not present.
- * @prop {number | string =} level20 The stat's value at level 20. This property
- *    is omitted for constant stats.
+ * @prop {string} value Prettified stat value
+ */
+
+/**
+ * @typedef {Object} DecoratedLinearStat
+ * @prop {string} name
+ * @prop {string} iconUrl
+ * @prop {string} value Prettified base stat value at level 0
+ * @prop {number} levelAdd Additive modifier applied on each level up
+ * @prop {string} level20 Prettified stat value at level 20
+ */
+
+/**
+ * @typedef {Object} DecoratedScalingStat
+ * @prop {string} name
+ * @prop {string} iconUrl
+ * @prop {string} value Base stat value at level 0
+ * @prop {number} levelScaling Multiplicative modifier applied on each level up
+ * @prop {number} percentScaling `levelScaling` represented as a percentage
+ * @prop {string} level20 Stat value at level 20
  */
 
 /**
  * A preset description for a hero's stat.
  * @typedef {Object} StatPreset
- * @prop {string} id Stat ID
  * @prop {string} name
  * @prop {string} iconUrl
  * @prop {boolean=} isDisabled
  */
 
-0; // Circumvent a VSCode intellisense bug by capturing JSDoc typedef comments
+/**
+ * @typedef {keyof STAT_PRESETS} StatId
+ */
 
 /**
  * Collection of stat presets
- * @type {{ [id: string]: StatPreset }}
  */
-const StatPresets = {
+const STAT_PRESETS = {
   hp: {
     name: "생명력",
     iconUrl: "https://i3.ruliweb.com/img/18/07/19/164b154ffe819dc2c.png",
@@ -127,261 +233,312 @@ const StatPresets = {
 };
 
 /**
- * Decorates the raw HotsData object for the extension to use.
+ * Decorates the HotsData object in-place for the extension to use.
  *
  * Actions:
  *  * Set default icon URL to heroes, skills, and talents with missing icons
  *  * Assign an index number to each skill.
  *  * Assign a talent level to each talent.
  *  * Creates a decorated unit (or an array of decorated units) for each hero.
- * @param {HotsData} hotsData Unmodified HotS data object parsed from hots.json
- * @return {HotsData} Decorated HotS data object
+ * @param {RuliwebHotSDataset} hotsData Unmodified HotS data object parsed from hots.json
+ * @return {DecoratedHotsData} Decorated HotS data object
  */
 export function decorateHotsData(hotsData) {
-  const MISSING_ICON_URL =
-    "https://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png";
+  hotsData.ptrHeroes = hotsData.ptrHeroes || {};
+  const { hotsPtrVersion, heroes, ptrHeroes = {} } = hotsData;
 
   // Set PTR version string
-  if (hotsData.hotsPtrVersion) hotsData.hotsPtrVersion += " (PTR)";
+  hotsData.hotsPtrVersion = hotsPtrVersion && hotsPtrVersion + " (PTR)";
 
-  // Mark PTR data
-  hotsData.ptrHeroes = hotsData.ptrHeroes || {};
-  for (const [ptrHeroId, ptrHero] of Object.entries(hotsData.ptrHeroes)) {
-    ptrHero.isPtr = true;
-
-    if (ptrHeroId in hotsData.heroes) {
-      hotsData.heroes[ptrHeroId].hasPtrChanges = true;
-    }
+  for (const [heroId, hero] of Object.entries(heroes)) {
+    decorateHero(hero, heroId, hotsData.iconUrls);
+  }
+  for (const [heroId, hero] of Object.entries(ptrHeroes)) {
+    decorateHero(hero, heroId, hotsData.iconUrls);
   }
 
-  const allHeroes = [
-    ...Object.entries(hotsData.heroes),
-    ...Object.entries(hotsData.ptrHeroes),
-  ];
+  // Trick to mutate the hotsData object in-place without TypeScript complaining
+  return /** @type {DecoratedHotsData} */ (/** @type {any} */ (hotsData));
+}
 
-  for (const [heroId, hero] of allHeroes) {
-    hero.id = heroId;
+const ROLE_NAMES = {
+  tank: "전사",
+  bruiser: "투사",
+  ranged_assassin: "원거리 암살자",
+  melee_assassin: "근접 암살자",
+  healer: "치유사",
+  support: "지원가",
+};
 
-    // Add hero role names
-    hero.roleName =
-      {
-        tank: "전사",
-        bruiser: "투사",
-        ranged_assassin: "원거리 암살자",
-        melee_assassin: "근접 암살자",
-        healer: "치유사",
-        support: "지원가",
-      }[hero.newRole] || "잘못된 역할군입니다";
+const UNIVERSE_NAMES = {
+  warcraft: "워크래프트",
+  starcraft: "스타크래프트",
+  diablo: "디아블로",
+  classic: "블리자드 고전",
+  overwatch: "오버워치",
+  nexus: "시공의 폭풍",
+};
 
-    // Add hero universe names
-    hero.universeName = {
-      warcraft: "워크래프트",
-      starcraft: "스타크래프트",
-      diablo: "디아블로",
-      classic: "블리자드 고전",
-      overwatch: "오버워치",
-    }[hero.universe];
+const MISSING_ICON_URL =
+  "https://i3.ruliweb.com/img/18/06/15/164006c1bf719dc2c.png";
 
-    // Convert hero icon ID to URL
-    hero.iconUrl = hotsData.iconUrls[hero.icon] || MISSING_ICON_URL;
-    delete hero.icon;
+/**
+ * Decorats a hero object in-place.
+ * @param {Hero} hero Object to decorate
+ * @param {string} heroId
+ * @param {Object<string, string>} iconUrls
+ * @param {boolean=} isPtr
+ * @return {DecoratedHero}
+ */
+function decorateHero(hero, heroId, iconUrls, isPtr) {
+  const decoratedUnits = Array.isArray(hero.stats)
+    ? hero.stats.map(createDecoratedUnit)
+    : createDecoratedUnit(hero.stats);
 
-    // Decorate skills and talents
-    decorateSkillsAndTalents(hero);
+  const decoratedSkills = hero.skills.map((skill, index) =>
+    decorateSkill(skill, index, hero, heroId, iconUrls)
+  );
 
-    // Decorate units (i.e. collection of unit stats)
-    if (Array.isArray(hero.stats)) {
-      hero.units = hero.stats.map((unit) => createDecoratedUnit(unit));
-    } else hero.units = createDecoratedUnit(hero.stats);
-  }
+  const decoratedTalents = Object.fromEntries(
+    Object.entries(hero.talents).map(([talentLevelStr, talentArray]) => [
+      talentLevelStr,
+      talentArray.map((talent, index) =>
+        decorateTalent(
+          talent,
+          Number(talentLevelStr),
+          index,
+          hero,
+          heroId,
+          iconUrls
+        )
+      ),
+    ])
+  );
 
-  // Remove iconUrls after assigning them to each hero, skill, and talent.
-  delete hotsData.iconUrls;
+  return Object.assign(hero, {
+    id: heroId,
+    iconUrl: iconUrls[hero.icon] || MISSING_ICON_URL,
+    roleName: ROLE_NAMES[hero.newRole] || "잘못된 역할군입니다",
+    universeName: UNIVERSE_NAMES[hero.universe],
+    units: decoratedUnits,
+    skills: decoratedSkills,
+    talents: decoratedTalents,
+    isPtr,
+  });
+}
 
-  return hotsData;
+/**
+ * Creates a decorated unit object. Does NOT modify the original Unit object.
+ * @param {Unit} unit
+ * @return {DecoratedUnit}
+ */
+function createDecoratedUnit(unit) {
+  const decoratedStats = Object.keys(STAT_PRESETS)
+    .map((_presetId) => {
+      const presetId = /** @type {StatId} */ (_presetId);
+      const statsKey = presetId === "attackSpeed" ? "period" : presetId;
+      if (!isKeyOf(statsKey, unit)) return;
 
-  // TODO improve this (use array spread operators)
-  /**
-   * Decorates all skills and talents of the given hero.
-   * @param {Hero} hero Hero object
-   */
-  function decorateSkillsAndTalents(hero) {
-    const skillsOrTalents = [...hero.skills];
+      const value = unit[statsKey];
+      if (value == undefined) return;
 
-    // Assign skill index
-    hero.skills.forEach((skill, index) => (skill.index = index));
-
-    for (const talentLevel of Object.keys(hero.talents)) {
-      hero.talents[talentLevel].forEach((talent, index) => {
-        skillsOrTalents.push(talent);
-
-        // Assign talent level and index
-        talent.level = talentLevel;
-        talent.index = index;
-      });
-    }
-
-    // Decorate all skills and talents
-    for (const skill of skillsOrTalents) {
-      // Use Korean name only
-      if (skill.name.ko) skill.name = skill.name.ko;
-
-      skill.heroName = hero.name;
-      skill.heroId = hero.id;
-
-      // Convert skill/talent ID to URL
-      skill.iconUrl = hotsData.iconUrls[skill.icon] || MISSING_ICON_URL;
-      delete skill.icon;
-
-      // Apply skill/talent type name
-      if (skill.upgradeFor) {
-        skill.typeName = generateSkillTypeName(skill.upgradeFor);
-        skill.typeNameLong = `능력 강화 (${skill.typeName})`;
+      if (Array.isArray(value)) {
+        return Array.from(value, (v) => createDecoratedStat(v, presetId));
       } else {
-        skill.typeNameLong = skill.typeName = generateSkillTypeName(skill.type);
+        return createDecoratedStat(value, presetId);
       }
+    })
+    .flat()
+    .filter(isNotUndefined);
 
-      // Set flags for skill/talent type classes
-      if (skill.type === "R" || skill.upgradeFor === "R") {
-        skill.isTypeClassHeroic = true;
-      } else if (
-        (skill.type === "passive" && !skill.upgradeFor) ||
-        skill.upgradeFor === "passive"
-      ) {
-        skill.isTypeClassPassive = true;
-      } else if (
-        (skill.type === "active" && !skill.upgradeFor) ||
-        skill.upgradeFor === "active"
-      ) {
-        skill.isTypeClassActive = true;
-      } else {
-        skill.isTypeClassBasic = true;
-      }
+  return {
+    unitName: unit.unitName,
+    stats: decoratedStats,
+  };
+}
 
-      // Convert short description text to tooltip-attr & HTML format
-      skill.tooltipDescription = skill.shortDescription;
-      skill.shortDescription = skill.shortDescription.replace(/\r?\n/g, "<br>");
-    }
+/**
+ * Create a decorated stat from a raw stat, using the given preset.
+ * Does NOT modify the original stat object.
+ * @param {number | RawStat} stat
+ * @param {StatId} presetId
+ * @return {DecoratedStat | undefined}
+ */
+function createDecoratedStat(stat, presetId) {
+  /** @type {StatPreset} */
+  const preset = STAT_PRESETS[presetId];
+  if (preset.isDisabled) return;
 
-    /**
-     * Converts a skill type string to a human-readable version.
-     * @private
-     * @param {string} skillType Machine-readable
-     * @return {string}
-     */
-    function generateSkillTypeName(skillType) {
-      return skillType
-        .replace(/passive/g, "지속 효과")
-        .replace(/active/g, "사용 효과")
-        .replace(/D/g, "고유 능력");
-    }
-  }
+  if (typeof stat !== "object") stat = { value: stat };
 
-  /**
-   * Creates a decorated unit (i.e. array of decorated unit stats) from a
-   * collection of raw unit stats.
-   * @param {Object<string, number | number[] | RawStat | RawStat[]>} stats
-   *    Mapping of stat ID => raw stat value
-   * @return { (DecoratedStat | DecoratedStat[])[] }
-   */
-  function createDecoratedUnit(stats) {
-    const unit = { unitName: stats.unitName, stats: [] };
+  const { value, levelScaling, levelAdd } = stat;
+  const prettyValue = prettifyStatValue(stat.value, presetId);
 
-    for (const [presetId, preset] of Object.entries(StatPresets)) {
-      preset.id = presetId;
-      const stat = createDecoratedStat(
-        stats[preset.id === "attackSpeed" ? "period" : preset.id],
-        preset
-      );
+  if (levelScaling) {
+    const level20 = value * Math.pow(1 + levelScaling, 20);
+    const percentScaling = levelScaling * 100;
 
-      if (!stat) continue;
-      if (Array.isArray(stat)) {
-        unit.stats.push(...stat.filter((stat) => stat));
-      } else unit.stats.push(stat);
-    }
+    /** @type {DecoratedScalingStat} */
+    const decoratedStat = {
+      ...preset,
+      value: prettyValue,
+      levelScaling,
+      percentScaling,
+      level20: prettifyStatValue(level20, presetId),
+    };
 
-    return unit;
-  }
+    return decoratedStat;
+  } else if (levelAdd) {
+    const level20 = value + levelAdd * 19;
 
-  /**
-   * Create a decorated stat from a raw stat, using the given preset.
-   * @param {number | number[] | RawStat | RawStat[]} stat
-   * @param {StatPreset} preset
-   * @return {DecoratedStat | DecoratedStat[]}
-   */
-  function createDecoratedStat(stat, preset) {
-    if (!stat || preset.isDisabled) return undefined;
+    /** @type {DecoratedLinearStat} */
+    const decoratedStat = {
+      ...preset,
+      value: prettyValue,
+      levelAdd,
+      level20: prettifyStatValue(level20, presetId),
+    };
 
-    if (Array.isArray(stat)) {
-      return stat.map((s) => createDecoratedStat(s, preset));
-    }
-
-    const decoratedStat = decorateStatValue(stat);
-
-    decoratedStat.iconUrl = preset.iconUrl;
-    if (!decoratedStat.name) decoratedStat.name = preset.name;
-
-    if (decoratedStat.value) {
-      decoratedStat.value = prettifyStatValue(decoratedStat.value, preset.id);
-    }
-    if (decoratedStat.level20) {
-      decoratedStat.level20 = prettifyStatValue(
-        decoratedStat.level20,
-        preset.id
-      );
-    }
+    return decoratedStat;
+  } else {
+    /** @type {DecoratedConstantStat} */
+    const decoratedStat = { ...preset, value: prettyValue };
 
     return decoratedStat;
   }
+}
 
-  /**
-   * Decorates the given stat, based on its value.
-   * @param {number | RawStat} stat
-   * @return {DecoratedStat} Decorated stat object
-   */
-  function decorateStatValue(stat) {
-    if (typeof stat !== "object") return { value: stat };
+/**
+ * Prettify the given stat value, selecting a method appropriate for the given
+ * stat ID.
+ * @param {number} value
+ * @param {StatId} statId
+ * @return {string}
+ */
+function prettifyStatValue(value, statId) {
+  /* eslint-disable no-fallthrough */
+  switch (statId) {
+    case "hp":
+    case "shields":
+    case "damage":
+    case "healEnergy":
+      return value.toFixed(0);
 
-    if (stat.levelScaling) {
-      stat.level20 = stat.value * Math.pow(1 + stat.levelScaling, 20);
-      stat.percentScaling = stat.levelScaling * 100;
-    } else if (stat.levelAdd) {
-      stat.level20 = stat.value + stat.levelAdd * 19;
-    }
+    case "attackSpeed":
+      value = 1 / value; // attackSpeed is derived from (attack) period
+    // Intentional fall-through
+    case "hpRegen":
+      return String(Number(value.toFixed(3)));
 
-    return stat;
+    case "range":
+      // Append trailing '.0'
+      if (Number.isInteger(value)) return value.toFixed(1);
+  }
+  /* eslint-enable no-fallthrough */
+
+  return String(value);
+}
+
+/**
+ * Decorates a skill in-place.
+ * @param {Skill} skill Object to decorate
+ * @param {number} index Skill index
+ * @param {Hero} hero
+ * @param {string} heroId
+ * @param {Object<string, string>} iconUrls
+ * @return {DecoratedSkill}
+ */
+function decorateSkill(skill, index, hero, heroId, iconUrls) {
+  let typeName;
+  let typeNameLong;
+  if (skill.upgradeFor) {
+    typeName = generateSkillTypeName(skill.upgradeFor);
+    typeNameLong = `능력 강화 (${typeName})`;
+  } else {
+    typeNameLong = typeName = generateSkillTypeName(skill.type);
   }
 
-  /**
-   * Prettify the given stat value, selecting a method appropriate for the given
-   * stat ID.
-   * @param {number} value
-   * @param {string} statId
-   * @return {number|string}
-   */
-  function prettifyStatValue(value, statId) {
-    /* eslint-disable no-fallthrough */
-    switch (statId) {
-      case "hp":
-      case "shields":
-      case "damage":
-      case "healEnergy":
-        return +value.toFixed(0);
+  /** @type {DecoratedSkill} */
+  const decoratedSkill = Object.assign(skill, {
+    index,
+    name: skill.name.ko,
+    heroName: hero.name,
+    heroId,
+    iconUrl: iconUrls[skill.icon] || MISSING_ICON_URL,
+    typeName,
+    typeNameLong,
+    // Convert short description text to tooltip-attr & HTML format
+    tooltipDescription: skill.shortDescription,
+    shortDescription: skill.shortDescription.replace(/\r?\n/g, "<br>"),
+  });
 
-      case "attackSpeed":
-        value = 1 / value; // attackSpeed is derived from (attack) period
-      // Intentional fall-through
-
-      case "hpRegen":
-        value = +value.toFixed(3);
-      // Intentional fall-through
-
-      case "range":
-        // Append trailing '.0'
-        if (Number.isInteger(value)) return value.toFixed(1);
-    }
-    /* eslint-enable no-fallthrough */
-
-    return value;
+  // Set flags for skill/talent type classes
+  if (skill.type === "R" || skill.upgradeFor === "R") {
+    decoratedSkill.isTypeClassHeroic = true;
+  } else if (
+    (skill.type === "passive" && !skill.upgradeFor) ||
+    skill.upgradeFor === "passive"
+  ) {
+    decoratedSkill.isTypeClassPassive = true;
+  } else if (
+    (skill.type === "active" && !skill.upgradeFor) ||
+    skill.upgradeFor === "active"
+  ) {
+    decoratedSkill.isTypeClassActive = true;
+  } else {
+    decoratedSkill.isTypeClassBasic = true;
   }
+
+  return decoratedSkill;
+}
+
+/**
+ * Decorates a talent in-place.
+ * @param {Talent} talent Object to decorate
+ * @param {number} level Talent level
+ * @param {number} index Talent index
+ * @param {Hero} hero
+ * @param {string} heroId
+ * @param {Object<string, string>} iconUrls
+ * @return {DecoratedTalent}
+ */
+function decorateTalent(talent, level, index, hero, heroId, iconUrls) {
+  return Object.assign(decorateSkill(talent, index, hero, heroId, iconUrls), {
+    level,
+  });
+}
+
+/**
+ * Converts a skill type string to a human-readable version.
+ * @private
+ * @param {string} skillType Machine-readable
+ * @return {string}
+ */
+function generateSkillTypeName(skillType) {
+  return skillType
+    .replace(/passive/g, "지속 효과")
+    .replace(/active/g, "사용 효과")
+    .replace(/D/g, "고유 능력");
+}
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @template {string | number | symbol} T
+ * @template U
+ * @param {T} key
+ * @param {U} obj
+ * @return {key is T & keyof U}
+ */
+function isKeyOf(key, obj) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @template T
+ * @param {T | undefined} v
+ * @return {v is T}
+ */
+function isNotUndefined(v) {
+  return v !== undefined;
 }
