@@ -10,6 +10,42 @@
 
 import Mustache from "./vendor/mustache.js";
 
+/**
+ * @typedef {object} SkillGroup
+ * @property {string} title
+ * @property {Skill[]} skills
+ */
+
+/**
+ * @typedef {object} _HeroView
+ * @property {string=} hotsVersion
+ * @property {string} universeIconOffset
+ * @property {SkillGroup[]} skillGroups
+ * @property {number} iconSize
+ * @property {boolean} isForHeroTable
+ * @property {boolean} isSimpleHeroTable
+ * @property {boolean} isSimpleSkillTable
+ * @property {string} appVersion
+ */
+
+/**
+ * @typedef {object} _SkillView
+ * @property {string=} hotsVersion
+ * @property {number} iconSize
+ * @property {boolean} hasStats
+ * @property {number | string} energyCost
+ * @property {string} energyCostName
+ * @property {number | string} lifeCost
+ * @property {{ name: string, value: number | string }[]} extras
+ * @property {boolean} isTalent
+ * @property {string} appVersion
+ */
+
+/**
+ * @typedef {Hero & _HeroView} HeroView
+ * @typedef {Skill & _SkillView} SkillView
+ */
+
 /** Template-based renderer that generates HTML strings. */
 export class Renderer {
   /**
@@ -26,7 +62,7 @@ export class Renderer {
    * @param {number=} iconSize Hero icon size in pixels (default: 64)
    * @param {number=} skillIconSize Skill i size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string to display
-   * @param {boolean} isSimpleTable If truthy, generate a simplified table
+   * @param {boolean=} isSimpleTable If truthy, generate a simplified table
    * @return {string} HTML source
    */
   renderHeroInfoTable(
@@ -36,6 +72,7 @@ export class Renderer {
     hotsVersion,
     isSimpleTable
   ) {
+    /** @type {HeroView} */
     const heroView = Object.create(hero);
 
     // Set universe icon offset
@@ -49,8 +86,11 @@ export class Renderer {
     }[heroView.universe];
 
     // Generate skill groups
+    /** @type {SkillGroup} */
     const traits = { title: "고유 능력", skills: [] };
+    /** @type {SkillGroup} */
     const basicAbilities = { title: "일반 기술", skills: [] };
+    /** @type {SkillGroup} */
     const heroicAbilities = { title: "궁극기", skills: [] };
 
     heroView.skills.forEach((skill) => {
@@ -142,9 +182,10 @@ export class Renderer {
    * @param {Skill | Talent} skill Skill or Talent object
    * @param {number=} iconSize Icon size in pixels (default: 48)
    * @param {string=} hotsVersion (optional) HotS version string
-   * @return {object} Object to be fed into Mustache
+   * @return {SkillView} Object to be fed into Mustache
    */
   renderSkillTalentView(skill, iconSize = 48, hotsVersion) {
+    /** @type {SkillView} */
     const view = Object.create(skill);
     view.hotsVersion = hotsVersion;
     view.iconSize = iconSize;
@@ -170,6 +211,7 @@ export class Renderer {
       .replace(/\r?\n/g, "<br>");
 
     // Parse extra properties
+    // @ts-expect-error TypeScript complains about conflicting types of Skill.extras and SkillView.extras
     view.extras = [];
 
     for (const [name, value] of Object.entries(skill.extras || {})) {

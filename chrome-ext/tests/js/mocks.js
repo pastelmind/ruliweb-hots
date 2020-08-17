@@ -5,15 +5,16 @@
 let mockChrome;
 if (typeof chrome === "undefined") {
   // Since the environment does not have 'chrome', create a new object
-  globalThis.chrome = mockChrome = {};
+  globalThis.chrome = mockChrome = /** @type {chrome} */ ({});
 } else {
   // Assign the existing chrome object to our variable, so we can patch it
   mockChrome = globalThis.chrome;
 }
 
 mockChrome.runtime = mockChrome.runtime || {};
-mockChrome.runtime.getURL = (url) => "../src/" + url;
-mockChrome.runtime.getManifest = () => ({ version: "app version string" });
+mockChrome.runtime.getURL = (/** @type {string} */ url) => "../src/" + url;
+mockChrome.runtime.getManifest = () =>
+  /** @type {chrome.runtime.Manifest} */ ({ version: "app version string" });
 
 // Imports from Node.js; not used in browser contexts
 

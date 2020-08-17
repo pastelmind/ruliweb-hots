@@ -19,6 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe("HotsDialog.Renderer", () => {
   let hotsData;
+  /** @type {Renderer} */
   let renderer;
 
   before("Loading test data files", async () => {

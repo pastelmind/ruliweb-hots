@@ -5,19 +5,32 @@ import { Component, createElement } from "../vendor/preact.js";
 
 const html = htm.bind(createElement);
 
-/** Represents a multi-selectable group of icons. */
+/**
+ * @template {string} T
+ * @typedef {object} Props
+ * @property {{id: T, name: string, iconUrl: string}[]} options
+ *    Array of options.
+ * @property {(selected: T[]) => void} onSelectChange Called when
+ *    the user toggles an option. Argument is an array of selected IDs.
+ */
+
+/**
+ * @template {string} T
+ * @typedef {object} State
+ * @property {Record<T, boolean>} selected
+ */
+
+/**
+ * Represents a multi-selectable group of icons.
+ * @template {string} T
+ * @extends {Component<Props<T>, State<T>>}
+ */
 export class MultiSelectIcons extends Component {
-  /**
-   * @param {Object} props
-   * @param {{id: string, name: string, iconUrl: string}[]} props.options
-   *    Array of options.
-   * @param {function (string[]): undefined} props.onSelectChange Called when
-   *    the user toggles an option. Argument is an array of selected IDs.
-   */
+  /** @param {Props<T>} props */
   constructor(props) {
     super(props);
 
-    const selected = {};
+    const selected = /** @type {State<T>['selected']} */ ({});
     for (const { id } of props.options) {
       selected[id] = false;
     }
@@ -26,18 +39,17 @@ export class MultiSelectIcons extends Component {
 
   /**
    * Called when an option's state changes.
-   * @param {Event} event
-   * @param {string} optionId ID of the changed option.
-   * @return {undefined}
+   * @param {T} optionId ID of the changed option.
+   * @param {InputEvent} event
    */
-  onOptionInput(event, optionId) {
+  onOptionInput(optionId, event) {
+    if (!event.target) return;
+
+    const isChecked = /** @type {HTMLInputElement} */ (event.target).checked;
     this.setState(
       (prevState) => ({
         ...prevState,
-        selected: {
-          ...prevState.selected,
-          [optionId]: event.target.checked,
-        },
+        selected: { ...prevState.selected, [optionId]: isChecked },
       }),
       () => {
         const selectedIds = this.props.options
@@ -49,7 +61,7 @@ export class MultiSelectIcons extends Component {
     event.preventDefault();
   }
 
-  /** @return {Object} DOM content to render */
+  /** @return {ReturnType<html>} */
   render() {
     return html`
       <div class="multi-select-icons">
@@ -64,7 +76,7 @@ export class MultiSelectIcons extends Component {
             >
               <input
                 type="checkbox"
-                onInput=${(event) => this.onOptionInput(event, option.id)}
+                onInput=${this.onOptionInput.bind(this, option.id)}
               />
               <img
                 class="multi-select-icons__option-icon"

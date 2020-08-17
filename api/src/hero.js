@@ -4,6 +4,10 @@ import { Skill } from "./skill.js";
 import { Talent } from "./talent.js";
 
 /**
+ * @typedef {import("./ko-en-string.js").KoEnString} KoEnString
+ */
+
+/**
  * Represents a Heroes of the Storm hero.
  */
 export class Hero {
@@ -28,8 +32,10 @@ export class Hero {
     this.icon = o.icon || "";
     this.iconUrl = o.iconUrl || "";
     this.id = o.id || "";
-    this.newRole = o.newRole || "";
-    this.universe = o.universe || "";
+    /** @type {HeroRoleId | ""} */
+    this.newRole = isRoleId(o.newRole) ? o.newRole : "";
+    /** @type {HeroUniverseId | ""} */
+    this.universe = isUniverseId(o.universe) ? o.universe : "";
 
     this.stats = Array.isArray(o.stats)
       ? o.stats.map((unitStats) => new HeroStats(unitStats))
@@ -39,12 +45,15 @@ export class Hero {
 
     /** @type {{ [talentLevel: number]: Talent[] }} */
     this.talents = {};
-    for (const talentLevel of Object.keys(o.talents)) {
-      this.talents[talentLevel] = o.talents[talentLevel].map((talent) => {
-        talent = new Talent(talent);
-        talent.level = talentLevel;
-        return talent;
-      });
+    if (o.talents) {
+      for (const talentLevelStr of Object.keys(o.talents)) {
+        const talentLevel = Number(talentLevelStr);
+        this.talents[talentLevel] = o.talents[talentLevel].map((talent) => {
+          talent = new Talent(talent);
+          talent.level = talentLevel;
+          return talent;
+        });
+      }
     }
   }
 
@@ -53,6 +62,7 @@ export class Hero {
    * @return {string} Role name defined in `Hero.roles`, or '' if unknown.
    */
   getRoleName() {
+    // @ts-expect-error Because we are allowing "" as a value
     return roles[this.newRole] || "";
   }
 
@@ -61,6 +71,7 @@ export class Hero {
    * @return {string} Universe name in `Hero.universes`, or '' if unknown
    */
   getUniverseName() {
+    // @ts-expect-error Because we are allowing "" as a value
     return universes[this.universe] || "";
   }
 
@@ -98,13 +109,16 @@ export class Hero {
       universe: this.universe,
       stats: this.stats,
       skills: this.skills,
+      /** @type {Object<string, Talent[]>} */
       talents: {},
     };
 
     // Ensure that talents are ordered by level
     // (may not be necessary in V8, see https://stackoverflow.com/a/280861/9943202)
-    for (const talentLevel of Object.keys(this.talents).sort((a, b) => a - b)) {
-      o.talents[talentLevel] = this.talents[talentLevel];
+    for (const talentLevel of Object.keys(this.talents).sort(
+      (a, b) => Number(a) - Number(b)
+    )) {
+      o.talents[talentLevel] = this.talents[Number(talentLevel)];
     }
 
     return o;
@@ -113,12 +127,12 @@ export class Hero {
   /**
    * Parse a universe name from the given string and return the universe ID.
    * @param {string} universeString String containing the universe name
-   * @return {string} A universe ID in `Hero.universes`, or '' if unknown.
+   * @return {HeroUniverseId | ""} A universe ID in `Hero.universes`, or '' if unknown.
    */
   static parseUniverse(universeString) {
-    for (const universeId in universes) {
-      if (universeString.includes(universes[universeId])) {
-        return universeId;
+    for (const [universeId, universeName] of Object.entries(universes)) {
+      if (universeString.includes(universeName)) {
+        return /** @type {HeroUniverseId} */ (universeId);
       }
     }
 
@@ -141,4 +155,34 @@ export const universes = {
   diablo: "디아블로",
   classic: "고전",
   overwatch: "오버워치",
+  nexus: "시공의 폭풍",
 };
+
+/**
+ * @typedef {keyof roles} HeroRoleId
+ * @typedef {keyof universes} HeroUniverseId
+ */
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @param {*} role
+ * @return {role is HeroRoleId}
+ */
+function isRoleId(role) {
+  return (
+    typeof role === "string" &&
+    Object.prototype.hasOwnProperty.call(roles, role)
+  );
+}
+
+// eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+/**
+ * @param {*} universe
+ * @return {universe is HeroUniverseId}
+ */
+function isUniverseId(universe) {
+  return (
+    typeof universe === "string" &&
+    Object.prototype.hasOwnProperty.call(universes, universe)
+  );
+}

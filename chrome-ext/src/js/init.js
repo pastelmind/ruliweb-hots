@@ -23,6 +23,10 @@ chrome.runtime.onInstalled.addListener(() => {
     // Run only if Firefox
     // Firefox does not recognize Ruliweb's WYSIWYG editor as a frame, so create
     // context menus on all editables instead
+    const { content_scripts: contentScripts } = chrome.runtime.getManifest();
+    if (!(contentScripts && contentScripts[0] && contentScripts[0].matches)) {
+      throw new Error("Missing 'content_scripts[0].matches' in manifest.json");
+    }
     chrome.contextMenus.create({
       id: "ruli-context-menu-test",
       title: "히오스 공략툴 열기",
@@ -30,8 +34,7 @@ chrome.runtime.onInstalled.addListener(() => {
       // Firefox treats iframes with src="" as though they inherit the URL of
       // the parent window. Therefore, use the same URL patterns used for
       // injecting content scripts.
-      documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0]
-        .matches,
+      documentUrlPatterns: contentScripts[0].matches,
     });
   }
 

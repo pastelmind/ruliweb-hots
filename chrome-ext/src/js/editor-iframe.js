@@ -4,8 +4,7 @@
  * any <iframe>s on such pages.
  */
 
-// Attached to window so as to allow access from hots-dialog.js
-window.pToDivReplacer = {
+const pToDivReplacer = {
   /**
    * When a user injects a <details> inside a <p>, replace <p> with a <div> to
    * allow aligning <details> tags.
@@ -30,7 +29,7 @@ window.pToDivReplacer = {
 
     replaceAncestorPsWithDivs();
 
-    this.ancestorPofDetailsObserver.observe(document.body.parentNode, {
+    this.ancestorPofDetailsObserver.observe(document.documentElement, {
       childList: true,
       subtree: true,
     });
@@ -60,10 +59,20 @@ if (isInIframe()) {
   //      but clicks made on the pseudo-elements register just fine. Yay!
   // Add the event listener to the <html> element, because Cheditor will replace
   // the <body> element when switching between editor modes
-  document.body.parentNode.addEventListener("click", (event) => {
+  document.documentElement.addEventListener("click", (event) => {
     if (!(event.target && event.ctrlKey)) return;
 
+    if (!isHTMLElement(event.target)) {
+      console.debug(event.target, "was clicked, but not a HTML element");
+      return;
+    }
+
     const rootElem = event.target.parentNode;
+    if (!isHTMLElement(rootElem)) {
+      console.debug(rootElem, "is not a HTML element");
+      return;
+    }
+
     if (
       rootElem.classList.contains("ruliweb-hots-hero-table") ||
       rootElem.classList.contains("ruliweb-hots-skill-table") ||
@@ -71,7 +80,20 @@ if (isInIframe()) {
     ) {
       rootElem.style.transition = "transform .2s";
       rootElem.style.transform = "scale(0, 0)";
-      setTimeout(() => rootElem.parentNode.removeChild(rootElem), 200);
+      setTimeout(() => rootElem.remove(), 200);
+    }
+
+    // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
+    /**
+     * Type guard. Checks if a value is an object.
+     * @param {*} o
+     * @return {o is HTMLElement}
+     */
+    function isHTMLElement(o) {
+      return (
+        o instanceof HTMLElement ||
+        (typeof o === "object" && "tagName" in o && "style" in o)
+      );
     }
   });
 
@@ -85,8 +107,7 @@ if (isInIframe()) {
         mutation.attributeName === "style" &&
         mutation.target.nodeName === "BODY"
       ) {
-        /** @type {HTMLBodyElement} */
-        const body = mutation.target;
+        const body = /** @type {HTMLBodyElement} */ (mutation.target);
         body.style.textAlign = "";
         return; // Mission accomplished, don't process any more mutations
       }
@@ -94,13 +115,17 @@ if (isInIframe()) {
   });
 
   // Observe mutations on <html> and its descendants (see comments above)
-  bodyStyleRemover.observe(document.body.parentNode, {
+  bodyStyleRemover.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["style"],
     subtree: true,
   });
 
-  window.pToDivReplacer.activate();
+  pToDivReplacer.activate();
+
+  // Attach to window so as to allow access from hots-dialog.js
+  // Use Object.assign() to avoid TypeScript complaining
+  Object.assign(window, { pToDivReplacer });
 }
 
 /**
@@ -139,7 +164,7 @@ function replaceAncestorPsWithDivs() {
     const nextSiblingOfP = ancestorP.nextSibling;
 
     // Remove <p> to prevent triggering a reflow for each child node transfer
-    parentOfP.removeChild(ancestorP);
+    ancestorP.remove();
 
     // Create <div> to replace <p>
     const div = document.createElement("div");
@@ -153,6 +178,6 @@ function replaceAncestorPsWithDivs() {
     while (ancestorP.firstChild) div.appendChild(ancestorP.firstChild);
 
     // Insert <div> into the former position of <p>
-    parentOfP.insertBefore(div, nextSiblingOfP);
+    if (parentOfP) parentOfP.insertBefore(div, nextSiblingOfP);
   }
 }

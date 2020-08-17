@@ -48,7 +48,11 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.121",
+    "@types/firefox-webext-browser": "^78.0.1",
     "@types/mocha": "^8.0.0",
+    "@types/mustache": "^4.0.1",
+    "@types/tingle.js": "^0.13.0",
+    "@types/yazl": "^2.4.2",
     "commander": "^6.0.0",
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",

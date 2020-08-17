@@ -34,6 +34,7 @@ console.log("Using CSS file:", cssPath, "\n");
 const css = fs.readFileSync(cssPath, "utf8");
 
 // Read and process the contents of each file and store it in an object
+/** @type {Object<string, string>} */
 const templates = {};
 for (const fileName of fileNames) {
   const filePath = path.join(templatesDir, fileName);
@@ -88,7 +89,10 @@ function inlineCss(html, cssToInline) {
  * @return {string} Modified HTML
  */
 function stripCssClasses(html, whitelist = {}) {
-  return html.replace(/\sclass="([^]*?)"/gi, (classAttr, classList) => {
+  return html.replace(/\sclass="([^]*?)"/gi, (
+    classAttr,
+    /** @type {string} */ classList
+  ) => {
     classList = classList
       .trim()
       .split(/\s+/)

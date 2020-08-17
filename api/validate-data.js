@@ -84,14 +84,15 @@ class HotsJsonValidator {
     }
 
     // Check if no two icon IDs point to the same URL
-    const iconUrlsToIds = {};
+    /** @type {Map<string, string>} */
+    const iconUrlsToIds = new Map();
     for (const [iconId, url] of Object.entries(hotsDataJson.iconUrls)) {
-      if (url in iconUrlsToIds) {
+      if (iconUrlsToIds.has(url)) {
         console.warn(
-          `Duplicate icon URL: Both ${iconUrlsToIds[url]} and ${iconId}`,
+          `Duplicate icon URL: Both ${iconUrlsToIds.get(url)} and ${iconId}`,
           `point to ${url}`
         );
-      } else iconUrlsToIds[url] = iconId;
+      } else iconUrlsToIds.set(url, iconId);
     }
 
     // Check if no hero, skill, or talent is missing an icon
