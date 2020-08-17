@@ -1,0 +1,602 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://pastelmind.github.io/ruliweb-hots/hdp-herodata.json",
+  "title": "HdpHeroData",
+  "type": "object",
+  "additionalProperties": { "$ref": "#/definitions/hero" },
+  "propertyNames": { "$ref": "#/definitions/identifier" },
+  "definitions": {
+    "ability": {
+      "type": "object",
+      "properties": {
+        "nameId": { "$ref": "#/definitions/identifier" },
+        "buttonId": { "$ref": "#/definitions/identifier" },
+        "name": { "$ref": "#/definitions/nonEmptyString" },
+        "icon": { "$ref": "#/definitions/file" },
+        "energyTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "lifeTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "cooldownTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "shortTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "fullTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "charges": { "$ref": "#/definitions/abilityCharges" },
+        "toggleCooldown": { "$ref": "#/definitions/abilityCooldown" },
+        "abilityType": { "$ref": "#/definitions/abilityType" },
+        "isActive": { "type": "boolean" },
+        "isPassive": { "type": "boolean" }
+      },
+      "required": [
+        "nameId",
+        "buttonId",
+        "name",
+        "icon",
+        "fullTooltip",
+        "abilityType"
+      ],
+      "additionalProperties": false
+    },
+    "abilityArray": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/ability" },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "abilityCharges": {
+      "type": "object",
+      "properties": {
+        "countMax": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "countUse": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "countStart": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hideCount": { "type": "boolean" },
+        "recastCooldown": { "$ref": "#/definitions/abilityCooldown" }
+      },
+      "required": ["countMax"],
+      "additionalProperties": false
+    },
+    "abilityCooldown": {
+      "type": "number",
+      "multipleOf": 0.0125,
+      "exclusiveMinimum": 0
+    },
+    "abilityType": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "B",
+        "E",
+        "Heroic",
+        "Passive",
+        "Q",
+        "Spray",
+        "Trait",
+        "Voice",
+        "W",
+        "Z"
+      ]
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(hud_btn|storm_btn|storm_temp|storm_ui|ui_targetportrait_hero)(_[a-z\\d'-]+)+\\.png$"
+    },
+    "hero": {
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/definitions/nonEmptyString" },
+        "unitId": { "$ref": "#/definitions/identifier" },
+        "hyperlinkId": { "$ref": "#/definitions/identifier" },
+        "attributeId": { "$ref": "#/definitions/identifier" },
+        "difficulty": {
+          "type": "string",
+          "enum": ["Easy", "Medium", "Hard", "Very Hard"]
+        },
+        "franchise": {
+          "type": "string",
+          "enum": [
+            "Classic",
+            "Diablo",
+            "Nexus",
+            "Overwatch",
+            "Starcraft",
+            "Warcraft"
+          ]
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["Female", "Male", "Neutral"]
+        },
+        "title": { "$ref": "#/definitions/nonEmptyString" },
+        "type": {
+          "type": "string",
+          "enum": ["Melee", "Ranged"]
+        },
+        "innerRadius": { "$ref": "#/definitions/unitRadius" },
+        "radius": { "$ref": "#/definitions/unitRadius" },
+        "releaseDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "sight": { "$ref": "#/definitions/unitSight" },
+        "speed": { "$ref": "#/definitions/unitSpeed" },
+        "rarity": {
+          "type": "string",
+          "enum": ["Epic", "Legendary", "Rare"]
+        },
+        "scalingLinkId": { "$ref": "#/definitions/unitScalingLinkId" },
+        "searchText": { "$ref": "#/definitions/nonEmptyString" },
+        "description": { "$ref": "#/definitions/nonEmptyString" },
+        "infoText": { "$ref": "#/definitions/nonEmptyString" },
+        "descriptors": { "$ref": "#/definitions/unitDescriptors" },
+        "units": { "$ref": "#/definitions/unitUnits" },
+        "portraits": {
+          "type": "object",
+          "properties": {
+            "draftScreen": { "$ref": "#/definitions/file" },
+            "heroSelect": { "$ref": "#/definitions/file" },
+            "leaderboard": { "$ref": "#/definitions/file" },
+            "loading": { "$ref": "#/definitions/file" },
+            "minimap": { "$ref": "#/definitions/file" },
+            "partyFrames": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/file" },
+              "minItems": 1,
+              "maxItems": 3,
+              "uniqueItems": true
+            },
+            "partyPanel": { "$ref": "#/definitions/file" },
+            "target": { "$ref": "#/definitions/file" },
+            "targetInfo": { "$ref": "#/definitions/file" }
+          },
+          "required": [
+            "draftScreen",
+            "heroSelect",
+            "leaderboard",
+            "loading",
+            "minimap",
+            "partyFrames",
+            "partyPanel",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        "life": { "$ref": "#/definitions/unitLife" },
+        "energy": { "$ref": "#/definitions/unitEnergy" },
+        "shield": {
+          "type": "object",
+          "properties": {
+            "amount": { "$ref": "#/definitions/nonnegativeInteger" },
+            "scale": { "$ref": "#/definitions/scaleAmount" },
+            "type": {
+              "type": "string",
+              "enum": ["Shields"]
+            },
+            "regenDelay": { "$ref": "#/definitions/nonnegativeInteger" },
+            "regenRate": { "$ref": "#/definitions/nonnegativeInteger" },
+            "regenScale": { "$ref": "#/definitions/scaleAmount" }
+          },
+          "required": [
+            "amount",
+            "scale",
+            "type",
+            "regenDelay",
+            "regenRate",
+            "regenScale"
+          ],
+          "additionalProperties": false
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Assassin",
+              "Multiclass",
+              "Specialist",
+              "Support",
+              "Warrior"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "expandedRole": {
+          "type": "string",
+          "enum": [
+            "Bruiser",
+            "Healer",
+            "Melee Assassin",
+            "Ranged Assassin",
+            "Support",
+            "Tank"
+          ]
+        },
+        "ratings": {
+          "type": "object",
+          "properties": {
+            "complexity": { "$ref": "#/definitions/ratingAmount" },
+            "damage": { "$ref": "#/definitions/ratingAmount" },
+            "survivability": { "$ref": "#/definitions/ratingAmount" },
+            "utility": { "$ref": "#/definitions/ratingAmount" }
+          },
+          "required": ["complexity", "damage", "survivability", "utility"],
+          "additionalProperties": false
+        },
+        "weapons": { "$ref": "#/definitions/unitWeapons" },
+        "abilities": {
+          "type": "object",
+          "properties": {
+            "basic": { "$ref": "#/definitions/abilityArray" },
+            "heroic": { "$ref": "#/definitions/abilityArray" },
+            "trait": { "$ref": "#/definitions/abilityArray" },
+            "mount": { "$ref": "#/definitions/abilityArray" },
+            "activable": { "$ref": "#/definitions/abilityArray" },
+            "hearth": { "$ref": "#/definitions/abilityArray" },
+            "spray": { "$ref": "#/definitions/abilityArray" },
+            "voice": { "$ref": "#/definitions/abilityArray" }
+          },
+          "required": ["basic", "heroic", "trait", "mount", "spray", "voice"],
+          "additionalProperties": false
+        },
+        "subAbilities": { "$ref": "#/definitions/unitSubAbilities" },
+        "talents": {
+          "type": "object",
+          "properties": {
+            "level1": { "$ref": "#/definitions/talentArray" },
+            "level4": { "$ref": "#/definitions/talentArray" },
+            "level7": { "$ref": "#/definitions/talentArray" },
+            "level10": { "$ref": "#/definitions/talentArray" },
+            "level13": { "$ref": "#/definitions/talentArray" },
+            "level16": { "$ref": "#/definitions/talentArray" },
+            "level20": { "$ref": "#/definitions/talentArray" }
+          },
+          "required": [
+            "level1",
+            "level4",
+            "level7",
+            "level10",
+            "level13",
+            "level16",
+            "level20"
+          ],
+          "additionalProperties": false
+        },
+        "heroUnits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": { "$ref": "#/definitions/heroUnit" },
+            "propertyNames": { "$ref": "#/definitions/identifier" },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "minItems": 1,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "name",
+        "unitId",
+        "hyperlinkId",
+        "attributeId",
+        "difficulty",
+        "franchise",
+        "gender",
+        "title",
+        "type",
+        "releaseDate",
+        "speed",
+        "rarity",
+        "scalingLinkId",
+        "searchText",
+        "description",
+        "infoText",
+        "portraits",
+        "life",
+        "roles",
+        "expandedRole",
+        "ratings",
+        "abilities",
+        "talents"
+      ],
+      "additionalProperties": false
+    },
+    "heroUnit": {
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/definitions/nonEmptyString" },
+        "hyperlinkId": { "$ref": "#/definitions/identifier" },
+        "innerRadius": { "$ref": "#/definitions/unitRadius" },
+        "radius": { "$ref": "#/definitions/unitRadius" },
+        "sight": { "$ref": "#/definitions/unitSight" },
+        "speed": { "$ref": "#/definitions/unitSpeed" },
+        "scalingLinkId": { "$ref": "#/definitions/unitScalingLinkId" },
+        "descriptors": { "$ref": "#/definitions/unitDescriptors" },
+        "units": { "$ref": "#/definitions/unitUnits" },
+        "portraits": {
+          "type": "object",
+          "properties": {
+            "targetInfo": { "$ref": "#/definitions/file" },
+            "minimap": { "$ref": "#/definitions/file" }
+          },
+          "required": ["targetInfo", "minimap"],
+          "additionalProperties": false
+        },
+        "life": { "$ref": "#/definitions/unitLife" },
+        "energy": { "$ref": "#/definitions/unitEnergy" },
+        "weapons": { "$ref": "#/definitions/unitWeapons" },
+        "abilities": {
+          "type": "object",
+          "properties": {
+            "basic": { "$ref": "#/definitions/abilityArray" },
+            "heroic": { "$ref": "#/definitions/abilityArray" },
+            "trait": { "$ref": "#/definitions/abilityArray" },
+            "mount": { "$ref": "#/definitions/abilityArray" },
+            "activable": { "$ref": "#/definitions/abilityArray" },
+            "hearth": { "$ref": "#/definitions/abilityArray" },
+            "spray": { "$ref": "#/definitions/abilityArray" },
+            "voice": { "$ref": "#/definitions/abilityArray" }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 8
+        },
+        "subAbilities": { "$ref": "#/definitions/unitSubAbilities" }
+      },
+      "required": [
+        "name",
+        "hyperlinkId",
+        "radius",
+        "sight",
+        "speed",
+        "portraits",
+        "life",
+        "abilities"
+      ],
+      "additionalProperties": false
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z][A-Za-z\\d!'-]*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonnegativeInteger": {
+      "type": "number",
+      "multipleOf": 1,
+      "exclusiveMinimum": 0
+    },
+    "ratingAmount": {
+      "type": "number",
+      "multipleOf": 1,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "scaleAmount": {
+      "type": "number",
+      "multipleOf": 0.0025,
+      "minimum": 0
+    },
+    "talent": {
+      "type": "object",
+      "properties": {
+        "nameId": { "$ref": "#/definitions/identifier" },
+        "buttonId": { "$ref": "#/definitions/identifier" },
+        "name": { "$ref": "#/definitions/nonEmptyString" },
+        "icon": { "$ref": "#/definitions/file" },
+        "energyTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "cooldownTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "shortTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "fullTooltip": { "$ref": "#/definitions/nonEmptyString" },
+        "charges": { "$ref": "#/definitions/abilityCharges" },
+        "toggleCooldown": { "$ref": "#/definitions/abilityCooldown" },
+        "abilityType": { "$ref": "#/definitions/abilityType" },
+        "isQuest": { "type": "boolean" },
+        "isActive": { "type": "boolean" },
+        "sort": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "abilityTalentLinkIds": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/identifier" },
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "prerequisiteTalentIds": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/identifier" },
+          "minItems": 1,
+          "maxItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "nameId",
+        "buttonId",
+        "name",
+        "icon",
+        "shortTooltip",
+        "fullTooltip",
+        "abilityType",
+        "sort"
+      ],
+      "additionalProperties": false
+    },
+    "talentArray": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/talent" },
+      "minItems": 2,
+      "maxItems": 5
+    },
+    "unitDescriptors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "AllyHealer",
+          "BodyBlocker",
+          "ChanneledAutoAttacker",
+          "DeadUpdater",
+          "EnergyImportant",
+          "Escaper",
+          "Ganker",
+          "GoalsDisabled",
+          "HealingAltarGoalDisabled",
+          "Helper",
+          "InstantTraveler",
+          "MercKiller",
+          "Overconfident",
+          "Roamer",
+          "RoleAutoAttacker",
+          "RoleCaster",
+          "RoleSpecialist",
+          "RoleSupport",
+          "RoleTank",
+          "SelfHealer",
+          "SoloLaner",
+          "Suicidal",
+          "TowerDisabler",
+          "TowerPusher",
+          "WaveClearer"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "unitEnergy": {
+      "type": "object",
+      "properties": {
+        "amount": { "$ref": "#/definitions/nonnegativeInteger" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Ammo",
+            "Brew",
+            "Charge",
+            "Energy",
+            "Fury",
+            "Mana",
+            "Stored Energy"
+          ]
+        },
+        "regenRate": {
+          "type": "number",
+          "multipleOf": 0.0001,
+          "minimum": 0
+        }
+      },
+      "required": ["amount", "type", "regenRate"],
+      "additionalProperties": false
+    },
+    "unitLife": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "multipleOf": 0.2,
+          "exclusiveMinimum": 0
+        },
+        "scale": { "$ref": "#/definitions/scaleAmount" },
+        "type": {
+          "type": "string",
+          "enum": ["Health"]
+        },
+        "regenRate": {
+          "type": "number",
+          "multipleOf": 0.0001
+        },
+        "regenScale": { "$ref": "#/definitions/scaleAmount" }
+      },
+      "required": ["amount", "scale", "regenRate", "regenScale"],
+      "additionalProperties": false
+    },
+    "unitRadius": {
+      "type": "number",
+      "multipleOf": 0.0625,
+      "exclusiveMinimum": 0
+    },
+    "unitScalingLinkId": {
+      "type": "string",
+      "enum": ["ExcellentMana", "GuldanVeterancyMana", "HeroDummyVeterancy"]
+    },
+    "unitSight": { "$ref": "#/definitions/nonnegativeInteger" },
+    "unitSpeed": {
+      "type": "number",
+      "multipleOf": 0.0001,
+      "exclusiveMinimum": 0
+    },
+    "unitSubAbilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "basic": { "$ref": "#/definitions/abilityArray" },
+            "heroic": { "$ref": "#/definitions/abilityArray" },
+            "trait": { "$ref": "#/definitions/abilityArray" },
+            "mount": { "$ref": "#/definitions/abilityArray" },
+            "activable": { "$ref": "#/definitions/abilityArray" }
+          },
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 3
+        },
+        "propertyNames": {
+          "pattern": "^[A-Za-z][A-Za-z\\d]*(\\|[A-Za-z][A-Za-z\\d]*)+$"
+        },
+        "minProperties": 1,
+        "maxProperties": 6
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "unitUnits": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/identifier" },
+      "minItems": 1,
+      "maxItems": 6,
+      "uniqueItems": true
+    },
+    "unitWeapons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nameId": { "$ref": "#/definitions/identifier" },
+          "range": {
+            "type": "number",
+            "multipleOf": 0.05,
+            "exclusiveMinimum": 0
+          },
+          "period": {
+            "type": "number",
+            "multipleOf": 0.0001,
+            "exclusiveMinimum": 0
+          },
+          "damage": { "$ref": "#/definitions/nonnegativeInteger" },
+          "damageScale": { "$ref": "#/definitions/scaleAmount" }
+        },
+        "required": ["nameId", "range", "period", "damage", "damageScale"],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 2
+    }
+  }
+}
