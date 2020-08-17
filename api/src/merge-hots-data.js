@@ -1,341 +1,399 @@
-#!/usr/bin/env node
-import assert from "assert";
-import { inspect } from "util";
+/**
+ * @file Provides tools for merging two HotsData objects.
+ */
 
-import { KoEnString } from "./ko-en-string.js";
-import { popTag, pushTag, warn } from "./logger.js";
+import { assert, equal } from "./lazy-assert.js";
+import { _t, isNotNullish } from "./type-util.js";
 
 /**
- * @typedef {import('./hots-data').HotsData} HotsData
- * @typedef {import('./hero').Hero} Hero
- * @typedef {import('./hero-stats').HeroStats} HeroStats
- * @typedef {import('./scaling-stat').ScalingStat} ScalingStat
- * @typedef {import('./skill').Skill} Skill
- * @typedef {import('./talent').Talent} Talent
+ * @typedef {import("../../generated-types/hots").Hero} Hero
+ * @typedef {import("../../generated-types/hots").RuliwebHotSDataset} RuliwebHotSDataset
+ * @typedef {import("../../generated-types/hots").Skill} Skill
+ * @typedef {import("../../generated-types/hots").Talent} Talent
  */
 
 /**
- * Merges the source dataset into the target dataset.
- * @param {HotsData} target Dataset to merge into
- * @param {Partial<HotsData>} source Dataset to import from
- * @param {boolean=} usePtr If truthy, merge heroes into the PTR section
- *    whenever possible.
+ * @template T
+ * @typedef {Record<string, T[]>} TalentRecord
  */
-export function mergeHotsData(target, source, usePtr = false) {
-  for (const sourceHero of Object.values(source.heroes || {})) {
-    assert(
-      sourceHero.id,
-      `Source hero has no ID (raw value: ${inspect(sourceHero.id)})\n`
-    );
-
-    let targetHero = null;
-    if (usePtr) targetHero = target.ptrHeroes[sourceHero.id];
-    if (!targetHero) targetHero = target.heroes[sourceHero.id];
-
-    // Cannot find hero with same ID
-    if (!targetHero) {
-      // Attempt to find a hero with a matching name
-      targetHero = Object.values(target.heroes).find(
-        (hero) => hero.name === sourceHero.name
-      );
-      if (targetHero) {
-        warn(
-          `Hero ID mismatch: Expected to find ${sourceHero.id},`,
-          `but matched with ${targetHero.id}`
-        );
-      }
-    }
-
-    if (targetHero) {
-      pushTag(sourceHero.id);
-      mergeHero(targetHero, sourceHero);
-      popTag();
-    } else if (usePtr) {
-      console.log("Added new hero to PTR:", sourceHero.name);
-      target.ptrHeroes[sourceHero.id] = sourceHero;
-    } else {
-      console.log("Added new hero:", sourceHero.name);
-      target.heroes[sourceHero.id] = sourceHero;
-    }
-  }
-}
 
 /**
- * Merges data from source Hero object into the target Hero object.
- * @param {Hero} target Hero data to merge into
- * @param {Hero} source Hero data to merge from
+ * @template T
+ * @typedef {Readonly<Record<string, ReadonlyArray<T>>>} ReadonlyTalentRecord
  */
-function mergeHero(target, source) {
-  // Merge properties
-  mergeProperties(target, source, {
-    id: 0,
-    name: 0,
-    title: 0,
-    icon: 0,
-    universe: 0,
-  });
-
-  // Merge hero stats
-  if (Array.isArray(source.stats)) {
-    target.stats = source.stats.map((sourceUnitStats, sourceUnitIndex) =>
-      mergeHeroStats(
-        Array.isArray(target.stats)
-          ? target.stats[sourceUnitIndex] || target.stats[0]
-          : target.stats,
-        sourceUnitStats
-      )
-    );
-  } else if (source.stats) {
-    target.stats = mergeHeroStats(
-      Array.isArray(target.stats) ? target.stats[0] : target.stats,
-      source.stats
-    );
-  }
-
-  // Merge skills
-  source.skills.forEach((sourceSkill) => {
-    // Find matching skill by ID
-    let targetSkill = target.skills.find(
-      (skill) => skill.id === sourceSkill.id
-    );
-
-    // If there is no skill matching the ID, search using the skill name.
-    if (!targetSkill) {
-      targetSkill = target.skills.find((skill) =>
-        isEqualInOneLocale(skill.name, sourceSkill.name)
-      );
-
-      if (targetSkill && !targetSkill.id) {
-        warn(
-          `Target skill (${targetSkill.name}) has no ID,`,
-          `matched by name with ${sourceSkill.name}`
-        );
-      } else {
-        warn(`Skill not found: ${sourceSkill.id} (${sourceSkill.name})`);
-        return;
-      }
-    }
-
-    mergeSkill(targetSkill, sourceSkill);
-  });
-
-  // Merge talents
-  const sourceTalentEntries = Object.entries(source.talents);
-  if (sourceTalentEntries.length) {
-    const oldTalents = target.talents;
-    /** @type {typeof oldTalents} */
-    const newTalents = (target.talents = {});
-
-    for (const [sourceLevelStr, sourceTalentArray] of sourceTalentEntries) {
-      const sourceLevel = Number(sourceLevelStr);
-      /** @type {typeof oldTalents[number]} */
-      const newTalentArray = (newTalents[sourceLevel] = []);
-
-      sourceTalentArray.forEach((sourceTalent, sourceTalentIndex) => {
-        // Find matching talent by level and index
-        /** @type {Talent | null} */
-        let targetTalent = (oldTalents[sourceLevel] || [])[sourceTalentIndex];
-
-        if (targetTalent) {
-          // Compare using talent ID only if the target talent has one
-          if (targetTalent.id) {
-            // If the target talent does not match the ID, force a manual search
-            if (targetTalent.id !== sourceTalent.id) targetTalent = null;
-          } else if (isEqualInOneLocale(targetTalent.name, sourceTalent.name)) {
-            warn(
-              `Target talent (${targetTalent.name}) has no ID,`,
-              `matched by position with ${sourceTalent.name}`
-            );
-          } else targetTalent = null; // Force a manual search
-        }
-
-        if (!targetTalent) {
-          let targetTalentIndex = -1;
-          let targetLevel;
-          let targetTalentArray;
-          for ([targetLevel, targetTalentArray] of Object.entries(oldTalents)) {
-            targetTalentIndex = targetTalentArray.findIndex((talent) => {
-              if (talent.id) return talent.id === sourceTalent.id;
-              return isEqualInOneLocale(talent.name, sourceTalent.name);
-            });
-
-            if (targetTalentIndex !== -1) break;
-          }
-
-          if (targetTalentIndex !== -1) {
-            warn(
-              `Talent position mismatch: ${sourceTalent.name}`,
-              `was expected in [${sourceLevel}][${sourceTalentIndex}],`,
-              `but found in [${targetLevel}][${targetTalentIndex}]`
-            );
-            targetTalent = (targetTalentArray || [])[targetTalentIndex];
-          } else {
-            warn(
-              `Talent not found: ${sourceTalent.name} in`,
-              `[${sourceLevel}][${sourceTalentIndex}], creating new talent...`
-            );
-          }
-        }
-
-        if (targetTalent) mergeTalent(targetTalent, sourceTalent);
-        else targetTalent = sourceTalent;
-
-        // Move talent to new position specified by source
-        newTalentArray[sourceTalentIndex] = targetTalent;
-      });
-    }
-  }
-}
-
-/**
- * Merges data from the source HeroStats into the target HeroStats.
- * @param {HeroStats} target HeroStats object to merge stat data into
- * @param {HeroStats} source HeroStats object to merge stat data from
- * @return {HeroStats} Merged HeroStats object
- */
-function mergeHeroStats(target, source) {
-  const scalingStatProperties = {
-    hp: 0,
-    hpRegen: 0,
-    mp: 0,
-    mpRegen: 0,
-    healEnergy: 0,
-    shields: 0,
-  };
-
-  for (const _propertyName of Object.keys(scalingStatProperties)) {
-    const propertyName = /** @type {keyof scalingStatProperties} */ (_propertyName);
-    mergeScalingStat(target[propertyName], source[propertyName]);
-  }
-
-  // HeroStats.prototype.damage can be either a ScalingStat or an array of
-  // ScalingStats
-  if (Array.isArray(source.damage)) {
-    target.damage = source.damage.map((d, index) =>
-      mergeScalingStat(
-        Array.isArray(target.damage)
-          ? target.damage[index] || target.damage[0]
-          : target.damage,
-        d
-      )
-    );
-  } else {
-    target.damage = mergeScalingStat(
-      Array.isArray(target.damage) ? target.damage[0] : target.damage,
-      source.damage
-    );
-  }
-
-  return mergeProperties(target, source, {
-    unitName: 0,
-    charge: 0,
-    chargeRegen: 0,
-    energy: 0,
-    fury: 0,
-    zaryaEnergy: 0,
-    ammo: 0,
-    brew: 0,
-    radius: 0,
-    speed: 0,
-    damage: 0,
-    range: 0,
-    period: 0,
-  });
-}
-
-/**
- * Merges data from the source Skill object into the target Skill object.
- * @template {Skill} T
- * @param {T} target Skill object to merge into
- * @param {T} source Skill object to merge from
- * @return {T} Merged Skill object
- */
-function mergeSkill(target, source) {
-  // Merge skill and talent names
-  mergeProperties(target.name, source.name, { ko: 0, en: 0 });
-
-  // Merge extras
-  mergeProperties(target.extras, source.extras, source.extras);
-
-  if (!source.shortDescription) {
-    warn(`${source.name} is missing a short tooltip`);
-  }
-
-  return mergeProperties(target, source, {
-    id: 0,
-    type: 0,
-    icon: 0,
-    description: 0,
-    shortDescription: 0,
-    cooldown: 0,
-    rechargeCooldown: 0,
-    manaCost: 0,
-    manaCostPerSecond: 0,
-  });
-}
-
-/**
- * Merges data from the source Talent into the target Talent.
- * @param {Talent} target Talent object to merge into
- * @param {Talent} source Talent object to merge from
- * @return {Talent} Merged Talent object
- */
-function mergeTalent(target, source) {
-  return mergeProperties(mergeSkill(target, source), source, {
-    upgradeFor: 0,
-  });
-}
-
-/**
- * Merges data from the source ScalingStat into the target ScalingStat.
- * @param {ScalingStat} target ScalingStat object to merge into
- * @param {ScalingStat} source ScalingStat object to merge from
- * @return {ScalingStat} Merged ScalingStat object
- */
-function mergeScalingStat(target, source) {
-  return mergeProperties(target, source, {
-    value: 0,
-    levelAdd: 0,
-    levelScaling: 0,
-    altName: 0,
-  });
-}
 
 // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
 /**
- * Copies properties specified in `propertyNames` from the source object to the
- * target object. If a property's value is a non-null falsy value, it is not
- * copied.
- * @template T
- * @param {T} target Target object to copy properties into
- * @param {T} source Source object to copy properties from
- * @param {Partial<Record<keyof T, *>>} propertyNames Object whose keys are
- *    property names to copy. Values are ignored.
- * @return {T} The merged target object.
+ * Creates a new dataset by merging the source dataset into the target dataset.
+ * The new dataset may share descendant objects of the source and target
+ * datasets.
+ *
+ * - Heroes that exist only in `source` are added to `target` without cloning.
+ * - Heroes that exist only in `target` are excluded.
+ * @param {Readonly<RuliwebHotSDataset>} target
+ * @param {Partial<Readonly<RuliwebHotSDataset>>} source
+ * @return {RuliwebHotSDataset}
  */
-function mergeProperties(target, source, propertyNames) {
-  for (const _property of Object.keys(propertyNames)) {
-    const property = /** @type {keyof T} */ (_property);
-    if (source[property] || source[property] === null) {
-      target[property] = source[property];
+export function createMergedHotsData(target, source) {
+  /** @type {Record<string, Hero>} */
+  const newHeroes = {};
+  const targetHeroIds = new Set(Object.keys(target.heroes));
+
+  assert(source.heroes, "Source hero record is empty: %o", source.heroes);
+  for (const heroId of Object.keys(source.heroes).sort()) {
+    const sourceHero = source.heroes[heroId];
+
+    if (targetHeroIds.has(heroId)) {
+      const targetHero = target.heroes[heroId];
+      assert(targetHero, "Unexpected value of hero %o: %o", heroId, targetHero);
+      newHeroes[heroId] = createMergedHero(targetHero, sourceHero, heroId);
+    } else {
+      newHeroes[heroId] = sourceHero;
     }
   }
 
-  return target;
+  assert(
+    !source.ptrHeroes,
+    "Source has ptrHeroes. We don't support ptrHeroes yet!"
+  );
+  assert(
+    !target.ptrHeroes,
+    "Target has ptrHeroes. We don't support ptrHeroes yet!"
+  );
+  assert(
+    !source.hotsPtrVersion,
+    "Source has hotsPtrVersion. We don't support hotsPtrVersion yet!"
+  );
+  assert(
+    !target.hotsPtrVersion,
+    "Target has hotsPtrVersion. We don't support hotsPtrVersion yet!"
+  );
+
+  /** @type {Record<string, string>} */
+  const newIconUrls = {};
+  const { iconUrls: sourceIconUrls = {} } = source;
+  const { iconUrls: targetIconUrls } = target;
+  for (const iconId of [
+    ...Object.keys(sourceIconUrls),
+    ...Object.keys(targetIconUrls),
+  ]) {
+    newIconUrls[iconId] = sourceIconUrls[iconId] || targetIconUrls[iconId];
+  }
+
+  return {
+    hotsVersion: source.hotsVersion || target.hotsVersion,
+    heroes: newHeroes,
+    iconUrls: newIconUrls,
+  };
 }
 
 /**
- * Checks if two KoEnStrings have either equal Korean or equal English values.
- * Empty strings (`''`) are treated as non-equal.
- * @param {string | KoEnString} str1
- * @param {string | KoEnString} str2
- * @return {boolean}
+ * Creates a new hero by merging the data of `source` and `target` heroes.
+ * @param {Readonly<Hero>} target
+ * @param {Readonly<Hero>} source
+ * @param {string} heroId Hero ID used for debugging messages
+ * @return {Hero}
  */
-function isEqualInOneLocale(str1, str2) {
-  const name1 = typeof str1 === "string" ? new KoEnString(str1) : str1;
-  const name2 = typeof str2 === "string" ? new KoEnString(str2) : str2;
-  return (
-    (Boolean(name1.ko) && name1.ko === name2.ko) ||
-    (Boolean(name1.en) && name1.en === name2.en)
+function createMergedHero(target, source, heroId) {
+  equal(
+    target.name,
+    source.name,
+    "[%] Hero names differ. Are we really merging the same hero?",
+    heroId
   );
+
+  // Most properties (including stats) can be simply copied over from source
+  const result = { ...source };
+  // But skills and talents must be merged separately
+  result.skills = createMergedSkillArray(target.skills, source.skills, heroId);
+  result.talents = createMergedTalentRecord(
+    target.talents,
+    source.talents,
+    heroId
+  );
+
+  return result;
+}
+
+/**
+ * Merges each new skill into an old skill, and returns a new array of merged
+ * skills.
+ *
+ * Some rules:
+ * - The result array contains skills in the same order as `newSkills`.
+ * - Merging creates a new skill object.
+ * - If a new skill does not have an old version, it is added in the result
+ *   array as-is.
+ * - If an old skill does not have a new version, it is not included in the
+ *   result array.
+ * @param {ReadonlyArray<Skill>} oldSkills
+ * @param {ReadonlyArray<Readonly<Skill>>} newSkills
+ * @param {string} heroId Hero ID used in debugging messages
+ * @return {Skill[]}
+ */
+function createMergedSkillArray(oldSkills, newSkills, heroId) {
+  assertNoDuplicateSkills(oldSkills, heroId);
+  assertNoDuplicateSkills(newSkills, heroId);
+
+  /** @type {ReadonlyMap<string, number>} */
+  const oldSkillIndices = new Map(
+    oldSkills.map((skill, index) => [skill.id, index])
+  );
+  const unmergedOldSkillIds = new Set(oldSkills.map((skill) => skill.id));
+
+  const mergedSkills = newSkills.map((sourceSkill, newIndex) => {
+    const oldIndex = oldSkillIndices.get(sourceSkill.id);
+
+    if (typeof oldIndex === "undefined") {
+      console.log("[%s] Added new skill %o", heroId, sourceSkill.id);
+      return sourceSkill;
+    }
+
+    if (oldIndex !== newIndex) {
+      console.log(
+        "[%s] Moved skill %o: index %d -> %d",
+        heroId,
+        sourceSkill.id,
+        oldIndex,
+        newIndex
+      );
+    }
+
+    assert(
+      unmergedOldSkillIds.delete(sourceSkill.id),
+      "Skill %o of hero %o is merged twice",
+      sourceSkill.id,
+      heroId
+    );
+
+    const targetSkill = oldSkills[oldIndex];
+    return createMergedSkill(targetSkill, sourceSkill);
+  });
+
+  for (const skillId of unmergedOldSkillIds) {
+    console.log("[%s] Deleted skill %o", heroId, skillId);
+  }
+
+  return mergedSkills;
+}
+
+/**
+ * @param {ReadonlyArray<Readonly<Skill>>} skills
+ * @param {string} heroId Hero ID used for debugging
+ * @throws If two skills have the same `id`
+ */
+function assertNoDuplicateSkills(skills, heroId) {
+  const skillIdsSeen = new Set();
+  for (const skill of skills) {
+    // If the skill ID is already in the set, add() will not change its size
+    assert(
+      skillIdsSeen.size !== skillIdsSeen.add(skill.id).size,
+      "Duplicate skill ID %o in hero %o",
+      skill.id,
+      heroId
+    );
+  }
+}
+
+/**
+ * Creates a new skill by merging the data of `source` and `target` skills.
+ * @param {Readonly<Skill>} target
+ * @param {Readonly<Skill>} source
+ * @return {Skill}
+ */
+function createMergedSkill(target, source) {
+  // Use all source fields except 'extras'
+  const { extras: sourceExtras, upgradeFor, ...result } = source;
+  // Merge the 'extras' object of target and source
+  const extras = { ...target.extras, ...sourceExtras };
+
+  if (Object.keys(extras).length > 0) {
+    // Type assertion needed to make TypeScript happy
+    /** @type {Skill} */ (result).extras = extras;
+  }
+
+  // Ensure that upgradeFor, if it exists, is the last field.
+  if (isNotNullish(upgradeFor)) {
+    // Type assertion needed to make TypeScript happy
+    /** @type {Skill} */ (result).upgradeFor = upgradeFor;
+  }
+
+  if (target.type !== source.type) {
+    console.log(
+      "Talent %o type changed: %o -> %o",
+      source.id,
+      target.type,
+      source.type
+    );
+  }
+  if (target.upgradeFor !== source.upgradeFor) {
+    console.log(
+      "Talent %o upgradeFor changed: %o -> %o",
+      source.id,
+      target.upgradeFor,
+      source.upgradeFor
+    );
+  }
+
+  return result;
+}
+
+/**
+ * Creates a record of talents by merging two existing talent records.
+ *
+ * Some rules:
+ * - The result record matches the talent tiers and ordering of `newTalents`.
+ * - Merging creates a new talent object.
+ * - If a new talent does not have an old version, it is added in the result
+ *   array as-is.
+ * - If an old talent does not have a new version, it is not included in the
+ *   result array.
+ * @param {ReadonlyTalentRecord<Talent>} oldTalents
+ * @param {ReadonlyTalentRecord<Readonly<Talent>>} newTalents
+ * @param {string} heroId Hero ID used in debugging messages
+ * @return {TalentRecord<Talent>}
+ */
+function createMergedTalentRecord(oldTalents, newTalents, heroId) {
+  assertNoDuplicateTalents(oldTalents, heroId);
+  assertNoDuplicateTalents(newTalents, heroId);
+
+  const unmergedOldTalentIds = new Map(
+    Object.entries(oldTalents).flatMap(([tier, talentArray]) =>
+      talentArray.map((talent, index) => _t(talent.id, _t(tier, index)))
+    )
+  );
+
+  /** @type {TalentRecord<Talent>} */
+  const resultRecord = {};
+
+  for (const [newTierName, newTalentArray] of Object.entries(newTalents)) {
+    resultRecord[newTierName] = newTalentArray.map((sourceTalent, newIndex) => {
+      const {
+        talent: targetTalent,
+        tier: oldTierName,
+        index: oldIndex,
+      } = findTalent(oldTalents, sourceTalent.id, newTierName, newIndex);
+
+      if (!targetTalent) {
+        console.log(
+          "[%s] Added new talent %o at [%o][%o]",
+          heroId,
+          sourceTalent.id,
+          newTierName,
+          newIndex
+        );
+        return sourceTalent;
+      }
+
+      if (oldTierName !== newTierName || oldIndex !== newIndex) {
+        console.log(
+          "[%s] Moved talent %o: [%o][%o] -> [%o][%o]",
+          heroId,
+          sourceTalent.id,
+          oldTierName,
+          oldIndex,
+          newTierName,
+          newIndex
+        );
+      }
+
+      assert(
+        unmergedOldTalentIds.delete(sourceTalent.id),
+        "Talent %o of hero %o is merged twice",
+        sourceTalent.id,
+        heroId
+      );
+
+      return createMergedTalent(targetTalent, sourceTalent);
+    });
+  }
+
+  for (const [talentId, [tierName, index]] of unmergedOldTalentIds) {
+    console.log(
+      "[%s] Deleted talent %o, was at [%o][%o]",
+      heroId,
+      talentId,
+      tierName,
+      index
+    );
+  }
+
+  return resultRecord;
+}
+
+/**
+ * @param {ReadonlyTalentRecord<Readonly<Talent>>} talents
+ * @param {string} heroId Hero ID used for debugging
+ * @throws If two talents have the same `id`
+ */
+function assertNoDuplicateTalents(talents, heroId) {
+  const talentIdsSeen = new Set();
+  for (const talentArray of Object.values(talents)) {
+    for (const talent of talentArray) {
+      // If the talent ID is already in the set, add() will not change its size
+      assert(
+        talentIdsSeen.size !== talentIdsSeen.add(talent.id).size,
+        "Duplicate talent ID %o in hero %o",
+        talent.id,
+        heroId
+      );
+    }
+  }
+}
+
+/**
+ * Attempts to search for the talent ID
+ * @template {Talent} T
+ * @param {ReadonlyTalentRecord<T>} talents
+ * @param {string} id Talent ID to search for
+ * @param {string} expectedTierName
+ * @param {number} expectedIndex
+ * @return {{ talent: (T | undefined), tier: (string | undefined), index: (number | undefined) }}
+ *    If the talent is found, returns an object containing the talent's tier and
+ *    index. If the talent cannot be found, all values will be `undefined`.
+ */
+function findTalent(talents, id, expectedTierName, expectedIndex) {
+  // Common case #1: talent stays in the same spot
+  // First, check the expected talent tier and indices.
+  const expectedTierArray = talents[expectedTierName];
+  if (expectedTierArray) {
+    const expectedTalent = expectedTierArray[expectedIndex];
+    if (expectedTalent && expectedTalent.id === id) {
+      return {
+        talent: expectedTalent,
+        tier: expectedTierName,
+        index: expectedIndex,
+      };
+    }
+
+    // Common case #2: talent is rearranged within the same tier
+    for (const [index, talent] of expectedTierArray.entries()) {
+      if (talent.id === id) {
+        return { talent, tier: expectedTierName, index };
+      }
+    }
+  }
+
+  // Talent may have been moved to another tier.
+  // Search entire record
+  for (const talentArray of Object.values(talents)) {
+    for (const [index, talent] of talentArray.entries()) {
+      if (talent.id === id) {
+        return { talent, tier: expectedTierName, index };
+      }
+    }
+  }
+
+  // Talent is not found
+  return { talent: undefined, tier: undefined, index: undefined };
+}
+
+/**
+ * Creates a new talent by merging the data of `source` and `target` talents.
+ * @param {Readonly<Talent>} target
+ * @param {Readonly<Talent>} source
+ * @return {Talent}
+ */
+function createMergedTalent(target, source) {
+  return createMergedSkill(target, source);
 }
