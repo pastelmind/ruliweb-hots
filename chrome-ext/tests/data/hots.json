@@ -57,6 +57,7 @@
       },
       "skills": [
         {
+          "id": "FenixShieldCapacitor",
           "name": {
             "en": "Shield Capacitor",
             "ko": "보호막 축전기"
@@ -67,6 +68,7 @@
           "shortDescription": "비전투 시 재생되는 보호막 영구히 획득"
         },
         {
+          "id": "FenixPlasmaCutter",
           "name": {
             "en": "Plasma Cutter",
             "ko": "플라스마 절단기"
@@ -83,6 +85,7 @@
           }
         },
         {
+          "id": "FenixPhaseBomb",
           "name": {
             "en": "Weapon Mode: Repeater Cannon",
             "ko": "무기 모드: 연발포"
@@ -93,6 +96,7 @@
           "shortDescription": "공격 속도 증가"
         },
         {
+          "id": "FenixRepeaterCannon",
           "name": {
             "en": "Weapon Mode: Phase Bomb",
             "ko": "무기 모드: 위상 폭탄"
@@ -103,6 +107,7 @@
           "shortDescription": "일반 공격력 및 일반 공격 사거리 증가, 일반 공격 시 방사 피해"
         },
         {
+          "id": "FenixWarp",
           "name": {
             "en": "Warp",
             "ko": "차원이동"
@@ -120,6 +125,7 @@
       "talents": {
         "1": [
           {
+            "id": "FenixAdvancedTargeting",
             "name": {
               "en": "Advanced Targeting",
               "ko": "향상된 조준"
@@ -131,6 +137,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "FenixArsenalSynergy",
             "name": {
               "en": "Arsenal Synergy",
               "ko": "광자 집중"
@@ -142,6 +149,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "FenixMobileOffense",
             "name": {
               "en": "Mobile Offense",
               "ko": "기동타격"
@@ -155,6 +163,7 @@
         ],
         "4": [
           {
+            "id": "FenixTargetAcquired",
             "name": {
               "en": "Target Acquired",
               "ko": "목표 확인"
@@ -166,6 +175,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "FenixInhibitingEnergy",
             "name": {
               "en": "Inhibiting Energy",
               "ko": "에너지 억제"
@@ -177,6 +187,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "FenixWarpConduit",
             "name": {
               "en": "Warp Conduit",
               "ko": "차원로"
@@ -188,6 +199,7 @@
             "upgradeFor": "E"
           },
           {
+            "id": "FenixEmergencyProtocol",
             "name": {
               "en": "Emergency Protocol",
               "ko": "긴급 프로토콜"
@@ -201,6 +213,7 @@
         ],
         "7": [
           {
+            "id": "FenixCombatAdvantage",
             "name": {
               "en": "Combat Advantage",
               "ko": "전술적 이점"
@@ -212,6 +225,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "FenixWarpWarfare",
             "name": {
               "en": "Warp Warfare",
               "ko": "전술적 차원이동"
@@ -223,6 +237,7 @@
             "upgradeFor": "E"
           },
           {
+            "id": "FenixDivertPowerWeaponsTalent",
             "name": {
               "en": "Divert Power: Weapons",
               "ko": "동력 전환: 무기"
@@ -236,6 +251,7 @@
         ],
         "10": [
           {
+            "id": "FenixHeroicAbilityPurificationSalvo",
             "name": {
               "en": "Purification Salvo",
               "ko": "정화 개시"
@@ -251,6 +267,7 @@
             }
           },
           {
+            "id": "FenixHeroicAbilityPlanetCracker",
             "name": {
               "en": "Planet Cracker",
               "ko": "행성 분열기"
@@ -268,6 +285,7 @@
         ],
         "13": [
           {
+            "id": "FenixAdaniumShell",
             "name": {
               "en": "Adanium Shell",
               "ko": "아다늄 장갑"
@@ -279,6 +297,7 @@
             "upgradeFor": "E"
           },
           {
+            "id": "FenixDampeningField",
             "name": {
               "en": "Dampening Field",
               "ko": "감쇠장"
@@ -290,6 +309,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "FenixRapidRecharge",
             "name": {
               "en": "Rapid Recharge",
               "ko": "신속 재충전"
@@ -301,6 +321,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "FenixAuxiliaryShields",
             "name": {
               "en": "Auxiliary Shields",
               "ko": "보조 보호막"
@@ -314,6 +335,7 @@
         ],
         "16": [
           {
+            "id": "FenixOffensiveCadence",
             "name": {
               "en": "Offensive Cadence",
               "ko": "맹공"
@@ -325,6 +347,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "FenixPhotonicWeaponry",
             "name": {
               "en": "Photonic Weaponry",
               "ko": "광자 무기"
@@ -336,6 +359,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "FenixArsenalOvercharge",
             "name": {
               "en": "Arsenal Overcharge",
               "ko": "무기 과충전"
@@ -348,6 +372,7 @@
         ],
         "20": [
           {
+            "id": "FenixSecondaryFire",
             "name": {
               "en": "Secondary Fire",
               "ko": "후속 공격"
@@ -359,6 +384,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "FenixSingularityCharge",
             "name": {
               "en": "Singularity Charge",
               "ko": "특이점 장전"
@@ -370,6 +396,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "FenixUnconqueredSpirit",
             "name": {
               "en": "Unconquered Spirit",
               "ko": "굴하지 않는 정신"
@@ -439,6 +466,7 @@
       ],
       "skills": [
         {
+          "id": "RexxarMishaFocus",
           "name": {
             "en": "Misha, Focus!",
             "ko": "미샤, 집중해!"
@@ -449,6 +477,7 @@
           "shortDescription": "미샤에게 이동하거나 공격하라고 명령"
         },
         {
+          "id": "RexxarSpiritSwoop",
           "name": {
             "en": "Spirit Swoop",
             "ko": "기백 날리기"
@@ -465,6 +494,7 @@
           }
         },
         {
+          "id": "RexxarMishaChargeRedirect",
           "name": {
             "en": "Misha, Charge!",
             "ko": "미샤, 돌진!"
@@ -481,6 +511,7 @@
           }
         },
         {
+          "id": "RexxarMendPet",
           "name": {
             "en": "Mend Pet",
             "ko": "야수 치료"
@@ -496,6 +527,7 @@
       "talents": {
         "1": [
           {
+            "id": "RexxarSpiritBondEasyPrey",
             "name": {
               "en": "Easy Prey",
               "ko": "쉬운 사냥감"
@@ -506,6 +538,7 @@
             "shortDescription": "미샤가 돌격병과 용병을 상대로 더욱 강해짐"
           },
           {
+            "id": "RexxarSpiritSwoopBirdOfPrey",
             "name": {
               "en": "Bird of Prey",
               "ko": "맹금"
@@ -517,6 +550,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "RexxarFlare",
             "name": {
               "en": "Flare",
               "ko": "섬광탄"
@@ -534,6 +568,7 @@
         ],
         "4": [
           {
+            "id": "RexxarHungryBear",
             "name": {
               "en": "Hungry Bear",
               "ko": "굶주린 곰"
@@ -544,6 +579,7 @@
             "shortDescription": "미샤 일반 공격 시 자신 치유"
           },
           {
+            "id": "RexxarHunterGatherer",
             "name": {
               "en": "Hunter-Gatherer",
               "ko": "수집 사냥꾼"
@@ -554,6 +590,7 @@
             "shortDescription": "퀘스트: 재생의 구슬 획득 시 생명력 재생량 증가"
           },
           {
+            "id": "RexxarSpiritBondGrizzledFortitude",
             "name": {
               "en": "Grizzled Fortitude",
               "ko": "추적자의 인내"
@@ -564,6 +601,7 @@
             "shortDescription": "주기적으로 물리 방어력 증가"
           },
           {
+            "id": "RexxarAnimalHusbandry",
             "name": {
               "en": "Animal Husbandry",
               "ko": "생존 일지"
@@ -576,6 +614,7 @@
         ],
         "7": [
           {
+            "id": "RexxarAspectoftheBeastCharge",
             "name": {
               "en": "Aspect of the Beast",
               "ko": "야수의 상"
@@ -587,6 +626,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "RexxarSpiritSwoopCripplingTalons",
             "name": {
               "en": "Crippling Talons",
               "ko": "마비의 발톱"
@@ -598,6 +638,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "RexxarTakingFlightSpiritSwoop",
             "name": {
               "en": "Taking Flight",
               "ko": "날렵한 비행"
@@ -611,6 +652,7 @@
         ],
         "10": [
           {
+            "id": "RexxarHeroicAbilityBestialWrath",
             "name": {
               "en": "Bestial Wrath",
               "ko": "야수의 격노"
@@ -623,6 +665,7 @@
             "manaCost": 75
           },
           {
+            "id": "RexxarHeroicAbilityUnleashTheBoars",
             "name": {
               "en": "Unleash the Boars",
               "ko": "멧돼지를 풀어라"
@@ -641,6 +684,7 @@
         ],
         "13": [
           {
+            "id": "RexxarSpiritBondWildfireBear",
             "name": {
               "en": "Wildfire Bear",
               "ko": "야생불곰"
@@ -654,6 +698,7 @@
             }
           },
           {
+            "id": "RexxarAspectOfTheHawkSpiritSwoop",
             "name": {
               "en": "Aspect of the Hawk",
               "ko": "매의 상"
@@ -665,6 +710,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "RexxarDireBeast",
             "name": {
               "en": "Dire Beast",
               "ko": "광포한 야수"
@@ -678,6 +724,7 @@
         ],
         "16": [
           {
+            "id": "RexxarThrilloftheHunt",
             "name": {
               "en": "Thrill of the Hunt",
               "ko": "사냥의 희열"
@@ -688,6 +735,7 @@
             "shortDescription": "일반 공격 시 이동 속도 증가"
           },
           {
+            "id": "RexxarSpiritBondPrimalIntimidation",
             "name": {
               "en": "Primal Intimidation",
               "ko": "야성의 위압감"
@@ -702,6 +750,7 @@
             }
           },
           {
+            "id": "RexxarFeignDeath",
             "name": {
               "en": "Feign Death",
               "ko": "죽은척하기"
@@ -715,6 +764,7 @@
         ],
         "20": [
           {
+            "id": "RexxarSpiritBond",
             "name": {
               "en": "Spirit Bond",
               "ko": "정신의 결속"
@@ -726,6 +776,7 @@
             "upgradeFor": "R"
           },
           {
+            "id": "RexxarUnleashTheBoarsKillCommand",
             "name": {
               "en": "Kill Command",
               "ko": "살상 명령"
@@ -737,6 +788,7 @@
             "upgradeFor": "R"
           },
           {
+            "id": "RexxarFrenzyofKalimdor",
             "name": {
               "en": "Frenzy of Kalimdor",
               "ko": "칼림도어의 광란"
@@ -747,6 +799,7 @@
             "shortDescription": "렉사르 일반 공격력 증가 및 미샤 일반 공격 시 대상 감속"
           },
           {
+            "id": "RexxarHardenedSkin",
             "name": {
               "en": "Hardened Skin",
               "ko": "강화 가죽"
@@ -794,6 +847,7 @@
       },
       "skills": [
         {
+          "id": "TinkerDismantleTurret",
           "name": {
             "en": "Salvager",
             "ko": "고물상"
@@ -804,6 +858,7 @@
           "shortDescription": "포탑과 적 구조물에서 고철이 떨어져, 획득 시 마나 회복 및 재사용 대기시간 감소"
         },
         {
+          "id": "TinkerRockItTurret",
           "name": {
             "en": "Rock-It! Turret",
             "ko": "잘나가! 포탑"
@@ -820,6 +875,7 @@
           }
         },
         {
+          "id": "TinkerFocusTurrets",
           "name": {
             "en": "Focus Turrets!",
             "ko": "집중 포화!"
@@ -831,6 +887,7 @@
           "cooldown": 1
         },
         {
+          "id": "TinkerDethLazorCharged",
           "name": {
             "en": "Deth Lazor",
             "ko": "죽이는 레이저"
@@ -847,6 +904,7 @@
           }
         },
         {
+          "id": "TinkerXplodiumBomb",
           "name": {
             "en": "Xplodium Charge",
             "ko": "터진다늄 폭탄"
@@ -866,6 +924,7 @@
       "talents": {
         "1": [
           {
+            "id": "TinkerMasteryExtraTNT",
             "name": {
               "en": "Extra TNT",
               "ko": "추가 TNT"
@@ -877,6 +936,7 @@
             "upgradeFor": "E"
           },
           {
+            "id": "TinkerCombatStyleScrapoMaticSmelter",
             "name": {
               "en": "Scrap-o-Matic Smelter",
               "ko": "고철공장공장장"
@@ -888,6 +948,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "TinkerCombatStyleBreakitDown",
             "name": {
               "en": "Break it Down!",
               "ko": "박! 살!"
@@ -899,6 +960,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "TinkerGoblinRepairs",
             "name": {
               "en": "Goblin Repairs",
               "ko": "고블린 수리법"
@@ -911,6 +973,7 @@
         ],
         "4": [
           {
+            "id": "TinkerCombatStyleClockwerkSteamFists",
             "name": {
               "en": "Clockwerk Steam Fists",
               "ko": "태엽장치 증기 주먹"
@@ -922,6 +985,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "TinkerMasteryARKReaktor",
             "name": {
               "en": "ARK Reaktor",
               "ko": "아크 반응로"
@@ -933,6 +997,7 @@
             "upgradeFor": "E"
           },
           {
+            "id": "TinkerCombatStyleReduceReuseRecycle",
             "name": {
               "en": "Reduce, Reuse, Recycle",
               "ko": "죽은 적도 다시 보기"
@@ -944,6 +1009,7 @@
             "upgradeFor": "D"
           },
           {
+            "id": "TinkerHiredGoons",
             "name": {
               "en": "Hired Goons",
               "ko": "고용된 떡대들"
@@ -959,6 +1025,7 @@
         ],
         "7": [
           {
+            "id": "TinkerMasteryRockitTurretXL",
             "name": {
               "en": "Rock-It! Turret XL",
               "ko": "완전 잘나가! 포탑"
@@ -974,6 +1041,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "TinkerMasteryEngineGunk",
             "name": {
               "en": "Engine Gunk",
               "ko": "기름 찌꺼기"
@@ -985,6 +1053,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "TinkerMasteryHyperfocusCoils",
             "name": {
               "en": "Hyperfocus Coils",
               "ko": "과집중 코일"
@@ -998,6 +1067,7 @@
         ],
         "10": [
           {
+            "id": "TinkerHeroicAbilityRoboGoblin",
             "name": {
               "en": "Robo-Goblin",
               "ko": "로보고블린"
@@ -1009,6 +1079,7 @@
             "cooldown": 60
           },
           {
+            "id": "TinkerHeroicAbilityGravOBomb3000",
             "name": {
               "en": "Grav-O-Bomb 3000",
               "ko": "중력폭탄 3000"
@@ -1027,6 +1098,7 @@
         ],
         "13": [
           {
+            "id": "TinkerMasteryEZPZDimensionalRipper",
             "name": {
               "en": "EZ-PZ Dimensional Ripper",
               "ko": "E-848 차원 절단기"
@@ -1038,6 +1110,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "TinkerMasteryGoblinFusion",
             "name": {
               "en": "Goblin Fusion",
               "ko": "고블린 핵융합"
@@ -1049,6 +1122,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "TinkerMasteryXTraLargeBombs",
             "name": {
               "en": "X-Tra Large Bombs",
               "ko": "특대형 폭탄"
@@ -1062,6 +1136,7 @@
         ],
         "16": [
           {
+            "id": "TinkerMasteryTurretStorage",
             "name": {
               "en": "Turret Storage",
               "ko": "포탑 비축"
@@ -1073,6 +1148,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "TinkerSuperiorSchematics",
             "name": {
               "en": "Superior Schematics",
               "ko": "완벽한 설계도"
@@ -1087,6 +1163,7 @@
             "upgradeFor": "Q"
           },
           {
+            "id": "TinkerMasteryQuikReleaseCharge",
             "name": {
               "en": "Kwik Release Charge",
               "ko": "번갯불에 폭탄 구워먹기"
@@ -1100,6 +1177,7 @@
         ],
         "20": [
           {
+            "id": "TinkerMasteryMechaLord",
             "name": {
               "en": "Mecha-Lord",
               "ko": "기계왕"
@@ -1111,6 +1189,7 @@
             "upgradeFor": "R"
           },
           {
+            "id": "TinkerMasteryMiniatureBlackHole",
             "name": {
               "en": "Miniature Black Hole",
               "ko": "휴대용 블랙홀"
@@ -1122,6 +1201,7 @@
             "upgradeFor": "R"
           },
           {
+            "id": "TinkerTalentFirinMahLazorz",
             "name": {
               "en": "Firin' Mah Lazorz",
               "ko": "잘나가고 죽이는 레이저"
@@ -1137,6 +1217,7 @@
             "upgradeFor": "W"
           },
           {
+            "id": "TinkerItsRainingScrap",
             "name": {
               "en": "It's Raining Scrap",
               "ko": "하늘에서 고철이 비처럼 내려와"
