@@ -2484,7 +2484,7 @@
       },
       "skills": [
         {
-          "id": "AnubarakScarabHostTrait",
+          "id": "AnubarakLegionOfBeetlesVisual",
           "name": {
             "en": "Scarab Host",
             "ko": "풍뎅이 숙주"
@@ -4759,7 +4759,7 @@
       },
       "skills": [
         {
-          "id": "ButcherFreshMeat",
+          "id": "ButcherFreshMeatDummy",
           "name": {
             "en": "Fresh Meat",
             "ko": "신선한 고기"
@@ -9899,7 +9899,7 @@
       },
       "skills": [
         {
-          "id": "FalstadTailwind",
+          "id": "FalstadTailwindCooldownDisplay",
           "name": {
             "en": "Tailwind",
             "ko": "순풍"
@@ -16126,7 +16126,7 @@
       },
       "skills": [
         {
-          "id": "L90ETCRockstar",
+          "id": "RockstarDummy",
           "name": {
             "en": "Rockstar",
             "ko": "록스타"
