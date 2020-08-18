@@ -12,6 +12,7 @@ import json2ts from "json-schema-to-typescript";
 import {
   HDP_HERODATA_SCHEMA_PATH,
   HOTS_SCHEMA_PATH,
+  createHdpHeroDataKoSchema,
   loadHdpHeroDataSchema,
   loadHotsSchema,
 } from "./schemas.js";
@@ -59,6 +60,8 @@ async function generateDtsFromSchema(schemaPromise, schemaPath, dtsPath) {
     // Create directory if it doesn't exist
     await mkdir(DTS_DIR, { recursive: true });
 
+    const hdpHeroDataSchemaPromise = loadHdpHeroDataSchema();
+
     await Promise.all([
       generateDtsFromSchema(
         loadHotsSchema(),
@@ -66,9 +69,14 @@ async function generateDtsFromSchema(schemaPromise, schemaPath, dtsPath) {
         joinPath(DTS_DIR, "hots.d.ts")
       ),
       generateDtsFromSchema(
-        loadHdpHeroDataSchema(),
+        hdpHeroDataSchemaPromise,
         HDP_HERODATA_SCHEMA_PATH,
         joinPath(DTS_DIR, "hdp-herodata.d.ts")
+      ),
+      generateDtsFromSchema(
+        hdpHeroDataSchemaPromise.then(createHdpHeroDataKoSchema),
+        HDP_HERODATA_SCHEMA_PATH,
+        joinPath(DTS_DIR, "hdp-herodata-ko.d.ts")
       ),
     ]);
   } catch (e) {
