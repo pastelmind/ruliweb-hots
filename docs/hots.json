@@ -11050,13 +11050,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2850,
+          "value": 2950,
           "levelScaling": 0.045
         },
         "radius": 1.1875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.9414,
+          "value": 6.1445,
           "levelScaling": 0.045
         }
       },
