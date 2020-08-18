@@ -3,6 +3,7 @@
     "checkJs": true,
     "module": "esnext", // Needed to use import.meta
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "strict": true,
     "target": "es2020",
   },
