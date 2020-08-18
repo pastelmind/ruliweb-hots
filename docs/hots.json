@@ -61,7 +61,7 @@
           },
           "type": "Q - Q",
           "icon": "storm_ui_icon_abathur_stab",
-          "description": "대상 지역을 향해 가시를 발사하여 처음 적중한 적에게 124(+4%)의 피해를 줍니다.",
+          "description": "대상 지역을 향해 가시를 발사하여 처음 적중한 적에게 119(+4%)의 피해를 줍니다.",
           "shortDescription": "처음 적중한 적에게 피해를 주는 가시 발사",
           "rechargeCooldown": 3,
           "extras": {
@@ -77,7 +77,7 @@
           },
           "type": "Q - W",
           "icon": "storm_ui_icon_abathur_spikeburst",
-          "description": "주위 적들에게 125(+4%)의 피해를 줍니다.",
+          "description": "주위 적들에게 120(+4%)의 피해를 줍니다.",
           "shortDescription": "주위 적들에게 피해를 줌",
           "cooldown": 6,
           "extras": {
@@ -92,7 +92,7 @@
           },
           "type": "Q - E",
           "icon": "storm_ui_icon_abathur_carapace",
-          "description": "지원하는 아군에게 156(+4%)의 피해를 흡수하는 보호막을 부여합니다. 대상이 아군 영웅이면 보호막이 활성화된 동안 초당 23(+4%)의 생명력을 회복시킵니다. 6초 동안 지속됩니다.",
+          "description": "지원하는 아군에게 150(+4%)의 피해를 흡수하는 보호막을 부여합니다. 대상이 아군 영웅이면 보호막이 활성화된 동안 초당 22(+4%)의 생명력을 회복시킵니다. 6초 동안 지속됩니다.",
           "shortDescription": "아군에게 보호막 부여",
           "cooldown": 6
         },
@@ -954,7 +954,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_alexstrasza_wing_buffet",
-          "description": "일정 지역 안의 적들에게 156(+4%) 의 피해를 주고 밀쳐내며 3초 동안 50% 느려지게 합니다.",
+          "description": "일정 지역 안의 적들에게 150(+4%) 의 피해를 주고 밀쳐내며 3초 동안 50% 느려지게 합니다.",
           "shortDescription": "적들을 밀쳐내며 피해를 주고 느려지게 함",
           "cooldown": 4,
           "extras": {
@@ -2491,7 +2491,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_anubarak_scarabhost",
-          "description": "기술을 사용하면 딱정벌레를 생성합니다. 딱정벌레는 8초 동안 전장에 머물며 주위 적들을 공격해 21(+4%)의 피해를 줍니다.",
+          "description": "기술을 사용하면 딱정벌레를 생성합니다. 딱정벌레는 8초 동안 전장에 머물며 주위 적들을 공격해 20(+4%)의 피해를 줍니다.",
           "shortDescription": "기술 시전 시 딱정벌레 생성"
         },
         {
@@ -7241,7 +7241,7 @@
           },
           "type": "R",
           "icon": "storm_ui_icon_deathwing_cataclysm",
-          "description": "2초 후, 대상 방향으로 날며 땅을 불태워 경로상의 적들에게 94(+4%)의 피해를 주고 초당 46(+4%)의 피해를 주는 흔적을 남깁니다. 6초 동안 지속됩니다.",
+          "description": "2초 후, 대상 방향으로 날며 땅을 불태워 경로상의 적들에게 90(+4%)의 피해를 주고 초당 48(+4%)의 피해를 주는 흔적을 남깁니다. 6초 동안 지속됩니다.",
           "shortDescription": "한 방향으로 비행하며 지나온 길을 황폐화시킴",
           "cooldown": 90
         },
@@ -23935,7 +23935,7 @@
           },
           "type": "D - Q",
           "icon": "storm_ui_icon_ragnaros_moltenswing",
-          "description": "설퍼라스를 휘둘러 적들에게 167(+4%)의 피해를 주고 1초 동안 기절시킵니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
+          "description": "설퍼라스를 휘둘러 적들에게 161(+4%)의 피해를 주고 1초 동안 기절시킵니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "주위 적들에게 피해를 주고 기절시킴",
           "cooldown": 6,
           "extras": {
@@ -23951,7 +23951,7 @@
           },
           "type": "D - W",
           "icon": "storm_ui_icon_ragnaros_meteorshower",
-          "description": "끌어서 사용\n대상 위치에 대상 방향으로 떨어지는 3개의 유성을 소환합니다. 각 유성은 적에게 157(+4%)의 피해를 주고 2초 동안 25% 느려지게 합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
+          "description": "끌어서 사용\n대상 위치에 대상 방향으로 떨어지는 3개의 유성을 소환합니다. 각 유성은 적에게 151(+4%)의 피해를 주고 2초 동안 25% 느려지게 합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "유성을 일렬로 소환",
           "cooldown": 2.5,
           "extras": {
@@ -23967,7 +23967,7 @@
           },
           "type": "D - E",
           "icon": "storm_ui_icon_ragnaros_explosiverune",
-          "description": "1.5초 후에 폭발하여 구조물이 아닌 적에게 296(+4%)의 피해를 주는 룬을 소환합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
+          "description": "1.5초 후에 폭발하여 구조물이 아닌 적에게 285(+4%)의 피해를 주는 룬을 소환합니다.\n\n돌격병, 용병, 괴물에게는 25%의 추가 피해를 줍니다.",
           "shortDescription": "일정 시간 후 넓은 지역에 폭발을 일으킴",
           "cooldown": 4,
           "extras": {
