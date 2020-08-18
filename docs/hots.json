@@ -13874,7 +13874,7 @@
             "icon": "storm_ui_icon_imperius_trait",
             "description": "용기의 낙인을 불태우면 대상의 최대 생명력의 2.5%만큼 추가 피해를 줍니다.",
             "shortDescription": "용기의 낙인이 추가 피해",
-            "upgradeFor": "W"
+            "upgradeFor": "D"
           }
         ],
         "4": [
