@@ -1,0 +1,5 @@
+spec:
+  # Mocha doesn't need the "/*.js" part to discover tests, but the Mocha Test
+  # Explorer (VS Code extension) does need them to discover tests
+  - "chrome-ext/tests/*.js"
+  - "api/tests/*.js"
