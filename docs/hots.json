@@ -2137,7 +2137,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_anduin_chastise",
-          "description": "회오리치는 빛의 물결을 전방으로 내보내 처음 적중하는 적 영웅에게 145(+4%)의 피해를 주고 1.25초 동안 이동 불가 상태로 만듭니다.",
+          "description": "회오리치는 빛의 물결을 전방으로 내보내 처음 적중하는 적 영웅에게 155(+4%)의 피해를 주고 1.25초 동안 이동 불가 상태로 만듭니다.",
           "shortDescription": "이동 불가 상태로 만드는 빛을 내보냄",
           "cooldown": 10,
           "manaCost": 40,
@@ -2169,7 +2169,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_varians_legacy",
-            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 33(+4%) 회복시킵니다.",
+            "description": "적 영웅에게 피해를 주면 주위에서 생명력이 가장 낮은 아군의 생명력을 35(+4%) 회복시킵니다.",
             "shortDescription": "적 영웅 공격 시 주위 아군 치유",
             "extras": {
               "탐색 반경": 6.5
@@ -2239,7 +2239,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 104(+4%) 회복합니다.",
+            "description": "다른 아군 영웅에게 순간 치유를 사용하면 자신 또한 생명력을 115(+4%) 회복합니다.",
             "shortDescription": "순간 치유가 자신도 치유",
             "upgradeFor": "Q"
           },
@@ -2251,7 +2251,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_divine_star",
-            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 172(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
+            "description": "천상의 별이 적 영웅에게 적중하면 4초 동안 185(+4%)의 피해를 흡수하는 보호막을 얻습니다.",
             "shortDescription": "천상의 별로 보호막 획득",
             "upgradeFor": "W"
           },
@@ -2348,7 +2348,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_flash_heal",
-            "description": "순간 치유를 이전과 다른 대상에게 사용하면 재사용 대기시간이 50% 감소합니다.",
+            "description": "순간 치유를 이전과 다른 대상에게 사용하면 치유량이 20% 증가하고 재사용 대기시간이 50% 감소합니다.",
             "shortDescription": "새로운 대상에게 순간 치유 사용 시 재사용 대기시간 감소",
             "upgradeFor": "Q"
           },
@@ -2405,8 +2405,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_anduin_holy_word_salvation",
-            "description": "빛의 권능: 구원의 치유량이 증가하여 최대 생명력의 30%까지 치유하고, 정신 집중이 끝나면 아군 영웅들의 이동속도를 3초 동안 40% 증가시킵니다.",
-            "shortDescription": "빛의 권능: 구원이 아군의 이동 속도를 증가시킴",
+            "description": "빛의 권능: 구원이 아군 영웅을 보호 상태가 아닌 무적 상태로 만듭니다. 단, 자신에게는 적용되지 않습니다.",
+            "shortDescription": "빛의 권능: 구원이 아군을 무적 상태로 만듦",
             "upgradeFor": "R"
           },
           {
@@ -2843,13 +2843,13 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "value": 2470,
+          "value": 2525,
           "levelScaling": 0.04
         },
         "radius": 0.8125,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.1445,
+          "value": 5.2617,
           "levelScaling": 0.04
         },
         "mp": {
@@ -2876,7 +2876,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_artanis_shieldoverload",
-          "description": "생명력이 75% 미만인 상태에서 피해를 받은 후, 5초 동안 375(+4%)의 피해를 흡수하는 보호막을 얻습니다. 일반 공격을 할 때마다 과부하 보호막의 재사용 대기시간이 4초 감소합니다.",
+          "description": "생명력이 75% 미만인 상태에서 피해를 받은 후, 5초 동안 385(+4%)의 피해를 흡수하는 보호막을 얻습니다. 일반 공격을 할 때마다 과부하 보호막의 재사용 대기시간이 4초 감소합니다.",
           "shortDescription": "생명력이 낮을 때 보호막 획득",
           "cooldown": 24
         },
@@ -3243,13 +3243,13 @@
       "universe": "warcraft",
       "stats": {
         "hp": {
-          "value": 2782,
+          "value": 2860,
           "levelScaling": 0.04
         },
         "radius": 0.8125,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 5.8007,
+          "value": 5.957,
           "levelScaling": 0.04
         },
         "mp": {
@@ -3430,7 +3430,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_arthas_runetap",
-            "description": "3번째 일반 공격마다 최대 생명력의 4%를 회복합니다.",
+            "description": "3번째 일반 공격마다 최대 생명력의 5%를 회복합니다.",
             "shortDescription": "연속 일반 공격 시 생명력 회복"
           },
           {
@@ -3455,7 +3455,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_arthas_armyofthedead",
-            "description": "15초 동안 유지되는 구울들을 소환합니다. 구울을 희생시키면 267(+4%)의 생명력을 회복합니다.",
+            "description": "15초 동안 유지되며 일반 공격으로 20(+4%)의 피해를 주는 구울들을 소환합니다. 구울을 희생시키면 267(+4%)의 생명력을 회복합니다.",
             "shortDescription": "구울을 일으켜 함께 싸우거나, 희생시켜 생명력 회복",
             "cooldown": 80,
             "manaCost": 80,
@@ -3567,7 +3567,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_arthas_armyofthedead",
-            "description": "3마리의 구울을 추가로 소환합니다. 구울로 회복하는 생명력이 50% 증가하고, 구울의 지속 시간이 5초 증가합니다.",
+            "description": "3마리의 구울을 추가로 소환합니다. 구울의 공격력이 50% 증가하고 구울로 회복하는 생명력이 50% 증가하며, 구울의 지속 시간이 5초 증가합니다.",
             "shortDescription": "생성되는 구울 수 및 지속 시간 증가",
             "upgradeFor": "R"
           },
@@ -3579,7 +3579,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_arthas_summonsindragosa",
-            "description": "신드라고사가 두 배 멀리 날아갑니다. 적 영웅들은 2초 동안 이동 불가 상태가 된 후, 3.5초 동안 60% 느려집니다.",
+            "description": "신드라고사가 두 배 멀리 날아갑니다. 적 영웅들은 2.5초 동안 이동 불가 상태가 된 후, 4초 동안 60% 느려집니다.",
             "shortDescription": "신드라고사 이동 거리 및 무력화 효과 지속 시간 증가",
             "upgradeFor": "R"
           },
@@ -3591,7 +3591,7 @@
             },
             "type": "active",
             "icon": "storm_ui_icon_talent_deaths_advance",
-            "description": "사용하면 이동 속도가 3초 동안 30% 증가합니다.\n\n지속 효과: 이동 속도가 10% 증가합니다.",
+            "description": "사용하면 이동 속도가 5초 동안 30% 증가합니다.\n\n지속 효과: 이동 속도가 10% 증가합니다.",
             "shortDescription": "사용 시 이동 속도 증가",
             "cooldown": 50
           },
@@ -3603,7 +3603,7 @@
             },
             "type": "active",
             "icon": "storm_temp_war3_btnantimagicshell",
-            "description": "사용하면 3초 동안 기술 피해에 면역이 되고 방지한 피해의 25%만큼 생명력을 회복합니다.",
+            "description": "사용하면 4초 동안 기술 피해에 면역이 되고 방지한 피해의 25%만큼 생명력을 회복합니다.",
             "shortDescription": "사용 시 기술 피해에 면역",
             "cooldown": 60
           }
@@ -8730,7 +8730,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_diablo_shadowcharge_var1",
-          "description": "적에게 돌진해 밀쳐내며 40(+4%)의 피해를 주고 이동 속도가 2초 동안 15% 증가합니다. 대상이 지형에 부딪히면 1초 동안 기절하고 120(+4%)의 피해를 추가로 받습니다.",
+          "description": "적에게 돌진해 밀쳐내며 40(+4%)의 피해를 주고 이동 속도가 2초 동안 15% 증가합니다. 대상이 지형에 부딪히면 1초 동안 기절하고 130(+4%)의 피해를 추가로 받습니다.",
           "shortDescription": "대상에게 돌진하여 밀쳐냄",
           "cooldown": 13,
           "manaCost": 70,
@@ -8882,7 +8882,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_cooldown",
-            "description": "일반 공격으로 적에게 피해를 줄 때마다 일반 기술의 재사용 대기시간이 1.25초 감소합니다.",
+            "description": "일반 공격으로 적에게 피해를 줄 때마다 일반 기술의 재사용 대기시간이 1.5초 감소합니다.",
             "shortDescription": "일반 공격 시 기술 재사용 대기시간 감소"
           }
         ],
@@ -13848,7 +13848,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_q",
-            "description": "대상에게 찍혀 있는 용기의 낙인 하나당 천공의 돌진의 마지막 피해량이 100% 증가하고 재사용 대기시간이 1.25초 감소합니다.",
+            "description": "대상에게 찍혀 있는 용기의 낙인 하나당 천공의 돌진의 마지막 피해량이 125% 증가하고 재사용 대기시간이 1.25초 감소합니다.",
             "shortDescription": "용기의 낙인으로 천공의 돌진 강화",
             "upgradeFor": "Q"
           },
@@ -13898,7 +13898,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_trait",
-            "description": "용기의 낙인의 치유량이 60% 증가합니다.",
+            "description": "용기의 낙인의 치유량이 70% 증가합니다.",
             "shortDescription": "용기의 낙인 치유량 증가",
             "upgradeFor": "D"
           },
@@ -13910,7 +13910,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_globe",
-            "description": "적 영웅에게 피해를 주면 활성화된 재생의 구슬의 지속 시간이 8초로 갱신됩니다. 최고치에 도달하면 더는 적용되지 않습니다.",
+            "description": "재생의 구슬의 효과가 활성화된 동안 방어력이 10 증가하고, 적 영웅에게 피해를 주면 활성화된 재생의 구슬의 지속 시간이 8초로 갱신됩니다. 최고치에 도달하면 더는 적용되지 않습니다.",
             "shortDescription": "적 영웅 공격 시 재생의 구슬 지속 시간 갱신"
           }
         ],
@@ -13938,7 +13938,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_w",
-            "description": "솔라리온의 불길이 중심부를 따라 이글거리는 대지를 남깁니다. 이글거리는 대지는 2초 후에 폭발하며 125(+4%)의 피해를 줍니다. 폭발은 용기의 낙인이 많이 찍혀 있을수록 강한 피해를 주며 낙인을 불태웁니다.",
+            "description": "솔라리온의 불길이 중심부를 따라 이글거리는 대지를 남깁니다. 이글거리는 대지는 2초 후에 폭발하며 135(+4%)의 피해를 줍니다. 폭발은 용기의 낙인이 많이 찍혀 있을수록 강한 피해를 주며 낙인을 불태웁니다.",
             "shortDescription": "솔라리온의 불길이 일정 시간 후 폭발",
             "extras": {
               "피해 범위": "0.75 × 9.5"
@@ -14010,7 +14010,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_q",
-            "description": "천공의 돌진으로 적 영웅을 기절시키면 대상의 공격력이 4초 동안 40% 감소합니다.",
+            "description": "천공의 돌진으로 적 영웅을 기절시키면 대상의 공격력이 4초 동안 50% 감소합니다.",
             "shortDescription": "천공의 돌진이 공격력을 감소시킴",
             "upgradeFor": "Q"
           },
@@ -14102,7 +14102,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_r2",
-            "description": "용기의 낙인을 불태우면 앙기리스의 분노의 재사용 대기시간이 5초 감소합니다.",
+            "description": "용기의 낙인을 불태우면 앙기리스의 분노의 재사용 대기시간이 10초 감소합니다.",
             "shortDescription": "용기의 낙인으로 재사용 대기시간 감소",
             "upgradeFor": "R"
           },
@@ -14114,7 +14114,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_imperius_trait",
-            "description": "용기의 낙인의 지속 시간이 3초로 줄어들지만, 한번 찍힌 낙인은 공격을 해도 사라지지 않습니다.",
+            "description": "용기의 낙인의 지속 시간이 5초로 줄어들지만, 한번 찍힌 낙인은 공격을 해도 사라지지 않습니다.",
             "shortDescription": "용기의 낙인이 사라지지 않음",
             "upgradeFor": "D"
           },
@@ -15967,8 +15967,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_kerrigan_primalgrasp",
-            "description": "원시 손아귀가 적중한 적 영웅 하나당 기술 방어력이 4초 동안 20 증가합니다.",
-            "shortDescription": "원시 손아귀가 기술 방어력을 증가시킴",
+            "description": "원시 손아귀가 적중한 적 영웅 하나당 기술 방어력이 20 증가하고, 이동 속도가 4% 증가하여 최대 20% 증가합니다. 4초 동안 지속됩니다.",
+            "shortDescription": "원시 손아귀가 기술 방어력 및 이동 속도 증가",
             "upgradeFor": "E"
           },
           {
@@ -20577,7 +20577,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_mephisto_shade",
-            "description": "메피스토의 그림자가 활성화된 동안 기술 위력이 25% 증가하고 그림자가 사라진 후에도 2.5초 동안 효과가 유지됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 20회 이상 적중하면, 기술 위력 증가 효과가 그림자가 사라진 후에도 10초 동안 유지됩니다.",
+            "description": "메피스토의 그림자가 활성화된 동안 기술 위력이 25% 증가하고 그림자가 사라진 후에도 2.5초 동안 효과가 유지됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 18회 이상 적중하면, 기술 위력 증가 효과가 그림자가 사라진 후에도 10초 동안 유지됩니다.",
             "shortDescription": "메피스토의 그림자가 기술 위력을 증가시킴",
             "upgradeFor": "E"
           }
@@ -20653,7 +20653,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_mephisto_shade_c",
-            "description": "메피스토의 그림자가 활성화된 동안 이동 속도가 20% 증가하고, 만료된 후에도 2.5초 동안 지속됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 20회 이상 적중하면 메피스토의 그림자의 재사용 대기시간이 초기화됩니다.",
+            "description": "메피스토의 그림자가 활성화된 동안 이동 속도가 20% 증가하고, 만료된 후에도 2.5초 동안 지속됩니다.\n\n메피스토의 그림자가 활성화된 동안 일반 기술이 적 영웅에게 18회 이상 적중하면 메피스토의 그림자의 재사용 대기시간이 초기화됩니다.",
             "shortDescription": "메피스토의 그림자가 이동 속도를 증가시킴",
             "upgradeFor": "E"
           }
@@ -21165,7 +21165,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_monk_divinepalm",
-            "description": "대상이 죽음에 이르는 피해를 받지 않으면 신성 장법의 재사용 대기시간이 5초로 감소합니다.",
+            "description": "신성 장법의 치유량이 75% 증가합니다. 대상이 죽음에 이르는 피해를 받지 않으면 신성 장법의 재사용 대기시간이 5초로 감소합니다.",
             "shortDescription": "대상이 죽음에 이르지 않으면 신성 장법 재사용 대기시간 감소",
             "upgradeFor": "R"
           },
@@ -21962,13 +21962,13 @@
       "universe": "diablo",
       "stats": {
         "hp": {
-          "value": 2000,
+          "value": 2200,
           "levelScaling": 0.04
         },
         "radius": 0.6875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 4.168,
+          "value": 4.583,
           "levelScaling": 0.04
         },
         "mp": {
@@ -21982,7 +21982,7 @@
         "range": 1.5,
         "period": 0.8332,
         "damage": {
-          "value": 110,
+          "value": 100,
           "levelScaling": 0.04
         }
       },
@@ -21995,7 +21995,7 @@
           },
           "type": "D",
           "icon": "storm_ui_icon_necromancer_raiseskeleton",
-          "description": "주위에서 죽은 적 돌격병을 225(+4%)의 생명력을 가진 해골 전사로 되살립니다. 해골 전사는 일반 공격으로 21(+4%)의 피해를 주고, 15초 동안 지속됩니다. 최대 4명의 해골 전사를 동시에 부릴 수 있습니다.",
+          "description": "주위에서 죽은 적 돌격병을 240(+4%)의 생명력을 가진 해골 전사로 되살립니다. 해골 전사는 12초 동안 지속되며 일반 공격으로 21(+4%)의 피해를 주고, 죽을 때 폭발하여 주위 적들에게 50(+4%)의 피해를 줍니다. 이 방식으로 되살아난 해골 전사는 최대 3명까지 동시에 부릴 수 있습니다.",
           "shortDescription": "죽은 돌격병을 해골 전사로 되살림"
         },
         {
@@ -22006,7 +22006,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_necromancer_reap",
-          "description": "1초 후에 자신에게 돌아오는 낫을 소환합니다. 낫은 돌아오면서 적들에게 240(+4%)의 피해를 줍니다.",
+          "description": "1초 후에 자신에게 돌아오는 낫을 소환합니다. 낫은 돌아오면서 적들에게 210(+4%)의 피해를 주고, 적 영웅에게 적중하면 해골 전사를 1명 소환합니다. 이 효과는 자신이 최대로 부릴 수 있는 해골 전사의 수에 영향을 받지 않습니다.",
           "shortDescription": "되돌아오면서 적에게 피해를 주는 낫 투척",
           "cooldown": 8,
           "manaCost": 55,
@@ -22100,7 +22100,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_bonearmor",
-            "description": "뼈 갑옷이 활성화된 동안 적의 일반 공격을 모두 회피하지만, 뼈 갑옷의 재사용 대기시간이 20초 증가합니다.",
+            "description": "뼈 갑옷이 활성화된 동안 적의 일반 공격을 모두 회피하지만, 뼈 갑옷의 재사용 대기시간이 10초 증가합니다.",
             "shortDescription": "뼈 갑옷 사용 시 적 일반 공격 회피",
             "upgradeFor": "active"
           }
@@ -22114,8 +22114,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_reap",
-            "description": "퀘스트: 유령의 낫이 적 영웅에게 적중해야 합니다.\n보상: 유령의 낫이 적 영웅에게 16회 적중하면 유령의 낫의 재사용 대기시간이 3초 감소하고 마나 소모량이 20 감소합니다.",
-            "shortDescription": "퀘스트: 유령의 낫 재사용 대기시간 감소",
+            "description": "유령의 낫의 재사용 대기시간이 2초 감소하고 마나 소모량이 15 감소합니다.",
+            "shortDescription": "유령의 낫 재사용 대기시간, 마나 소모량 감소",
             "upgradeFor": "Q"
           },
           {
@@ -22126,7 +22126,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_cursedstrikes_off",
-            "description": "저주의 수확이 적중한 적 하나당 재사용 대기시간이 1초 감소하여 최대 12초 감소합니다.",
+            "description": "일반 공격력이 15% 증가합니다. 저주의 수확이 적중한 적 하나당 재사용 대기시간이 1초 감소하여 최대 12초 감소합니다.",
             "shortDescription": "저주의 수확 재사용 대기시간 감소",
             "upgradeFor": "W"
           },
@@ -22157,18 +22157,6 @@
             "upgradeFor": "W"
           },
           {
-            "id": "NecromancerTalentWeaken",
-            "name": {
-              "en": "Weaken",
-              "ko": "약화"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_necromancer_cursedstrikes_b",
-            "description": "저주의 수확의 공격 속도 감소 효과가 35% 증가하고 지속 시간이 1초 증가합니다.",
-            "shortDescription": "저주의 수확 공격 속도 감소 효과 증가",
-            "upgradeFor": "W"
-          },
-          {
             "id": "NecromancerTalentTragOulsEssence",
             "name": {
               "en": "Trag'Oul's Essence",
@@ -22179,6 +22167,18 @@
             "description": "해골 전사가 일반 공격을 할 때마다 최대 생명력의 0.5%와 최대 마나의 0.2%를 회복합니다.",
             "shortDescription": "해골 전사 공격 시 생명력 및 마나 회복",
             "upgradeFor": "D"
+          },
+          {
+            "id": "NecromancerBoneArmorWallOfBonesTalent",
+            "name": {
+              "en": "Wall Of Bones",
+              "ko": "뼈의 장벽"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_necromancer_bonearmor",
+            "description": "뼈 갑옷의 보호막 흡수량이 최대 생명력의 35%로 증가하며, 보호막의 지속 시간 동안 기술 방어력이 20 증가합니다.",
+            "shortDescription": "뼈 갑옷 보호막 흡수량 증가",
+            "upgradeFor": "active"
           }
         ],
         "10": [
@@ -22190,7 +22190,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_necromancer_poisonnova",
-            "description": "0.5초 후, 사방으로 맹독을 발사하여 적중한 적에게 10초에 걸쳐 570(+4%)의 피해를 줍니다.",
+            "description": "0.5초 후, 사방으로 맹독을 발사하여 적중한 적에게 10초에 걸쳐 630(+4%)의 피해를 줍니다.",
             "shortDescription": "주위 적들을 중독시킴",
             "cooldown": 90,
             "manaCost": 100,
@@ -22244,19 +22244,6 @@
             "upgradeFor": "W"
           },
           {
-            "id": "HeroGenericExecutionerPassive",
-            "name": {
-              "en": "Executioner",
-              "ko": "집행자"
-            },
-            "type": "passive",
-            "icon": "storm_ui_icon_talent_autoattack_damage",
-            "description": "감속, 이동 불가, 기절 상태인 적 영웅에게 일반 공격을 하면 일반 공격력이 3초 동안 30% 증가합니다.",
-            "shortDescription": "무력화된 영웅 공격 시 일반 공격력 증가"
-          }
-        ],
-        "16": [
-          {
             "id": "NecromancerTalentAmplifyDamage",
             "name": {
               "en": "Amplify Damage",
@@ -22264,25 +22251,36 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_boneprison",
-            "description": "뼈 감옥 안에 갇힌 적은 방어력이 1.75초 동안 25 감소합니다.",
+            "description": "뼈 감옥의 이동 불가 지속 시간이 0.25초 증가합니다. 뼈 감옥 안에 갇힌 적은 방어력이 2초 동안 25 감소합니다.",
             "shortDescription": "뼈 감옥이 방어력을 감소시킴",
             "upgradeFor": "E"
-          },
+          }
+        ],
+        "16": [
           {
-            "id": "NecromancerTalentCorpseExplosion",
+            "id": "NecromancerTalentDecrepify",
             "name": {
-              "en": "Corpse Explosion",
-              "ko": "시체 폭발"
+              "en": "Decrepify",
+              "ko": "노화"
             },
             "type": "passive",
-            "icon": "storm_ui_icon_necromancer_raiseskeleton",
-            "description": "해골 전사가 죽으면 폭발하여 좁은 지역에 55(+4%)의 피해를 줍니다. 영웅이 아닌 대상에게는 100%의 추가 피해를 줍니다.",
-            "shortDescription": "해골 전사 사망 시 폭발",
-            "extras": {
-              "피해 반경": 1.5
-            },
-            "upgradeFor": "D"
+            "icon": "storm_ui_icon_necromancer_reap",
+            "description": "유령의 낫과 해골 전사의 일반 공격이 적 영웅을 2.5초 동안 40% 느려지게 합니다.",
+            "shortDescription": "유령의 낫, 해골 전사가 적을 느려지게 함",
+            "upgradeFor": "Q"
           },
+          {
+            "id": "NecromancerTalentWeaken",
+            "name": {
+              "en": "Weaken",
+              "ko": "약화"
+            },
+            "type": "passive",
+            "icon": "storm_ui_icon_necromancer_cursedstrikes_off",
+            "description": "저주의 수확과 해골 전사의 공격에 적중당한 적 영웅의 공격력이 3초 동안 40% 감소합니다.",
+            "shortDescription": "저주의 수확, 해골 전사가 적 공격력을 감소시킴",
+            "upgradeFor": "W"
+            },
           {
             "id": "NecromancerTalentBoneSpear",
             "name": {
@@ -22309,8 +22307,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_poisonnova",
-            "description": "맹독 확산으로 준 피해의 50%만큼 생명력을 회복합니다.\n\n지속 효과: 해골 전사의 공격력이 50% 증가합니다.",
-            "shortDescription": "맹독 확산으로 생명력 회복 및 해골 전사 공격력 증가",
+            "description": "맹독 확산으로 준 피해의 50%만큼 생명력을 회복하고 맹독 확산의 지속 시간이 50% 증가합니다.",
+            "shortDescription": "맹독 확산 지속 시간 증가 및 생명력 회복",
             "upgradeFor": "R"
           },
           {
@@ -22321,8 +22319,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_skeletalmages",
-            "description": "해골 마법사의 감속 효과가 20% 증가합니다.\n\n지속 효과: 해골 전사의 일반 공격이 적을 2초 동안 30% 느려지게 합니다.",
-            "shortDescription": "해골 마법사 감속 효과 증가 및 해골 전사 공격 시 적을 감속시킴",
+            "description": "해골 마법학자의 감속 효과가 20% 증가합니다.\n\n유령의 낫이 적 영웅에게 5번 적중할 때마다 주위에서 죽은 적 돌격병을 해골 전사가 아닌 해골 마법학자로 되살립니다.",
+            "shortDescription": "유령의 낫이 해골 마법학자 소환",
             "upgradeFor": "R"
           },
           {
@@ -22345,7 +22343,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_necromancer_raiseskeleton",
-            "description": "해골 전사가 일반 공격을 할 때마다 궁극기의 재사용 대기시간이 1% 감소합니다.",
+            "description": "해골 전사가 적에게 피해를 줄 때마다 뼈 갑옷과 궁극기의 재사용 대기시간이 1.5% 감소합니다.",
             "shortDescription": "해골 전사 공격 시 궁극기 재사용 대기시간 감소",
             "upgradeFor": "D"
           }
@@ -24419,7 +24417,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_raynor_acardtoplay",
-            "description": "지속 효과: 기절, 감속 상태인 영웅에게 15%의 추가 피해를 줍니다.\n\n뜨거운 맛을 보여주지에 적중당한 적 영웅은 이동 속도가 2.5초 동안 10% 감소합니다.",
+            "description": "지속 효과: 기절, 감속 상태인 영웅에게 10%의 추가 피해를 줍니다.\n\n뜨거운 맛을 보여주지에 적중당한 적 영웅은 이동 속도가 2.5초 동안 10% 감소합니다.",
             "shortDescription": "무력화된 영웅들에게 추가 피해"
           },
           {
@@ -24833,7 +24831,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rehgar_ghostwolf",
-            "description": "늑대 정령 형상일 때 생명력 재생량이 75% 증가합니다. 늑대 정령으로 일반 공격을 하면 최대 마나의 1%를 회복하며, 영웅을 대상으로는 4% 회복합니다.",
+            "description": "늑대 정령 형상일 때 생명력 재생량이 75% 증가합니다. 늑대 정령으로 일반 공격을 하면 최대 마나의 1%를 회복하며, 영웅을 대상으로는 5% 회복합니다.",
             "shortDescription": "늑대 정령 형상으로 생명력 및 마나 회복",
             "upgradeFor": "Z"
           },
@@ -24921,7 +24919,7 @@
             },
             "type": "R",
             "icon": "storm_ui_icon_rehgar_bloodlust",
-            "description": "주위 아군 영웅들의 공격 속도를 40%, 이동 속도를 35% 증가시키고 일반 공격으로 주 대상에게 준 피해의 30%만큼 생명력을 회복하게 합니다. 8초 동안 지속됩니다.",
+            "description": "주위 아군 영웅들의 공격 속도를 40%, 이동 속도를 35% 증가시키고 일반 공격으로 주 대상에게 준 피해의 40%만큼 생명력을 회복하게 합니다. 8초 동안 지속됩니다.",
             "shortDescription": "아군 영웅들의 이동 속도 및 공격 속도 증가, 생명력 흡수 효과 부여",
             "cooldown": 90,
             "manaCost": 70,
@@ -25027,8 +25025,8 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_rehgar_bloodlust",
-            "description": "피의 욕망의 치유량이 일반 공격으로 준 피해의 30%에서 60%로 증가합니다.",
-            "shortDescription": "피의 욕망 생명력 흡수 효과 증가",
+            "description": "피의 욕망의 지속 시간과 사거리가 100% 증가합니다.",
+            "shortDescription": "피의 욕망 지속 시간 및 사거리 증가",
             "upgradeFor": "R"
           },
           {
@@ -25091,20 +25089,20 @@
           "range": 5.5,
           "period": 1.15,
           "damage": {
-            "value": 125,
+            "value": 134,
             "levelScaling": 0.04
           }
         },
         {
           "unitName": "미샤",
           "hp": {
-            "value": 1620,
+            "value": 1520,
             "levelScaling": 0.0475
           },
           "radius": 0.9375,
           "speed": 5.5658,
           "hpRegen": {
-            "value": 3.375,
+            "value": 3.1718,
             "levelScaling": 0.0475
           },
           "range": 1.5,
@@ -25172,7 +25170,7 @@
           "description": "미샤의 생명력을 5초에 걸쳐 714(+4%) 회복시킵니다.",
           "shortDescription": "미샤 지속 치유",
           "cooldown": 10,
-          "manaCost": 60
+          "manaCost": 70
         }
       ],
       "talents": {
@@ -25773,7 +25771,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_samuro_bladestorm",
-            "description": "칼날폭풍을 사용하면 환영도 칼날폭풍을 사용하여 30%의 피해를 줍니다. 칼날폭풍이 적 영웅에게 25회 이상 적중하면 칼날폭풍의 재사용 대기시간이 초기화됩니다.",
+            "description": "칼날폭풍을 사용하면 환영도 칼날폭풍을 사용하여 30%의 피해를 줍니다. 칼날폭풍이 적 영웅에게 20회 이상 적중하면 칼날폭풍의 재사용 대기시간이 초기화됩니다.",
             "shortDescription": "환영이 칼날폭풍 사용, 재사용 대기시간 초기화 가능",
             "upgradeFor": "R"
           },
@@ -26625,13 +26623,13 @@
       "universe": "starcraft",
       "stats": {
         "hp": {
-          "value": 1765,
+          "value": 1850,
           "levelScaling": 0.04
         },
         "radius": 0.6875,
         "speed": 4.8398,
         "hpRegen": {
-          "value": 3.6757,
+          "value": 3.8554,
           "levelScaling": 0.04
         },
         "mp": {
@@ -26687,7 +26685,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_stukov_weightedpustule",
-          "description": "일직선상의 모든 적 영웅들에게 적중하는 고름을 발사합니다. 고름은 적중한 적 영웅에게 20(+4%)의 피해를 주고 5% 느려지게 하여 3초에 걸쳐 최대 50% 느려지게 합니다. 고름이 만료되거나 제거되면 추가로 80(+4%)의 피해를 줍니다.",
+          "description": "일직선상의 모든 적 영웅들에게 적중하는 고름을 발사합니다. 고름은 적중한 적 영웅에게 20(+4%)의 피해를 주고 5% 느려지게 하여 3초에 걸쳐 최대 50% 느려지게 합니다. 고름이 만료되거나 제거되면 추가로 88(+4%)의 피해를 줍니다.",
           "shortDescription": "적에게 피해를 주고 감속시키는 감염체 발사",
           "cooldown": 10,
           "manaCost": 50,
@@ -29734,7 +29732,7 @@
             "icon": "storm_ui_icon_talent_hardenedshield",
             "description": "사용하면 방어력이 3초 동안 50 증가합니다.\n\n적 영웅에게 일반 공격 및 일반 기술로 피해를 줄 때마다 증가한 방어력의 지속 시간이 0.5초 증가합니다.",
             "shortDescription": "사용 시 방어력 증가",
-            "cooldown": 120
+            "cooldown": 60
           }
         ]
       }
