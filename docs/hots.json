@@ -921,7 +921,7 @@
             "en": "Breath of Life",
             "ko": "생명의 숨결"
           },
-          "type": "Q",
+          "type": "D - Q",
           "icon": "storm_ui_icon_alexstrasza_breath_of_life",
           "description": "자신의 현재 생명력의 20%만큼 아군 영웅의 생명력을 회복시킵니다.",
           "shortDescription": "아군 영웅 치유",
@@ -936,7 +936,7 @@
             "en": "Preservation",
             "ko": "보존"
           },
-          "type": "W",
+          "type": "D - W",
           "icon": "storm_ui_icon_alexstrasza_preservation",
           "description": "3초 후에 꽃을 피우는 생명의 씨앗을 심습니다. 씨앗이 꽃을 피우면 주위 아군 영웅들의 최대 생명력의 30%를 회복시킵니다.",
           "shortDescription": "일정 범위 내 아군 영웅 치유",
@@ -952,7 +952,7 @@
             "en": "Wing Buffet",
             "ko": "폭풍 날개"
           },
-          "type": "E",
+          "type": "D - E",
           "icon": "storm_ui_icon_alexstrasza_wing_buffet",
           "description": "일정 지역 안의 적들에게 150(+4%) 의 피해를 주고 밀쳐내며 3초 동안 50% 느려지게 합니다.",
           "shortDescription": "적들을 밀쳐내며 피해를 주고 느려지게 함",
@@ -2567,7 +2567,8 @@
             "type": "passive",
             "icon": "storm_ui_icon_anubarak_hardencarapace_var1",
             "description": "강화 갑피의 기술 방어력이 20 증가합니다.",
-            "shortDescription": "강화 갑피 기술 방어력 증가"
+            "shortDescription": "강화 갑피 기술 방어력 증가",
+            "upgradeFor": "W"
           },
           {
             "id": "AnubarakCombatStyleLegionOfBeetles",
@@ -3203,7 +3204,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_artanis_purifierbeam",
-            "description": "정화 광선의 속도가 14% 증가합니다. 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 정화 광선이 다시 사용됩니다.",
+            "description": "정화 광선의 속도가 15% 증가합니다. 대상이 죽으면, 시야에 보이는 가장 가까운 적 영웅에게 정화 광선이 다시 사용됩니다.",
             "shortDescription": "정화 광선 속도 증가 및 대상 처치 시 다시 사용됨",
             "upgradeFor": "R"
           },
@@ -5527,7 +5528,7 @@
       "name": "초",
       "title": "황혼의 망치단 족장",
       "icon": "ui_targetportrait_hero_cho",
-      "newRole": "bruiser",
+      "newRole": "tank",
       "universe": "warcraft",
       "stats": {
         "hp": {
@@ -6666,7 +6667,7 @@
             "levelScaling": 0.04
           },
           "radius": 1.1875,
-          "speed": 4.1133,
+          "speed": 4.1138,
           "hpRegen": {
             "value": 4.168,
             "levelScaling": 0.04
@@ -7331,7 +7332,7 @@
             "icon": "storm_ui_icon_deathwing_aspect_of_death_alt1",
             "description": "일반 공격으로 적 영웅에게 준 피해의 25%만큼 생명력을 회복합니다. 갑옷을 하나 잃으면 0.75초 동안 보호 상태가 됩니다.",
             "shortDescription": "갑옷을 잃으면 보호 상태가 됨, 일반 공격으로 생명력 회복",
-            "upgradeFor": "W"
+            "upgradeFor": "D"
           }
         ],
         "4": [
@@ -11121,18 +11122,6 @@
           }
         },
         {
-          "id": "GallShove",
-          "name": {
-            "en": "Shove",
-            "ko": "밀치기"
-          },
-          "type": "Z",
-          "icon": "storm_ui_icon_gall_shove",
-          "description": "초를 밀쳐서 짧은 거리를 이동시키고 초의 이동 속도를 2초 동안 25% 증가시킵니다.",
-          "shortDescription": "초를 밀쳐서 짧은 거리를 이동시킴",
-          "cooldown": 30
-        },
-        {
           "id": "GallTalentEyeOfKilrogg",
           "name": {
             "en": "Eye of Kilrogg",
@@ -11147,6 +11136,18 @@
             "사거리": 12,
             "시야 반경": 10.25
           }
+        },
+        {
+          "id": "GallShove",
+          "name": {
+            "en": "Shove",
+            "ko": "밀치기"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_gall_shove",
+          "description": "초를 밀쳐서 짧은 거리를 이동시키고 초의 이동 속도를 2초 동안 25% 증가시킵니다.",
+          "shortDescription": "초를 밀쳐서 짧은 거리를 이동시킴",
+          "cooldown": 30
         }
       ],
       "talents": {
@@ -14981,7 +14982,7 @@
           },
           "type": "Q",
           "icon": "storm_ui_icon_kaelthas_flamestrike",
-          "description": "1초 후, 대상 지역에 345(+4%)의 피해를 줍니다.\n\n<span style=\"color:#ff00\">신록의 구슬</span>을 사용하면 반경이 50% 증가합니다.",
+          "description": "1초 후, 대상 지역에 345(+4%)의 피해를 줍니다.\n\n<span style=\"color:#00ff00\">신록의 구슬</span>을 사용하면 반경이 50% 증가합니다.",
           "shortDescription": "대상 지역에 피해를 줌",
           "cooldown": 7,
           "manaCost": 70,
@@ -14998,7 +14999,7 @@
           },
           "type": "W",
           "icon": "storm_ui_icon_kaelthas_livingbomb",
-          "description": "3초에 걸쳐 적에게 126(+4%)의 피해를 준 다음 폭발하여 주위 모든 적에게 215(+4%)의 피해를 줍니다. 다른 영웅이 폭발에 적중당하면 살아있는 폭탄이 확산되지만, 2회 연속 확산되지는 않습니다.\n\n<span style=\"color:#ff00\">신록의 구슬</span>을 사용하면 마나를 소모하지 않고, 재사용 대기시간이 발생하지 않습니다.",
+          "description": "3초에 걸쳐 적에게 126(+4%)의 피해를 준 다음 폭발하여 주위 모든 적에게 215(+4%)의 피해를 줍니다. 다른 영웅이 폭발에 적중당하면 살아있는 폭탄이 확산되지만, 2회 연속 확산되지는 않습니다.\n\n<span style=\"color:#00ff00\">신록의 구슬</span>을 사용하면 마나를 소모하지 않고, 재사용 대기시간이 발생하지 않습니다.",
           "shortDescription": "적에게 지속 피해를 주고 폭발하여 주위 적들에게 피해를 줌",
           "cooldown": 10,
           "manaCost": 50,
@@ -15015,7 +15016,7 @@
           },
           "type": "E",
           "icon": "storm_ui_icon_kaelthas_gravitylapse",
-          "description": "처음 적중한 적을 1초 동안 기절시킵니다.\n\n<span style=\"color:#ff00\">신록의 구슬</span>을 사용하면 중력 붕괴가 처음 적중한 3명의 적을 기절시키고 기절 지속 시간이 50% 증가합니다.",
+          "description": "처음 적중한 적을 1초 동안 기절시킵니다.\n\n<span style=\"color:#00ff00\">신록의 구슬</span>을 사용하면 중력 붕괴가 처음 적중한 3명의 적을 기절시키고 기절 지속 시간이 50% 증가합니다.",
           "shortDescription": "적을 기절시킴",
           "cooldown": 14,
           "manaCost": 90,
@@ -20122,6 +20123,18 @@
           "extras": {
             "사거리": "7 ~ 16"
           }
+        },
+        {
+          "id": "MedivhTransformRaven",
+          "name": {
+            "en": "Raven Form",
+            "ko": "까마귀 형상"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_medivh_mount",
+          "description": "까마귀로 변신하여 이동 속도가 20% 증가합니다. 변신한 동안 지형을 넘어 이동하며 시야를 확보할 수 있고, 모든 효과에 면역이 됩니다.",
+          "shortDescription": "까마귀로 변신",
+          "cooldown": 4
         }
       ],
       "talents": {
@@ -22694,7 +22707,7 @@
       "name": "키히라",
       "title": "정처 없는 현상금 사냥꾼",
       "icon": "ui_targetportrait_hero_nexus2",
-      "newRole": "ranged_assassin",
+      "newRole": "melee_assassin",
       "universe": "nexus",
       "stats": {
         "hp": {
@@ -22862,7 +22875,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_nexushunter_q",
-            "description": "살육으로 적 영웅에게 피해를 줄 때마다, 4초 내의 다음 일반 공격이 적 영웅에게 <span style=\"color:#tooltip numbers\">12%</span>의 추가 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다. 공격력은 최대 10회 중첩됩니다.",
+            "description": "살육으로 적 영웅에게 피해를 줄 때마다, 4초 내의 다음 일반 공격이 적 영웅에게 12%의 추가 피해를 주고 준 피해의 50%만큼 생명력을 회복합니다. 공격력은 최대 10회 중첩됩니다.",
             "shortDescription": "살육으로 일반 공격력 증가 및 생명력 회복",
             "upgradeFor": "Q"
           },
@@ -25109,6 +25122,18 @@
             "사거리": 4.5,
             "효과 반경": 3.5
           }
+        },
+        {
+          "id": "RehgarGhostWolfActivate",
+          "name": {
+            "en": "Ghost Wolf",
+            "ko": "늑대 정령"
+          },
+          "type": "Z",
+          "icon": "storm_ui_icon_rehgar_mount",
+          "description": "이동 속도가 20% 증가합니다.",
+          "shortDescription": "늑대 정령으로 변신",
+          "cooldown": 4
         }
       ],
       "talents": {
@@ -32518,7 +32543,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_nazeebo_voodooritual",
-            "description": "퀘스트: 부두 의식을 175중첩 이상 획득해야 합니다.\n보상: 부두 의식을 175중첩 이상 획득하면 부두 의식이 적 영웅에게도 적용되고 공격력이 6초에 걸쳐 67(+4%)에서 167(+4%)으로 증가합니다.",
+            "description": "퀘스트: 부두 의식을 175중첩 이상 획득해야 합니다.\n보상: 부두 의식을 175중첩 이상 획득하면 부두 의식이 적 영웅에게도 적용되고 공격력이 6초에 걸쳐 67(+4%)에서 167(+4%)로 증가합니다.",
             "shortDescription": "퀘스트: 부두 의식 강화",
             "upgradeFor": "D"
           }
@@ -32843,7 +32868,7 @@
             },
             "type": "passive",
             "icon": "storm_ui_icon_wizard_arcaneorb",
-            "description": "비전 보주의 사거리가 25% 증가하여 최대 피해가 270(+3%)에서 371(+3%)으로 증가합니다.",
+            "description": "비전 보주의 사거리가 25% 증가하여 최대 피해가 270(+3%)에서 371(+3%)로 증가합니다.",
             "shortDescription": "비전 보주 사거리 증가",
             "upgradeFor": "W"
           },
@@ -33117,7 +33142,8 @@
             "type": "passive",
             "icon": "storm_ui_icon_yrel_divine_steed",
             "description": "탈것에 즉시 탑승할 수 있습니다. 탈것에 탑승하면 이동 속도가 60% 증가하고 3초에 걸쳐 서서히 감소합니다.",
-            "shortDescription": "탈것 즉시 탑승"
+            "shortDescription": "탈것 즉시 탑승",
+            "upgradeFor": "Z"
           }
         ],
         "10": [
@@ -33881,7 +33907,8 @@
             "type": "passive",
             "icon": "storm_ui_icon_talent_autoattack_base",
             "description": "에너지가 40 이상이면 일반 공격의 범위가 35% 증가합니다.",
-            "shortDescription": "에너지가 높으면 일반 공격 범위 증가"
+            "shortDescription": "에너지가 높으면 일반 공격 범위 증가",
+            "upgradeFor": "D"
           },
           {
             "id": "ZaryaEnergyHitMe",
