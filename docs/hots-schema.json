@@ -44,11 +44,7 @@
       }
     }
   },
-  "required": [
-    "hotsVersion",
-    "heroes",
-    "iconUrls"
-  ],
+  "required": ["hotsVersion", "heroes", "iconUrls"],
   "definitions": {
     "hero": {
       "description": "Represents a hero object",
@@ -87,10 +83,7 @@
         },
         "stats": {
           "description": "Collection of the hero's units (unit === collection of stats)",
-          "type": [
-            "object",
-            "array"
-          ],
+          "type": ["object", "array"],
           "oneOf": [
             {
               "allOf": [
@@ -110,9 +103,7 @@
                     "$ref": "#/definitions/unit"
                   }
                 ],
-                "required": [
-                  "unitName"
-                ]
+                "required": ["unitName"]
               },
               "minItems": 2,
               "maxItems": 4
@@ -176,10 +167,7 @@
             }
           },
           "additionalProperties": false,
-          "required": [
-            "value",
-            "levelScaling"
-          ]
+          "required": ["value", "levelScaling"]
         },
         "mp": {
           "oneOf": [
@@ -196,10 +184,7 @@
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "value",
-                "levelAdd"
-              ]
+              "required": ["value", "levelAdd"]
             },
             {
               "type": "integer",
@@ -220,10 +205,7 @@
             }
           },
           "additionalProperties": false,
-          "required": [
-            "value",
-            "levelAdd"
-          ]
+          "required": ["value", "levelAdd"]
         },
         "chargeRegen": {
           "type": "number",
@@ -263,9 +245,7 @@
                     "multipleOf": 0.05
                   }
                 },
-                "required": [
-                  "value"
-                ],
+                "required": ["value"],
                 "additionalProperties": false
               },
               "minItems": 2,
@@ -292,9 +272,7 @@
                     "multipleOf": 0.0001
                   }
                 },
-                "required": [
-                  "value"
-                ],
+                "required": ["value"],
                 "additionalProperties": false
               },
               "minItems": 2,
@@ -338,22 +316,11 @@
           "$ref": "#/definitions/positiveInteger"
         }
       },
-      "required": [
-        "hp",
-        "hpRegen",
-        "radius",
-        "speed"
-      ],
+      "required": ["hp", "hpRegen", "radius", "speed"],
       "dependencies": {
-        "hpRegen": [
-          "hp"
-        ],
-        "mpRegen": [
-          "mp"
-        ],
-        "energyRegen": [
-          "energy"
-        ]
+        "hpRegen": ["hp"],
+        "mpRegen": ["mp"],
+        "energyRegen": ["energy"]
       },
       "additionalProperties": false
     },
@@ -373,10 +340,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "value",
-        "levelScaling"
-      ]
+      "required": ["value", "levelScaling"]
     },
     "scalingIntegerStat": {
       "type": "object",
@@ -391,10 +355,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "value",
-        "levelScaling"
-      ]
+      "required": ["value", "levelScaling"]
     },
     "talent": {
       "description": "Represents a talent",
@@ -416,10 +377,7 @@
             }
           },
           "additionalProperties": false,
-          "required": [
-            "ko",
-            "en"
-          ]
+          "required": ["ko", "en"]
         },
         "type": {
           "$comment": "If upgradeFor is present, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4). Otherwise, this specifies the type of skill (unlocked)",
