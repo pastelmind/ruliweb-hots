@@ -30990,13 +30990,13 @@
         {
           "unitName": "도발",
           "hp": {
-            "value": 2750.8,
+            "value": 2962.4,
             "levelScaling": 0.04
           },
           "radius": 0.75,
           "speed": 4.8398,
           "hpRegen": {
-            "value": 5.6562,
+            "value": 6.1687,
             "levelScaling": 0.04
           },
           "mp": {
@@ -31023,7 +31023,7 @@
           "radius": 0.75,
           "speed": 4.8398,
           "hpRegen": {
-            "value": 4.0039,
+            "value": 3.9656,
             "levelScaling": 0.04
           },
           "mp": {
@@ -31064,7 +31064,7 @@
           "range": 1.25,
           "period": 0.4,
           "damage": {
-            "value": 59.2,
+            "value": 55.5,
             "levelScaling": 0.04
           }
         }
