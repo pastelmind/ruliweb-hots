@@ -63,8 +63,6 @@ export class Dialog {
       html`<${DialogContent} ...${dialogContentProps} />`,
       contentFragment
     );
-    // TODO: Remove this when @types/tingle.js is updated
-    // @ts-expect-error Parameter type of setContent() is too narrow
     this._dialog.setContent(contentFragment);
   }
 
