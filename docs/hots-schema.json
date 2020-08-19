@@ -465,9 +465,12 @@
             "Q - E",
             "passive",
             "active",
+            "D / Q",
             "Q / W",
             "Q / E",
+            "Q / R",
             "W / E",
+            "E / R",
             "Z - Q",
             "Z - W",
             "Z - Q / Z - W"
