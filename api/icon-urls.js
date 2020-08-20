@@ -4,14 +4,15 @@
  * Import/export icon URLs fro HTML listfiles and hots.json
  */
 
-import fs from "fs";
+import { promises as fsPromises } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import util from "util";
 
 import program from "commander";
 
-import { HotsData } from "./src/hots-data.js";
+/**
+ * @typedef {import("../generated-types/hots").RuliwebHotSDataset} RuliwebHotSDataset
+ */
 
 /**
  * Intermediate format for exporting icon URLs. Icons are grouped by portraits,
@@ -31,8 +32,7 @@ import { HotsData } from "./src/hots-data.js";
 
 // -------- Main code -------- //
 
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
+const { readFile, writeFile } = fsPromises;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_JSON_PATH = path.join(__dirname, "../docs/hots.json");
@@ -97,26 +97,36 @@ if (process.argv.length <= 2) program.help();
  *    URL is already used by another icon.
  */
 async function importListfiles(listfiles, options) {
-  console.log("Reading HotS JSON from", options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
+  try {
+    console.log("Reading HotS JSON from", options.inputJson);
+    const hotsData = await loadHotsData(options.inputJson);
 
-  for (const listfile of listfiles) {
-    console.log("Importing", listfile);
-    const listfileHtml = await readFileAsync(listfile, "utf8");
-    const iconUrls = extractIconUrlsFromHtml(listfileHtml);
-
-    importIconUrls(
-      hotsData,
-      iconUrls.icons,
-      options.force,
-      options.skipSameUrl
+    const listfileContents = await Promise.all(
+      listfiles.map((file) => {
+        console.log("Importing", file);
+        return readFile(file, "utf8");
+      })
     );
-    importUnidentifiedIconUrls(hotsData, iconUrls.unknownIcons);
-  }
 
-  const outputJsonPath = options.outputJson || options.inputJson;
-  await writeFileAsync(outputJsonPath, hotsData.stringify());
-  console.log("HotS JSON saved to", outputJsonPath);
+    for (const listfileHtml of listfileContents) {
+      const iconUrls = extractIconUrlsFromHtml(listfileHtml);
+
+      importIconUrls(
+        hotsData,
+        iconUrls.icons,
+        options.force,
+        options.skipSameUrl
+      );
+      importUnidentifiedIconUrls(hotsData, iconUrls.unknownIcons);
+    }
+
+    const outputJsonPath = options.outputJson || options.inputJson;
+    await saveHotsData(outputJsonPath, hotsData);
+    console.log("HotS JSON saved to", outputJsonPath);
+  } catch (e) {
+    console.error(e);
+    process.exitCode = 1;
+  }
 }
 
 /**
@@ -125,14 +135,19 @@ async function importListfiles(listfiles, options) {
  * @param {{ inputJson: string }} options Options object
  */
 async function exportListfile(listfile, options) {
-  console.log("Reading HotS JSON from", options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
+  try {
+    console.log("Reading HotS JSON from", options.inputJson);
+    const hotsData = await loadHotsData(options.inputJson);
 
-  const iconUrlGroups = exportIconUrls(hotsData);
-  const listfileHtml = generateIconListfileHtml(iconUrlGroups, hotsData, 300);
+    const iconUrlGroups = exportIconUrls(hotsData);
+    const listfileHtml = generateIconListfileHtml(iconUrlGroups, hotsData, 300);
 
-  await writeFileAsync(listfile, listfileHtml);
-  console.log("Listfile saved to", listfile);
+    await writeFile(listfile, listfileHtml);
+    console.log("Listfile saved to", listfile);
+  } catch (e) {
+    console.error(e);
+    process.exitCode = 1;
+  }
 }
 
 /**
@@ -140,26 +155,52 @@ async function exportListfile(listfile, options) {
  * @param {{ inputJson: string, outputJson: string, }} options Options object
  */
 async function cleanUnusedIcons(options) {
-  console.log("Reading HotS JSON from", options.inputJson);
-  const hotsData = new HotsData(await readFileAsync(options.inputJson, "utf8"));
+  try {
+    console.log("Reading HotS JSON from", options.inputJson);
+    const hotsData = await loadHotsData(options.inputJson);
 
-  const iconUrlGroups = exportIconUrls(hotsData);
-  for (const iconId of iconUrlGroups.unused.keys()) {
-    delete hotsData.iconUrls[iconId];
+    const iconUrlGroups = exportIconUrls(hotsData);
+    for (const iconId of iconUrlGroups.unused.keys()) {
+      delete hotsData.iconUrls[iconId];
+    }
+
+    console.log("Deleted", iconUrlGroups.unused.size, "unused icon(s)");
+
+    const outputJsonPath = options.outputJson || options.inputJson;
+    await saveHotsData(outputJsonPath, hotsData);
+    console.log("HotS JSON saved to", outputJsonPath);
+  } catch (e) {
+    console.error(e);
+    process.exitCode = 1;
   }
-
-  console.log("Deleted", iconUrlGroups.unused.size, "unused icon(s)");
-
-  const outputJsonPath = options.outputJson || options.inputJson;
-  await writeFileAsync(outputJsonPath, hotsData.stringify());
-  console.log("HotS JSON saved to", outputJsonPath);
 }
 
 // -------- Support functions -------- //
 
 /**
+ * Loads a JSON file as a HotsData object.
+ * Warning: Does NOT actually validate the data!
+ * @param {string} path Path to the JSON file
+ * @return {Promise<RuliwebHotSDataset>}
+ */
+async function loadHotsData(path) {
+  return /** @type {RuliwebHotSDataset} */ (JSON.parse(
+    await readFile(path, "utf8")
+  ));
+}
+
+/**
+ * Writes a HotsData object to a file.
+ * @param {string} path Path to the JSON file
+ * @param {RuliwebHotSDataset} hotsData
+ */
+async function saveHotsData(path, hotsData) {
+  await writeFile(path, JSON.stringify(hotsData, null, 2));
+}
+
+/**
  * Merges the given icon URL list into the HotsData object.
- * @param {HotsData} hotsData HotsData object to merge the icon URLs
+ * @param {RuliwebHotSDataset} hotsData HotsData object to merge the icon URLs
  * @param {Map<string, string>} iconUrls List of icon URLs mapped by ID
  * @param {boolean} overwrite If truthy, overwrite conflicting URLs with new
  *    ones. Default is `false`.
@@ -218,7 +259,7 @@ function importIconUrls(
 /**
  * Merges a list of icon URLs, whose IDs are unknown, into the HotsData object.
  * If a URL is not already in the HotsData object, it is assigned a unique ID.
- * @param {HotsData} hotsData HotsData object to merge the icon URLs
+ * @param {RuliwebHotSDataset} hotsData HotsData object to merge the icon URLs
  * @param {Iterable<string>} unidentifiedIconUrls List of icon URLs whose IDs
  *    are unknown
  */
@@ -240,35 +281,43 @@ function importUnidentifiedIconUrls(hotsData, unidentifiedIconUrls) {
 
 /**
  * Extracts all icon URLs, grouped by hero.
- * @param {HotsData} hotsData Contents of hots.json
+ * @param {RuliwebHotSDataset} hotsData Contents of hots.json
  * @return {IconUrlGroups} Icon URLs grouped
  */
 function exportIconUrls(hotsData) {
-  /** @type {IconUrlGroups} */
-  const iconUrlGroups = {
-    portraits: new Map(),
-    skillsAndTalents: new Map(),
-    shared: new Map(),
-    unused: new Map(),
-  };
-  const unusedIconUrls = Object.assign({}, hotsData.iconUrls);
+  /** @type {Map<string, string>} */
+  const portraits = new Map();
+  /** @type {Map<string, Map<string, string>>} */
+  const skillsAndTalents = new Map();
+
+  /** @type {Map<string, string>} */
+  const unusedIconUrls = new Map(Object.entries(hotsData.iconUrls));
   /** @type {Map<string, Set<string>>} */
   const heroesUsingSkillIcons = new Map();
 
   // Sort icons by hero name
-  const sortedHeroes = hotsData
-    .allHeroes()
-    .sort((heroA, heroB) => heroA.name.localeCompare(heroB.name, "en"));
-  for (const hero of sortedHeroes) {
+  const sortedHeroes = [
+    ...Object.entries(hotsData.heroes),
+    ...Object.entries(hotsData.ptrHeroes || {}),
+  ].sort(([, heroA], [, heroB]) => heroA.name.localeCompare(heroB.name, "en"));
+
+  for (const [heroId, hero] of sortedHeroes) {
     if (hero.icon in hotsData.iconUrls) {
-      iconUrlGroups.portraits.set(hero.icon, hotsData.iconUrls[hero.icon]);
-      delete unusedIconUrls[hero.icon];
+      portraits.set(hero.icon, hotsData.iconUrls[hero.icon]);
+      unusedIconUrls.delete(hero.icon);
     }
 
-    const skillTalentIconUrls =
-      iconUrlGroups.skillsAndTalents.get(hero.id) || new Map();
-    iconUrlGroups.skillsAndTalents.set(hero.id, skillTalentIconUrls);
-    for (const skillOrTalent of hero.allSkillsAndTalents()) {
+    let skillTalentIconUrls = skillsAndTalents.get(heroId);
+    if (!skillTalentIconUrls) {
+      skillsAndTalents.set(heroId, (skillTalentIconUrls = new Map()));
+    }
+
+    const allSkillsAndTalents = [
+      ...hero.skills,
+      ...Object.values(hero.talents).flat(),
+    ];
+
+    for (const skillOrTalent of allSkillsAndTalents) {
       if (skillOrTalent.icon in hotsData.iconUrls) {
         let heroesUsingIcon = heroesUsingSkillIcons.get(skillOrTalent.icon);
         if (!heroesUsingIcon) {
@@ -277,25 +326,25 @@ function exportIconUrls(hotsData) {
             (heroesUsingIcon = new Set())
           );
         }
-        heroesUsingIcon.add(hero.id);
+        heroesUsingIcon.add(heroId);
 
         skillTalentIconUrls.set(
           skillOrTalent.icon,
           hotsData.iconUrls[skillOrTalent.icon]
         );
-        delete unusedIconUrls[skillOrTalent.icon];
+        unusedIconUrls.delete(skillOrTalent.icon);
       }
     }
   }
 
   // Extract shared skill/talent icons to their own group
-  /** @type {typeof hotsData.iconUrls} */
-  const sharedIconUrls = {};
+  /** @type {Map<string, string>} */
+  const sharedIconUrls = new Map();
   for (const [iconId, heroesUsingIcon] of heroesUsingSkillIcons) {
     if (heroesUsingIcon.size > 1) {
-      sharedIconUrls[iconId] = hotsData.iconUrls[iconId];
+      sharedIconUrls.set(iconId, hotsData.iconUrls[iconId]);
       for (const heroId of heroesUsingIcon) {
-        const skillTalentIconUrls = iconUrlGroups.skillsAndTalents.get(heroId);
+        const skillTalentIconUrls = skillsAndTalents.get(heroId);
         if (skillTalentIconUrls) {
           skillTalentIconUrls.delete(iconId);
         }
@@ -303,17 +352,20 @@ function exportIconUrls(hotsData) {
     }
   }
 
-  // Sort shared icons by ID
-  for (const iconId of Object.keys(sharedIconUrls).sort()) {
-    iconUrlGroups.shared.set(iconId, sharedIconUrls[iconId]);
-  }
-
-  // Sort unused icons by ID
-  for (const iconId of Object.keys(unusedIconUrls).sort()) {
-    iconUrlGroups.unused.set(iconId, unusedIconUrls[iconId]);
-  }
-
-  return iconUrlGroups;
+  return {
+    portraits,
+    skillsAndTalents,
+    shared: new Map(
+      [...sharedIconUrls.entries()].sort(([iconIdA], [iconIdB]) =>
+        iconIdA.localeCompare(iconIdB)
+      )
+    ),
+    unused: new Map(
+      [...unusedIconUrls.entries()].sort(([iconIdA], [iconIdB]) =>
+        iconIdA.localeCompare(iconIdB)
+      )
+    ),
+  };
 }
 
 /**
@@ -322,8 +374,8 @@ function exportIconUrls(hotsData) {
  * subgroup of their own.
  * @param {IconUrlGroups} iconUrlGroups Icon URL group object generated by
  *    `extractIconUrls()`
- * @param {HotsData} hotsData HotsData object used to generate the icon URL
- *    groups
+ * @param {RuliwebHotSDataset} hotsData HotsData object used to generate the
+ *    icon URL groups
  * @param {number} iconSubgroupMaxSize Max number of skill/talent icons per
  *    subgroup. Default is 200.
  * @return {string} HTML source of listfile
@@ -371,7 +423,8 @@ function generateIconListfileHtml(
       `-->\n\n` +
       heroIconGroups
         .map(([heroId, iconUrls]) => {
-          const hero = hotsData.heroes[heroId] || hotsData.ptrHeroes[heroId];
+          const hero =
+            hotsData.heroes[heroId] || (hotsData.ptrHeroes || {})[heroId];
           return (
             `<p>${hero.name}</p>\n` +
             [...iconUrls].map(iconUrlToImg).join("\n") +
