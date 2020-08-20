@@ -204,7 +204,7 @@ function assertNoDuplicateSkills(skills, heroId) {
  */
 function createMergedSkill(target, source) {
   // Use all source fields except 'extras'
-  const { extras: sourceExtras, upgradeFor, ...result } = source;
+  const { extras: sourceExtras, ...result } = source;
   // Merge the 'extras' object of target and source
   const extras = { ...target.extras, ...sourceExtras };
 
@@ -213,26 +213,12 @@ function createMergedSkill(target, source) {
     /** @type {Skill} */ (result).extras = extras;
   }
 
-  // Ensure that upgradeFor, if it exists, is the last field.
-  if (isNotNullish(upgradeFor)) {
-    // Type assertion needed to make TypeScript happy
-    /** @type {Skill} */ (result).upgradeFor = upgradeFor;
-  }
-
   if (target.type !== source.type) {
     console.log(
-      "Talent %o type changed: %o -> %o",
+      "Skill %o type changed: %o -> %o",
       source.id,
       target.type,
       source.type
-    );
-  }
-  if (target.upgradeFor !== source.upgradeFor) {
-    console.log(
-      "Talent %o upgradeFor changed: %o -> %o",
-      source.id,
-      target.upgradeFor,
-      source.upgradeFor
     );
   }
 
@@ -396,5 +382,26 @@ function findTalent(talents, id, expectedTierName, expectedIndex) {
  * @return {Talent}
  */
 function createMergedTalent(target, source) {
-  return createMergedSkill(target, source);
+  // Since the 'upgradeFor' field should come last, remove it first
+  const { upgradeFor, ...sourceSkill } = source;
+
+  /** @type {Talent} */
+  const result = createMergedSkill(target, sourceSkill);
+
+  // Ensure that upgradeFor, if it exists, is the last field.
+  if (isNotNullish(upgradeFor)) {
+    // Type assertion needed to make TypeScript happy
+    result.upgradeFor = upgradeFor;
+  }
+
+  if (target.upgradeFor !== source.upgradeFor) {
+    console.log(
+      "Talent %o upgradeFor changed: %o -> %o",
+      source.id,
+      target.upgradeFor,
+      source.upgradeFor
+    );
+  }
+
+  return result;
 }

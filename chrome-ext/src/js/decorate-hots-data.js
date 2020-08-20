@@ -287,7 +287,7 @@ function decorateHero(hero, heroId, iconUrls, isPtr) {
     : createDecoratedUnit(hero.stats);
 
   const decoratedSkills = hero.skills.map((skill, index) =>
-    decorateSkill(skill, index, hero, heroId, iconUrls)
+    decorateSkillOrTalent(skill, index, hero, heroId, iconUrls)
   );
 
   const decoratedTalents = Object.fromEntries(
@@ -432,21 +432,24 @@ function prettifyStatValue(value, statId) {
 
 /**
  * Decorates a skill in-place.
- * @param {Skill} skill Object to decorate
+ * @param {Skill | Talent} skill Object to decorate
  * @param {number} index Skill index
  * @param {Hero} hero
  * @param {string} heroId
  * @param {Object<string, string>} iconUrls
  * @return {DecoratedSkill}
  */
-function decorateSkill(skill, index, hero, heroId, iconUrls) {
+function decorateSkillOrTalent(skill, index, hero, heroId, iconUrls) {
+  const { type } = skill;
+  const upgradeFor = "upgradeFor" in skill ? skill.upgradeFor : undefined;
+
   let typeName;
   let typeNameLong;
-  if (skill.upgradeFor) {
-    typeName = generateSkillTypeName(skill.upgradeFor);
+  if (upgradeFor) {
+    typeName = generateSkillTypeName(upgradeFor);
     typeNameLong = `능력 강화 (${typeName})`;
   } else {
-    typeNameLong = typeName = generateSkillTypeName(skill.type);
+    typeNameLong = typeName = generateSkillTypeName(type);
   }
 
   /** @type {DecoratedSkill} */
@@ -464,17 +467,11 @@ function decorateSkill(skill, index, hero, heroId, iconUrls) {
   });
 
   // Set flags for skill/talent type classes
-  if (skill.type === "R" || skill.upgradeFor === "R") {
+  if (type === "R" || upgradeFor === "R") {
     decoratedSkill.isTypeClassHeroic = true;
-  } else if (
-    (skill.type === "passive" && !skill.upgradeFor) ||
-    skill.upgradeFor === "passive"
-  ) {
+  } else if ((type === "passive" && !upgradeFor) || upgradeFor === "passive") {
     decoratedSkill.isTypeClassPassive = true;
-  } else if (
-    (skill.type === "active" && !skill.upgradeFor) ||
-    skill.upgradeFor === "active"
-  ) {
+  } else if ((type === "active" && !upgradeFor) || upgradeFor === "active") {
     decoratedSkill.isTypeClassActive = true;
   } else {
     decoratedSkill.isTypeClassBasic = true;
@@ -494,9 +491,12 @@ function decorateSkill(skill, index, hero, heroId, iconUrls) {
  * @return {DecoratedTalent}
  */
 function decorateTalent(talent, level, index, hero, heroId, iconUrls) {
-  return Object.assign(decorateSkill(talent, index, hero, heroId, iconUrls), {
-    level,
-  });
+  return Object.assign(
+    decorateSkillOrTalent(talent, index, hero, heroId, iconUrls),
+    {
+      level,
+    }
+  );
 }
 
 /**
