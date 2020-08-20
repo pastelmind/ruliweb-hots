@@ -1,4 +1,7 @@
-/** @file Provides utility methods for writing type-safe JavaScript code. */
+/**
+ * @file Provides typedefs and utility methods for writing type-safe JavaScript
+ * code.
+ */
 
 /**
  * Helper function that coerces string/number literals to literal types.
