@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/pastelmind/ruliweb-hots#readme",
   "dependencies": {
+    "@testing-library/preact": "^2.0.0",
     "ajv": "^6.12.4",
     "htm": "^3.0.4",
     "htmlparser2": "^4.1.0",
