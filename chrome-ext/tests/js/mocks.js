@@ -24,7 +24,7 @@ let readFileAsync;
 let templateJsonPath;
 
 // Execute this only in non-browser contexts (i.e. Node.js)
-if (typeof window === "undefined") {
+if (typeof global !== "undefined") {
   (async () => {
     try {
       const { readFile } = await import("fs");
