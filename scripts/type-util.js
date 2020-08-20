@@ -4,6 +4,20 @@
  */
 
 /**
+ * Extract all _known_ keys of `T` as a union
+ * Source: https://github.com/microsoft/TypeScript/issues/25987#issuecomment-441224690
+ * @template T
+ * @typedef {
+    { [K in keyof T]: string extends K
+      ? never : number extends K
+      ? never : K
+    } extends {[_ in keyof T]: infer U}
+    ? ({} extends U
+      ? never : U) : never
+  } KnownKeys
+*/
+
+/**
  * Helper function that coerces string/number literals to literal types.
  * @template {string | number} T
  * @param {T} v

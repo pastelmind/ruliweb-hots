@@ -4,17 +4,8 @@
  */
 
 /**
- * Extract all known keys of `T` as a union.
- * Source: https://github.com/microsoft/TypeScript/issues/25987#issuecomment-441224690
  * @template T
- * @typedef {
-    { [K in keyof T]: string extends K
-      ? never : number extends K
-      ? never : K
-    } extends {[_ in keyof T]: infer U}
-    ? ({} extends U
-      ? never : U) : never
-  } KnownKeys
+ * @typedef {import("../../../scripts/type-util.js").KnownKeys<T>} KnownKeys
  */
 
 /**
