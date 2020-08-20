@@ -52,10 +52,10 @@
       "properties": {
         "name": {
           "$comment": "TODO: Add separate properties for English/Korean names of heroes, skills, and talents",
-          "$ref": "#/definitions/trimmedString"
+          "$ref": "#/definitions/normalizedString"
         },
         "title": {
-          "$ref": "#/definitions/trimmedString"
+          "$ref": "#/definitions/normalizedString"
         },
         "icon": {
           "$ref": "#/definitions/iconId"
@@ -370,10 +370,10 @@
           "type": "object",
           "properties": {
             "ko": {
-              "$ref": "#/definitions/trimmedString"
+              "$ref": "#/definitions/normalizedString"
             },
             "en": {
-              "$ref": "#/definitions/trimmedString"
+              "$ref": "#/definitions/normalizedString"
             }
           },
           "additionalProperties": false,
@@ -438,29 +438,10 @@
           "$ref": "#/definitions/iconId"
         },
         "description": {
-          "$comment": "type: string must be present on each entry in allOf; otherwise, json2ts does not recognize the entire subschema as a string",
-          "allOf": [
-            {
-              "$ref": "#/definitions/trimmedString"
-            },
-            {
-              "description": "All newlines must be normalized to LF",
-              "type": "string",
-              "not": {
-                "pattern": "\\r"
-              }
-            },
-            {
-              "description": "Each line must be trimmed",
-              "type": "string",
-              "not": {
-                "pattern": " \\n|\\n "
-              }
-            }
-          ]
+          "$ref": "#/definitions/normalizedString"
         },
         "shortDescription": {
-          "$ref": "#/definitions/trimmedString"
+          "$ref": "#/definitions/normalizedString"
         },
         "cooldown": {
           "type": "number",
@@ -490,7 +471,7 @@
           "additionalProperties": {
             "oneOf": [
               {
-                "$ref": "#/definitions/trimmedString"
+                "$ref": "#/definitions/normalizedString"
               },
               {
                 "type": "number"
@@ -498,7 +479,7 @@
             ]
           },
           "propertyNames": {
-            "$ref": "#/definitions/trimmedString"
+            "$ref": "#/definitions/normalizedString"
           }
         }
       },
@@ -523,11 +504,6 @@
         "upgradeFor": false
       }
     },
-    "trimmedString": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "^\\S([^]*\\S)?$"
-    },
     "hotsVersionString": {
       "$comment": "type: string must be present on each entry in oneOf; otherwise, json2ts does not recognize the entire subschema as a string",
       "oneOf": [
@@ -544,6 +520,14 @@
     "iconId": {
       "type": "string",
       "pattern": "^[\\w'\\-]+$"
+    },
+    "normalizedString": {
+      "description": "Each line must be trimmed, and all newlines must be normalized to LF",
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^\\s|\\s$| \\n|\\n |\\r"
+      }
     },
     "positiveInteger": {
       "type": "integer",
