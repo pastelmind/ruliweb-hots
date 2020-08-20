@@ -361,50 +361,18 @@
       "description": "Represents a talent",
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1,
-          "pattern": "^\\S+$"
-        },
-        "name": {
-          "type": "object",
-          "properties": {
-            "ko": {
-              "$ref": "#/definitions/normalizedString"
-            },
-            "en": {
-              "$ref": "#/definitions/normalizedString"
-            }
-          },
-          "additionalProperties": false,
-          "required": ["ko", "en"]
-        },
-        "type": {
-          "$comment": "If upgradeFor is present, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4). Otherwise, this specifies the type of skill (unlocked)",
-          "enum": [
-            "Q",
-            "W",
-            "E",
-            "R",
-            "D",
-            "Z",
-            "D - Q",
-            "D - W",
-            "D - E",
-            "Q - Q",
-            "Q - W",
-            "Q - E",
-            "R - Q",
-            "R - W",
-            "R - E",
-            "Z - Q",
-            "Z - W",
-            "Z - E",
-            "passive",
-            "active",
-            "D - active"
-          ]
-        },
+        "id": { "$ref": "#/definitions/skillTalentId" },
+        "name": { "$ref": "#/definitions/koEnString" },
+        "type": { "$ref": "#/definitions/skillTalentType" },
+        "icon": { "$ref": "#/definitions/iconId" },
+        "description": { "$ref": "#/definitions/normalizedString" },
+        "shortDescription": { "$ref": "#/definitions/normalizedString" },
+        "cooldown": { "$ref": "#/definitions/skillTalentCooldown" },
+        "cooldownPerAlly": { "$ref": "#/definitions/skillTalentCooldown" },
+        "rechargeCooldown": { "$ref": "#/definitions/skillTalentCooldown" },
+        "manaCost": { "$ref": "#/definitions/nonnegativeInteger" },
+        "manaCostPerSecond": { "$ref": "#/definitions/nonnegativeInteger" },
+        "extras": { "$ref": "#/definitions/skillTalentExtras" },
         "upgradeFor": {
           "$comment": "Represents the ability upgraded by this talent",
           "enum": [
@@ -433,54 +401,6 @@
             "Z - W",
             "Z - Q / Z - W"
           ]
-        },
-        "icon": {
-          "$ref": "#/definitions/iconId"
-        },
-        "description": {
-          "$ref": "#/definitions/normalizedString"
-        },
-        "shortDescription": {
-          "$ref": "#/definitions/normalizedString"
-        },
-        "cooldown": {
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "multipleOf": 0.5
-        },
-        "cooldownPerAlly": {
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "multipleOf": 0.5
-        },
-        "rechargeCooldown": {
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "multipleOf": 0.5
-        },
-        "manaCost": {
-          "type": "integer",
-          "exclusiveMinimum": 0
-        },
-        "manaCostPerSecond": {
-          "type": "integer",
-          "exclusiveMinimum": 0
-        },
-        "extras": {
-          "type": "object",
-          "additionalProperties": {
-            "oneOf": [
-              {
-                "$ref": "#/definitions/normalizedString"
-              },
-              {
-                "type": "number"
-              }
-            ]
-          },
-          "propertyNames": {
-            "$ref": "#/definitions/normalizedString"
-          }
         }
       },
       "required": [
@@ -492,17 +412,6 @@
         "shortDescription"
       ],
       "additionalProperties": false
-    },
-    "skill": {
-      "description": "Represents a skill",
-      "allOf": [
-        {
-          "$ref": "#/definitions/talent"
-        }
-      ],
-      "properties": {
-        "upgradeFor": false
-      }
     },
     "hotsVersionString": {
       "$comment": "type: string must be present on each entry in oneOf; otherwise, json2ts does not recognize the entire subschema as a string",
@@ -521,6 +430,20 @@
       "type": "string",
       "pattern": "^[\\w'\\-]+$"
     },
+    "koEnString": {
+      "description": "String with translations in Korean and English",
+      "type": "object",
+      "properties": {
+        "ko": { "$ref": "#/definitions/normalizedString" },
+        "en": { "$ref": "#/definitions/normalizedString" }
+      },
+      "additionalProperties": false,
+      "required": ["ko", "en"]
+    },
+    "nonnegativeInteger": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
     "normalizedString": {
       "description": "Each line must be trimmed, and all newlines must be normalized to LF",
       "type": "string",
@@ -532,6 +455,82 @@
     "positiveInteger": {
       "type": "integer",
       "exclusiveMinimum": 0
+    },
+    "skill": {
+      "description": "Represents a skill",
+      "type": "object",
+      "properties": {
+        "id": { "$ref": "#/definitions/skillTalentId" },
+        "name": { "$ref": "#/definitions/koEnString" },
+        "type": { "$ref": "#/definitions/skillTalentType" },
+        "icon": { "$ref": "#/definitions/iconId" },
+        "description": { "$ref": "#/definitions/normalizedString" },
+        "shortDescription": { "$ref": "#/definitions/normalizedString" },
+        "cooldown": { "$ref": "#/definitions/skillTalentCooldown" },
+        "cooldownPerAlly": { "$ref": "#/definitions/skillTalentCooldown" },
+        "rechargeCooldown": { "$ref": "#/definitions/skillTalentCooldown" },
+        "manaCost": { "$ref": "#/definitions/nonnegativeInteger" },
+        "manaCostPerSecond": { "$ref": "#/definitions/nonnegativeInteger" },
+        "extras": { "$ref": "#/definitions/skillTalentExtras" }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "icon",
+        "description",
+        "shortDescription"
+      ],
+      "additionalProperties": false
+    },
+    "skillTalentCooldown": {
+      "description": "Cooldown value of a skill or talent",
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "multipleOf": 0.5
+    },
+    "skillTalentExtras": {
+      "description": "Contains additional information about a skill or talent",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/definitions/normalizedString" },
+          { "type": "number" }
+        ]
+      },
+      "propertyNames": { "$ref": "#/definitions/normalizedString" }
+    },
+    "skillTalentId": {
+      "description": "ID of a skill or talent",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S+$"
+    },
+    "skillTalentType": {
+      "description": "Type of a skill or talent. For talents, this specifies the hotkey used to activate this talent (passive == no hotkey, active == 1 ~ 4).",
+      "enum": [
+        "Q",
+        "W",
+        "E",
+        "R",
+        "D",
+        "Z",
+        "D - Q",
+        "D - W",
+        "D - E",
+        "D - active",
+        "Q - Q",
+        "Q - W",
+        "Q - E",
+        "R - Q",
+        "R - W",
+        "R - E",
+        "Z - Q",
+        "Z - W",
+        "Z - E",
+        "passive",
+        "active"
+      ]
     }
   }
 }
