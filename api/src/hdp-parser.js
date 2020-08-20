@@ -4,6 +4,14 @@
  */
 
 import {
+  _c,
+  isKeyOf,
+  isNotNullish,
+  isNullish,
+  objectEntries,
+} from "../../scripts/type-util.js";
+
+import {
   findAbilitiesByIds,
   findAbilityById,
   findAllAbilitiesByTypes,
@@ -16,13 +24,6 @@ import {
   parseTooltip,
 } from "./hdp-parser-tooltip.js";
 import { assert, equal, fail, throws } from "./lazy-assert.js";
-import {
-  _c,
-  isKeyOf,
-  isNotNullish,
-  isNullish,
-  objectEntries,
-} from "./type-util.js";
 
 /**
  * @typedef {import("../../generated-types/hdp-herodata-ko").AbilityKo} HdpAbilityKo

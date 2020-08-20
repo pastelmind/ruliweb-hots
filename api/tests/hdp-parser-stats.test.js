@@ -4,8 +4,8 @@
 
 import { strict as assert } from "assert";
 
+import { _c } from "../../scripts/type-util.js";
 import { parseHeroStats } from "../src/hdp-parser-stats.js";
-import { _c } from "../src/type-util.js";
 
 /**
  * @typedef {import("../../generated-types/hdp-herodata-ko").HeroKo} HdpHeroKo

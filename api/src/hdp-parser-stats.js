@@ -2,6 +2,8 @@
  * @file Tools for parsing hero stats in HeroesDataParser-generated data.
  */
 
+import { isNullish } from "../../scripts/type-util.js";
+
 import { findAbilityById } from "./hdp-find.js";
 import {
   assert,
@@ -10,7 +12,6 @@ import {
   equal,
   notEqual,
 } from "./lazy-assert.js";
-import { isNullish } from "./type-util.js";
 
 /**
  * @typedef {import("../../generated-types/hdp-herodata-ko").HeroKo} HdpHeroKo

@@ -2,8 +2,9 @@
  * @file Provides tools for merging two HotsData objects.
  */
 
+import { _t, isNotNullish } from "../../scripts/type-util.js";
+
 import { assert, equal } from "./lazy-assert.js";
-import { _t, isNotNullish } from "./type-util.js";
 
 /**
  * @typedef {import("../../generated-types/hots").Hero} Hero

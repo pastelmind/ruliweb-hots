@@ -4,8 +4,9 @@
 
 import htmlparser2 from "htmlparser2";
 
+import { isNotNullish, isNullish } from "../../scripts/type-util.js";
+
 import { assert, deepEqual, equal, fail } from "./lazy-assert.js";
-import { isNotNullish, isNullish } from "./type-util.js";
 
 /**
  * @typedef {object} TagInfo
