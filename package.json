@@ -63,6 +63,7 @@
     "@types/mocha": "^8.0.3",
     "@types/mustache": "^4.0.1",
     "@types/prettier": "^2.0.2",
+    "@types/should-sinon": "0.0.6",
     "@types/sinon": "^9.0.5",
     "@types/tingle.js": "^0.13.1",
     "@types/yazl": "^2.4.2",
