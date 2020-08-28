@@ -49,6 +49,7 @@
     "mustache": "^4.0.1",
     "preact": "^10.4.7",
     "should": "^13.2.3",
+    "should-sinon": "0.0.6",
     "sinon": "^9.0.3",
     "snap-shot-it": "^7.9.3",
     "tingle.js": "^0.15.3",
