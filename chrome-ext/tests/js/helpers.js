@@ -19,3 +19,20 @@ import should from "should";
 export function shouldNotEqual(value, expected) {
   should(value).not.equal(expected);
 }
+
+/**
+ * Creates a matcher function that checks whether a string contains the
+ * substring `substr`.
+ *
+ * This is intended for use with Testing Library's query functions, e.g.
+ * `getByRole()`.
+ *
+ * @example const img = getByRole("img", { name: matcher("Foo bar") });
+ *
+ * @param {string} substr
+ * @return {function (string): boolean} A callback that accepts a string, and
+ *    checks if the string contains `substr`.
+ */
+export function matcher(substr) {
+  return (text) => text.includes(substr);
+}

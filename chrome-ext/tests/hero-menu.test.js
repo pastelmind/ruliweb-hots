@@ -12,7 +12,7 @@ import sinon from "sinon";
 import { _c } from "../../scripts/type-util.js";
 import { HeroMenu } from "../src/js/components/hero-menu.js";
 
-import { shouldNotEqual } from "./js/helpers.js";
+import { matcher, shouldNotEqual } from "./js/helpers.js";
 
 /**
  * @typedef {import("../src/js/components/hero-menu.js").Props} Props
@@ -137,12 +137,10 @@ describe("HeroMenu", () => {
 
     // TODO: Maybe I should use <input type="image"> instead of plain <img>
     // so that I can utilize more proper ARIA roles, e.g. "button".
-    const romeoIcon = getByRole("img", { name: new RegExp(heroes.Romeo.name) });
-    const julietIcon = getByRole("img", {
-      name: new RegExp(heroes.Juliet.name),
-    });
+    const romeoIcon = getByRole("img", { name: matcher(heroes.Romeo.name) });
+    const julietIcon = getByRole("img", { name: matcher(heroes.Juliet.name) });
     const hamletIcon = getByRole("img", {
-      name: new RegExp(ptrHeroes.Hamlet.name),
+      name: matcher(ptrHeroes.Hamlet.name),
     });
 
     romeoIcon.should.have.property("src", heroes.Romeo.iconUrl);
@@ -153,9 +151,9 @@ describe("HeroMenu", () => {
     getAllByRole("img").should.eql([hamletIcon, julietIcon, romeoIcon]);
 
     // Check for existence and order of tooltips
-    const romeoTooltipEl = getByLabelText(new RegExp(heroes.Romeo.name));
-    const julietTooltipEl = getByLabelText(new RegExp(heroes.Juliet.name));
-    const hamletTooltipEl = getByLabelText(new RegExp(ptrHeroes.Hamlet.name));
+    const romeoTooltipEl = getByLabelText(matcher(heroes.Romeo.name));
+    const julietTooltipEl = getByLabelText(matcher(heroes.Juliet.name));
+    const hamletTooltipEl = getByLabelText(matcher(ptrHeroes.Hamlet.name));
 
     getAllByRole("tooltip").should.eql([
       julietTooltipEl,
@@ -225,18 +223,16 @@ describe("HeroMenu", () => {
     `);
 
     // Romeo: "melee_assassin", "nexus" -> not highlighted
-    const romeoIcon = getByRole("img", { name: new RegExp(heroes.Romeo.name) });
+    const romeoIcon = getByRole("img", { name: matcher(heroes.Romeo.name) });
     Number(getComputedStyle(romeoIcon).opacity).should.be.above(0);
 
     // Juliet: "tank", "starcraft" -> highlighted
-    const julietIcon = getByRole("img", {
-      name: new RegExp(heroes.Juliet.name),
-    });
+    const julietIcon = getByRole("img", { name: matcher(heroes.Juliet.name) });
     Number(getComputedStyle(julietIcon).opacity).should.equal(0);
 
     // Hamlet: "bruiser", "diablo" -> not highlighted (dark)
     const hamletIcon = getByRole("img", {
-      name: new RegExp(ptrHeroes.Hamlet.name),
+      name: matcher(ptrHeroes.Hamlet.name),
     });
     Number(getComputedStyle(hamletIcon).opacity).should.be.above(0);
   });
@@ -262,22 +258,18 @@ describe("HeroMenu", () => {
 
       clickHeroHandler.should.not.be.called();
 
-      fireEvent.click(
-        getByRole("img", { name: new RegExp(heroes.Romeo.name) })
-      );
+      fireEvent.click(getByRole("img", { name: matcher(heroes.Romeo.name) }));
       clickHeroHandler.should.be.calledOnce();
       clickHeroHandler.firstCall.args.should.have.length(1);
       clickHeroHandler.firstCall.args[0].should.be.equal(heroes.Romeo);
 
-      fireEvent.click(
-        getByRole("img", { name: new RegExp(heroes.Juliet.name) })
-      );
+      fireEvent.click(getByRole("img", { name: matcher(heroes.Juliet.name) }));
       clickHeroHandler.should.be.calledTwice();
       clickHeroHandler.secondCall.args.should.have.length(1);
       clickHeroHandler.secondCall.args[0].should.be.equal(heroes.Juliet);
 
       fireEvent.click(
-        getByRole("img", { name: new RegExp(ptrHeroes.Hamlet.name) })
+        getByRole("img", { name: matcher(ptrHeroes.Hamlet.name) })
       );
       clickHeroHandler.should.be.calledThrice();
       clickHeroHandler.thirdCall.args.should.have.length(1);
@@ -303,7 +295,7 @@ describe("HeroMenu", () => {
       clickHeroHandler.should.not.be.called();
 
       fireEvent.click(
-        getByRole("img", { name: new RegExp(ptrHeroes.Juliet.name) })
+        getByRole("img", { name: matcher(ptrHeroes.Juliet.name) })
       );
       clickHeroHandler.should.be.calledOnce();
       clickHeroHandler.firstCall.args.should.have.length(1);

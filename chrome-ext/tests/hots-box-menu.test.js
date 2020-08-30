@@ -12,7 +12,7 @@ import sinon from "sinon";
 
 import { HotsBoxMenu } from "../src/js/components/hots-box-menu.js";
 
-import { shouldNotEqual } from "./js/helpers.js";
+import { matcher, shouldNotEqual } from "./js/helpers.js";
 
 /**
  * @typedef {import("../src/js/components/hots-box-menu.js").Props} Props
@@ -189,12 +189,12 @@ describe("HotsBoxMenu", () => {
     );
 
     // Check for existence of hero icon
-    const heroIcon = getByRole("img", { name: new RegExp(hero.name) });
+    const heroIcon = getByRole("img", { name: matcher(hero.name) });
     heroIcon.should.have.property("src", hero.iconUrl);
 
     // Check hero icon tooltip
     const heroIconTooltipEl = getByRole("tooltip", {
-      name: new RegExp(hero.name),
+      name: matcher(hero.name),
     });
     shouldNotEqual(heroIconTooltipEl, null);
     const heroIconTooltip = heroIconTooltipEl.getAttribute("aria-label");
@@ -204,12 +204,12 @@ describe("HotsBoxMenu", () => {
     // Check skills
     for (const skill of hero.skills) {
       // Check for existence of icon
-      const skillIcon = getByRole("img", { name: new RegExp(skill.name) });
+      const skillIcon = getByRole("img", { name: matcher(skill.name) });
       skillIcon.should.have.property("src", skill.iconUrl);
 
       // Check tooltip
       const skillIconTooltipEl = getByRole("tooltip", {
-        name: new RegExp(skill.name),
+        name: matcher(skill.name),
       });
       const skillIconTooltip = skillIconTooltipEl.getAttribute("aria-label");
       should(skillIconTooltip).containEql(skill.typeName);
@@ -220,7 +220,7 @@ describe("HotsBoxMenu", () => {
     for (const [tierName, tierArray] of Object.entries(hero.talents)) {
       for (const talent of tierArray) {
         // Check for existence of icon
-        const talentIcon = getByRole("img", { name: new RegExp(talent.name) });
+        const talentIcon = getByRole("img", { name: matcher(talent.name) });
         talentIcon.should.have.property("src", talent.iconUrl);
 
         const talentIconRoot = talentIcon.parentElement;
@@ -263,7 +263,7 @@ describe("HotsBoxMenu", () => {
     // Test hero icon click
     pasteHeroHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: new RegExp(hero.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(hero.name) }));
     pasteHeroHandler.should.be.calledOnce();
     pasteHeroHandler.firstCall.args.should.have.length(1);
     pasteHeroHandler.firstCall.args[0].should.equal(hero);
@@ -272,12 +272,12 @@ describe("HotsBoxMenu", () => {
     const [skill0, skill1] = hero.skills;
     pasteSkillHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: new RegExp(skill1.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(skill1.name) }));
     pasteSkillHandler.should.be.calledOnce();
     pasteSkillHandler.firstCall.args.should.have.length(1);
     pasteSkillHandler.firstCall.args[0].should.equal(skill1);
 
-    fireEvent.click(getByRole("img", { name: new RegExp(skill0.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(skill0.name) }));
     pasteSkillHandler.should.be.calledTwice();
     pasteSkillHandler.secondCall.args.should.have.length(1);
     pasteSkillHandler.secondCall.args[0].should.eql(skill0);
@@ -287,17 +287,17 @@ describe("HotsBoxMenu", () => {
     const [talentC] = hero.talents["11"];
     pasteTalentHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: new RegExp(talentB.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(talentB.name) }));
     pasteTalentHandler.should.be.calledOnce();
     pasteTalentHandler.firstCall.args.should.have.length(1);
     pasteTalentHandler.firstCall.args[0].should.equal(talentB);
 
-    fireEvent.click(getByRole("img", { name: new RegExp(talentA.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(talentA.name) }));
     pasteTalentHandler.should.be.calledTwice();
     pasteTalentHandler.secondCall.args.should.have.length(1);
     pasteTalentHandler.secondCall.args[0].should.equal(talentA);
 
-    fireEvent.click(getByRole("img", { name: new RegExp(talentC.name) }));
+    fireEvent.click(getByRole("img", { name: matcher(talentC.name) }));
     pasteTalentHandler.should.be.calledThrice();
     pasteTalentHandler.thirdCall.args.should.have.length(1);
     pasteTalentHandler.thirdCall.args[0].should.equal(talentC);
