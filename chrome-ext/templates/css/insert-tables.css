@@ -1,6 +1,9 @@
 /******** Hero, skill & talent tables ********/
 
-.ruliweb-hots-hero-table, .ruliweb-hots-hero-skill-table, .ruliweb-hots-skill-table, .ruliweb-hots-talent-table {
+.ruliweb-hots-hero-table,
+.ruliweb-hots-hero-skill-table,
+.ruliweb-hots-skill-table,
+.ruliweb-hots-talent-table {
   display: inline-block;
   max-width: 100%;
   /* Contain within bounds */
@@ -9,17 +12,20 @@
   text-align: initial;
 }
 
-.ruliweb-hots-hero-table__icon-cell, .ruliweb-hots-skill-table__icon-cell {
+.ruliweb-hots-hero-table__icon-cell,
+.ruliweb-hots-skill-table__icon-cell {
   float: left;
   /* Should be entered directly in template */
   /* width: {{iconSize}}px; height: {{iconSize}}px; */
 }
 
-.ruliweb-hots-hero-table__icon, .ruliweb-hots-skill-table__icon {
+.ruliweb-hots-hero-table__icon,
+.ruliweb-hots-skill-table__icon {
   width: 100%;
 }
 
-.ruliweb-hots-hero-table__header, .ruliweb-hots-skill-table__content {
+.ruliweb-hots-hero-table__header,
+.ruliweb-hots-skill-table__content {
   float: left;
   width: 50em;
   /* Should be entered directly in template */
@@ -55,7 +61,7 @@
   clear: both;
 }
 
-.ruliweb-hots-hero-table__section:nth-child(n+3) {
+.ruliweb-hots-hero-table__section:nth-child(n + 3) {
   box-sizing: border-box;
   width: 50em;
   max-width: 100%;
@@ -79,7 +85,7 @@
 .ruliweb-hots-hero-table__hero-universe {
   flex: none;
   align-self: center;
-  margin-right: .5em;
+  margin-right: 0.5em;
   width: 2em;
   height: 2em;
   /* Hide default text */
@@ -103,7 +109,7 @@
 /******** Hero table: Skill section ********/
 
 .ruliweb-hots-hero-table__skills {
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .ruliweb-hots-hero-table__skill-group {
@@ -136,14 +142,14 @@
 /******** Hero table: Stat section ********/
 
 .ruliweb-hots-hero-table__stats {
-  padding: .5em 0 0 .5em;
+  padding: 0.5em 0 0 0.5em;
 }
 
 /******** Hero table: Hero stat table ********/
 
 .ruliweb-hots-hero-stat-table {
   display: inline-table;
-  margin: 0 .5em .5em 0;
+  margin: 0 0.5em 0.5em 0;
   border: 2px solid #76d;
   border-collapse: collapse;
   background: #112;
@@ -158,9 +164,10 @@
   text-align: initial;
 }
 
-.ruliweb-hots-hero-stat-table th, .ruliweb-hots-hero-stat-table td {
+.ruliweb-hots-hero-stat-table th,
+.ruliweb-hots-hero-stat-table td {
   border: 1px solid #76d;
-  padding: .4em;
+  padding: 0.4em;
 }
 
 .ruliweb-hots-hero-stat-table th {
@@ -181,7 +188,7 @@
 }
 
 .ruliweb-hots-hero-stat-table td:first-child {
-  padding: .4em .4em .4em 2em;
+  padding: 0.4em 0.4em 0.4em 2em;
 }
 
 .ruliweb-hots-hero-stat-table__stat-icon {
@@ -192,11 +199,13 @@
 
 /******** Skill/Talent table ********/
 
-.ruliweb-hots-skill-table, .ruliweb-hots-hero-skill-table, .ruliweb-hots-talent-table {
+.ruliweb-hots-skill-table,
+.ruliweb-hots-hero-skill-table,
+.ruliweb-hots-talent-table {
   border: 2px solid #85d;
   padding: 4px;
-  background: linear-gradient(#214, #102) 0;  /* Set background-position to 0 to fix white border bug in Chrome */
-  color: #6cf;  /* Color of skill name and collapse/expand arrow */
+  background: linear-gradient(#214, #102) 0; /* Set background-position to 0 to fix white border bug in Chrome */
+  color: #6cf; /* Color of skill name and collapse/expand arrow */
 }
 
 .ruliweb-hots-hero-skill-table {
@@ -206,13 +215,13 @@
 
 .ruliweb-hots-talent-table {
   border: 2px solid #55d;
-  background: linear-gradient(#118, #003) 0;  /* Set background-position to 0 to fix white border bug in Chrome */
-  color: #bef;  /* Color of talent name and collapse/expand arrow */
+  background: linear-gradient(#118, #003) 0; /* Set background-position to 0 to fix white border bug in Chrome */
+  color: #bef; /* Color of talent name and collapse/expand arrow */
 }
 
 /* .ruliweb-hots-skill-table__icon-cell { */
-  /* Should be entered directly in template */
-  /* background: url({{&iconUrl}}) center/cover; */
+/* Should be entered directly in template */
+/* background: url({{&iconUrl}}) center/cover; */
 /* } */
 
 .ruliweb-hots-skill-table__content {
@@ -222,12 +231,12 @@
 .ruliweb-hots-skill-table__header {
   display: flex;
   align-items: flex-start;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .ruliweb-hots-skill-table__title-box {
   flex: auto;
-  padding-right: .5em;
+  padding-right: 0.5em;
 }
 
 .ruliweb-hots-skill-table__title {
@@ -236,25 +245,25 @@
 
 .ruliweb-hots-skill-table__type {
   flex: 0 9 auto;
-  border: .1em solid #87d;
-  border-radius: .3em;
-  padding: .2em .4em;
+  border: 0.1em solid #87d;
+  border-radius: 0.3em;
+  padding: 0.2em 0.4em;
   word-break: keep-all;
   color: #87d;
 }
 
 .ruliweb-hots-skill-table__type--heroic {
-  border: .1em solid #da7;
+  border: 0.1em solid #da7;
   color: #da7;
 }
 
 .ruliweb-hots-skill-table__type--passive {
-  border: .1em solid #6ba;
+  border: 0.1em solid #6ba;
   color: #6ba;
 }
 
 .ruliweb-hots-skill-table__type--active {
-  border: .1em solid #d7a;
+  border: 0.1em solid #d7a;
   color: #d7a;
 }
 
@@ -270,34 +279,39 @@
 
 .skill-stat-entry--mana-cost {
   color: #4be;
-  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png) .15em/1em no-repeat;
+  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab46719dc2c.png)
+    0.15em/1em no-repeat;
 }
 
 .skill-stat-entry--life-cost {
   color: #5d2;
-  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png) .15em/1em no-repeat;
+  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab38d19dc2c.png)
+    0.15em/1em no-repeat;
 }
 
 .skill-stat-entry--energy-cost {
   color: #ee3;
-  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png) .15em/1em no-repeat;
+  background: url(https://i1.ruliweb.com/img/18/07/07/164741ab5f219dc2c.png)
+    0.15em/1em no-repeat;
 }
 
 .skill-stat-entry--cooldown {
   color: #ddd;
-  background: url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat;
+  background: url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em
+    no-repeat;
 }
 
 .skill-stat-entry--extras {
   color: #d90;
-  background: url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat;
+  background: url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em
+    no-repeat;
 }
 
 /******** Heroes of the Storm Patch Version Section ********/
 
 .hots-version {
   text-align: right;
-  font-size: .8em;
+  font-size: 0.8em;
   color: #cca;
 }
 
@@ -315,7 +329,7 @@
   height: 1.5em;
   /* Set margin-top to an arbitrary large negative value to ensure that the
    * image does not cause the parent box to to grow in height. */
-  margin: -1em -.2em 0 -.7em;
+  margin: -1em -0.2em 0 -0.7em;
   vertical-align: bottom;
   /* Override Ruliweb CSS to prevent image from shrinking */
   max-width: none;

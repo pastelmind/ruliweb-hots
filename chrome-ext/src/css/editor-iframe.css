@@ -4,21 +4,19 @@
 
 .ruliweb-hots-skill-table:hover,
 .ruliweb-hots-talent-table:hover,
-.ruliweb-hots-hero-table:hover
-{
+.ruliweb-hots-hero-table:hover {
   position: relative;
 }
 
 .ruliweb-hots-skill-table:hover > :first-child::before,
 .ruliweb-hots-talent-table:hover > :first-child::before,
-.ruliweb-hots-hero-table:hover > :first-child::before
-{
+.ruliweb-hots-hero-table:hover > :first-child::before {
   position: absolute;
   border: 1px solid #f80;
   background: #820;
   color: #ddd;
   font-size: 80%;
-  padding: .5em;
+  padding: 0.5em;
   white-space: nowrap;
   content: "Ctrl+클릭하여 삭제";
 }
