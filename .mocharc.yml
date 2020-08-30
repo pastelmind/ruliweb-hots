@@ -1,8 +1,7 @@
-ignore:
-  # Exclude browser-only test scripts
-  - "**/*.browser.js"
 spec:
   # Mocha doesn't need the "/*.js" part to discover tests, but the Mocha Test
   # Explorer (VS Code extension) does need them to discover tests
-  - "chrome-ext/tests/*.js"
+  # Mocha Test Explorer also does not recognize the "exclude"/"ignore" fields,
+  # so we have to explicitly specify "*.test.js"
+  - "chrome-ext/tests/*.test.js"
   - "api/tests/*.js"
