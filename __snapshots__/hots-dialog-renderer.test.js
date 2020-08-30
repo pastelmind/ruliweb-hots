@@ -658,6 +658,157 @@ exports['HotsDialog.Renderer HotsBox templates generates skill boxes correctly 5
 
 `
 
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 1'] = `
+<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
+  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 고유 능력 - 보호막 축전기"></summary>
+  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
+    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
+      <div style="flex:auto;padding-right:.5em">
+        <b style="font-size:1.1em">보호막 축전기</b>
+        <br><small>피닉스</small>
+      </div>
+        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
+      
+      
+      
+        <b style="display:inline-block">고유 능력</b>
+        </div>
+      
+      
+      
+    </div>
+    <div style="color:#bcc">
+      
+      790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 79(+4%)의 보호막이 재생됩니다.
+    </div>
+    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
+  </div>
+</details>
+
+`
+
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 2'] = `
+<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
+  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] Q - 플라스마 절단기"></summary>
+  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
+    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
+      <div style="flex:auto;padding-right:.5em">
+        <b style="font-size:1.1em">플라스마 절단기</b>
+        <br><small>피닉스</small>
+      </div>
+        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
+      
+      
+      
+        <b style="display:inline-block">Q</b>
+        </div>
+      
+      
+      
+    </div>
+    <div style="color:#bcc">
+      
+      대상 위치에 광선을 발사합니다. 광선은 피닉스를 중심으로 주위를 원형으로 두 번 돌며 적에게 140(+4%)의 피해를 주고 4초 동안 25% 느려지게 합니다.<br>
+<br><span style="padding-left:1.5em;color:#ddd;background:url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat"><b>재사용 대기시간</b> 12초</span>
+<br><span style="padding-left:1.5em;color:#d90;background:url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat"><b>회전 반경</b> 1.5 ~ 6 <b>너비</b> 0.7 <b>회전 시간</b> 1.5초 </span>
+
+    </div>
+    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
+  </div>
+</details>
+
+`
+
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 3'] = `
+<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
+  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 연발포"></summary>
+  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
+    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
+      <div style="flex:auto;padding-right:.5em">
+        <b style="font-size:1.1em">무기 모드: 연발포</b>
+        <br><small>피닉스</small>
+      </div>
+        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
+      
+      
+      
+        <b style="display:inline-block">W</b>
+        </div>
+      
+      
+      
+    </div>
+    <div style="color:#bcc">
+      
+      공격 속도가 150% 증가합니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.
+    </div>
+    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
+  </div>
+</details>
+
+`
+
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 4'] = `
+<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
+  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 위상 폭탄"></summary>
+  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
+    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
+      <div style="flex:auto;padding-right:.5em">
+        <b style="font-size:1.1em">무기 모드: 위상 폭탄</b>
+        <br><small>피닉스</small>
+      </div>
+        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
+      
+      
+      
+        <b style="display:inline-block">W</b>
+        </div>
+      
+      
+      
+    </div>
+    <div style="color:#bcc">
+      
+      일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.
+    </div>
+    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
+  </div>
+</details>
+
+`
+
+exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 5'] = `
+<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
+  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png) center/cover" title="[클릭하여 접기/펼치기] E - 차원이동"></summary>
+  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
+    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
+      <div style="flex:auto;padding-right:.5em">
+        <b style="font-size:1.1em">차원이동</b>
+        <br><small>피닉스</small>
+      </div>
+        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
+      
+      
+      
+        <b style="display:inline-block">E</b>
+        </div>
+      
+      
+      
+    </div>
+    <div style="color:#bcc">
+      
+      대상 위치로 순간이동합니다. 0.5초 후에 이동하며, 이동 후 0.75초 후에 도착합니다.<br>
+<br><span style="padding-left:1.5em;color:#ddd;background:url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat"><b>재사용 대기시간</b> 17초</span>
+<br><span style="padding-left:1.5em;color:#d90;background:url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat"><b>사거리</b> 9 </span>
+
+    </div>
+    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
+  </div>
+</details>
+
+`
+
 exports['HotsDialog.Renderer HotsBox templates generates talent boxes correctly 1'] = `
 <details data-ruliweb-hots-version="app version string" class="ruliweb-hots-talent-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;padding:4px;border:2px solid #55d;background:linear-gradient(#118,#003) 0;color:#bef">
   <summary style="float:left;WIDTH:48px;HEIGHT:48px;background:url(https://i2.ruliweb.com/img/18/07/02/164595f2aa219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 쉬운 사냥감 (지속 효과 - 레벨 1)"></summary>
@@ -1071,157 +1222,6 @@ exports['HotsDialog.Renderer HotsBox templates generates talent boxes (with vers
     <div style="color:#bcc">
       
       야수의 격노의 지속 시간이 50% 증가하고 이 동안 미샤가 일반 공격으로 준 피해의 50%만큼 렉사르의 생명력이 회복됩니다.
-    </div>
-    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
-  </div>
-</details>
-
-`
-
-exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 1'] = `
-<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
-  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/1645954600319dc2c.png) center/cover" title="[클릭하여 접기/펼치기] 고유 능력 - 보호막 축전기"></summary>
-  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
-    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
-      <div style="flex:auto;padding-right:.5em">
-        <b style="font-size:1.1em">보호막 축전기</b>
-        <br><small>피닉스</small>
-      </div>
-        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
-      
-      
-      
-        <b style="display:inline-block">고유 능력</b>
-        </div>
-      
-      
-      
-    </div>
-    <div style="color:#bcc">
-      
-      790(+4%)의 피해를 흡수하는 보호막을 영구히 얻습니다. 5초 동안 피해를 받지 않으면 초당 79(+4%)의 보호막이 재생됩니다.
-    </div>
-    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
-  </div>
-</details>
-
-`
-
-exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 2'] = `
-<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
-  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/1645954582b19dc2c.png) center/cover" title="[클릭하여 접기/펼치기] Q - 플라스마 절단기"></summary>
-  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
-    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
-      <div style="flex:auto;padding-right:.5em">
-        <b style="font-size:1.1em">플라스마 절단기</b>
-        <br><small>피닉스</small>
-      </div>
-        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
-      
-      
-      
-        <b style="display:inline-block">Q</b>
-        </div>
-      
-      
-      
-    </div>
-    <div style="color:#bcc">
-      
-      대상 위치에 광선을 발사합니다. 광선은 피닉스를 중심으로 주위를 원형으로 두 번 돌며 적에게 140(+4%)의 피해를 주고 4초 동안 25% 느려지게 합니다.<br>
-<br><span style="padding-left:1.5em;color:#ddd;background:url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat"><b>재사용 대기시간</b> 12초</span>
-<br><span style="padding-left:1.5em;color:#d90;background:url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat"><b>회전 반경</b> 1.5 ~ 6 <b>너비</b> 0.7 <b>회전 시간</b> 1.5초 </span>
-
-    </div>
-    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
-  </div>
-</details>
-
-`
-
-exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 3'] = `
-<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
-  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i3.ruliweb.com/img/18/07/02/1645954738019dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 연발포"></summary>
-  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
-    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
-      <div style="flex:auto;padding-right:.5em">
-        <b style="font-size:1.1em">무기 모드: 연발포</b>
-        <br><small>피닉스</small>
-      </div>
-        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
-      
-      
-      
-        <b style="display:inline-block">W</b>
-        </div>
-      
-      
-      
-    </div>
-    <div style="color:#bcc">
-      
-      공격 속도가 150% 증가합니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 위상 폭탄</span>으로 전환하여 일반 공격의 공격력 및 사거리가 증가하고 방사 피해를 주도록 변경됩니다.
-    </div>
-    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
-  </div>
-</details>
-
-`
-
-exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 4'] = `
-<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
-  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/16459546f9219dc2c.png) center/cover" title="[클릭하여 접기/펼치기] W - 무기 모드: 위상 폭탄"></summary>
-  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
-    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
-      <div style="flex:auto;padding-right:.5em">
-        <b style="font-size:1.1em">무기 모드: 위상 폭탄</b>
-        <br><small>피닉스</small>
-      </div>
-        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
-      
-      
-      
-        <b style="display:inline-block">W</b>
-        </div>
-      
-      
-      
-    </div>
-    <div style="color:#bcc">
-      
-      일반 공격의 사거리가 1.25 증가하고 25%의 추가 피해를 주며 대상 주위에 방사 피해를 줍니다.<br><br>사용하면 <span style="color: #00ff90">무기 모드: 연발포</span>로 전환하여 공격 속도가 증가합니다.
-    </div>
-    <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
-  </div>
-</details>
-
-`
-
-exports['HotsDialog.Renderer HotsBox templates generates skill boxes (with version) correctly 5'] = `
-<details data-ruliweb-hots-version="app version string" class="ruliweb-hots-skill-table" style="display:inline-block;max-WIDTH:100%;box-sizing:border-box;font-family:sans-serif;text-align:initial;border:2px solid #85d;padding:4px;background:linear-gradient(#214,#102) 0;color:#6cf">
-  <summary style="float:left;WIDTH:64px;HEIGHT:64px;background:url(https://i2.ruliweb.com/img/18/07/02/16459546bc719dc2c.png) center/cover" title="[클릭하여 접기/펼치기] E - 차원이동"></summary>
-  <div style="float:left;WIDTH:50em;padding-left:8px;max-WIDTH:calc(100% - 64px - 8px)">
-    <div style="display:flex;align-items:flex-start;margin-bottom:.5em">
-      <div style="flex:auto;padding-right:.5em">
-        <b style="font-size:1.1em">차원이동</b>
-        <br><small>피닉스</small>
-      </div>
-        <div style="flex:0 9 auto;border:.1em solid #87d;border-radius:.3em;padding:.2em .4em;word-break:keep-all;color:#87d">                                        
-      
-      
-      
-        <b style="display:inline-block">E</b>
-        </div>
-      
-      
-      
-    </div>
-    <div style="color:#bcc">
-      
-      대상 위치로 순간이동합니다. 0.5초 후에 이동하며, 이동 후 0.75초 후에 도착합니다.<br>
-<br><span style="padding-left:1.5em;color:#ddd;background:url(https://i2.ruliweb.com/img/18/07/23/164c2a1709319dc2c.png) 0/1.3em no-repeat"><b>재사용 대기시간</b> 17초</span>
-<br><span style="padding-left:1.5em;color:#d90;background:url(https://i3.ruliweb.com/img/18/07/07/164748d2b0519dc2c.png) 0/1.3em no-repeat"><b>사거리</b> 9 </span>
-
     </div>
     <footer style="text-align:right;font-size:.8em;color:#cca"><i>패치 34.3</i></footer>
   </div>
