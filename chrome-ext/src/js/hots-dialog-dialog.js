@@ -15,11 +15,6 @@ const html = htm.bind(createElement);
 
 /**
  * @typedef {import("./decorate-hots-data.js").DecoratedHotsData} DecoratedHotsData
- * @typedef {import("./hots-dialog.js").HeroFilterPresets} HeroFilterPresets
- */
-
-/**
- * @typedef {{name: string, filters: Object<string, string>}} HeroFilter
  */
 
 /** Represents a Dialog for selecting and pasting HotS Boxes. */
@@ -28,10 +23,8 @@ export class Dialog {
    * Creates a new Dialog instance.
    * @param {Object<string, string>} templates Rendering templates
    * @param {DecoratedHotsData} data
-   * @param {HeroFilterPresets} heroFilters Mapping of hero filter IDs to hero
-   *    filters
    */
-  constructor(templates, data, heroFilters) {
+  constructor(templates, data) {
     this._paster = new HtmlPaster();
 
     // eslint-disable-next-line new-cap
@@ -58,7 +51,7 @@ export class Dialog {
     const contentFragment = document.createDocumentFragment();
 
     /** @type {preact.ComponentProps<typeof DialogContent>} */
-    const dialogContentProps = { data, heroFilters, renderer, paster };
+    const dialogContentProps = { data, renderer, paster };
     render(
       html`<${DialogContent} ...${dialogContentProps} />`,
       contentFragment

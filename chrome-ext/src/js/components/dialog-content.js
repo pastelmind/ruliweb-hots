@@ -7,10 +7,6 @@
  * @typedef {import("../decorate-hots-data.js").DecoratedHotsData} DecoratedHotsData
  * @typedef {import("../decorate-hots-data.js").DecoratedSkill} DecoratedSkill
  * @typedef {import("../decorate-hots-data.js").DecoratedTalent} DecoratedTalent
- * @typedef {import("../hots-dialog.js").ActiveFilters} ActiveFilters
- * @typedef {import("../hots-dialog.js").HeroFilterPresets} HeroFilterPresets
- * @typedef {import("../hots-dialog.js").HeroFilterType} HeroFilterType
- * @typedef {import("../hots-dialog.js").HeroFilterValues} HeroFilterValues
  */
 
 import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
@@ -24,10 +20,38 @@ import { MultiSelectIcons } from "./multi-select-icons.js";
 const html = htm.bind(createElement);
 
 /**
+ * @typedef {keyof HERO_FILTERS} HeroFilterType
+ * @typedef {{ [K in HeroFilterType]: keyof HERO_FILTERS[K]["filters"] }} HeroFilterValues
+ * @typedef {{ [K in HeroFilterType]: HeroFilterValues[K][] }} ActiveFilters
+ */
+
+const HERO_FILTERS = Object.freeze({
+  universe: Object.freeze({
+    name: "세계관",
+    filters: Object.freeze({
+      warcraft: "워크래프트",
+      starcraft: "스타크래프트",
+      diablo: "디아블로",
+      classic: "블리자드 고전",
+      overwatch: "오버워치",
+    }),
+  }),
+  newRole: Object.freeze({
+    name: "역할",
+    filters: Object.freeze({
+      tank: "전사",
+      bruiser: "투사",
+      ranged_assassin: "원거리 암살자",
+      melee_assassin: "근접 암살자",
+      healer: "치유사",
+      support: "지원가",
+    }),
+  }),
+});
+
+/**
  * @typedef {object} Props
  * @property {DecoratedHotsData} data HotS data object
- * @property {HeroFilterPresets} heroFilters Mapping of hero filter IDs
- *    to hero filters
  * @property {Renderer} renderer Renderer for generating HotsBoxes
  * @property {HtmlPaster} paster Paster for pasting HotsBoxes
  */
@@ -200,7 +224,7 @@ export class DialogContent extends Component {
   /** @return {preact.VNode<Props>} */
   render() {
     // Check if PTR data is available
-    const { data, heroFilters } = this.props;
+    const { data } = this.props;
     const isPtrAvailable = !!(
       data.ptrHeroes && Object.keys(data.ptrHeroes).length
     );
@@ -343,12 +367,12 @@ export class DialogContent extends Component {
         </div>
 
         <div class="hots-dialog__section hots-hero-filters">
-          ${Object.keys(heroFilters).map((_filterType) => {
+          ${Object.keys(HERO_FILTERS).map((_filterType) => {
             const filterType = /** @type {HeroFilterType} */ (_filterType);
 
             /** @type {MultiSelectIcons<HeroFilterValues[filterType]>["props"]} */
             const multiSelectIconsProps = {
-              options: Object.entries(heroFilters[filterType].filters).map(
+              options: Object.entries(HERO_FILTERS[filterType].filters).map(
                 ([id, name]) => ({
                   id: /** @type {HeroFilterValues[filterType]} */ (id),
                   name,
@@ -363,7 +387,7 @@ export class DialogContent extends Component {
             return html`
               <div class="hots-hero-filter-group">
                 <div class="hots-hero-filter-group__description">
-                  ${heroFilters[filterType].name}:
+                  ${HERO_FILTERS[filterType].name}:
                 </div>
                 <${MultiSelectIcons} ...${multiSelectIconsProps} />
               </div>
