@@ -57,10 +57,6 @@ after(
 );
 
 describe("HotsBoxMenu", () => {
-  // NOTE: Hero, skill, and icon names used in this test should not contain
-  // special characters recognized by RegExp(). This is not a requirement of the
-  // component, but a consequence of using RegExp() to loosely match DOM nodes
-  // using DOM Testing Library's query functions.
   /** @type {Props["hero"]} */
   const hero = {
     id: "JayGatsbyHeroId",
