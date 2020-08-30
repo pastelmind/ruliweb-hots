@@ -15,7 +15,10 @@
 
 /* Icons */
 
-.hots-hero-icon-wrapper, .hots-current-hero-icon-wrapper, .hots-skill-icon-wrapper, .hots-talent-icon-wrapper {
+.hots-hero-icon-wrapper,
+.hots-current-hero-icon-wrapper,
+.hots-skill-icon-wrapper,
+.hots-talent-icon-wrapper {
   /* Set the line height to zero remove vertical gaps between flexbox children */
   line-height: 0;
 }
@@ -27,23 +30,27 @@
 .hots-skill-icon-wrapper::before,
 .hots-skill-icon-wrapper::after,
 .hots-talent-icon-wrapper::before,
-.hots-talent-icon-wrapper::after
-{
+.hots-talent-icon-wrapper::after {
   /* Reset the line height to properly style the tooltips */
   line-height: 1.5;
 }
 
-
-.hots-hero-icon, .hots-current-hero-icon, .hots-skill-icon, .hots-talent-icon {
+.hots-hero-icon,
+.hots-current-hero-icon,
+.hots-skill-icon,
+.hots-talent-icon {
   width: 32px;
   height: 32px;
   object-fit: cover;
   border: 1px solid #111;
   cursor: pointer;
-  transition: border .25s, filter .25s;
+  transition: border 0.25s, filter 0.25s;
 }
 
-.hots-hero-icon:active, .hots-current-hero-icon:active, .hots-skill-icon:active, .hots-talent-icon:active {
+.hots-hero-icon:active,
+.hots-current-hero-icon:active,
+.hots-skill-icon:active,
+.hots-talent-icon:active {
   transition: none;
   border: 1px solid #ff5;
   filter: brightness(300%);
@@ -54,7 +61,7 @@
 .hots-dialog__section {
   margin: 0;
   padding: 0;
-  margin-top: .5em;
+  margin-top: 0.5em;
   clear: both;
 }
 
@@ -71,17 +78,17 @@
 .hots-dialog-version {
   text-align: right;
   font-size: 70%;
-  color: #789
+  color: #789;
 }
 
 /* Dialog options */
 
 .hots-dialog-options {
-  font-size: .75em;
+  font-size: 0.75em;
 }
 
 .hots-dialog-option {
-  padding: 0 .5em 0;
+  padding: 0 0.5em 0;
   color: #aaa;
 }
 
@@ -94,28 +101,32 @@
   background-color: #334;
 }
 
-.hots-dialog-option input[type=checkbox] {
+.hots-dialog-option input[type="checkbox"] {
   vertical-align: middle;
-  width: 1em; height: 1em;
-  margin: 0; padding: 0;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  padding: 0;
   margin-top: -0.2em;
   cursor: pointer;
 }
 
-.hots-dialog-option input[type=checkbox]:checked+.hots-dialog-option__description {
+.hots-dialog-option
+  input[type="checkbox"]:checked
+  + .hots-dialog-option__description {
   color: #eee;
 }
 
 .hots-dialog-option__description {
-  padding-left: .3em;
-  padding-right: .3em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }
 
 .hots-dialog-option-group {
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
-.hots-dialog-option input[type=range] {
+.hots-dialog-option input[type="range"] {
   height: 1em;
 }
 
@@ -124,12 +135,12 @@
 .hots-hero-filters {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: -.5em;
+  margin-bottom: -0.5em;
 }
 
 .hots-hero-filter-group {
   display: flex;
-  margin: 0 1em .5em 0;
+  margin: 0 1em 0.5em 0;
 }
 
 .hots-hero-filter-group__description {
@@ -148,14 +159,14 @@
 }
 
 .hots-hero-icon--excluded {
-  opacity: .2;
+  opacity: 0.2;
 }
 
 .hots-hero-icon-badge {
   position: absolute;
   top: 1px;
   left: 1px;
-  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif; /* Extra-bold fonts */
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif; /* Extra-bold fonts */
   font-size: 70%;
   text-shadow: #fff 0 0 1px;
   pointer-events: none;
@@ -185,8 +196,8 @@
 
 .hots-talentset {
   list-style: none; /* Reset user agent style (<li>) */
-  margin: 0;        /* Reset user agent style (<li>) */
-  padding: 0;       /* Reset user agent style (<li>) */
+  margin: 0; /* Reset user agent style (<li>) */
+  padding: 0; /* Reset user agent style (<li>) */
   background-color: #113;
   border: 1px solid #55d;
 }
@@ -204,7 +215,7 @@
 
 .hots-talentset__group-title {
   min-width: 4em;
-  padding-right: .5em;
+  padding-right: 0.5em;
   text-align: right;
 }
 
@@ -212,17 +223,17 @@
   flex: 1 0 auto;
   display: flex;
   justify-content: flex-end;
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 .hots-talentset__group-add-all {
-  padding: .25em;
+  padding: 0.25em;
   cursor: pointer;
-  font-size: .75em;
+  font-size: 0.75em;
   border: 1px solid #27f;
   background: #336;
   color: #ccc;
-  transition: border .25s, background-color .25s, color .25s;
+  transition: border 0.25s, background-color 0.25s, color 0.25s;
 }
 
 .hots-talentset__group-add-all:active {
@@ -253,14 +264,16 @@
 .multi-select-icons__option-icon {
   width: 20px;
   height: 20px;
-  opacity: .3;
+  opacity: 0.3;
   cursor: pointer;
 }
 
-.multi-select-icons__option input[type=checkbox] {
+.multi-select-icons__option input[type="checkbox"] {
   display: none;
 }
 
-.multi-select-icons__option input[type=checkbox]:checked + .multi-select-icons__option-icon {
+.multi-select-icons__option
+  input[type="checkbox"]:checked
+  + .multi-select-icons__option-icon {
   opacity: 1;
 }
