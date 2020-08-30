@@ -85,24 +85,22 @@ describe("HeroMenu", () => {
       <${HeroMenu} icons=${icons} />
     `);
 
-    // Check for existence, order, and highlighting of icons
+    // Check for existence, order, and highlighting of icon buttons
 
-    // TODO: Maybe I should use <input type="image"> instead of plain <img>
-    // so that I can utilize more proper ARIA roles, e.g. "button".
-    const romeoIcon = getByRole("img", { name: matcher(icons[0].title) });
-    const julietIcon = getByRole("img", { name: matcher(icons[1].title) });
-    const hamletIcon = getByRole("img", { name: matcher(icons[2].title) });
+    const romeoBtn = getByRole("button", { name: matcher(icons[0].title) });
+    const julietBtn = getByRole("button", { name: matcher(icons[1].title) });
+    const hamletBtn = getByRole("button", { name: matcher(icons[2].title) });
 
-    getAllByRole("img").should.eql([romeoIcon, julietIcon, hamletIcon]);
+    getAllByRole("button").should.eql([romeoBtn, julietBtn, hamletBtn]);
 
-    romeoIcon.should.have.property("src", icons[0].url);
-    julietIcon.should.have.property("src", icons[1].url);
-    hamletIcon.should.have.property("src", icons[2].url);
+    romeoBtn.should.have.property("src", icons[0].url);
+    julietBtn.should.have.property("src", icons[1].url);
+    hamletBtn.should.have.property("src", icons[2].url);
 
     // Check highlighting
-    Number(getComputedStyle(romeoIcon).opacity).should.eql(0);
-    Number(getComputedStyle(julietIcon).opacity).should.be.above(0);
-    Number(getComputedStyle(hamletIcon).opacity).should.eql(0);
+    Number(getComputedStyle(romeoBtn).opacity).should.eql(0);
+    Number(getComputedStyle(julietBtn).opacity).should.be.above(0);
+    Number(getComputedStyle(hamletBtn).opacity).should.eql(0);
 
     // Check for existence and order of tooltips
     const romeoTooltipEl = getByLabelText(matcher(icons[0].title));
@@ -138,19 +136,19 @@ describe("HeroMenu", () => {
     // Check badges
 
     // Romeo is a hero on live with no changes in PTR
-    const romeoRoot = romeoIcon.parentElement;
+    const romeoRoot = romeoBtn.parentElement;
     shouldNotEqual(romeoRoot, null);
     should.not.exist(TLP.queryByText(romeoRoot, "PTR"));
     should.not.exist(TLP.queryByText(romeoRoot, "NEW"));
 
     // Juliet is existing hero with changes in PTR
-    const julietRoot = julietIcon.parentElement;
+    const julietRoot = julietBtn.parentElement;
     shouldNotEqual(julietRoot, null);
     TLP.getByText(julietRoot, "PTR");
     should.not.exist(TLP.queryByText(julietRoot, "NEW"));
 
     // Hamlet is new hero in PTR
-    const hamletRoot = hamletIcon.parentElement;
+    const hamletRoot = hamletBtn.parentElement;
     shouldNotEqual(hamletRoot, null);
     TLP.queryByText(hamletRoot, "NEW");
     should.not.exist(TLP.queryByText(hamletRoot, "PTR"));
@@ -165,17 +163,17 @@ describe("HeroMenu", () => {
 
     clickHeroHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: matcher(icons[0].title) }));
+    fireEvent.click(getByRole("button", { name: matcher(icons[0].title) }));
     clickHeroHandler.should.be.calledOnce();
     clickHeroHandler.firstCall.args.should.have.length(1);
     clickHeroHandler.firstCall.args[0].should.be.equal(icons[0].id);
 
-    fireEvent.click(getByRole("img", { name: matcher(icons[2].title) }));
+    fireEvent.click(getByRole("button", { name: matcher(icons[2].title) }));
     clickHeroHandler.should.be.calledTwice();
     clickHeroHandler.secondCall.args.should.have.length(1);
     clickHeroHandler.secondCall.args[0].should.be.equal(icons[2].id);
 
-    fireEvent.click(getByRole("img", { name: matcher(icons[1].title) }));
+    fireEvent.click(getByRole("button", { name: matcher(icons[1].title) }));
     clickHeroHandler.should.be.calledThrice();
     clickHeroHandler.thirdCall.args.should.have.length(1);
     clickHeroHandler.thirdCall.args[0].should.be.equal(icons[1].id);

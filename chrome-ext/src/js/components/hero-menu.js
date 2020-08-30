@@ -46,6 +46,13 @@ export function HeroMenu(props) {
           );
         }
 
+        // <input type="image"> elements are Replaced Elements, which cannot
+        // have pseudo-elements such as ::before and ::after. Because of this,
+        // we cannot add Microtip.js tooltips directly on them, and must use a
+        // wrapper <div> instead.
+        // See:
+        //  - https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element
+        //  - https://developer.mozilla.org/en-US/docs/Web/CSS/::after
         return html`
           <div
             class="hots-hero-icon-wrapper"
@@ -53,11 +60,12 @@ export function HeroMenu(props) {
             data-microtip-position="top"
             role="tooltip"
           >
-            <img
+            <input
               class="hots-hero-icon
-          ${!icon.isHighlighted && "hots-hero-icon--excluded"}"
-              src="${icon.url}"
+                ${!icon.isHighlighted && "hots-hero-icon--excluded"}"
+              type="image"
               alt="${icon.title}"
+              src="${icon.url}"
               onClick="${() => props.onClickHero(icon.id)}"
             />
             ${icon.ptrStatus &&
