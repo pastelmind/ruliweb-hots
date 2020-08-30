@@ -188,13 +188,53 @@ export class DialogContent extends Component {
       data.ptrHeroes && Object.keys(data.ptrHeroes).length
     );
 
+    const activeRoleFilters = new Set(this.state.activeFilters.newRole);
+    /** @type {Set<DecoratedHero["universe"]>} */
+    const activeUniverseFilters = new Set(this.state.activeFilters.universe);
+
+    // Nexus-original heroes do not have a separate filter icon. Instead, they
+    // are selected when "classic" heroes are selected
+    if (activeUniverseFilters.has("classic")) {
+      activeUniverseFilters.add("nexus");
+    }
+
     /** @type {preact.ComponentProps<typeof HeroMenu>} */
     const heroMenuProps = {
-      heroes: this.props.data.heroes,
-      ptrHeroes: this.props.data.ptrHeroes,
-      activeFilters: this.state.activeFilters,
-      ptrMode: this.state.shouldUsePtr,
-      onClickHero: (hero) => this.setState({ currentHero: hero }),
+      icons: Array.from(
+        new Set([...Object.keys(data.heroes), ...Object.keys(data.ptrHeroes)]),
+        (heroId) => {
+          const liveHero = data.heroes[heroId];
+          const ptrHero = data.ptrHeroes[heroId];
+          const hero = this.state.shouldUsePtr
+            ? ptrHero || liveHero
+            : liveHero || ptrHero;
+
+          return {
+            id: heroId,
+            url: hero.iconUrl,
+            title: `${hero.name} (${hero.roleName})`,
+            // If a filter set is empty, don't check it
+            isHighlighted:
+              (activeRoleFilters.size === 0 ||
+                activeRoleFilters.has(hero.newRole)) &&
+              (activeUniverseFilters.size === 0 ||
+                activeUniverseFilters.has(hero.universe)),
+            ptrStatus: ptrHero
+              ? liveHero
+                ? _c("changed")
+                : _c("new")
+              : undefined,
+            // For sorting only; not used by HeroMenu.
+            _sortBy: hero.name,
+          };
+        }
+      ).sort((a, b) => a._sortBy.localeCompare(b._sortBy, "en")),
+      onClickHero: (heroId) =>
+        this.setState((state, { data }) => ({
+          currentHero: state.shouldUsePtr
+            ? data.ptrHeroes[heroId] || data.heroes[heroId]
+            : data.heroes[heroId] || data.ptrHeroes[heroId],
+        })),
     };
 
     /** @type {preact.ComponentProps<typeof HotsBoxMenu>} */
@@ -322,4 +362,16 @@ export class DialogContent extends Component {
       </div>
     `);
   }
+}
+
+/**
+ * Helper function that coerces string/number literals to literal types.
+ *
+ * Note: Duplicated here from "type-util.js" because I don't want to import it.
+ * @template {string | number} T
+ * @param {T} v
+ * @return {T}
+ */
+function _c(v) {
+  return v;
 }
