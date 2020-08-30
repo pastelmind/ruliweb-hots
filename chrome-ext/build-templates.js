@@ -121,10 +121,12 @@ function ruliwebCssFix(html) {
  * @return {string} HTML markup with minified inline CSS
  */
 function minifyInlineCss(html) {
-  return html.replace(/(?<=\bstyle=").*?(?=")/gi, (inlineCss) =>
+  return html.replace(/(?<=\bstyle=")[^"]*(?=")/gi, (inlineCss) =>
     inlineCss
+      .replace(/\s{2,}/g, " ")
       .replace(/;\s*$/, "")
       .trim()
       .replace(/\s*([;:,])\s*/g, "$1")
+      .replace(/\b0(\.\d+[A-Za-z]*)\b/g, "$1")
   );
 }
