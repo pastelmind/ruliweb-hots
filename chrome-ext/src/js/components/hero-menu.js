@@ -55,13 +55,13 @@ export function HeroMenu(props) {
         //  - https://developer.mozilla.org/en-US/docs/Web/CSS/::after
         return html`
           <div
-            class="hots-hero-icon-wrapper"
+            class="hots-icon-button"
             aria-label="${tooltip}"
             data-microtip-position="top"
             role="tooltip"
           >
             <input
-              class="hots-hero-icon
+              class="hots-icon-button__icon hots-hero-icon
                 ${!icon.isHighlighted && "hots-hero-icon--excluded"}"
               type="image"
               alt="${icon.title}"

@@ -13,47 +13,28 @@
   padding: 1rem;
 }
 
-/* Icons */
+/* Icon Buttons: Represents interactive icon buttons with tooltips. */
 
-.hots-hero-icon-wrapper,
-.hots-current-hero-icon-wrapper,
-.hots-skill-icon-wrapper,
-.hots-talent-icon-wrapper {
-  /* Set the line height to zero remove vertical gaps between flexbox children */
-  line-height: 0;
-}
-
-.hots-hero-icon-wrapper::before,
-.hots-hero-icon-wrapper::after,
-.hots-current-hero-icon-wrapper::before,
-.hots-current-hero-icon-wrapper::after,
-.hots-skill-icon-wrapper::before,
-.hots-skill-icon-wrapper::after,
-.hots-talent-icon-wrapper::before,
-.hots-talent-icon-wrapper::after {
-  /* Reset the line height to properly style the tooltips */
-  line-height: 1.5;
-}
-
-.hots-hero-icon,
-.hots-current-hero-icon,
-.hots-skill-icon,
-.hots-talent-icon {
-  width: 32px;
-  height: 32px;
-  object-fit: cover;
+/* Root element, currently used for hover tooltips */
+.hots-icon-button {
   border: 1px solid #111;
-  cursor: pointer;
-  transition: border 0.25s, filter 0.25s;
+  height: 32px;
+  width: 32px;
 }
 
-.hots-hero-icon:active,
-.hots-current-hero-icon:active,
-.hots-skill-icon:active,
-.hots-talent-icon:active {
-  transition: none;
-  border: 1px solid #ff5;
+/* The interactive image element */
+.hots-icon-button__icon {
+  cursor: pointer;
+  height: 100%;
+  object-fit: cover;
+  transition: box-shadow 0.25s, filter 0.25s;
+  width: 100%;
+}
+
+.hots-icon-button__icon:active {
+  box-shadow: 0 0 3px 3px #ff5;
   filter: brightness(300%);
+  transition: none;
 }
 
 /* All dialog sections */

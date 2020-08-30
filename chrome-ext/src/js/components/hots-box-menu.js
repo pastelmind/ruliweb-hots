@@ -82,13 +82,13 @@ export function HotsBoxMenu(props) {
     <${Fragment}>
       <div class="hots-dialog__section hots-skillset" key=${hero.id}>
         <div
-          class="hots-current-hero-icon-wrapper"
+          class="hots-icon-button"
           aria-label="${hero.name} (${hero.roleName})"
           data-microtip-position="top"
           role="tooltip"
         >
           <img
-            class="hots-current-hero-icon"
+            class="hots-icon-button__icon"
             src="${hero.iconUrl}"
             alt="${hero.name} (${hero.roleName})"
             onClick=${pasteHero.bind(null, hero)}
@@ -97,13 +97,13 @@ export function HotsBoxMenu(props) {
         ${Object.values(hero.skills).map(
           (skill) => html`
             <div
-              class="hots-skill-icon-wrapper"
+              class="hots-icon-button"
               aria-label="${`${skill.typeName} - ${skill.name}\n${skill.tooltipDescription}`}"
               data-microtip-position="top"
               role="tooltip"
             >
               <img
-                class="hots-skill-icon"
+                class="hots-icon-button__icon"
                 src="${skill.iconUrl}"
                 alt="${skill.typeName} - ${skill.name}"
                 onClick=${pasteSkill.bind(null, skill)}
@@ -120,7 +120,7 @@ export function HotsBoxMenu(props) {
               ${talentGroup.map(
                 (talent) => html`
                   <div
-                    class="hots-talent-icon-wrapper"
+                    class="hots-icon-button"
                     aria-label="${`${talent.name}\n` +
                     `(${talent.typeNameLong} - 레벨 ${level})\n` +
                     talent.tooltipDescription}"
@@ -128,7 +128,7 @@ export function HotsBoxMenu(props) {
                     role="tooltip"
                   >
                     <img
-                      class="hots-talent-icon"
+                      class="hots-icon-button__icon"
                       src="${talent.iconUrl}"
                       alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
                       onClick=${pasteTalent.bind(null, talent)}
