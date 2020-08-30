@@ -13,6 +13,7 @@
  * @typedef {import("../hots-dialog.js").HeroFilterValues} HeroFilterValues
  */
 
+import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
 import htm from "../vendor/htm.js";
 import { Component, createElement } from "../vendor/preact.js";
 
@@ -128,9 +129,9 @@ export class DialogContent extends Component {
 
   /**
    * @param {DecoratedHero} hero
-   * @return {Element[]}
+   * @param {Element} clickedElement
    */
-  pasteHero(hero) {
+  pasteHero(hero, clickedElement) {
     const { iconSize, version } = this.getPasteParams();
     const { paster, renderer } = this.props;
     const html = renderer.renderHeroInfoTable(
@@ -140,36 +141,48 @@ export class DialogContent extends Component {
       version,
       this.state.shouldUseSimpleHeroBox
     );
-    return paster.paste(html);
+
+    const [firstElement] = paster.paste(html);
+    if (firstElement) {
+      animatePasteEffect(firstElement, clickedElement);
+    }
   }
 
   /**
    * @param {DecoratedSkill} skill
-   * @return {Element[]}
+   * @param {Element} clickedElement
    */
-  pasteSkill(skill) {
+  pasteSkill(skill, clickedElement) {
     const { iconSize, version } = this.getPasteParams();
     const { paster, renderer } = this.props;
     const html = renderer.renderSkillInfoTable(skill, iconSize, version);
-    return paster.paste(html);
+
+    const [firstElement] = paster.paste(html);
+    if (firstElement) {
+      animatePasteEffect(firstElement, clickedElement);
+    }
   }
 
   /**
    * @param {DecoratedTalent} talent
-   * @return {Element[]}
+   * @param {Element} clickedElement
    */
-  pasteTalent(talent) {
+  pasteTalent(talent, clickedElement) {
     const { iconSize, version } = this.getPasteParams();
     const { paster, renderer } = this.props;
     const html = renderer.renderTalentInfoTable(talent, iconSize, version);
-    return paster.paste(html);
+
+    const [firstElement] = paster.paste(html);
+    if (firstElement) {
+      animatePasteEffect(firstElement, clickedElement);
+    }
   }
 
   /**
    * @param {DecoratedTalent[]} talentGroup
-   * @return {Element[]}
+   * @param {Element} clickedElement
    */
-  pasteTalentGroup(talentGroup) {
+  pasteTalentGroup(talentGroup, clickedElement) {
     const { iconSize, version } = this.getPasteParams();
     const { paster, renderer } = this.props;
     const html = renderer.renderTalentGroupInfoTable(
@@ -177,7 +190,11 @@ export class DialogContent extends Component {
       iconSize,
       version
     );
-    return paster.paste(html);
+
+    const [firstElement] = paster.paste(html);
+    if (firstElement) {
+      animatePasteEffect(firstElement, clickedElement);
+    }
   }
 
   /** @return {preact.VNode<Props>} */
@@ -240,10 +257,10 @@ export class DialogContent extends Component {
     /** @type {preact.ComponentProps<typeof HotsBoxMenu>} */
     const hotsBoxMenuProps = {
       hero: this.state.currentHero,
-      onPasteHero: (hero) => this.pasteHero(hero),
-      onPasteSkill: (skill) => this.pasteSkill(skill),
-      onPasteTalent: (talent) => this.pasteTalent(talent),
-      onPasteTalentGroup: (talents) => this.pasteTalentGroup(talents),
+      onPasteHero: (...args) => this.pasteHero(...args),
+      onPasteSkill: (...args) => this.pasteSkill(...args),
+      onPasteTalent: (...args) => this.pasteTalent(...args),
+      onPasteTalentGroup: (...args) => this.pasteTalentGroup(...args),
     };
 
     return /** @type {preact.VNode<Props>} */ (html`
@@ -362,6 +379,17 @@ export class DialogContent extends Component {
       </div>
     `);
   }
+}
+
+/**
+ * Creates a flying box effect when pasting.
+ * @param {Element} injectedElement Element that was pasted. If
+ *    undefined, this function will do nothing.
+ * @param {Element} clickedElement Element that was triggered by the user
+ */
+function animatePasteEffect(injectedElement, clickedElement) {
+  const { left: endX, top: endY } = getOffsetToViewport(injectedElement);
+  animateFlyingBox(clickedElement, endX, endY);
 }
 
 /**

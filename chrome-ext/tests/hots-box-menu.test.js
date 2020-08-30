@@ -236,15 +236,10 @@ describe("HotsBoxMenu", () => {
   });
 
   it("should call callback if a hero/skill/talent icon, or talent group is clicked", () => {
-    // Currently, this component handles the post-paste animation effect.
-    // This is not ideal, because each callback is required to return an array.
-    // Instead, we could pass the clicked <img> element as the second argument
-    // to each handler, and let the handler run the animation effect.
-    // TODO: Move post-paste animation effect to <DialogContent>
-    const pasteHeroHandler = sinon.fake.returns([]);
-    const pasteSkillHandler = sinon.fake.returns([]);
-    const pasteTalentHandler = sinon.fake.returns([]);
-    const pasteTalentGroupHandler = sinon.fake.returns([]);
+    const pasteHeroHandler = sinon.spy();
+    const pasteSkillHandler = sinon.spy();
+    const pasteTalentHandler = sinon.spy();
+    const pasteTalentGroupHandler = sinon.spy();
 
     const { getAllByRole, getByRole } = render(html`
       <${HotsBoxMenu}
@@ -259,61 +254,76 @@ describe("HotsBoxMenu", () => {
     // Test hero icon click
     pasteHeroHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: matcher(hero.name) }));
-    pasteHeroHandler.should.be.calledOnce();
-    pasteHeroHandler.firstCall.args.should.have.length(1);
+    const heroIcon = getByRole("img", { name: matcher(hero.name) });
+    fireEvent.click(heroIcon);
+    // Cannot use should.be.calledOnce() because it touches localStorage for
+    // reasons I cannot fathom (possibly because the spy was called with a JSDOM
+    // object as one of its arguments?), which causes JSDOM to throw up.
+    pasteHeroHandler.calledOnce.should.be.true();
+    pasteHeroHandler.firstCall.args.should.have.length(2);
     pasteHeroHandler.firstCall.args[0].should.equal(hero);
+    pasteHeroHandler.firstCall.args[1].should.eql(heroIcon);
 
     // Test skill icon click
     const [skill0, skill1] = hero.skills;
     pasteSkillHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: matcher(skill1.name) }));
-    pasteSkillHandler.should.be.calledOnce();
-    pasteSkillHandler.firstCall.args.should.have.length(1);
+    const skill1Icon = getByRole("img", { name: matcher(skill1.name) });
+    fireEvent.click(skill1Icon);
+    pasteSkillHandler.calledOnce.should.be.true();
+    pasteSkillHandler.firstCall.args.should.have.length(2);
     pasteSkillHandler.firstCall.args[0].should.equal(skill1);
+    pasteSkillHandler.firstCall.args[1].should.eql(skill1Icon);
 
-    fireEvent.click(getByRole("img", { name: matcher(skill0.name) }));
-    pasteSkillHandler.should.be.calledTwice();
-    pasteSkillHandler.secondCall.args.should.have.length(1);
-    pasteSkillHandler.secondCall.args[0].should.eql(skill0);
+    const skill0Icon = getByRole("img", { name: matcher(skill0.name) });
+    fireEvent.click(skill0Icon);
+    pasteSkillHandler.calledTwice.should.be.true();
+    pasteSkillHandler.secondCall.args.should.have.length(2);
+    pasteSkillHandler.secondCall.args[0].should.equal(skill0);
+    pasteSkillHandler.secondCall.args[1].should.eql(skill0Icon);
 
     // Test talent icon click
     const [talentA, talentB] = hero.talents["4"];
     const [talentC] = hero.talents["11"];
     pasteTalentHandler.should.not.be.called();
 
-    fireEvent.click(getByRole("img", { name: matcher(talentB.name) }));
-    pasteTalentHandler.should.be.calledOnce();
-    pasteTalentHandler.firstCall.args.should.have.length(1);
+    const talentBIcon = getByRole("img", { name: matcher(talentB.name) });
+    fireEvent.click(talentBIcon);
+    pasteTalentHandler.calledOnce.should.be.true();
+    pasteTalentHandler.firstCall.args.should.have.length(2);
     pasteTalentHandler.firstCall.args[0].should.equal(talentB);
+    pasteTalentHandler.firstCall.args[1].should.eql(talentBIcon);
 
-    fireEvent.click(getByRole("img", { name: matcher(talentA.name) }));
-    pasteTalentHandler.should.be.calledTwice();
-    pasteTalentHandler.secondCall.args.should.have.length(1);
+    const talentAIcon = getByRole("img", { name: matcher(talentA.name) });
+    fireEvent.click(talentAIcon);
+    pasteTalentHandler.calledTwice.should.be.true();
+    pasteTalentHandler.secondCall.args.should.have.length(2);
     pasteTalentHandler.secondCall.args[0].should.equal(talentA);
+    pasteTalentHandler.secondCall.args[1].should.eql(talentAIcon);
 
-    fireEvent.click(getByRole("img", { name: matcher(talentC.name) }));
-    pasteTalentHandler.should.be.calledThrice();
-    pasteTalentHandler.thirdCall.args.should.have.length(1);
+    const talentCIcon = getByRole("img", { name: matcher(talentC.name) });
+    fireEvent.click(talentCIcon);
+    pasteTalentHandler.calledThrice.should.be.true();
+    pasteTalentHandler.thirdCall.args.should.have.length(2);
     pasteTalentHandler.thirdCall.args[0].should.equal(talentC);
+    pasteTalentHandler.thirdCall.args[1].should.eql(talentCIcon);
 
     // Test talent group buttons
     const talentGroupButtons = getAllByRole("button", { name: "모두 넣기" });
     pasteTalentGroupHandler.should.not.be.called();
 
     fireEvent.click(talentGroupButtons[1]);
-    pasteTalentGroupHandler.should.be.calledOnce();
-    pasteTalentGroupHandler.firstCall.args.should.have.length(1);
-    pasteTalentGroupHandler.firstCall.args[0].should.be.equal(
-      hero.talents["11"]
-    );
+    pasteTalentGroupHandler.calledOnce.should.be.true();
+    pasteTalentGroupHandler.firstCall.args.should.have.length(2);
+    pasteTalentGroupHandler.firstCall.args[0].should.equal(hero.talents["11"]);
+    pasteTalentGroupHandler.firstCall.args[1].should.eql(talentGroupButtons[1]);
 
     fireEvent.click(talentGroupButtons[0]);
-    pasteTalentGroupHandler.should.be.calledTwice();
-    pasteTalentGroupHandler.secondCall.args.should.have.length(1);
-    pasteTalentGroupHandler.secondCall.args[0].should.be.equal(
-      hero.talents["4"]
+    pasteTalentGroupHandler.calledTwice.should.be.true();
+    pasteTalentGroupHandler.secondCall.args.should.have.length(2);
+    pasteTalentGroupHandler.secondCall.args[0].should.equal(hero.talents["4"]);
+    pasteTalentGroupHandler.secondCall.args[1].should.eql(
+      talentGroupButtons[0]
     );
   });
 });
