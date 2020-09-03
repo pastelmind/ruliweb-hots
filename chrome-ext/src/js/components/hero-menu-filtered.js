@@ -105,11 +105,12 @@ export class HeroMenuFiltered extends Component {
       universe: /** @type {State["universe"]} */ ({}),
     };
 
+    // Initially, all filters are active
     for (const type of objectKeys(HERO_FILTERS.newRole.filters)) {
-      this.state.newRole[type] = false;
+      this.state.newRole[type] = true;
     }
     for (const type of objectKeys(HERO_FILTERS.universe.filters)) {
-      this.state.universe[type] = false;
+      this.state.universe[type] = true;
     }
   }
 
@@ -127,13 +128,6 @@ export class HeroMenuFiltered extends Component {
    */
   render() {
     const { heroes, ptrHeroes } = this.props;
-
-    const activeRoleFilters = objectKeys(this.state.newRole).filter(
-      (role) => this.state.newRole[role]
-    );
-    const activeUniverseFilters = objectKeys(this.state.universe).filter(
-      (universe) => this.state.universe[universe]
-    );
 
     /** @type {preact.ComponentProps<typeof HeroMenu>} */
     const heroMenuProps = {
@@ -155,10 +149,8 @@ export class HeroMenuFiltered extends Component {
             // Instead, they are selected when "classic" is active
             isHighlighted:
               !(this.props.shouldUsePtr && !ptrHero) &&
-              (activeRoleFilters.length === 0 ||
-                this.state.newRole[hero.newRole]) &&
-              (activeUniverseFilters.length === 0 ||
-                this.state.universe[hero.universe] ||
+              this.state.newRole[hero.newRole] &&
+              (this.state.universe[hero.universe] ||
                 (hero.universe === "nexus" && this.state.universe["classic"])),
             ptrStatus: ptrHero
               ? liveHero

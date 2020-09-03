@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - (Internal) Refactored the code to use ES modules instead of an ugly mix of
   CommonJS and browser globals.
+- Hero filters behave in a more sensible way: When all choices in a filter group
+  are disabled, no heroes are highlighted, instead of simply skipping that
+  particular filter group.
+  To preserve the current behavior of selecting all heroes by default, all hero
+  filters are now activated on start.
 
 ### Removed
 - This add-on no longer supports Mozilla Firefox. This is because Firefox
