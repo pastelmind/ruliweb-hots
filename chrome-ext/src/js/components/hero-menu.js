@@ -20,8 +20,8 @@ const html = htm.bind(createElement);
 /**
  * @typedef {object} Props
  * @property {IconData[]} icons Array of icon data objects to display
- * @property {(id: string) => void} props.onClickHero Called when the
- *    user clicks on a hero. Argument is the icon ID (hero ID).
+ * @property {(id: string) => void} onClickHero Called when the user clicks on a
+ *    hero. Argument is the icon ID (hero ID).
  */
 
 /**
