@@ -13,41 +13,10 @@ import { animateFlyingBox, getOffsetToViewport } from "../hots-dialog-util.js";
 import htm from "../vendor/htm.js";
 import { Component, createElement } from "../vendor/preact.js";
 
-import { HeroMenu } from "./hero-menu.js";
+import { HeroMenuFiltered } from "./hero-menu-filtered.js";
 import { HotsBoxMenu } from "./hots-box-menu.js";
-import { MultiSelectIcons } from "./multi-select-icons.js";
 
 const html = htm.bind(createElement);
-
-/**
- * @typedef {keyof HERO_FILTERS} HeroFilterType
- * @typedef {{ [K in HeroFilterType]: keyof HERO_FILTERS[K]["filters"] }} HeroFilterValues
- * @typedef {{ [K in HeroFilterType]: HeroFilterValues[K][] }} ActiveFilters
- */
-
-const HERO_FILTERS = Object.freeze({
-  universe: Object.freeze({
-    name: "세계관",
-    filters: Object.freeze({
-      warcraft: "워크래프트",
-      starcraft: "스타크래프트",
-      diablo: "디아블로",
-      classic: "블리자드 고전",
-      overwatch: "오버워치",
-    }),
-  }),
-  newRole: Object.freeze({
-    name: "역할",
-    filters: Object.freeze({
-      tank: "전사",
-      bruiser: "투사",
-      ranged_assassin: "원거리 암살자",
-      melee_assassin: "근접 암살자",
-      healer: "치유사",
-      support: "지원가",
-    }),
-  }),
-});
 
 /**
  * @typedef {object} Props
@@ -58,7 +27,6 @@ const HERO_FILTERS = Object.freeze({
 
 /**
  * @typedef {object} State
- * @property {ActiveFilters} activeFilters
  * @property {DecoratedHero | null} currentHero
  * @property {boolean} shouldAddHotsVersion
  * @property {boolean} shouldUsePtr
@@ -77,7 +45,6 @@ export class DialogContent extends Component {
 
     /** @type {State} */
     this.state = {
-      activeFilters: { universe: [], newRole: [] },
       currentHero: null,
       shouldAddHotsVersion: true,
       shouldUsePtr: false,
@@ -121,23 +88,6 @@ export class DialogContent extends Component {
    */
   setIconSize(iconSize) {
     this.setState({ iconSize: +iconSize });
-  }
-
-  // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
-  /**
-   * Sets a boolean state based on an event originating from a checkbox.
-   * @template {HeroFilterType} T
-   * @param {T} filterType Filter type
-   * @param {HeroFilterValues[T][]} selectedFilters Selected filter IDs
-   */
-  setActiveFilter(filterType, selectedFilters) {
-    this.setState((state) => ({
-      ...state,
-      activeFilters: {
-        ...state.activeFilters,
-        [filterType]: selectedFilters,
-      },
-    }));
   }
 
   /** @return {{iconSize: number, version: string}} */
@@ -229,47 +179,11 @@ export class DialogContent extends Component {
       data.ptrHeroes && Object.keys(data.ptrHeroes).length
     );
 
-    const activeRoleFilters = new Set(this.state.activeFilters.newRole);
-    /** @type {Set<DecoratedHero["universe"]>} */
-    const activeUniverseFilters = new Set(this.state.activeFilters.universe);
-
-    // Nexus-original heroes do not have a separate filter icon. Instead, they
-    // are selected when "classic" heroes are selected
-    if (activeUniverseFilters.has("classic")) {
-      activeUniverseFilters.add("nexus");
-    }
-
-    /** @type {preact.ComponentProps<typeof HeroMenu>} */
-    const heroMenuProps = {
-      icons: Array.from(
-        new Set([...Object.keys(data.heroes), ...Object.keys(data.ptrHeroes)]),
-        (heroId) => {
-          const liveHero = data.heroes[heroId];
-          const ptrHero = data.ptrHeroes[heroId];
-          const hero = this.state.shouldUsePtr
-            ? ptrHero || liveHero
-            : liveHero || ptrHero;
-
-          return {
-            id: heroId,
-            url: hero.iconUrl,
-            title: `${hero.name} (${hero.roleName})`,
-            // If a filter set is empty, don't check it
-            isHighlighted:
-              (activeRoleFilters.size === 0 ||
-                activeRoleFilters.has(hero.newRole)) &&
-              (activeUniverseFilters.size === 0 ||
-                activeUniverseFilters.has(hero.universe)),
-            ptrStatus: ptrHero
-              ? liveHero
-                ? _c("changed")
-                : _c("new")
-              : undefined,
-            // For sorting only; not used by HeroMenu.
-            _sortBy: hero.name,
-          };
-        }
-      ).sort((a, b) => a._sortBy.localeCompare(b._sortBy, "en")),
+    /** @type {preact.ComponentProps<typeof HeroMenuFiltered>} */
+    const heroMenuFilteredProps = {
+      heroes: data.heroes,
+      ptrHeroes: data.ptrHeroes,
+      shouldUsePtr: this.state.shouldUsePtr,
       onClickHero: (heroId) =>
         this.setState((state, { data }) => ({
           currentHero: state.shouldUsePtr
@@ -366,36 +280,10 @@ export class DialogContent extends Component {
           </div>
         </div>
 
-        <div class="hots-dialog__section hots-hero-filters">
-          ${Object.keys(HERO_FILTERS).map((_filterType) => {
-            const filterType = /** @type {HeroFilterType} */ (_filterType);
-
-            /** @type {MultiSelectIcons<HeroFilterValues[filterType]>["props"]} */
-            const multiSelectIconsProps = {
-              options: Object.entries(HERO_FILTERS[filterType].filters).map(
-                ([id, name]) => ({
-                  id: /** @type {HeroFilterValues[filterType]} */ (id),
-                  name,
-                  iconUrl: chrome.runtime.getURL(
-                    `/images/${filterType}-${id}.png`
-                  ),
-                })
-              ),
-              onSelectChange: (sel) => this.setActiveFilter(filterType, sel),
-            };
-
-            return html`
-              <div class="hots-hero-filter-group">
-                <div class="hots-hero-filter-group__description">
-                  ${HERO_FILTERS[filterType].name}:
-                </div>
-                <${MultiSelectIcons} ...${multiSelectIconsProps} />
-              </div>
-            `;
-          })}
-        </div>
-
-        <${HeroMenu} class="hots-dialog__section" ...${heroMenuProps} />
+        <${HeroMenuFiltered}
+          class="hots-dialog__section"
+          ...${heroMenuFilteredProps}
+        />
         <${HotsBoxMenu} ...${hotsBoxMenuProps} />
         <div class="hots-dialog__section hots-dialog-version">
           루리웹 히어로즈 오브 더 스톰 공략툴 v{{appVersion}}
@@ -414,16 +302,4 @@ export class DialogContent extends Component {
 function animatePasteEffect(injectedElement, clickedElement) {
   const { left: endX, top: endY } = getOffsetToViewport(injectedElement);
   animateFlyingBox(clickedElement, endX, endY);
-}
-
-/**
- * Helper function that coerces string/number literals to literal types.
- *
- * Note: Duplicated here from "type-util.js" because I don't want to import it.
- * @template {string | number} T
- * @param {T} v
- * @return {T}
- */
-function _c(v) {
-  return v;
 }
