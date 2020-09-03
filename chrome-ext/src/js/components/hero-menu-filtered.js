@@ -24,6 +24,13 @@ const html = htm.bind(createElement);
 } KeysOfUnion
 */
 
+/**
+ * @template T
+ * @typedef {T extends any
+  ? ValueOf<T> : never
+} ValuesOfUnion
+*/
+
 const HERO_FILTERS = Object.freeze({
   universe: Object.freeze({
     name: "세계관",
@@ -169,27 +176,31 @@ export class HeroMenuFiltered extends Component {
     return /** @type {preact.VNode<Props>} */ (html`
       <div class="hots-dialog-hero-menu-filtered ${this.props.class}">
         <div class="hots-hero-filters">
-          ${objectEntries(HERO_FILTERS).map(
-            ([filterId, filterInfo]) => html`
+          ${objectEntries(HERO_FILTERS).map(([filterId, filterInfo]) => {
+            const filterStates = this.state[filterId];
+
+            return html`
               <div class="hots-hero-filter-group">
                 <div class="hots-hero-filter-group__description">
                   ${filterInfo.name}:
                 </div>
                 <${MultiSelectIcons}
-                  options=${objectEntries(
-                    /** @type {Record<string, string>} */ (filterInfo.filters)
-                  ).map(([id, name]) => ({
-                    id,
-                    name,
-                    iconUrl: chrome.runtime.getURL(
-                      `/images/${filterId}-${id}.png`
-                    ),
-                  }))}
+                  options=${objectEntries(filterInfo.filters).map(
+                    ([id, name]) => ({
+                      id,
+                      name,
+                      url: chrome.runtime.getURL(
+                        `/images/${filterId}-${id}.png`
+                      ),
+                      isSelected:
+                        filterStates[/** @type {keyof filterStates} */ (id)],
+                    })
+                  )}
                   onSelectChange=${this.setActiveFilter.bind(this, filterId)}
                 />
               </div>
-            `
-          )}
+            `;
+          })}
         </div>
         <${HeroMenu} class="hots-dialog__section" ...${heroMenuProps} />
       </div>
@@ -211,14 +222,15 @@ function objectKeys(o) {
  * Returns `Object.entries(o)` coerced to an array of tuples of
  * `[KeyType, ValueType]`.
  *
- * Note: Duplicated here from "type-util.js" because I don't want to import it.
- * @template {string} KeyType
- * @template ValueType
- * @param {Record<KeyType, ValueType>} o
- * @return {[KeyType, ValueType][]}
+ * Note: This is slightly different from the "type-util.js" version.
+ * @template T
+ * @param {T} o
+ * @return {[KeysOfUnion<T>, ValuesOfUnion<T>][]}
  */
 export function objectEntries(o) {
-  return /** @type {[KeyType, ValueType][]} */ (Object.entries(o));
+  return /** @type {[KeysOfUnion<T>, ValuesOfUnion<T>][]} */ (Object.entries(
+    o
+  ));
 }
 
 /**

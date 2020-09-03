@@ -25,17 +25,19 @@ const props = {
     {
       id: "gilman",
       name: "Charlotte Perkins Gilman",
-      iconUrl: "./images/gilman.jpg",
+      url: "./images/gilman.jpg",
     },
     {
       id: "mansfield",
       name: "Katherine Mansfield",
-      iconUrl: "./images/mansfield.jpg",
+      url: "./images/mansfield.jpg",
+      isSelected: true,
     },
     {
       id: "chopin",
       name: "Kate Chopin",
-      iconUrl: "./images/chopin.jpg",
+      url: "./images/chopin.jpg",
+      isSelected: false,
     },
   ],
   onSelectChange: makeFake("onSelectChange"),

@@ -70,17 +70,19 @@ describe("MultiSelectIcons", () => {
     {
       id: "gilman",
       name: "Charlotte Perkins Gilman",
-      iconUrl: "https://example.com/author/charlotte-perkins-gilman.png",
+      url: "https://example.com/author/charlotte-perkins-gilman.png",
     },
     {
       id: "mansfield",
       name: "Katherine Mansfield",
-      iconUrl: "https://example.com/author/katherine-mansfield.png",
+      url: "https://example.com/author/katherine-mansfield.png",
+      isSelected: false,
     },
     {
       id: "chopin",
       name: "Kate Chopin",
-      iconUrl: "https://example.com/author/kate-chopin.png",
+      url: "https://example.com/author/kate-chopin.png",
+      isSelected: true,
     },
   ];
 
@@ -95,10 +97,16 @@ describe("MultiSelectIcons", () => {
     // const checkboxes = getAllByRole("checkbox");
     // checkboxes.should.have.length(options.length);
 
-    for (const option of options) {
-      const img = getByRole("img", { name: option.name });
-      img.should.have.property("src", option.iconUrl);
-    }
+    const imgs = options.map(({ name }) => getByRole("img", { name }));
+
+    imgs[0].should.have.property("src", options[0].url);
+    imgs[1].should.have.property("src", options[1].url);
+    imgs[2].should.have.property("src", options[2].url);
+
+    // Check highlighting
+    Number(getComputedStyle(imgs[0]).opacity).should.be.below(1);
+    Number(getComputedStyle(imgs[1]).opacity).should.be.below(1);
+    Number(getComputedStyle(imgs[2]).opacity).should.eql(1);
 
     // TODO: Uncomment this when checkboxes become visible to assistive tech
     // queryAllByRole("checkbox", { checked: true }).should.be.empty();
@@ -107,7 +115,7 @@ describe("MultiSelectIcons", () => {
     // );
   });
 
-  it("should call onSelectChange() when checkboxes are clicked", async () => {
+  it("should call onSelectChange() when checkboxes are clicked", () => {
     const selectChangeHandler = sinon.spy();
 
     const { getByRole } = render(html`
@@ -119,34 +127,23 @@ describe("MultiSelectIcons", () => {
 
     selectChangeHandler.should.not.be.called();
 
+    // Turn on option 0
     // TODO: Change this to accessing checkbox by label
-    fireEvent.click(getByRole("img", { name: options[2].name }));
-    // The current implementation of <MultiSelectIcons> fires the callback
-    // *after* updating internal state, which is probably why we need await here.
-    // It also possibly makes the form less responsive. This is undesireable.
-    // To solve it, we should make <MultiSelectIcons> a *fully* controlled
-    // component; i.e. its checkbox states are driven entirely by props.
-    // TODO: Refactor <MultiSelectIcons>, then eliminate awaits
-    await waitFor(() => selectChangeHandler.should.be.calledOnce());
-    selectChangeHandler.firstCall.should.be.calledWithExactly({
-      [options[0].id]: false,
-      [options[1].id]: false,
-      [options[2].id]: true,
-    });
-
     fireEvent.click(getByRole("img", { name: options[0].name }));
-    await waitFor(() => selectChangeHandler.should.be.calledTwice());
-    selectChangeHandler.secondCall.should.be.calledWithExactly({
+    waitFor(() => selectChangeHandler.should.be.calledOnce());
+    selectChangeHandler.firstCall.should.be.calledWithExactly({
       [options[0].id]: true,
       [options[1].id]: false,
       [options[2].id]: true,
     });
 
     // Turn off option 2
+    // Note: Since this is a controlled component, the previous change should
+    // not be saved
     fireEvent.click(getByRole("img", { name: options[2].name }));
-    await waitFor(() => selectChangeHandler.should.be.calledThrice());
-    selectChangeHandler.thirdCall.should.be.calledWithExactly({
-      [options[0].id]: true,
+    waitFor(() => selectChangeHandler.should.be.calledTwice());
+    selectChangeHandler.secondCall.should.be.calledWithExactly({
+      [options[0].id]: false,
       [options[1].id]: false,
       [options[2].id]: false,
     });
