@@ -395,7 +395,7 @@ export class DialogContent extends Component {
           })}
         </div>
 
-        <${HeroMenu} ...${heroMenuProps} />
+        <${HeroMenu} class="hots-dialog__section" ...${heroMenuProps} />
         <${HotsBoxMenu} ...${hotsBoxMenuProps} />
         <div class="hots-dialog__section hots-dialog-version">
           루리웹 히어로즈 오브 더 스톰 공략툴 v{{appVersion}}

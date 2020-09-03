@@ -22,6 +22,8 @@ const html = htm.bind(createElement);
  * @property {IconData[]} icons Array of icon data objects to display
  * @property {(id: string) => void} onClickHero Called when the user clicks on a
  *    hero. Argument is the icon ID (hero ID).
+ * @property {string=} class Additional CSS classes to apply on the root
+ *    component.
  */
 
 /**
@@ -31,7 +33,7 @@ const html = htm.bind(createElement);
  */
 export function HeroMenu(props) {
   return /** @type {preact.VNode<Props>} */ (html`
-    <div class="hots-dialog__section hots-hero-icons">
+    <div class="hots-hero-icons ${props.class || ""}">
       ${props.icons.map((icon) => {
         let tooltip = icon.title;
         if (icon.ptrStatus === "new") {
