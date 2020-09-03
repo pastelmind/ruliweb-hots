@@ -10,8 +10,9 @@ const html = htm.bind(createElement);
  * @typedef {object} Props
  * @property {{id: T, name: string, iconUrl: string}[]} options
  *    Array of options.
- * @property {(selected: T[]) => void} onSelectChange Called when
- *    the user toggles an option. Argument is an array of selected IDs.
+ * @property {(selected: Record<T, boolean>) => void} onSelectChange Called when
+ *    the user toggles an option. Argument is a new object that maps each option
+ *    ID to its status (`true` if checked, `false` if unchecked).
  */
 
 /**
@@ -52,10 +53,7 @@ export class MultiSelectIcons extends Component {
         selected: { ...prevState.selected, [optionId]: isChecked },
       }),
       () => {
-        const selectedIds = this.props.options
-          .filter((o) => this.state.selected[o.id])
-          .map((o) => o.id);
-        this.props.onSelectChange(selectedIds);
+        this.props.onSelectChange({ ...this.state.selected });
       }
     );
     event.preventDefault();

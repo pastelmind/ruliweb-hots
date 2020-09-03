@@ -122,18 +122,27 @@ describe("MultiSelectIcons", () => {
     // component; i.e. its checkbox states are driven entirely by props.
     // TODO: Refactor <MultiSelectIcons>, then eliminate awaits
     await waitFor(() => selectChangeHandler.should.be.calledOnce());
-    selectChangeHandler.firstCall.should.be.calledWithExactly([options[2].id]);
+    selectChangeHandler.firstCall.should.be.calledWithExactly({
+      [options[0].id]: false,
+      [options[1].id]: false,
+      [options[2].id]: true,
+    });
 
     fireEvent.click(getByRole("img", { name: options[0].name }));
     await waitFor(() => selectChangeHandler.should.be.calledTwice());
-    selectChangeHandler.secondCall.should.be.calledWithExactly([
-      options[0].id,
-      options[2].id,
-    ]);
+    selectChangeHandler.secondCall.should.be.calledWithExactly({
+      [options[0].id]: true,
+      [options[1].id]: false,
+      [options[2].id]: true,
+    });
 
     // Turn off option 2
     fireEvent.click(getByRole("img", { name: options[2].name }));
     await waitFor(() => selectChangeHandler.should.be.calledThrice());
-    selectChangeHandler.thirdCall.should.be.calledWithExactly([options[0].id]);
+    selectChangeHandler.thirdCall.should.be.calledWithExactly({
+      [options[0].id]: true,
+      [options[1].id]: false,
+      [options[2].id]: false,
+    });
   });
 });

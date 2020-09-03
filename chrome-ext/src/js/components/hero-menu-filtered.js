@@ -109,17 +109,10 @@ export class HeroMenuFiltered extends Component {
   // eslint-disable-next-line valid-jsdoc -- TypeScript syntax
   /**
    * @param {keyof State} filterId Filter type
-   * @param {KeysOfUnion<ValueOf<State>>[]} activeFilters Selected filter IDs
+   * @param {ValueOf<State>} activeFilters Selected filter IDs
    */
   setActiveFilter(filterId, activeFilters) {
-    this.setState((state) => {
-      const filterStates = { ...state[filterId] };
-      for (const key of objectKeys(filterStates)) {
-        // @ts-expect-error TypeScript doesn't allow us to index into a union...sigh
-        filterStates[key] = activeFilters.includes(key);
-      }
-      return { ...state, [filterId]: filterStates };
-    });
+    this.setState((state) => ({ ...state, [filterId]: activeFilters }));
   }
 
   /**
