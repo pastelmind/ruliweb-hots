@@ -7,6 +7,8 @@ import { HotsBoxMenu } from "../src/js/components/hots-box-menu.js";
 import htm from "../src/js/vendor/htm.js";
 import { h, render } from "../src/js/vendor/preact.js";
 
+import { makeFake } from "./js/browser-helpers.js";
+
 const html = htm.bind(h);
 
 /**
@@ -139,14 +141,4 @@ if (target) {
   render(html`<${HotsBoxMenu} ...${props} />`, target);
 } else {
   console.error("Cannot find #main");
-}
-
-/**
- * @param {string} name Name of the stubbed callback
- * @return {function(...unknown): void}
- */
-function makeFake(name) {
-  return (...args) => {
-    console.log(`${name}() called with arguments: %o`, args);
-  };
 }

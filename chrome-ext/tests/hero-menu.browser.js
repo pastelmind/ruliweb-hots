@@ -6,6 +6,8 @@ import { HeroMenu } from "../src/js/components/hero-menu.js";
 import htm from "../src/js/vendor/htm.js";
 import { h, render } from "../src/js/vendor/preact.js";
 
+import { makeFake } from "./js/browser-helpers.js";
+
 const html = htm.bind(h);
 
 /**
@@ -39,19 +41,9 @@ const icons = [
 const target = document.getElementById("main");
 if (target) {
   render(
-    html`<${HeroMenu} icons=${icons} onClickHero=${stub("onClickHero")} />`,
+    html`<${HeroMenu} icons=${icons} onClickHero=${makeFake("onClickHero")} />`,
     target
   );
 } else {
   console.error("Cannot find #main");
-}
-
-/**
- * @param {string} name Name of the stubbed callback
- * @return {function}
- */
-function stub(name) {
-  return (/** @type {unknown[]} */ ...args) => {
-    console.log(`${name}() called with arguments: %o`, args);
-  };
 }
