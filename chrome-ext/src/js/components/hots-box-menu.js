@@ -87,8 +87,9 @@ export function HotsBoxMenu(props) {
           data-microtip-position="top"
           role="tooltip"
         >
-          <img
+          <input
             class="hots-icon-button__icon"
+            type="image"
             src="${hero.iconUrl}"
             alt="${hero.name} (${hero.roleName})"
             onClick=${pasteHero.bind(null, hero)}
@@ -102,8 +103,9 @@ export function HotsBoxMenu(props) {
               data-microtip-position="top"
               role="tooltip"
             >
-              <img
+              <input
                 class="hots-icon-button__icon"
+                type="image"
                 src="${skill.iconUrl}"
                 alt="${skill.typeName} - ${skill.name}"
                 onClick=${pasteSkill.bind(null, skill)}
@@ -127,8 +129,9 @@ export function HotsBoxMenu(props) {
                     data-microtip-position="top"
                     role="tooltip"
                   >
-                    <img
+                    <input
                       class="hots-icon-button__icon"
+                      type="image"
                       src="${talent.iconUrl}"
                       alt="${talent.name} (${talent.typeNameLong} - 레벨 ${level})"
                       onClick=${pasteTalent.bind(null, talent)}

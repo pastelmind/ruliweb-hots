@@ -184,9 +184,9 @@ describe("HotsBoxMenu", () => {
       html`<${HotsBoxMenu} hero=${hero} />`
     );
 
-    // Check for existence of hero icon
-    const heroIcon = getByRole("img", { name: matcher(hero.name) });
-    heroIcon.should.have.property("src", hero.iconUrl);
+    // Check for existence of hero icon button
+    const heroButton = getByRole("button", { name: matcher(hero.name) });
+    heroButton.should.have.property("src", hero.iconUrl);
 
     // Check hero icon tooltip
     const heroIconTooltipEl = getByRole("tooltip", {
@@ -199,9 +199,9 @@ describe("HotsBoxMenu", () => {
 
     // Check skills
     for (const skill of hero.skills) {
-      // Check for existence of icon
-      const skillIcon = getByRole("img", { name: matcher(skill.name) });
-      skillIcon.should.have.property("src", skill.iconUrl);
+      // Check for existence of icon button
+      const skillButton = getByRole("button", { name: matcher(skill.name) });
+      skillButton.should.have.property("src", skill.iconUrl);
 
       // Check tooltip
       const skillIconTooltipEl = getByRole("tooltip", {
@@ -215,11 +215,11 @@ describe("HotsBoxMenu", () => {
     // Check talents
     for (const [tierName, tierArray] of Object.entries(hero.talents)) {
       for (const talent of tierArray) {
-        // Check for existence of icon
-        const talentIcon = getByRole("img", { name: matcher(talent.name) });
-        talentIcon.should.have.property("src", talent.iconUrl);
+        // Check for existence of icon button
+        const talentBtn = getByRole("button", { name: matcher(talent.name) });
+        talentBtn.should.have.property("src", talent.iconUrl);
 
-        const talentIconRoot = talentIcon.parentElement;
+        const talentIconRoot = talentBtn.parentElement;
         shouldNotEqual(talentIconRoot, null);
         const talentIconTooltip = talentIconRoot.getAttribute("aria-label");
         should(talentIconTooltip).containEql(talent.name);
@@ -254,59 +254,59 @@ describe("HotsBoxMenu", () => {
     // Test hero icon click
     pasteHeroHandler.should.not.be.called();
 
-    const heroIcon = getByRole("img", { name: matcher(hero.name) });
-    fireEvent.click(heroIcon);
+    const heroButton = getByRole("button", { name: matcher(hero.name) });
+    fireEvent.click(heroButton);
     // Cannot use should.be.calledOnce() because it touches localStorage for
     // reasons I cannot fathom (possibly because the spy was called with a JSDOM
     // object as one of its arguments?), which causes JSDOM to throw up.
     pasteHeroHandler.calledOnce.should.be.true();
     pasteHeroHandler.firstCall.args.should.have.length(2);
     pasteHeroHandler.firstCall.args[0].should.equal(hero);
-    pasteHeroHandler.firstCall.args[1].should.eql(heroIcon);
+    pasteHeroHandler.firstCall.args[1].should.eql(heroButton);
 
     // Test skill icon click
     const [skill0, skill1] = hero.skills;
     pasteSkillHandler.should.not.be.called();
 
-    const skill1Icon = getByRole("img", { name: matcher(skill1.name) });
-    fireEvent.click(skill1Icon);
+    const skillButton1 = getByRole("button", { name: matcher(skill1.name) });
+    fireEvent.click(skillButton1);
     pasteSkillHandler.calledOnce.should.be.true();
     pasteSkillHandler.firstCall.args.should.have.length(2);
     pasteSkillHandler.firstCall.args[0].should.equal(skill1);
-    pasteSkillHandler.firstCall.args[1].should.eql(skill1Icon);
+    pasteSkillHandler.firstCall.args[1].should.eql(skillButton1);
 
-    const skill0Icon = getByRole("img", { name: matcher(skill0.name) });
-    fireEvent.click(skill0Icon);
+    const skillButton0 = getByRole("button", { name: matcher(skill0.name) });
+    fireEvent.click(skillButton0);
     pasteSkillHandler.calledTwice.should.be.true();
     pasteSkillHandler.secondCall.args.should.have.length(2);
     pasteSkillHandler.secondCall.args[0].should.equal(skill0);
-    pasteSkillHandler.secondCall.args[1].should.eql(skill0Icon);
+    pasteSkillHandler.secondCall.args[1].should.eql(skillButton0);
 
     // Test talent icon click
     const [talentA, talentB] = hero.talents["4"];
     const [talentC] = hero.talents["11"];
     pasteTalentHandler.should.not.be.called();
 
-    const talentBIcon = getByRole("img", { name: matcher(talentB.name) });
-    fireEvent.click(talentBIcon);
+    const talentButtonB = getByRole("button", { name: matcher(talentB.name) });
+    fireEvent.click(talentButtonB);
     pasteTalentHandler.calledOnce.should.be.true();
     pasteTalentHandler.firstCall.args.should.have.length(2);
     pasteTalentHandler.firstCall.args[0].should.equal(talentB);
-    pasteTalentHandler.firstCall.args[1].should.eql(talentBIcon);
+    pasteTalentHandler.firstCall.args[1].should.eql(talentButtonB);
 
-    const talentAIcon = getByRole("img", { name: matcher(talentA.name) });
-    fireEvent.click(talentAIcon);
+    const talentButtonA = getByRole("button", { name: matcher(talentA.name) });
+    fireEvent.click(talentButtonA);
     pasteTalentHandler.calledTwice.should.be.true();
     pasteTalentHandler.secondCall.args.should.have.length(2);
     pasteTalentHandler.secondCall.args[0].should.equal(talentA);
-    pasteTalentHandler.secondCall.args[1].should.eql(talentAIcon);
+    pasteTalentHandler.secondCall.args[1].should.eql(talentButtonA);
 
-    const talentCIcon = getByRole("img", { name: matcher(talentC.name) });
-    fireEvent.click(talentCIcon);
+    const talentButtonC = getByRole("button", { name: matcher(talentC.name) });
+    fireEvent.click(talentButtonC);
     pasteTalentHandler.calledThrice.should.be.true();
     pasteTalentHandler.thirdCall.args.should.have.length(2);
     pasteTalentHandler.thirdCall.args[0].should.equal(talentC);
-    pasteTalentHandler.thirdCall.args[1].should.eql(talentCIcon);
+    pasteTalentHandler.thirdCall.args[1].should.eql(talentButtonC);
 
     // Test talent group buttons
     const talentGroupButtons = getAllByRole("button", { name: "모두 넣기" });
