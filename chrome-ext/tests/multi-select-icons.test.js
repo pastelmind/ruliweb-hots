@@ -31,6 +31,12 @@ before(
       `
       <html>
         <head>
+          <style>
+          /* Workaround for JSDOM bug where default opacity is not calculated */
+          * {
+            opacity: 1;
+          }
+          </style>
           <link rel="stylesheet" href="../src/css/ruliweb-hots.css">
         </head>
       </html>

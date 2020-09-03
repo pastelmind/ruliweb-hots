@@ -32,6 +32,12 @@ before(
       `
       <html>
         <head>
+          <style>
+          /* Workaround for JSDOM bug where default opacity is not calculated */
+          * {
+            opacity: 1;
+          }
+          </style>
           <link rel="stylesheet" href="../src/css/ruliweb-hots.css">
         </head>
       </html>
@@ -98,9 +104,9 @@ describe("HeroMenu", () => {
     hamletBtn.should.have.property("src", icons[2].url);
 
     // Check highlighting
-    Number(getComputedStyle(romeoBtn).opacity).should.eql(0);
-    Number(getComputedStyle(julietBtn).opacity).should.be.above(0);
-    Number(getComputedStyle(hamletBtn).opacity).should.eql(0);
+    Number(getComputedStyle(romeoBtn).opacity).should.eql(1);
+    Number(getComputedStyle(julietBtn).opacity).should.be.below(1);
+    Number(getComputedStyle(hamletBtn).opacity).should.eql(1);
 
     // Check for existence and order of tooltips
     const romeoTooltipEl = getByLabelText(matcher(icons[0].title));
