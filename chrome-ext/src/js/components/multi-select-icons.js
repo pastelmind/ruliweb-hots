@@ -52,24 +52,21 @@ export function MultiSelectIcons(props) {
     <div class="multi-select-icons">
       ${props.options.map(
         (option) => html`
-          <label
+          <button
             key=${option.id}
             class="multi-select-icons__option"
+            aria-pressed="${option.isSelected ? "true" : "false"}"
             aria-label="${option.name}"
             data-microtip-position="top"
-            role="tooltip"
+            role="button tooltip"
+            onClick=${onOptionToggle.bind(null, option.id)}
           >
-            <input
-              type="checkbox"
-              checked=${Boolean(option.isSelected)}
-              onClick=${onOptionToggle.bind(null, option.id)}
-            />
             <img
               class="multi-select-icons__option-icon"
               alt="${option.name}"
               src="${option.url}"
             />
-          </label>
+          </button>
         `
       )}
     </div>
