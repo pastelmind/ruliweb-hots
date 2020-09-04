@@ -170,10 +170,18 @@ export class HeroMenuFiltered extends Component {
         <div class="hots-hero-filters">
           ${objectEntries(HERO_FILTERS).map(([filterId, filterInfo]) => {
             const filterStates = this.state[filterId];
+            const filterGroupLabelId = `hots_hero_filter_group_label_${filterId}`;
 
             return html`
-              <div class="hots-hero-filter-group">
-                <div class="hots-hero-filter-group__description">
+              <div
+                class="hots-hero-filter-group"
+                role="group"
+                aria-labelledby="${filterGroupLabelId}"
+              >
+                <div
+                  id="${filterGroupLabelId}"
+                  class="hots-hero-filter-group__description"
+                >
                   ${filterInfo.name}:
                 </div>
                 <${MultiSelectIcons}
