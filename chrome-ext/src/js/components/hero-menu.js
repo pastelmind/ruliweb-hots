@@ -33,7 +33,11 @@ const html = htm.bind(createElement);
  */
 export function HeroMenu(props) {
   return /** @type {preact.VNode<Props>} */ (html`
-    <div class="hots-hero-icons ${props.class || ""}">
+    <div
+      class="hots-hero-icons ${props.class || ""}"
+      role="group"
+      aria-label="영웅 목록"
+    >
       ${props.icons.map((icon) => {
         let tooltip = icon.title;
         if (icon.ptrStatus === "new") {
